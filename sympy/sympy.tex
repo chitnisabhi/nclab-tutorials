@@ -202,7 +202,7 @@ education at all levels.
 
 \subsection{Software as a Service (SaaS)}
 
-Another big change the Cloud Computing brings is in how software is handled. 
+Another big change that the Cloud Computing brings is in how software is handled. 
 Traditionally, one would buy a software in a big box with a small CD in it, 
 and install it on one's computer. This model is now being challenged by a new 
 approach called {\em Software as a Service (SaaS)}. The user does not have 
@@ -238,34 +238,44 @@ contrast to traditional educational softwares,
 users can access their accounts and work from anywhere and at any time.
 Students can start a problem at school, finish the rest at home, and notify 
 the instructor about the completion with one mouse click. Most importantly, 
-however, NCLab invites K-12 teachers and students to discover new STEM areas
-that may not have been easy for them to access before.
+however, NCLab invites K-12 teachers and students to discover new exciting 
+areas of mathematics, programming, and computer modeling that may not have 
+been available to them before.
 
 \newpage
 
 
 \section{Getting Started}
 
-In order to explore NCLab, first visit its home page {\tt http://www.nclab.com}.
-The upper left corner features a slide show representing selected activities 
+In order to explore NCLab, first visit its home page {\tt http://nclab.com}.
+Under the logo you will see a slide show representing selected activities 
 offered by NCLab. The Cloud Monitor, located under the slide show, displays 
-the current load on the cluster. The User Statistics window, located in the 
-lower-right corner, provides current overview of NCLab's users and their projects. 
-The window above User Statistics is a WebGL tester. WebGL is a recent web-browser technology 
-that enables fast 3D grafics. If you can see in your browser an image similar to 
-the one in Fig. \ref{fig:outside}, then your web browser supports it. Otherwise, 
-it might be a good idea to upgrade your browser to a newer version. Note:
-Internet Explorer is one of few browsers which do not support WebGL. Therefore 
-we recommend using Chrome, Firefox, Opera, or Safari. A~standard login dialog 
-is present in the upper-right corner.
+the current load on the core cluster. By default, NCLab runs on six nodes 
+with a total of 100 computing cores, and has approximately 100 GB of memory 
+available for immediate use. These parameters can be scaled up dynamically 
+if needed. 
+
+The User Statistics window, located in the 
+bottom-right corner, provides current overview of NCLab's users and their projects. 
+The window above User Statistics is a WebGL tester. WebGL is a very recent 
+web-browser technology that supports amazing 3D graphics. If you can see in your 
+browser an image similar to the one in Fig. \ref{fig:outside}, then your web 
+browser supports it. In that case, click into the WebGL tester window, and move 
+your mouse while keeping the left button pressed, to see WebGL in action.
+If your browser does not support WebGL, we recommend that you 
+upgrade it to a newer version. IE is one of few browsers which do not support WebGL. Therefore 
+it is better to use Chrome, Firefox, Opera, or Safari. A login dialog where
+users enter their username, password and institution code is located in the 
+top-right corner.\\[-8mm]
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/outside.png}
 \end{center}
-%\vspace{-2mm}
+\vspace{-2mm}
 \caption{NCLab's home page.}
 \label{fig:outside}
+\vspace{-0.6cm}
 \end{figure}
 
 \newpage
@@ -277,22 +287,22 @@ In order to create a new account, click on the link "Create free account" which 
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/create-account.png}
+\includegraphics[width=0.45\textwidth]{img/create-account.png}
 \end{center}
-%\vspace{-2mm}
+\vspace{-4mm}
 \caption{Creating new account.}
 \label{fig:creacc}
 \end{figure}
 
 \noindent
-In this form, fill in your preferred username, email address (to be used only if you ask
-us to generate a new password for you), and password twice. Nest:
+In this form, enter your preferred username, email address (to be used only if you ask
+us to generate a new password for you), and password twice. Next:
 
 \begin{itemize}
 \item If you belong to an institution 
       that uses NCLab for teaching or research, you should know your institution's code. Enter it in the form, 
-      along with your first and last names. Your name will be visible to an NCLab admin at that 
-      institution, who will verify that you indeed belong there.
+      along with your first and last names. Your name will be visible to an NCLab admin
+      who will verify that you indeed belong to the institution.
 \item If you are using NCLab for your personal hobby or self-education, for activities not 
       related to any institutional use, then leave the last three lines empty. 
 \end{itemize}
@@ -300,10 +310,11 @@ After clicking OK, you are ready to login!
 
 \subsection{After Login}
 
-Inside NCLab, you will find yourself in an environment that is similar
-to the standard computer desktop. Your Groups icon will not be lighted 
-green yet, such as the one in Fig. \ref{fig:desktop}. The green light 
-indicates that someone in some of your Groups is currently in NCLab. 
+The interior of NCLab is similar to the standard computer desktop. Many users maximize 
+the web browser window to make the desktop experience even more realistic.
+
+If any member of any of your groups is in NCLab at the time you log in, the Groups icon 
+will be lighted green as shown in Fig. \ref{fig:desktop}. 
 
 \begin{figure}[!ht]
 \begin{center}
@@ -333,15 +344,15 @@ describe the other icons:
 
 \subsection{Groups and Chat}
 
-In NCLab users can form groups, see who is online, and chat in real time. In order to 
+In NCLab, users can form groups, see who is online, and chat in real time. In order to 
 create a new group, click on the Groups icon. A window similar to the one shown 
 in Fig. \ref{fig:groups} appears. This concrete screenshot shows four groups of the 
 user "solin" -- the top one was created by Jordan, the other three by solin. The 
 green light next to the last group indicates that someone in that group
-is currently in NCLab. Before we go look who that is, notice that you can create a
-new group of your own by clicking on "New Group". You can also see instantly who in your 
-groups is in NCLab by clicking on "Who's online".
-
+is currently in NCLab. Before we go look who that is, note that you can create a
+new group of your own by clicking on "New Group". In order to add people to your groups,
+you need to know their usernames. The button "Who's online" allows you to see instantly 
+all users in all your groups who are currently logged in. 
 
 \begin{figure}[!ht]
 \begin{center}
@@ -352,9 +363,10 @@ groups is in NCLab by clicking on "Who's online".
 \label{fig:groups}
 \end{figure}
 
-\noindent 
-After clicking on the last group, it is revealed that Emily and Rick are currently in NCLab. 
-
+\newpage
+\noindent
+Clicking on the last group 
+reveals that the online users are Emily and Rick.
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/groups-2.png}
@@ -365,9 +377,9 @@ After clicking on the last group, it is revealed that Emily and Rick are current
 \end{figure}
 
 \noindent
-By clicking on any user who has the green light next to him/her,
-it is possible to start a chat. Or, you may be contacted first, 
-of course. The Chat window is shown in Fig. \ref{fig:chat}.
+Clicking on any user who has the green light next to him/her (except yourself),
+you initiate a chat to that user. Or someone from your groups may contact you. 
+The Chat window is shown in Fig. \ref{fig:chat}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -394,14 +406,19 @@ is that they only have a few functions, and thus can be operated using a few but
 \end{figure}
 \noindent
 Compared to this calculator, NCLab provides an enormous functionality 
-that would require thousands of buttons. So instead of buttons,
-in NCLab we use simple commands to get the results we want. This is 
-easy and fun, let's try it.
+that would require thousands and thousands of buttons. So instead of buttons,
+in NCLab we use simple commands to get the results we want. The language used 
+to talk to NCLab is called Python. Using Python is very intuitive, 
+as we shall see in a moment.
 
-We begin with clicking on the File Manager icon. which launches the File 
+\subsection{Launching a Python Project}
+
+Begin with clicking on the File Manager icon, which launches the File 
 Manager. Next go to the menu Project in the upper-left corner. There go 
 through the submenu New to Python and click. This will lanuch a new Python 
-project, as illustrated in Fig. \ref{fig:python}. 
+project, as illustrated in Fig. \ref{fig:python}. The same can be achieved
+by clicking on the icon Programming. In the menu that appears, click on 
+Python. 
 
 \newpage
 
@@ -430,8 +447,9 @@ the project by mouse, to keep your data organized.
 Your project now contains a single {\em input cell}. Let's write 
 something simple into it, for example "1 + 2", and click 
 the link "run" right under the input cell. This sends a request to 
-the cloud, and an answer comes back immediately. It is displayed 
-in a new (yellow) {\em output cell}, as shown in Fig. \ref{fig:1p3}.
+the cloud, it is processed there, and an answer comes back instantly. 
+It is displayed in a new (yellow) {\em output cell}, as shown in 
+Fig. \ref{fig:1p3}.
 
 \newpage
 \begin{figure}[!ht]
@@ -468,7 +486,7 @@ is shown in Fig. \ref{fig:1p3r}.
 If you like, you can click back into the input cell, change 
 the numbers, and click the "run" link under the cell again. 
 This will send a new request to the cloud and after the answer 
-comes back, the result will be displayed in the existing output 
+comes back, it is displayed in the existing output 
 cell. 
 
 Let's continue by creating a new empty input cell. To do this, click
@@ -533,13 +551,11 @@ It is useful to see how NCLab reports errors, so let's do it!
 Since the error message in Fig. \ref{fig:divzero} mentioned modulo, we added there one more 
 input cell demonstrating how modulo is done -- using the \% symbol.
 
-\subsection{Using Simple Functions}
+\subsection{Importing Numpy}
 
 In order to calculate square roots, exponentials, sins, cosins, tangents, and all other 
-simple functions, the best way is to import Numpy as shown in Fig. \ref{fig:fns}. Numpy is a standard Python library for
-numerical computations.
-For a complete overview of functions provided by Numpy we recommend the 
-web page {\tt http://www.scipy.org/Numpy\_Functions\_by\_Category}.
+simple functions, the best way is to import Numpy as shown in Fig. \ref{fig:fns}. Numpy 
+is a standard Python library for numerical computations.
 
 \newpage
 \begin{figure}[!ht]
@@ -547,17 +563,96 @@ web page {\tt http://www.scipy.org/Numpy\_Functions\_by\_Category}.
 \includegraphics[width=\textwidth]{img/fns.png}
 \end{center}
 \vspace{-4mm}
-\caption{Using elementary functions.}
+\caption{Importing Numpy and using elementary functions.}
 \label{fig:fns}
 %\vspace{-6mm}
 \end{figure}
+
+\subsection{Table of Elementary Functions}
+
+Elementary functions that one can import from Numpy include:\\
+
+%{\small
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+abs($x$) &  absolute value of $x$\\
+arccos($x$) &  inverse cosine of $x$ \\
+arccosh($x$) &  inverse hyperbolic cosine of $x$ \\
+arcsin($x$) & inverse sine of $x$ \\
+arcsinh($x$) & inverse hyperbolic sine of $x$ \\
+arctan($x$) & inverse tangent of $x$ \\
+arctanh($x$) & inverse hyperbolic tangent of $x$ \\
+arctan2($x_1$, $x_2$) & arc tangent of $x_1/x_2$ choosing the quadrant correctly \\
+cos($x$) & cosine of $x$ \\
+cosh($x$) & hyperbolic tangent of $x$ \\
+exp($x$) & $e^x$ \\
+log($x$) & natural logarithm of $x$ \\
+pow($a$, $b$) & $a^b$ (same as "a**b")\\
+sin($x$) & sine of $x$ \\
+sinh($x$) & hyperbolic sine of $x$ \\
+sqrt($x$) & square root of $x$ \\
+tan($x$) & tangent of $x$\\
+tanh($x$) & hyperbolic tangent of $x$ \\
+\hline
+\end{tabular}
+\end{center}
+%}
+\vspace{4mm}
 \noindent
+For a complete overview of functions provided by Numpy we recommend the 
+web page \\ {\tt http://www.scipy.org/Numpy\_Functions\_by\_Category}.
+
+
+\subsection{Using Built-In Help}
+
+Whenever you are unsure about a command, you can enter the 
+command followed by a questionmark, and click on "run". This will 
+display help that is available for that command, and in many cases also
+examples of its correct use. This is illustrated for the command 
+"arctan2" in Fig. \ref{fig:help}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/help.png}
+\end{center}
+\vspace{-2mm}
+\caption{Typing a keyword followed by '?' and clicking on "run" invokes built-in help.}
+\label{fig:help}
+%\vspace{-1cm}
+\end{figure}
+
+
+
+
 
 \subsection{Plotting Functions of One Variable}
 
 Plotting can be done via the Pylab library. Pylab is a standard Python library that is 
 superior in almost every way to MATLAB (expensive commercial product whose usage is 
-quite similar to what we are doing here). Concretely, plotting is illustrated in Fig. \ref{fig:plot}.
+quite similar to what we are doing here). 
+
+\newpage
+\noindent
+Let's say, for example, that we want to plot the function $f(x) = 2\sin(2\pi(x - 1/4))$
+in the interval $(0, 2)$. This is done as follows:
+
+{\small
+\begin{verbatim}
+from numpy import sin, pi
+from pylab import *
+x = arange(0, 2, 0.01)
+y = 2*sin(2 * pi * (x - 1/4.))
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+}
+\noindent
+Here, the {\tt arange} command creates an array of values between 0 and 2 with step 0.01.
+Conveniently, the entire array $x$ can be passed into the function, generating an
+array $y$ of function values of the same length. With these two arrays in hand, plotting is easy. 
+The result is shown in Fig. \ref{fig:plot}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -566,9 +661,9 @@ quite similar to what we are doing here). Concretely, plotting is illustrated in
 \vspace{-2mm}
 \caption{Plotting functions of one variable.}
 \label{fig:plot}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
-\newpage
+
 The plot can be made fancier by adding a label, and also the color 
 and the line style can be changed, as shown in Fig. \ref{fig:plot2}.
 
@@ -598,11 +693,41 @@ For a complete list of options, please visit the Pylab page {\tt http://www.scip
 
 \section{Algebra}
 
-To be continued...
+For algebra, calculus, differential equations and related symbolic calculations 
+we import the Sympy library:
+
+\begin{verbatim}
+from sympy import *
+\end{verbatim}
+At the beginning, we need to declare the names of independent variables (to distinguish 
+them from constants). For example, if we know that we are going to work with functions 
+of $x$, $y$ and/or $z$, we may declare these symbols at once:
+\begin{verbatim}
+x, y, z = symbols("xyz")
+\end{verbatim}
+With this, we are ready to go!
 
 \subsection{Expansion}
 
-TBC
+To expand an expression, we use the command {\tt expand}:
+\begin{verbatim}
+a =(x+y)**2 * (x+1)
+a.expand()
+\end{verbatim}
+\noindent
+In NCLab, this looks as follows:
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/expand-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Expanding an expression.}
+\label{fig:expand-1}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+To be continued.
 
 \section{Calculus}
 

@@ -85,6 +85,7 @@
 \ClearShipoutPicture
 \newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{}
 \small
@@ -137,9 +138,11 @@ Numpy, Pylab, Matplotlib, Sympy and other projects.
 \pagestyle{plain}
 \setcounter{page}{1}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{The {\em Cloud} is Coming. Should I Stay or Should I Run?}
 
-You should stay. Cloud Computing sounds like a rocket science, but it is not,
+No need to run. Cloud Computing sounds like a rocket science, but it is not,
 and it really changes things for the better. Chances are that you are using 
 it already, without even noticing it. For example, if you are using Gmail, 
 Hotmail, Yahoo or another such provider to do your emails, then your data are 
@@ -242,8 +245,8 @@ however, NCLab invites K-12 teachers and students to discover new exciting
 areas of mathematics, programming, and computer modeling that may not have 
 been available to them before.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-
 
 \section{Getting Started}
 
@@ -390,6 +393,7 @@ The Chat window is shown in Fig. \ref{fig:chat}.
 \label{fig:chat}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Using NCLab as a Calculator}
 
@@ -626,7 +630,7 @@ examples of its correct use. This is illustrated for the command
 
 
 
-\subsection{Plotting Functions of One Variable}
+\subsection{Plotting Functions of One Variable}\label{plotting}
 
 Plotting can be done via the Pylab library. Pylab is a standard Python library that is 
 superior in almost every way to MATLAB (expensive commercial product whose usage is 
@@ -689,44 +693,50 @@ of colors and line styles:
 \end{itemize}
 For a complete list of options, please visit the Pylab page {\tt http://www.scipy.org/PyLab}.
 
-\section{Algebra}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-For algebra, calculus, differential equations and related symbolic calculations 
-we import the Sympy library:
+\section{Working with Math Expressions}
 
+In the following we will be working with functions, polynomials, fractions, and such.
+Here are a few useful tricks.
+
+\subsection{Entering an expression}
+Algebraic expressions are represented using text strings that resemble 
+computer code (well, they {\em are} computer code). For example, the expression 
+$$
+  (x + y)^2 (x + 1)
+$$ 
+needs to be entered as
 \begin{verbatim}
-from sympy import *
+(x + y)**2 * (x + 1)
 \end{verbatim}
-At the beginning, we need to declare the names of independent variables (to distinguish 
-them from constants). For example, if we know that we are going to work with functions 
-of $x$, $y$ and/or $z$, we may declare these symbols at once:
+Longer expressions, when entered as one piece, may not be all that well readable. For example,
+$$
+\frac{(x + y)^2 (x + 1) + \frac{(x-5)(x-3)}{(x-4)^2} + (x + y)(x - 2)(x + y)^3}{(x-1)(x+2))}
+$$ 
+would be entered as 
 \begin{verbatim}
-x, y, z = symbols("xyz")
+((x + y)**2 * (x + 1) + (x - 5)*(x - 3)/(x - 4)**2 
++ (x + y)*(x - 2)*(x + y)**3)/((x - 1)*(x + 2))
 \end{verbatim}
-With this, we are ready to go!
-
-\subsection{Expand}
-
-To expand an expression, we use the command {\tt expand}:
+The same can be written more elegantly using simpler expressions:
 \begin{verbatim}
-expand( (x+y)**2 * (x + 1) )
-\end{verbatim}
-Result:
-\begin{verbatim}
-2*x*y + x**2 + y**2 + x*y**2 + 2*y*x**2 + x**3
+A = (x + y)**2 * (x + 1)
+B = (x - 5)*(x - 3)/(x - 4)**2
+C = (x + y)*(x - 2)*(x + y)**3
+D = (x - 1)*(x + 2)
+(A + B + C)/D
 \end{verbatim}
 
 \subsection{Pretty printing}
-The results can be displayed in various forms depending on what 
-the user needs them for. The simplest way to make an expression 
-look prettier is to use the command {\tt pprint} (pretty print):
+An expression can be printed in a prettier way using the command {\tt pprint} (stands for {\em pretty print}):
 \begin{verbatim}
-pprint(expand( (x+y)**2 * (x + 1) ))
+pprint( (x+y)**2 * (x + 1) )
 \end{verbatim}
 Result:
 \begin{verbatim}
-         2    2      2        2    3
-2*x*y + x  + y  + x*y  + 2*y*x  + x
+       2
+(x + y)  * (1 + x)
 \end{verbatim}
 Another example would be
 \begin{verbatim}
@@ -736,12 +746,12 @@ Result:
 \begin{verbatim}
  2   2   2
 x + y + z
------------
+----------
   x*y*z   
 \end{verbatim}
 
 \subsection{Latex output}
-If the user wants to include the result into a Latex document, then 
+If the user wants to include the result of a calculation into a Latex document, then 
 he or she can use the command {\tt latex}:
 \begin{verbatim}
 latex((x**2 + y**2 + z**2)/(x*y*z))
@@ -755,7 +765,43 @@ $$
 \frac{x^{2} + y^{2} + z^{2}}{x y z}
 $$.
 
-\subsection{Simplify}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Algebra}\label{algebra}
+
+All examples in this section are available in the displayed project 
+"Tutorial - Sympy - Algebra". You can clone the project into 
+your user account via the menu Project $\rightarrow$ Clone in the File 
+Manager, and experiment with the examples on your own.
+
+For algebra, calculus, differential equations and related symbolic calculations 
+we import the Sympy library:
+
+\begin{verbatim}
+from sympy import *
+\end{verbatim}
+At the beginning, we need to declare the names of symbolic variables (to distinguish 
+them from constants). For example, if we know that we are going to work with functions 
+of $x$, $y$ and/or $z$, we may declare these symbols at once:
+\begin{verbatim}
+x, y, z = symbols("xyz")
+\end{verbatim}
+With this, we are ready to go!
+
+\subsection{Expanding expressions}
+
+To expand an expression, we use the command {\tt expand}:
+\begin{verbatim}
+A = expand( (x+y)**2 * (x+1) )
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+         2    2      2        2    3
+2*x*y + x  + y  + x*y  + 2*y*x  + x 
+\end{verbatim}
+
+\subsection{Simplifying expressions}
 
 In order to simplify an expression, we use the command {\tt simplify}:
 \begin{verbatim}
@@ -767,51 +813,841 @@ sin(x)
 \end{verbatim}
 Another example:
 \begin{verbatim}
-simplify( 1/x + 1/y + 1/z )
+A = simplify( 1/x + 1/y + 1/z )
+pprint(A)
 \end{verbatim}
 Result:
 \begin{verbatim}
-(x*y + x*z + y*z)/(x*y*z)
+x*y + x*z + y*z
+---------------
+     x*y*z     
 \end{verbatim}
 
-\subsection{Solve}
+\subsection{Factoring polynomials}
+
+This is done using the command {\tt factor}:
+\begin{verbatim}
+factor(x**4 - 3*x**2 + 1)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(1 + x - x**2)*(1 - x - x**2)
+\end{verbatim}
+In order to get a more thorough factorization, one can do:
+\begin{verbatim}
+factor(x**4 - 3*x**2 + 1, modulus=5)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(2 + x)**2*(2 - x)**2
+\end{verbatim}
+
+
+\subsection{Calculating roots of polynomials}
+
+The command {\tt roots} can be used to calculate all roots of a polynomial:
+\begin{verbatim}
+roots(-15 - 13*x + 3*x**2 + x**3, x)
+\end{verbatim}
+Result:
+\begin{verbatim}
+{-5: 1, -1: 1, 3: 1}
+\end{verbatim}
+It also works in the complex case:
+\begin{verbatim}
+roots(x**2 + 1, x)
+\end{verbatim}
+Result:
+\begin{verbatim}
+{-I: 1, I: 1}
+\end{verbatim}
+
+
+\subsection{Solving linear equations and systems}
 
 In order to solve an equation or a system of equations, we use the command {\tt solve}.
 For example, in order to solve the equation 
 $$
-3x - 4 = 2,
+3x - 4 - 2 = 0,
 $$
 we type:
 \begin{verbatim}
-solve([Eq(3*x - 4, 2)], [x])
+solve(3*x - 4 - 2, [x])
 \end{verbatim}
 Result:
 \begin{verbatim}
-{x: -3, y: 1}
+[2]
 \end{verbatim}
 \noindent
 Here is an example for a system of two equations:
 \begin{verbatim}
-solve([Eq(x + 5*y, 2), Eq(-3*x + 6*y, 15)], [x, y])
+solve([x + 5*y - 2, -3*x + 6*y - 15], [x, y])
 \end{verbatim}
 Result:
 \begin{verbatim}
 {x: -3, y: 1}
 \end{verbatim}
+And one more example for a system of three equations:
+\begin{verbatim}
+solve([x + 5*y - z - 2, -3*x + 6*y + z - 15, x + y + z], [x, y, z])
+\end{verbatim}
+Result:
+\begin{verbatim}
+{x: -3, y: 1}{x: -40/17, y: 19/17, z: 21/17}
+\end{verbatim}
 \noindent
 
+\subsection{Solving polynomial equations}
+
+Nonlinear equations can be solved using the same command {\tt solve}.
+For example, in order to solve the equation 
+$$
+3x^3 - 4 = 2,
+$$
+we type:
+\begin{verbatim}
+A = solve([3*x**3 - 4 - 2], [x])
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+              3 ___   ___   3 ___         3 ___   ___   3 ___   
+  3 ___     I*\/ 2 *\/ 3    \/ 2        I*\/ 2 *\/ 3    \/ 2    
+[(\/ 2 ,), (------------- - -----,), (- ------------- - -----,)]
+                  2           2               2           2     
+\end{verbatim}
+
+\subsection{Solving transcendental equations}
+
+For example, let us solve the equation
+$$
+e^x + 1 = 0.
+$$
+This is done as follows:
+\begin{verbatim}
+solve(exp(x) + 1, x)
+\end{verbatim}
+Result:
+\begin{verbatim}
+[pi*I]
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Calculus}
 
-TBC
+All examples in this section are available in the displayed project 
+"Tutorial - Sympy - Calculus". You can clone the project into 
+your user account via the menu Project $\rightarrow$ Clone in the File 
+Manager, and experiment with the examples on your own.
+
+Let us remind the reader that for symbolic calculations we need to 
+import Sympy, and declare symbolic variables:
+\begin{verbatim}
+from sympy import *
+x, y, z  = symbols("xyz")
+\end{verbatim}
+
+\subsection{Calculating limits}
+
+\noindent
+For example, let us show how to calculate the limit
+$$
+\lim_{x \rightarrow 0} \frac{\sin(x) - x}{x^3}.
+$$
+This is done using the command {\tt limit}:
+\begin{verbatim}
+limit((sin(x) - x)/x**3, x, 0)
+\end{verbatim}
+Result:
+\begin{verbatim}
+-1/6
+\end{verbatim}
+We can also calculate limits as $x \rightarrow \infty$. Infinity is represented 
+in Sympy as {\tt oo}:
+\begin{verbatim}
+limit((x + sin(1/x))/(1 + x^2), x, oo)
+\end{verbatim}
+Result:
+\begin{verbatim}
+0
+\end{verbatim}
+
+\subsection{Calculating derivatives from definition}
+
+One can use the {\tt limit} command to calculate derivatives:
+\begin{verbatim}
+limit((tan(x+y)-tan(x))/y, y, 0)
+\end{verbatim}
+Result:
+\begin{verbatim}
+1 + tan(x)**2
+\end{verbatim}
+
+\subsection{Differentiation}
+
+Taking derivatives is very simple using the command {\tt diff}. For example:
+\begin{verbatim}
+diff(sin(x), x)
+\end{verbatim}
+Result:
+\begin{verbatim}
+cos(x)
+\end{verbatim}
+Another example:
+\begin{verbatim}
+result = diff(log(x) / x**2, x)
+pprint(result)
+\end{verbatim}
+Result:
+\begin{verbatim}
+  2*log(x)   1 
+- -------- + --
+      3       3
+     x       x 
+\end{verbatim}
+
+\subsection{Higher derivatives}
+
+Taking higher derivatives is also simple:
+\begin{verbatim}
+diff(sin(2*x), x, 2)
+\end{verbatim}
+Result:
+\begin{verbatim}
+-4*sin(2*x)
+\end{verbatim}
+
+\subsection{Finding local extrems of functions}
+
+We have shown in Paragraph \ref{plotting} how to plot a function of one variable. 
+Of course, one can differentiate the function and plot it. Let's say, for example, that 
+we want to plot the derivative of the function $f(x) = 2\sin(2\pi(x - 1/4))$
+in the interval $(0, 2)$. This is done as follows:
+\begin{verbatim}
+from numpy import sin, pi
+from pylab import *
+x = arange(0, 2, 0.01)
+y = diff(2*sin(2 * pi * (x - 1/4.)), x)
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+Analogously, we can differentiate the function twice and look for inflection points:
+\begin{verbatim}
+from numpy import sin, pi
+from pylab import *
+x = arange(0, 2, 0.01)
+y = diff(2*sin(2 * pi * (x - 1/4.)), x, 2)
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+Indeed it is possible to calculate the extrema using the function {\tt solve}
+as we have shown in Section \ref{algebra}.
+
+\subsection{Taylor series expansion}
+
+For this we use the {\tt series} command:
+\begin{verbatim}
+A = 1/cos(x)
+result = A.series(x, 0, 7)
+pprint(result)
+\end{verbatim}
+Result:
+\begin{verbatim}
+     2      4       6          
+    x    5*x    61*x           
+1 + -- + ---- + ----- + O(x**7)
+    2     24     720           
+\end{verbatim}
+
+\subsection{Integration}
+
+For example, let us calculate 
+$$
+\int \frac{1}{\sqrt{1 + 2x^2}}\, \mbox{d} x.
+$$
+This is done as follows:
+\begin{verbatim}
+result = integrate(1/sqrt(1 + 2*x**2), x)
+pprint(result)
+\end{verbatim}
+Result:
+\begin{verbatim}
+  ___      /    ___\
+\/ 2 *asinh\x*\/ 2 /
+--------------------
+         2      
+\end{verbatim}
+
+\subsection{Computing definite integrals}
+
+For example, let us calculate
+$$
+\int_0^{\infty} e^{-x}\, \mbox{d} x.
+$$
+This is done as follows:
+\begin{verbatim}
+integrate(exp(-x), (x, 0, oo))
+\end{verbatim}
+Result:
+\begin{verbatim}
+pi**(1/2)
+\end{verbatim}
+Another example:
+\begin{verbatim}
+integrate(cos(x), (x, -pi/2, pi/2))
+\end{verbatim}
+Result:
+\begin{verbatim}
+2
+\end{verbatim}
+
+\subsection{Computing improper integrals}
+
+For example, let us calculate
+$$
+\int_{-\infty}^{\infty} e^{-x^2}\, \mbox{d} x.
+$$
+This is done as follows:
+\begin{verbatim}
+integrate(exp(-x**2), (x, -oo, oo))
+\end{verbatim}
+Result:
+\begin{verbatim}
+pi**(1/2)
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Linear Algebra}
+
+All examples in this section are available in the displayed project 
+"Tutorial - Numpy - Linear Algebra". You can clone the project into 
+your user account via the menu Project $\rightarrow$ Clone in the File 
+Manager, and experiment with the examples on your own.
+
+NCLab provides vector and matrix operations via the Numpy library,
+and in particular through its module {\tt linalg}:
+
+\begin{verbatim}
+from numpy import *
+from numpy.linalg import *
+\end{verbatim}
+
+\subsection{Vector and its norm}
+
+Vectors are Numpy arrays. They can be arbitrarily long, and they
+are defined as follows: 
+\begin{verbatim}
+u = array([3, 4, 0])
+\end{verbatim}
+The Euclidean norm of a vector is calculated using the function {\tt norm}:
+\begin{verbatim}
+norm(u)
+\end{verbatim}
+Result:
+\begin{verbatim}
+5.0
+\end{verbatim}
+
+\subsection{Multiplying vector with a number}
+
+All operations with vectors and matrices are very intuitive. To multiply 
+a vector with a constant, type:
+
+\begin{verbatim}
+c = 2.5
+u = array([3, 4, 0])
+print c*u
+\end{verbatim}
+Result:
+\begin{verbatim}
+[  7.5  10.    0. ]
+\end{verbatim}
+
+\subsection{Adding and subtracting vectors}
+
+Vectors can be added and subtracted just as numbers:
+
+\begin{verbatim}
+u = array([1, 3, 2])
+v = array([-1, 1, 1])
+print "u + v =", u+v
+print "u - v =", u-v
+\end{verbatim}
+Result:
+\begin{verbatim}
+u + v = [0 4 3]
+u - v = [2 2 1]
+\end{verbatim}
+
+\subsection{Inner product of vectors}
+
+The inner product of vectors (often called {\em dot product}) is calculated
+using the function {\tt dot}:
+
+\begin{verbatim}
+u = array([1, 3, 2])
+v = array([-1, 1, 1])
+dot(u, v)
+\end{verbatim}
+Result:
+\begin{verbatim}
+4.0
+\end{verbatim}
+
+\subsection{Outer product of vectors}
+
+The outer product of vectors is obtained via the function {\tt outer}:
+\begin{verbatim}
+u = array([1, 3, 2])
+v = array([-1, 1, 1])
+outer(u, v)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[-1,  1,  1],
+       [-3,  3,  3],
+       [-2,  2,  2]])
+\end{verbatim}
+
+\subsection{Matrix}
+
+Matrices are two-dimensional Numpy arrays:
+\begin{verbatim}
+A = array([[1, 2, 3], [0, -2, 1], [1, 1, 0]])
+print "A ="
+print A
+\end{verbatim}
+Result:
+\begin{verbatim}
+A =
+[[ 1  2  3]
+ [ 0 -2  1]
+ [ 1  1  0]]
+\end{verbatim}
 
 
+\subsection{Identity matrix}
+
+Identity matrix is defined using the command {\tt eye}:
+\begin{verbatim}
+eye(5)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 1.,  0.,  0.,  0.,  0.],
+       [ 0.,  1.,  0.,  0.,  0.],
+       [ 0.,  0.,  1.,  0.,  0.],
+       [ 0.,  0.,  0.,  1.,  0.],
+       [ 0.,  0.,  0.,  0.,  1.]])
+\end{verbatim}
+
+\subsection{Diagonal matrix}
+
+Diagonal matrices are obtained via the {\tt diag} command:
+\begin{verbatim}
+diag([1, 2, 3, 4])
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[1, 0, 0, 0],
+       [0, 2, 0, 0],
+       [0, 0, 3, 0],
+       [0, 0, 0, 4]])
+\end{verbatim}
+
+\subsection{Matrix transpose}
+
+In order to obtain the matrix transpose, do:
+\begin{verbatim}
+A.transpose()
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 1,  0,  1],
+       [ 2, -2,  1],
+       [ 3,  1,  0]])
+\end{verbatim}
+
+\subsection{Matrix times vector}
+
+Multiplication of matrices with vectors is done using the {\tt dot} function:
+\begin{verbatim}
+dot(A, u)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([13, -4,  4])
+\end{verbatim}
+
+\subsection{Matrix times matrix}
+
+The same function {\tt dot} is used also to multiply two matrices:
+\begin{verbatim}
+A = array([[1, 2, 3], [0, -2, 1], [1, 1, 0]])
+B = array([[1, -2, 0], [0, -2, 1], [1, 1, 1]])
+dot(A, B)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 4, -3,  5],
+       [ 1,  5, -1],
+       [ 1, -4,  1]])
+\end{verbatim}
+
+\subsection{Matrix power}
+
+By $n$th power of a matrix $A$ we mean the product
+$$
+\underbrace{A \ \mbox{times}\ A \ \mbox{times} \ \ldots \ \mbox{times} \ A}_{n \ {\small \mbox{times}}}
+$$ 
+The command for this is:
+\begin{verbatim}
+n = 7
+matrix_power(A, n)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 379,  380,  472],
+       [ -28, -261,  260],
+       [ 176,  204,  175]])
+\end{verbatim}
+
+\subsection{Determinant of a matrix}
+
+Determinants are calculated usign the command {\tt det}:
+\begin{verbatim}
+det(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+7.0
+\end{verbatim}
+
+\subsection{Condition number of a matrix}
+
+By condition number of a matrix we mean the product of its norm with the 
+norm of its inverse. Simply speaking, if the condition number is low
+(lowest possible is 1.0), then it is easy to solve the system of linear
+algebraic equations numerically. If the condition number is large, then
+one can expect significant roundoff errors and other problems. One uses
+the command {\tt cond} for that:
+\begin{verbatim}
+cond(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+4.9899406541341529
+\end{verbatim}
+
+\subsection{Inverse of a matrix}
+
+The inverse of a nonsingular square matrix is obtained using the command {\tt inv}:
+\begin{verbatim}
+inv(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[-0.14285714,  0.42857143,  1.14285714],
+       [ 0.14285714, -0.42857143, -0.14285714],
+       [ 0.28571429,  0.14285714, -0.28571429]])
+\end{verbatim}
+
+\subsection{Eigenvalues and eigenvectors}
+
+A complete set of eigenvalues and eigenvectors can be obtained using the command {\tt eig}.
+Note: The first array in the result contains the eigenvalues, the remaining arrays are the
+eigenvectors:
+\begin{verbatim}
+eig(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([ 2.50701864, -1.22187616, -2.28514248]), 
+ array([[-0.91251758, -0.83862568,  0.31769573],
+       [-0.088601  ,  0.42989448, -0.9118476 ],
+       [-0.39932634,  0.33451115,  0.26000649]]))
+\end{verbatim}
+
+\subsection{QR factorization}
+
+QR factorization of a matrix is obtained using the {\tt qr} command:
+\begin{verbatim}
+qr(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([[-0.70710678,  0.23570226, -0.66666667],
+       [-0.        , -0.94280904, -0.33333333],
+       [-0.70710678, -0.23570226,  0.66666667]]), 
+ array([[-1.41421356, -2.12132034, -2.12132034],
+       [ 0.        ,  2.12132034, -0.23570226],
+       [ 0.        ,  0.        , -2.33333333]]))
+\end{verbatim}
+
+\subsection{Cholesky decomposition}
+
+Cholesky decomposition of a symmetric positive definite matrix is 
+calculated via the command {\tt cholesky}:
+\begin{verbatim}
+C = array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]])
+cholesky(C)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 1.41421356, -0.        ,  0.        ],
+       [-0.70710678,  1.22474487, -0.        ],
+       [ 0.        , -0.81649658,  1.15470054]])
+\end{verbatim}
+
+\subsection{LU factorization}
+
+To perform LU factorization of a matrix, we import the function {\tt lu\_factor}
+from the linalg module of the Scipy library:
+\begin{verbatim}
+from scipy.linalg import lu_factor
+# Note: the two matrices are stored in one 2D array.
+lu_factor(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([[ 1. ,  2. ,  3. ],
+       [ 0. , -2. ,  1. ],
+       [ 1. ,  0.5, -3.5]]), array([0, 1, 2], dtype=int32))
+\end{verbatim}
+Note: the resulting matrices $L$ and $U$ are stored in one two-dimensional array.
+
+\subsection{Singular value decomposition}
+
+Singular value decomposition (SVD) of a matrix is obtained via the command {\tt svd}:
+\begin{verbatim}
+svd(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([[ 0.95842033, -0.22464965,  0.17596308],
+       [-0.1460451 , -0.91591194, -0.37386649],
+       [ 0.24515567,  0.3326227 , -0.9106376 ]]), 
+ array([ 3.8626099 ,  2.34116338,  0.77407933]), 
+ array([[ 0.31159657,  0.63534413,  0.70657301],
+       [ 0.0461194 ,  0.73260469, -0.6790901 ],
+       [-0.94909461,  0.24418887,  0.19897542]]))
+\end{verbatim}
+
+
+\subsection{Solving systems of linear algebraic equations}
+
+System of linear algebraic equations with a matrix $A$ and right-hand 
+side vector $u$ is solved via the {\tt solve} command:
+\begin{verbatim}
+solve(A, u)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([ 3.42857143, -1.42857143,  0.14285714])
+\end{verbatim}
+
+
+
+\subsection{Moore-Penrose pseudo inverse}
+
+A singular matrix does not have an inverse, but one can calculate the Moore-Penrose
+pseudo inverse instead:
+\begin{verbatim}
+D = array([[1, 2, 3], [0, -2, 1], [1, 0, 4]])
+pinv(D)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 0.04347826, -0.01449275,  0.02898551],
+       [ 0.20289855, -0.28985507, -0.08695652],
+       [ 0.07246377,  0.08695652,  0.15942029]])
+\end{verbatim}
+
+\subsection{Least square solution with a singular matrix}
+
+It is impossible to solve a system of linear algebraic equations with a singular
+matrix in the classical sense, but it is possible to do it in the least-squares
+sense:
+\begin{verbatim}
+D = array([[1, 2, 3], [0, -2, 1], [1, 0, 4]])
+lstsq(D, u)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([ 0.05797101, -0.84057971,  0.65217391]), array([], 
+ dtype=float64), 2, 
+ array([  5.36811455e+00,   2.68017652e+00,   4.40614709e-17]))
+\end{verbatim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Differential Equations}
 
-TBC
+All examples in this section are available in the displayed project 
+"Tutorial - Sympy - Differential Equations". You can clone the project into 
+your user account via the menu Project $\rightarrow$ Clone in the File 
+Manager, and experiment with the examples on your own.
 
+NCLab can solve Ordinary Differential Equations symbolically through the 
+Sympy library. Remember that this library needs to be imported, and 
+symbolic variables need to be declared:
+
+\begin{verbatim}
+from sympy import *
+x, y, z = symbols("xyz")
+\end{verbatim}
+
+\subsection{Separable equations}
+
+For example, let us solve the equation 
+$$
+  y'(x) + 9y(x) = 1.
+$$
+This is done as follows:
+\begin{verbatim}
+y = Function('f')
+A = dsolve(diff(y(x), x) + 9*y(x) - 1, y(x))
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+/      9*x\      
+|     e   |  -9*x
+|C1 + ----|*e    
+\      9  /    
+\end{verbatim}
+Another example: Let us solve the equation 
+$$
+  y'(x) = -xy(x).
+$$
+This is done as follows:
+\begin{verbatim}
+y = Function('f')
+A = dsolve(diff(y(x), x) + y(x) * x, y(x))
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+      2
+    -x 
+    ---
+     2 
+C1*e   
+\end{verbatim}
+
+\subsection{Linear equations - homogeneous}
+Linear equations are equations of the form 
+$$
+a(x) y'(x) + b(x) y(x) = g(x).
+$$ 
+They are called {\em homogeneous} if $g(x) = 0$.
+An example:
+$$
+(x^2 - 9) y'(x) + x y(x) = 0.
+$$
+This is done as follows:
+\begin{verbatim}
+y = Function('f')
+A = dsolve((x**2 - 9)*diff(y(x), x) + y(x) * x, y(x))
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+     C1    
+-----------
+   ________
+  /      2 
+\/  9 - x  
+\end{verbatim}
+
+\subsection{Linear equations - nonhomogeneous}
+
+An example of a nonhomogeneous linear equations is
+$$
+(x^2 - 9) y'(x) + x y(x) = x^2.
+$$
+This is done as follows:
+\begin{verbatim}
+y = Function('f')
+A = dsolve((x**2 - 9)*diff(y(x), x) + y(x) * x - x**2, y(x))
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+           /x\        ________
+     9*asin|-|       /      2 
+           \3/   x*\/  9 - x  
+C1 - --------- + -------------
+         2             2      
+------------------------------
+            ________          
+           /      2           
+         \/  9 - x            
+\end{verbatim}
+
+%\subsection{Laplace transform}
+
+
+
+\subsection{Nonlinear equations}
+
+For example, let us solve the equation 
+$$
+  y'(x) = x^2 y^2(x).
+$$
+This is done as follows:
+\begin{verbatim}
+y = Function('f')
+A = dsolve(diff(y(x), x) + y(x)**2 * x**2, y(x))
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+1/(C1 + x**3/3)
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Advanced 3D Plotting}
+
+For this functionality, your browser has to support WebGL (most of modern browsers do, 
+with the exception of Internet Explorer). NCLab offer the following simple way to plot 
+functions of two variables:
+
+{\small
+\begin{verbatim}
+from numpy import sin, sqrt, arctan
+
+# Define intervals on the x and y axes.
+x0 = 0.0
+x1 = 10.0
+y0 = 0.0
+y1 = 10.0
+
+# Define the corresponding divisions.
+nx = 100
+ny = 100
+
+# Render the surface using WebGL.
+lab.surface((x0, x1, nx), (y0, y1, ny), lambda x, y: sin(sqrt(x**2 + y**2)))
+\end{verbatim}
+}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/webgl.png}
+\end{center}
+\vspace{-2mm}
+\caption{Plotting functions of two variable.}
+\label{fig:webgl}
+%\vspace{-1cm}
+\end{figure}
+
+
 
 \end{document}

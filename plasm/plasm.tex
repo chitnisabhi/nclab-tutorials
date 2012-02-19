@@ -344,7 +344,7 @@ from pyplasm import *
 tet = SIMPLEX(3)
 lab.view(tet, [0.4, 0.9, 0.6])
 \end{verbatim}
-The result is shown in Fig. \ref{fig:simplex-1}.
+The output of the above code is shown in Fig. \ref{fig:simplex-1}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -363,7 +363,7 @@ from pyplasm import *
 tria = SIMPLEX(2)
 lab.view(tria, [0.4, 0.9, 0.6])
 \end{verbatim}
-The result is shown in Fig. \ref{fig:simplex-2}.
+The output of the above code is shown in Fig. \ref{fig:simplex-2}.
 \newpage
 
 \begin{figure}[!ht]
@@ -401,12 +401,14 @@ generates a triangle with the vertices $[1, 1]$, $[4, 2]$ and $[2, 4]$. In this 
 the reader can define any convex polytop in 3D or polygon in 2D -- just using more 
 points!
 
-\subsection{Convex hull -- command CONVEXHULL}
+\subsection{Command CONVEXHULL}
 
-
-But let us 
-demonstrate the true power of PLaSM by writing a simple program that generates 
-a polygon with $N$ equally-long edges that is inscribed into a circle of radius $R$:
+Let us demonstrate the true power of PLaSM by writing a simple program that generates 
+a polygon with $N$ equally-long edges that is inscribed into a circle of radius $R$.
+For this example, you need to know elementary commands of the Python programming 
+language. If you have never programmed in Python, do not worry and skip to the next 
+example. Eventually, read the tutorial on Python Programming that is also provided
+in NCLab.
 
 \begin{verbatim}
 from pyplasm import *
@@ -420,7 +422,7 @@ for i in range(N):
 polygon = CONVEXHULL(points)
 lab.view(polygon, [0.4, 0.9, 0.6])
 \end{verbatim}
-The result is shown in Fig. \ref{fig:convexhull-1}.
+The output of the above code is shown in Fig. \ref{fig:convexhull-1}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -431,11 +433,12 @@ The result is shown in Fig. \ref{fig:convexhull-1}.
 \label{fig:convexhull-1}
 %\vspace{-1cm}
 \end{figure}
-\noindent
-Feel free to experiment with various values of $N$ and $R$.
-For this example, you need to know elementary commands of the Python programming 
-language. If you have never programmed in Python, do not worry and skip to the next 
-example. Eventually, read the tutorial on Python Programming that is also provided.
+
+\subsection{Circle via convex hull}
+
+When the parameter $N$ is increased to 128 or 256 in the last program, 
+one obtains a {\bf circle}. This is in fact the way circles are handled in PLaSM.
+ 
 
 \subsection{Cone via convex hull}
 
@@ -443,8 +446,10 @@ The CONVEXHULL command has amazing power. Let us tweak the code
 from the previous paragraph a bit to construct a cone of radius
 $R$ and height $H$. All we need to do is to add a zero third coordinate 
 to the points generated in the previous program, and add one more 
-point -- the tip of the cone:
+point -- the tip of the cone. The CONVEXHULL command will take care 
+of the rest:
 
+{\small
 \begin{verbatim}
 from pyplasm import *
 from numpy import sin, cos, pi
@@ -459,7 +464,9 @@ points.append([0, 0, H])
 cone = CONVEXHULL(points)
 lab.view(cone, [0.4, 0.9, 0.6])
 \end{verbatim}
-The result is shown in Fig. \ref{fig:convexhull-2}.
+}
+\noindent
+The output of the above code is shown in Fig. \ref{fig:convexhull-2}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -468,35 +475,366 @@ The result is shown in Fig. \ref{fig:convexhull-2}.
 \vspace{-2mm}
 \caption{Cone of radius $R$ and height $H$.}
 \label{fig:convexhull-2}
+\vspace{-1cm}
+\end{figure}
+\newpage
+The subdivision {\tt subdic = 128} is how many
+faces are used to approximate the round surface. You may use less, 
+for example 64 or even 32, which will make the rendering faster, but
+the surface will be less smooth. On the other hand, with more than 
+128 subdivisions the surface will be even more smooth-looking, but 
+the rendering will take longer.
+
+\subsection{Command CYLINDER}
+
+We have no doubt that the reader would be able to construct 
+a cylinder of radius $R$ and height $H$ via convex hull. 
+In fact, you may try it as a simple exercise, starting from 
+the program for the cone. But, PLaSM has a specific command
+CYLINDER for that:
+
+\begin{verbatim}
+from pyplasm import *
+R = 0.25
+H = 1.0
+cyl = CYLINDER ([R, H])(128)
+lab.view(cyl, [0.4, 0.9, 0.6])
+\end{verbatim}
+The cylinder's axis is in the $z$-direction, and the midpoint of
+its base circle is the origin (0, 0, 0). 
+The output of the above code is shown in Fig. \ref{fig:cyl-1}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/cyl-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cylinder of radius $R$ and height $H$.}
+\label{fig:cyl-1}
 %\vspace{-1cm}
 \end{figure}
-\noindent
-\subsection{Cylinder -- command CYLINDER}
 
+\subsection{Command TUBE}
 
+A hollow tube of inner radius $r$, outer radius $R$ and height
+$H$ is rendered using the TUBE command. It is used as follows:
+\begin{verbatim}
+from pyplasm import *
+r = 0.9
+R = 1.0
+H = 3.0
+tube = TUBE([r, R, H])(128)
+lab.view(tube, [0.4, 0.9, 0.6])
+\end{verbatim}
+The tube's axis is in the $z$-direction, and the midpoint of
+its base circle is the origin (0, 0, 0). Again, the parameter
+128 is the number of linear faces that approximate the 
+curved surfaces. The output of the above code is shown in Fig. \ref{fig:tube-1}.
 
-\subsection{Tube -- command TUBE}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/tube-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Tube of inner radius $r$, outer radius $R$ and height $H$.}
+\label{fig:tube-1}
+%\vspace{-1cm}
+\end{figure}
 
+\subsection{Command SPHERE}
 
-\subsection{Sphere -- command SPHERE}
+A sphere of radius $R$ is rendered using the command SPHERE.
+For example, the code
 
+\begin{verbatim}
+from pyplasm import *
+R = 1.0
+s = SPHERE(3.0)([64, 64])
+lab.view(s, [0.4, 0.9, 0.6])
+\end{verbatim}
+will render a unit sphere whose origin is at (0, 0, 0). 
+The parameter {\tt [64, 64]} stands for 
+subdivision in both tangential directions. We need to be a bit 
+careful with increasing this number, since doubling it to 
+{\tt [128, 128]} would increase 
+the number of linear faces approximation the sphere {\bf four times}.
+The output of the above code is shown in Fig. \ref{fig:sphere-1}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/sphere-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Sphere of radius $R$ and origin (0, 0, 0).}
+\label{fig:sphere-1}
+%\vspace{-1cm}
+\end{figure}
 
 
 \subsection{Torus -- command TORUS}
 
+The TORUS command takes an inner radius $r$ and outer radius 
+$R$ as parameters. It is used as follows:
+\begin{verbatim}
+from pyplasm import *
+r = 3.0
+R = 5.0
+tor = TORUS([r, R])([64, 64])
+lab.view(tor, [0.4, 0.9, 0.6])
+\end{verbatim}
+The center of the torus is at the origin (0, 0, 0) and its axis
+is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.82\textwidth]{img/torus-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Sphere of radius $R$ and origin (0, 0, 0).}
+\label{fig:torus-1}
+%\vspace{-1cm}
+\end{figure}
 
 
-\subsection{Star -- command STAR}
+\subsection{Command STAR}
 
+The STAR command will render a star with $N$ vertices. It is used as follows:
+\begin{verbatim}
+from pyplasm import *
+N = 5
+s = STAR(N)
+lab.view(s, [0.4, 0.9, 0.6])
+\end{verbatim}
+The center of the star is at (0, 0), it is inscribed into the unit circle,  
+and it lies in the $xy$-plane. Soon we will learn how to enlarge it, rotate it,
+and translate it. The
+output of the above code is shown in Fig. \ref{fig:star-1}.
 
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/star-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Star with $N$ vertices inscribed into the unit circle.}
+\label{fig:star-1}
+%\vspace{-1cm}
+\end{figure}
 
 \subsection{Extrusion of 2D objects into 3D -- commands QUOTE and POWER}
 
+Any 2D object can be easily extruded into 3D, by performing 
+Cartesian product with a 1D interval in the third direction. This is done using the 
+QUOTE and POWER commands. For example, the following code will
+extrude the star that we created with the last program:
 
+\begin{verbatim}
+from pyplasm import *
+N = 5
+H = 1.0
+s = STAR(N)
+s3d = POWER([s, QUOTE([H])])
+lab.view(s3d, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:star-2}.
 
+\newpage
 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/star-2.png}
+\end{center}
+\vspace{-2mm}
+\caption{3D star obtained from the original 2D star via the QUOTE and POWER commands.}
+\label{fig:star-2}
+%\vspace{-1cm}
+\end{figure}
 
 \section{Transformations}
+
+So far we have learned how to create a variety of simple 2D and 3D objects. 
+The next step is to learn how to scale, rotate, and translate them. PLaSM
+provides simple commands for that. Let us begin with scaling.
+
+\subsection{Command SCALE}
+
+The SCALE command takes three arguments: A list of axial directions in which 
+the object will be scaled (as integers), list of scaling factors for these 
+directions, and the object to be scaled. For example, let us create a cylinder 
+{\tt cyl} of radius 1.0 and height 0.3:
+
+\begin{verbatim}
+from pyplasm import *
+cyl = CYLINDER([1.0, 0.3])(128)
+\end{verbatim}
+We know from before that the axis of this cylinder coincides with the $z$-axis 
+and that the center of its bottom face is at (0, 0, 0). The output is shown in Fig. \ref{fig:scale-0}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/scale-0.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cylinder of radius 1.0 and height 0.3.}
+\label{fig:scale-0}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+\underline{\em Scaling in $x$-direction}\\
+
+The following command will 
+scale the cylinder in the $x$-direction by the factor of 2.0: 
+
+\begin{verbatim}
+cyl1 = SCALE([1])([2.0])(cyl)
+lab.view(cyl1, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:scale-1}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/scale-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cylinder scaled in the first axial direction by 2.0.}
+\label{fig:scale-1}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+\underline{\em Scaling in $y$-direction}\\
+
+The following command will 
+scale the cylinder in the $y$-direction by the factor of 2.0: 
+
+\begin{verbatim}
+cyl2 = SCALE([2])([2.0])(cyl)
+lab.view(cyl2, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:scale-2}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/scale-2.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cylinder scaled in the second axial direction by 2.0.}
+\label{fig:scale-2}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+\underline{\em Scaling in $z$-direction}\\
+
+The following command will 
+scale the cylinder in the $z$-direction by the factor of 2.0: 
+
+\begin{verbatim}
+cyl3 = SCALE([3])([2.0])(cyl)
+lab.view(cyl3, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:scale-3}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/scale-3.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cylinder scaled in the third axial direction by 2.0.}
+\label{fig:scale-3}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+\underline{\em Scaling in $x$ and $z$ directions simultaneously}\\
+
+The following command will 
+scale the cylinder simultaneously in the $x$- directions by 2.0 and in the $z$-direction by 4.0.
+This can be viewed as scaling in the $xz$-plane:
+
+\begin{verbatim}
+cyl4 = SCALE([1, 3])([2.0, 4.0])(cyl)
+lab.view(cyl4, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:scale-4}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/scale-4.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cylinder scaled in the first and third axial directions by 2.0 and 4.0, respectively.}
+\label{fig:scale-4}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Similarly, we could scale the object in the $xy$-plane using 
+
+\begin{verbatim}
+cyl4 = SCALE([1, 2])([2.0, 4.0])(cyl)
+lab.view(cyl4, [0.4, 0.9, 0.6])
+\end{verbatim}
+or in the $yz$-plane using 
+
+\begin{verbatim}
+cyl4 = SCALE([2, 3])([2.0, 4.0])(cyl)
+lab.view(cyl4, [0.4, 0.9, 0.6])
+\end{verbatim}
+
+\noindent
+\underline{\em Scaling in all exial directions simultaneously}\\
+
+The following command will 
+scale the cylinder simultaneously in all three axial directions by the factors
+2.0, 0.5 and 4.0.
+
+\begin{verbatim}
+cyl5 = SCALE([1, 2, 3])([2.0, 0.5, 4.0])(cyl)
+lab.view(cyl5, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:scale-5}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/scale-5.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cylinder scaled in all three axial directions simultaneously.}
+\label{fig:scale-5}
+%\vspace{-1cm}
+\end{figure}
+
+
+
+
+\subsection{Command ROTATE}
+
+
+
+
+
+\subsection{Command TRANSLATE}
+
+
+
+
+
+\subsection{Command SHEARING}
+
 
 
 

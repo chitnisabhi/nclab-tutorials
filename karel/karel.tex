@@ -167,8 +167,8 @@ science fiction play R.U.R. (Rossum's Universal Robots).
 \subsection{Who is Karel?}
 
 Karel is a little robot that lives in a maze. The maze contains gems that Karel enjoys to collect. 
-He only knows a handful of simple commands such as {\tt go} one step forward, {\tt turn} left, 
-{\tt get} a gem, and {\tt put} a gem on the ground. It has built-in sensors that allow him to 
+He only knows a handful of simple commands such as {\tt go} one step forward, {\tt get} a gem, 
+{\tt turn} left, and {\tt put} a gem on the ground. It has built-in sensors that allow him to 
 check if a {\tt wall} is in his way, if a {\tt gem} is within his reach, if he is facing {\tt north}, 
 if he is at {\tt home}, and if his bag is {\tt empty}. With your help, Karel will learn new things 
 that will make it a better Robot, and on the way you will become a Programmer without even noticing! 
@@ -235,7 +235,8 @@ and load a randomly selected maze, as shown in Fig. \ref{fig:init}.
 \noindent
 Karel will be launched in {\em Programming mode} which is the most-frequently 
 used mode. You can easily switch to the {\em Manual mode}, {\em Builder},
-and {\em Game mode} in the menu. These modes will be discussed in more detail later.
+and {\em Game mode} in the menu. Game mode is available in Full Version only. 
+These modes will be discussed in more detail later.
 
 \subsection{Cloning Karel projects} \label{cloning}
 
@@ -272,7 +273,7 @@ always synchronize your version of the project with the public version, via
 a right-click on the project in the File Manager and selecting "Synchronize".
 Beware though -- this will erase any changes that you made to the project.
 
-\subsection{Basic and Full versions}
+\subsection{Basic and Full Versions}
 
 If you are using the Programming Module in Basic Version, some restrictions apply: The 
 number of projects that you can have at any time is limited to 10, and you cannot have
@@ -289,87 +290,127 @@ to upgrade the Programming module to Full Version.
 
 Karel can operate in four modes:
 \begin{itemize}
-\item {\em Manual Mode:} The robot can be controlled using the mouse and four buttons Go, Turn, Get, and Put. Watch out and do not crash!
-\item {\em Program Mode:} The robot can be controlled using programs. For simplicity, the Program Mode is split into Levels:
+\item {\em Manual mode:} The robot can be controlled using the mouse and four buttons Go, Get, Turn, and Put. Watch out and do not crash!
+\item {\em Program mode:} The robot can be controlled using programs. For simplicity, the Program mode is split into Levels:
 \begin{itemize}
-\item Level 1 is a transition layer from Manual Mode to programming. Programs are written using the commands go, turn, get and put that are fully equivalent to pressing the buttons Go, Turn, Get and Put in Manual Mode, respectively.
+\item Level 1 is a transition layer from Manual mode to programming. Programs are written using the commands {\tt go}, {\tt get}, {\tt turn} and {\tt put} that are fully equivalent to pressing the buttons Go, Get, Turn and Put in Manual mode, respectively.
 \item Level 2 is where the actual programming begins. On top of the commands from Level 1, programs can contain conditions, loops, and compound commands.
-\item Level 3 teaches the user to operate with variables and computer memory. In preparation, available in Full version only.
-\item Level 4 teaches the user basics of object-oriented programming. In preparation, available in Full version only.
-\item Level 5 teaches the user elements of parallel programming. In preparation, available in Full version only.
+\item Level 3 teaches the user to operate with variables and computer memory. In preparation, available in Full Version only.
+\item Level 4 teaches the user basics of object-oriented programming. In preparation, available in Full Version only.
+\item Level 5 teaches the user elements of parallel programming. In preparation, available in Full Version only.
 \end{itemize}
-\item {\em Build Mode:} This mode allows the user to create custom worlds for Karel.
-\item {\em Game Mode:} Makes it possible to create and play games. Available in Full version only.
+\item {\em Build mode:} This mode allows the user to create custom worlds for Karel.
+\item {\em Game mode:} Makes it possible to create and play games. Available in Full Version only.
 \end{itemize}
 
-\section{Tutorial Games - Manual Mode}
+\section{Lesson One - Beginner}
 
 You need to master the Manual mode first before moving on to actual
-programming. It consists of thirteen games or puzzles that you need to solve. 
-Do not skip levels since each one has something new. Each game can 
+programming. The first Lesson consists of thirteen games that you need to 
+solve. Do not skip levels since each one has something new. Each game can 
 be cloned as described in Paragraph \ref{cloning} (you need to be using the 
-Programming module in Full version). 
+Programming module in Full Version). 
 Kids as little as 3 years old were able to do it, so for you it will be a piece 
 of cake. Good luck!
 
-\subsection{Tutorial - A01 - Go Button}
+\newpage
 
-Karel is returning from a long walk and his batteries are running out. 
-Use the Go button to help the robot make the last steps to his home! 
+\subsection{A01 - Go Button}
+
+{\em Karel is returning from a long walk and his batteries are running out. 
+Use the Go button to help the robot make the last steps to his home! }\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{img/a01.png}
 \end{center}
-\vspace{-2mm}
+\vspace{-4mm}
 \caption{In the first game you need to find a way to get the robot home.}
 \label{fig:a01}
+\vspace{-4mm}
 \end{figure}
 \noindent
-Your goals are summarized in the left-hand side of the window. In this 
-particular game,
-you do not need to collect any gems, but you have only 20 seconds left to 
-get Karel home and you can only make two steps. Pressing Start will start 
+Pressing Start will start 
 the game, and at this time also the buttons Go, Turn, Get and Put appear, 
-as shown in Fig. \ref{fig:a01b}.
+as shown in Fig. \ref{fig:a01b}.\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{img/a01b.png}
 \end{center}
-\vspace{-2mm}
+\vspace{-4mm}
 \caption{Karel can be guided using four buttons.}
 \label{fig:a01b}
+\vspace{-1cm}
 \end{figure}
 
 \newpage
 
-\subsection{Tutorial - A02 - Olympic Games 1980}
+\subsection{A02 - Olympic Games 1980}
 
 To be continued.
 
-\subsection{Tutorial - A03 - Get Button}
+\subsection{A03 - Get Button}
 
-\subsection{Tutorial - A04 - Olympic Games 1984}
+\subsection{A04 - Olympic Games 1984}
 
-\subsection{Tutorial - A05 - Turn Button}
+\subsection{A05 - Turn Button}
 
-\subsection{Tutorial - A06 - Olympic Games 1988 }
+\subsection{A06 - Olympic Games 1988 }
 
-\subsection{Tutorial - A07 - Tornado }
+\subsection{A07 - Tornado }
 
-\subsection{Tutorial - A08 - Olympic Games 1992}
+\subsection{A08 - Olympic Games 1992}
 
-\subsection{Tutorial - A09 - Maze Quest}
+\subsection{A09 - Maze Quest}
 
-\subsection{Tutorial - A10 - Labyrinth}
+\subsection{A10 - Labyrinth}
 
-\subsection{Tutorial - A11 - Diamond Mine}
+\subsection{A11 - Diamond Mine}
 
-\subsection{Tutorial - A12 - Gem Harvest}
+\subsection{A12 - Gem Harvest}
 
-\subsection{Tutorial - A13 Put Button}
+\subsection{A13 - Put Button}
 
+\section{Lesson Two - Taking the Leap}
+
+In the second Lesson you will help Karel solve tasks again,
+but no longer with clicking on buttons. Now you will be 
+typing commands {\tt go}, {\tt get}, {\tt turn} and {\tt put} 
+instead!
+
+\subsection{B01 - Go Command}
+
+\subsection{B02 - Get Command}
+
+\subsection{B03 - Turn Command}
+
+\subsection{B04 - Put Command}
+
+
+\section{Lesson Three - Programmer}
+
+In the third Lesson you will help Karel solve tasks again, but 
+now with the help of powerful new magical keywords!
+
+
+\subsection{C01 - Repeat Command}
+
+\subsection{C02 - Repeat Sequence of Commands}
+
+\subsection{C03 - Nested Repeat Commands}
+
+\subsection{C04 - Conditions}
+
+\subsection{C05 - Conditions}
+
+\subsection{C06 - While Command}
+
+\subsection{C07 - While Command}
+
+\subsection{C08 - While Command}
+
+\subsection{C09 - Defining New Commands}
 
 
 

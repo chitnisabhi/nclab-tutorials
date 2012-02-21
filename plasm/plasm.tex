@@ -850,43 +850,335 @@ lab.view(cyl6, [0.4, 0.9, 0.6])
 \end{verbatim}
 
 
+\subsection{Command TRANSLATE} \label{sec:translate}
 
+The TRANSLATE command (abbreviated as T) can be used to move any 
+object to a desired location. It takes three arguments: Axial directions,
+displacements in these directions, and the object to be moved. For example,
+the following program creates a unit cube and moves it by 1.5 in the 
+$x$-direction:
 
+\begin{verbatim}
+from pyplasm import *
+cube = CUBOID([1, 1, 1])
+cube2 = T(1)(1.5)(cube)
+\end{verbatim}
+Another example: We create a unit sphere and move it simultaneously 
+in the $x$-direction by 1.0 and in the $y$-direction by 2.0:
+
+\begin{verbatim}
+from pyplasm import *
+s = SPHERE(1.0)([64, 64])
+s2 = T([1, 2])([1.0, 2.0])(s)
+\end{verbatim}
+And last example: We create a unit sphere and  
+move it simultaneously by -1.0 in the $x$-direction, by 1.0 in the $y$-direction
+and by 4.0 in the $z$-direction:
+
+\begin{verbatim}
+from pyplasm import *
+s = SPHERE(1.0)([64, 64])
+s2 = T([1, 2, 3])([-1.0, 1.0, 4.0])(s)
+\end{verbatim}
+
+\subsection{Compound objects - command STRUCT}
+
+Creating compound objects is necessary
+for plotting since {\tt lab.view()} only can 
+display a single object. It is also practical 
+when we need to scale, translate, or rotate multiple objects at
+once. For example, let's create a cube with a sphere on top of it.
+It is always important to remember how a newly created
+object is positioned in the global coordinate system. Concretely,
+recall that 
+a CUBOID is aligned with the axes as shown in Fig. \ref{fig:cuboid-1},
+and a SPHERE has its center at the origin (0, 0, 0). 
+
+\begin{verbatim}
+from pyplasm import *
+c = CUBOID([2, 2, 2])
+s = SPHERE(1.0)([64, 64])
+s = T([1, 2, 3])([1.0, 1.0, 3.0])(s)
+\end{verbatim}
+The only way to display both the cube and sphere together,
+is to create a compound object containing both of them:
+
+\begin{verbatim}
+comp = STRUCT([c, s])
+lab.view(comp, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:comp-1}
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/comp-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{The only way to display both the cube and the sphere is to use a compound object.}
+\label{fig:comp-1}
+%\vspace{-1cm}
+\end{figure}
 
 \subsection{Command ROTATE}
 
+Objects can be rotated using the command ROTATE (that
+can be abbreviated as R). It has three parameters:
+A pair of axes defining the plane of rotation (as integers),
+an angle, and the object to be rotated. The axis of rotation 
+always passes through the origin (0, 0, 0), so it is important 
+to know exactly where your object is located. 
+
+For example, when creating 
+a CUBOID, it is positioned as shown in Fig. \ref{fig:cuboid-1}.
+Hence, the axis of rotation does not pass through its center!
+This is best illustrated using a simple example. Let us create 
+a unit cube, rotate it by $\pi$ (180 degrees), and display 
+the rotated cube together with the original one:
+
+\begin{verbatim}
+from pyplasm import *
+cube = CUBOID([1, 1, 1])
+cube2 = R([1, 2])(PI)(cube)
+comp = STRUCT([cube, cube2])
+lab.view(comp, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:rot-1}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/rot-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Unit cube rotated by $\pi$ (180 degrees) shown together with the original unit cube.}
+\label{fig:rot-1}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+In Fig. \ref{fig:rot-1}, the axis of rotation is where the two cubes meet. 
+
+If we wanted to 
+rotate the cube "in place", so that its center would not be moved,
+we would have to first translate the cube in such a way that its center
+lies at the origin. Let's do this. After moving the cube so that 
+its center is at (0, 0, 0), we will rotate it in two different directions,
+then move it by 2.0 in the $x$-direction and display along with 
+the original cube for comparison:
+
+\begin{verbatim}
+from pyplasm import *
+cube = CUBOID([1, 1, 1])
+cube2 = T([1, 2, 3])([-0.5, -0.5, -0.5])(cube)
+cube3 = R([1, 2])(PI/4)(cube2)
+cube4 = R([2, 3])(PI/4)(cube3)
+cube5 = T(1)(2.0)(cube4)
+comp = STRUCT([cube, cube5])
+lab.view(comp, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:rot-2}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/rot-2.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cube rotated in two directions, then moved and shown along with the original cube.}
+\label{fig:rot-2}
+%\vspace{-1cm}
+\end{figure}
+
+\section{Binary Operations with Objects}
+
+This is where things start to be real fun. Let us start with the 
+command DIFF that makes it possible to drill holes, cut and slice objects, 
+round edges, make imprints, and much more.
+
+\subsection{Subtracting objects -- command DIFF}
+
+The command DIFF makes it possible to subtract one object from another.
+For illustration, we will drill a hole of radius 1.0 into a 3x3x3 cube. In the first step,
+we will create the cube, move it so that its center lies at (0, 0, 0), create
+a cylinder of radius 1.0 and move it so that it enters the cube on one end and 
+leaves on the other. Then we display both objects for visual control:
+
+\begin{verbatim}
+from pyplasm import *
+# Create a 3x3x3 cube:
+cube = CUBOID([3, 3, 3])
+# Move it so that its center is at origin (0, 0, 0):
+cube = T([1, 2, 3])([-1.5, -1.5, -1.5])(cube)
+# Create cylinder of radius 1 and height 5:
+cyl = CYLINDER([1.0, 5.0])(64)
+# Move the cylinder by -2.0 in the z-direction 
+cyl = T(3)(-2.5)(cyl)
+# Display both objects for visual control:
+lab.view(STRUCT([cube, cyl]), [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:diff-1}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/diff-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cube with a cylinder passing through it.}
+\label{fig:diff-1}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Next, we subtract the cylinder from the cube, which effectively 
+drills a hole in it:
+
+\begin{verbatim}
+hollow_cube = DIFF([cube, cyl])
+lab.view(hollow_cube, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:diff-2}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/diff-2.png}
+\end{center}
+\vspace{-2mm}
+\caption{After subtracting the cylinder.}
+\label{fig:diff-2}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Let us keep up the good work and drill into the cube one more hole,
+this time with a square cross-section
+2x2 and in the $y$-direction. For this, we just need to create a 5x2x2 brick
+and move it so that its center lies at (0, 0, 0). Then we will show 
+both objects for visual control again:
+
+\begin{verbatim}
+brick = CUBOID([5.0, 2.0, 2.0])
+brick = T([1, 2, 3])([-2.5, -1.0, -1.0])(brick)
+lab.view(STRUCT([hollow_cube, brick]), [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:diff-3}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/diff-3.png}
+\end{center}
+\vspace{-2mm}
+\caption{Visual control before drilling the square hole.}
+\label{fig:diff-3}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Next, we subtract the brick from the hollow cube:
+
+\begin{verbatim}
+hollow_cube = DIFF([hollow_cube, brick])
+lab.view(hollow_cube, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:diff-4}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/diff-4.png}
+\end{center}
+\vspace{-2mm}
+\caption{After subtracting the brick.}
+\label{fig:diff-4}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Last, let us create a sharp spear-like object using the 
+CONVEXHULL command, and pierce the two remaining faces 
+of the cube with it. Again, first we display both objects 
+for visual control:
+
+\begin{verbatim}
+spear = CONVEXHULL([-2, -3, -2], [2, -3, -2], [-2, -3, 2], 
+                   [-2, -3, -2], [2, -3, 2], [0, 6, 0]) 
+lab.view(STRUCT([hollow_cube, spear]), [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:diff-5}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/diff-5.png}
+\end{center}
+\vspace{-2mm}
+\caption{Hollow cube and the spear for visual control.}
+\label{fig:diff-5}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Next, we subtract the spear:
+
+\begin{verbatim}
+hollow_cube = DIFF([hollow_cube, spear])
+lab.view(hollow_cube, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:diff-6}.
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/diff-6.png}
+\end{center}
+\vspace{-2mm}
+\caption{After subtracting the spear.}
+\label{fig:diff-6}
+%\vspace{-1cm}
+\end{figure}
+
+
+\subsection{Command UNION}
+
+The UNION command will create a new object that is the set union 
+of two objects. 
 
 
 
 
-\subsection{Command TRANSLATE} \label{sec:translate}
+
+
+
+\subsection{Command INTERSECTION}
 
 
 
 
 
-\subsection{Command SHEARING}
+
+
+\subsection{Bezier curves and rotational surfaces}
 
 
 
-\section{Compound Objects}
 
 
 
-\section{Intersection of Objects}
+\section{The Power of Scripting}
 
-\section{Union of Objects}
 
-\section{Subtracting Objects}
+
+
+
 
 
 \section{Advanced Examples}
 
+All examples in this section can be cloned in NCLab through 
+Project $\rightarrow$ Clone in the File Manager's menu (same
+as the tutorial examples from previous sections).
+ 
 \subsection{Ashtray}
 
 This example presents a simple model of an ashtray,
-created with the help of four cylinders. May 
-smoking be as virtual as this ashtray!
+created with the help of four cylinders.
 {\small
 \begin{verbatim}
 from pyplasm import *
@@ -996,14 +1288,6 @@ from numpy import *
 def randRots(n):
     v = random.random_sample(4*n)
     return [ [2*PI*v[i],[v[i+1],v[i+2],v[i+3]]] for i in range(0,4*n,4) ]
-
-# Define converter from Plasm
-# to Online Lab's WebGL format.
-def converter(obj, color):
-    from pyplasm.xge import Plasm
-    vector = Plasm.getTriangles(obj)
-    vertices = [ vector[i] for i in xrange(vector.size()) ]
-    return {'vertices': vertices, 'color': color}
 
 # Number of cubes to intersect.
 N = 100

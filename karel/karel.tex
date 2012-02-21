@@ -1,0 +1,376 @@
+\documentclass[article,A4,12pt]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs, bm}
+
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{subfig}
+\usepackage{epsf,times}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{cases}
+\usepackage{multicol}
+
+\usepackage[T1]{fontenc}
+%\newcommand{\tmname}[1]{\textsc{#1}}
+%\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
+%\newcommand{\tmsamp}[1]{\textsf{#1}}
+%\newcommand{\tmtextsc}[1]{{\scshape{#1}}}
+%\newcommand{\tmtextsl}[1]{{\slshape{#1}}}
+%\newcommand{\tmtexttt}[1]{{\ttfamily{#1}}}
+
+\leftmargin=0.0cm
+\oddsidemargin=0.5cm
+\evensidemargin=0.5cm
+\topmargin=0cm
+\textwidth=16.0cm
+%\textheight=21.5cm
+\textheight=20.0cm
+\pagestyle{plain}
+\setlength{\columnsep}{20pt}
+
+\def\m{\mathbf{m}}
+\def\H{\mathbf{H}}
+\def\E{\mathbf{E}}
+\newcommand{\vepsi}{{\varepsilon}}
+\def\hnorm#1#2{\vert\,#1\,\vert_{#2}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\Sph}{{\mathbb S}}
+\def\x{\mathbf{x}}
+\def\hvec{\overline{\mathbf{h}}}
+\def\evec{\overline{\mathbf{e}}}
+
+\newcommand{ \etal}{\mbox{\emph{et al. }}}
+
+\newcommand\vect[1]{\mbf{#1}}
+\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}} 
+\newcommand{\RC}[1]{#1 $\times$ #1 $\times$ #1}
+\def\um{$\mu$m}
+\def\C{$^{\circ}\mathrm{C}$}
+
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+% DEFINITION OF CUSTOM FONT SIZE
+\newcommand{\customfontA}{\fontsize{50}{55}\selectfont}
+\newcommand{\customfontB}{\fontsize{14.4}{20}\selectfont}
+\newcommand{\customfontC}{\fontsize{30}{35}\selectfont}
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
+
+% TO INPUT BACKGROUND IMAGE
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight]{img/karel-frontpage.png}
+%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
+\vfill
+}}}
+
+\begin{document}
+
+% INPUTTING BACKGROUND IMAGE
+\AddToShipoutPicture{\BackgroundPic}
+\vbox{}
+\pagestyle{empty}
+\newpage
+\textwidth=15.5cm
+\ClearShipoutPicture
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{}
+\small
+\subsection*{About NCLab}
+Networked Computing Laboratory (NCLab) is a popular Internet-based framework for 
+programming, mathematics, computer modeling, 
+and scientific computing. It serves students, instructors, researchers, and the general 
+public. NCLab can be used free of charge for personal non-commercial purposes such as 
+private hobby or self-education, as well as for individual non-funded academic research.
+All other use is subject to {\bf purchasing a license} for a symbolic fee. The fees are as low as 
+\$1 per user per month for educational use, and they are used to support the development 
+and operational expenses. NCLab is a product of FEMhub Inc. The name "NCLab" is 
+registered with the U.S. Patent and Trademark Office (USPTO) under Trademark No. 85420518.
+
+\subsection*{Terms of Use and Pricing}
+More details on purchasing a license and using NCLab are provided in the online documents 
+{\bf Pricing} and {\bf Terms of Use} that are accessible from NCLab's home page 
+{\tt http://nclab.com}.
+
+\subsection*{Contact Information}
+General inquiries: {\tt info@femhub.com}\\
+Sales: {\tt sales@femhub.com}\\
+NCLab support: {\tt support@nclab.com}\\
+Agros \& Hermes support: {\tt support@femhub.com}\\
+Web page: {\tt http://femhub.com}\\
+{Physical address}\\
+FEMhub Inc.\\
+5490 Twin Creeks Dr.\\
+Reno, NV 89523
+
+\subsection*{About This Publication}
+This publication can be copied and distributed without any restrictions
+as long as reference to NCLab and FEMhub Inc. is preserved.
+
+\subsection*{NCLab's Karel vs. the Original Version}
+This publication features {\em Karel the Robot}, a programming language 
+designed by Richard E. Pattis. Compared to its original version that was
+strongly influenced by Pascal, the NCLab version is closer to Python.
+There are some other differences as well that make Karel in NCLab easier to use 
+for kids -- Karel collects gems instead of beepers, he has a home in the 
+maze, and he uses commands that are much easier for kids to understand
+and type. For example, {\tt pickbeeper} was replaced with {\tt get}, 
+{\tt front-is-clear} was replaced with {\tt wall}, etc. Even the Python 
+colons following every command are omitted because using the SHIFT key 
+was causing difficulties to some 5 years old programmers. 
+Otherwise we have not changed Pattis' original ideas and all functionality 
+covered in Pattis' book is available in the Basic Version of the Programming
+module free of charge. 
+
+\normalsize
+
+\newpage
+%{\ }
+\setcounter{tocdepth}{2}
+\tableofcontents
+%\pagestyle{plain}
+
+\newpage
+
+\pagestyle{plain}
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+In this introductory course you will learn principles of computer programming with the 
+help of an interactive graphical application {\em Karel the Robot} in NCLab. 
+
+\subsection{Brief history}
+
+Karel the Robot is a famous educational programming language that was introduced by Richard E. 
+Pattis in his book "Karel The Robot: A Gentle Introduction to the Art of Programming" in 1981. 
+Pattis first used the language in his courses at Stanford University, and now it is used at 
+countless schools in the world to introduce students to algorithmic design and computer programming. 
+The language is named after Karel \v{C}apek, a Czech writer who invented the word "robot" in his 1921 
+science fiction play R.U.R. (Rossum's Universal Robots).
+
+\subsection{Who is Karel?}
+
+Karel is a little robot that lives in a maze. The maze contains gems that Karel enjoys to collect. 
+He only knows a handful of simple commands such as {\tt go} one step forward, {\tt turn} left, 
+{\tt get} a gem, and {\tt put} a gem on the ground. It has built-in sensors that allow him to 
+check if a {\tt wall} is in his way, if a {\tt gem} is within his reach, if he is facing {\tt north}, 
+if he is at {\tt home}, and if his bag is {\tt empty}. With your help, Karel will learn new things 
+that will make it a better Robot, and on the way you will become a Programmer without even noticing! 
+
+\subsection{What is the one reason why I should learn Karel?}
+
+You will learn to {\em design good algorithms} -- an ability that makes
+a great programmer and that is completely language-independent. In other 
+words, you can learn the same with a technically complicated conventional 
+programming language, battling technical problems most of the time,
+or you can learn it with Karel the easy way.
+Despite its simple form, Karel is not a toy language. It contains all elements 
+of a modern procedural programming language. The complexity of algorithms 
+covered in this course ranges from {\em trivial} to {\em tough over 
+all imagination}.
+
+\subsection{How does Karel differ from conventional programming languages?}
+
+The biggest difference between Karel and all conventional 
+programming languages is that it {\em does not involve any mathematics}.
+Believe it or not -- Karel does not know numbers. Thanks 
+to this, {\em programming concepts} stand out clearly. 
+After you finish this tutorial, you will find that suddenly it is very simple 
+to learn other languages such as Python or C++, because they are in fact 
+very similar to Karel. You will be only learning language-specific details, 
+because the most important thing -- algorithmic thinking -- you will already 
+know.
+ 
+\section{Getting Started}
+
+In order to make the most of this tutorial, we invite the 
+reader to create an account in NCLab and log in. More instructions 
+on how to do this are given at the beginning of the introductory 
+tutorial "Meet Your New Graphing Calculator" that is available in 
+PDF via a link on NCLab home page {\tt http://nclab.com}.\\
+
+\noindent
+After logging in, you will see a desktop with several icons on it,
+as shown in Fig. \ref{fig:desktop}. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/desktop.png}
+\end{center}
+%\vspace{-2mm}
+\caption{NCLab desktop after login.}
+\label{fig:desktop}
+\end{figure}
+
+\subsection{Launching Karel via Programming icon}
+
+Karel can be launched in several ways. The simplest one is to click on the icon 
+"Programming" and select "Karel" in the menu. This will launch the application 
+and load a randomly selected maze, as shown in Fig. \ref{fig:init}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/init.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Launching Karel with a randomly generated maze.}
+\label{fig:init}
+\end{figure}
+\noindent
+Karel will be launched in {\em Programming mode} which is the most-frequently 
+used mode. You can easily switch to the {\em Manual mode}, {\em Builder},
+and {\em Game mode} in the menu. These modes will be discussed in more detail later.
+
+\subsection{Cloning Karel projects} \label{cloning}
+
+All programs and games that we will work with in this course are
+available for you to clone (download) into your account. To do this, 
+click on the File Manager icon. In the File Manager's menu go to 
+"Project" and click on "Clone". This will launch a new window with public
+projects as shown in Fig. \ref{fig:cloning}. There are many public
+projects to choose from so their loading may take a while. 
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/cloning.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Window with public projects is accessible through File Manager's "Project" menu.}
+\label{fig:cloning}
+\end{figure}
+\noindent
+All projects that have "Karel" in the Engine column are of interest to you. 
+Projects whose names start with "Tutorial - A...", "Tutorial - B...",
+"Tutorial - C...", and "Tutorial - D..." are of particular interest.
+This is done via clicking on the project 
+name in the window, and pressing the button "Clone". When you are done, close the 
+window. 
+
+In the File Manager's right-hand side panel, you will see the list of all 
+projects that you cloned. Click on any of them to launch it. You are free to 
+use the cloned projects as they are, or modify them in any way you like. Your modifications 
+will not affect the public version of the project. And, you can 
+always synchronize your version of the project with the public version, via 
+a right-click on the project in the File Manager and selecting "Synchronize".
+Beware though -- this will erase any changes that you made to the project.
+
+\subsection{Basic and Full versions}
+
+If you are using the Programming Module in Basic Version, some restrictions apply: The 
+number of projects that you can have at any time is limited to 10, and you cannot have
+private projects. Specifically in Karel, the Basic Version does not have the Game mode 
+enabled. Besides this, the Basic Version of Karel is fully functional without any other 
+limitations. 
+
+If you are logged with an institution code, your Programming module is
+probably in Full Version and you should not experience any limitations. If you are 
+not logged in with an institution code, you can use the desktop icon "Upgrade" 
+to upgrade the Programming module to Full Version.
+
+\subsection{Karel modes}
+
+Karel can operate in four modes:
+\begin{itemize}
+\item {\em Manual Mode:} The robot can be controlled using the mouse and four buttons Go, Turn, Get, and Put. Watch out and do not crash!
+\item {\em Program Mode:} The robot can be controlled using programs. For simplicity, the Program Mode is split into Levels:
+\begin{itemize}
+\item Level 1 is a transition layer from Manual Mode to programming. Programs are written using the commands go, turn, get and put that are fully equivalent to pressing the buttons Go, Turn, Get and Put in Manual Mode, respectively.
+\item Level 2 is where the actual programming begins. On top of the commands from Level 1, programs can contain conditions, loops, and compound commands.
+\item Level 3 teaches the user to operate with variables and computer memory. In preparation, available in Full version only.
+\item Level 4 teaches the user basics of object-oriented programming. In preparation, available in Full version only.
+\item Level 5 teaches the user elements of parallel programming. In preparation, available in Full version only.
+\end{itemize}
+\item {\em Build Mode:} This mode allows the user to create custom worlds for Karel.
+\item {\em Game Mode:} Makes it possible to create and play games. Available in Full version only.
+\end{itemize}
+
+\section{Tutorial Games - Manual Mode}
+
+You need to master the Manual mode first before moving on to actual
+programming. It consists of thirteen games or puzzles that you need to solve. 
+Do not skip levels since each one has something new. Each game can 
+be cloned as described in Paragraph \ref{cloning} (you need to be using the 
+Programming module in Full version). 
+Kids as little as 3 years old were able to do it, so for you it will be a piece 
+of cake. Good luck!
+
+\subsection{Tutorial - A01 - Go Button}
+
+Karel is returning from a long walk and his batteries are running out. 
+Use the Go button to help the robot make the last steps to his home! 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/a01.png}
+\end{center}
+\vspace{-2mm}
+\caption{In the first game you need to find a way to get the robot home.}
+\label{fig:a01}
+\end{figure}
+\noindent
+Your goals are summarized in the left-hand side of the window. In this 
+particular game,
+you do not need to collect any gems, but you have only 20 seconds left to 
+get Karel home and you can only make two steps. Pressing Start will start 
+the game, and at this time also the buttons Go, Turn, Get and Put appear, 
+as shown in Fig. \ref{fig:a01b}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/a01b.png}
+\end{center}
+\vspace{-2mm}
+\caption{Karel can be guided using four buttons.}
+\label{fig:a01b}
+\end{figure}
+
+\newpage
+
+\subsection{Tutorial - A02 - Olympic Games 1980}
+
+To be continued.
+
+\subsection{Tutorial - A03 - Get Button}
+
+\subsection{Tutorial - A04 - Olympic Games 1984}
+
+\subsection{Tutorial - A05 - Turn Button}
+
+\subsection{Tutorial - A06 - Olympic Games 1988 }
+
+\subsection{Tutorial - A07 - Tornado }
+
+\subsection{Tutorial - A08 - Olympic Games 1992}
+
+\subsection{Tutorial - A09 - Maze Quest}
+
+\subsection{Tutorial - A10 - Labyrinth}
+
+\subsection{Tutorial - A11 - Diamond Mine}
+
+\subsection{Tutorial - A12 - Gem Harvest}
+
+\subsection{Tutorial - A13 Put Button}
+
+
+
+
+\end{document}

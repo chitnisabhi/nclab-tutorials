@@ -844,27 +844,27 @@ the number of repetitions a-priori. This can be the case, for example,
 when he is asked to walk straight ahead until he reaches the closest wall:
 
 \begin{verbatim}
-while not wall:
+while not wall
   go
 \end{verbatim}
 Or, he may be asked to walk until he gets home:
 
 \begin{verbatim}
-while not home:
+while not home
   go
 \end{verbatim}
 Or, he may be asked to empty his bag although he does not know how 
 many gems are in it: 
  
 \begin{verbatim}
-while not empty:
+while not empty
   put
 \end{verbatim}
 Or, he may be asked to collect all gems from a pile although he does
 not know how many gems there are:
 
 \begin{verbatim}
-while gem:
+while gem
   get
 \end{verbatim}
 Or, to give a last example, we may ask him to turn to face North, 
@@ -872,7 +872,7 @@ although he does not know at the moment which direction he is
 facing:
 
 \begin{verbatim}
-while not north:
+while not north
   turn
 \end{verbatim}
 Just for fun, let us introduce one more example where Karel is asked to 
@@ -882,17 +882,17 @@ collect all gems that he can find on the way:
 {\small
 \begin{verbatim}
 # First turn south.
-while not north:
+while not north
   turn
-repeat 2:
+repeat 2
   turn
 # Go straight ahead and pick all gems.
-while not wall:
-  if gem:
+while not wall
+  if gem
     get
   go
 # Pick gem at the wall if any.
-if gem:
+if gem
   get
 \end{verbatim}
 }
@@ -956,8 +956,8 @@ right many times, it is a good idea to define a new command {\tt turn\_right}
 as follows:
 
 \begin{verbatim}
-def turn_right:
-  repeat 3:
+def turn_right
+  repeat 3
     turn
 \end{verbatim}
 To illustrate this, let's return to the game A07 - Swirling Tornado.
@@ -998,12 +998,12 @@ follows:
 
 {\small
 \begin{verbatim}
-def right_turn:
-  repeat 3:
+def right_turn
+  repeat 3
     turn
 
-def four_steps:
-  repeat 4:
+def four_steps
+  repeat 4
     go
 \end{verbatim}
 }
@@ -1029,7 +1029,7 @@ There are still repetitions that must be eliminated! So we define a new command
 
 {\small
 \begin{verbatim}
-def walk_edge:
+def walk_edge
   right_turn
   four_steps
   get
@@ -1041,7 +1041,7 @@ Now with the three new commands {\tt right\_turn}, {\tt four\_steps} and
 
 {\small
 \begin{verbatim}
-while not home:
+while not home
   walk_edge
 \end{verbatim}
 }
@@ -1060,7 +1060,7 @@ be solved, he would write:
 
 {\small
 \begin{verbatim}
-while not home:
+while not home
   walk_edge
 \end{verbatim}
 }
@@ -1069,7 +1069,7 @@ Next he would define the new command {\tt walk\_edge} as follows:
 
 {\small
 \begin{verbatim}
-def walk_edge:
+def walk_edge
   right_turn
   four_steps
   get
@@ -1083,12 +1083,12 @@ define:
 
 {\small
 \begin{verbatim}
-def right_turn:
-  repeat 3:
+def right_turn
+  repeat 3
     turn
 
-def four_steps:
-  repeat 4:
+def four_steps
+  repeat 4
     go
 \end{verbatim}
 }

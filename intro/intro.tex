@@ -161,9 +161,12 @@ Such a {\em multicore processor} is much more efficient compared to a cluster
 of single-core PCs with the same number of cores.
 
 The main advantage of the cloud is its {\em elasticity}. Upon your request, the
-provider will assemble for you a {\em virtual server} with the parameters that 
-you need. Often they have predefined {\em instances}. The following is a realistic 
-example (just the name of the provider was omitted):\\
+provider will assemble for you an {\em instance} with the parameters that 
+you need. An instance is created within a minute or so, and the user can upgrade 
+or downgrade it dynamically, depending on the actual needs. After the instance is 
+no longer needed, it is dissolved and the same hardware is used to build instances 
+for other users. The following is a realistic example of how such instances may 
+look like (just the name of the provider was omitted):\\
 
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
@@ -180,8 +183,7 @@ example (just the name of the provider was omitted):\\
 \vspace{4mm}
 \noindent
 Importantly - these three instances are created by grouping the same resources together 
-in different ways. An instance is created within a minute or so,
-and the user can upgrade or downgrade it dynamically, depending on the actual needs.
+in different ways. 
 It is quite interesting to look at the prices:
 
 \begin{center}
@@ -198,9 +200,9 @@ It is quite interesting to look at the prices:
 
 \vspace{4mm}
 \noindent
-In particular, these low prices mean that literally anyone has access to 
+With such low prices, literally anyone has now access to 
 a powerful computer -- that otherwise would cost many thousands of dollars -- 
-for just cents per hour. This brings new wonderful opportunities into 
+for just cents per hour. This brings new wonderful opportunities to 
 education at all levels.
 
 \subsection{Software as a Service (SaaS)}
@@ -223,8 +225,8 @@ phones, tablets, netbooks, laptops, and desktop computers.
 \subsection{Some Myths}
 
 Very often, Cloud Computing is mentioned in the context of large 
-computations in science, engineering, finance, and other fields. Yes, there are many 
-cloud providers and they have to show off. But in reality, the clouds are mostly
+computations in science, engineering, finance, and other fields. This is because there are many 
+cloud providers and they need to show off. But in reality, the clouds are mostly
 busy processing small tasks of ordinary users. In that case, you may say, a standard 
 office PC should be enough. Not exactly. Once you are not in your office, for example
 while traveling, it is difficult to reach your office PC and do things as usual. 
@@ -233,17 +235,17 @@ from everywhere, any time. Once you get used to it, there is no way back.
 
 \subsection{NCLab and K-12 Education}
 
-NCLab is an advanced Internet-based cloud computing framework that provides 
+NCLab is a web-based framework that provides 
 instant access to many programming, mathematics, computer
 modeling, and scientific computing activities. NCLab does not have to be installed - it 
 is automatically available in any classroom that has Internet access. In 
-contrast to traditional educational softwares, 
+contrast to traditional educational software products, 
 users can access their accounts and work from anywhere and at any time.
 Students can start a problem at school, finish the rest at home, and notify 
 the instructor about the completion with one mouse click. Most importantly, 
 however, NCLab invites K-12 teachers and students to discover new exciting 
-areas of mathematics, programming, and computer modeling that may not have 
-been available to them before.
+areas of mathematics, programming, and computer modeling that were not 
+available to them before.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
@@ -446,16 +448,31 @@ now we can save the project in the base folder. Later you can create
 a new folder through the File Manager's menu Folder, and drag there
 the project by mouse, to keep your data organized.
 
-\subsection{Simple Arithmetic}
+\subsection{Cloning Displayed Projects}
 
-Your project now contains a single {\em input cell}. Let's write 
+All examples that we are going to work with in the following are also available 
+as Displayed Projects. This means that you can clone them by going to the
+File Manager's Project menu and clicking on {\em Clone}. This will launch 
+a window with many displayed projects from various areas of programming,
+math and computing. Look for projects titled such as "Tutorial - Math - 1 - Simple Arithmetic",
+"Tutorial - Math - 2 - Commutative, Associative and Distributive Laws", etc.
+After you locate a project that you would like to clone, click on it,
+and then click on the button "Clone" at the bottom of the window. This will
+create exact copy of that project in your account, and you can open it 
+by clicking on it in the File Manager. You can change the project in any way 
+you like, the changes will not affect the original Displayed Project. 
+
+\subsection{Simple Arithmetic (Displayed Project)}
+
+Let's say that we have not cloned the displayed project "Tutorial - Math - 1 - Simple Arithmetic"
+and instead, we prefer to start from scratch.
+So your project contains a single {\em input cell}. Let's write 
 something simple into it, for example "1 + 2", and click 
 the link "run" right under the input cell. This sends a request to 
 the cloud, it is processed there, and an answer comes back instantly. 
 It is displayed in a new (yellow) {\em output cell}, as shown in 
 Fig. \ref{fig:1p3}.
 
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/1p3.png}
@@ -476,7 +493,6 @@ The double stars are used to make a text between them bold face.
 Then click on the link "save" right under the text cell. The result 
 is shown in Fig. \ref{fig:1p3r}.
 
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/1p3r.png}
@@ -501,7 +517,6 @@ result). In there, we can experiment with other arithmetic operations
 including subtraction (try for example "5 - 3"), multiplication 
 (try for example "3.21 * 7.45"). The results are shown in Fig. \ref{fig:1p3r2}.
 
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/1p3r2.png}
@@ -512,9 +527,10 @@ including subtraction (try for example "5 - 3"), multiplication
 \end{figure}
 \noindent
 At this point we may go to menu Edit and click on 
-"Remove all output" -- this will free up some space.
+"Remove all output" -- this will free up some space.\\
 
-\subsection{Division of Two integers Always is an Integer}
+\noindent
+{\em BEWARE - Division of Two integers Always is an Integer}\\
 
 Numbers such as "12" or "5" are integers. In Python, as well as 
 in other major programming languages, the {\bf result of division of 
@@ -555,13 +571,39 @@ It is useful to see how NCLab reports errors, so let's do it!
 Since the error message in Fig. \ref{fig:divzero} mentioned modulo, we added there one more 
 input cell demonstrating how modulo is done -- using the \% symbol.
 
-\subsection{Importing Numpy}
+\subsection{Commutative, Associative and Distributive Laws (Displayed Project)}
+
+The validity of these laws can be verified easily on examples. One just enters
+a code similar to 
+
+\begin{verbatim}
+a = 2
+b = 3
+print "a + b =", a + b
+print "b + a =", b + a
+\end{verbatim}
+and clicks on the link "run" under the input cell. The output 
+is shown in Fig. \ref{fig:commut}. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/commut.png}
+\end{center}
+\vspace{-4mm}
+\caption{Commutative Law holds!}
+\label{fig:commut}
+%\vspace{-6mm}
+\end{figure}
+
+
+
+
+\subsection{List of Elementary Functions  (Displayed Project)}
 
 In order to calculate square roots, exponentials, sins, cosins, tangents, and all other 
 simple functions, the best way is to import Numpy as shown in Fig. \ref{fig:fns}. Numpy 
 is a standard Python library for numerical computations.
 
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/fns.png}
@@ -572,8 +614,8 @@ is a standard Python library for numerical computations.
 %\vspace{-6mm}
 \end{figure}
 
-\subsection{Table of Elementary Functions}
-
+\newpage
+\noindent
 Elementary functions that one can import from Numpy include:\\
 
 %{\small
@@ -616,6 +658,8 @@ display help that is available for that command, and in many cases also
 examples of its correct use. This is illustrated for the command 
 "arctan2" in Fig. \ref{fig:help}.
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/help.png}
@@ -626,76 +670,247 @@ examples of its correct use. This is illustrated for the command
 %\vspace{-1cm}
 \end{figure}
 
-
-
-
-
-\subsection{Plotting Functions of One Variable}\label{plotting}
+\subsection{Plotting Functions of One Variable (Displayed Project)}\label{plotting}
 
 Plotting can be done via the Pylab library. Pylab is a standard Python library that is 
 superior in almost every way to MATLAB (expensive commercial product whose usage is 
-quite similar to what we are doing here). 
+quite similar to what we are doing here). The Pylab {\tt plot} command takes two
+lists: $x$-coordinates and $y$-coordinates of points on a curve. Between the 
+points, the curve is interpolated linearly. Let us illustrate this on a simple 
+example with just five points [0, 0], [1, 2], [2, 0.5], [3, 2.5] and [4, 0]:
 
-\newpage
-\noindent
-Let's say, for example, that we want to plot the function $f(x) = 2\sin(2\pi(x - 1/4))$
-in the interval $(0, 2)$. This is done as follows:
-
-{\small
 \begin{verbatim}
-from numpy import sin, pi
 from pylab import *
-x = arange(0, 2, 0.01)
-y = 2*sin(2 * pi * (x - 1/4.))
+x = [0,0, 1.0, 2.0, 3.0, 4.0]
+y = [0.0, 2.0, 0.5, 2.5, 0]
 clf()
 plot(x, y)
 lab.show()
 \end{verbatim}
-}
+\newpage
 \noindent
-Here, the {\tt arange} command creates an array of values between 0 and 2 with step 0.01.
-Conveniently, the entire array $x$ can be passed into the function, generating an
-array $y$ of function values of the same length. With these two arrays in hand, plotting is easy. 
-The result is shown in Fig. \ref{fig:plot}.
+The commands {\tt clf()}, {\tt plot()} and {\tt lab.show()} do clear the canvas, 
+plot the graph, and show the graph, respectively.
+The output is shown in Fig. \ref{fig:plot}.
+
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{img/plot.png}
+\hbox{}
+\hspace{-6mm}
+\includegraphics[width=0.56\textwidth]{img/plot.png}
 \end{center}
 \vspace{-2mm}
-\caption{Plotting functions of one variable.}
+\caption{Piecewise-linear curve with five points.}
 \label{fig:plot}
 %\vspace{-1cm}
 \end{figure}
+\noindent
+In the following we will discuss more options and show some useful techniques.
+Let's say, for example, that we want to plot the function $f(x) = \sin(x)$
+in the interval $(0, 2\pi)$. The array of $x$-coordinates of equidistant points 
+between 0 and $\pi$ with step 0.05 can be created easily using the command {\tt arange}:
 
-The plot can be made fancier by adding a label, and also the color 
-and the line style can be changed, as shown in Fig. \ref{fig:plot2}.
+\begin{verbatim}
+from numpy import *
+x = arange(0, 2*pi, 0.05)
+\end{verbatim}
+Changing the step size will change the resolution - with a smaller step the resolution will 
+be finer and vice-versa. Next, the array of $y$-coordinates of the points is obtained via
+
+\begin{verbatim}
+y = sin(x)
+\end{verbatim}
+The last part we already know:
+
+\begin{verbatim}
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\noindent
+The output is shown in Fig. \ref{fig:plot1}.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{img/plot2.png}
+\includegraphics[width=0.6\textwidth]{img/plot1.png}
 \end{center}
+\vspace{-6mm}
+\caption{Plotting $\sin(x)$ in interval $(0, 2\pi)$ with subdivision step 0.05.}
+\label{fig:plot1}
 \vspace{-2mm}
-\caption{Adding labels, and changing colors and line styles.}
-\label{fig:plot2}
 \end{figure}
 \noindent
-While the label definition is probably clear, let us give some more examples 
-of colors and line styles:
+The plot can be made nicer by adding a label, and also the color 
+and the line style can be changed. Let us start with adding a label:
 
-\begin{itemize}
-\item "b-"... continuous blue line
-\item "b."... blue line consisting of small dots
-\item "bo"... blue line consisting of big dots
-\item "r-"... continuous red line
-\item "r."... red line consisting of small dots
-\item "ro"... red line consisting of big dots
-\end{itemize}
-For a complete list of options, please visit the Pylab page {\tt http://www.scipy.org/PyLab}.
+\begin{verbatim}
+lb = "Solid blue line"
+plot(x, y, 'b-', label = lb)
+legend()
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot2}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/plot2.png}
+\end{center}
+\vspace{-6mm}
+\caption{Adding a label.}
+\label{fig:plot2}
+\vspace{-1cm}
+\end{figure}
+\newpage
+
+\noindent
+Next let us change the color to red and line style to dashed: 
+
+\begin{verbatim}
+lb = "Dashed red line"
+clf()
+plot(x, y, 'r--', label = lb)
+legend()
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot3}.
+
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/plot3.png}
+\end{center}
+\vspace{-2mm}
+\caption{Same graph using dashed red line.}
+\label{fig:plot3}
+\end{figure}
+\noindent
+The graph can be plotted using green color and small dots rather than 
+a solid or dashed line:
+
+\begin{verbatim}
+lb = "Dashed red line"
+clf()
+plot(x, y, 'g.', label = lb)
+legend()
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot4}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/plot4.png}
+\end{center}
+\vspace{-6mm}
+\caption{Same graph using dotted green line.}
+\label{fig:plot4}
+\vspace{-5mm}
+\end{figure}
+\noindent
+Last let us stay with green color but make the dots larger:
+
+\begin{verbatim}
+lb = "Dashed red line"
+clf()
+plot(x, y, 'go', label = lb)
+legend()
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot5}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/plot5.png}
+\end{center}
+\vspace{-6mm}
+\caption{Same graph using large green dots.}
+\label{fig:plot5}
+\vspace{-4mm}
+\end{figure}
+\noindent
+For a complete list of options available for the {\tt plot} command, 
+visit the Pylab page {\tt http:// www.scipy.org/PyLab}.
+
+\subsection{Plotting General Planar Curves (Displayed Project)}
+
+The concept of plotting based on two arrays of $x$ and $y$ coordinates
+allows us to do much more than only plot graphs of functions of one variable.
+We can easily plot more general curves such as circles, spirals and others.
+Let us illustrate this on a spiral that this parameterized 
+by 
+$$
+x(t) = t \cos(t), \ \ \ \ 
+y(t) = t \sin(t)
+$$ 
+in the interval $(0, 10)$ for $t$. The complete code is
+
+\begin{verbatim}
+from pylab import *
+from numpy import *
+t = arange(0, 10, 0.05)
+x = t*cos(t)
+y = t*sin(t)
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot6}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/plot6.png}
+\end{center}
+\vspace{-6mm}
+\caption{.}
+\label{fig:plot6}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+
+\subsection{Plotting Functions of Two Variables (Displayed Project)}
+
+For this functionality, your browser has to support WebGL (most of modern browsers do, 
+with the exception of Internet Explorer). NCLab offer the following simple way to plot 
+functions of two variables:
+
+{\small
+\begin{verbatim}
+from numpy import sin, sqrt, arctan
+
+# Define intervals on the x and y axes.
+x0 = 0.0
+x1 = 10.0
+y0 = 0.0
+y1 = 10.0
+
+# Define the corresponding divisions.
+nx = 100
+ny = 100
+
+# Render the surface using WebGL.
+lab.surface((x0, x1, nx), (y0, y1, ny), lambda x, y: sin(sqrt(x**2 + y**2)))
+\end{verbatim}
+}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/webgl.png}
+\end{center}
+\vspace{-2mm}
+\caption{Plotting functions of two variable.}
+\label{fig:webgl}
+%\vspace{-1cm}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Working with Math Expressions}
+\section{High School Algebra (Displayed Project)}\label{algebra}
 
 In the following we will be working with functions, polynomials, fractions, and such.
 Here are a few useful tricks.
@@ -749,26 +964,6 @@ x + y + z
 ----------
   x*y*z   
 \end{verbatim}
-
-\subsection{Latex output}
-If the user wants to include the result of a calculation into a Latex document, then 
-he or she can use the command {\tt latex}:
-\begin{verbatim}
-latex((x**2 + y**2 + z**2)/(x*y*z))
-\end{verbatim}
-The result is an expression in the Latex format:
-\begin{verbatim}
-'$\frac{x^{2} + y^{2} + z^{2}}{x y z}$'
-\end{verbatim}
-Displayed in Latex, it looks like:
-$$
-\frac{x^{2} + y^{2} + z^{2}}{x y z}
-$$.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Algebra}\label{algebra}
-
 All examples in this section are available in the displayed project 
 "Tutorial - Sympy - Algebra". You can clone the project into 
 your user account via the menu Project $\rightarrow$ Clone in the File 
@@ -934,7 +1129,7 @@ Result:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Calculus}
+\section{Calculus (Displayed Project)}
 
 All examples in this section are available in the displayed project 
 "Tutorial - Sympy - Calculus". You can clone the project into 
@@ -1121,7 +1316,7 @@ pi**(1/2)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Linear Algebra}
+\section{Matrix Algebra (Displayed Project)}
 
 All examples in this section are available in the displayed project 
 "Tutorial - Numpy - Linear Algebra". You can clone the project into 
@@ -1486,7 +1681,7 @@ Result:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Differential Equations}
+\section{Differential Equations (Displayed Project)}
 
 All examples in this section are available in the displayed project 
 "Tutorial - Sympy - Differential Equations". You can clone the project into 
@@ -1613,40 +1808,7 @@ Result:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Advanced 3D Plotting}
 
-For this functionality, your browser has to support WebGL (most of modern browsers do, 
-with the exception of Internet Explorer). NCLab offer the following simple way to plot 
-functions of two variables:
-
-{\small
-\begin{verbatim}
-from numpy import sin, sqrt, arctan
-
-# Define intervals on the x and y axes.
-x0 = 0.0
-x1 = 10.0
-y0 = 0.0
-y1 = 10.0
-
-# Define the corresponding divisions.
-nx = 100
-ny = 100
-
-# Render the surface using WebGL.
-lab.surface((x0, x1, nx), (y0, y1, ny), lambda x, y: sin(sqrt(x**2 + y**2)))
-\end{verbatim}
-}
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{img/webgl.png}
-\end{center}
-\vspace{-2mm}
-\caption{Plotting functions of two variable.}
-\label{fig:webgl}
-%\vspace{-1cm}
-\end{figure}
 
 
 

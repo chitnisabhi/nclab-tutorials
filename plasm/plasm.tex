@@ -123,7 +123,8 @@ as long as reference to NCLab and FEMhub Inc. is preserved.
 \subsection*{Acknowledgement}
 This publication features PLaSM, an open source Programming Language for 
 Solid Modeling, developed by Alberto Paoluzzi, Giorgio Scorzelli, and their 
-students and collaborators at the University of Rome in Italy. Alberto's 
+students and collaborators at the University of Rome in Italy. Some examples 
+shown here come from the original PLaSM repository. Alberto's 
 and Giorgio's help and support are gratefully acknowledged. 
 
 \normalsize
@@ -143,7 +144,7 @@ and Giorgio's help and support are gratefully acknowledged.
 
 \section{What is PLaSM?}
 
-PLaSM ({\em Programming Language for Solid Modeling}) is a design language
+PLaSM ({\em Programming Language for Solid Modeling}) is a powerful design language
 that enables geometrical modeling of 3D objects via simple commands.
 The language was developed by the CAD Group at the Universities of Roma 
 "La Sapienza" and "Roma Tre" in Italy. It is based on FL, an advanced 
@@ -159,10 +160,10 @@ through PLaSM's usage. Soon, you will be able to create advanced
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{img/pisa.png}
+\includegraphics[width=0.8\textwidth]{img/temple0.png}
 \end{center}
 \vspace{-2mm}
-\caption{Snapshot of a PLaSM model of the famous Pisa Tower.}
+\caption{Sample PLaSM model (available as Displayed Project "Temple").}
 \label{fig:pisa}
 \end{figure}
 
@@ -176,11 +177,11 @@ PDF via a link on NCLab home page {\tt http://nclab.com}. \\
 
 \noindent
 {\bf NOTE}: Your web browser needs to support WebGL, otherwise you will not be able to 
-work with PLaSM properly. For this reason, a WebGL tester is provided 
+work with PLaSM properly. For this reason, a WebGL test button is provided 
 on NCLab's front page.\\
 
 \noindent
-After logging in, you will see a PC-like desktop with several icons on it,
+After logging in, you will see a desktop with several icons on it,
 as shown in Fig. \ref{fig:desktop}. 
 
 \begin{figure}[!ht]
@@ -192,13 +193,28 @@ as shown in Fig. \ref{fig:desktop}.
 \label{fig:desktop}
 \end{figure}
 
+\subsection{Cloning Displayed Projects}
+
+All examples that we are going to work with in the following are also available 
+as Displayed Projects. This means that you can clone them by launching the File
+Manager, going to the {\em Project} menu, and clicking on {\em Clone}. This will launch 
+a window with many displayed projects from various areas of programming,
+math and computing. Look for projects whose names start with "Tutorial - PLaSM".
+After you locate a project that you would like to clone, click on it,
+and then click on the button {\em Clone} at the bottom of the window. This will
+create exact copy of that project in your account, and you can open it 
+by clicking on it in the File Manager. You can change the project in any way 
+you like, the changes will not affect the original Displayed Project. 
+
+
 \subsection{Launching a new Python project}
 
-Click on the File Manager icon. This will launch the File Manager.
-In the Project menu choose New $\rightarrow$ Python. This will launch an 
+Alternatively, you can type the examples by yourself, which is the 
+recommended way. Our introductory examples have no more than 
+a couple of lines anyway. So, in the File Manager's {\em Project} menu 
+choose {\em New} $\rightarrow$ {\em Python}. This will launch an 
 empty Python project, as shown in Fig. \ref{fig:python}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -210,7 +226,9 @@ empty Python project, as shown in Fig. \ref{fig:python}.
 \end{figure}
 \noindent
 
-\subsection{Creating a unit cube}
+
+
+\subsection{Creating a unit cube (Displayed Project)}
 
 In the input cell, enter the code:
 
@@ -223,8 +241,6 @@ Then click on the link "run" under the input cell. This will send a request
 to the cloud. The answer should come back instantly, and a new WebGL widget 
 with a unit cube in it should appear, as shown in Fig. \ref{fig:cube}. 
 Congratulations, you just created your first PLaSM model!
-
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -309,7 +325,6 @@ lab.view(cube, [0.4, 0.9, 0.6])
 and press the "run" link under the input cell again. The result is 
 displayed in Fig. \ref{fig:cuboid-1}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -324,6 +339,8 @@ With two parameters {\tt [a, b]} the CUBOID command will render a 2D rectangle
 (2D brick if you like) with edge lengths {\tt a} and {\tt b}, as shown in 
 Fig. \ref{fig:cuboid-2}
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.82\textwidth]{img/cuboid-2.png}
@@ -331,9 +348,8 @@ Fig. \ref{fig:cuboid-2}
 \vspace{-2mm}
 \caption{CUBOID([2, 1]) generates a rectangle with edge lenghts 2 and 1.}
 \label{fig:cuboid-2}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
-\newpage
 
 
 \subsection{Unit tetrahedron and triangle -- command SIMPLEX}
@@ -345,6 +361,8 @@ tet = SIMPLEX(3)
 lab.view(tet, [0.4, 0.9, 0.6])
 \end{verbatim}
 The output of the above code is shown in Fig. \ref{fig:simplex-1}.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1042,7 +1060,7 @@ The output is shown in Fig. \ref{fig:diff-2}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/diff-2.png}
+%\includegraphics[width=0.5\textwidth]{img/diff-2.png}
 \end{center}
 \vspace{-2mm}
 \caption{After subtracting the cylinder.}
@@ -1066,7 +1084,7 @@ The output is shown in Fig. \ref{fig:diff-3}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/diff-3.png}
+%\includegraphics[width=0.5\textwidth]{img/diff-3.png}
 \end{center}
 \vspace{-2mm}
 \caption{Visual control before drilling the square hole.}
@@ -1085,7 +1103,7 @@ The output is shown in Fig. \ref{fig:diff-4}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/diff-4.png}
+%\includegraphics[width=0.5\textwidth]{img/diff-4.png}
 \end{center}
 \vspace{-2mm}
 \caption{After subtracting the brick.}
@@ -1108,7 +1126,7 @@ The output is shown in Fig. \ref{fig:diff-5}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/diff-5.png}
+%\includegraphics[width=0.5\textwidth]{img/diff-5.png}
 \end{center}
 \vspace{-2mm}
 \caption{Hollow cube and the spear for visual control.}
@@ -1126,7 +1144,7 @@ The output is shown in Fig. \ref{fig:diff-6}.
 \newpage
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/diff-6.png}
+%\includegraphics[width=0.5\textwidth]{img/diff-6.png}
 \end{center}
 \vspace{-2mm}
 \caption{After subtracting the spear.}
@@ -1176,7 +1194,7 @@ All examples in this section can be cloned in NCLab through
 Project $\rightarrow$ Clone in the File Manager's menu (same
 as the tutorial examples from previous sections).
  
-\subsection{Ashtray}
+\subsection{Ashtray (Displayed Project)}
 
 This example presents a simple model of an ashtray,
 created with the help of four cylinders.
@@ -1212,7 +1230,7 @@ The corresponding output is shown in Fig. \ref{fig:ashtray}.
 \end{figure}
 \noindent
 
-\subsection{Temple}
+\subsection{Temple (Displayed Project)}
 
 This example shows a model of a temple. Take some 
 time to walk through it, you'll feel like in ancient Rome!
@@ -1274,7 +1292,7 @@ The corresponding output is shown in Fig. \ref{fig:temple}.
 \noindent
 
 
-\subsection{Intersection of 100 randomly generated cubes}
+\subsection{Intersection of 100 randomly generated cubes (Displayed Project)}
 
 The title says it all. We are calculating the intersection of 
 100 cubes that have the same size, same center, and they are 

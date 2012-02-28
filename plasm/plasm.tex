@@ -228,7 +228,7 @@ empty Python project, as shown in Fig. \ref{fig:python}.
 
 
 
-\subsection{Creating a unit cube (Displayed Project)}
+\subsection{Creating a unit cube}
 
 In the input cell, enter the code:
 
@@ -1018,285 +1018,159 @@ round edges, make imprints, and much more.
 \subsection{Subtracting objects -- command DIFF}
 
 The command DIFF makes it possible to subtract one object from another.
-For illustration, we will drill a hole of radius 1.0 into a 3x3x3 cube. In the first step,
-we will create the cube, move it so that its center lies at (0, 0, 0), create
-a cylinder of radius 1.0 and move it so that it enters the cube on one end and 
-leaves on the other. Then we display both objects for visual control:
+For illustration, we will create a $2 \times 2 \times 2$ cube and subtract 
+a cylinder of radius 1.5 from it. It is important to remember where in the 
+coordinate system the objects are created -- the cube lies in the 
+first quadrant, with three of its edges meeting at the origin (0, 0, 0).
+The cylinder's axis coincides with the $z$-axis and the center of its base
+circle is the origin. 
 
 \begin{verbatim}
 from pyplasm import *
-# Create a 3x3x3 cube:
-cube = CUBOID([3, 3, 3])
-# Move it so that its center is at origin (0, 0, 0):
-cube = T([1, 2, 3])([-1.5, -1.5, -1.5])(cube)
-# Create cylinder of radius 1 and height 5:
-cyl = CYLINDER([1.0, 5.0])(64)
-# Move the cylinder by -2.0 in the z-direction 
-cyl = T(3)(-2.5)(cyl)
-# Display both objects for visual control:
-lab.view(STRUCT([cube, cyl]), [0.4, 0.9, 0.6])
+c = CUBOID([2, 2, 2])
+s = CYLINDER([1.5, 2])(128)
+lab.view(DIFF([c, s]), [0.4, 0.9, 0.6]) 
 \end{verbatim}
 The output is shown in Fig. \ref{fig:diff-1}.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/diff-1.png}
 \end{center}
 \vspace{-2mm}
-\caption{Cube with a cylinder passing through it.}
+\caption{Subtracting the cylinder from the cube.}
 \label{fig:diff-1}
 %\vspace{-1cm}
 \end{figure}
 \noindent
-Next, we subtract the cylinder from the cube, which effectively 
-drills a hole in it:
+We can also subtract the cube from the cylinder:
 
 \begin{verbatim}
-hollow_cube = DIFF([cube, cyl])
-lab.view(hollow_cube, [0.4, 0.9, 0.6])
+lab.view(DIFF([s, c]), [0.4, 0.9, 0.6]) 
 \end{verbatim}
 The output is shown in Fig. \ref{fig:diff-2}.
+
 \newpage
 
 \begin{figure}[!ht]
 \begin{center}
-%\includegraphics[width=0.5\textwidth]{img/diff-2.png}
+\includegraphics[width=0.5\textwidth]{img/diff-2.png}
 \end{center}
 \vspace{-2mm}
-\caption{After subtracting the cylinder.}
+\caption{Subtracting the cube from the cylinder.}
 \label{fig:diff-2}
 %\vspace{-1cm}
 \end{figure}
 \noindent
-Let us keep up the good work and drill into the cube one more hole,
-this time with a square cross-section
-2x2 and in the $y$-direction. For this, we just need to create a 5x2x2 brick
-and move it so that its center lies at (0, 0, 0). Then we will show 
-both objects for visual control again:
-
-\begin{verbatim}
-brick = CUBOID([5.0, 2.0, 2.0])
-brick = T([1, 2, 3])([-2.5, -1.0, -1.0])(brick)
-lab.view(STRUCT([hollow_cube, brick]), [0.4, 0.9, 0.6])
-\end{verbatim}
-The output is shown in Fig. \ref{fig:diff-3}.
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-%\includegraphics[width=0.5\textwidth]{img/diff-3.png}
-\end{center}
-\vspace{-2mm}
-\caption{Visual control before drilling the square hole.}
-\label{fig:diff-3}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-Next, we subtract the brick from the hollow cube:
-
-\begin{verbatim}
-hollow_cube = DIFF([hollow_cube, brick])
-lab.view(hollow_cube, [0.4, 0.9, 0.6])
-\end{verbatim}
-The output is shown in Fig. \ref{fig:diff-4}.
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-%\includegraphics[width=0.5\textwidth]{img/diff-4.png}
-\end{center}
-\vspace{-2mm}
-\caption{After subtracting the brick.}
-\label{fig:diff-4}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-Last, let us create a sharp spear-like object using the 
-CONVEXHULL command, and pierce the two remaining faces 
-of the cube with it. Again, first we display both objects 
-for visual control:
-
-\begin{verbatim}
-spear = CONVEXHULL([-2, -3, -2], [2, -3, -2], [-2, -3, 2], 
-                   [-2, -3, -2], [2, -3, 2], [0, 6, 0]) 
-lab.view(STRUCT([hollow_cube, spear]), [0.4, 0.9, 0.6])
-\end{verbatim}
-The output is shown in Fig. \ref{fig:diff-5}.
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-%\includegraphics[width=0.5\textwidth]{img/diff-5.png}
-\end{center}
-\vspace{-2mm}
-\caption{Hollow cube and the spear for visual control.}
-\label{fig:diff-5}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-Next, we subtract the spear:
-
-\begin{verbatim}
-hollow_cube = DIFF([hollow_cube, spear])
-lab.view(hollow_cube, [0.4, 0.9, 0.6])
-\end{verbatim}
-The output is shown in Fig. \ref{fig:diff-6}.
-\newpage
-\begin{figure}[!ht]
-\begin{center}
-%\includegraphics[width=0.5\textwidth]{img/diff-6.png}
-\end{center}
-\vspace{-2mm}
-\caption{After subtracting the spear.}
-\label{fig:diff-6}
-%\vspace{-1cm}
-\end{figure}
 
 
 \subsection{Command UNION}
 
-The UNION command will create a new object that is the set union 
-of two objects. The usahe can be illustrated on an elementary 
+The UNION command creates a new object that is the set union 
+of two or more objects. For simplicity, let us use the same objects
+as in the previous example. 
 
-
-
-
-
-
-
-
-\subsection{Command INTERSECTION}
-
-
-
-
-
-
-
-\subsection{Bezier curves and rotational surfaces}
-
-
-
-
-
-
-\section{The Power of Scripting}
-
-
-
-
-
-
-
-\section{Advanced Examples}
-
-All examples in this section can be cloned in NCLab through 
-Project $\rightarrow$ Clone in the File Manager's menu (same
-as the tutorial examples from previous sections).
- 
-\subsection{Ashtray (Displayed Project)}
-
-This example presents a simple model of an ashtray,
-created with the help of four cylinders.
-{\small
 \begin{verbatim}
 from pyplasm import *
-cyl_outer = CYLINDER([10.0, 3.0])(128)
-cyl_inner = CYLINDER([8.0, 3.0])(128)
-cyl_inner = T(3)(0.5)(cyl_inner)
-out = DIFF([cyl_outer, cyl_inner])
-cyl = CYLINDER([2.0, 30.0])(64)
-cyl1 = R([1, 3])(PI/2)(cyl)
-cyl1 = T([1, 3])([15, 3.0])(cyl1)
-cyl2 = R([2, 3])(PI/2)(cyl)
-cyl2 = T([2, 3])([15, 3.0])(cyl2)
-out = DIFF([out, cyl1, cyl2])
-lab.view(out, [0.4, 0.9, 0.6])
+c = CUBOID([2, 2, 2])
+s = CYLINDER([1.5, 2])(128)
+lab.view(DIFF([c, s]), [0.4, 0.9, 0.6]) 
 \end{verbatim}
-}
-\noindent
-The corresponding output is shown in Fig. \ref{fig:ashtray}.
+The output is shown in Fig. \ref{fig:union}.
 
 \newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/ashtray.png}
+\includegraphics[width=0.5\textwidth]{img/union.png}
 \end{center}
 \vspace{-2mm}
-\caption{Ashtray.}
-\label{fig:ashtray}
+\caption{Union of the cylinder and the cube.}
+\label{fig:union}
 %\vspace{-1cm}
 \end{figure}
-\noindent
 
-\subsection{Temple (Displayed Project)}
 
-This example shows a model of a temple. Take some 
-time to walk through it, you'll feel like in ancient Rome!
-{\small
+\subsection{Command INTERSECTION}
+
+We will do two examples. First, for simplicity, we will create the intersection
+of the cube and the cylinder from the previous paragraph:
+ 
 \begin{verbatim}
 from pyplasm import *
-
-def out():
-    def Column (r,h):
-        basis = CUBOID([ 2*r*1.2, 2*r*1.2, h/12.0 ]) 
-        trunk = CYLINDER([ r, (10.0/12.0)*h ]) (36)
-        capital = basis
-        beam = S(1)(3)(capital) 
-        return TOP([TOP([TOP([basis,trunk]),capital]),beam])
-
-    def Gable (radius,h,n): 
-        lastX = n*3*(2*radius*1.2)
-        triangle = MKPOL([[[0,0],[lastX,0],[lastX/2.0,h/2]],[[1,2,3]],[[1]]])
-        return R([2,3])(PI/2)(Plasm.power(triangle  , QUOTE([radius*1.2])  ))
-
-    col = Column(1, 12)
-
-    def ColRow (n): 
-        return INSR(RIGHT)([col for i in range(n)])
-
-    ColRowAndGable =  TOP([ColRow(4),Gable(1,12,4) ])
-
-    Temple = STRUCT(  CAT([
-        [ColRowAndGable, T(2)(6)], 
-        DOUBLE_DIESIS(4)([  ColRow(4),T(2)(6)  ]), 
-        [ColRowAndGable] 
-        ]))
-	
-    Ground = EMBED(1)(BOX([1,2])(Temple))
-
-    Xsizes = QUOTE( DOUBLE_DIESIS(14)([0.6,-1.2]) )
-    Ysizes = QUOTE( AL([ -0.7, DOUBLE_DIESIS(5)([-1,5]) ]))
-    Zsizes = QUOTE([ -13, 0.6 ])
-
-    SecondaryBeams = Plasm.power(Plasm.power(Xsizes,Ysizes),Zsizes)
-
-    return STRUCT([Temple, SecondaryBeams, Ground])
-
-lab.view(out(), [0.9, 0.9, 0.9])
+c = CUBOID([2, 2, 2])
+s = CYLINDER([1.5, 2])(128)
+lab.view(INTERSECTION([c, s]), [0.4, 0.9, 0.6]) 
 \end{verbatim}
-}
-\noindent
-The corresponding output is shown in Fig. \ref{fig:temple}.
+The output is shown in Fig. \ref{fig:int-2}.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/temple.png}
+\includegraphics[width=0.5\textwidth]{img/int-2.png}
 \end{center}
 \vspace{-2mm}
-\caption{Temple.}
-\label{fig:temple}
+\caption{Intersection of the cylinder and the cube.}
+\label{fig:int-2}
 %\vspace{-1cm}
 \end{figure}
 \noindent
+In the second example, we will use the INTERSECTION command to create 
+a strange object that looks link a square when viewed
+from one direction, like a circle when viewed from another direction, 
+and as a triangle when viewed from the third direction!
 
 
-\subsection{Intersection of 100 randomly generated cubes (Displayed Project)}
+\begin{verbatim}
+from pyplasm import *
+color = [0.4, 0.9, 0.6]
+
+# Cube.
+c = CUBOID([2, 2, 2])
+c = T([1, 2, 3])([-1, -1, -1])(c)
+
+# Cylinder.
+cyl = CYLINDER([1, 2])(64)
+cyl = T([3])([-1])(cyl)
+
+# Prism.
+p = CONVEXHULL([[1, -1, -1], [1, 0, 1], [1, 1, -1], \
+[-1, -1, -1], [-1, 0, 1], [-1, 1, -1]])
+
+# Show their intersection.
+lab.view(INTERSECTION([c, cyl, p]), color)
+\end{verbatim}
+The output is shown in Fig. \ref{fig:diff-1}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.25\textwidth]{img/int-1a.png}
+\includegraphics[width=0.25\textwidth]{img/int-1b.png}
+\includegraphics[width=0.25\textwidth]{img/int-1c.png}
+\end{center}
+\vspace{-2mm}
+\caption{Strange object!}
+\label{fig:int-1}
+%\vspace{-1cm}
+\end{figure}
+
+\section{The Power of Scripting}
+
+The fact that PLaSM functions are accessible from withing the Python 
+interpreter gives us significant additional power to automate things 
+-- we can create objects that would be too complicated to create manually. 
+Let us see an example of this.
+
+\subsection{Intersection of $N$ randomly generated cubes}
 
 The title says it all. We are calculating the intersection of 
-100 cubes that have the same size, same center, and they are 
-randomly rotated:
+$N$ cubes that have the same size, same center, and they are 
+randomly rotated. For the purposes of this calculation, we
+set $N = 100$:
+
 {\small
 \begin{verbatim}
 # Import libraries.
@@ -1334,6 +1208,107 @@ The corresponding output is shown in Fig. \ref{fig:random_cubes}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
+
+
+
+
+
+
+
+\section{Advanced Examples}
+
+All examples in this section can be cloned in NCLab through 
+Project $\rightarrow$ Clone in the File Manager's menu (same
+as the tutorial examples from previous sections).
+ 
+\subsection{Ashtray}
+
+This example presents a simple model of an ashtray,
+created with the help of four cylinders.
+{\small
+\begin{verbatim}
+from pyplasm import *
+cyl_outer = CYLINDER([10.0, 3.0])(128)
+cyl_inner = CYLINDER([8.0, 3.0])(128)
+cyl_inner = T(3)(0.5)(cyl_inner)
+out = DIFF([cyl_outer, cyl_inner])
+cyl = CYLINDER([2.0, 30.0])(64)
+cyl1 = R([1, 3])(PI/2)(cyl)
+cyl1 = T([1, 3])([15, 3.0])(cyl1)
+cyl2 = R([2, 3])(PI/2)(cyl)
+cyl2 = T([2, 3])([15, 3.0])(cyl2)
+out = DIFF([out, cyl1, cyl2])
+lab.view(out, [0.4, 0.9, 0.6])
+\end{verbatim}
+}
+\noindent
+The corresponding output is shown in Fig. \ref{fig:ashtray}.
+
+%\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/ashtray.png}
+\end{center}
+\vspace{-2mm}
+\caption{Ashtray.}
+\label{fig:ashtray}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+\subsection{Temple}
+
+This example shows a model of a temple. Take some 
+time to walk through it, you'll feel like in ancient Rome!
+{\small
+\begin{verbatim}
+from pyplasm import *
+
+def out():
+    def Column (r,h):
+        basis = CUBOID([ 2*r*1.2, 2*r*1.2, h/12.0 ]) 
+        trunk = CYLINDER([ r, (10.0/12.0)*h ]) (36)
+        capital = basis
+        beam = S(1)(3)(capital) 
+        return TOP([TOP([TOP([basis,trunk]),capital]),beam])
+    def Gable (radius,h,n): 
+        lastX = n*3*(2*radius*1.2)
+        triangle = MKPOL([[[0,0],[lastX,0],[lastX/2.0,h/2]],[[1,2,3]],[[1]]])
+        return R([2,3])(PI/2)(Plasm.power(triangle  , QUOTE([radius*1.2])  ))
+    col = Column(1, 12)
+    def ColRow (n): 
+        return INSR(RIGHT)([col for i in range(n)])
+    ColRowAndGable =  TOP([ColRow(4),Gable(1,12,4) ])
+    Temple = STRUCT(  CAT([
+        [ColRowAndGable, T(2)(6)], 
+        DOUBLE_DIESIS(4)([  ColRow(4),T(2)(6)  ]), 
+        [ColRowAndGable] 
+        ]))
+    Ground = EMBED(1)(BOX([1,2])(Temple))
+    Xsizes = QUOTE( DOUBLE_DIESIS(14)([0.6,-1.2]) )
+    Ysizes = QUOTE( AL([ -0.7, DOUBLE_DIESIS(5)([-1,5]) ]))
+    Zsizes = QUOTE([ -13, 0.6 ])
+    SecondaryBeams = Plasm.power(Plasm.power(Xsizes,Ysizes),Zsizes)
+    return STRUCT([Temple, SecondaryBeams, Ground])
+
+lab.view(out(), [0.9, 0.9, 0.9])
+\end{verbatim}
+}
+\noindent
+The corresponding output is shown in Fig. \ref{fig:temple}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/temple.png}
+\end{center}
+\vspace{-2mm}
+\caption{Temple.}
+\label{fig:temple}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
 
 
 

@@ -1065,6 +1065,31 @@ The output is shown in Fig. \ref{fig:diff-2}.
 \end{figure}
 \noindent
 
+\subsection{Surfaces and Solids -- command JOIN}
+
+Some objects are solids (CUBOID, SPHERE) while others are surfaces (SPHERE, TORUS). 
+Attempting to perform any binary operation (DIFF, UNION, INTERSECTION, ...) between
+a solid and a surface will result into an error. This can be circumvented by 
+converting the surface into a solid first, using the command JOIN. For example,
+the following program will not work:
+
+\begin{verbatim}
+from pyplasm import *
+c = CUBOID([2, 2, 2])
+s = SPHERE(1.5)([64, 64])
+lab.view(DIFF([c, s]), [0.9, 0.9, 0.9])
+\end{verbatim}
+but this program is correct:
+
+\begin{verbatim}
+from pyplasm import *
+c = CUBOID([2, 2, 2])
+s = JOIN(SPHERE(1.5)([64, 64]))
+lab.view(DIFF([c, s]), [0.9, 0.9, 0.9])
+\end{verbatim}
+
+
+
 
 \subsection{Command UNION}
 
@@ -1080,7 +1105,7 @@ lab.view(DIFF([c, s]), [0.4, 0.9, 0.6])
 \end{verbatim}
 The output is shown in Fig. \ref{fig:union}.
 
-\newpage
+%\newpage
 
 \begin{figure}[!ht]
 \begin{center}

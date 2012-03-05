@@ -1101,7 +1101,7 @@ as in the previous example.
 from pyplasm import *
 c = CUBOID([2, 2, 2])
 s = CYLINDER([1.5, 2])(128)
-lab.view(DIFF([c, s]), [0.4, 0.9, 0.6]) 
+lab.view(UNION([c, s]), [0.4, 0.9, 0.6]) 
 \end{verbatim}
 The output is shown in Fig. \ref{fig:union}.
 

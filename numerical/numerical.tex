@@ -487,8 +487,19 @@ them with the true values!
 
 \section{Solving Nonlinear Equations}
 
-
-
+Most engineering and scientific models that require numerical methods are {\em nonlinear}.
+A good example of nonlinearity is how the energy of a moving car depends on its velocity.
+If the mass of the car is $m$ and velocity $v$, then its kinetic energy is $\frac{1}{2}mv^2$.
+Say that the mass is $2000$ kg. At a speed of $10$ m/s, the car's energy is $100$ kJ. At 
+$20$ m/s it is $400$ kJ, and at $30$ m/s it increases to $900$ kJ. So we can see that 
+the rate of change of energy does not depend only on the rate of change of velocity,
+but also on the value of the velocity itself. 
+ 
+Being able to solve nonlinear equations is one of the most important 
+practical skills. In this section we will learn several approaches to do this,
+in the context of a scalar one-dimensional equation $f(x) = 0$. Only for the 
+Newton's method, which is the most frequently used one, we will also 
+show how to solve systems. 
 
 \subsection{Bisection method}
 
@@ -496,8 +507,8 @@ them with the true values!
 
 \subsection{Newton's method}
 
-\subsection{Newton's method for systems}
 
+\subsection{Newton's method for systems}
 
 
 \subsection{Fixed point method}

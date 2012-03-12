@@ -669,6 +669,8 @@ The output is displayed in Fig. \ref{fig:star-2}.
 %\vspace{-1cm}
 \end{figure}
 
+\subsection{Exercises}
+
 \section{Transformations}
 
 So far we have learned how to create a variety of simple 2D and 3D objects. 
@@ -1009,6 +1011,9 @@ The output is shown in Fig. \ref{fig:rot-2}.
 %\vspace{-1cm}
 \end{figure}
 
+\subsection{Exercises}
+
+
 \section{Binary Operations with Objects}
 
 This is where things start to be real fun. Let us start with the 
@@ -1182,6 +1187,55 @@ The output is shown in Fig. \ref{fig:diff-1}.
 %\vspace{-1cm}
 \end{figure}
 
+\subsection{Exercises}
+
+Solutions to all exercises are available in the Solution Manual, and 
+they can be also cloned in NCLab through Project $\rightarrow$ Clone in the 
+File Manager's menu.\\
+
+\noindent
+\underline{\em Exercise 1: Ashtray}
+
+Build a simple model of an ashtray using cylindrical shapes, 
+as illustrated in Fig. \ref{fig:ashtray}.
+All measures should be variable.
+
+%\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/ashtray.png}
+\end{center}
+\vspace{-2mm}
+\caption{Ashtray.}
+\label{fig:ashtray}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+\noindent
+\underline{\em Exercise 2: Drilling a Cube}
+
+Create a cube and drill three holes into it from the three axial 
+directions, as illustrated in Fig. \ref{fig:drilledcube}.
+The size of the cube as well as the diameter of the holes should 
+be variable. 
+
+%\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/drilledcube.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cube with three holes.}
+\label{fig:drilledcube}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+
+
+
 \section{The Power of Scripting}
 
 The fact that PLaSM functions are accessible from withing the Python 
@@ -1238,49 +1292,66 @@ The corresponding output is shown in Fig. \ref{fig:random_cubes}.
 
 
 
+\subsection{Exercises}
+
+Solutions to all exercises are available in the Solution Manual, and 
+they can be also cloned in NCLab through Project $\rightarrow$ Clone in the 
+File Manager's menu.\\
+
+\noindent
+\underline{\em Exercise 1: Horse Corral}
+
+Build a corral for horses with variable radius $r$ and variable number 
+of equally-long sides $N$. Also the vertical poles should have general user-defined 
+dimensions $W \times W \times H$. Illustrative images of how the corral should look like 
+are shown in Figs. \ref{fig:corral2} - \ref{fig:corral3}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/tam-3.png}
+\end{center}
+\vspace{-2mm}
+\caption{Corral with eight sides.}
+\label{fig:corral2}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/tam-4.png}
+\end{center}
+\vspace{-2mm}
+\caption{Corral with 32 sides.}
+\label{fig:corral3}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+\noindent
+\underline{\em Exercise 2: Wagon Wheel}
+
+Build a spoked wagon wheel similar to the one in Fig. \ref{fig:wheel-1}. All radiuses 
+and thicknesses should be user-defined, as well as the number of spokes.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/wagonwheel-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Spoked wagon wheel.}
+\label{fig:wheel-1}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
 
 
 \section{Advanced Examples}
 
 All examples in this section can be cloned in NCLab through 
-Project $\rightarrow$ Clone in the File Manager's menu (same
-as the tutorial examples from previous sections).
- 
-\subsection{Ashtray}
-
-This example presents a simple model of an ashtray,
-created with the help of four cylinders.
-{\small
-\begin{verbatim}
-from pyplasm import *
-cyl_outer = CYLINDER([10.0, 3.0])(128)
-cyl_inner = CYLINDER([8.0, 3.0])(128)
-cyl_inner = T(3)(0.5)(cyl_inner)
-out = DIFF([cyl_outer, cyl_inner])
-cyl = CYLINDER([2.0, 30.0])(64)
-cyl1 = R([1, 3])(PI/2)(cyl)
-cyl1 = T([1, 3])([15, 3.0])(cyl1)
-cyl2 = R([2, 3])(PI/2)(cyl)
-cyl2 = T([2, 3])([15, 3.0])(cyl2)
-out = DIFF([out, cyl1, cyl2])
-lab.view(out, [0.4, 0.9, 0.6])
-\end{verbatim}
-}
-\noindent
-The corresponding output is shown in Fig. \ref{fig:ashtray}.
-
-%\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/ashtray.png}
-\end{center}
-\vspace{-2mm}
-\caption{Ashtray.}
-\label{fig:ashtray}
-%\vspace{-1cm}
-\end{figure}
-\noindent
+Project $\rightarrow$ Clone in the File Manager's menu.
 
 \subsection{Temple}
 
@@ -1325,7 +1396,7 @@ The corresponding output is shown in Fig. \ref{fig:temple}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/temple.png}
+\includegraphics[width=0.8\textwidth]{img/temple.png}
 \end{center}
 \vspace{-2mm}
 \caption{Temple.}

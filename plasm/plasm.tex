@@ -614,60 +614,6 @@ is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 \end{figure}
 
 
-\subsection{Command STAR}
-
-The STAR command will render a star with $N$ vertices. It is used as follows:
-\begin{verbatim}
-from pyplasm import *
-N = 5
-s = STAR(N)
-lab.view(s, [0.4, 0.9, 0.6])
-\end{verbatim}
-The center of the star is at (0, 0), it is inscribed into the unit circle,  
-and it lies in the $xy$-plane. Soon we will learn how to enlarge it, rotate it,
-and translate it. The
-output of the above code is shown in Fig. \ref{fig:star-1}.
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/star-1.png}
-\end{center}
-\vspace{-2mm}
-\caption{Star with $N$ vertices inscribed into the unit circle.}
-\label{fig:star-1}
-%\vspace{-1cm}
-\end{figure}
-
-\subsection{Extrusion of 2D objects into 3D -- commands QUOTE and POWER}
-
-Any 2D object can be easily extruded into 3D, by performing 
-Cartesian product with a 1D interval in the third direction. This is done using the 
-QUOTE and POWER commands. For example, the following code will
-extrude the star that we created with the last program:
-
-\begin{verbatim}
-from pyplasm import *
-N = 5
-H = 1.0
-s = STAR(N)
-s3d = POWER([s, QUOTE([H])])
-lab.view(s3d, [0.4, 0.9, 0.6])
-\end{verbatim}
-The output is displayed in Fig. \ref{fig:star-2}.
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/star-2.png}
-\end{center}
-\vspace{-2mm}
-\caption{3D star obtained from the original 2D star via the QUOTE and POWER commands.}
-\label{fig:star-2}
-%\vspace{-1cm}
-\end{figure}
 
 \subsection{Exercises}
 
@@ -904,27 +850,27 @@ s2 = T([1, 2, 3])([-1.0, 1.0, 4.0])(s)
 \subsection{Compound objects - command STRUCT}
 
 Creating compound objects is necessary
-for plotting since {\tt lab.view()} only can 
-display a single object. It is also practical 
+for plotting multiple objects, since {\tt lab.view()} only can 
+display a single object. This is also practical 
 when we need to scale, translate, or rotate multiple objects at
 once. For example, let's create a cube with a sphere on top of it.
 It is always important to remember how a newly created
 object is positioned in the global coordinate system. Concretely,
 recall that 
-a CUBOID is aligned with the axes as shown in Fig. \ref{fig:cuboid-1},
-and a SPHERE has its center at the origin (0, 0, 0). 
+a CUBOID is aligned with the axes as shown in Fig. \ref{fig:cuboid-1}
 
 \begin{verbatim}
 from pyplasm import *
+color = [0.9, 0.9, 0.9]
 c = CUBOID([2, 2, 2])
-s = SPHERE(1.0)([64, 64])
-s = T([1, 2, 3])([1.0, 1.0, 3.0])(s)
+c2 = T([1, 2, 3])([1.0, 1.0, 2.0])(c)
+c3 = T([1, 2, 3])([1.0, 1.0, 2.0])(c2)
 \end{verbatim}
-The only way to display both the cube and sphere together,
-is to create a compound object containing both of them:
+The way to display the three cubes together
+is to create a compound object containing all of them:
 
 \begin{verbatim}
-comp = STRUCT([c, s])
+comp = STRUCT([c, c2, c3])
 lab.view(comp, [0.4, 0.9, 0.6])
 \end{verbatim}
 The output is shown in Fig. \ref{fig:comp-1}
@@ -936,10 +882,39 @@ The output is shown in Fig. \ref{fig:comp-1}
 \includegraphics[width=0.5\textwidth]{img/comp-1.png}
 \end{center}
 \vspace{-2mm}
-\caption{The only way to display both the cube and the sphere is to use a compound object.}
+\caption{The way to display all cubes together is to use the STRUCT command.}
 \label{fig:comp-1}
 %\vspace{-1cm}
 \end{figure}
+
+
+\subsection{Putting objects on top of each other - command TOP}
+
+The TOP command is a special case of translation that is very 
+useful when we need to put objects on top of each other.
+For illustration, let us put a sphere on top of a cube:
+
+\begin{verbatim}
+from pyplasm import *
+c = CUBOID([2, 2, 2])
+s = SPHERE(1.0)([64, 64])
+lab.view(TOP([c, s]), color)
+\end{verbatim}
+The output is shown in Fig. \ref{fig:top-1}:
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/top-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Putting a sphere on top of a cube.}
+\label{fig:top-1}
+%\vspace{-1cm}
+\end{figure}
+
+
 
 \subsection{Command ROTATE}
 
@@ -1187,6 +1162,37 @@ The output is shown in Fig. \ref{fig:diff-1}.
 %\vspace{-1cm}
 \end{figure}
 
+
+\subsection{Command XOR}
+
+The operation XOR (exclusive logical OR) is "union minus intersection". Let us illustrate it 
+on an example where we create a cube, and move it so that its center lies on the $z$-axis. Then 
+we create a second cube by rotating the original cube by 45 degrees in the $xy$-plane. Last,
+we XOR the two cubes. The corresponding code reads:
+ 
+\begin{verbatim}
+from pyplasm import *
+color = [0.9, 0.9, 0.9]
+c = CUBOID([2, 2, 2])
+c = T([1, 2])([-1, -1])(c)
+c2 = R([1, 2])(PI/4.)(c)
+lab.view(XOR([c, c2]), color) 
+\end{verbatim}
+The output is shown in Fig. \ref{fig:xor-1}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/xor-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{XOR of two overlapping cubes.}
+\label{fig:xor-1}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
 \subsection{Exercises}
 
 Solutions to all exercises are available in the Solution Manual, and 
@@ -1213,7 +1219,7 @@ All measures should be variable.
 \end{figure}
 \noindent
 \noindent
-\underline{\em Exercise 2: Drilling a Cube}
+\underline{\em Exercise 2: Drilled Cube}
 
 Create a cube and drill three holes into it from the three axial 
 directions, as illustrated in Fig. \ref{fig:drilledcube}.
@@ -1233,8 +1239,77 @@ be variable.
 \end{figure}
 \noindent
 
+\section{Creating Simple Objects (Continued)}
+
+\subsection{Command STAR}
+
+The STAR command will render a star with $N$ vertices. It is used as follows:
+\begin{verbatim}
+from pyplasm import *
+N = 5
+s = STAR(N)
+lab.view(s, [0.4, 0.9, 0.6])
+\end{verbatim}
+The center of the star is at (0, 0), it is inscribed into the unit circle,  
+and it lies in the $xy$-plane. Soon we will learn how to enlarge it, rotate it,
+and translate it. The
+output of the above code is shown in Fig. \ref{fig:star-1}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/star-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{Star with $N$ vertices inscribed into the unit circle.}
+\label{fig:star-1}
+%\vspace{-1cm}
+\end{figure}
+
+\subsection{Extrusion of 2D objects to 3D -- command POWER}
+
+Any 2D object can be easily extruded into 3D, by performing 
+Cartesian product with a 1D interval in the third direction. This 
+is done using the POWER command. For example, the following code will
+extrude the star that we created with the last program:
+
+\begin{verbatim}
+from pyplasm import *
+N = 5
+H = 1.0
+s = STAR(N)
+s3d = POWER([s, QUOTE([0, H])])
+lab.view(s3d, [0.4, 0.9, 0.6])
+\end{verbatim}
+The command {\tt QUOTE([0, H])} creates an interval $(0, H)$. 
+The output is displayed in Fig. \ref{fig:star-2}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/star-2.png}
+\end{center}
+\vspace{-2mm}
+\caption{3D star obtained from the original 2D star via the QUOTE and POWER commands.}
+\label{fig:star-2}
+%\vspace{-1cm}
+\end{figure}
+
+\subsection{General polygons and polyhedra -- command MKPOL}
+
+Coming soon.
+
+\subsection{Extracting boundary vertices, edges and faces -- command SKELETON}
+
+Coming soon.
 
 
+
+\section{Curves and Curved Surfaces}
+
+Coming soon.
 
 \section{The Power of Scripting}
 
@@ -1295,18 +1370,37 @@ The corresponding output is shown in Fig. \ref{fig:random_cubes}.
 \subsection{Exercises}
 
 Solutions to all exercises are available in the Solution Manual, and 
-they can be also cloned in NCLab through Project $\rightarrow$ Clone in the 
+they can also be cloned in NCLab through Project $\rightarrow$ Clone in the 
 File Manager's menu.\\
 
 \noindent
-\underline{\em Exercise 1: Horse Corral}
+\underline{\em Exercise 1: Aztec Pyramid}
+
+Build an Aztec Pyramid as illustrated in Fig. \ref{fig:aztec}. The length 
+on the base edge, length of the top edge, height, and the number of layers
+should be user-defined parameters. 
+
+%\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/aztec.png}
+\end{center}
+\vspace{-2mm}
+\caption{Aztec pyramid.}
+\label{fig:aztec}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+
+\noindent
+\underline{\em Exercise 2: Horse Corral}
 
 Build a corral for horses with variable radius $r$ and variable number 
 of equally-long sides $N$. Also the vertical poles should have general user-defined 
 dimensions $W \times W \times H$. Illustrative images of how the corral should look like 
 are shown in Figs. \ref{fig:corral2} - \ref{fig:corral3}.
-
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1319,6 +1413,8 @@ are shown in Figs. \ref{fig:corral2} - \ref{fig:corral3}.
 \end{figure}
 \noindent
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/tam-4.png}
@@ -1330,7 +1426,7 @@ are shown in Figs. \ref{fig:corral2} - \ref{fig:corral3}.
 \end{figure}
 \noindent
 \noindent
-\underline{\em Exercise 2: Wagon Wheel}
+\underline{\em Exercise 3: Wagon Wheel}
 
 Build a spoked wagon wheel similar to the one in Fig. \ref{fig:wheel-1}. All radiuses 
 and thicknesses should be user-defined, as well as the number of spokes.

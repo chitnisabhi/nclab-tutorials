@@ -1463,14 +1463,17 @@ The output is displayed in Fig. \ref{fig:star-2}.
 %\vspace{-1cm}
 \end{figure}
 
-\subsection{General polygons and polyhedra -- command MKPOL}
-
-Coming soon.
-
 \subsection{Extracting boundary vertices, edges and faces -- command SKELETON}
 
-Coming soon.
+The SKELETON command can be used to extract edges and vertices from a 2D 
+object, and to extract faces, edges, and vertices from a 3D object. 
+It is used as follows:
 
+\begin{verbatim}
+SKELETON(dim)(obj)
+\end{verbatim}
+where {\tt dim} is the dimension of the extracted part of the boundary 
+(0 for vertices, 1 for edges, 2 for faces) and {\tt obj} is the object itself.
 
 
 \section{Curves and Curved Surfaces}

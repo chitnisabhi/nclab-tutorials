@@ -519,7 +519,7 @@ cyl = CYLINDER ([R, H])(128)
 lab.view(cyl, [0.4, 0.9, 0.6])
 \end{verbatim}
 The cylinder's axis is in the $z$-direction, and the midpoint of
-its base circle is the origin (0, 0, 0). 
+its base circle is the origin $[0, 0, 0]$. 
 The output of the above code is shown in Fig. \ref{fig:cyl-1}.
 
 \begin{figure}[!ht]
@@ -545,7 +545,7 @@ tube = TUBE([r, R, H])(128)
 lab.view(tube, [0.4, 0.9, 0.6])
 \end{verbatim}
 The tube's axis is in the $z$-direction, and the midpoint of
-its base circle is the origin (0, 0, 0). Again, the parameter
+its base circle is the origin $[0, 0, 0]$. Again, the parameter
 128 is the number of linear faces that approximate the 
 curved surfaces. The output of the above code is shown in Fig. \ref{fig:tube-1}.
 
@@ -570,7 +570,7 @@ R = 1.0
 s = SPHERE(3.0)([64, 64])
 lab.view(s, [0.4, 0.9, 0.6])
 \end{verbatim}
-will render a unit sphere whose origin is at (0, 0, 0). 
+will render a unit sphere whose origin is at $[0, 0, 0]$. 
 The parameter {\tt [64, 64]} stands for 
 subdivision in both tangential directions. We need to be a bit 
 careful with increasing this number, since doubling it to 
@@ -583,7 +583,7 @@ The output of the above code is shown in Fig. \ref{fig:sphere-1}.
 \includegraphics[width=0.5\textwidth]{img/sphere-1.png}
 \end{center}
 \vspace{-2mm}
-\caption{Sphere of radius $R$ and origin (0, 0, 0).}
+\caption{Sphere of radius $R$ and origin $[0, 0, 0]$.}
 \label{fig:sphere-1}
 %\vspace{-1cm}
 \end{figure}
@@ -600,7 +600,7 @@ R = 5.0
 tor = TORUS([r, R])([64, 64])
 lab.view(tor, [0.4, 0.9, 0.6])
 \end{verbatim}
-The center of the torus is at the origin (0, 0, 0) and its axis
+The center of the torus is at the origin $[0, 0, 0]$ and its axis
 is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 
 \begin{figure}[!ht]
@@ -608,7 +608,7 @@ is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 \includegraphics[width=0.82\textwidth]{img/torus-1.png}
 \end{center}
 \vspace{-2mm}
-\caption{Sphere of radius $R$ and origin (0, 0, 0).}
+\caption{Torus of inner radius $r$, outer radius $R$ and center at the origin $[0, 0, 0]$.}
 \label{fig:torus-1}
 %\vspace{-1cm}
 \end{figure}
@@ -622,19 +622,165 @@ they can be also cloned in NCLab through Project $\rightarrow$ Clone in the
 File Manager's menu.\\
 
 \noindent
-\underline{\em Exercise 1: Blue brick}
+\underline{\em Exercise A1: Blue brick}
 
 Create a $3 \times 4 \times 5$ brick in a light
-blue color.\\
+blue color, as shown in Fig. \ref{fig:a1}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/a1-blue-brick.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise A1.}
+\label{fig:a1}
+%\vspace{-1cm}
+\end{figure}
+
 
 \noindent
-\underline{\em Exercise 2: Red rectangle}
+\underline{\em Exercise A2: Red rectangle}
 
 Create a $3 \times 1$ rectangle in a light
-red color.\\
+red color, as shown in Fig. \ref{fig:a2}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/a2-red-rectangle.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise A2.}
+\label{fig:a2}
+\vspace{-1cm}
+\end{figure}
+\newpage
+\noindent
+\underline{\em Exercise A3: Orange Octahedron}
+
+Create an orange octahedron with vertices 
+$[0, -1, 1]$, $[0, 1, 1]$, $[0, -1, -1]$, $[0, 1, -1]$, $[2, 0, 0]$, and $[-2, 0, 0]$, 
+as shown in Fig. \ref{fig:a3}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/a3-orange-octahedron.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise A3.}
+\label{fig:a3}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+\underline{\em Exercise A4: Pink Pentagon}
+
+Create a pink pentagon with equally-long edges that is inscribed 
+in a circle with diameter $R$, as shown in Fig. \ref{fig:a4}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/a4-pink-pentagon.png}
+\end{center}
+\vspace{-4mm}
+\caption{Illustration for Exercise A4.}
+\label{fig:a4}
+\vspace{-4mm}
+\end{figure}
+
+\noindent
+\underline{\em Exercise A5: Cyan Cone}
+
+Create a cyan cone of radius $R$ and height $H$ that stands on its tip
+(the tip is at $[0, 0, 0]$ and the axis of the cone coincides with the 
+$z$-axis), as shown in Fig. \ref{fig:a5}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/a5-cyan-cone.png}
+\end{center}
+\vspace{-4mm}
+\caption{Illustration for Exercise A5.}
+\label{fig:a5}
+\vspace{-1cm}
+\end{figure}
+
+\newpage
+\noindent
+\underline{\em Exercise A6: Carmine Cylinder}
+
+Create a carmine cylinder of radius $R$ and height $H$, 
+as shown in Fig. \ref{fig:a6}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/a6-carmine-cylinder.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise A6.}
+\label{fig:a6}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+\underline{\em Exercise A7: Topaz Tube}
+
+Create a topaz tube of inner radius $R_{in}$, outer radius $R_{out}$
+and height $H$, as shown in Fig. \ref{fig:a7}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/a7-topaz-tube.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise A7.}
+\label{fig:a7}
+%\vspace{-1cm}
+\end{figure}
 
 
+\noindent
+\underline{\em Exercise A8: Sand Sphere}
 
+Create a sand sphere of radius $R$ and center at the origin $[0, 0, 0]$. 
+Use $[64, 64]$ for the piecewise-linear approximation of the curved surface, 
+as shown in Fig. \ref{fig:a8}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/a8-sand-sphere.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise A8.}
+\label{fig:a8}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+\underline{\em Exercise A9: Turquoise Torus}
+
+Create a turquoise torus of inner radius $R_{in}$ and outer radius $R_{out}$, whose center 
+is at the origin $[0, 0, 0]$. Use $[64, 64]$ for the piecewise-linear approximation 
+of the curved surface, as shown in Fig. \ref{fig:a9}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/a9-turquoise-torus.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise A9.}
+\label{fig:a9}
+\vspace{-1cm}
+\end{figure}
 
 \section{Transformations}
 
@@ -654,7 +800,7 @@ from pyplasm import *
 cyl = CYLINDER([1.0, 0.3])(128)
 \end{verbatim}
 We know from before that the axis of this cylinder coincides with the $z$-axis 
-and that the center of its bottom face is at (0, 0, 0). The output is shown in Fig. \ref{fig:scale-0}.
+and that the center of its bottom face is at $[0, 0, 0]$. The output is shown in Fig. \ref{fig:scale-0}.
 
 \newpage
 
@@ -681,8 +827,8 @@ lab.view(cyl1, [0.4, 0.9, 0.6])
 In fact, the $x$-coordinate of all points forming 
 the object will be multiplied by 2.0. So, the axis of the resulting object will still
 coincide with the $z$-axis, and the center of its bottom face will
-still be at the origin (0, 0, 0). Only its limits in the $x$-direction will change 
-from (-1.0, 1.0) to (-2.0, 2.0).
+still be at the origin $[0, 0, 0]$. Only its limits in the $x$-direction will change 
+from $[-1.0, 1.0]$ to $[-2.0, 2.0]$.
 The output is shown in Fig. \ref{fig:scale-1}.
 
 \newpage
@@ -709,8 +855,8 @@ lab.view(cyl2, [0.4, 0.9, 0.6])
 \end{verbatim}
 The axis of the resulting object will still
 coincide with the $z$-axis, and the center of its bottom face will
-still be at the origin (0, 0, 0). Only its limits in the $y$-direction will change 
-from (-1.0, 1.0) to (-2.0, 2.0).
+still be at the origin $[0, 0, 0]$. Only its limits in the $y$-direction will change 
+from $[-1.0, 1.0]$ to $[-2.0, 2.0]$.
 The output is shown in Fig. \ref{fig:scale-2}.
 
 \newpage
@@ -737,8 +883,8 @@ lab.view(cyl3, [0.4, 0.9, 0.6])
 \end{verbatim}
 The axis of the resulting object will still
 coincide with the $z$-axis, and the center of its bottom face will
-still be at the origin (0, 0, 0). Only its limits in the $z$-direction will change 
-from (0.0, 0.3) to (0.0, 0.6). The output is shown in Fig. \ref{fig:scale-3}.
+still be at the origin $[0, 0, 0]$. Only its limits in the $z$-direction will change 
+from $[0.0, 0.3]$ to $[0.0, 0.6]$. The output is shown in Fig. \ref{fig:scale-3}.
 
 \newpage
 
@@ -765,10 +911,10 @@ lab.view(cyl4, [0.4, 0.9, 0.6])
 \end{verbatim}
 The axis of the resulting object will still
 coincide with the $z$-axis, and the center of its bottom face will
-still be at the origin (0, 0, 0). Only its limits in the $x$-direction 
-will change from (-1.0, 1.0) to (-2.0, 2.0), and the limits in the 
+still be at the origin $[0, 0, 0]$. Only its limits in the $x$-direction 
+will change from $[-1.0, 1.0]$ to $[-2.0, 2.0]$, and the limits in the 
 $z$-direction will change 
-from (0.0, 0.3) to (0.0, 1.2). The output is shown in Fig. \ref{fig:scale-4}.
+from $[0.0, 0.3]$ to $[0.0, 1.2]$. The output is shown in Fig. \ref{fig:scale-4}.
 
 \newpage
 
@@ -941,7 +1087,7 @@ Objects can be rotated using the command ROTATE (that
 can be abbreviated as R). It has three parameters:
 A pair of axes defining the plane of rotation (as integers),
 an angle, and the object to be rotated. The axis of rotation 
-always passes through the origin (0, 0, 0), so it is important 
+always passes through the origin $[0, 0, 0]$, so it is important 
 to know exactly where your object is located. 
 
 For example, when creating 
@@ -978,7 +1124,7 @@ If we wanted to
 rotate the cube "in place", so that its center would not be moved,
 we would have to first translate the cube in such a way that its center
 lies at the origin. Let's do this. After moving the cube so that 
-its center is at (0, 0, 0), we will rotate it in two different directions,
+its center is at $[0, 0, 0]$, we will rotate it in two different directions,
 then move it by 2.0 in the $x$-direction and display along with 
 the original cube for comparison:
 
@@ -1007,6 +1153,7 @@ The output is shown in Fig. \ref{fig:rot-2}.
 
 \subsection{Exercises}
 
+Coming soon.
 
 \section{Binary Operations with Objects}
 
@@ -1020,7 +1167,7 @@ The command DIFF makes it possible to subtract one object from another.
 For illustration, we will create a $2 \times 2 \times 2$ cube and subtract 
 a cylinder of radius 1.5 from it. It is important to remember where in the 
 coordinate system the objects are created -- the cube lies in the 
-first quadrant, with three of its edges meeting at the origin (0, 0, 0).
+first quadrant, with three of its edges meeting at the origin $[0, 0, 0]$.
 The cylinder's axis coincides with the $z$-axis and the center of its base
 circle is the origin. 
 
@@ -1219,7 +1366,7 @@ they can be also cloned in NCLab through Project $\rightarrow$ Clone in the
 File Manager's menu.\\
 
 \noindent
-\underline{\em Exercise 1: Ashtray}
+\underline{\em Exercise C1: Ashtray}
 
 Build a simple model of an ashtray using cylindrical shapes, 
 as illustrated in Fig. \ref{fig:ashtray}.
@@ -1232,13 +1379,13 @@ All measures should be variable.
 \includegraphics[width=0.5\textwidth]{img/ashtray.png}
 \end{center}
 \vspace{-2mm}
-\caption{Ashtray.}
+\caption{Illustration for Exercise C1.}
 \label{fig:ashtray}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 \noindent
-\underline{\em Exercise 2: Drilled Cube}
+\underline{\em Exercise C2: Drilled Cube}
 
 Create a cube and drill three holes into it from the three axial 
 directions, as illustrated in Fig. \ref{fig:drilledcube}.
@@ -1252,7 +1399,7 @@ be variable.
 \includegraphics[width=0.5\textwidth]{img/drilledcube.png}
 \end{center}
 \vspace{-2mm}
-\caption{Cube with three holes.}
+\caption{Illustration for exercise C2.}
 \label{fig:drilledcube}
 %\vspace{-1cm}
 \end{figure}
@@ -1395,7 +1542,7 @@ they can also be cloned in NCLab through Project $\rightarrow$ Clone in the
 File Manager's menu.\\
 
 \noindent
-\underline{\em Exercise 1: Aztec Pyramid}
+\underline{\em Exercise D1: Aztec Pyramid}
 
 Build an Aztec Pyramid as illustrated in Fig. \ref{fig:aztec}. The length 
 on the base edge, length of the top edge, height, and the number of layers
@@ -1408,14 +1555,14 @@ should be user-defined parameters.
 \includegraphics[width=0.7\textwidth]{img/aztec.png}
 \end{center}
 \vspace{-2mm}
-\caption{Aztec pyramid.}
+\caption{Illustration for exercise D1.}
 \label{fig:aztec}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 
 \noindent
-\underline{\em Exercise 2: Tower of Hanoi}
+\underline{\em Exercise D2: Tower of Hanoi}
 
 Build a model of the Tower of Hanoi game as illustrated in Fig. \ref{fig:hanoi}. 
 The radius of the largest and smallest disc, and the height of the tower 
@@ -1428,7 +1575,7 @@ should be user-defined parameters.
 \includegraphics[width=0.7\textwidth]{img/hanoi.png}
 \end{center}
 \vspace{-2mm}
-\caption{Tower of Hanoi game.}
+\caption{Illustration for exercise D2.}
 \label{fig:hanoi}
 %\vspace{-1cm}
 \end{figure}
@@ -1443,45 +1590,31 @@ should be user-defined parameters.
 Build a corral for horses with variable radius $r$ and variable number 
 of equally-long sides $N$. Also the vertical poles should have general user-defined 
 dimensions $W \times W \times H$. Illustrative images of how the corral should look like 
-are shown in Figs. \ref{fig:corral2} - \ref{fig:corral3}.
+are shown in Fig. \ref{fig:corral2}.
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/tam-3.png}
 \end{center}
 \vspace{-2mm}
-\caption{Corral with eight sides.}
+\caption{Illustration for exercise D3.}
 \label{fig:corral2}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 
-%\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/tam-4.png}
-\end{center}
-\vspace{-2mm}
-\caption{Corral with 32 sides.}
-\label{fig:corral3}
-%\vspace{-1cm}
-\end{figure}
 \noindent
-\noindent
-\underline{\em Exercise 3: Wagon Wheel}
+\underline{\em Exercise D4: Wagon Wheel}
 
 Build a spoked wagon wheel similar to the one in Fig. \ref{fig:wheel-1}. All radiuses 
 and thicknesses should be user-defined, as well as the number of spokes.
-
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/wagonwheel-1.png}
 \end{center}
 \vspace{-2mm}
-\caption{Spoked wagon wheel.}
+\caption{Illustration for exercise D4.}
 \label{fig:wheel-1}
 %\vspace{-1cm}
 \end{figure}

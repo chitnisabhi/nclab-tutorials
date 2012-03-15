@@ -74,6 +74,8 @@
 \vfill
 }}}
 
+%\renewcommand{\thesubsection}{(\alph{subsection})}
+
 \begin{document}
 
 % INPUTTING BACKGROUND IMAGE
@@ -150,60 +152,249 @@ cloning via the File Manager's Project $\rightarrow$ Clone menu.
 
 \section{Creating Simple Objects}
 
-Coming soon.
-
-
-\section{Transformations}
-
-\subsection{Aztec Pyramid}
+\subsection{Blue Brick (A1)}
 
 \begin{verbatim}
 # Import PLaSM:
 from pyplasm import *
 
-# Color:
-color = [0.9, 0.9, 0.9]
+# Define light blue color:
+color = [0, 0, 1]
 
-# Bottom side length:
-BSL = 50.0
+# Create a 3x4x5 brick:
+b = CUBOID([3, 4, 5])
 
-# Top side length:
-TSL = 20.0
+# Display the brick:
+lab.view(b, color)
+\end{verbatim}
+
+
+\subsection{Red Rectangle (A2)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Define light red color:
+color = [1, 0, 0]
+
+# Create a 3x1 rectangle:
+r = CUBOID([3, 1])
+
+# Display the object:
+lab.view(r, color)
+\end{verbatim}
+
+
+\subsection{Orange Octahedron (A3)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Define orange color:
+color = [255/255., 140/255., 0/255.]
+
+# Define the points:
+points = [[0, -1, 1], [0, 1, 1], [0, -1, -1], [0, 1, -1], \
+[2, 0, 0], [-2, 0, 0]]
+
+# Create the convex hull:
+oct = CONVEXHULL(points)
+
+# Display the object:
+lab.view(oct, color)
+\end{verbatim}
+
+
+\subsection{Pink Pentagon (A4)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Import some things from Numpy:
+from numpy import sin, cos, pi
+
+# Define pink color:
+color = [1, 0, 1]
+
+# Number of edges on the base circle:
+N = 5
+
+# Radius of base circle:
+R = 5
+
+# Create the points:
+points = []
+for i in range(N):
+    angle = i * 2. * pi / N
+    points.append([R * cos(angle), R * sin(angle)])
+    
+# Create the convex hull:
+penta = CONVEXHULL(points)
+
+# View the object:
+lab.view(penta, color)
+\end{verbatim}
+
+
+\subsection{Cyan Cone (A5)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Import some things from Numpy:
+from numpy import sin, cos, pi
+
+# Define cyan color:
+color = [0, 1, 1]
+
+# Number of edges on the base circle:
+N = 128
+
+# Radius of base circle:
+R = 5
+
+# Cone height:
+H = 10
+
+# Create the points:
+points = []
+for i in range(N):
+    angle = i * 2. * pi / N
+    points.append([R * cos(angle), R * sin(angle), H])
+
+# Add the tip (0, 0, 0):
+points.append([0, 0, 0])
+    
+# Create the convex hull:
+cone = CONVEXHULL(points)
+
+# View the object:
+lab.view(cone, color)
+\end{verbatim}
+
+
+\subsection{Carmine Cylinder (A6)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Define carmine color:
+color = [150/255., 0/255., 24/255.]
+
+# Number of linear segments on the curved surface:
+N = 128
+
+# Radius:
+R = 5
 
 # Height:
-H = 20.0
+H = 3
 
-# Number of layers:
-N = 10
+# Create the cylinder
+cyl = CYLINDER([R, H])(N)
 
-# Sanity checks:
-ok = True
-if BSL < TSL: 
-    ok = False
-if H <= 0:
-    ok = False
-if N <= 0:
-    ok = False
-
-if ok == True:
-    h = H / float(N)
-    e = BSL
-    de = (BSL - TSL) / float(N)
-    pyramid = CUBOID([e, e, h])
-    for i in range(N-1):
-        e -= de
-        pyramid = TOP([pyramid, CUBOID([e, e, h])])
-    
-    lab.view(c, color)
-else:
-    print "Incorrect input parameters!"
+# View the object:
+lab.view(cyl, color)
 \end{verbatim}
+
+
+\subsection{Topaz Tube (A7)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Define topaz color:
+color = [255/255., 200/255., 124/255.]
+
+# Number of linear segments on the curved surface:
+N = 128
+
+# Inner radius:
+Rin = 1.9
+
+# Outer radius:
+Rout = 2
+
+# Height:
+H = 4
+
+# Create the tube:
+t = TUBE([Rin, Rout, H])(N)
+
+# View the object:
+lab.view(t, color)
+\end{verbatim}
+
+
+\subsection{Sand Sphere (A8)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Define sand color:
+color = [238/255., 214/255., 175/255.]
+
+# Number of linear segments on the curved surface:
+N = 64
+
+# Radius:
+R = 1.0
+
+# Create the sphere:
+s = SPHERE(R)([N, N])
+
+# View the object:
+lab.view(s, color)
+\end{verbatim}
+
+
+\subsection{Turquoise Torus (A9)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Define turquoise color:
+color = [64/255., 224/255., 208/255.]
+
+# Number of linear segments on the curved surfaces:
+N = 64
+
+# Inner radius:
+Rin = 3.0
+
+# Outer radius:
+Rout = 5.0
+
+# Create the torus:
+t = TORUS([Rin, Rout])([N, N])
+
+# View the object:
+lab.view(t, color)
+\end{verbatim}
+
+
+
+
+
+\section{Transformations}
+
+Coming soon.
+
+
 
 
 
 \section{Binary Operations}
 
-\subsection{Ashtray}
+\subsection{Ashtray (C1)}
 
 \begin{verbatim}
 # Import PLaSM:
@@ -247,7 +438,7 @@ out = DIFF([out, cyl1, cyl2])
 lab.view(out, color)
 \end{verbatim}
 
-\subsection{Drilled Cube}
+\subsection{Drilled Cube (D2)}
 
 \begin{verbatim}
 from pyplasm import *
@@ -287,7 +478,111 @@ Coming soon.
 
 \section{The Power of Scripting}
 
-\subsection{Horse Corral}
+\subsection{Aztec Pyramid (D1)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Color:
+color = [0.9, 0.9, 0.9]
+
+# Bottom side length:
+BSL = 50.0
+
+# Top side length:
+TSL = 20.0
+
+# Height:
+H = 20.0
+
+# Number of layers:
+N = 10
+
+# Sanity checks:
+ok = True
+if BSL < TSL: 
+    ok = False
+if H <= 0:
+    ok = False
+if N <= 0:
+    ok = False
+
+if ok == True:
+    h = H / float(N)
+    e = BSL
+    de = (BSL - TSL) / float(N)
+    pyramid = CUBOID([e, e, h])
+    for i in range(N-1):
+        e -= de
+        pyramid = TOP([pyramid, CUBOID([e, e, h])])
+    
+    lab.view(c, color)
+else:
+    print "Incorrect input parameters!"
+\end{verbatim}
+
+\subsection{Tower of Hanoi (D2)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Color:
+color = [184/255., 115/255., 51/255.]
+
+# Bottom radius:
+BR = 40.0
+
+# Top radius:
+TR = 10.0
+
+# Height:
+H = 60.0
+
+# Number of layers:
+N = 8
+
+# Sanity checks:
+ok = True
+if BR < TR: 
+    ok = False
+if H <= 0:
+    ok = False
+if N <= 0:
+    ok = False
+
+if ok == True:
+    # Thickness: 
+    h = H / float(N)
+
+    # Create base plate:
+    plate = CUBOID([7 * BR, 3 * BR, h])
+
+    # Create poles:
+    p1 = CYLINDER([TR/3., H*1.1])(16)
+    p1 = TRANSLATE([1, 2, 3])([1.5 * BR, 1.5 * BR, h])(p1)
+    p2 = TRANSLATE([1])([2*BR])(p1)
+    p3 = TRANSLATE([1])([2*BR])(p2)
+  
+    # Create the tower:
+    e = BR
+    de = (BR - TR) / float(N)
+    tower = CYLINDER([e, h])(64)
+    for i in range(N-1):
+        e -= de
+        tower = TOP([tower, CYLINDER([e, h])(64)])
+    
+    # Put the tower on the plate:
+    tower = TRANSLATE([1, 2, 3])([1.5 * BR, 1.5 * BR, h])(tower)
+    
+    lab.view(STRUCT([plate, p1, p2, p3, tower]), color)
+else:
+    print "Incorrect input parameters!"
+\end{verbatim}
+
+
+\subsection{Horse Corral (D3)}
 
 \begin{verbatim}
 # Import PLaSM:
@@ -339,9 +634,10 @@ for i in range(N):
 lab.view(STRUCT(fence), color)
 \end{verbatim}
 
-\subsection{Spoked Wheel}
+\subsection{Wagon Wheel (D4)}
 
+\begin{verbatim}
 Coming soon.
-
+\end{verbatim}
 
 \end{document}

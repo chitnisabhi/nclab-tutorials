@@ -1839,6 +1839,8 @@ lab.view(out(), [0.9, 0.9, 0.9])
 \noindent
 The corresponding output is shown in Fig. \ref{fig:temple}.
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{img/temple.png}
@@ -1846,6 +1848,112 @@ The corresponding output is shown in Fig. \ref{fig:temple}.
 \vspace{-2mm}
 \caption{Temple.}
 \label{fig:temple}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+
+\subsection{Sprocket}
+
+This example shows a model of a sprocket.
+{\small
+\begin{verbatim}
+# Import PLaSM
+from pyplasm import *
+
+# Define color:
+color = [222/255., 218/255., 72/255.]  
+
+# Number of teeth:
+N = 18
+
+# Width of the tooth:
+x0  = 8
+dx1 = 1
+dx2 = 2.5
+
+# Height of the tooth:
+y0  = 30
+dy1 = 0.5
+dy2 = 4
+
+# Depth of the tooth:
+z1 = 5
+z2 = 8
+
+# Base inner and outer radius, height:
+# (Do not change these)
+base_rin  = 22
+base_rout = 30
+base_h    = 32
+inner_dr  = 3
+
+# Tooth:
+pts_base = [[0, 0, 0], [x0, 0, 0], [x0, y0, 0], [0, y0, 0]]
+pts_mid  = [[dx1, dy1, z1], [x0 - dx1, dy1, z1], [x0 - dx1, y0 - dy1, z1], [dx1, y0 - dy1, z1]]
+pts_top  = [[dx2, dy2, z2], [x0 - dx2, dy2, z2], [x0 - dx2, y0 - dy2, z2], [dx2, y0 - dy2, z2]]
+pts = pts_base + pts_mid + pts_top
+t = CONVEXHULL(pts)
+
+# Base:
+base = TUBE([base_rin, base_rout, base_h])(128)
+tc = JOIN(TRUNCONE([base_rout, base_rout - 1, 1])(64))
+tc = T([3])([base_h])(tc)
+dz = (base_h - y0)/2.
+
+cone = CONE([base_rout, base_rout])(64)
+cone = R([1, 3])(PI)(cone)
+cone = T([3])([40])(cone)
+
+tc = DIFF([tc, cone])
+
+base = T([3])([-dz])(base)
+base = TOP([base, tc])
+
+# Rotate and translate the tooth:
+t = R([2, 3])(PI/2)(t)
+t = R([1, 2])(PI/2)(t)
+t = T([1, 2])([base_rout - 0.3, -x0/2.])(t)
+
+# Calculate the angle of rotation:
+angle = 2*PI/N
+
+# Create all teeth:
+wheel = [base]
+for i in range(N):
+    wheel.append(R([1, 2])(i * angle)(t))
+
+inner = TUBE([base_rin - inner_dr, base_rin, base_h * 0.75])(64)
+inner = T([3])([base_h * 0.25])(inner) 
+
+cub = CUBOID([200, 10, 100])
+cub = T([1, 2])([-100, -5])(cub)
+inner = DIFF([inner, cub])
+
+cub = R([1, 2])(PI/3)(cub)
+inner = DIFF([inner, cub])
+
+cub = R([1, 2])(PI/3)(cub)
+inner = DIFF([inner, cub])
+
+inner = DIFF([inner, cone])
+inner = T([3])([-dz])(inner) 
+
+wheel.append(inner)
+
+lab.view(STRUCT(wheel), color)
+\end{verbatim}
+}
+\noindent
+The corresponding output is shown in Fig. \ref{fig:sprocket}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/sprocket.png}
+\end{center}
+\vspace{-2mm}
+\caption{Sprocket.}
+\label{fig:sprocket}
 %\vspace{-1cm}
 \end{figure}
 \noindent

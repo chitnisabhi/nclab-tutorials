@@ -1450,7 +1450,7 @@ c = CIRCLE(R)([M, N])
 lab.view(c, color)
 \end{verbatim}
 Maps are a powerful way to create arbitrary shapes -- they will be discussed in 
-more detail later.
+more detail in Section \ref{sec:curves}.
 
 \subsection{Cone the correct way -- command CONE}
 
@@ -1605,43 +1605,634 @@ Coming soon.
 
 
 
-\section{Curves and Curved Surfaces I }
+\section{Curves and Curved Surfaces}\label{sec:curves}
 
-Coming soon.
+PLaSM provides extensive support for curved surfaces -- they can be defined
+using Bezier curves, coons patches, ruled surfaces, rorational surfaces, 
+cylindrical and conical surfaces, Hermite surfaces, 
+splines, Cartesian products of 1D curves, etc. These techniques will be 
+discussed in the following, but first let us explain the underlying 
+concept of a MAP.
+
+\subsection{The concept of a MAP}
+
+PLaSM treats curves as 1D objects that are parameterized from an interval,
+and surfaces as 2D objects that are parameterized from a rectangle. In either
+case, the interval or the rectangle is called a {\em referemce domain}. Let 
+us begin with the one-dimensional case: An interval $(0, L)$ that is subdivided 
+into $N$ equally-long parts is created as follows:
+
+\begin{verbatim}
+ref_domain = INTERVAL(L)(N)
+\end{verbatim}
+This interval can be scaled using the SCALE command, and translated to the left or to the 
+right using the TRANSLATE command if needed. A rectangle $(0, L_1) \times (0, L_2)$ is 
+created as follows:
+
+\begin{verbatim}
+dom1 = INTERVAL(L1)(N1)
+dom2 = INTERVAL(L2)(N2)
+ref_domain = POWER([dom1, dom2])
+\end{verbatim}
+This is a standard 2D object so scaling and translation are possible (although usually
+they are not needed).
+
+\subsection{Mapping curves}
+
+A curve is a mapping from the reference domain to $R^3$. In other words,
+it is a function that for each parameter from the reference domain returns a {\em 3D point}.
+For example, the function 
+
+\begin{verbatim}
+def map(x):
+    return [1 + x, 1 + x, 1 + x]
+\end{verbatim}
+will transform the unit interval $(0, 1)$ into an interval with the end points 
+$[1, 1, 1]$ and $[2, 2, 2]$. The function 
+
+\begin{verbatim}
+def map(x):
+    return [cos(x), sin(x), 0]
+\end{verbatim}
+will transform the reference interval $(0, 2\pi)$ into the unit circle in the 
+$xy$-plane. The function 
+
+\begin{verbatim}
+def map(x):
+    return [0, cos(x), sin(x)]
+\end{verbatim}
+will transform the reference interval $(0, 2\pi)$ into the unit circle in the 
+$yz$-plane. The function 
+
+\begin{verbatim}
+def map(x):
+    return [cos(x), sin(x), x]
+\end{verbatim}
+will transform the reference interval $(0, 10\pi)$ into a spiral whose 
+$xy$-plane projection is the unit circle and that in the $z$-direction spans 
+the interval $(0, 10\pi)$.
+
+\subsection{Mapping surfaces}
+
+Now that the reader understands the parameterization of curves, the 
+understanding of surfaces will not be a problem at all. Let us go by 
+example. The function 
+
+\begin{verbatim}
+def map(x, y):
+    return [x, y, 2.5]
+\end{verbatim}
+will just lift a reference rectangle $(0, a)\times(0, b)$ by $2.5$ in the $z$-direction,
+yielding a rectangle with the vertices $[0, 0, 2.5]$, $[a, 0, 2.5]$,
+$[a, b, 2.5]$ and $[0, b, 2.5]$. 
+The function 
+
+\begin{verbatim}
+def map(x, y):
+    return [0, x, y]
+\end{verbatim}
+will transform a reference rectangle $(0, a)\times(0, b)$ (that lies in the $xy$-plane)
+into a rectangle in the $yz$-plane that is given by the points $[0, 0, 0]$, $[0, a, 0]$,
+$[0, a, b]$ and $[0, 0, b]$. 
+
+In the reference rectangle, the first direction may
+stand for radius and the second for angle. Then the function 
+
+\begin{verbatim}
+def map(r, alpha):
+    return [cos(alpha), sin(alpha), sqrt(1 - r**2)]
+\end{verbatim}
+transforms the reference rectangle $(0, 1)\times (0, 2\pi)$ into 
+the upper half of the surface of the unit sphere.
 
 \subsection{2D area with one Bezier edge}
 
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Color:
+color = [0.9, 0.9, 0.9]
+
+# Partition unit interval into 'n' equally-long parts:
+def dom(n): 
+    return INTERVALS(1.0)(n)
+  
+# Bezier curve given by two points is a straight line.
+# The parameter S1 says that this is a 1D curve. 
+c1 = BEZIER(S1)([[0, 0, 0], [0, 4, 0]])
+
+# Cubic curve given by points [2, 0, 0], [4, 1, 0], \
+[0, 2, 0], [1, 3, 0]:
+c2 = BEZIER(S1)([[2, 0, 0], [4, 1, 0], [0, 2, 0], [1, 3, 0]])
+
+# Square to be used for the 2D mapping:
+subdiv = 30
+ref_square = POWER([INTERVALS(1.0)(subdiv),
+INTERVALS(1.0)(subdiv)])
+
+# The final 2D area:
+out = MAP(BEZIER(S2)([c1, c2]))(ref_square)
+lab.view(out, color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-1}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{2D area with one Bezier edge.}
+\label{fig:curves-1}
+%\vspace{-1cm}
+\end{figure}
+
+
 \subsection{2D area with two Bezier edges}
+
+\begin{verbatim}
+# Quadratic curve given by points [0, 0, 0], \
+[-1, 1.5, 0], [0, 3, 0]:
+c1 = BEZIER(S1)([[0, 0, 0], [-1, 1.5, 0], [0, 4, 0]])
+
+# Cubic curve given by points [2, 0, 0], \
+[4, 1, 0], [0, 2, 0], [1, 3, 0]:
+c2 = BEZIER(S1)([[2, 0, 0], [4, 1, 0], \
+[0, 2, 0], [1, 3, 0]])
+
+# The final 2D area:
+out = MAP(BEZIER(S2)([c1, c2]))(ref_square)
+lab.view(out, color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-2}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-2.png}
+\end{center}
+\vspace{-2mm}
+\caption{2D area with two Bezier edges.}
+\label{fig:curves-2}
+%\vspace{-1cm}
+\end{figure}
+
 
 \subsection{Coons patch}
 
-\subsection{Ruled surface}
+Coons patch is a technique that forms a Bezier Patch from 4 lines connected by their end points. Parallel sides have to have the same number points in each line. The center control points are calculated by “a blend of two linear interpolations and one bilinear interpolation”.
 
-\subsection{Profile surface}
+\begin{verbatim}
+Su0=BEZIER(S1)([[0, 4, 0], [2.5, 3, 6], [5, 0, -6], \
+[7.5, 0, 6], [10, 0, 0]])
+Su1=BEZIER(S1)([[0, 6, 0], [2.5, 7, 6], [5, 10, -6], \
+[7.5, 10, 6], [10, 10, 0]])
+Sv0=BEZIER(S2)([[0, 0, 0], [-3, 3, 3], [-3, 7, 3], \
+[0, 10, 0]])
+Sv1=BEZIER(S2)([[10, 0, 0], [15, 6, 0], [10, 10, 0]])
+
+# Square to be used for the 2D mapping:
+subdiv = 50
+ref_square = POWER([INTERVALS(1.0)(subdiv), \
+INTERVALS(1.0)(subdiv)])
+
+out=MAP(COONSPATCH([Su0,Su1,Sv0,Sv1]))(ref_square)
+	 
+# If no color is given, the z-coordinate is used 
+# to calculate the color. 
+lab.view(out)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-3}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-3.png}
+\end{center}
+\vspace{-2mm}
+\caption{Coons patch.}
+\label{fig:curves-3}
+%\vspace{-1cm}
+\end{figure}
 
 \subsection{Rotational surface}
 
+\begin{verbatim}
+# Sample Bezier profile in the xz-plane: 
+parabolic_profile = BEZIER(S1)([[0, 0, 0],[2, 0, 0],[3, 0, 4]])
+  
+# 2D domain where the surface will be mapped:
+ref_domain = POWER([INTERVALS(1)(32), INTERVALS(2*PI)(64)])
+
+# Rotation is about the z-axis:
+out = MAP(ROTATIONALSURFACE(parabolic_profile))(ref_domain)
+ 
+# Display result:
+lab.view(out, color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-4}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-4.png}
+\end{center}
+\vspace{-2mm}
+\caption{Rotational surface.}
+\label{fig:curves-4}
+%\vspace{-1cm}
+\end{figure}
+
+
+\subsection{Solidifying a surface}
+
+\begin{verbatim}
+# Solidify the surface:
+lab.view(JOIN(out), color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-5}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-5.png}
+\end{center}
+\vspace{-2mm}
+\caption{Solidifying surface.}
+\label{fig:curves-5}
+%\vspace{-1cm}
+\end{figure}
+
+
+\subsection{Ruled surface - introduction}
+
+In geometry, a surface S is called ruled (or scroll) if through every point of S there is a straight line that lies on S. The most familiar examples are the plane and the curved surface of a cylinder or cone. The standard definition is S(x, y) = p(x) + y*q(x). Here p(x) is a point that defines a curve lying on the surface, q(x) is a direction vector (ideally of unit length), and the points (x, y) are taken from a reference domain - often a unit square (0, 1)x(0, 1).
+
+\begin{verbatim}
+# In this example, the reference domain in the unit square 
+# (0, 1)x(1, 0). Thus both 'x' and 'y' vary between 0 and 1. 
+# The point p(x) goes from (0, 0, 0) to (1, 0, 0), and at 
+# the same time the vector q(x) changes from (0, 1, 0)
+# to (0, 1, 1). Thus we generate a surface that corresponds
+# to the graph of the bilinear function x*y.
+
+from numpy import sqrt
+
+def p(point):
+    x = point[0]
+    return [x, 0, 0]
+  
+def q(point):
+    x = point[0]
+    return [0, 1, x]
+
+# Unit square covered with a Cartesian grid:  
+ref_domain = POWER([INTERVALS(1.0)(32), INTERVALS(1.0)(32)])
+
+# Creating the ruled surface:
+ruled = MAP(RULEDSURFACE([p, q]))(ref_domain)
+
+# If color is not given, z-values are used to color the plot:
+lab.view(ruled)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-6}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-6.png}
+\end{center}
+\vspace{-2mm}
+\caption{Ruled surface - intro.}
+\label{fig:curves-6}
+%\vspace{-1cm}
+\end{figure}
+
+\subsection{Ruled surface - spiral}
+
+\begin{verbatim}
+# In this example the point p(x) moves along the z-axis and 
+# the direction vector rotates. The result is a spiral surface.
+from numpy import sin, cos
+
+def p(point):
+    x = point[0]
+    return [0, 0, 0.5*x]
+  
+def q(point):
+    x = point[0]
+    return [cos(x), sin(x), 0]
+
+# 2D domain to be used for the map:  
+ref_domain = POWER([INTERVALS(8*PI)(128), INTERVALS(5)(16)])
+
+# Creating the ruled surface:
+ruled = MAP(RULEDSURFACE([p, q]))(ref_domain)
+
+# If color is not given, z-values are used to color the plot:
+lab.view(ruled)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-7}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-7.png}
+\end{center}
+\vspace{-2mm}
+\caption{Ruled surface - spiral.}
+\label{fig:curves-7}
+%\vspace{-1cm}
+\end{figure}
+
+\subsection{Ruled surface - straight cylinder}
+
+\begin{verbatim}
+# In this example we have two circles that correspond to a cylinder.
+# The point p(x) moves on the lower circle and the vector points 
+# just vertically above. Thus we obtain a cylindrical surface. 
+from numpy import sin, cos
+
+# Cylinder radius:
+r = 3.0
+
+# Cylinder height:
+h = 10.0
+
+def p(point):
+    x = point[0]
+    return [r*cos(x), r*sin(x), 0]
+  
+def q(point):
+    x = point[0]
+    return [0, 0, 1]
+
+# 2D domain to be used for the map:  
+ref_domain = POWER([INTERVALS(2*PI)(64), INTERVALS(h)(16)])
+
+# Creating the ruled surface:
+ruled = MAP(RULEDSURFACE([p, q]))(ref_domain)
+
+# If color is not given, z-values are used to color the plot:
+lab.view(ruled, color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-8}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-8.png}
+\end{center}
+\vspace{-2mm}
+\caption{Ruled surface - straight cylinder.}
+\label{fig:curves-8}
+%\vspace{-1cm}
+\end{figure}
+
+\subsection{Ruled surface - curved cylinder}
+
+\begin{verbatim}
+# This example is similar to the one above, but the vector 
+# q(x) is not vertical. Instead, it points ahead on the
+# upper circle.
+from numpy import sin, cos
+
+# Cylinder radius:
+r = 3.0
+
+# Cylinder height:
+h = 10.0
+
+# Angle offset:
+alpha = 0.7 * PI
+
+def p(point):
+    x = point[0]
+    return [r*cos(x), r*sin(x), 0]
+  
+def q(point):
+    x = point[0]
+    return [r/h * (cos(x + alpha) - cos(x)), \
+r/h * (sin(x + alpha) - sin(x)), 1]
+
+# 2D domain to be used for the map:  
+ref_domain = POWER([INTERVALS(2*PI)(64), INTERVALS(h)(32)])
+
+# Creating the ruled surface:
+ruled = MAP(RULEDSURFACE([p, q]))(ref_domain)
+
+# If color is not given, z-values are used to color the plot:
+lab.view(ruled, color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-9}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-9.png}
+\end{center}
+\vspace{-2mm}
+\caption{Ruled surface - curved cylinder.}
+\label{fig:curves-9}
+%\vspace{-1cm}
+\end{figure}
+
+\subsection{Ruled surface - spanning two 3D curves}
+
+\begin{verbatim}
+# We define two 3D curves and create a ruled surface
+# between them. Then we rotate it to create a closed object.
+from numpy import sin, cos, sqrt
+
+# Define the curves:
+def c1(x):
+    return [2*sin(x), 0, x]
+def c2(x):
+    return [0, 2*sin(x), x ]
+  
+# Angle offset:
+alpha = 0.7 * PI
+
+def p(point):
+    x = point[0]
+    return c1(x)
+  
+def q(point):
+    x = point[0]
+    return [c2(x)[0] - c1(x)[0], c2(x)[1] - c1(x)[1], \
+c2(x)[2] - c1(x)[2]]
+  
+# 2D domain to be used for the map:  
+ref_domain = POWER([INTERVALS(PI)(64), INTERVALS(1)(32)])
+
+# Creating the ruled surface:
+ruled = []
+ruled.append(MAP(RULEDSURFACE([p, q]))(ref_domain))
+
+# Rotate and add three more times:
+for i in range(1, 4):
+    ruled.append(R([1, 2])(PI/2)(ruled[i-1]))
+
+# If color is not given, z-values are used to color the plot:
+lab.view(STRUCT(ruled), color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-10}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-10.png}
+\end{center}
+\vspace{-2mm}
+\caption{Ruled surface - spanning two 3D curves.}
+\label{fig:curves-10}
+%\vspace{-1cm}
+\end{figure}
+
+
 \subsection{Cylindrical surface}
+
+\begin{verbatim}
+# Bezier curve in the xy-plane:
+alpha = BEZIER(S1)([[1,1,0],[-1,1,0],[1,-1,0],[-1,-1,0]])
+
+# Ref.domain is the unit square:
+ref_domain = POWER([INTERVALS(1)(64), INTERVALS(1)(8)])
+
+# Height:
+H = 2.0
+
+# Product geometry:
+product_geom = MAP(CYLINDRICALSURFACE([alpha, \
+[0, 0, H]]))(ref_domain)
+
+# Display it:
+lab.view(product_geom, color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-11}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-11.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cylindrical surface.}
+\label{fig:curves-11}
+%\vspace{-1cm}
+\end{figure}
+
 
 \subsection{Conical surface}
 
+\begin{verbatim}
+# Bezier curve in the xy-plane:
+alpha = BEZIER(S1)([[1, 1, 0],[-1, 1, 0], \
+[1, -1, 0],[-1, -1, 0]])
+
+# Ref.domain is the unit square:
+ref_domain = POWER([INTERVALS(1)(64), INTERVALS(1)(8)])
+
+# Height:
+H = 2.0
+
+# Product geometry:
+product_geom = MAP(CONICALSURFACE([[0, 0, H], \
+alpha]))(ref_domain)
+
+# Display it:
+lab.view(product_geom, color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-12}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-12.png}
+\end{center}
+\vspace{-2mm}
+\caption{Conical surface.}
+\label{fig:curves-12}
+%\vspace{-1cm}
+\end{figure}
+
+
+
+\subsection{Profile product surface}
+
+This is a Cartesian product of a Bezier curve in the xy-plane and a Bezier curve in the z-direction. In other words, each horizontal-plane-cut through the resulting surface is the same shape as the one in the xy-plane, just scaled by the curve defined in the z-direction.
+
+\begin{verbatim}
+# Vertical shape:
+alpha = BEZIER(S1)([[0, 0, 0], [2, 0, 0], \
+[0, 0, 4], [1, 0, 5]])
+
+# Base shape in the xy-plane:
+beta = BEZIER(S2)([[0, 0, 0], [3, 0, 0], \
+[3, 3.5, 0], [0, 3, 0]])
+
+# Ref.domain is the unit square:
+ref_domain = POWER([INTERVALS(1)(64), INTERVALS(1)(64)])
+
+out = MAP(PROFILEPRODSURFACE([alpha, beta]))(ref_domain)
+ 
+lab.view(out, color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-13}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-13.png}
+\end{center}
+\vspace{-2mm}
+\caption{Profile product surface.}
+\label{fig:curves-13}
+%\vspace{-1cm}
+\end{figure}
+
+\subsection{Cubic Hermite surface}
+
+\begin{verbatim}
+# First curve:
+c1 = CUBICHERMITE(S1)([[1, 0, 0],[0, 1, 0], \
+[0, 3, 0],[-3, 0, 0]])
+
+# Second curve:
+c2 = CUBICHERMITE(S1)([[0.5, 0, 0], [0, 0.5, 0], \
+[0, 1, 0], [-1, 0, 0]])
+
+# Normal vector for the first curve:
+n1 = [0, 0, 1]
+
+# Normal vector for the second curve:
+n2 = [-1, -1, -1]
+
+# Cubic Hermite surface (function):
+surf = CUBICHERMITE(S2)([c1, c2, n1, n2])
+
+# Reference domain:
+ref_domain = POWER([INTERVALS(1)(32), \
+INTERVALS(1)(32)])
+
+# The 3D object:
+out = MAP(surf)(ref_domain)
+
+# Display it:
+lab.view(out, color)
+\end{verbatim}
+The output is displayed in Fig. \ref{fig:curves-14}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/curves-14.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cubic Hermite surface.}
+\label{fig:curves-14}
+%\vspace{-1cm}
+\end{figure}
 
 
 
 \subsection{Exercises}
 
-\section{Curves and Curved Surfaces II}
+Coming soon...
 
-\subsection{Hermite curves}
-
-Coming soon.
-
-\subsection{Cubic splines}
-
-Coming soon.
-
-\subsection{Exercises}
-
+\begin{verbatim}
+\end{verbatim}
 
 
 
@@ -1689,7 +2280,6 @@ lab.view(out, [0.4, 0.9, 0.6])
 \noindent
 The corresponding output is shown in Fig. \ref{fig:random_cubes}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1719,7 +2309,6 @@ Build an Aztec Pyramid as illustrated in Fig. \ref{fig:aztec}. The length
 on the base edge, length of the top edge, height, and the number of layers
 should be user-defined parameters. 
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1739,7 +2328,7 @@ Build a model of the Tower of Hanoi game as illustrated in Fig. \ref{fig:hanoi}.
 The radius of the largest and smallest disc, and the height of the tower 
 should be user-defined parameters. 
 
-%\newpage
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1752,7 +2341,6 @@ should be user-defined parameters.
 \end{figure}
 \noindent
 
-\newpage
 
 
 \noindent
@@ -1779,6 +2367,8 @@ are shown in Fig. \ref{fig:corral2}.
 
 Build a spoked wagon wheel similar to the one in Fig. \ref{fig:wheel-1}. All radiuses 
 and thicknesses should be user-defined, as well as the number of spokes.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1839,7 +2429,6 @@ lab.view(out(), [0.9, 0.9, 0.9])
 \noindent
 The corresponding output is shown in Fig. \ref{fig:temple}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1890,8 +2479,10 @@ inner_dr  = 3
 
 # Tooth:
 pts_base = [[0, 0, 0], [x0, 0, 0], [x0, y0, 0], [0, y0, 0]]
-pts_mid  = [[dx1, dy1, z1], [x0 - dx1, dy1, z1], [x0 - dx1, y0 - dy1, z1], [dx1, y0 - dy1, z1]]
-pts_top  = [[dx2, dy2, z2], [x0 - dx2, dy2, z2], [x0 - dx2, y0 - dy2, z2], [dx2, y0 - dy2, z2]]
+pts_mid  = [[dx1, dy1, z1], [x0 - dx1, dy1, z1], [x0 - dx1, \
+y0 - dy1, z1], [dx1, y0 - dy1, z1]]
+pts_top  = [[dx2, dy2, z2], [x0 - dx2, dy2, z2], [x0 - dx2, \
+y0 - dy2, z2], [dx2, y0 - dy2, z2]]
 pts = pts_base + pts_mid + pts_top
 t = CONVEXHULL(pts)
 

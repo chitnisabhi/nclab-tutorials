@@ -234,7 +234,7 @@ In the input cell, enter the code:
 
 \begin{verbatim}
 from pyplasm import *
-cube = CUBOID([1, 1, 1])
+cube = CUBE(1)
 lab.view(cube, [0.4, 0.9, 0.6])
 \end{verbatim}
 Then click on the link "run" under the input cell. This will send a request 
@@ -272,10 +272,9 @@ the Sympy, Numpy and Scipy libraries in the introductory course "Meet Your
 New Graphing Calculator". The second line,
 
 \begin{verbatim}
-cube = CUBOID([1, 1, 1])
+cube = CUBE(1)
 \end{verbatim}
-defines a 3D unit cube. The CUBOID command will be explained in more detail below.
-The last line,
+defines a 3D unit cube. The last line,
 
 \begin{verbatim}
 lab.view(cube, [0.4, 0.9, 0.6])
@@ -311,9 +310,7 @@ represents the RGB components defining a color. The numbers need to be between
  
 \subsection{Brick, cube, rectangle, and square -- command CUBOID}
 
-Why is the command called 
-CUBOID and not CUBE? The answer is -- because the command covers more 
-than cubes. With three parameters {\tt [a, b, c]} it will render 
+With three parameters {\tt [a, b, c]} the {\tt CUBOID} command will render 
 a 3D brick with edge lengths {\tt a}, {\tt b} and {\tt c}. Let us change the 
 above code to  
 
@@ -1017,7 +1014,7 @@ $x$-direction:
 
 \begin{verbatim}
 from pyplasm import *
-cube = CUBOID([1, 1, 1])
+cube = CUBE(1.0)
 cube2 = T(1)(1.5)(cube)
 \end{verbatim}
 Another example: We create a unit sphere and move it simultaneously 
@@ -1047,13 +1044,13 @@ when we need to scale, translate, or rotate multiple objects at
 once. For example, let's create a cube with a sphere on top of it.
 It is always important to remember how a newly created
 object is positioned in the global coordinate system. Concretely,
-recall that 
-a CUBOID is aligned with the axes as shown in Fig. \ref{fig:cuboid-1}
+recall that {\tt CUBE} and {\tt CUBOID} are aligned with the 
+axes as shown in Fig. \ref{fig:cuboid-1}
 
 \begin{verbatim}
 from pyplasm import *
 color = [0.9, 0.9, 0.9]
-c = CUBOID([2, 2, 2])
+c = CUBE(2.0)
 c2 = T([1, 2, 3])([1.0, 1.0, 2.0])(c)
 c3 = T([1, 2, 3])([1.0, 1.0, 2.0])(c2)
 \end{verbatim}
@@ -1087,7 +1084,7 @@ For illustration, let us put a sphere on top of a cube:
 
 \begin{verbatim}
 from pyplasm import *
-c = CUBOID([2, 2, 2])
+c = CUBE(2.0)
 s = SPHERE(1.0)([64, 64])
 lab.view(TOP([c, s]), color)
 \end{verbatim}
@@ -1125,7 +1122,7 @@ the rotated cube together with the original one:
 
 \begin{verbatim}
 from pyplasm import *
-cube = CUBOID([1, 1, 1])
+cube = CUBE(1.0)
 cube2 = R([1, 2])(PI)(cube)
 comp = STRUCT([cube, cube2])
 lab.view(comp, [0.4, 0.9, 0.6])
@@ -1156,13 +1153,14 @@ the original cube for comparison:
 
 \begin{verbatim}
 from pyplasm import *
-cube = CUBOID([1, 1, 1])
-cube2 = T([1, 2, 3])([-0.5, -0.5, -0.5])(cube)
-cube3 = R([1, 2])(PI/4)(cube2)
-cube4 = R([2, 3])(PI/4)(cube3)
-cube5 = T(1)(2.0)(cube4)
-comp = STRUCT([cube, cube5])
-lab.view(comp, [0.4, 0.9, 0.6])
+color = [0.4, 0.9, 0.6]
+cube = CUBE(1.0)
+cube2 = R([1, 2])(PI/4)(cube)
+cube2 = R([2, 3])(PI/4)(cube2)
+cube2 = T([1, 2, 3])([1, 1, 1])(cube2)
+
+comp = STRUCT([cube, cube2])
+lab.view(comp, color)
 \end{verbatim}
 The output is shown in Fig. \ref{fig:rot-2}.
 \newpage
@@ -1179,7 +1177,78 @@ The output is shown in Fig. \ref{fig:rot-2}.
 
 \subsection{Exercises}
 
-Coming soon.
+Solutions to all exercises from this section are available in the Solution Manual, and 
+they can be also cloned in NCLab through Project $\rightarrow$ Clone in the 
+File Manager's menu.\\
+
+\noindent
+\underline{\em Exercise B1: Kitchen table}
+
+Create a kitchen table shown in Fig. \ref{fig:b1}. All of its measures should be variable.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/kitchentable.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise B1.}
+\label{fig:b1}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+\underline{\em Exercise B2: Tea table}
+
+Create a round tea table with round legs as
+shown in Fig. \ref{fig:b2}. All of its measures should be variable.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/teatable.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise B2.}
+\label{fig:b2}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+\underline{\em Exercise B3: Padlock}
+
+Use a scaled cylinder and a torus to create a padlock that is shown in Fig. \ref{fig:b3}. 
+All of its measures should be variable.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{img/padlock.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise B3.}
+\label{fig:b3}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+\underline{\em Exercise B4: Bottle}
+
+Use two cylinders and a sphere to create a bottle shown in Fig. \ref{fig:b4}. 
+All of its measures should be variable.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/bottle.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise B4.}
+\label{fig:b4}
+%\vspace{-1cm}
+\end{figure}
+
+
+
+
+
 
 \section{Binary Operations with Objects}
 
@@ -1199,7 +1268,7 @@ circle is the origin.
 
 \begin{verbatim}
 from pyplasm import *
-c = CUBOID([2, 2, 2])
+c = CUBE(2.0)
 s = CYLINDER([1.5, 2])(128)
 lab.view(DIFF([c, s]), [0.4, 0.9, 0.6]) 
 \end{verbatim}
@@ -1237,7 +1306,7 @@ The output is shown in Fig. \ref{fig:diff-2}.
 
 \subsection{Surfaces and solids -- command JOIN} \label{par:join}
 
-Some objects are solids (CUBOID, SPHERE) while others are surfaces (SPHERE, TORUS). 
+Some objects are solids (CUBE, CUBOID, SPHERE) while others are surfaces (SPHERE, TORUS). 
 Attempting to perform any binary operation (DIFF, UNION, INTERSECTION, ...) between
 a solid and a surface will result into an error. This can be circumvented by 
 converting the surface into a solid first, using the command JOIN. For example,
@@ -1245,7 +1314,7 @@ the following program will not work:
 
 \begin{verbatim}
 from pyplasm import *
-c = CUBOID([2, 2, 2])
+c = CUBE(2.0)
 s = SPHERE(1.5)([64, 64])
 lab.view(DIFF([c, s]), [0.9, 0.9, 0.9])
 \end{verbatim}
@@ -1253,7 +1322,7 @@ but this program is correct:
 
 \begin{verbatim}
 from pyplasm import *
-c = CUBOID([2, 2, 2])
+c = CUBE(2.0)
 s = JOIN(SPHERE(1.5)([64, 64]))
 lab.view(DIFF([c, s]), [0.9, 0.9, 0.9])
 \end{verbatim}
@@ -1269,7 +1338,7 @@ as in the previous example.
 
 \begin{verbatim}
 from pyplasm import *
-c = CUBOID([2, 2, 2])
+c = CUBE(2.0)
 s = CYLINDER([1.5, 2])(128)
 lab.view(UNION([c, s]), [0.4, 0.9, 0.6]) 
 \end{verbatim}
@@ -1295,7 +1364,7 @@ of the cube and the cylinder from the previous paragraph:
  
 \begin{verbatim}
 from pyplasm import *
-c = CUBOID([2, 2, 2])
+c = CUBE(2.0)
 s = CYLINDER([1.5, 2])(128)
 lab.view(INTERSECTION([c, s]), [0.4, 0.9, 0.6]) 
 \end{verbatim}
@@ -1324,7 +1393,7 @@ from pyplasm import *
 color = [0.4, 0.9, 0.6]
 
 # Cube.
-c = CUBOID([2, 2, 2])
+c = CUBE(2.0)
 c = T([1, 2, 3])([-1, -1, -1])(c)
 
 # Cylinder.
@@ -1363,7 +1432,7 @@ we XOR the two cubes. The corresponding code reads:
 \begin{verbatim}
 from pyplasm import *
 color = [0.9, 0.9, 0.9]
-c = CUBOID([2, 2, 2])
+c = CUBE(2.0)
 c = T([1, 2])([-1, -1])(c)
 c2 = R([1, 2])(PI/4.)(c)
 lab.view(XOR([c, c2]), color) 
@@ -1390,24 +1459,24 @@ they can be also cloned in NCLab through Project $\rightarrow$ Clone in the
 File Manager's menu.\\
 
 \noindent
-\underline{\em Exercise C1: Ashtray}
+\underline{\em Exercise C1: NCLab icon}
 
-Build a simple model of an ashtray using cylindrical shapes, 
-as illustrated in Fig. \ref{fig:ashtray}.
-All measures should be variable.
+Use a $4 \times 4 \times 4$ brick to create the object shown in 
+Fig. \ref{fig:nclabicon}.
 
-%\newpage
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/ashtray.png}
+\includegraphics[width=0.5\textwidth]{img/nclabicon.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise C1.}
-\label{fig:ashtray}
+\caption{Illustration for exercise C1.}
+\label{fig:nclabicon}
 %\vspace{-1cm}
 \end{figure}
 \noindent
+
 \noindent
 \underline{\em Exercise C2: Drilled Cube}
 
@@ -1416,11 +1485,11 @@ directions, as illustrated in Fig. \ref{fig:drilledcube}.
 The size of the cube as well as the diameter of the holes should 
 be variable. 
 
-%\newpage
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/drilledcube.png}
+\includegraphics[width=0.4\textwidth]{img/drilledcube.png}
 \end{center}
 \vspace{-2mm}
 \caption{Illustration for exercise C2.}
@@ -1428,6 +1497,25 @@ be variable.
 %\vspace{-1cm}
 \end{figure}
 \noindent
+\noindent
+\underline{\em Exercise C3: Ashtray}
+
+Build a simple model of an ashtray using cylindrical shapes, 
+as illustrated in Fig. \ref{fig:ashtray}.
+All measures should be variable.
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/ashtray.png}
+\end{center}
+\vspace{-2mm}
+\caption{Illustration for Exercise C3.}
+\label{fig:ashtray}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
 
 \section{Creating Simple Objects (Continued)} \label{sec:cso2}
 
@@ -1599,16 +1687,12 @@ H = 1.0
 lab.view(EXTRUDE(N, s, H), color)
 \end{verbatim}
 
-\subsection{Exercises}
-
-Coming soon.
-
 
 
 \section{Curves and Curved Surfaces}\label{sec:curves}
 
 PLaSM provides extensive support for curved surfaces -- they can be defined
-using Bezier curves, coons patches, ruled surfaces, rorational surfaces, 
+using Bezier curves, coons patches, ruled surfaces, rotational surfaces, 
 cylindrical and conical surfaces, Hermite surfaces, 
 splines, Cartesian products of 1D curves, etc. These techniques will be 
 discussed in the following, but first let us explain the underlying 
@@ -1700,12 +1784,16 @@ stand for radius and the second for angle. Then the function
 
 \begin{verbatim}
 def map(r, alpha):
-    return [cos(alpha), sin(alpha), sqrt(1 - r**2)]
+    return [r * cos(alpha), r * sin(alpha), sqrt(1 - r**2)]
 \end{verbatim}
 transforms the reference rectangle $(0, 1)\times (0, 2\pi)$ into 
 the upper half of the surface of the unit sphere.
 
 \subsection{2D area with one Bezier edge}
+
+Let us create a 2D quadrilateral that has one cubic Bezier edge. We will learn here
+that a Bezier curve given via two points is a straight line connecting 
+these points, and a cubic Bezier curve is given by four points.
 
 \begin{verbatim}
 # Import PLaSM:
@@ -1713,25 +1801,20 @@ from pyplasm import *
 
 # Color:
 color = [0.9, 0.9, 0.9]
-
-# Partition unit interval into 'n' equally-long parts:
-def dom(n): 
-    return INTERVALS(1.0)(n)
   
 # Bezier curve given by two points is a straight line.
 # The parameter S1 says that this is a 1D curve. 
 c1 = BEZIER(S1)([[0, 0, 0], [0, 4, 0]])
 
-# Cubic curve given by points [2, 0, 0], [4, 1, 0], \
-[0, 2, 0], [1, 3, 0]:
+# Cubic Bezier curve given by four points:
 c2 = BEZIER(S1)([[2, 0, 0], [4, 1, 0], [0, 2, 0], [1, 3, 0]])
 
-# Square to be used for the 2D mapping:
+# Reference square to be used for the 2D mapping:
 subdiv = 30
 ref_square = POWER([INTERVALS(1.0)(subdiv),
 INTERVALS(1.0)(subdiv)])
 
-# The final 2D area:
+# The final 2D area (S2 stands for 2D):
 out = MAP(BEZIER(S2)([c1, c2]))(ref_square)
 lab.view(out, color)
 \end{verbatim}
@@ -1752,13 +1835,15 @@ The output is displayed in Fig. \ref{fig:curves-1}.
 
 \subsection{2D area with two Bezier edges}
 
+This example is similar to the last one, except the curve {\tt c1} is 
+made parabolic by adding one more point into it. The unit reference square 
+is re-used from the last example.
+
 \begin{verbatim}
-# Quadratic curve given by points [0, 0, 0], \
-[-1, 1.5, 0], [0, 3, 0]:
+# Quadratic Bezier curve is given by three points:
 c1 = BEZIER(S1)([[0, 0, 0], [-1, 1.5, 0], [0, 4, 0]])
 
-# Cubic curve given by points [2, 0, 0], \
-[4, 1, 0], [0, 2, 0], [1, 3, 0]:
+# Cubic Bezier curve:
 c2 = BEZIER(S1)([[2, 0, 0], [4, 1, 0], \
 [0, 2, 0], [1, 3, 0]])
 
@@ -1767,6 +1852,8 @@ out = MAP(BEZIER(S2)([c1, c2]))(ref_square)
 lab.view(out, color)
 \end{verbatim}
 The output is displayed in Fig. \ref{fig:curves-2}.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1781,23 +1868,28 @@ The output is displayed in Fig. \ref{fig:curves-2}.
 
 \subsection{Coons patch}
 
-Coons patch is a technique that forms a Bezier Patch from 4 lines connected by their end points. Parallel sides have to have the same number points in each line. The center control points are calculated by “a blend of two linear interpolations and one bilinear interpolation”.
+{\em Coons patch} is a technique that forms a Bezier patch from four Bezier edges connected 
+by their end points. Parallel sides have to have the same number of points. The center control 
+points are calculated by a blend of two linear interpolations and one bilinear interpolation.
+We will also learn in this example that if no {\tt color} is provided in {\tt lab.view()}
+then the output is colored using the values of the z-coordinate (in other words, how a function
+of two variables would be colored).
 
 \begin{verbatim}
-Su0=BEZIER(S1)([[0, 4, 0], [2.5, 3, 6], [5, 0, -6], \
+Su0 = BEZIER(S1)([[0, 4, 0], [2.5, 3, 6], [5, 0, -6], \
 [7.5, 0, 6], [10, 0, 0]])
-Su1=BEZIER(S1)([[0, 6, 0], [2.5, 7, 6], [5, 10, -6], \
+Su1 = BEZIER(S1)([[0, 6, 0], [2.5, 7, 6], [5, 10, -6], \
 [7.5, 10, 6], [10, 10, 0]])
-Sv0=BEZIER(S2)([[0, 0, 0], [-3, 3, 3], [-3, 7, 3], \
+Sv0 = BEZIER(S2)([[0, 0, 0], [-3, 3, 3], [-3, 7, 3], \
 [0, 10, 0]])
-Sv1=BEZIER(S2)([[10, 0, 0], [15, 6, 0], [10, 10, 0]])
+Sv1 = BEZIER(S2)([[10, 0, 0], [15, 6, 0], [10, 10, 0]])
 
 # Square to be used for the 2D mapping:
 subdiv = 50
 ref_square = POWER([INTERVALS(1.0)(subdiv), \
 INTERVALS(1.0)(subdiv)])
 
-out=MAP(COONSPATCH([Su0,Su1,Sv0,Sv1]))(ref_square)
+out = MAP(COONSPATCH([Su0, Su1, Sv0, Sv1]))(ref_square)
 	 
 # If no color is given, the z-coordinate is used 
 # to calculate the color. 
@@ -1816,6 +1908,11 @@ The output is displayed in Fig. \ref{fig:curves-3}.
 \end{figure}
 
 \subsection{Rotational surface}
+
+Rotational surfaces can be created using the {\tt ROTATIONALSURFACE} command.
+The rotation is done about the $z$-axis. To achieve best results, the curve
+should therefore be defined in a plane that contains the $z$-axis, and moreover 
+it should entirely lie on one side of the $z$-axis (without intersecting it).
 
 \begin{verbatim}
 # Sample Bezier profile in the xz-plane: 
@@ -1837,13 +1934,17 @@ The output is displayed in Fig. \ref{fig:curves-4}.
 \includegraphics[width=0.5\textwidth]{img/curves-4.png}
 \end{center}
 \vspace{-2mm}
-\caption{Rotational surface.}
+\caption{Rotational surface created using a quadratic Bezier curve.}
 \label{fig:curves-4}
 %\vspace{-1cm}
 \end{figure}
 
 
 \subsection{Solidifying a surface}
+
+Recall from Paragraph \ref{par:join} that surfaces can be solidified
+using the command {\tt JOIN}. The only thing to keep in mind is that 
+the result will always be a convex hull.  
 
 \begin{verbatim}
 # Solidify the surface:
@@ -1856,7 +1957,7 @@ The output is displayed in Fig. \ref{fig:curves-5}.
 \includegraphics[width=0.5\textwidth]{img/curves-5.png}
 \end{center}
 \vspace{-2mm}
-\caption{Solidifying surface.}
+\caption{Solidifying surface from Fig. \ref{fig:curves-4}.}
 \label{fig:curves-5}
 %\vspace{-1cm}
 \end{figure}
@@ -1864,16 +1965,20 @@ The output is displayed in Fig. \ref{fig:curves-5}.
 
 \subsection{Ruled surface - introduction}
 
-In geometry, a surface S is called ruled (or scroll) if through every point of S there is a straight line that lies on S. The most familiar examples are the plane and the curved surface of a cylinder or cone. The standard definition is S(x, y) = p(x) + y*q(x). Here p(x) is a point that defines a curve lying on the surface, q(x) is a direction vector (ideally of unit length), and the points (x, y) are taken from a reference domain - often a unit square (0, 1)x(0, 1).
+In geometry, a surface $S$ is called {\em ruled} (or {\em scroll}) if through every point of $S$ 
+there is a straight line that lies on $S$. The most familiar examples are the plane and the curved 
+surface of a cylinder or cone. The standard definition is $S(x, y) = p(x) + yq(x)$. Here $p(x)$ is 
+a point that defines a curve lying on the surface, $q(x)$ is a direction vector (ideally of unit length), 
+and the points $(x, y)$ are taken from a reference domain - often a unit square $(0, 1)\times (0, 1)$.
+
+In the first example, the reference domain is the unit square 
+$(0, 1)\times (1, 0)$. Thus both $x$ and $y$ vary between $0$ and $1$. 
+The point $p(x)$ goes from $[0, 0, 0]$ to $[1, 0, 0]$, and at 
+the same time the vector $q(x)$ changes from $[0, 1, 0]$
+to $[0, 1, 1]$. Thus we generate a surface that corresponds
+to the graph of the bilinear function $xy$.
 
 \begin{verbatim}
-# In this example, the reference domain in the unit square 
-# (0, 1)x(1, 0). Thus both 'x' and 'y' vary between 0 and 1. 
-# The point p(x) goes from (0, 0, 0) to (1, 0, 0), and at 
-# the same time the vector q(x) changes from (0, 1, 0)
-# to (0, 1, 1). Thus we generate a surface that corresponds
-# to the graph of the bilinear function x*y.
-
 from numpy import sqrt
 
 def p(point):
@@ -1900,16 +2005,17 @@ The output is displayed in Fig. \ref{fig:curves-6}.
 \includegraphics[width=0.5\textwidth]{img/curves-6.png}
 \end{center}
 \vspace{-2mm}
-\caption{Ruled surface - intro.}
+\caption{Ruled surface - bilinear.}
 \label{fig:curves-6}
 %\vspace{-1cm}
 \end{figure}
 
 \subsection{Ruled surface - spiral}
 
+In this example the point $p(x)$ moves along the $z$-axis and 
+the direction vector rotates. The result is a spiral surface.
+
 \begin{verbatim}
-# In this example the point p(x) moves along the z-axis and 
-# the direction vector rotates. The result is a spiral surface.
 from numpy import sin, cos
 
 def p(point):
@@ -1926,7 +2032,7 @@ ref_domain = POWER([INTERVALS(8*PI)(128), INTERVALS(5)(16)])
 # Creating the ruled surface:
 ruled = MAP(RULEDSURFACE([p, q]))(ref_domain)
 
-# If color is not given, z-values are used to color the plot:
+# Color is not given, so z-values are used to color the plot:
 lab.view(ruled)
 \end{verbatim}
 The output is displayed in Fig. \ref{fig:curves-7}.
@@ -1943,10 +2049,11 @@ The output is displayed in Fig. \ref{fig:curves-7}.
 
 \subsection{Ruled surface - straight cylinder}
 
+In this example we have two circles that correspond to a cylinder.
+The point $p(x)$ moves on the lower circle and the vector points 
+just vertically above. Thus we obtain a standard cylindrical surface. 
+
 \begin{verbatim}
-# In this example we have two circles that correspond to a cylinder.
-# The point p(x) moves on the lower circle and the vector points 
-# just vertically above. Thus we obtain a cylindrical surface. 
 from numpy import sin, cos
 
 # Cylinder radius:
@@ -1974,6 +2081,8 @@ lab.view(ruled, color)
 \end{verbatim}
 The output is displayed in Fig. \ref{fig:curves-8}.
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/curves-8.png}
@@ -1986,10 +2095,11 @@ The output is displayed in Fig. \ref{fig:curves-8}.
 
 \subsection{Ruled surface - curved cylinder}
 
+This example is similar to the one above, but the vector 
+$q(x)$ is not vertical. Instead, it points ahead on the
+upper circle.
+
 \begin{verbatim}
-# This example is similar to the one above, but the vector 
-# q(x) is not vertical. Instead, it points ahead on the
-# upper circle.
 from numpy import sin, cos
 
 # Cylinder radius:
@@ -2033,9 +2143,10 @@ The output is displayed in Fig. \ref{fig:curves-9}.
 
 \subsection{Ruled surface - spanning two 3D curves}
 
+In this exacle we define two 3D curves and create a ruled surface
+between them. Then we rotate it four times to create a closed object.
+
 \begin{verbatim}
-# We define two 3D curves and create a ruled surface
-# between them. Then we rotate it to create a closed object.
 from numpy import sin, cos, sqrt
 
 # Define the curves:
@@ -2072,6 +2183,8 @@ lab.view(STRUCT(ruled), color)
 \end{verbatim}
 The output is displayed in Fig. \ref{fig:curves-10}.
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/curves-10.png}
@@ -2085,9 +2198,12 @@ The output is displayed in Fig. \ref{fig:curves-10}.
 
 \subsection{Cylindrical surface}
 
+Cylindrical surface is a surface obtained via extrusion of a 1D curve 
+lying in the $xy$-plane to the $z$-direction.
+
 \begin{verbatim}
-# Bezier curve in the xy-plane:
-alpha = BEZIER(S1)([[1,1,0],[-1,1,0],[1,-1,0],[-1,-1,0]])
+# Cubic Bezier curve in the xy-plane:
+alpha = BEZIER(S1)([[1,1,0], [-1,1,0], [1,-1,0], [-1,-1,0]])
 
 # Ref.domain is the unit square:
 ref_domain = POWER([INTERVALS(1)(64), INTERVALS(1)(8)])
@@ -2117,12 +2233,16 @@ The output is displayed in Fig. \ref{fig:curves-11}.
 
 \subsection{Conical surface}
 
+Conical surface is a bit similar to the cylindrical one, 
+except that the "rays" from the curve all go to just one
+point that lies above the midpoint of the curve.
+
 \begin{verbatim}
 # Bezier curve in the xy-plane:
 alpha = BEZIER(S1)([[1, 1, 0],[-1, 1, 0], \
 [1, -1, 0],[-1, -1, 0]])
 
-# Ref.domain is the unit square:
+# Ref. domain is the unit square:
 ref_domain = POWER([INTERVALS(1)(64), INTERVALS(1)(8)])
 
 # Height:
@@ -2151,7 +2271,11 @@ The output is displayed in Fig. \ref{fig:curves-12}.
 
 \subsection{Profile product surface}
 
-This is a Cartesian product of a Bezier curve in the xy-plane and a Bezier curve in the z-direction. In other words, each horizontal-plane-cut through the resulting surface is the same shape as the one in the xy-plane, just scaled by the curve defined in the z-direction.
+This is one of the most powerful tools for curved surfaces offered by PLaSM --
+Cartesian product of a Bezier curve in the $xy$-plane and a Bezier curve 
+in the $z$-direction. In other words, each horizontal isoline of the resulting 
+surface has the same shape as the curve in the $xy$-plane. It is just scaled by 
+the curve defined in the $z$-direction.
 
 \begin{verbatim}
 # Vertical shape:
@@ -2183,10 +2307,14 @@ The output is displayed in Fig. \ref{fig:curves-13}.
 
 \subsection{Cubic Hermite surface}
 
+In this example we will connect two Hermite cubic curves
+via a surface whose normal derivative (slope) at the curves
+is given. 
+
 \begin{verbatim}
 # First curve:
-c1 = CUBICHERMITE(S1)([[1, 0, 0],[0, 1, 0], \
-[0, 3, 0],[-3, 0, 0]])
+c1 = CUBICHERMITE(S1)([[1, 0, 0], [0, 1, 0], \
+[0, 3, 0], [-3, 0, 0]])
 
 # Second curve:
 c2 = CUBICHERMITE(S1)([[0.5, 0, 0], [0, 0.5, 0], \
@@ -2227,18 +2355,6 @@ The output is displayed in Fig. \ref{fig:curves-14}.
 
 
 
-\subsection{Exercises}
-
-Coming soon...
-
-\begin{verbatim}
-\end{verbatim}
-
-
-
-
-
-
 \section{The Power of Scripting}
 
 The fact that PLaSM functions are accessible from withing the Python 
@@ -2253,7 +2369,6 @@ $N$ cubes that have the same size, same center, and they are
 randomly rotated. For the purposes of this calculation, we
 set $N = 100$:
 
-{\small
 \begin{verbatim}
 # Import libraries.
 from pyplasm import *
@@ -2262,24 +2377,26 @@ from numpy import *
 # Define 'n' random rotations.
 def randRots(n):
     v = random.random_sample(4*n)
-    return [ [2*PI*v[i],[v[i+1],v[i+2],v[i+3]]] for i in range(0,4*n,4) ]
+    return [[2*PI*v[i], [v[i+1], v[i+2], v[i+3]]] \
+        for i in range(0, 4*n, 4) ]
 
-# Number of cubes to intersect.
+# Number of cubes to intersect:
 N = 100
   
+# Create a cube and move it so that its center is at origin:
+Cube = T([1, 2, 3])([-1, -1, -1])(CUBE(2.0))
+
 # Intersect N randomly rotated cubes.
-Cube = T([1, 2, 3])([-1, -1, -1])(CUBOID([2, 2, 2]))
 rotations = AA(ROTN)(randRots(N))
 out = TREE(COMP([JOIN, INTERSECTION]))(CONS(rotations)(Cube))
 
-# View the result. The numbers between 0 and 1 
-# are RGB components.
-lab.view(out, [0.4, 0.9, 0.6])
+# View the result:
+lab.view(out, [0.9, 0.9, 0.9])
 \end{verbatim}
-}
 \noindent
 The corresponding output is shown in Fig. \ref{fig:random_cubes}.
 
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2291,10 +2408,6 @@ The corresponding output is shown in Fig. \ref{fig:random_cubes}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
-
-
-
-
 
 \subsection{Exercises}
 
@@ -2309,6 +2422,7 @@ Build an Aztec Pyramid as illustrated in Fig. \ref{fig:aztec}. The length
 on the base edge, length of the top edge, height, and the number of layers
 should be user-defined parameters. 
 
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}

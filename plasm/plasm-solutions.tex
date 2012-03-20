@@ -386,15 +386,217 @@ lab.view(t, color)
 
 \section{Transformations}
 
-Coming soon.
+\subsection{Kitchen table (B1)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Some greenish color:
+color = [77/255., 107/255., 80/255.]
+
+# Leg width:
+lw = 0.05
+
+# Leg height:
+lh = 0.80
+
+# Table measures:
+ta = 1.20
+tb = 1.60
+
+# Table thickness:
+tt = 0.02
+
+# Create one leg:
+l1 = CUBOID([lw, lw, lh])
+
+# Create other three legs by translation:
+l2 = T([1])([ta - lw])(l1)
+l3 = T([2])([tb - lw])(l1)
+l4 = T([2])([tb - lw])(l2)
+
+# Top:
+top = CUBOID([ta, tb, tt])
+top = T([3])([lh])(top)
+
+# Put the table together:
+table = STRUCT([l1, l2, l3, l4, top])
+
+# Display it:
+lab.view(table, color)
+\end{verbatim}
 
 
+\subsection{Tea table (B2)}
 
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Some greenish color:
+color = [77/255., 107/255., 80/255.]
+
+# Leg radius:
+lr = 0.01
+
+# Leg height:
+lh = 0.50
+
+# Table radius:
+tr = 0.40
+
+# Table thickness:
+tt = 0.01
+
+# Create one leg:
+l1 = CYLINDER([lr, lh])(12)
+
+# Create other three legs by translation:
+from numpy import sqrt
+tr2 = tr/2.
+l2 = T([1, 2])([tr2, tr2])(l1)
+l3 = T([1, 2])([tr2, -tr2])(l1)
+l4 = T([1, 2])([-tr2, tr2])(l1)
+l1 = T([1, 2])([-tr2, -tr2])(l1)
+
+# Top:
+top = CYLINDER([tr, tt])(64)
+top = T([3])([lh])(top)
+
+# Put the table together:
+table = STRUCT([l1, l2, l3, l4, top])
+
+# Display it:
+lab.view(table, color)
+\end{verbatim}
+
+\subsection{Padlock (B3)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Some greenish color:
+color = [0.9, 0.9, 0.9]
+
+# Base ellipse:
+ra = 3
+rb = 1
+
+# Base height:
+h = 4
+
+# Torus radii:
+rin = 2
+rout = 2.5
+ 
+# Create base.
+base = CYLINDER([ra, h])(64)
+base = S(1)(rb/float(ra))(base)
+ 
+# Torus:
+t = TORUS([rin, rout])([64, 32])
+t = R([1, 3])(PI/2)(t)
+t = T([3])([h])(t)
+
+# Padlock:
+p = STRUCT([base, t])
+  
+# Display it:
+lab.view(p, color)
+\end{verbatim}
+
+\subsection{Bottle (B4)}
+
+\begin{verbatim}
+# Import PLaSM:
+from pyplasm import *
+
+# Some greenish color:
+color = [0, 0.6, 0]
+
+# Base radius:
+r = 4.0
+
+# Base height:
+h = 20.0
+
+# Neck radius and height:
+rn = 1.25
+hn = 8.0
+
+# Create base.
+base = CYLINDER([r, h])(64)
+
+# Create spherical part:
+s = SPHERE(r)([32, 32])
+s = T([3])([h])(s)
+ 
+# Create neck:
+n = CYLINDER([rn, h + r + hn])(32)
+  
+# Padlock:
+b = STRUCT([base, s, n])
+
+# Rotate 90 degrees:
+b = R([1, 3])(-PI/2)(b)
+  
+# Display it:
+lab.view(b, color)
+\end{verbatim}
 
 
 \section{Binary Operations}
 
-\subsection{Ashtray (C1)}
+\subsection{NCLab icon (C1)}
+
+\begin{verbatim}
+# Import PLaSM
+from pyplasm import *
+
+color = [0.9, 0.9, 0.9]
+
+c = CUBE(4)
+c = DIFF([T([1, 2])([-1, -1])(c), c])
+d = T([1])([-1])(CUBOID([4, 2, 3]))
+c = DIFF([c, d])
+e = T([2, 3])([-1, 1])(CUBOID([4, 4, 2]))
+c = DIFF([c, e])
+
+lab.view(c, color)
+\end{verbatim}
+
+
+
+\subsection{Drilled Cube (C2)}
+
+\begin{verbatim}
+from pyplasm import *
+size = 2.0
+radius = 0.8
+color = [0.9, 0.9, 0.9]
+subdiv = 64
+c = CUBE(size)
+c = T([1, 2, 3])([-size/2., -size/2., -size/2.])(c)
+
+height = size + 2.
+cyl = CYLINDER([radius, height])(subdiv)
+cyl = T([3])([-height/2.])(cyl)
+
+c2 = DIFF([c, cyl])
+
+cyl2 = R([1, 3])(PI/2)(cyl)
+
+c3 = DIFF([c2, cyl2])
+
+cyl3 = R([2, 3])(PI/2)(cyl)
+
+c4 = DIFF([c3, cyl3])
+\end{verbatim}
+
+
+\subsection{Ashtray (C3)}
 
 \begin{verbatim}
 # Import PLaSM:
@@ -438,41 +640,14 @@ out = DIFF([out, cyl1, cyl2])
 lab.view(out, color)
 \end{verbatim}
 
-\subsection{Drilled Cube (D2)}
-
-\begin{verbatim}
-from pyplasm import *
-size = 2.0
-radius = 0.8
-color = [0.9, 0.9, 0.9]
-subdiv = 64
-c = CUBOID([size, size, size])
-c = T([1, 2, 3])([-size/2., -size/2., -size/2.])(c)
-
-height = size + 2.
-cyl = CYLINDER([radius, height])(subdiv)
-cyl = T([3])([-height/2.])(cyl)
-
-c2 = DIFF([c, cyl])
-
-cyl2 = R([1, 3])(PI/2)(cyl)
-
-c3 = DIFF([c2, cyl2])
-
-cyl3 = R([2, 3])(PI/2)(cyl)
-
-c4 = DIFF([c3, cyl3])
-\end{verbatim}
 
 
-\section{Creating Simple Objects (Continued)}
+%\section{Creating Simple Objects (Continued)}
+%Coming soon.
 
-Coming soon.
 
-
-\section{Curves and Curved Surfaces}
-
-Coming soon.
+%\section{Curves and Curved Surfaces}
+%Coming soon.
 
 
 

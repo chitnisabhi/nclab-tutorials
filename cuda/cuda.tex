@@ -121,8 +121,9 @@ This publication can be copied and distributed without any restrictions
 as long as reference to NCLab and FEMhub Inc. is preserved.
 
 \subsection*{Acknowledgement}
+We acknowledge Nvidia's generous donation of two C2070 GPU computing processors.
 This publication is based on various free resources on GPU programming,
-CUDA, and PyCuda including NVidia's documentation, http://documen.tician.de/pycuda/tutorial.html,
+CUDA, and PyCuda including Nvidia's documentation, http://documen.tician.de/pycuda/ tutorial.html,
 SciPy tutorials, and others.  
 
 \normalsize
@@ -140,27 +141,226 @@ SciPy tutorials, and others.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
-
-Coming soon.
-
 \section{GPU, CUDA, and PyCUDA}
 
-
-\section{Standard Workflow}
-
-
-\subsection{Importing and initializing PyCUDA}
-
-
-\subsection{Transferring data to GPU}
+{\em Graphical Processing Unit (GPU)} computing belongs to the newest trends in
+Computational Science worldwide. The reason for its attractivity is mainly 
+the high computing power of modern graphics cards. For example, the 
+Nvidia Tesla C2070 GPU computing processor shown in Fig. \ref{fig:tesla} 
+has 448 cores and 6 GB of memory, with peak performance of 1030 and 515 
+GFlops in single and double precision arithmetic, respectively.
 
 
-\subsection{Executing a kernel}
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/tesla.png}
+\caption{Nvidia Tesla C2070.}
+\label{fig:tesla}
+\end{center}
+\end{figure}
+\noindent
+These cards are still quite expensive -- the card shown in Fig. \ref{fig:tesla} costs 
+around \$2,000 as of March 2012. Therefore, GPU computing may not be easily accessible 
+to all who would like to experiment with it. This was the main reason why we decided to 
+include GPU programming in NCLab. 
+
+{\em Compute Unified Device Architecture (CUDA)} is a parallel computing architecture 
+developed by Nvidia for graphics processing. CUDA is the computing engine in 
+Nvidia GPUs that is accessible to software developers through variants of 
+industry standard programming languages.
+
+CUDA bindings are available in many high-level languages including Fortran,
+Haskell, Lua, Ruby, Python and others. We are specifically interested 
+in Python bindings (PyCUDA) since Python is the main programming language 
+of NCLab. PyCUDA was written by Andreas Kl\"ockner (Courant Institute 
+of Mathematical Sciences, New York University).
 
 
-\subsection{Fetching data back from the GPU}
 
+
+
+\section{PyCUDA in NCLab}
+
+In order to make the most of this tutorial, we invite the 
+reader to create an account in NCLab and log in. More instructions 
+on how to do this are given at the beginning of the introductory 
+tutorial "Meet Your New Graphing Calculator" that is available in 
+PDF via a link on NCLab home page {\tt http://nclab.com}. \\
+
+\noindent
+After logging in, you will see a desktop with several icons on it,
+as shown in Fig. \ref{fig:desktop}. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/desktop.png}
+\end{center}
+%\vspace{-2mm}
+\caption{NCLab desktop after login.}
+\label{fig:desktop}
+\end{figure}
+
+\subsection{Cloning Displayed Projects}
+
+All examples that we are going to work with in the following are also available 
+as Displayed Projects. This means that you can clone them by launching the File
+Manager, going to the {\em Project} menu, and clicking on {\em Clone}. This will launch 
+a window with many displayed projects from various areas of programming,
+math and computing. Look for projects whose names start with "PyCUDA - Tutorial".
+After you locate a project that you would like to clone, click on it,
+and then click on the button {\em Clone} at the bottom of the window. This will
+create exact copy of that project in your account, and you can open it 
+by clicking on it in the File Manager. You can change the project in any way 
+you like, the changes will not affect the original Displayed Project. 
+
+
+\subsection{Launching a new PyCUDA project}
+
+Alternatively, you can start by launching an empty PyCUDA project through 
+{\em Programming} $\rightarrow$ {\em PyCUDA}, as shown in Fig. \ref{fig:pycuda}.
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/pycuda.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Launching a new PyCUDA project.}
+\label{fig:pycuda}
+\end{figure}
+\noindent
+
+
+\section{Hello World!}
+
+Let us demonstrate the PyCUDA workflow on a very simple example that 
+generates a 4x4 random array on the CPU, sends it to the GPU where 
+all entries are doubled in parallel, and then the result is sent 
+back to the CPU and displayed. 
+
+\subsection{Import and initialize PyCUDA}
+
+Either clone the displayed project "PyCUDA - Tutorial - 01" or type the following 
+code into a newly opened PyCUDA project:
+\begin{verbatim}
+import pycuda.driver as cuda
+import pycuda.autoinit
+from pycuda.compiler import SourceModule
+\end{verbatim}
+Here, {\tt pycuda.autoinit} serves for automatic initialization, context creation, 
+and cleanup. The {\tt SourceModule} is where a (usually short) C-like code for the 
+GPU is to be written. More about this will be said in a moment. 
+
+\subsection{Generate your data}
+
+Numpy arrays (large matrices) are the most frequently used data type to be 
+transferred to a GPU. So, let us import Numpy and generate a 4x4 random array:
+\begin{verbatim}
+import numpy
+a = numpy.random.randn(4, 4)
+\end{verbatim}
+
+\subsection{Convert your data to single precision if needed}
+
+The array created in Step 2 contains double precision numbers and the GPU units in NCLab can 
+process them (in general, older units cannot). However, if accuracy does not matter so much 
+and we want this job done faster, we can convert the double precision numbers into single precision 
+anyway:
+
+\begin{verbatim}
+a = a.astype(numpy.float32)
+\end{verbatim}
+
+\subsection{Transfer your data to GPU}
+
+First we need to allocate memory on the device using the CUDA driver:
+\begin{verbatim}
+a_gpu = cuda.mem_alloc(a.nbytes)
+\end{verbatim}
+Then we can transfer the Numpy array to the device:
+
+\begin{verbatim}
+cuda.memcpy_htod(a_gpu, a)
+\end{verbatim}
+Notably, the array {\tt a\_gpu} is one-dimensional and on the device we need to 
+handle it as such.
+
+\subsection{Compile your parallel C code and load it on the GPU}
+
+To keep the Hello World example simple, let us write a program that just doubles 
+each entry of the (now one-dimensional) array:
+\begin{verbatim}
+mod = SourceModule("""
+  __global__ void doublify(float *a)
+  {
+    int idx = threadIdx.x + threadIdx.y * 4;
+    a[idx] *= 2;
+  }
+  """)
+\end{verbatim}
+The thing that makes this code interesting is that {\em it only gets executed
+once} -- in 16 different threads. Both the variables {\tt threadIdx.x} and {\tt threadIdx.y}
+contain indices between $0$ and $3$, and the pair is different for each thread. 
+
+\subsection{Call your function}
+
+The code from Step 5 is compiled with the {\tt nvcc} compiler automatically. 
+If there are no errors, we can obtain a pointer to the compiled function:
+
+\begin{verbatim}
+func = mod.get_function("doublify")
+\end{verbatim}
+Then we can call it with {\tt a\_gpu} as the argument, and the block size of 4x4:
+
+\begin{verbatim}
+func(a_gpu, block = (4, 4, 1))
+\end{verbatim}
+
+\subsection{Fetch your results from the GPU}
+
+To fetch the result, first we create an empty array of the same dimensions
+as the original array {\tt a}:
+\begin{verbatim}
+a_doubled = numpy.empty_like(a)
+\end{verbatim}
+Last, we get the result from the GPU:
+\begin{verbatim}
+cuda.memcpy_dtoh(a_doubled, a_gpu)
+\end{verbatim}
+This is it! Now you can start writing your own applications.
+
+\section{Useful Simplifications}
+
+\subsection{Using the driver's InOut() function}
+
+The creation of the auxiliary array {\tt a\_gpu} can be avoided if we do not 
+mind overwriting the original array {\tt a}:
+\begin{verbatim}
+func(cuda.InOut(a), block=(4, 4, 1))
+\end{verbatim}
+
+\subsection{Using GPUArray}
+
+The above code becomes much simpler and shorter using {\tt pycuda.gpuarray}:
+
+\begin{verbatim}
+import pycuda.gpuarray as gpuarray
+import pycuda.driver as cuda
+import pycuda.autoinit
+import numpy
+
+a_gpu = gpuarray.to_gpu(numpy.random.randn(4, 4))
+print "a_gpu ="
+print a_gpu
+
+a_doubled = (2*a_gpu).get()
+print
+print "a_doubled ="
+print a_doubled
+\end{verbatim}
+In the rest of the tutorial we will go through diverse examples where
+you will be able to catch some additional tips and tricks for your 
+specific applications of interest.
 
 \section{Examples}
 

@@ -212,25 +212,56 @@ go
 \end{verbatim}
 
 
-\subsection{C01 - Ten Steps}
+\subsection{C01 - Sprint}
 \begin{verbatim}
 repeat 10
   go
 \end{verbatim}
 
+\subsection{C02 - Lucky Strike}
+\begin{verbatim}
+turn
+repeat 5
+  go
+repeat 12
+  get
+turn
+repeat 5
+  go
+\end{verbatim}
 
+\subsection{C02 - Feelin' Lucky}
+\begin{verbatim}
+go
+repeat 20
+  turn
+repeat 3 
+  go
+get
+repeat 2
+  turn
+repeat 4
+  go
+\end{verbatim}
 
-\subsection{C02 - Nine Gems}
+\subsection{C02 - Garage Sale}
+\begin{verbatim}
+go
+repeat 10
+  put
+repeat 2
+  turn
+go
+\end{verbatim}
+
+\subsection{C05 - String of Gems}
 \begin{verbatim}
 repeat 10
   go
   get
 \end{verbatim}
 
-
-
-
-\subsection{C03 - Diamond Staircase}
+\subsection{C06 - Diamond Staircase}
 \begin{verbatim}
 repeat 10
   turn
@@ -241,9 +272,7 @@ repeat 10
   get
 \end{verbatim}
 
-
-
-\subsection{C04 - Nesting}
+\subsection{C07 - Diamnond Square}
 \begin{verbatim}
 repeat 4
   repeat 7
@@ -252,18 +281,52 @@ repeat 4
   turn
 \end{verbatim}
 
-
-\subsection{D01 - Foggy Road}
+\subsection{C07 - Gems for Friends}
 \begin{verbatim}
-repeat 10
-  go
-  if gem
-    get
+repeat 4
+  # go to the middle:
+  repeat 4
+    go
+  # turn to the left:
+  turn
+  # enter friend's house:
+  repeat 4
+    go
+  # put a gem on the ground:
+  put
+  # turn back:
+  repeat 2
+    turn
 \end{verbatim}
 
+\subsection{D01 - In the Fog}
+\begin{verbatim}
+repeat 10
+  if gem
+    get
+  go
+\end{verbatim}
 
+\subsection{D02 - Stony Meadows}
+\begin{verbatim}
+repeat 14
+  if gem
+    get
+  if not wall
+    # you can go:
+    go
+  else
+    # avoid the stone:
+    turn
+    go
+    repeat 2
+      repeat 3
+        turn
+      go
+    turn
+\end{verbatim}
 
-\subsection{D02 - Secret Chest}
+\subsection{D03 - Secret Chest}
 \begin{verbatim}
 repeat 11
   go
@@ -278,14 +341,24 @@ repeat 11
 \end{verbatim}
 
 
-\subsection{E01 - Looking for Home}
+\subsection{E01 - South West}
 \begin{verbatim}
+# orient the robot to face north:
+while not north
+  turn
+# now turn him to face south:
+repeat 2
+  turn
+# go to the south border of maze:
+while not wall
+  go
+# turn right:
+repeat 3
+  turn
+# walk straight home:
 while not home
   go
 \end{verbatim}
-
-
-
 
 \subsection{E02 - Hide-and-Seek}
 \begin{verbatim}
@@ -296,10 +369,47 @@ while not home
     get
 \end{verbatim}
 
+\subsection{E03 - Walk the Line}
+\begin{verbatim}
+# align the robot with the wall:
+while not wall
+  turn
+repeat 3
+  turn
 
+while not home
+  go
+  turn 
+  if not wall
+    # we are at the end
+    go
+    turn
+  else
+    # not the end yet
+    repeat 3
+      turn
+\end{verbatim}
 
-
-
+\subsection{E04 - Diamond Rectangle}
+\begin{verbatim}
+go
+while not home
+  while gem
+    # collect all gems in the pile:
+    while gem
+      get
+    # move on one step:
+    go
+  # we reached the end - turn 
+  # only if not home yet:
+  if not home
+    repeat 2
+      turn
+    go
+    repeat 3
+      turn
+    go
+\end{verbatim}
 
 \subsection{F01 - Swirling Tornado is Back}
 \begin{verbatim}
@@ -320,9 +430,6 @@ def walk_edge
 while not home
   walk_edge
 \end{verbatim}
-
-
-
 
 \subsection{F02 - Diamond Staircase is Back}
 \begin{verbatim}
@@ -350,9 +457,42 @@ while not home
   one_step
 \end{verbatim}
 
+\subsection{F03 - Four Star Hotel}
+\begin{verbatim}
+# Right turn:
+def rightturn
+  repeat 3
+    turn
+  
+# Shortcut for three commands:
+def gogetgo
+  go
+  get
+  go
 
+# PIck one star:
+def getstar
+  repeat 2
+    go
+  repeat 4
+    gogetgo
+    turn
+  go
+  turn
+  gogetgo
 
-\subsection{F03 - Pirate Ship}
+# Main program:
+repeat 3
+  getstar
+  go
+  rightturn
+getstar
+rightturn
+repeat 3
+  go
+\end{verbatim}
+
+\subsection{F04 - Pirate Ship}
 \begin{verbatim}
 # The three commands below are 
 # elementary and you should be
@@ -414,11 +554,55 @@ while not home
   empty_aisle
 \end{verbatim}
 
+\subsection{F05 - Escape from Alcatraz}
 
+\begin{verbatim}
+# Turn right.
+def turn_right
+  repeat 3
+    turn
+
+# Align the robot so that wall is 
+# on its right.
+def align_with_wall
+  while not wall 
+    turn
+  turn
+
+# Make a step along the wall (and 
+# around a corner if needed). Assumes 
+# that wall is on your right. 
+def step_along_wall
+  while wall 
+    turn
+  go
+  # Check whether there is a corner.
+  turn_right
+  if wall 
+    turn   # No corner.   
+  else     # Corner.
+    go
+    turn_right
+    if wall 
+      turn
+    else 
+      go
+      
+# Step along the wall until you reach 
+# home. Assumes that Karel stands next 
+# to a wall that is connected to an 
+# exterior wall.
+def search_tunnels
+  align_with_wall
+  while not home
+    step_along_wall
+
+while not wall
+  go
+search_tunnels
+\end{verbatim}
 
 \section{Solutions to Selected Additional Games}
-
-
 
 \subsection{Easy - Easy Pick}
 \begin{verbatim}
@@ -427,9 +611,6 @@ while not home
     get
   go
 \end{verbatim}
-
-
-
 
 \subsection{Easy - Gem Jam!}
 \begin{verbatim}
@@ -440,45 +621,6 @@ while not home
         go
     turn
 \end{verbatim}
-
-
-
-
-
-\subsection{Intermediate - Four Star Hotel}
-\begin{verbatim}
-def right_turn
-  repeat 3 
-    turn
-  
-def go_get_go
-  go
-  get
-  go
-
-def get_star
-  repeat 2
-    go
-  repeat 4
-    go_get_go
-    turn
-  go
-  turn
-  go_get_go
-
-repeat 3
-  get_star
-  go
-  right_turn
-get_star
-right_turn
-repeat 3
-  go
-\end{verbatim}
-
-
-
-
 
 \subsection{Intermediate - The Matrix (Solution 1)}
 \begin{verbatim}
@@ -535,6 +677,7 @@ while not home
 \end{verbatim}
 
 \subsection{Intermediate - The Matrix (Solution 2)}
+
 \begin{verbatim}
 # Right turn.
 def turn_right
@@ -594,10 +737,6 @@ repeat 2
 while not home
   go
 \end{verbatim}
-
-
-
-
 
 \subsection{Tough - Ariadne's Thread}
 \begin{verbatim}
@@ -661,10 +800,6 @@ def ariadnes_thread
 ariadnes_thread
 \end{verbatim}
 
-
-
-
-
 \subsection{Tough - Maze Patrol}
 \begin{verbatim}
 # Turn right.
@@ -715,10 +850,6 @@ def maze_patrol
 
 maze_patrol
 \end{verbatim}
-
-
-
-
 
 \end{document}
 

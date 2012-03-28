@@ -231,7 +231,7 @@ Alternatively, you can start by launching an empty PyCUDA project through
 \noindent
 
 
-\section{Hello World!}
+\section{Hello World!}\label{sec:hello}
 
 Let us demonstrate the PyCUDA workflow on a very simple example that 
 generates a 4x4 random array on the CPU, sends it to the GPU where 
@@ -364,7 +364,101 @@ specific applications of interest.
 
 \section{Examples}
 
+All following examples can be cloned via the Project $\rightarrow$ Clone menu.
+We do not copy the codes here as they are well commented, but an overview of 
+interesting features of each example is given.
 
+\subsection{02 - Obtain GPU Card Parameters}
+
+This example shows how to obtain the number of GPU units found in your hardware, and 
+their types and parameters. 
+
+\subsection{03 - Using GPU to Generate Random Data}
+
+This example show how to generate random numbers on the GPU using the {\tt curandom}
+module, and also how to print them nicely using Matplotlib.
+
+\subsection{04 - Fill GPU with Zeros}
+
+This example shows how to determine the size of free and total 
+memory on the GPU via {\tt cuda.mem\_get\_info()}, and how to fill 
+the free memory with zeros.
+
+\subsection{05 - Doubling an Array}
+
+This is a repetition, in a more concise form, of the Introductory Course
+from Section \ref{sec:hello}.
+
+\subsection{06 - Linear Combination via ElementwiseKernel()}
+
+Evaluating involved expressions on GPUArray instances can be somewhat inefficient, because a new temporary is created for each intermediate result. The functionality in the module pycuda.elementwise contains tools to help generate kernels that evaluate multi-stage expressions on one or several operands in a single pass. Usage:
+
+\begin{verbatim}
+class pycuda.elementwise.ElementwiseKernel(arguments, operation, 
+      name="kernel", keep=False, options=[], preamble="")
+\end{verbatim}
+This generates a kernel that takes a number of scalar or vector arguments and performs the scalar operation on each entry of its arguments, if that argument is a vector.
+
+The first argument {\tt arguments} of {\tt ElementwiseKernel()} is specified as a string formatted as 
+a C argument list. The second argument {\tt operation} is specified as a C assignment statement, 
+without a semicolon. Vectors in {\tt operation} should be indexed by the variable i. The argument 
+{\tt name} specifies the name under which the kernel is compiled, {\tt keep} and {\tt options} 
+are passed unmodified to {\tt pycuda.compiler.SourceModule}.
+
+The argument {\tt preamble} specifies some source code that is included before the elementwise 
+kernel specification. You may use this to include other files and/or define functions that 
+are used by operation.
+
+\subsection{07 - Multiplying Two Real Arrays}
+
+This example shows standard multiplication of two randomly generated 
+arrays without employing {\tt ElementwiseKernel()}. 
+
+\subsection{08 - }
+
+\subsection{09 - }
+
+\subsection{10 - }
+
+\subsection{11 - }
+
+\subsection{12 - }
+
+\subsection{13 - }
+
+\subsection{14 - }
+
+\subsection{15 - }
+
+\subsection{16 - }
+
+\subsection{17 - }
+
+\subsection{18 - }
+
+\subsection{19 - }
+
+\subsection{20 - }
+
+\subsection{21 - }
+
+\subsection{22 - }
+
+\subsection{23 - }
+
+\subsection{24 - }
+
+\subsection{25 - }
+
+\subsection{26 - }
+
+\subsection{27 - }
+
+\subsection{28 - }
+
+\subsection{29 - }
+
+\subsection{30 - }
 
 
 \end{document}

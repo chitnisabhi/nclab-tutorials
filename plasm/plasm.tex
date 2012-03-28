@@ -2502,6 +2502,331 @@ and thicknesses should be user-defined, as well as the number of spokes.
 All examples in this section can be cloned in NCLab through 
 Project $\rightarrow$ Clone in the File Manager's menu.
 
+\subsection{Wireframe Globe}
+
+Let us start with something simple - we will create a wireframe model 
+of a globe by translating anf rotating several thin toruses.
+
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/globe-code.png}
+\end{center}
+\vspace{-2mm}
+\caption{The code as seen in NCLab.}
+\label{fig:globe-code}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+The outpur is shown in Fig. \ref{fig:globe}.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/globe.png}
+\end{center}
+\vspace{-2mm}
+\caption{Wireframe model of a globe.}
+\label{fig:globe}
+\vspace{-1cm}
+\end{figure}
+
+\newpage
+
+\subsection{3D Gear}
+
+Let us build a model of a 3D gear in several steps.
+At the beginning, we import PLaSM, define a color, and define parameters
+and measures of one tooth.
+{\small
+\begin{verbatim}
+# Import PLaSM
+from pyplasm import *
+
+# Define color:
+color = [222/255., 218/255., 72/255.]  
+
+# Number of teeth:
+N = 18
+
+# Width of the tooth:
+x0  = 8
+dx1 = 1
+dx2 = 2.5
+
+# Height of the tooth:
+y0  = 30
+dy1 = 0.5
+dy2 = 4
+
+# Depth of the tooth:
+z1 = 5
+z2 = 8
+
+# Base inner and outer radius, height:
+# (Do not change these)
+base_rin  = 22
+base_rout = 30
+base_h    = 32
+
+# Vertices:
+pts_base = [[0, 0, 0], [x0, 0, 0], [x0, y0, 0], [0, y0, 0]]
+pts_mid  = [[dx1, dy1, z1], [x0 - dx1, dy1, z1], [x0 - dx1, y0 - dy1, z1], [dx1, y0 - dy1, z1]]
+pts_top  = [[dx2, dy2, z2], [x0 - dx2, dy2, z2], [x0 - dx2, y0 - dy2, z2], [dx2, y0 - dy2, z2]]
+
+# Merging the point lists:
+pts = pts_base + pts_mid + pts_top
+
+# Toothe is a convexhull of the points:
+t = CONVEXHULL(pts)
+\end{verbatim}
+}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-1.png}
+\end{center}
+\vspace{-2mm}
+\caption{One tooth of the gear.}
+\label{fig:gear-1}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Next we create all teeth by translating and replicating the first one:
+
+{\small
+\begin{verbatim}
+# Rotate and translate the tooth:
+t = R([2, 3])(PI/2)(t)
+t = R([1, 2])(PI/2)(t)
+t = T([1, 2])([base_rout - 0.3, -x0/2.])(t)
+
+# Calculate the angle of rotation:
+angle = 2*PI/N
+
+# Create all teeth:
+gear = []
+for i in range(N):
+    gear.append(R([1, 2])(i * angle)(t))
+\end{verbatim}
+}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-2.png}
+\end{center}
+\vspace{-2mm}
+\caption{All teeth creating by replication of the first one.}
+\label{fig:gear-2}
+%\vspace{-1cm}
+\end{figure}
+\newpage
+
+\noindent
+In the next step we create the base of the gear:
+
+
+{\small
+\begin{verbatim}
+# Base:
+base = TUBE([base_rin, base_rout, base_h])(128)
+dz = (base_h - y0)/2.
+base = T([3])([-dz])(base)
+\end{verbatim}
+}
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-3.png}
+\end{center}
+\vspace{-2mm}
+\caption{Base of the gear.}
+\label{fig:gear-3}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Then we create the top trimming by subtracting a cone from a truncated cone:
+
+{\small
+\begin{verbatim}
+# The trimming is an intersection of two truncated cones:
+tc1 = JOIN(TRUNCONE([base_rout, base_rout - 1, 1])(64))
+tc1 = T([3])([base_h])(tc1)
+
+# Create a second cone:
+cone = CONE([base_rout, base_rout])(64)
+cone = R([1, 3])(PI)(cone)
+cone = T([3])([40])(cone)
+
+# Difference of the cones:
+tc = DIFF([tc1, cone])
+\end{verbatim}
+}
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-4.png}
+\end{center}
+\vspace{-2mm}
+\caption{Top trimming is created by subtracting a cone from a truncated cone.}
+\label{fig:gear-4}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+This is the result:
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-5.png}
+\end{center}
+\vspace{-2mm}
+\caption{Top trimming.}
+\label{fig:gear-5}
+\vspace{-1cm}
+\end{figure}
+\newpage
+
+
+
+\noindent
+Then we attach the trimming and the teeth to the base:
+
+{\small
+\begin{verbatim}
+# Put the trimming on top of the base:
+base = TOP([base, tc])
+
+# Attach teeth to base
+gear.append(base) 
+\end{verbatim}
+}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-7.png}
+\end{center}
+\vspace{-2mm}
+\caption{Attach the trimming and the teeth to the base.}
+\label{fig:gear-7}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+In the last step we create the inner part of the gear. First, we create 
+a tube and three bricks:
+
+{\small
+\begin{verbatim}
+# Inner layer thickness:
+inner_dr  = 3
+
+# Create inner tube:
+inner = TUBE([base_rin - inner_dr, base_rin, base_h * 0.75])(64)
+inner = T([3])([base_h * 0.25])(inner) 
+
+# Define three bricks:
+b1 = CUBOID([50, 10, 35])
+b1 = T([1, 2])([-25, -5])(b1)
+b2 = R([1, 2])(PI/3)(b1)
+b3 = R([1, 2])(PI/3)(b2)
+\end{verbatim}
+}
+
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-8.png}
+\end{center}
+\vspace{-2mm}
+\caption{Base for the inner part and bricks to be subtracted.}
+\label{fig:gear-8}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Next we subtract the three bricks from the tube.
+
+{\small
+\begin{verbatim}
+# Subtract all three bricks from the tube:
+inner = DIFF([inner, b1])
+inner = DIFF([inner, b2])
+inner = DIFF([inner, b3])
+\end{verbatim}
+}
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-9.png}
+\end{center}
+\vspace{-2mm}
+\caption{Result after subtracting the bricks.}
+\label{fig:gear-9}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+Then we subtract the original cone from the inner part.
+{\small
+\begin{verbatim}
+# Subtract cone from inner part:
+inner = DIFF([inner, cone])
+
+# Translate the inner part:
+inner = T([3])([-dz])(inner)
+\end{verbatim}
+}
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-10.png}
+\end{center}
+\vspace{-2mm}
+\caption{Cone to be subtracted from the inner part.}
+\label{fig:gear-10}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+The result is displayed below:
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/gear-12.png}
+\end{center}
+\vspace{-2mm}
+\caption{Result after subtracting the cone.}
+\label{fig:gear-12}
+%\vspace{-1cm}
+\end{figure}
+
+\noindent
+Finally we attach the inner part to the gear, and we display it:
+
+{\small
+\begin{verbatim}
+# Append inner part to gear:
+gear.append(inner)
+
+# Display the gear:
+lab.view(STRUCT(gear), color)
+\end{verbatim}
+}
+\noindent
+The corresponding output is shown in Fig. \ref{fig:gear-last}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/gear-last.png}
+\end{center}
+\vspace{-2mm}
+\caption{Gear.}
+\label{fig:gear-last}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+
+\newpage
+
+
 \subsection{Temple}
 
 This example shows a model of a temple. Take some 
@@ -2543,10 +2868,9 @@ lab.view(out(), [0.9, 0.9, 0.9])
 \noindent
 The corresponding output is shown in Fig. \ref{fig:temple}.
 
-
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{img/temple.png}
+\includegraphics[width=0.9\textwidth]{img/temple.png}
 \end{center}
 \vspace{-2mm}
 \caption{Temple.}
@@ -2554,116 +2878,22 @@ The corresponding output is shown in Fig. \ref{fig:temple}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
+\newpage
 
+\subsection{Pisa Tower}
 
-\subsection{Gear}
-
-This example shows a model of a gear.
-{\small
-\begin{verbatim}
-# Import PLaSM
-from pyplasm import *
-
-# Define color:
-color = [222/255., 218/255., 72/255.]  
-
-# Number of teeth:
-N = 18
-
-# Width of the tooth:
-x0  = 8
-dx1 = 1
-dx2 = 2.5
-
-# Height of the tooth:
-y0  = 30
-dy1 = 0.5
-dy2 = 4
-
-# Depth of the tooth:
-z1 = 5
-z2 = 8
-
-# Base inner and outer radius, height:
-# (Do not change these)
-base_rin  = 22
-base_rout = 30
-base_h    = 32
-inner_dr  = 3
-
-# Tooth:
-pts_base = [[0, 0, 0], [x0, 0, 0], [x0, y0, 0], [0, y0, 0]]
-pts_mid  = [[dx1, dy1, z1], [x0 - dx1, dy1, z1], [x0 - dx1, \
-y0 - dy1, z1], [dx1, y0 - dy1, z1]]
-pts_top  = [[dx2, dy2, z2], [x0 - dx2, dy2, z2], [x0 - dx2, \
-y0 - dy2, z2], [dx2, y0 - dy2, z2]]
-pts = pts_base + pts_mid + pts_top
-t = CONVEXHULL(pts)
-
-# Base:
-base = TUBE([base_rin, base_rout, base_h])(128)
-tc = JOIN(TRUNCONE([base_rout, base_rout - 1, 1])(64))
-tc = T([3])([base_h])(tc)
-dz = (base_h - y0)/2.
-
-cone = CONE([base_rout, base_rout])(64)
-cone = R([1, 3])(PI)(cone)
-cone = T([3])([40])(cone)
-
-tc = DIFF([tc, cone])
-
-base = T([3])([-dz])(base)
-base = TOP([base, tc])
-
-# Rotate and translate the tooth:
-t = R([2, 3])(PI/2)(t)
-t = R([1, 2])(PI/2)(t)
-t = T([1, 2])([base_rout - 0.3, -x0/2.])(t)
-
-# Calculate the angle of rotation:
-angle = 2*PI/N
-
-# Create all teeth:
-wheel = [base]
-for i in range(N):
-    wheel.append(R([1, 2])(i * angle)(t))
-
-inner = TUBE([base_rin - inner_dr, base_rin, base_h * 0.75])(64)
-inner = T([3])([base_h * 0.25])(inner) 
-
-cub = CUBOID([200, 10, 100])
-cub = T([1, 2])([-100, -5])(cub)
-inner = DIFF([inner, cub])
-
-cub = R([1, 2])(PI/3)(cub)
-inner = DIFF([inner, cub])
-
-cub = R([1, 2])(PI/3)(cub)
-inner = DIFF([inner, cub])
-
-inner = DIFF([inner, cone])
-inner = T([3])([-dz])(inner) 
-
-wheel.append(inner)
-
-lab.view(STRUCT(wheel), color)
-\end{verbatim}
-}
-\noindent
-The corresponding output is shown in Fig. \ref{fig:gear}.
+This is a model of the famous tower in Pisa. The code is rather long to be shown
+here, but the reader can clone it in NCLab easily.
+The output is shown in Fig. \ref{fig:pisa-0}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{img/gear.png}
+\includegraphics[width=0.4\textwidth]{img/pisa-0.png}
 \end{center}
 \vspace{-2mm}
-\caption{Gear.}
-\label{fig:gear}
+\caption{Model of the tower in Pisa.}
+\label{fig:pisa-0}
 %\vspace{-1cm}
 \end{figure}
-\noindent
-
-
-
 
 \end{document}

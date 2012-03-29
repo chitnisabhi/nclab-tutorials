@@ -368,28 +368,28 @@ All following examples can be cloned via the Project $\rightarrow$ Clone menu.
 We do not copy the codes here as they are well commented, but an overview of 
 interesting features of each example is given.
 
-\subsection{02 - Obtain GPU Card Parameters}
+\subsection{Obtain GPU Card Parameters}
 
 This example shows how to obtain the number of GPU units found in your hardware, and 
 their types and parameters. 
 
-\subsection{03 - Using GPU to Generate Random Data}
+\subsection{Using GPU to Generate Random Data}
 
 This example show how to generate random numbers on the GPU using the {\tt curandom}
 module, and also how to print them nicely using Matplotlib.
 
-\subsection{04 - Fill GPU with Zeros}
+\subsection{Fill GPU with Zeros}
 
 This example shows how to determine the size of free and total 
 memory on the GPU via {\tt cuda.mem\_get\_info()}, and how to fill 
 the free memory with zeros.
 
-\subsection{05 - Doubling an Array}
+\subsection{Doubling an Array}
 
 This is a repetition, in a more concise form, of the Introductory Course
 from Section \ref{sec:hello}.
 
-\subsection{06 - Linear Combination (with ElementwiseKernel)}
+\subsection{Linear Combination (with ElementwiseKernel)}
 
 Evaluating involved expressions on GPUArray instances can be somewhat inefficient, because a new temporary is created for each intermediate result. The functionality in the module pycuda.elementwise contains tools to help generate kernels that evaluate multi-stage expressions on one or several operands in a single pass. Usage:
 
@@ -409,56 +409,56 @@ The argument {\tt preamble} specifies some source code that is included before t
 kernel specification. You may use this to include other files and/or define functions that 
 are used by operation.
 
-\subsection{07 - Multiplying Two Real Arrays (without ElementwiseKernel)}
+\subsection{Multiplying Two Real Arrays (without ElementwiseKernel)}
 
 This example shows standard multiplication of two randomly generated 
 arrays without employing {\tt ElementwiseKernel}. 
 
-\subsection{08 - Multiplying Two Complex Arrays (with ElementwiseKernel)}
+\subsection{Multiplying Two Complex Arrays (with ElementwiseKernel)}
 
 This example shows the multiplication of two complex arrays using 
 {\tt ElementwiseKernel}.  
 
-\subsection{09 - Matrix Multiplication (Using a Single Block of Threads)}
+\subsection{Matrix Multiplication (Using a Single Block of Threads)}
 
 This example multiples two square matrices together using a \underline{single} block 
 of threads and global memory only. Each thread computes one element of 
 the resulting matrix.
 
-\subsection{10 - Matrix Multiplication (Tiled)}
+\subsection{Matrix Multiplication (Tiled)}
 
 This example multiples two square matrices together using multiple blocks and shared memory. Each thread block is assigned a "tile" of the resulting matrix and is responsible for generating the elements in that tile. Each thread in a block computes one element of the tile. 
 
-\subsection{11 - Using Structs}
+\subsection{Using Structs}
 
 This example shows how to use structs, doubling two real arrays for illustration.
 
-\subsection{12 - Using C++ Templates}
+\subsection{Using C++ Templates}
 
 This example shows how to use C++ templates in PyCUDA.
 You can use them but you must allow 
 name mangling to be used for the templates in order to let nvcc 
 compile them. 
 
-\subsection{13 - Simple Speed Test}
+\subsection{Simple Speed Test}
 
 Very simple speed testing code. This shows you how to run a loop over sin() using different 
 methods with a note of the time each method takes. For the GPU this uses SourceModule, 
 ElementwiseKernel, GPUArray. For the CPU this uses Numpy.
 
-\subsection{14 - Measuring GPU Array Speed}
+\subsection{Measuring GPU Array Speed}
 
 That's what this example does!
 
-\subsection{15 - Convolution}
+\subsection{Convolution}
 
 This sample implements a separable convolution filter of a 2D signal with a Gaussian kernel.
 
-\subsection{16 - Matrix Transpose}
+\subsection{Matrix Transpose}
 
 Matrix Transpose on a GPU.
 
-\subsection{17 -Fast Fourier Transform Using PyFFT }
+\subsection{Fast Fourier Transform Using PyFFT }
 
 This code does the fast Fourier transform on 2d data of any size. 
  It uses the transpose split method to achieve larger sizes and to
@@ -466,44 +466,61 @@ This code does the fast Fourier transform on 2d data of any size.
  split into, is decided by the user based on the available GPU memory 
  and CPU processing cores. 
 
-\subsection{18 - Optimized Matrix Multiplication Using Cheetah}
+\subsection{Optimized Matrix Multiplication Using Cheetah}
 
 PyCuda Optimized Matrix Multiplication 
 Template Meta-programming Example using Cheetah.
 
-\subsection{19 - }
+\subsection{Using Codepy}
 
-\subsection{20 - }
+This example shows how to use Codepy, a C/C++ metaprogramming toolkit for 
+Python developed by Andreas Kl\"ockner. It handles two aspects of native-code 
+metaprogramming: (1) Generating C/C++ source code and (2)
+Compiling this source code and dynamically loading it into the Python interpreter.
 
-\subsection{21 - }
+Both capabilities are meant to be used together, but also work on their own. In particular, the code generation facilities work well in conjunction with PyCuda. Dynamic compilation and linking are so far only supported in Linux with the GNU toolchain.
 
-\subsection{22 - Kernel Concurrency Test}
+\subsection{Using Jinja2 Templates}
+
+Jinja2 is a full featured template engine for Python. It has full unicode support and
+an optional integrated sandboxed execution environment.
+
+\subsection{Rotating an Image}
+
+This example rotates an image on the GPU, using the Image library.
+
+\subsection{Kernel Concurrency Test}
 
 Demonstrates concurrent execution of multiple (2) kernels, using PyCuda. 
 To "prove" that both kernels are executing at the same time, simply comment 
 out line 63. This should break concurrency and the runtime should be doubled.
 
-\subsection{23 - Select to List}
+\subsection{Select to List}
 
 Generate an array of random numbers between 0 and 1.
 List the indices of those numbers that are greater than a given limit.
 
-\subsection{24 - Multiple Threads}
+\subsection{Multiple Threads}
 
 Derived from a test case by Chris Heuser.
 Also see FAQ about PyCUDA and threads.
 
-\subsection{25 - }
+\subsection{Mandelbrot Fractal}
 
-\subsection{26 - }
+This example renders a Mandelbrot fractal using GPU.
 
-\subsection{27 - }
+\subsection{Sparse Solve}
 
-\subsection{28 - Scalar Multiplication}
+Sparse matrix solver on the GPU.
+
+\subsection{Sobel Filter}
+
+Python port of SobelFilter example in NVIDIA CUDA C SDK. Shows how opengl interoperability works.
+
+\subsection{Scalar Multiplication}
 
 This is another speed test.
 
-\subsection{29 - }
 
 
 \end{document}

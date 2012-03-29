@@ -389,7 +389,7 @@ the free memory with zeros.
 This is a repetition, in a more concise form, of the Introductory Course
 from Section \ref{sec:hello}.
 
-\subsection{06 - Linear Combination via ElementwiseKernel()}
+\subsection{06 - Linear Combination (with ElementwiseKernel)}
 
 Evaluating involved expressions on GPUArray instances can be somewhat inefficient, because a new temporary is created for each intermediate result. The functionality in the module pycuda.elementwise contains tools to help generate kernels that evaluate multi-stage expressions on one or several operands in a single pass. Usage:
 
@@ -409,32 +409,67 @@ The argument {\tt preamble} specifies some source code that is included before t
 kernel specification. You may use this to include other files and/or define functions that 
 are used by operation.
 
-\subsection{07 - Multiplying Two Real Arrays}
+\subsection{07 - Multiplying Two Real Arrays (without ElementwiseKernel)}
 
 This example shows standard multiplication of two randomly generated 
-arrays without employing {\tt ElementwiseKernel()}. 
+arrays without employing {\tt ElementwiseKernel}. 
 
-\subsection{08 - }
+\subsection{08 - Multiplying Two Complex Arrays (with ElementwiseKernel)}
 
-\subsection{09 - }
+This example shows the multiplication of two complex arrays using 
+{\tt ElementwiseKernel}.  
 
-\subsection{10 - }
+\subsection{09 - Matrix Multiplication (Using a Single Block of Threads)}
 
-\subsection{11 - }
+This example multiples two square matrices together using a \underline{single} block 
+of threads and global memory only. Each thread computes one element of 
+the resulting matrix.
 
-\subsection{12 - }
+\subsection{10 - Matrix Multiplication (Tiled)}
 
-\subsection{13 - }
+This example multiples two square matrices together using multiple blocks and shared memory. Each thread block is assigned a "tile" of the resulting matrix and is responsible for generating the elements in that tile. Each thread in a block computes one element of the tile. 
 
-\subsection{14 - }
+\subsection{11 - Using Structs}
 
-\subsection{15 - }
+This example shows how to use structs, doubling two real arrays for illustration.
 
-\subsection{16 - }
+\subsection{12 - Using C++ Templates}
 
-\subsection{17 - }
+This example shows how to use C++ templates in PyCUDA.
+You can use them but you must allow 
+name mangling to be used for the templates in order to let nvcc 
+compile them. 
 
-\subsection{18 - }
+\subsection{13 - Simple Speed Test}
+
+Very simple speed testing code. This shows you how to run a loop over sin() using different 
+methods with a note of the time each method takes. For the GPU this uses SourceModule, 
+ElementwiseKernel, GPUArray. For the CPU this uses Numpy.
+
+\subsection{14 - Measuring GPU Array Speed}
+
+That's what this example does!
+
+\subsection{15 - Convolution}
+
+This sample implements a separable convolution filter of a 2D signal with a Gaussian kernel.
+
+\subsection{16 - Matrix Transpose}
+
+Matrix Transpose on a GPU.
+
+\subsection{17 -Fast Fourier Transform Using PyFFT }
+
+This code does the fast Fourier transform on 2d data of any size. 
+ It uses the transpose split method to achieve larger sizes and to
+ use multiprocessing. The number of parts the input image is to be 
+ split into, is decided by the user based on the available GPU memory 
+ and CPU processing cores. 
+
+\subsection{18 - Optimized Matrix Multiplication Using Cheetah}
+
+PyCuda Optimized Matrix Multiplication 
+Template Meta-programming Example using Cheetah.
 
 \subsection{19 - }
 
@@ -442,11 +477,21 @@ arrays without employing {\tt ElementwiseKernel()}.
 
 \subsection{21 - }
 
-\subsection{22 - }
+\subsection{22 - Kernel Concurrency Test}
 
-\subsection{23 - }
+Demonstrates concurrent execution of multiple (2) kernels, using PyCuda. 
+To "prove" that both kernels are executing at the same time, simply comment 
+out line 63. This should break concurrency and the runtime should be doubled.
 
-\subsection{24 - }
+\subsection{23 - Select to List}
+
+Generate an array of random numbers between 0 and 1.
+List the indices of those numbers that are greater than a given limit.
+
+\subsection{24 - Multiple Threads}
+
+Derived from a test case by Chris Heuser.
+Also see FAQ about PyCUDA and threads.
 
 \subsection{25 - }
 
@@ -454,11 +499,11 @@ arrays without employing {\tt ElementwiseKernel()}.
 
 \subsection{27 - }
 
-\subsection{28 - }
+\subsection{28 - Scalar Multiplication}
+
+This is another speed test.
 
 \subsection{29 - }
-
-\subsection{30 - }
 
 
 \end{document}

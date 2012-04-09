@@ -1,0 +1,108 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+
+\topmargin=-0.5cm
+\leftmargin=-2cm
+\rightmargin=0cm
+\oddsidemargin=0cm
+\evensidemargin=2cm
+\textwidth=16.5cm
+\textheight=20cm
+
+\pagestyle{plain}
+
+\begin{document}
+
+\large
+
+\vbox{}
+\vspace{-2cm}
+\begin{figure}[!ht]
+%\hspace{-4mm}
+\includegraphics[width=5cm]{img/logo.png}
+\vspace{4mm}
+\end{figure}
+\noindent
+\begin{center}
+{\Huge Solving Linear Second-Order PDE\\ with the Finite Element Method}\\[3mm]
+Based on Hermes2D ({\tt http://hpfem.org/hermes})\\[6mm]
+\end{center}
+\section{Module Description}
+
+This module is designed to solve general linear second-order
+partial differential equations (PDE) of the form 
+
+$$
+-\sum_{i, j = 1}^d \frac{\partial}{\partial x_i} \left(a_{ij}
+ \frac{\partial u}{\partial x_j}  \right) + \sum_{i=1}^d b_i \frac{\partial u}{\partial x_i}
++ cu = f 
+$$  
+where $d=2$ is the spatial dimension, and $a_{ij}$, $b_i$, $c$ and $f$ are constants,
+which can be different in subdomains. One can prescribe Dirichlet, Neumann, and Newton 
+(Robin) boundary conditions. The boundary conditions can be combined arbitrarily. 
+
+\section{Interesting Special Cases}
+
+With $a_{11} = a_{22} = 1$, $a_{12} = a_{21} = b_1 = b_2 = c = 0$ we obtain 
+the {\em Poisson equation} 
+$$
+-\Delta u = f.
+$$ 
+This equation has several important applications 
+in physics. It is used to model electrostatics ($u$ being the electric 
+potential and $f$ the electric charge density divided by the electric permittivity), 
+stationary heat transfer equation ($u$ being the temperature and $f$ the heat 
+sources or losses), and other diffusive processes.
+
+Setting moreover $f = 0$, one obtains the {\em Laplace equation}
+
+$$
+-\Delta u = 0
+$$ 
+which describes linear magnetostatics ($u$ being the scalar magnetic potential),
+stationary wave equation ($u$ being the amplitude), and it can also be used 
+to compute the shape of an elastic membrane (smallest surface) that spans 
+a closed curve.
+
+With $a_{11} = a_{22} = 1$, $a_{12} = a_{21} = b_1 = b_2 = f = 0$
+and $c < 0$ one obtains the {\em Helmholtz equation}
+
+$$
+-\Delta u - k^2 u = 0
+$$ 
+where $k^2 = -c$ is the square of the wave number.
+
+As the last example, with $a_{11} = a_{22} = D$, $a_{12} = a_{21} = 0$, $b_1 = v_1$, $b_2 = v_2$, and 
+$f = c = 0$ one obtains the {\em stationary advection-diffusion equation}
+
+$$
+-\mbox{div}(D \nabla u) + {\bf v}\cdot \nabla u = 0.
+$$ 
+Here $u$ is the advected quantity, $D > 0$ is the diffusion coefficient, 
+and ${\bf v} = (v_1, v_2)$ is the velocity of the flowing medium that is advecting 
+the quantity $u$.
+
+\section{Boundary Conditions}
+
+One can split the boundary into subsets where different boundary conditions are 
+prescribed:
+\begin{itemize}
+\item {\em Dirichlet conditions}: $u = u^*$ where $u^*$ is a constant.
+\item {\em Neumann conditions}: 
+$$
+\sum_{i, j = 1}^d a_{ij} \frac{\partial u}{\partial x_j} \nu_i = c
+$$
+where $(\nu_1, \nu_2)$ is the unit outer normal vector to the domain's boundary, 
+and $c$ is a constant.
+\item {\em Newton (Robin) conditions}: 
+$$
+\sum_{i, j = 1}^d a_{ij} \frac{\partial u}{\partial x_j} \nu_i  + c_1 u = c_2
+$$
+where $(\nu_1, \nu_2)$ is the unit outer normal vector to the domain's boundary, 
+and $c_1, c_2$ are constants.
+\end{itemize}
+
+
+\end{document}
+

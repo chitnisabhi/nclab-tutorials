@@ -165,37 +165,36 @@ science fiction play R.U.R. (Rossum's Universal Robots).
 
 \subsection{Who is Karel?}
 
-Karel is a little robot that lives in a maze. The maze contains gems that he loves to collect. 
-He was born with a handful of simple commands such as 
+Karel is a little robot that lives in a maze. 
+He was born with five simple commands:
 \begin{itemize}
-\item {\tt go} one step forward, 
-\item {\tt get} a gem, 
-\item {\tt left} turn, 
-\item {\tt right} turn, and 
-\item {\tt put} a gem on the ground. 
+\item {\color{green} \tt go} one step forward, 
+\item {\color{green} \tt get} a gem, 
+\item {\color{green} \tt left} turn, 
+\item {\color{green} \tt right} turn, 
+\item {\color{green} \tt put} a gem on the ground. 
 \end{itemize}
-He has built-in sensors that 
-allow him to check 
+He has five built-in sensors that allow him to check:
 \begin{itemize}
-\item if a {\tt wall} is in his way, 
-\item if a {\tt gem} is within his reach, 
-\item if he is facing {\tt north}, 
-\item if he is at {\tt home}, and 
-\item if his bag is {\tt empty}. 
+\item if a {\color{green} \tt wall} is in his way, 
+\item if a {\color{green} \tt gem} is within his reach, 
+\item if he is facing {\color{green} \tt north,} 
+\item if he is at {\color{green} \tt home,}
+\item if his bag is {\color{green} \tt empty.} 
 \end{itemize}
-You will help him solve various 
+The maze contains gems that he loves to collect. You will help him solve various 
 tasks that he could not accomplish without your help, and on the 
-way you will become a great programmer.
+way you will become a great programmer!
 
 \subsection{What is the {\em one reason} why I should go through this tutorial?}
 
-You will learn to design good algorithms -- an ability that makes
-a great programmer and that is completely language-independent. In other 
+You will learn to design great algorithms -- an ability that 
+is completely language-independent. In other 
 words, you can learn the same with a technically complicated conventional 
 programming language, battling technical problems most of the time,
 or you can learn it with Karel the easy way.
 Despite its simple form, Karel is not a toy language. It contains all elements 
-of a modern procedural programming. The complexity of algorithms 
+of modern procedural programming. The complexity of algorithms 
 that you will encounter in this course ranges from {\em very simple} 
 to {\em very tough}.
 
@@ -203,9 +202,13 @@ to {\em very tough}.
 
 The biggest difference between Karel and all conventional 
 programming languages is that it {\em does not contain any mathematics}.
-Believe it or not -- Karel does not know numbers. The problems that Karel
-is solving are all about logic and programming concepts. The trickiest aspect
-of programming is to {\em design good algorithms}, and Karel will teach you that.
+Believe it or not -- Karel does not know numbers. The exercises that you 
+will be solving will teach you to break complex tasks into simpler ones
+that are easier to handle, and to design simple and elegant algorithms.
+Thanks to the beautiful simplicity of Karel's language, the resulting 
+computer codes are very easy to write as well. The essential aspect
+of programming, really, is to {\em design great algorithms}, and Karel 
+is perfect for that.
  
 After finishing this tutorial, you will be able to transition instantly to
 Python, a powerful modern programming language that is used nowadays across
@@ -215,14 +218,12 @@ thinking -- you will already know.
  
 \section{Getting Started}
 
-In order to make the most of this tutorial, we invite the 
-reader to create an account in NCLab and log in. More instructions 
+In order to make the most of this tutorial, we invite you
+to create an account in NCLab and log in. More instructions 
 on how to do this are given at the beginning of the introductory 
 tutorial "Meet Your New Graphing Calculator" that is available in 
-PDF via a link on NCLab home page {\tt http://nclab.com}.\\
-
-\noindent
-After logging in, you will see a desktop with several icons on it,
+PDF via a link on NCLab home page {\tt http://nclab.com}.
+After login, you will see a desktop with several icons on it,
 as shown in Fig. \ref{fig:desktop}. 
 
 
@@ -259,8 +260,8 @@ These modes will be discussed in more detail later.
 
 \subsection{Cloning Karel projects} \label{cloning}
 
-All programs and games that we will work with in this course are
-available for you to clone into your account. To do this, 
+All programs and games that we will work with are
+available for you to clone. To do this, 
 click on the File Manager icon. In the File Manager's menu go to 
 "Project" and then click on "Clone". This will launch a new window 
 with Displayed Projects as shown in Fig. \ref{fig:cloning}.
@@ -323,12 +324,12 @@ Karel operates in four modes:
 \item Level 5 teaches the basics of parallel programming. This Level is in preparation and it will be available in Full Version only.
 \end{itemize}
 \item {\em Build mode:} This mode allows the user to create custom mazes.
-\item {\em Game mode:} Makes it possible to create and play games. This Level is in preparation and it will be available in Full Version only.
+\item {\em Game mode:} Makes it possible to create and play games. This Level is available in Full Version only.
 \end{itemize}
 
-\section{Lesson One - Beginner}
+\section{Part A - Manual Control}
 
-In the first Lesson you will learn how to guide Karel using the mouse.
+In the first part you will learn how to guide Karel using the mouse.
 There are thirteen games that you can solve. Do not skip levels since each one has something new. Each game can 
 be cloned as described in Paragraph \ref{cloning} (you need to be using NCLab in Full Version). 
 Kids as little as 3 years old were able to do it, so for you it will be a piece 
@@ -351,7 +352,7 @@ Use the buttons on the left to get him home quickly! }
 \end{figure}
 \noindent
 Pressing Start will start 
-the game, and at this time also the buttons Go, Turn, Get and Put appear, 
+the game, and at this time also the buttons Go, Get, Left, Right, and Put appear, 
 as shown in Fig. \ref{fig:a01b}.
 
 \begin{figure}[!ht]
@@ -359,7 +360,7 @@ as shown in Fig. \ref{fig:a01b}.
 \includegraphics[width=0.7\textwidth]{img/a01b.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel can be guided manually, using four buttons located in the left panel.}
+\caption{Karel can be guided manually, using five buttons located in the left panel.}
 \label{fig:a01b}
 \end{figure}
 
@@ -415,7 +416,7 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 \noindent
 
 
-\subsection{A05 - Turn Button}
+\subsection{A05 - Left Button}
 
 {\em Help the robot to collect the gem and return home!}
 
@@ -447,7 +448,7 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 \noindent
 
 
-\subsection{A07 - Swirling Tornado}
+\subsection{A07 - Right Button}
 
 {\em Pick up the two gems and get Karel home!}
 
@@ -456,7 +457,7 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 \includegraphics[width=0.7\textwidth]{img/a07.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel will be swirling like a tornado.}
+\caption{Karel needs to collect two gems and get home.}
 \label{fig:a07}
 \vspace{-1cm}
 \end{figure}
@@ -566,21 +567,24 @@ return home in time!}\\[-7mm]
 \noindent
 \newpage
 
-\section{Lesson Two - Taking the Leap}
+\section{Part B - Bridge to Programming}
 
-In this Lesson you will help Karel solve tasks again,
-but no longer using the mouse. From now on you will be 
-typing commands {\tt go}, {\tt get}, {\tt turn} and {\tt put} 
-instead of pressing the buttons Go, Get, Turn and Put. The 
-commands do exactly the same things as the corresponding buttons.  
-There are only two new rules to remember:
+Next we will start typing commands {\tt go}, {\tt get}, {\tt left}, {\tt right}, and {\tt put} 
+instead of pressing the buttons Go, Get, Left, Right, and Put. You will see that the 
+written commands do exactly the same as the buttons!  
+There are a couple of simple new rules to remember:
 \begin{enumerate} 
-\item Type the commands into the input cell on the left, always one command per line.
-\item The program is run by clicking on the "Run program" button in the menu, or by clicking 
-      on the link "run" under the input cell.
+\item Commands are typed into an input cell on the left (one will appear after you press Start).
+\item Always type one command per line.
+\item You can add a new input cell by clicking on "add" (located under each input cell). 
+      Having multiple input cells can be useful, for example, to test various versions 
+      of your program, or if you want to run parts of your program separately. 
+\item Run programs via the blue arrow button in the menu (this will run all 
+      cells). Each cell can be run separately by clicking on "run" (located under 
+      each input cell). 
 \end{enumerate}
-You can clone all games in this Lesson into your account via the File Manager's Project
-menu, same as you did with the games in Lesson 1, and moreover you can clone their solutions. 
+You can clone all games in this part into your account via the File Manager's Project
+menu, same as you did with the games in Part A, and moreover you can clone their solutions. 
 Solution manual in PDF is also provided. 
 
 \subsection{B01 - Go Command}
@@ -616,18 +620,18 @@ Remember that typing "get" is the same as pressing the Get button.}\\[-7mm]
 \end{figure}
 \noindent
 
-\subsection{B03 - Turn Command}
+\subsection{B03 - Left and Right Commands}
 
 {\em Write a program for Karel to collect the gem and return 
-home! Remember: Typing "turn" is exactly the same as pressing 
-the Turn button.}\\[-7mm]
+home! Remember: Typing "left" or "right" is exactly the same as pressing 
+the Left or Right button, respectively.}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{img/b03.png}
 \end{center}
 \vspace{-4mm}
-\caption{Navigating to the left and to the right via the {\tt turn} command.}
+\caption{Turning to the left and to the right via the {\tt left} and {\tt right} commands.}
 \label{fig:b03}
 \vspace{-4mm}
 \end{figure}
@@ -652,43 +656,50 @@ Writing "put" is exactly the same as pressing the Put button.}
 \noindent
 
 
-\section{Lesson Three - Making It Short and Elegant}
+\section{Part C - Making It Short and Elegant}
 
-In Lesson Two you learned that Karel accepts commands and that he always obeys 
-them exactly. Sometimes even {\em too exactly}, meaning that you may have planned
-something different from what the robot actually did. Do not worry about that, this
-is happening all the time and even to the greatest programmers. But it helps to be careful and 
+In Part B we learned that Karel accepts written commands as an alternative to 
+manual control. He always obeys the commands {\em exactly}. It may happen that 
+you plan one thing, tell it to the robot, but the robot does something different.
+In that case you need to go back, look at your program, and see where the 
+problem is. This is called {\em debugging}. Depending on how careful you 
+were while preparing and writing your program, and how complex the program is,
+this may take quite a bit of time.
+
+It really helps to be careful and 
 think twice before writing a program. You have to go in your mind through 
 all the commands that you want the robot to follow. You have to play the program 
 in your head, then the robot will do exactly what you want him to do. 
 
-This Lesson will teach you a simple and elegant way to save lots of typing 
+Now we will learn a simple and elegant way to save lots of typing 
 by using the {\tt repeat} command. It is very simple. Imagine that you want the
-robot to turn to the right. To do this, he needs to turn three times to the left:
+robot to make a 360 degree spin. To do this, he needs to turn four times to the 
+left (or to the right, it really does not matter):
 
 \begin{verbatim}
-turn
-turn
-turn
+left
+left
+left
+left
 \end{verbatim}
-But the same can be achieved by telling Karel to {\tt repeat} the {\tt turn} command {\tt 3} times:
+But the same can be achieved by telling Karel to {\tt repeat} the {\tt left} command {\tt 4} times:
 
 \begin{verbatim}
-repeat 3
-  turn
+repeat 4
+  left
 \end{verbatim}
-Notice that the command {\tt turn} is indented by two characters. This is important
-because it means that the command {\tt turn} is in the {\em body} of the {\tt repeat} 
-command. If we want to repeat multiple commands, then all of them need to be indented. 
-For example, to repeat {\tt go} and {\tt turn} three times, we type:
+Notice that the command {\tt left} is indented by two characters. This is important
+because it means that the command {\tt left} is in the {\em body} of the {\tt repeat} 
+command. If we want to repeat multiple commands, then all of them need to be indented
+like this. For example, to repeat {\tt go} and {\tt left} three times, we type:
 
 \begin{verbatim}
 repeat 3
   go
-  turn
+  left
 \end{verbatim}
-That's it! Enough of studying, now let's go play some computer
-games. As before, you can clone all of them via the File Manager's Project menu.
+That's it! Enough of studying, now let's go play some games again. 
+As before, you can clone all of them via the File Manager's Project menu.
 
  
 \subsection{C01 - Sprint}
@@ -710,7 +721,7 @@ games. As before, you can clone all of them via the File Manager's Project menu.
 
 \subsection{C02 - Lucky Strike}
 
-{\em Karel is about to find a pile of 12 gems! Write a program for the robot to collect the gems and get home. Use the {\tt repeat} command for any repeated action. Remember to use an indent of 2 or 4 empty characters on the new line after each {\tt repeat} command. You have to cancel the indentation when the next command to come does no longer belong to the last {\tt repeat}. }
+{\em Karel is about to find a pile of 12 gems! Write a program for the robot to collect the gems and get home. Use the {\tt repeat} command for any repeated action. Remember to use an indent of 2 or 4 empty characters on the new line after each {\tt repeat} command. You have to cancel the indentation when the next command to come does no longer belong to the body of the {\tt repeat} command. }
 
 \begin{figure}[!ht]
 \begin{center}
@@ -769,7 +780,7 @@ action.}
 
 {\em Write a program for Karel to collect all nine gems and get home! 
 Writing one command per line, your program should not have more 
-than \underline{three lines}.}.
+than three lines.}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -782,86 +793,28 @@ than \underline{three lines}.}.
 \end{figure}
 \noindent
 
-
-\subsection{C06 - Diamond Staircase}
-
-{\em Write a program for Karel to collect all gems and get home! 
-With one command per line, your program should be no longer than \underline{7 lines}.}
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/c06.png}
-\end{center}
-\vspace{-4mm}
-\caption{This time Karel has to do some climbing.}
-\label{fig:c06}
-\vspace{-4mm}
-\end{figure}
-\noindent
-
-\newpage
-
-\subsection{C07 - Diamond Square}
-
-{\em In programming, it is of essence to recognize repeating patterns. 
-Write a program for Karel to collect all gems surrounding the square 
-and get back home! Note two level of repetitions - the square has four 
-edges, and it takes 7 steps to walk each edge. With one command per 
-line, your program should have at most 5 lines.}
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/c07.png}
-\end{center}
-\vspace{-4mm}
-\caption{This time Karel will need two nested {\tt repeat} commands.}
-\label{fig:c07}
-\vspace{-4mm}
-\end{figure}
-\noindent
-
-\subsection{C08 - Gems for Friends}
-
-{\em Karel has three gems in his bag, that he wants to give to his three friends R2, D2 and Marvin who live close by. They are very good friends, so Karel is allowed to enter their homes at any time. Write a program for Karel to put a gem on the ground in the middle of each friend's home, and then get back to his own house! Hint: There will be an outer loop of four repetitions, that will contains inner repetitions in it. }
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/c08.png}
-\end{center}
-\vspace{-4mm}
-\caption{Karel is going to give gems to his three friends R2, D2 and Marvin.}
-\label{fig:c08}
-\vspace{-4mm}
-\end{figure}
-\noindent
-
-
-
-\section{Lesson Four - Using Sensors}
+\section{Part D - Sensors and Conditions}
 
 Karel has five built-in sensors to better navigate in the maze. 
 The first one is an infrared sensor that the robot uses to determine 
 whether it is safe to move forward, or whether there is a wall ahead.
-The usage can be illustrated on a simple program "Careful step" 
+The usage can be illustrated using a simple program "Careful step" 
 where Karel first checks whether there is a wall ahead before
-making a step. If there is wall, he does not crash into it but turns 
-back instead: 
+making a step. If there is wall, he turns back: 
 
 \begin{verbatim}
 # Program "Careful step".
 if wall
-  turn
-  turn
+  repeat 2
+    left
 else
   go
 \end{verbatim}
 Note that the symbol {\tt \#} introduces a comment, meaning that the line 
 of code behind it is ignored by the robot.
-The {\tt else} branch does not have to be there. Notice the indentation 
+The {\tt else} branch does not have to be there if it is not needed. Notice the indentation 
 of the bodies of the {\tt if} and {\tt else} branches - this is analogous 
-to how we indented the body of the {\tt repeat} command.
+to how we indent the body of the {\tt repeat} command.
 
 Besides {\tt wall}, the robot can check the following:
 \begin{itemize}
@@ -877,16 +830,16 @@ For illustration, the previous program can be rewritten as follows, without chan
 if not wall
   go
 else
-  turn
-  turn
+  repeat 2
+    left
 \end{verbatim}
-BEWARE -- if you crash the robot into a wall, if you ask him to collect a gem where there
-is none, or if you ask him to put a gem on the ground while 
-his bag is empty, {\bf he will throw an error.}. Throwing an error 
-means to say something impolite and go on strike!\\
 
-\noindent
-Now let's go play some games.
+\subsection*{Errors}
+This is important: If you crash the robot into a wall, if you ask him to collect a gem where there
+is none, or if you ask him to put a gem on the ground while 
+his bag is empty, {\bf he will throw an error.}. This means that 
+he will write a complaint for you, and he will stop executing the program. 
+
 
 \subsection{D01 - In the Fog}
 
@@ -894,7 +847,7 @@ Now let's go play some games.
 He cannot see where they are exactly since his sensor only tells him if a gem is right 
 under him.  And besides that, nothing is visible in today's foggy weather anyway. 
 Write a program for Karel to collect all gems and get home. With one command per 
-line, your program should have at most \underline{4 lines}.}
+line, your program should have at most 4 lines.}
 
 
 \begin{figure}[!ht]
@@ -902,7 +855,7 @@ line, your program should have at most \underline{4 lines}.}
 \includegraphics[width=0.7\textwidth]{img/d01.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel needs to rely on his sensors now!}
+\caption{With zero visibility, Karel needs to rely on his sensors.}
 \label{fig:d01}
 \vspace{-4mm}
 \end{figure}
@@ -932,15 +885,14 @@ avoiding stones, and collecting all three gems!  }
 
 
 
-\subsection{D03 - Secret Chest}
+\subsection{D03 - Filling the Blanks}
 
 {\em Karel stores all his gems in a secret chest in his cellar. 
 Currently, some shelves are empty. Write a program for Karel to 
 inspect all shelves and put a gem where one is missing! After that, he needs to get 
 home as usual. With one 
-command per line, your program should have at most \underline{7 lines}.}
+command per line, your program should have at most 7 lines.}
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -955,11 +907,13 @@ command per line, your program should have at most \underline{7 lines}.}
 
 
 
-\section{Lesson Five - The Smart Loop}
+\section{Part E - The Smart Loop}
 
-Sometimes Karel needs to repeat something even though he does not know 
-the number of repetitions a-priori. This can be the case, for example, 
-when he is asked to walk straight ahead until he reaches the closest wall:
+Sometimes Karel needs to repeat something not knowing how many repetitions
+there will be. This can be the case, for example, 
+when he is asked to walk straight ahead until he reaches the closest wall
+(remember that he only can see walls that are right ahead of him; walls 
+that are further away he can't see). Such a program would be:
 
 \begin{verbatim}
 while not wall
@@ -971,48 +925,51 @@ Or, he may be asked to walk until he gets home:
 while not home
   go
 \end{verbatim}
-Or, he may be asked to empty his bag although he does not know how 
-many gems are in it: 
+Or, he may be asked to empty his bag (he does not know how many gems are in it): 
  
 \begin{verbatim}
 while not empty
   put
 \end{verbatim}
-Or, he may be asked to collect all gems from a pile although he does
-not know how many gems there are:
+Or, he may be asked to collect all gems from a pile (he does not know 
+how many gems there are):
 
 \begin{verbatim}
 while gem
   get
 \end{verbatim}
-Or, to give a last example, we may ask him to turn to face North, 
-although he does not know at the moment which direction he is
-facing:
+Or we may ask him to turn to face North (he does not know which direction he is
+facing):
 
 \begin{verbatim}
 while not north
-  turn
+  left
 \end{verbatim}
-Just for fun, let us introduce one more example where Karel is asked to 
+At last, Karel is asked to 
 turn South, walk straight ahead until he reaches the closest wall, and 
 collect all gems that he can find on the way:
 
 \begin{verbatim}
-# First turn south.
+# First turn North.
 while not north
-  turn
+  left
+
+# Then turn South.
 repeat 2
-  turn
+  left
+
 # Go straight ahead and pick all gems.
 while not wall
   if gem
     get
   go
-# Pick gem at the wall if any.
+
+# Pick gem at the wall (if any).
 if gem
   get
 \end{verbatim}
-
+Notice that we first need to turn the robot to face North -- this is because North 
+is the only direction that he can check!
 
 \subsection{E01 - South West}
 
@@ -1027,7 +984,7 @@ if gem
 \vspace{-4mm}
 \caption{Karel only knows that his home is in the SW corner of the maze.}
 \label{fig:e01}
-\vspace{-12mm}
+%\vspace{-12mm}
 \end{figure}
 \noindent
 
@@ -1038,7 +995,7 @@ if gem
 ahead to find them. When he finds a gem, he has to turn left and keep 
 walking. Eventually, he will get to the place where his friends are 
 hiding. If he gets home, stop. Write a program for Karel to do this, 
-and do not forget to collect all the gems on the way!}\\[-7mm]
+and do not forget to collect all the gems on the way!}\\[-4mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1067,6 +1024,321 @@ and do not forget to collect all the gems on the way!}\\[-7mm]
 \end{figure}
 \noindent
 
+\section{Part F - Defining Custom Commands}
+
+\noindent
+{\em Always look for small tasks that can be solved independently of the big ones.
+Solve the small tasks first, and you'll see that the big task gets simpler. The 
+importance of what we just said cannot be stressed more. Please read these three 
+lines once more.}\\
+
+\noindent
+The fact that you are reading this line of text proves that you are not 
+a perfect programmer yet. Otherwise you would be stuck forever in the 
+previous paragraph that is an infinite loop!
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.3\textwidth]{img/smiley.png}
+\end{center}
+\vspace{-1cm}
+\end{figure}
+
+\newpage
+
+\subsection*{Defining new commands}
+New commands for simpler tasks are defined using the reserved word 
+{\tt def}. For example, in a program where the robot needs to turn back
+many times, it is a good idea to define a new command {\tt back}
+as follows:
+
+\begin{verbatim}
+def back
+  repeat 2
+    left
+\end{verbatim}
+
+\subsection*{Revisiting exercise A07}
+
+Let us return to the exercise A07 - Right Button for a moment.
+A really bad program to solve this task would be:
+
+{\small
+\begin{verbatim}
+right
+go
+go
+go
+go 
+get
+right
+go
+go
+go
+go 
+get
+right
+go
+go
+go
+go
+get
+\end{verbatim}
+}
+\noindent
+Can you see how many times the same code is repeated?! In order to fix this, 
+we should define new command {\tt foursteps} as
+follows:
+
+{\small
+\begin{verbatim}
+def foursteps
+  repeat 4
+    go
+\end{verbatim}
+}
+\noindent
+With this new command, the above code simplifies to 
+
+{\small
+\begin{verbatim}
+right
+foursteps
+get
+right
+foursteps
+get
+right
+foursteps
+get
+\end{verbatim}
+}
+\noindent
+There are still repetitions that must be eliminated! So we define a new command 
+{\tt walkedge}:
+
+{\small
+\begin{verbatim}
+def walkedge
+  right
+  foursteps
+  get
+\end{verbatim}
+}
+\noindent
+Now with the new commands {\tt foursteps} and
+{\tt walkedge}, our program simplifies to:
+
+{\small
+\begin{verbatim}
+while not home
+  walkedge
+\end{verbatim}
+}
+\noindent
+It is the task of the first game in this part to implement this program. But before we 
+do so, let us mention one very important thing.
+
+\subsection*{Solution procedure revisited (and corrected)}
+
+
+An experienced programmer would never solve the problem the way we did.
+He would first look at the problem, trying to recognize repeating patterns. 
+He would find that the task can be fulfilled by repeating one simpler task 
+three times. So, without knowing exactly how the smaller task is going to 
+be solved, he would write:
+
+{\small
+\begin{verbatim}
+while not home
+  walkedge
+\end{verbatim}
+}
+\noindent
+Next he would define the new command {\tt walkedge} as follows:
+
+{\small
+\begin{verbatim}
+def walkedge
+  right
+  foursteps
+  get
+\end{verbatim}
+}
+\noindent
+He would not bother defining the command 
+{\tt foursteps} yet, because he knows that this will be 
+simple. And as the last step, to make the program work, he would 
+define:
+
+{\small
+\begin{verbatim}
+def foursteps
+  repeat 4
+    go
+\end{verbatim}
+}
+\noindent
+Keep this in mind while solving the following problems!
+
+\newpage
+
+\subsection{F01 - Four Star Hotel}
+
+{\em Before getting home, Karel has to collect all four stars of gems!}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/f01.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel needs to collect four stars of gems.}
+\label{fig:f01}
+\vspace{-10mm}
+\end{figure}
+\noindent
+
+\subsection{F02 - U-Haul}
+
+{\em Write a program for the robot to move the 6x6 square of gems to the opposite corner of the maze. The task is finished when the robot is back home.}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/f02.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel needs to move the gems to the opposite corner of the maze.}
+\label{fig:f02}
+\vspace{-10mm}
+\end{figure}
+\noindent
+
+\subsection{F03 - Egg Hunt}
+
+{\em Write a program for Karel to search all cells and collect all eggs (gems) that he can find. The task is finished when the robot is back home.}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/f03.png}
+\end{center}
+\vspace{-4mm}
+\caption{Easter is here, Karel is on egg hunt!}
+\label{fig:f03}
+\vspace{-10mm}
+\end{figure}
+\noindent
+
+\subsection{F04 - Blind Carpenter}
+
+{\em Karel is a blind carpenter who needs to install windows (gems) into a newly built house. All he knows is that the house is a rectangle and that each window is exactly one tile large, But he can't see where the openings for the windows are. Install the windows and return home!}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/f04.png}
+\end{center}
+\vspace{-4mm}
+\caption{This time Karel installs windows.}
+\label{fig:f04}
+\vspace{-10mm}
+\end{figure}
+\noindent
+
+
+
+\subsection{F05 - Pirate Ship}
+
+{\em Karel is on a pirate ship! Write a program for him to collect all 
+gems and run away (to his home) before the pirates are back. Here Karel 
+needs to be extremely efficient to survive. Therefore, there should be 
+no repeating parts whatsoever in your program!}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/f05.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel found a pirate treasure.}
+\label{fig:f05}
+\vspace{-10mm}
+\end{figure}
+\noindent
+
+
+
+
+
+
+\section{Part G - Advanced Games}
+
+As usual, all games in this section can be cloned via the File Manager's
+Project menu. 
+
+
+
+\subsection{G01 - Diamond Staircase}
+
+{\em Write a program for Karel to collect all gems and get home!}
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/g01.png}
+\end{center}
+\vspace{-4mm}
+\caption{This time Karel has to do some climbing.}
+\label{fig:g01}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+
+\subsection{G02 - Plucking Flowers}
+
+{\em Write a program for Karel to pick all flowers that grow at the fence of his garden (gems), and get back home! Note two level of repetitions - the fence has four edges, and it takes 7 steps to walk each edge.}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/g02.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is plucking flowers along his fence.}
+\label{fig:g02}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+
+
+
+
+
+\newpage
+
+\subsection{C07 - Diamond Square}
+
+{\em In programming, it is of essence to recognize repeating patterns. 
+Write a program for Karel to collect all gems surrounding the square 
+and get back home! Note two level of repetitions - the square has four 
+edges, and it takes 7 steps to walk each edge. With one command per 
+line, your program should have at most 5 lines.}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/c07.png}
+\end{center}
+\vspace{-4mm}
+\caption{This time Karel will need two nested {\tt repeat} commands.}
+\label{fig:c07}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
 \subsection{E04 - Diamond Rectangle}
 
 {\em Karel stands in front of a rectangle with unknown dimensions. He knows that the rectangle is surrounded with gems. Sometimes the gems are piled up, but he does not know how many gems are in each pile. Write a program for the robot to walk around the rectangle, collect all gems, and get home!}
@@ -1085,200 +1357,24 @@ and do not forget to collect all the gems on the way!}\\[-7mm]
 \noindent
 
 
+\subsection{C08 - Gems for Friends}
 
-
-
-\section{Lesson Six - Keep It Simple!}
-
-\begin{center}
-{\framebox{\bf Keeping it simple is the most important rule of computer programming}}
-\end{center}
-
-\noindent
-{\em Always look for small tasks that can be solved independently of the big task.
-Solve the small tasks first, and you'll
-see that the big task gets simpler. The importance of what we
-just said cannot be stressed more. Please read these three lines 
-once more.}\\
-
-\noindent
-The fact that you are reading this line of text proves that you are not 
-a perfect programmer yet. Otherwise you would be stuck forever in the 
-previous paragraph that is an infinite loop!
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.4\textwidth]{img/smiley.png}
-\end{center}
-\end{figure}
+{\em Karel has three gems in his bag, that he wants to give to his three friends R2, D2 and Marvin who live close by. They are very good friends, so Karel is allowed to enter their homes at any time. Write a program for Karel to put a gem on the ground in the middle of each friend's home, and then get back to his own house! Hint: There will be an outer loop of four repetitions, that will contains inner repetitions in it. }
 
 \newpage
 
-\noindent
-New commands for simpler tasks are defined using the reserved word 
-{\tt def}. For example, in a program where the robot needs to turn to the 
-right many times, it is a good idea to define a new command {\tt turn\_right}
-as follows:
-
-\begin{verbatim}
-def turn_right
-  repeat 3
-    turn
-\end{verbatim}
-To illustrate this, let's return to the game A07 - Swirling Tornado.
-A really bad program to solve this task would be:
-
-{\small
-\begin{verbatim}
-turn
-turn
-turn
-go
-go
-go
-go 
-get
-turn
-turn
-turn
-go
-go
-go
-go 
-get
-turn
-turn
-turn
-go
-go
-go
-go
-get
-\end{verbatim}
-}
-\noindent
-Can you see how many times the same code is repeated?! In order to fix this, 
-we should define new commands {\tt right\_turn} and {\tt four\_steps} as
-follows:
-
-{\small
-\begin{verbatim}
-def right_turn
-  repeat 3
-    turn
-
-def four_steps
-  repeat 4
-    go
-\end{verbatim}
-}
-\noindent
-With these two new commands, the above code simplifies to 
-
-{\small
-\begin{verbatim}
-right_turn
-four_steps
-get
-right_turn
-four_steps
-get
-right_turn
-four_steps
-get
-\end{verbatim}
-}
-\noindent
-There are still repetitions that must be eliminated! So we define a new command 
-{\tt walk\_edge}:
-
-{\small
-\begin{verbatim}
-def walk_edge
-  right_turn
-  four_steps
-  get
-\end{verbatim}
-}
-\noindent
-Now with the three new commands {\tt right\_turn}, {\tt four\_steps} and
-{\tt walk\_edge}, our program simplifies to:
-
-{\small
-\begin{verbatim}
-while not home
-  walk_edge
-\end{verbatim}
-}
-\noindent
-It is the task of the first game in this Lesson to implement this program. But before we 
-do so, let us mention one very important thing.
-
-\subsection{Solution procedure revisited (and corrected)}
-
-
-An experienced programmer would never solve the problem the way we did.
-He would first look at the problem, trying to recognize repeating patterns. 
-He would find that the task can be fulfilled by repeating one simpler task 
-three times. So, without knowing exactly how the smaller task is going to 
-be solved, he would write:
-
-{\small
-\begin{verbatim}
-while not home
-  walk_edge
-\end{verbatim}
-}
-\noindent
-Next he would define the new command {\tt walk\_edge} as follows:
-
-{\small
-\begin{verbatim}
-def walk_edge
-  right_turn
-  four_steps
-  get
-\end{verbatim}
-}
-\noindent
-He would not bother yet defining the commands {\tt right\_turn} and 
-{\tt four\_steps} exactly, because he knows that this will be very 
-simple. And as the last step, to make the program work, he would 
-define:
-
-{\small
-\begin{verbatim}
-def right_turn
-  repeat 3
-    turn
-
-def four_steps
-  repeat 4
-    go
-\end{verbatim}
-}
-\noindent
-Keep this in mind while solving the following games!
-
-
-\subsection{F01 - Swirling Tornado is Back}
-
-{\em Write a program for Karel to pick up the two gems and get home! Try to 
-avoid any code repetitions: Define a new command {\tt rightturn} for right 
-turn and {\tt foursteps} to make four steps at once. Then you will have one 
-more repetition to recognize and avoid.}
-
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/f01.png}
+\includegraphics[width=0.7\textwidth]{img/c08.png}
 \end{center}
 \vspace{-4mm}
-\caption{Solving the Swirling Tornado problem again, now as a Programmer.}
-\label{fig:f01}
-\vspace{-10mm}
+\caption{Karel is going to give gems to his three friends R2, D2 and Marvin.}
+\label{fig:c08}
+\vspace{-4mm}
 \end{figure}
 \noindent
-\newpage
+
+
 
 
 \subsection{F02 - Diamond Staircase is Back}
@@ -1295,47 +1391,14 @@ should be defined as the last step, after the main program is in place.}
 \end{center}
 \vspace{-4mm}
 \caption{Solving the Diamond Staircase again, now as a Programmer.}
-\label{fig:f02}
-\vspace{-10mm}
-\end{figure}
-\noindent
-
-\subsection{F03 - Four Star Hotel}
-
-{\em Before getting home, Karel has to collect all four stars of gems!}
-
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/f03.png}
-\end{center}
-\vspace{-4mm}
-\caption{Karel needs to collect four stars of gems.}
-\label{fig:f03}
+\label{fig:f02b}
 \vspace{-10mm}
 \end{figure}
 \noindent
 
 
 
-\subsection{F04 - Pirate Ship}
 
-{\em Karel is on a pirate ship! Write a program for him to collect all 
-gems and run away (to his home) before the pirates are back. Here Karel 
-needs to be extremely efficient to survive. Therefore, there should be 
-no repeating parts whatsoever in your program!}
-
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/f04.png}
-\end{center}
-\vspace{-4mm}
-\caption{Karel found a pirate treasure.}
-\label{fig:f04}
-\vspace{-10mm}
-\end{figure}
-\noindent
 
 
 
@@ -1350,22 +1413,11 @@ no repeating parts whatsoever in your program!}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is escaping from Alcatraz!}
-\label{fig:f05}
+\label{fig:f05b}
 \vspace{-10mm}
 \end{figure}
 \noindent
 
-
-
-
-
-\newpage
-
-\section{More Games!}
-
-All games in this section can be cloned via the File Manager's
-Project menu. Some of them come with solutions, some others 
-are still waiting for their solution to be published.
 
 \subsection{Easy - Easy Pick}
 

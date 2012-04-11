@@ -128,7 +128,7 @@ There are some other differences as well that make Karel in NCLab easier to use
 for kids -- Karel collects gems instead of beepers, he has a home in the 
 maze, and he uses commands that are much easier for kids to understand
 and type. For example, {\tt pickbeeper} was replaced with {\tt get}, 
-{\tt front-is-clear} was replaced with {\tt wall}, etc. Even the Python 
+{\tt front-is-clear} was replaced with {\tt wall}, etc. Python 
 colons following every command are omitted because using the SHIFT key 
 was causing difficulties to some 5 years old programmers. 
 Otherwise we have not changed Pattis' original ideas and all functionality 
@@ -165,35 +165,53 @@ science fiction play R.U.R. (Rossum's Universal Robots).
 
 \subsection{Who is Karel?}
 
-Karel is a little robot that lives in a maze. The maze contains gems that Karel enjoys to collect. 
-He only knows a handful of simple commands such as {\tt go} one step forward, {\tt get} a gem, 
-{\tt turn} left, and {\tt put} a gem on the ground. It has built-in sensors that allow him to 
-check if a {\tt wall} is in his way, if a {\tt gem} is within his reach, if he is facing {\tt north}, 
-if he is at {\tt home}, and if his bag is {\tt empty}. With your help, Karel will learn new things 
-that will make it a better Robot, and on the way you will become a Programmer without even noticing! 
+Karel is a little robot that lives in a maze. The maze contains gems that he loves to collect. 
+He was born with a handful of simple commands such as 
+\begin{itemize}
+\item {\tt go} one step forward, 
+\item {\tt get} a gem, 
+\item {\tt left} turn, 
+\item {\tt right} turn, and 
+\item {\tt put} a gem on the ground. 
+\end{itemize}
+He has built-in sensors that 
+allow him to check 
+\begin{itemize}
+\item if a {\tt wall} is in his way, 
+\item if a {\tt gem} is within his reach, 
+\item if he is facing {\tt north}, 
+\item if he is at {\tt home}, and 
+\item if his bag is {\tt empty}. 
+\end{itemize}
+You will help him solve various 
+tasks that he could not accomplish without your help, and on the 
+way you will become a great programmer.
 
-\subsection{What is the one reason why I should learn Karel?}
+\subsection{What is the {\em one reason} why I should go through this tutorial?}
 
-You will learn to {\em design good algorithms} -- an ability that makes
+You will learn to design good algorithms -- an ability that makes
 a great programmer and that is completely language-independent. In other 
 words, you can learn the same with a technically complicated conventional 
 programming language, battling technical problems most of the time,
 or you can learn it with Karel the easy way.
 Despite its simple form, Karel is not a toy language. It contains all elements 
-of a modern procedural programming language. The complexity of algorithms 
-covered in this course ranges from {\em very simple} to {\em very tough}.
+of a modern procedural programming. The complexity of algorithms 
+that you will encounter in this course ranges from {\em very simple} 
+to {\em very tough}.
 
 \subsection{How does Karel differ from conventional programming languages?}
 
 The biggest difference between Karel and all conventional 
-programming languages is that it {\em does not involve any mathematics}.
-Believe it or not -- Karel does not know numbers. Thanks 
-to this, {\em programming concepts} stand out clearly. 
-After you finish this tutorial, you will find that suddenly it is very simple 
-to learn other languages such as Python or C++, because they are in fact 
-very similar to Karel. You will be only learning language-specific details, 
-because the most important thing -- algorithmic thinking -- you will already 
-know.
+programming languages is that it {\em does not contain any mathematics}.
+Believe it or not -- Karel does not know numbers. The problems that Karel
+is solving are all about logic and programming concepts. The trickiest aspect
+of programming is to {\em design good algorithms}, and Karel will teach you that.
+ 
+After finishing this tutorial, you will be able to transition instantly to
+Python, a powerful modern programming language that is used nowadays across
+all engineering and scientific disciplines. In fact, you will be only learning 
+language-specific details, because the most important thing -- algorithmic 
+thinking -- you will already know.
  
 \section{Getting Started}
 
@@ -207,14 +225,17 @@ PDF via a link on NCLab home page {\tt http://nclab.com}.\\
 After logging in, you will see a desktop with several icons on it,
 as shown in Fig. \ref{fig:desktop}. 
 
+
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{img/desktop.png}
+\includegraphics[width=0.7\textwidth]{img/desktop.png}
 \end{center}
 %\vspace{-2mm}
 \caption{NCLab desktop after login.}
+\vspace{-1cm}
 \label{fig:desktop}
 \end{figure}
+\newpage
 
 \subsection{Launching Karel via the Programming icon}
 
@@ -224,7 +245,7 @@ and load a randomly selected maze, as shown in Fig. \ref{fig:init}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{img/init.png}
+\includegraphics[width=0.7\textwidth]{img/init.png}
 \end{center}
 %\vspace{-2mm}
 \caption{Launching Karel via the Programming icon.}
@@ -232,47 +253,48 @@ and load a randomly selected maze, as shown in Fig. \ref{fig:init}.
 \end{figure}
 \noindent
 Karel will be launched in {\em Programming mode} which is the most-frequently 
-used mode. You can easily switch to the {\em Manual mode}, {\em Builder},
+used one. You can easily switch to the {\em Manual mode}, {\em Builder},
 and {\em Game mode} in the menu. Game mode is available in Full Version only. 
 These modes will be discussed in more detail later.
 
 \subsection{Cloning Karel projects} \label{cloning}
 
 All programs and games that we will work with in this course are
-available for you to clone (download) into your account. To do this, 
+available for you to clone into your account. To do this, 
 click on the File Manager icon. In the File Manager's menu go to 
-"Project" and click on "Clone". This will launch a new window with
-Displayed Projects as shown in Fig. \ref{fig:cloning}.
+"Project" and then click on "Clone". This will launch a new window 
+with Displayed Projects as shown in Fig. \ref{fig:cloning}.
 
 \newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{img/cloning.png}
+\includegraphics[width=0.7\textwidth]{img/cloning.png}
 \end{center}
 %\vspace{-2mm}
-\caption{Window with public projects is accessible through File Manager's "Project" menu.}
+\caption{File Manager's "Project" menu allows you to clone many Karel projects.}
 \label{fig:cloning}
 \end{figure}
 \noindent
 All projects whose names start with "Karel - Exercise" are of particular interest 
 for this tutorial. Their solutions have names starting with "Karel - Solution". 
-They can be cloned into your account via clicking on the project name in the window, 
+Any of them can be cloned into your account via clicking on the project name in the window, 
 and pressing the button "Clone".
 
 In the File Manager's right-hand side panel, you will see the list of all 
 projects that you cloned. Click on any of them to launch it. You are free to 
-use the cloned projects as they are, or modify them in any way you like. Your modifications 
-will not affect the public version of the project. And, you can 
-always synchronize your version of the project with the public version, via 
+use the cloned projects as they are, or modify them in any way you like. Your 
+modifications will not affect the original. And, you can 
+always synchronize your version with the original, via 
 a right-click on the project in the File Manager and selecting "Synchronize".
-Beware though -- this will erase any changes that you made to the project.
+Beware though -- synchronizing with the original will erase any changes that 
+you made to the project.
 
 \subsection{Basic and Full Versions}
 
 If you are using NCLab in Basic Version, some restrictions apply: The 
 number of projects that you can have at any time is limited to 10, and you cannot have
-private projects. Specifically in Karel, the Basic Version does not have the Game mode 
+private projects. In Karel, the Basic Version does not have the Game mode 
 enabled. Besides this, the Basic Version of Karel is fully functional without any other 
 limitations. 
 
@@ -283,26 +305,31 @@ to upgrade to Full Version.
 
 \subsection{Karel modes}
 
-Karel can operate in four modes:
+Karel operates in four modes:
 \begin{itemize}
-\item {\em Manual mode:} The robot can be controlled using the mouse and four buttons Go, Get, Turn, and Put. Watch out and do not crash!
-\item {\em Program mode:} The robot can be controlled using programs. For simplicity, the Program mode is split into Levels:
+\item {\em Manual mode:} The robot is controlled using the mouse and five buttons Go, Get, Left, Right, and Put. 
+      Watch out and do not crash!
+\item {\em Program mode:} The robot is controlled using written programs (computer code). The Program mode is 
+      split into several Levels:
 \begin{itemize}
-\item Level 1 is a transition layer from Manual mode to programming. Programs are written using the commands {\tt go}, {\tt get}, {\tt turn} and {\tt put} that are fully equivalent to pressing the buttons Go, Get, Turn and Put in Manual mode, respectively.
-\item Level 2 is where the actual programming begins. On top of the commands from Level 1, programs can contain conditions, loops, and compound commands.
-\item Level 3 teaches the user to operate with variables and computer memory. In preparation, available in Full Version only.
-\item Level 4 teaches the user basics of object-oriented programming. In preparation, available in Full Version only.
-\item Level 5 teaches the user elements of parallel programming. In preparation, available in Full Version only.
+\item Level 1 is a transition layer between the Manual and Programming modes. Programs are written using only 
+      five commands {\tt go}, {\tt get}, {\tt left}, {\tt right}, and {\tt put} that exactly correspond to 
+      the buttons Go, Get, Left, Right, and Put in Manual mode.
+\item Level 2 is where the actual programming begins. On top of the commands from Level 1, programs can contain 
+      conditions, loops, and compound commands.
+\item Level 3 teaches the user to operate with logical and numerical variables, and with computer memory. Karel  
+      receives a GPS device. This Level is in preparation and it will be available in Full Version only.
+\item Level 4 teaches the basics of object-oriented programming. This Level is in preparation and it will be available in Full Version only.
+\item Level 5 teaches the basics of parallel programming. This Level is in preparation and it will be available in Full Version only.
 \end{itemize}
-\item {\em Build mode:} This mode allows the user to create custom worlds for Karel.
-\item {\em Game mode:} Makes it possible to create and play games. Available in Full Version only.
+\item {\em Build mode:} This mode allows the user to create custom mazes.
+\item {\em Game mode:} Makes it possible to create and play games. This Level is in preparation and it will be available in Full Version only.
 \end{itemize}
 
 \section{Lesson One - Beginner}
 
-In the first Lesson you will learn to guide Karel with your mouse.
-There are thirteen games that you need to 
-solve. Do not skip levels since each one has something new. Each game can 
+In the first Lesson you will learn how to guide Karel using the mouse.
+There are thirteen games that you can solve. Do not skip levels since each one has something new. Each game can 
 be cloned as described in Paragraph \ref{cloning} (you need to be using NCLab in Full Version). 
 Kids as little as 3 years old were able to do it, so for you it will be a piece 
 of cake. Good luck!

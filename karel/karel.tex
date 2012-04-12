@@ -1282,7 +1282,7 @@ Project menu.
 
 \subsection{G01 - Diamond Staircase}
 
-{\em Write a program for Karel to collect all gems and get home!}
+{\em Write a program for Karel to climb the stairs, collect all gems, and get home!}
 \newpage
 
 \begin{figure}[!ht]
@@ -1299,7 +1299,7 @@ Project menu.
 
 \subsection{G02 - Plucking Flowers}
 
-{\em Write a program for Karel to pick all flowers that grow at the fence of his garden (gems), and get back home! Note two level of repetitions - the fence has four edges, and it takes 7 steps to walk each edge.}
+{\em Write a program for Karel to pluck all flowers that grow at the fence of his garden (gems), and get back home! Note two level of repetitions - the fence has four edges, and it takes 7 steps to walk each edge.}
 
 
 \begin{figure}[!ht]
@@ -1313,33 +1313,23 @@ Project menu.
 \end{figure}
 \noindent
 
+\subsection{G03 - Gems for Friends}
 
+{\em Karel has three gems in his bag, that he wants to give to his three friends R2, D2 and Marvin who live close by. They are very good friends, so Karel is allowed to enter their homes at any time. Write a program for Karel to put a gem on the ground in the middle of each friend's home, and then get back to his own house! Hint: There will be an outer loop of four repetitions, that will contains inner repetitions in it.}
 
-
-
-
-\newpage
-
-\subsection{C07 - Diamond Square}
-
-{\em In programming, it is of essence to recognize repeating patterns. 
-Write a program for Karel to collect all gems surrounding the square 
-and get back home! Note two level of repetitions - the square has four 
-edges, and it takes 7 steps to walk each edge. With one command per 
-line, your program should have at most 5 lines.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/c07.png}
+\includegraphics[width=0.7\textwidth]{img/g03.png}
 \end{center}
 \vspace{-4mm}
-\caption{This time Karel will need two nested {\tt repeat} commands.}
-\label{fig:c07}
+\caption{Karel is going to give gems to his three friends R2, D2 and Marvin.}
+\label{fig:g03}
 \vspace{-4mm}
 \end{figure}
 \noindent
 
-\subsection{E04 - Diamond Rectangle}
+\subsection{G04 - Diamond Rectangle}
 
 {\em Karel stands in front of a rectangle with unknown dimensions. He knows that the rectangle is surrounded with gems. Sometimes the gems are piled up, but he does not know how many gems are in each pile. Write a program for the robot to walk around the rectangle, collect all gems, and get home!}
 
@@ -1347,203 +1337,193 @@ line, your program should have at most 5 lines.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/e04.png}
+\includegraphics[width=0.7\textwidth]{img/g04.png}
 \end{center}
 \vspace{-4mm}
 \caption{This time Karel does not know the size of the rectangle.}
-\label{fig:e04}
+\label{fig:g04}
 \vspace{-10mm}
 \end{figure}
 \noindent
 
-
-\subsection{C08 - Gems for Friends}
-
-{\em Karel has three gems in his bag, that he wants to give to his three friends R2, D2 and Marvin who live close by. They are very good friends, so Karel is allowed to enter their homes at any time. Write a program for Karel to put a gem on the ground in the middle of each friend's home, and then get back to his own house! Hint: There will be an outer loop of four repetitions, that will contains inner repetitions in it. }
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/c08.png}
-\end{center}
-\vspace{-4mm}
-\caption{Karel is going to give gems to his three friends R2, D2 and Marvin.}
-\label{fig:c08}
-\vspace{-4mm}
-\end{figure}
-\noindent
-
-
-
-
-\subsection{F02 - Diamond Staircase is Back}
-
-{\em Write a program for Karel to collect all gems and get home! Now, 
-being an experienced programmer, first identify the repeating pattern 
-and write the program using a new command {\tt getone}. But do not 
-define the new command yet! The command {\tt getone} is a detail that 
-should be defined as the last step, after the main program is in place.}
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/f02.png}
-\end{center}
-\vspace{-4mm}
-\caption{Solving the Diamond Staircase again, now as a Programmer.}
-\label{fig:f02b}
-\vspace{-10mm}
-\end{figure}
-\noindent
-
-
-
-
-
-
-
-\subsection{F05 - Escape from Alcatraz}
-
-{\em Karel is escaping from the Alcatraz prison! At the moment he is in an underground labyrinth with many tunnels but only one of them leads to his freedom. He cannot know which one is it, so he needs to search them one by one. Start by going straight ahead to the nearest wall. Then use the right-hand rule to search the tunnels.}
-
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/f05.png}
-\end{center}
-\vspace{-4mm}
-\caption{Karel is escaping from Alcatraz!}
-\label{fig:f05b}
-\vspace{-10mm}
-\end{figure}
-\noindent
-
-
-\subsection{Easy - Easy Pick}
-
-{\em Write a program to get Karel home, collecting all the 
-gems he can find. The gems are randomly distributed, so 
-you cannot use their exact positions in your program!
-}
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/game-easypick.png}
-\end{center}
-\vspace{-4mm}
-\caption{Picking these gems is so easy!}
-\label{fig:easypick}
-\vspace{-10mm}
-\end{figure}
-\noindent
-
-\newpage
-\subsection{Easy - Gem Jam!}
+\subsection{G05 - Gem Jam!}
 
 {\em In this maze, gems are distributed randomly along the walls. Otherwise 
 the maze is empty. Karel's home is in the south-west corner, and the robot 
 stands on the right of it, facing east. Write a program for Karel to collect 
-all the gems and return home. Good luck!  }
+all the gems and return home!}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/game-gemjam.png}
+\includegraphics[width=0.7\textwidth]{img/g05.png}
 \end{center}
 \vspace{-4mm}
 \caption{Gem Jam!}
-\label{fig:gemjam}
+\label{fig:g05}
 \vspace{-10mm}
 \end{figure}
 \noindent
 
 \newpage
 
-\subsection{Intermediate - The Matrix}
+\subsection{G06 - The Matrix}
 
 {\em Write a program for Karel to collect all gems and get back home! The record is 
 210 steps made. Can you do it with fewer steps?}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/game-matrix.png}
+\includegraphics[width=0.7\textwidth]{img/g06.png}
 \end{center}
 \vspace{-4mm}
 \caption{The Matrix.}
-\label{fig:matrix}
+\label{fig:g06}
 \vspace{-10mm}
 \end{figure}
 \noindent
 
-\subsection{Tough - Ariadne's Thread}
+\subsection{G07 - Escape from Alcatraz}
+
+{\em Karel is escaping from the Alcatraz prison! At the moment he is in an underground labyrinth with many tunnels but only one of them leads to his freedom. He cannot know which one is it, so he needs to search them one by one. Start by going straight ahead to the nearest wall. Then use the right-hand rule to search the tunnels.}
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/g07.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is escaping from the Alcatraz prison.}
+\label{fig:g07}
+\vspace{-8mm}
+\end{figure}
+\noindent
+
+\subsection{G08 - Border Patrol}
+
+{\em Write a program for Karel to check the perimeter of the maze using the 
+right-hand rule. Do not forget to pick up all gems that you find on the way.}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/g08.png}
+\end{center}
+\vspace{-4mm}
+\caption{Border Patrol.}
+\label{fig:g08}
+\vspace{-10mm}
+\end{figure}
+\noindent
+
+\subsection{G09 - Ariadne's Thread}
 
 {\em In an ancient Greek legend, princess Ariadne saved the life of her 
 beloved Theseus by giving him a thread that he used to avoid getting lost 
 in the maze of king Minos and kill a feared beast Minotaurus. Karel uses 
 a similar technique - he leaves behind him a chain of gems that helps him 
-to safely find his way back home. }
+to safely find his way back home. Your program needs to work for an 
+arbitrary maze. You can assume that the string of gems is continuous 
+and that it does not contain any loops.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/game-ariadne.png}
+\includegraphics[width=0.7\textwidth]{img/g09.png}
 \end{center}
 \vspace{-4mm}
 \caption{Maze of king Minos, home of the beast Minotaurus.}
-\label{fig:ariadne}
+\label{fig:g09}
 \vspace{-10mm}
 \end{figure}
 \noindent
 
+\subsection{G10 - Numerology I}
+
+{\em Each box contains an integer number between 0 and 9. The numbers are not known to Karel a-priori. He needs to enter each box and recognize the number in it. Let's call this number N. When he leaves the box, he needs to create a pile of N gems. The task finishes when this is done for all boxes and the robot gets home.}
+
 \newpage
-
-\subsection{Tough - Maze Patrol}
-
-{\em Write a program for Karel to navigate through the maze using the 
-right-hand rule. Do not forget to pick up all gems.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/game-patrol.png}
+\includegraphics[width=0.7\textwidth]{img/g10.png}
 \end{center}
 \vspace{-4mm}
-\caption{Maze Patrol.}
-\label{fig:patrol}
-\vspace{-10mm}
+\caption{Karel decided to become a numerologist.}
+\label{fig:g10}
+\vspace{-4mm}
 \end{figure}
 \noindent
 
-\newpage
-\subsection{Very Tough - Eight Queens}
+\subsection{G11 - Numerology II}
+
+{\em There is a pile of N gems before the entrance to the box. It is known that N is between zero and 9. Karel needs to enter the box and render the number N. The task finishes when this is done and the robot gets home.
+}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/g11.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is typing numbers.}
+\label{fig:g11}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsection{G12 - Numerology III}
+
+{\em Add the numbers! Remember - Karel cannot see what numbers are in the boxes as you can see them. They can be any integers between 0 and 9. The task finishes when the robot gets home.}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/g12.png}
+\end{center}
+\vspace{-4mm}
+\caption{Adding numbers without using math!}
+\label{fig:g12}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsection{G13 - BubbleSort}
+
+{\em Karel stands in front of four piles of gems, let's enumerate them by 1, 2, 3 and 4. He does not know how many gems are in each pile. All he knows is that each pile contains between 1 and 4 gems, and that two or more piles can be equally large. Sort the piles in such a way that the smallest pile is on the left and the largest on the right. Use the BubbleSort algorithm: Implement a function that switches two adjacent piles if the one on the right has fewer gems than the one on the left. Apply this function to piles 1 and 2, then to piles 2 and 3, then to piles 3 and 4. Now it is certain that the largest number is on the right-most position! Next, do the same for just the first three piles. Last, apply the function to piles 1 and 2, and you are done! }
+
+\newpage 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/g13.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is sorting four piles of gems.}
+\label{fig:g13}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsection{G14 - Eight Queens}
 
 {\em Karel stands on an 8 x 8 chess board along with eight queens (the gems). Recall that a chess queen dominates its row, its column, as well as both diagonals that pass through her position. Nothing may stand in these fields or she will destroy it. Currently, some queens are threatening each other. Write a program for Karel to correct the positions of the queens in such a way that none of them is threatened. Your program should be able to do it for any initial distribution of the queens. Enter the home after you are finished.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/game-queens.png}
+\includegraphics[width=0.7\textwidth]{img/g14.png}
 \end{center}
 \vspace{-4mm}
-\caption{Eight Queens.}
-\label{fig:queens}
-\vspace{-10mm}
-\end{figure}
-\noindent
-
-\newpage
-\subsection{Very Tough - Sorting Madness}
-
-{\em Karel stands in front of six piles of gems. Each pile contains between one and 10 gems, and two or more piles can be equally large. The robot does not know how many gems are in each pile. Before getting home, the robot must sort them in such a way that the smallest pile is on the left and the largest on the right. }
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/game-sorting.png}
-\end{center}
+\caption{The famous eight queens problem.}
+\label{fig:g14}
 \vspace{-4mm}
-\caption{Sorting Madness.}
-\label{fig:sorting}
 \end{figure}
 \noindent
 
 
-\section{What To Do Next?}
+
+
+
+
+\section{What Next?}
 
 Congratulations on making it to the end of the tutorial! We hope that you
 enjoyed it. If you can think of any ways to improve the application 

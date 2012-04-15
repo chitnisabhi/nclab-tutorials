@@ -142,6 +142,8 @@ particular www.python.org.
 
 \section{Introduction}
 
+\subsection{Basic facts about Python}
+
 Python is a modern, powerful programming language that is also very intuitive and 
 easy to learn. It has efficient high-level 
 data structures and a simple but effective approach to object-oriented programming. 
@@ -154,6 +156,8 @@ might be all you will ever need. We hope that you will like Python and want
 to learn more -- and there is much more to learn out there. References to materials
 covering more advanced topics and object-oriented programming are given in Section \ref{sec:adv}.
 
+\subsection{Creating an account in NCLab}
+
 In order to make the most of this tutorial, create an account in NCLab and log in. More instructions 
 on how to do this are given at the beginning of the introductory 
 tutorial "Meet Your New Graphing Calculator" that is available in 
@@ -164,7 +168,7 @@ as shown in Fig. \ref{fig:desktop}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{img/desktop.png}
+\includegraphics[width=0.9\textwidth]{img/desktop.png}
 \end{center}
 \vspace{-2mm}
 \caption{NCLab desktop after login.}
@@ -172,7 +176,7 @@ as shown in Fig. \ref{fig:desktop}.
 \end{figure}
 \newpage
 
-\subsection*{Cloning Displayed Projects vs. Typing the Code by Yourself}
+\subsection{Cloning displayed projects vs. typing examples yourself}
 
 All examples that we are going to work with in the following are also available 
 as Displayed Projects. This means that you can clone them by launching the File
@@ -195,7 +199,7 @@ empty Python project, as shown in Fig. \ref{fig:python}.\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{img/python.png}
+\includegraphics[width=0.9\textwidth]{img/python.png}
 \end{center}
 \vspace{-2mm}
 \caption{Launching a new Python project.}
@@ -207,33 +211,42 @@ empty Python project, as shown in Fig. \ref{fig:python}.\\[-7mm]
 
 \section{Hello, World!}
 
+In NCLab, you can type a Python code in the web browser, send it to a remote 
+server where it gets processed, and after that the output is sent back to you 
+and displayed in the web browser. Let's try this!
+
+\subsection{Typing code and sending it to server}
+
 Click into the input cell and type {\tt print "Hello, World!"}.
-Then click on the "run" link under the input cell and your program will be sent to the 
-cloud. The response should come back instantly, and it should be displayed 
+Then click on the "run" link under the input cell and your program will be sent to the server. 
+
+\subsection{Receiving output}
+
+The response should come back instantly, and it should be displayed 
 in a new yellow {\em output cell} as shown in Fig. \ref{fig:python-2}.\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{img/python-2.png}
+\includegraphics[width=0.9\textwidth]{img/python-2.png}
 \end{center}
 \vspace{-2mm}
 \caption{Response received from the cloud is shown in a yellow output cell.}
 \label{fig:python-2}
 \end{figure}
-%\vspace{-1cm}
-\noindent
-You just learned the first Python command. Wasn't that simple?
+\vspace{-1cm}
+\newpage
+\section{Using Python as calculator}
 
-\section{Numbers}
+The Python input cell can be used as a calculator. 
 
-The Python input cell can be used as a calculator. Try it and type 
+\subsection{Addition, subtraction}
+
+Try it and type 
 
 \begin{verbatim}
 3 + 6
 \end{verbatim}
-The click on the "run" link under the input cell. (We will not repeat the last sentence 
-in the following, since this is the same whenever we want to send the contents of the input 
-cell to the cloud.) The output is
+The click on the "run" link under the input cell. The output is
 
 \begin{verbatim}
 9
@@ -257,6 +270,7 @@ Output:
 \begin{verbatim}
 5.4
 \end{verbatim}
+\subsection{Multiplication}
 Multiplication is done using the '{\tt *}' symbol as in
 
 \begin{verbatim}
@@ -277,6 +291,7 @@ Output:
 \begin{verbatim}
 45.029
 \end{verbatim}
+\subsection{Division}
 With division, we need to be a bit careful. Look at this:
 
 \begin{verbatim}
@@ -298,11 +313,15 @@ Output:
 6
 \end{verbatim}
 In all major computer languages including C, C++, Fortran, Python and 
-others, {\bf the result of division of two integers is an integer}. 
-So, when dividing two integers, everything behind the decimal point is lost.
-In fact this is true also for addition, subtraction and multiplication 
-but there it cannot cause any harm. 
+others:\\
 
+\begin{center}
+\framebox{\color{red}\bf The result of division of two integers is an integer!}
+\end{center}
+
+\vspace{4mm}
+\noindent
+So, when dividing two integers, everything behind the decimal point is lost.
 In order to stay on the safe side, 
 before you perform division of two numbers, always convert at least one of them
 to a real number. This is simple: While {\tt 5} is an integer, {\tt 5.}
@@ -313,6 +332,7 @@ the result will be correct also for integers, we type {\tt float(a) / b}.
 When at least one number is a real, then the result of the division is a real.   
 Variables will be discussed shortly.
 
+\subsection{Powers}
 Sometimes we need to use exponents, such as in $2^4$. Python has a double-star
 symbol {\tt **} for this:
 
@@ -324,6 +344,7 @@ Output:
 \begin{verbatim}
 16
 \end{verbatim}
+\subsection{Modulo}
 The last of the common arithmetic operations is {\em modulo}. Recall that this is the remainder 
 after integer division. In Python modulo is done using the per cent symbol:
 
@@ -345,6 +366,7 @@ Output:
 \begin{verbatim}
 20
 \end{verbatim}
+\subsection{Order of Operations}
 Python respects the standard order of operations:
 
 \begin{itemize} 
@@ -356,17 +378,72 @@ Python respects the standard order of operations:
 To illustrate this, we can try the following:
 
 \begin{verbatim}
-3**4/27*5+3*5
+3**4 / 27 * 5 + 3 * 5
 \end{verbatim}
 Output:
 
 \begin{verbatim}
 30
 \end{verbatim}
-Let us remark that your code will be much more readable when you use empty
-characters on either side of arithmetic symbols. Hence instead of the 
-previous compact expression you should write {\tt 3**4 / 27 * 5 + 3 * 5}.
+\subsection{Using empty characters makes you code better readable}
+Your code will be much better readable when you use empty
+characters on either side of arithmetic symbols, as well as 
+after commas. Hence, you should never write things like {\tt 3**4/27*5+3*5}.
 
+\subsection{Using mathematical functions}
+
+In order to calculate square roots, exponentials, sins, cosins, tangents, and all other 
+simple functions, the best way is to import Numpy. Numpy is a standard Python library 
+for numerical computations. To import it, just include the following 
+line in your code:
+
+\begin{verbatim}
+from numpy import *
+\end{verbatim}
+Here the symbol {\tt *} stands for "everything". If you wanted to import just one or two 
+functions, you could do that as well by just giving their names, separated by commas. 
+
+After Numpy is imported, we can calculate for example $e^2$:
+
+\begin{verbatim}
+exp(2)
+\end{verbatim}
+Output:
+\begin{verbatim}
+7.3890560989306504
+\end{verbatim}
+Elementary functions that one can import from Numpy include:\\
+
+%{\small
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+abs($x$) &  absolute value of $x$\\
+arccos($x$) &  inverse cosine of $x$ \\
+arccosh($x$) &  inverse hyperbolic cosine of $x$ \\
+arcsin($x$) & inverse sine of $x$ \\
+arcsinh($x$) & inverse hyperbolic sine of $x$ \\
+arctan($x$) & inverse tangent of $x$ \\
+arctanh($x$) & inverse hyperbolic tangent of $x$ \\
+arctan2($x_1$, $x_2$) & arc tangent of $x_1/x_2$ choosing the quadrant correctly \\
+cos($x$) & cosine of $x$ \\
+cosh($x$) & hyperbolic tangent of $x$ \\
+exp($x$) & $e^x$ \\
+log($x$) & natural logarithm of $x$ \\
+pow($a$, $b$) & $a^b$ (same as "a**b")\\
+sin($x$) & sine of $x$ \\
+sinh($x$) & hyperbolic sine of $x$ \\
+sqrt($x$) & square root of $x$ \\
+tan($x$) & tangent of $x$\\
+tanh($x$) & hyperbolic tangent of $x$ \\
+\hline
+\end{tabular}
+\end{center}
+%}
+\vspace{4mm}
+\noindent
+
+\subsection{Complex numbers}
 Complex numbers are always represented as two floating point numbers, the 
 real and imaginary part. Appending '{\tt j}' or  '{\tt J}' to a real number
 makes it imaginary:
@@ -425,7 +502,6 @@ Output:
 4
 5
 \end{verbatim}
-Good job, now you know your numbers!
 
 \section{Variables}
 
@@ -561,6 +637,132 @@ Output:
 7.0
 \end{verbatim}
 And this lucky number means the end of this section!
+
+\section{Defining new functions}
+
+Functions are little self-contained programs that perform a specific task, 
+and you can reuse them in your program many times.
+Defining functions in Python is almost the same as defining new commands 
+in Karel the Robot -- one uses the same keyword {\tt def}. Python functions 
+can accept any number of variables as parameters. Usually, a function returns 
+some result -- in that case one uses an optional {\tt return}. For example, 
+the following simple function {\tt adds} adds two numbers and returns the result:
+
+\begin{verbatim}
+def add(a, b):
+    return a + b
+\end{verbatim}
+Note the mandatory colon ':' at the end of the function declaration line.
+
+\section{Boolean expressions}
+
+Boolean expressions are the foundation of every procedural programming 
+language including Python. Remember how the value of a variable 
+is assigned and printed? 
+
+\begin{verbatim}
+a = 1
+a
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+1
+\end{verbatim}
+Now type
+
+\begin{verbatim}
+a > 0
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+True
+\end{verbatim}
+And,
+
+\begin{verbatim}
+a < 0
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+False
+\end{verbatim}
+Conditions {\tt a > 0} and {\tt a < 0} are {\em Boolean expressions} whose value is either 
+{\tt True} or {\tt False}. Conditions related to numbers often contain the following operators:
+
+\begin{itemize}
+\item[(1)] {\tt >} {$\ldots$} greater than, 
+\item[(2)] {\tt >=} {$\ldots$} greater than or equal to, 
+\item[(3)] {\tt <=} {$\ldots$} less than or equal to, 
+\item[(4)] {\tt <} {$\ldots$} less than, 
+\item[(5)] {\tt ==} {$\ldots$} equal to, 
+\item[(6)] {\tt !=} {$\ldots$} not equal to, 
+\item[(7)] {\tt <>} {$\ldots$} not equal to (same as {\tt !=}).
+\end{itemize}
+We can store the value of a Boolean expression in a variable:
+
+\begin{verbatim}
+v1 = (a > 0)
+v1
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+True
+\end{verbatim}
+Such variable {\tt v1} is called {\em Boolean variable}. With Boolean variables we can do all standard 
+logical operations such as {\tt and}:
+
+\begin{verbatim}
+v2 = (a < 5)
+v1 and v2
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+True
+\end{verbatim}
+Logical {\tt or}:
+
+\begin{verbatim}
+v3 = (a > 10)
+v1 or v3
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+True
+\end{verbatim}
+Negation:
+
+\begin{verbatim}
+v4 = not v1
+v4
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+False
+\end{verbatim}
+Sometimes logical expressions can be more complicated, but this is no problem:
+
+\begin{verbatim}
+v5 = not ((v1 and v2) or (v3 and not v4))
+v5
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+False
+\end{verbatim}
+Last let us type
+
+\begin{verbatim}
+v6 = not v5
+\end{verbatim}
+to end this section in a positive way!
 
 \section{Strings}
 
@@ -703,116 +905,6 @@ Output:
 7
 \end{verbatim}
 Perhaps this lesson could be longer but it isn't!
-
-\section{Boolean expressions}
-
-Boolean expressions are the foundation of every procedural programming 
-language including Python. Remember how the value of a variable 
-is assigned and printed? 
-
-\begin{verbatim}
-a = 1
-a
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-1
-\end{verbatim}
-Now type
-
-\begin{verbatim}
-a > 0
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-True
-\end{verbatim}
-And,
-
-\begin{verbatim}
-a < 0
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-False
-\end{verbatim}
-Conditions {\tt a > 0} and {\tt a < 0} are {\em Boolean expressions} whose value is either 
-{\tt True} or {\tt False}. Conditions related to numbers often contain the following operators:
-
-\begin{itemize}
-\item[(1)] {\tt >} {$\ldots$} greater than, 
-\item[(2)] {\tt >=} {$\ldots$} greater than or equal to, 
-\item[(3)] {\tt <=} {$\ldots$} less than or equal to, 
-\item[(4)] {\tt <} {$\ldots$} less than, 
-\item[(5)] {\tt ==} {$\ldots$} equal to, 
-\item[(6)] {\tt !=} {$\ldots$} not equal to, 
-\item[(7)] {\tt <>} {$\ldots$} not equal to (same as {\tt !=}).
-\end{itemize}
-We can store the value of a Boolean expression in a variable:
-
-\begin{verbatim}
-v1 = (a > 0)
-v1
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-True
-\end{verbatim}
-Such variable {\tt v1} is called {\em Boolean variable}. With Boolean variables we can do all standard 
-logical operations such as {\tt and}:
-
-\begin{verbatim}
-v2 = (a < 5)
-v1 and v2
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-True
-\end{verbatim}
-Logical {\tt or}:
-
-\begin{verbatim}
-v3 = (a > 10)
-v1 or v3
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-True
-\end{verbatim}
-Negation:
-
-\begin{verbatim}
-v4 = not v1
-v4
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-False
-\end{verbatim}
-Sometimes logical expressions can be more complicated, but this is no problem:
-
-\begin{verbatim}
-v5 = not ((v1 and v2) or (v3 and not v4))
-v5
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-False
-\end{verbatim}
-Last let us type
-
-\begin{verbatim}
-v6 = not v5
-\end{verbatim}
-to end this section in a positive way!
 
 \section{Conditions}
 
@@ -960,18 +1052,110 @@ The {\tt for} loop will be discussed in Section \ref{sec:forloop}.\\
 \noindent
 This section is finished, good job!
 
-\section{Defining new functions}
+\section{More on functions}
 
-Functions are little self-contained programs that perform a specific task, 
-which you can incorporate into your own, larger programs. After you have 
-created a function, you can use it at any time, in any place. This saves you 
-the time and effort of having to retell the computer what to do every time 
-it does a common task. 
+Let us mention a few additional useful facts related to 
+Python function. Let us begin with the function that we already saw
+before:
 
-For example, let's write a function that will look for a character {\tt c} 
+\begin{verbatim}
+def add(a, b):
+    return a + b
+\end{verbatim}
+
+\subsection{Passing arbitrary arguments}
+
+Python does not require that we specify the type of function arguments. 
+What does it mean? The above function {\tt add} works for 
+numbers, but it will also add two strings together, or any other 
+objects where the operation '+' is defined. Let's try this:
+
+\begin{verbatim}
+def add(a, b):
+    return a + b
+
+word1 = "Good "
+word2 = "Evening"
+print add(word1, word2)
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+Good Evening
+\end{verbatim}
+
+\subsection{Returning multiple results}
+
+Python functions can return multiple results if needed.
+Let us look at the following simple example:
+
+\begin{verbatim}
+def powers(a):
+    return a**1, a**2, a**3
+
+var1 = 5
+print powers(var1)
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+(5, 25, 125)
+\end{verbatim}
+We can also store the results in variables:
+
+\begin{verbatim}
+var1 = 5
+p1, p2, p3 = powers(var1)
+print p1, p2, p3
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+5 25 125
+\end{verbatim}
+
+\subsection{Using default arguments}
+
+Python makes it possible to set a default value for a parameter.
+that will use if the parameter is omitted. Parameters with 
+default values must always be at the end. 
+
+For illustration, let us return to the function {\tt add}, and let us 
+imagine that very often (but not always) the second number that we
+are adding is 10. Then it makes sense to write the function {\tt add}
+as follows:
+
+\begin{verbatim}
+def add(a, b = 10):
+    return a + b
+\end{verbatim}
+The function will work as before when called with two arguments: 
+
+\begin{verbatim}
+A = 5
+B = 1
+add(A, B)
+\end{verbatim}
+Output:
+\begin{verbatim}
+6
+\end{verbatim}
+But it can be also called with the second argument omitted:
+\begin{verbatim}
+A = 5
+B = 1
+add(A)
+\end{verbatim}
+Output:
+\begin{verbatim}
+15
+\end{verbatim}
+
+\subsection{Good coding practices}
+
+Let's write a function that will look for a character {\tt c} 
 in a string {\tt s}. If the character is found, it will return its index. 
-If not, it will return -1. The definition of a new function 
-is done via the reserved word {\tt def}:
+If not, it will return -1:
 
 \begin{verbatim}
 # Finds the first occurence of a given character in a given 
@@ -987,7 +1171,7 @@ def find_char(c, s):
             return -1
     return n
 \end{verbatim}
-Again, some remarks are in order. First of all notice the comment after the 
+Some remarks are in order. First of all notice the comment after the 
 symbol '{\tt \#}'. Any text behind this symbol till the end of line is ignored 
 by the interpreter, and thus one can use it for descriptions. {\bf Writing 
 comments is strongly encouraged}. They make your program more readable for others

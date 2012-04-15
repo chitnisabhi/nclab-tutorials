@@ -1269,18 +1269,7 @@ no repeating parts whatsoever in your program!}
 \noindent
 
 
-
-
-
-
-\section{Part G - Advanced Games}
-
-As usual, all games in this section can be cloned via the File Manager's
-Project menu. 
-
-
-
-\subsection{G01 - Diamond Staircase}
+\subsection{F06 - Diamond Staircase}
 
 {\em Write a program for Karel to climb the stairs, collect all gems, and get home!}
 \newpage
@@ -1297,7 +1286,7 @@ Project menu.
 \noindent
 
 
-\subsection{G02 - Plucking Flowers}
+\subsection{F07 - Plucking Flowers}
 
 {\em Write a program for Karel to pluck all flowers that grow at the fence of his garden (gems), and get back home! Note two level of repetitions - the fence has four edges, and it takes 7 steps to walk each edge.}
 
@@ -1313,7 +1302,7 @@ Project menu.
 \end{figure}
 \noindent
 
-\subsection{G03 - Gems for Friends}
+\subsection{F08 - Gems for Friends}
 
 {\em Karel has three gems in his bag, that he wants to give to his three friends R2, D2 and Marvin who live close by. They are very good friends, so Karel is allowed to enter their homes at any time. Write a program for Karel to put a gem on the ground in the middle of each friend's home, and then get back to his own house! Hint: There will be an outer loop of four repetitions, that will contains inner repetitions in it.}
 
@@ -1329,7 +1318,7 @@ Project menu.
 \end{figure}
 \noindent
 
-\subsection{G04 - Diamond Rectangle}
+\subsection{F09 - Diamond Rectangle}
 
 {\em Karel stands in front of a rectangle with unknown dimensions. He knows that the rectangle is surrounded with gems. Sometimes the gems are piled up, but he does not know how many gems are in each pile. Write a program for the robot to walk around the rectangle, collect all gems, and get home!}
 
@@ -1346,7 +1335,7 @@ Project menu.
 \end{figure}
 \noindent
 
-\subsection{G05 - Gem Jam!}
+\subsection{F10 - Gem Jam!}
 
 {\em In this maze, gems are distributed randomly along the walls. Otherwise 
 the maze is empty. Karel's home is in the south-west corner, and the robot 
@@ -1366,7 +1355,7 @@ all the gems and return home!}
 
 \newpage
 
-\subsection{G06 - The Matrix}
+\subsection{F11 - The Matrix}
 
 {\em Write a program for Karel to collect all gems and get back home! The record is 
 210 steps made. Can you do it with fewer steps?}
@@ -1382,7 +1371,7 @@ all the gems and return home!}
 \end{figure}
 \noindent
 
-\subsection{G07 - Escape from Alcatraz}
+\subsection{F12 - Escape from Alcatraz}
 
 {\em Karel is escaping from the Alcatraz prison! At the moment he is in an underground labyrinth with many tunnels but only one of them leads to his freedom. He cannot know which one is it, so he needs to search them one by one. Start by going straight ahead to the nearest wall. Then use the right-hand rule to search the tunnels.}
 
@@ -1399,7 +1388,7 @@ all the gems and return home!}
 \end{figure}
 \noindent
 
-\subsection{G08 - Border Patrol}
+\subsection{F13 - Border Patrol}
 
 {\em Write a program for Karel to check the perimeter of the maze using the 
 right-hand rule. Do not forget to pick up all gems that you find on the way.}
@@ -1415,7 +1404,7 @@ right-hand rule. Do not forget to pick up all gems that you find on the way.}
 \end{figure}
 \noindent
 
-\subsection{G09 - Ariadne's Thread}
+\subsection{F14 - Ariadne's Thread}
 
 {\em In an ancient Greek legend, princess Ariadne saved the life of her 
 beloved Theseus by giving him a thread that he used to avoid getting lost 
@@ -1436,7 +1425,12 @@ and that it does not contain any loops.}
 \end{figure}
 \noindent
 
-\subsection{G10 - Numerology I}
+\section{Part G - Using Variables}
+
+As usual, all games in this section can be cloned via the File Manager's
+Project menu. 
+
+\subsection{G01 - Numerology I}
 
 {\em Each box contains an integer number between 0 and 9. The numbers are not known to Karel a-priori. He needs to enter each box and recognize the number in it. Let's call this number N. When he leaves the box, he needs to create a pile of N gems. The task finishes when this is done for all boxes and the robot gets home.}
 
@@ -1453,10 +1447,9 @@ and that it does not contain any loops.}
 \end{figure}
 \noindent
 
-\subsection{G11 - Numerology II}
+\subsection{G02 - Numerology II}
 
-{\em There is a pile of N gems before the entrance to the box. It is known that N is between zero and 9. Karel needs to enter the box and render the number N. The task finishes when this is done and the robot gets home.
-}
+{\em There is a pile of N gems before the entrance to the box. It is known that N is between zero and 9. Karel needs to enter the box and render the number N. The task finishes when this is done and the robot gets home.}
 
 
 \begin{figure}[!ht]
@@ -1470,7 +1463,7 @@ and that it does not contain any loops.}
 \end{figure}
 \noindent
 
-\subsection{G12 - Numerology III}
+\subsection{G03 - Numerology III}
 
 {\em Add the numbers! Remember - Karel cannot see what numbers are in the boxes as you can see them. They can be any integers between 0 and 9. The task finishes when the robot gets home.}
 
@@ -1486,7 +1479,24 @@ and that it does not contain any loops.}
 \end{figure}
 \noindent
 
-\subsection{G13 - BubbleSort}
+\subsection{G04 - Eight Queens}
+
+{\em Karel stands on an 8 x 8 chess board along with eight queens (the gems). Recall that a chess queen dominates its row, its column, as well as both diagonals that pass through her position. Nothing may stand in these fields or she will destroy it. Currently, some queens are threatening each other. Write a program for Karel to correct the positions of the queens in such a way that none of them is threatened. Your program should be able to do it for any initial distribution of the queens. Enter the home after you are finished.}
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/g14.png}
+\end{center}
+\vspace{-4mm}
+\caption{The famous eight queens problem.}
+\label{fig:g14}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsection{G05 - BubbleSort}
 
 {\em Karel stands in front of four piles of gems, let's enumerate them by 1, 2, 3 and 4. He does not know how many gems are in each pile. All he knows is that each pile contains between 1 and 4 gems, and that two or more piles can be equally large. Sort the piles in such a way that the smallest pile is on the left and the largest on the right. Use the BubbleSort algorithm: Implement a function that switches two adjacent piles if the one on the right has fewer gems than the one on the left. Apply this function to piles 1 and 2, then to piles 2 and 3, then to piles 3 and 4. Now it is certain that the largest number is on the right-most position! Next, do the same for just the first three piles. Last, apply the function to piles 1 and 2, and you are done! }
 
@@ -1503,20 +1513,7 @@ and that it does not contain any loops.}
 \end{figure}
 \noindent
 
-\subsection{G14 - Eight Queens}
 
-{\em Karel stands on an 8 x 8 chess board along with eight queens (the gems). Recall that a chess queen dominates its row, its column, as well as both diagonals that pass through her position. Nothing may stand in these fields or she will destroy it. Currently, some queens are threatening each other. Write a program for Karel to correct the positions of the queens in such a way that none of them is threatened. Your program should be able to do it for any initial distribution of the queens. Enter the home after you are finished.}
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/g14.png}
-\end{center}
-\vspace{-4mm}
-\caption{The famous eight queens problem.}
-\label{fig:g14}
-\vspace{-4mm}
-\end{figure}
-\noindent
 
 
 

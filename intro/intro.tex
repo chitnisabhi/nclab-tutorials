@@ -89,36 +89,7 @@
 
 \section*{}
 \small
-\subsection*{About NCLab}
-Networked Computing Laboratory (NCLab) is a popular Internet-based framework for 
-programming, mathematics, computer modeling, 
-and scientific computing. It serves students, instructors, researchers, and the general 
-public. NCLab can be used free of charge for personal non-commercial purposes such as 
-private hobby or self-education, as well as for individual non-funded academic research.
-All other use is subject to {\bf purchasing a license} for a symbolic fee. The fees are as low as 
-\$1 per user per month for educational use, and they are used to support the development 
-and operational expenses. NCLab is a product of FEMhub Inc. The name "NCLab" is 
-registered with the U.S. Patent and Trademark Office (USPTO) under Trademark No. 85420518.
-
-\subsection*{Terms of Use and Pricing}
-More details on purchasing a license and using NCLab are provided in the online documents 
-{\bf Pricing} and {\bf Terms of Use} that are accessible from NCLab's home page 
-{\tt http://nclab.com}.
-
-\subsection*{Contact Information}
-General inquiries: {\tt info@femhub.com}\\
-Sales: {\tt sales@femhub.com}\\
-NCLab support: {\tt support@nclab.com}\\
-Agros \& Hermes support: {\tt support@femhub.com}\\
-Web page: {\tt http://femhub.com}\\
-{Physical address}\\
-FEMhub Inc.\\
-5490 Twin Creeks Dr.\\
-Reno, NV 89523
-
-\subsection*{About This Publication}
-This publication can be copied and distributed without any restrictions
-as long as reference to NCLab and FEMhub Inc. is preserved.
+\input ../common/aboutnclab.tex
 
 \subsection*{Acknowledgement}
 This publication was created with the help of numerous freely 
@@ -140,9 +111,9 @@ Numpy, Pylab, Matplotlib, Sympy and other projects.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{The {\em Cloud} is Coming. Should I Stay or Should I Run?}
+\section{Few Words About Cloud Computing}
 
-No need to run. Cloud Computing sounds like a rocket science, but it is not,
+Cloud Computing sounds like a rocket science, but it is not,
 and it really changes things for the better. Chances are that you are using 
 it already, without even noticing it. For example, if you are using Gmail, 
 Hotmail, Yahoo or another such provider to do your emails, then your data are 
@@ -462,7 +433,7 @@ create exact copy of that project in your account, and you can open it
 by clicking on it in the File Manager. You can change the project in any way 
 you like, the changes will not affect the original Displayed Project. 
 
-\subsection{Simple Arithmetic (Displayed Project)}
+\subsection{Simple Arithmetic}
 
 Let's say that we have not cloned the displayed project "Math - Tutorial - 1 - Simple Arithmetic"
 and instead, we prefer to start from scratch.
@@ -571,7 +542,7 @@ It is useful to see how NCLab reports errors, so let's do it!
 Since the error message in Fig. \ref{fig:divzero} mentioned modulo, we added there one more 
 input cell demonstrating how modulo is done -- using the \% symbol.
 
-\subsection{Commutative, Associative and Distributive Laws (Displayed Project)}
+\subsection{Commutative, Associative and Distributive Laws}
 
 The validity of these laws can be verified easily on examples. One just enters
 a code similar to 
@@ -598,7 +569,7 @@ is shown in Fig. \ref{fig:commut}.
 
 
 
-\subsection{List of Elementary Functions  (Displayed Project)}
+\subsection{List of Elementary Functions}
 
 In order to calculate square roots, exponentials, sins, cosins, tangents, and all other 
 simple functions, the best way is to import Numpy as shown in Fig. \ref{fig:fns}. Numpy 
@@ -670,11 +641,15 @@ examples of its correct use. This is illustrated for the command
 %\vspace{-1cm}
 \end{figure}
 
-\subsection{Plotting Functions of One Variable (Displayed Project)}\label{plotting}
+\section{Plotting Graphs, Curves and Surfaces}
 
 Plotting can be done via the Pylab library. Pylab is a standard Python library that is 
 superior in almost every way to MATLAB (expensive commercial product whose usage is 
-quite similar to what we are doing here). The Pylab {\tt plot} command takes two
+quite similar to what we are doing here). 
+
+\subsection{Plotting Functions of One Variable}\label{plotting}
+
+The Pylab {\tt plot} command takes two
 lists: $x$-coordinates and $y$-coordinates of points on a curve. Between the 
 points, the curve is interpolated linearly. Let us illustrate this on a simple 
 example with just five points [0, 0], [1, 2], [2, 0.5], [3, 2.5] and [4, 0]:
@@ -836,7 +811,7 @@ The output is shown in Fig. \ref{fig:plot5}.
 For a complete list of options available for the {\tt plot} command, 
 visit the Pylab page {\tt http:// www.scipy.org/PyLab}.
 
-\subsection{Plotting General Planar Curves (Displayed Project)}
+\subsection{Plotting General Planar Curves}
 
 The concept of plotting based on two arrays of $x$ and $y$ coordinates
 allows us to do much more than only plot graphs of functions of one variable.
@@ -873,7 +848,7 @@ The output is shown in Fig. \ref{fig:plot6}.
 \noindent
 
 
-\subsection{Plotting Functions of Two Variables (Displayed Project)}
+\subsection{Plotting Functions of Two Variables}
 
 For this functionality, your browser has to support WebGL (most of modern browsers do, 
 with the exception of Internet Explorer). NCLab offer the following simple way to plot 
@@ -910,7 +885,7 @@ lab.surface((x0, x1, nx), (y0, y1, ny), lambda x, y: sin(sqrt(x**2 + y**2)))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{High School Algebra (Displayed Project)}\label{algebra}
+\section{High School Algebra}\label{algebra}
 
 In the following we will be working with functions, polynomials, fractions, and such.
 Here are a few useful tricks.
@@ -1129,7 +1104,7 @@ Result:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Calculus (Displayed Project)}
+\section{Calculus}
 
 All examples in this section are available in the displayed project 
 "Math - Tutorial - 08 - Calculus". You can clone the project into 
@@ -1316,7 +1291,7 @@ pi**(1/2)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Matrix Algebra (Displayed Project)}
+\section{Matrix Algebra}
 
 All examples in this section are available in the displayed project 
 "Math - Tutorial - 09 - Matrix Algebra". You can clone the project into 
@@ -1681,7 +1656,7 @@ Result:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Differential Equations (Displayed Project)}
+\section{Differential Equations}
 
 All examples in this section are available in the displayed project 
 "Math - Tutorial - 10 - Differential Equations". You can clone the project into 

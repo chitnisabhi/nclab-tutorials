@@ -1,0 +1,480 @@
+\documentclass[article,A4,12pt]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs, bm}
+
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{subfig}
+\usepackage{epsf,times}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{cases}
+\usepackage{multicol}
+
+\usepackage[T1]{fontenc}
+%\newcommand{\tmname}[1]{\textsc{#1}}
+%\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
+%\newcommand{\tmsamp}[1]{\textsf{#1}}
+%\newcommand{\tmtextsc}[1]{{\scshape{#1}}}
+%\newcommand{\tmtextsl}[1]{{\slshape{#1}}}
+%\newcommand{\tmtexttt}[1]{{\ttfamily{#1}}}
+
+\leftmargin=0.0cm
+\oddsidemargin=0.5cm
+\evensidemargin=0.5cm
+\topmargin=0cm
+\textwidth=16.0cm
+%\textheight=21.5cm
+\textheight=20.0cm
+\pagestyle{plain}
+\setlength{\columnsep}{20pt}
+
+\def\m{\mathbf{m}}
+\def\H{\mathbf{H}}
+\def\E{\mathbf{E}}
+\newcommand{\vepsi}{{\varepsilon}}
+\def\hnorm#1#2{\vert\,#1\,\vert_{#2}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\Sph}{{\mathbb S}}
+\def\x{\mathbf{x}}
+\def\hvec{\overline{\mathbf{h}}}
+\def\evec{\overline{\mathbf{e}}}
+
+\newcommand{ \etal}{\mbox{\emph{et al. }}}
+
+\newcommand\vect[1]{\mbf{#1}}
+\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}} 
+\newcommand{\RC}[1]{#1 $\times$ #1 $\times$ #1}
+\def\um{$\mu$m}
+\def\C{$^{\circ}\mathrm{C}$}
+
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+% DEFINITION OF CUSTOM FONT SIZE
+\newcommand{\customfontA}{\fontsize{50}{55}\selectfont}
+\newcommand{\customfontB}{\fontsize{14.4}{20}\selectfont}
+\newcommand{\customfontC}{\fontsize{30}{35}\selectfont}
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
+
+% TO INPUT BACKGROUND IMAGE
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight]{img/frontpage.png}
+%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
+\vfill
+}}}
+
+\begin{document}
+
+% INPUTTING BACKGROUND IMAGE
+\AddToShipoutPicture{\BackgroundPic}
+\vbox{}
+\pagestyle{empty}
+\newpage
+\textwidth=15.5cm
+\ClearShipoutPicture
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{}
+\small
+\input ../common/aboutnclab.tex
+
+\section*{Acknowledgement}
+This publication was created with the help of numerous freely 
+available web resources and tutorials related to Python, Scipy,
+Numpy, Pylab, Matplotlib, Sympy and other projects.
+
+\normalsize
+
+\newpage
+%{\ }
+\setcounter{tocdepth}{2}
+\tableofcontents
+%\pagestyle{plain}
+
+\newpage
+
+\pagestyle{plain}
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Introduction}
+
+All examples in this section are available in the displayed project 
+"Math - Tutorial - 09 - Matrix Algebra". You can clone the project into 
+your user account via the menu Project $\rightarrow$ Clone in the File 
+Manager, and experiment with the examples on your own.
+NCLab provides vector and matrix operations via the Numpy library,
+and in particular through its module {\tt linalg}:
+
+\begin{verbatim}
+from numpy import *
+from numpy.linalg import *
+\end{verbatim}
+
+\section{Vector and its norm}
+
+Vectors are Numpy arrays. They can be arbitrarily long, and they
+are defined as follows: 
+\begin{verbatim}
+u = array([3, 4, 0])
+\end{verbatim}
+The Euclidean norm of a vector is calculated using the function {\tt norm}:
+\begin{verbatim}
+norm(u)
+\end{verbatim}
+Result:
+\begin{verbatim}
+5.0
+\end{verbatim}
+
+\section{Multiplying vector with a number}
+
+All operations with vectors and matrices are very intuitive. To multiply 
+a vector with a constant, type:
+
+\begin{verbatim}
+c = 2.5
+u = array([3, 4, 0])
+print c*u
+\end{verbatim}
+Result:
+\begin{verbatim}
+[  7.5  10.    0. ]
+\end{verbatim}
+
+\section{Adding and subtracting vectors}
+
+Vectors can be added and subtracted just as numbers:
+
+\begin{verbatim}
+u = array([1, 3, 2])
+v = array([-1, 1, 1])
+print "u + v =", u+v
+print "u - v =", u-v
+\end{verbatim}
+Result:
+\begin{verbatim}
+u + v = [0 4 3]
+u - v = [2 2 1]
+\end{verbatim}
+
+\section{Inner product of vectors}
+
+The inner product of vectors (often called {\em dot product}) is calculated
+using the function {\tt dot}:
+
+\begin{verbatim}
+u = array([1, 3, 2])
+v = array([-1, 1, 1])
+dot(u, v)
+\end{verbatim}
+Result:
+\begin{verbatim}
+4.0
+\end{verbatim}
+
+\section{Outer product of vectors}
+
+The outer product of vectors is obtained via the function {\tt outer}:
+\begin{verbatim}
+u = array([1, 3, 2])
+v = array([-1, 1, 1])
+outer(u, v)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[-1,  1,  1],
+       [-3,  3,  3],
+       [-2,  2,  2]])
+\end{verbatim}
+
+\section{Matrix}
+
+Matrices are two-dimensional Numpy arrays:
+\begin{verbatim}
+A = array([[1, 2, 3], [0, -2, 1], [1, 1, 0]])
+print "A ="
+print A
+\end{verbatim}
+Result:
+\begin{verbatim}
+A =
+[[ 1  2  3]
+ [ 0 -2  1]
+ [ 1  1  0]]
+\end{verbatim}
+
+
+\section{Identity matrix}
+
+Identity matrix is defined using the command {\tt eye}:
+\begin{verbatim}
+eye(5)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 1.,  0.,  0.,  0.,  0.],
+       [ 0.,  1.,  0.,  0.,  0.],
+       [ 0.,  0.,  1.,  0.,  0.],
+       [ 0.,  0.,  0.,  1.,  0.],
+       [ 0.,  0.,  0.,  0.,  1.]])
+\end{verbatim}
+
+\section{Diagonal matrix}
+
+Diagonal matrices are obtained via the {\tt diag} command:
+\begin{verbatim}
+diag([1, 2, 3, 4])
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[1, 0, 0, 0],
+       [0, 2, 0, 0],
+       [0, 0, 3, 0],
+       [0, 0, 0, 4]])
+\end{verbatim}
+
+\section{Matrix transpose}
+
+In order to obtain the matrix transpose, do:
+\begin{verbatim}
+A.transpose()
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 1,  0,  1],
+       [ 2, -2,  1],
+       [ 3,  1,  0]])
+\end{verbatim}
+
+\section{Matrix times vector}
+
+Multiplication of matrices with vectors is done using the {\tt dot} function:
+\begin{verbatim}
+dot(A, u)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([13, -4,  4])
+\end{verbatim}
+
+\section{Matrix times matrix}
+
+The same function {\tt dot} is used also to multiply two matrices:
+\begin{verbatim}
+A = array([[1, 2, 3], [0, -2, 1], [1, 1, 0]])
+B = array([[1, -2, 0], [0, -2, 1], [1, 1, 1]])
+dot(A, B)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 4, -3,  5],
+       [ 1,  5, -1],
+       [ 1, -4,  1]])
+\end{verbatim}
+
+\section{Matrix power}
+
+By $n$th power of a matrix $A$ we mean the product
+$$
+\underbrace{A \ \mbox{times}\ A \ \mbox{times} \ \ldots \ \mbox{times} \ A}_{n \ {\small \mbox{times}}}
+$$ 
+The command for this is:
+\begin{verbatim}
+n = 7
+matrix_power(A, n)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 379,  380,  472],
+       [ -28, -261,  260],
+       [ 176,  204,  175]])
+\end{verbatim}
+
+\section{Determinant of a matrix}
+
+Determinants are calculated usign the command {\tt det}:
+\begin{verbatim}
+det(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+7.0
+\end{verbatim}
+
+\section{Condition number of a matrix}
+
+By condition number of a matrix we mean the product of its norm with the 
+norm of its inverse. Simply speaking, if the condition number is low
+(lowest possible is 1.0), then it is easy to solve the system of linear
+algebraic equations numerically. If the condition number is large, then
+one can expect significant roundoff errors and other problems. One uses
+the command {\tt cond} for that:
+\begin{verbatim}
+cond(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+4.9899406541341529
+\end{verbatim}
+
+\section{Inverse of a matrix}
+
+The inverse of a nonsingular square matrix is obtained using the command {\tt inv}:
+\begin{verbatim}
+inv(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[-0.14285714,  0.42857143,  1.14285714],
+       [ 0.14285714, -0.42857143, -0.14285714],
+       [ 0.28571429,  0.14285714, -0.28571429]])
+\end{verbatim}
+
+\section{Eigenvalues and eigenvectors}
+
+A complete set of eigenvalues and eigenvectors can be obtained using the command {\tt eig}.
+Note: The first array in the result contains the eigenvalues, the remaining arrays are the
+eigenvectors:
+\begin{verbatim}
+eig(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([ 2.50701864, -1.22187616, -2.28514248]), 
+ array([[-0.91251758, -0.83862568,  0.31769573],
+       [-0.088601  ,  0.42989448, -0.9118476 ],
+       [-0.39932634,  0.33451115,  0.26000649]]))
+\end{verbatim}
+
+\section{QR factorization}
+
+QR factorization of a matrix is obtained using the {\tt qr} command:
+\begin{verbatim}
+qr(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([[-0.70710678,  0.23570226, -0.66666667],
+       [-0.        , -0.94280904, -0.33333333],
+       [-0.70710678, -0.23570226,  0.66666667]]), 
+ array([[-1.41421356, -2.12132034, -2.12132034],
+       [ 0.        ,  2.12132034, -0.23570226],
+       [ 0.        ,  0.        , -2.33333333]]))
+\end{verbatim}
+
+\section{Cholesky decomposition}
+
+Cholesky decomposition of a symmetric positive definite matrix is 
+calculated via the command {\tt cholesky}:
+\begin{verbatim}
+C = array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]])
+cholesky(C)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 1.41421356, -0.        ,  0.        ],
+       [-0.70710678,  1.22474487, -0.        ],
+       [ 0.        , -0.81649658,  1.15470054]])
+\end{verbatim}
+
+\section{LU factorization}
+
+To perform LU factorization of a matrix, we import the function {\tt lu\_factor}
+from the linalg module of the Scipy library:
+\begin{verbatim}
+from scipy.linalg import lu_factor
+# Note: the two matrices are stored in one 2D array.
+lu_factor(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([[ 1. ,  2. ,  3. ],
+       [ 0. , -2. ,  1. ],
+       [ 1. ,  0.5, -3.5]]), array([0, 1, 2], dtype=int32))
+\end{verbatim}
+Note: the resulting matrices $L$ and $U$ are stored in one two-dimensional array.
+
+\section{Singular value decomposition}
+
+Singular value decomposition (SVD) of a matrix is obtained via the command {\tt svd}:
+\begin{verbatim}
+svd(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([[ 0.95842033, -0.22464965,  0.17596308],
+       [-0.1460451 , -0.91591194, -0.37386649],
+       [ 0.24515567,  0.3326227 , -0.9106376 ]]), 
+ array([ 3.8626099 ,  2.34116338,  0.77407933]), 
+ array([[ 0.31159657,  0.63534413,  0.70657301],
+       [ 0.0461194 ,  0.73260469, -0.6790901 ],
+       [-0.94909461,  0.24418887,  0.19897542]]))
+\end{verbatim}
+
+
+\section{Solving systems of linear algebraic equations}
+
+System of linear algebraic equations with a matrix $A$ and right-hand 
+side vector $u$ is solved via the {\tt solve} command:
+\begin{verbatim}
+solve(A, u)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([ 3.42857143, -1.42857143,  0.14285714])
+\end{verbatim}
+
+
+
+\section{Moore-Penrose pseudo inverse}
+
+A singular matrix does not have an inverse, but one can calculate the Moore-Penrose
+pseudo inverse instead:
+\begin{verbatim}
+D = array([[1, 2, 3], [0, -2, 1], [1, 0, 4]])
+pinv(D)
+\end{verbatim}
+Result:
+\begin{verbatim}
+array([[ 0.04347826, -0.01449275,  0.02898551],
+       [ 0.20289855, -0.28985507, -0.08695652],
+       [ 0.07246377,  0.08695652,  0.15942029]])
+\end{verbatim}
+
+\section{Least square solution with a singular matrix}
+
+It is impossible to solve a system of linear algebraic equations with a singular
+matrix in the classical sense, but it is possible to do it in the least-squares
+sense:
+\begin{verbatim}
+D = array([[1, 2, 3], [0, -2, 1], [1, 0, 4]])
+lstsq(D, u)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(array([ 0.05797101, -0.84057971,  0.65217391]), array([], 
+ dtype=float64), 2, 
+ array([  5.36811455e+00,   2.68017652e+00,   4.40614709e-17]))
+\end{verbatim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

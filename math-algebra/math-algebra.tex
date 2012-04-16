@@ -1,0 +1,343 @@
+\documentclass[article,A4,12pt]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs, bm}
+
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{subfig}
+\usepackage{epsf,times}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{cases}
+\usepackage{multicol}
+
+\usepackage[T1]{fontenc}
+%\newcommand{\tmname}[1]{\textsc{#1}}
+%\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
+%\newcommand{\tmsamp}[1]{\textsf{#1}}
+%\newcommand{\tmtextsc}[1]{{\scshape{#1}}}
+%\newcommand{\tmtextsl}[1]{{\slshape{#1}}}
+%\newcommand{\tmtexttt}[1]{{\ttfamily{#1}}}
+
+\leftmargin=0.0cm
+\oddsidemargin=0.5cm
+\evensidemargin=0.5cm
+\topmargin=0cm
+\textwidth=16.0cm
+%\textheight=21.5cm
+\textheight=20.0cm
+\pagestyle{plain}
+\setlength{\columnsep}{20pt}
+
+\def\m{\mathbf{m}}
+\def\H{\mathbf{H}}
+\def\E{\mathbf{E}}
+\newcommand{\vepsi}{{\varepsilon}}
+\def\hnorm#1#2{\vert\,#1\,\vert_{#2}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\Sph}{{\mathbb S}}
+\def\x{\mathbf{x}}
+\def\hvec{\overline{\mathbf{h}}}
+\def\evec{\overline{\mathbf{e}}}
+
+\newcommand{ \etal}{\mbox{\emph{et al. }}}
+
+\newcommand\vect[1]{\mbf{#1}}
+\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}} 
+\newcommand{\RC}[1]{#1 $\times$ #1 $\times$ #1}
+\def\um{$\mu$m}
+\def\C{$^{\circ}\mathrm{C}$}
+
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+% DEFINITION OF CUSTOM FONT SIZE
+\newcommand{\customfontA}{\fontsize{50}{55}\selectfont}
+\newcommand{\customfontB}{\fontsize{14.4}{20}\selectfont}
+\newcommand{\customfontC}{\fontsize{30}{35}\selectfont}
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
+
+% TO INPUT BACKGROUND IMAGE
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight]{img/intro-frontpage.png}
+%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
+\vfill
+}}}
+
+\begin{document}
+
+% INPUTTING BACKGROUND IMAGE
+\AddToShipoutPicture{\BackgroundPic}
+\vbox{}
+\pagestyle{empty}
+\newpage
+\textwidth=15.5cm
+\ClearShipoutPicture
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{}
+\small
+\input ../common/aboutnclab.tex
+
+\subsection*{Acknowledgement}
+This publication was created with the help of numerous freely 
+available web resources and tutorials related to Python, Scipy,
+Numpy, Pylab, Matplotlib, Sympy and other projects.
+
+\normalsize
+
+\newpage
+%{\ }
+\setcounter{tocdepth}{2}
+\tableofcontents
+%\pagestyle{plain}
+
+\newpage
+
+\pagestyle{plain}
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Introduction}
+
+NCLab provides a wide symbolic mathematics functionality via the Sympy library.
+Sympy can be imported in any Python worksheet via 
+
+\begin{verbatim}
+from sympy import *
+\end{verbatim}
+In the following we will show a basic usage of Sympy. For its full usage,
+visit Sympy home page {\tt http://sympy.org}.
+
+\section{Entering an expression}
+Algebraic expressions are represented using text strings that resemble 
+computer code (well, they {\em are} computer code). For example, the expression 
+$$
+  (x + y)^2 (x + 1)
+$$ 
+needs to be entered as
+\begin{verbatim}
+(x + y)**2 * (x + 1)
+\end{verbatim}
+Longer expressions, when entered as one piece, may not be all that well readable. For example,
+$$
+\frac{(x + y)^2 (x + 1) + \frac{(x-5)(x-3)}{(x-4)^2} + (x + y)(x - 2)(x + y)^3}{(x-1)(x+2))}
+$$ 
+would be entered as 
+\begin{verbatim}
+((x + y)**2 * (x + 1) + (x - 5)*(x - 3)/(x - 4)**2 
++ (x + y)*(x - 2)*(x + y)**3)/((x - 1)*(x + 2))
+\end{verbatim}
+The same can be written more elegantly using simpler expressions:
+\begin{verbatim}
+A = (x + y)**2 * (x + 1)
+B = (x - 5)*(x - 3)/(x - 4)**2
+C = (x + y)*(x - 2)*(x + y)**3
+D = (x - 1)*(x + 2)
+(A + B + C)/D
+\end{verbatim}
+
+\section{Pretty printing}
+An expression can be printed in a prettier way using the command {\tt pprint} (stands for {\em pretty print}):
+\begin{verbatim}
+pprint( (x+y)**2 * (x + 1) )
+\end{verbatim}
+Result:
+\begin{verbatim}
+       2
+(x + y)  * (1 + x)
+\end{verbatim}
+Another example would be
+\begin{verbatim}
+pprint((x**2 + y**2 + z**2)/(x*y*z))
+\end{verbatim}
+Result:
+\begin{verbatim}
+ 2   2   2
+x + y + z
+----------
+  x*y*z   
+\end{verbatim}
+All examples in this section are available in the displayed project 
+"Math - Tutorial - 07 - High School Algebra". You can clone the project into 
+your user account via the menu Project $\rightarrow$ Clone in the File 
+Manager, and experiment with the examples on your own.
+
+For algebra, calculus, differential equations and related symbolic calculations 
+we import the Sympy library:
+
+\begin{verbatim}
+from sympy import *
+\end{verbatim}
+At the beginning, we need to declare the names of symbolic variables (to distinguish 
+them from constants). For example, if we know that we are going to work with functions 
+of $x$, $y$ and/or $z$, we may declare these symbols at once:
+\begin{verbatim}
+x, y, z = symbols("xyz")
+\end{verbatim}
+With this, we are ready to go!
+
+\section{Expanding expressions}
+
+To expand an expression, we use the command {\tt expand}:
+\begin{verbatim}
+A = expand( (x+y)**2 * (x+1) )
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+         2    2      2        2    3
+2*x*y + x  + y  + x*y  + 2*y*x  + x 
+\end{verbatim}
+
+\section{Simplifying expressions}
+
+In order to simplify an expression, we use the command {\tt simplify}:
+\begin{verbatim}
+simplify( 1/x + (x*sin(x) - 1)/x )
+\end{verbatim}
+Result:
+\begin{verbatim}
+sin(x)
+\end{verbatim}
+Another example:
+\begin{verbatim}
+A = simplify( 1/x + 1/y + 1/z )
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+x*y + x*z + y*z
+---------------
+     x*y*z     
+\end{verbatim}
+
+\section{Factoring polynomials}
+
+This is done using the command {\tt factor}:
+\begin{verbatim}
+factor(x**4 - 3*x**2 + 1)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(1 + x - x**2)*(1 - x - x**2)
+\end{verbatim}
+In order to get a more thorough factorization, one can do:
+\begin{verbatim}
+factor(x**4 - 3*x**2 + 1, modulus=5)
+\end{verbatim}
+Result:
+\begin{verbatim}
+(2 + x)**2*(2 - x)**2
+\end{verbatim}
+
+
+\section{Calculating roots of polynomials}
+
+The command {\tt roots} can be used to calculate all roots of a polynomial:
+\begin{verbatim}
+roots(-15 - 13*x + 3*x**2 + x**3, x)
+\end{verbatim}
+Result:
+\begin{verbatim}
+{-5: 1, -1: 1, 3: 1}
+\end{verbatim}
+It also works in the complex case:
+\begin{verbatim}
+roots(x**2 + 1, x)
+\end{verbatim}
+Result:
+\begin{verbatim}
+{-I: 1, I: 1}
+\end{verbatim}
+
+
+\section{Solving linear equations and systems}
+
+In order to solve an equation or a system of equations, we use the command {\tt solve}.
+For example, in order to solve the equation 
+$$
+3x - 4 - 2 = 0,
+$$
+we type:
+\begin{verbatim}
+solve(3*x - 4 - 2, [x])
+\end{verbatim}
+Result:
+\begin{verbatim}
+[2]
+\end{verbatim}
+\noindent
+Here is an example for a system of two equations:
+\begin{verbatim}
+solve([x + 5*y - 2, -3*x + 6*y - 15], [x, y])
+\end{verbatim}
+Result:
+\begin{verbatim}
+{x: -3, y: 1}
+\end{verbatim}
+And one more example for a system of three equations:
+\begin{verbatim}
+solve([x + 5*y - z - 2, -3*x + 6*y + z - 15, x + y + z], [x, y, z])
+\end{verbatim}
+Result:
+\begin{verbatim}
+{x: -3, y: 1}{x: -40/17, y: 19/17, z: 21/17}
+\end{verbatim}
+\noindent
+
+\section{Solving polynomial equations}
+
+Nonlinear equations can be solved using the same command {\tt solve}.
+For example, in order to solve the equation 
+$$
+3x^3 - 4 = 2,
+$$
+we type:
+\begin{verbatim}
+A = solve([3*x**3 - 4 - 2], [x])
+pprint(A)
+\end{verbatim}
+Result:
+\begin{verbatim}
+              3 ___   ___   3 ___         3 ___   ___   3 ___   
+  3 ___     I*\/ 2 *\/ 3    \/ 2        I*\/ 2 *\/ 3    \/ 2    
+[(\/ 2 ,), (------------- - -----,), (- ------------- - -----,)]
+                  2           2               2           2     
+\end{verbatim}
+
+\section{Solving transcendental equations}
+
+For example, let us solve the equation
+$$
+e^x + 1 = 0.
+$$
+This is done as follows:
+\begin{verbatim}
+solve(exp(x) + 1, x)
+\end{verbatim}
+Result:
+\begin{verbatim}
+[pi*I]
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\end{document}

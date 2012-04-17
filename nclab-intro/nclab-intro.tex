@@ -111,29 +111,31 @@ Numpy, Pylab, Matplotlib, Sympy and other projects.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{What Is Cloud Computing?}
+\section{What Is {\em Cloud}?}
 
-Cloud Computing sounds like a rocket science, but it is not,
+Using cloud computing or cloud computers sounds like a rocket science, but it is not,
 and it really changes things for the better. Chances are that you are using 
-it already, without even noticing it. For example, if you are using Gmail, 
+it already, without even knowing. For example, if you are using Gmail, 
 Hotmail, Yahoo or another such provider to do your emails, then your data are 
-stored on the cloud. 
+stored on the cloud. If you are using Google docs to acces your Word or 
+Excel files from anywhere, you are using the cloud. 
 
 \subsection{Some Trivia}
 
-In the IT sense of the word, and with a bit of simplification, the {\em Cloud} 
+In the IT sense of the word, and with a bit of simplification, the {\em cloud} 
 is a pool of interconnected computers. They come in different sizes depending on the provider - 
-large cloud facilities have millions of computing cores but some companies are running 
-their own private clouds with relatively few computers. The computers in large clouds
+large cloud facilities have millions of computers but some companies are running 
+their own private clouds with relatively few ones. The computers in large clouds
 are not very similar to your desktop PC -- they are stripped off many unnecessary 
 things, compacted, and interconnected into a powerful grid. Their processors 
 typically contain multiple {\em computing cores} that can share the same memory.
-Such a {\em multicore processor} is much more efficient compared to a cluster 
-of single-core PCs with the same number of cores.
+Such {\em multicore processors} are much more efficient compared to (clusters 
+of) PCs with equivalent number of cores.
 
 The main advantage of the cloud is its {\em elasticity}. Upon your request, the
 provider will assemble for you an {\em instance} with the parameters that 
-you need. An instance is created within a minute or so, and the user can upgrade 
+you need. An instance means a computer with given parameters (number of processors, 
+hard disk size, memory). An instance is created within a minute or so, and the user can upgrade 
 or downgrade it dynamically, depending on the actual needs. After the instance is 
 no longer needed, it is dissolved and the same hardware is used to build instances 
 for other users. The following is a realistic example of how such instances may 
@@ -173,18 +175,19 @@ It is quite interesting to look at the prices:
 \noindent
 With such low prices, literally anyone has now access to 
 a powerful computer -- that otherwise would cost many thousands of dollars -- 
-for just cents per hour. This brings new wonderful opportunities to 
-education at all levels.
+for just cents per hour. This brings new wonderful opportunities to ordinary users
+and educators.
 
 \subsection{Software as a Service (SaaS)}
 
-Another big change that the Cloud Computing brings is in how software is handled. 
+Another big change that cloud computing brings is in how software is handled. 
 Traditionally, one would buy a software in a big box with a small CD in it, 
 and install it on one's computer. This model is now being challenged by a new 
 approach called {\em Software as a Service (SaaS)}. The user does not have 
 to own a copy of the software physically. Instead, the software is running 
 on a remote server and accessed by users over the Internet. Typically, paying 
-for the access is much less expensive compared to buying the software.
+for the access is much less expensive compared to buying the software. If you like,
+think about it like watching a movie on Netflix vs. buying a DVD. 
 
 \subsection{Access from Mobile Platforms}
 
@@ -195,7 +198,7 @@ phones, tablets, netbooks, laptops, and desktop computers.
 
 \subsection{Some Myths}
 
-Very often, Cloud Computing is mentioned in the context of large 
+Very often, cloud computing is mentioned in the context of large 
 computations in science, engineering, finance, and other fields. This is because there are many 
 cloud providers and they need to show off. But in reality, the clouds are mostly
 busy processing small tasks of ordinary users. In that case, you may say, a standard 
@@ -207,16 +210,16 @@ from everywhere, any time. Once you get used to it, there is no way back.
 \subsection{NCLab and K-12 Education}
 
 NCLab is a web-based framework that provides 
-instant access to many programming, mathematics, computer
-modeling, and scientific computing activities. NCLab does not have to be installed - it 
+instant access to programming, web design, math, physics, 3D CAD design, computer
+modeling, and scientific computing. You do not have to install it or care about 
+anything -- NCLab 
 is automatically available in any classroom that has Internet access. In 
 contrast to traditional educational software products, 
 users can access their accounts and work from anywhere and at any time.
 Students can start a problem at school, finish the rest at home, and notify 
 the instructor about the completion with one mouse click. Most importantly, 
 however, NCLab invites K-12 teachers and students to discover new exciting 
-areas of mathematics, programming, and computer modeling that were not 
-available to them before.
+areas that were out of their reach before.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
@@ -227,22 +230,9 @@ In order to explore NCLab, first visit its home page {\tt http://nclab.com}.
 Under the logo you will see a slide show representing selected activities 
 offered by NCLab. The Cloud Monitor, located under the slide show, displays 
 the current load on the core cluster. By default, NCLab runs on six nodes 
-with a total of 100 computing cores, and has approximately 100 GB of memory 
-available for immediate use. These parameters can be scaled up dynamically 
-if needed. 
-
-The User Statistics window, located in the 
-bottom-right corner, provides current overview of NCLab's users and their projects. 
-The window above User Statistics is a WebGL tester. WebGL is a very recent 
-web-browser technology that supports amazing 3D graphics. If you can see in your 
-browser an image similar to the one in Fig. \ref{fig:outside}, then your web 
-browser supports it. In that case, click into the WebGL tester window, and move 
-your mouse while keeping the left button pressed, to see WebGL in action.
-If your browser does not support WebGL, we recommend that you 
-upgrade it to a newer version. IE is one of few browsers which do not support WebGL. Therefore 
-it is better to use Chrome, Firefox, Opera, or Safari. A login dialog where
-users enter their username, password and institution code is located in the 
-top-right corner.\\[-8mm]
+with a total of 200 computing cores, and has approximately 200 GB of memory 
+available for immediate use. These parameters are scaled dynamically 
+as needed. 
 
 \begin{figure}[!ht]
 \begin{center}
@@ -251,15 +241,72 @@ top-right corner.\\[-8mm]
 \vspace{-2mm}
 \caption{NCLab's home page.}
 \label{fig:outside}
-\vspace{-0.6cm}
+%\vspace{-0.6cm}
 \end{figure}
 
+\noindent
+The User Statistics window, located in the 
+bottom-right corner, provides current overview of NCLab's users and their projects. 
+The window above User Statistics is a WebGL tester. WebGL is a very recent 
+web-browser technology that supports {\em amazing} 3D graphics. 
+
+\subsection{WebGL}
+
+WebGL is a web browser analogy of OpenGL (realistic hardware-supported 3D graphics). 
+The technology is so new that it is 
+turned off in some web browsers by default. It should work in modern web browsers 
+(not Internet Explorer) and on reasonable new computers. To test whether your web 
+browser and graphic card support it,  
+click on the "Test WebGL" button. If you see a window 
+similar to the one in Fig. \ref{fig:webgl2} then you are fine. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/webgl2.png}
+\end{center}
+\vspace{-2mm}
+\caption{WebGL Tester.}
+\label{fig:webgl2}
+\end{figure}
+\noindent
+Now you can click into the WebGL tester window, and move 
+your mouse while keeping the left button pressed, to see WebGL in action.
+
+However, you may also see a message similar to the one shown in Fig. \ref{fig:nowebgl}.
 \newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/nowebgl.png}
+\end{center}
+\vspace{-2mm}
+\caption{Message saying that WebGL is not enabled.}
+\label{fig:nowebgl}
+\end{figure}
+\noindent
+There may be multiple reasons for this message:
+\begin{enumerate}
+\item {\em You are using Internet Explorer (IE)}. IE does not have WebGL support. If you are using this web browser, please install another 
+one such as Chrome, Firefox, Safari etc. This takes only minutes (at most) and it is highly rewarding in terms 
+of improved Internet experience. In fact, poor performance of IE was causing such problems to NCLab users that 
+we eventually decided to banish IE. 
+\item {\em Your browser is outdated.} We recommend that you upgrade your web browser to the newest version, this 
+can never hurt. 
+\item {\em Your browser has WebGL disabled.} Try to get into the Settings of your browser (in Firefox this is via 
+{\tt about:flags}) and search for "WebGL". Once you find it, enable it. You will be asked to restart your web browser.
+\item {\em Everything failed.} In this case, try to upgrade your graphics drivers. This should help. If you still have 
+problems, go to the page {\tt www.webgl.org} and try to find help there. You can also google for "graphic cards that 
+support webgl" which will give you and idea whether your graphic card s supported or not. 
+\item As a general observation, WebGL works almost always in Safari on more recent Mac systems  
+\end{enumerate}
 
 \subsection{Creating an Account}
 
-In order to create a new account, click on the link "Create free account" which is next to
+A login dialog where
+users enter their username, password and institution code is located in the 
+top-right corner. In order to create a new account, click on the link "Create free account" which is next to
 "Username". The following window appears:
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -278,45 +325,70 @@ us to generate a new password for you), and password twice. Next:
 \item If you belong to an institution 
       that uses NCLab for teaching or research, you should know your institution's code. Enter it in the form, 
       along with your first and last names. Your name will be visible to an NCLab admin
-      who will verify that you indeed belong to the institution.
+      who will verify that you belong to the institution.
 \item If you are using NCLab for your personal hobby or self-education, for activities not 
       related to any institutional use, then leave the last three lines empty. 
 \end{itemize}
-After clicking OK, you are ready to login!
+After accepting the Terms of Use and clicking OK, you are ready to login!
 
 \subsection{After Login}
 
-The interior of NCLab is similar to the standard computer desktop. Many users maximize 
+The interior of NCLab is similar to a standard computer desktop, except that the 
+icons are different (Fig. \ref{fig:desktop}). Many users maximize 
 the web browser window to make the desktop experience even more realistic.
-
 If any member of any of your groups is in NCLab at the time you log in, the Groups icon 
-will be lighted green as shown in Fig. \ref{fig:desktop}. 
+will be lighted green.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/desktop.png}
 \end{center}
 %\vspace{-2mm}
-\caption{NCLab desktop after login.}
+\caption{NCLab desktop after login. The green light at "Groups" means that someone in your 
+         groups is online.}
 \label{fig:desktop}
 \end{figure}
+\noindent
+If you do not like the default desktop background, it can be changed easily in Settings, as shown in 
+Fig. \ref{fig:desktop}.
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/desktop2.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Changing desktop background.}
+\label{fig:desktop2}
+\end{figure}
+\noindent
+
 
 \noindent
-More about Groups and Chat will be said in a moment. First, let us briefly 
-describe the other icons:
+Groups were already mentioned. The other icons
+represent:
 
 \begin{itemize}
-\item File Manager is used to manage files and folders similarly to Windows Explorer. 
-\item Programming Module enables programming in Karel (popular educational language for beginners),
-      Python (modern programming language for advanced applications), and Javascript 
-      (most popular language for web development). Additional languages are in preparation.
-\item Fractal Explorer is an interactive graphical application that allows the users
-      to learn about Mandelbrot and Julia fractals, and to generate beautiful fractal art.
-\item Settings: Here the user can upload his/her avatar image (to be used in Groups and Chat), 
-      request a new password, and adjust sound preferences.
-\item Help launches a quick help about NCLab.
-\item Logoff will close all applications and end the session.
+\item {\em File Manager}, used to manage files and folders, and to clone work published by other users.
+\item {\em Programming} module provides programming in 
+      \begin{itemize}
+      \item Karel the Robot (popular educational language for beginners),
+      \item Python (modern programming language for advanced applications), 
+      \item Javascript 
+      (most popular language for web development), 
+      \item CUDA (massively parallel programming on graphic cards),
+      \item Web Design with HTML, Javascript and CSS. 
+      \end{itemize}
+\item {\em Physics} module provides various physics simulation tools in Kinematics,
+      Solid Mechanics, Fluid Dynamics, Electromagnetics, and other areas. 
+\item {\em Math} module offers Fractal Explorer (interactive graphical application 
+      to explore Fractals and generate beautiful fractal art), ODE module to explore 
+      ordinary differential equations, and PDE module to explore partial differential 
+      equations. 
+\item {\em Calculator} is a calculator! 
 \end{itemize}
+More modules are on the way. 
 
 \subsection{Groups and Chat}
 
@@ -366,5 +438,173 @@ The Chat window is shown in Fig. \ref{fig:chat}.
 \label{fig:chat}
 \end{figure}
 
+\subsection{File Manager}
+
+Clicking on the File Manager icon launches the application. Initially, you will not 
+have any files or folders there (Fig. \ref{fig:fileman}).
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/fileman1.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Initial launch of File Manager.}
+\label{fig:fileman}
+\end{figure}
+\noindent
+However, this can be changed quickly. Click on the menu Project $\rightarrow$ Clone. This will
+launch a window with many displayed projects from various areas of programming, web design, math, 
+physics, 3D computer aided design, and engineering simulations (Fig. \ref{fig:fileman2}).
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/fileman2.png}
+\end{center}
+%\vspace{-2mm}
+\caption{List of displayed projects.}
+\label{fig:fileman2}
+\end{figure}
+\noindent
+You can view the contents of any displayed project by double-clicking on it. You can 
+clone any project into your account by just clicking on it once, and then clicking on 
+the button "Clone". Let's say that we want to learn Python programming. After cloning 
+the project "Python - Intro", we will see the following in the File Manager:
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/fileman3.png}
+\end{center}
+%\vspace{-2mm}
+\caption{After cloning the project "Python - Intro".}
+\label{fig:fileman3}
+\end{figure}
+\noindent
+Now by clicking on the project, it launches in a new window, as
+shown in Fig. \ref{fig:fileman4}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/fileman4.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Launching project "Python - Intro".}
+\label{fig:fileman4}
+\end{figure}
+\noindent
+The worksheet contains {\em input cells} where you can enter or edit computer
+code, and descriptive {\em text cells}. The contents of text cells can be 
+edited after clicking on the cell. The text is be formatted using Restructured
+Text (RST) format. You can click on the blue arrow button to evaluate all input 
+cells in the worksheet (hold on with that for a moment), or you can evaluate 
+each input cell individually by clicking on the "run" right under it. 
+
+Let us evaluate the first input cell that contains just {\tt 1 + 3}. This will send its contents 
+to the server where it will be parsed using a Python interpreter, and the 
+output will be sent back to your browser and displayed almost instantly in
+a new yellow {\em output cell} (Fig. \ref{fig:fileman5}).
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/fileman5.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Output is displayed in yellow {\em output cells}.}
+\label{fig:fileman5}
+\end{figure}
+\noindent
+We recommend that you spend some time experimenting with the 
+File Manager's menu and this worksheet. Try to:
+\begin{itemize}
+\item Insert new input cells below and about an existing input cell.
+\item Insert new text cells below and about an existing input cell.
+\item Remove cells by clicking on "remove" under tehm.
+\item Create a new folder "Python" and drag your cloned Python 
+      project in there. 
+\item Rename the file and folder.
+\item Duplicate your project via "Save as" under a different name.
+\item Synchronize your cloned project with the original via the 
+      "Synchronize" button. Beware though - synchronizing discards 
+      all your changes that you made to the project since cloning. 
+\item Access a Python Tutorial via the Help button.
+\end{itemize}
+
+\section{Programming Module}
+
+Clicking on the Programming icon launches programming menu that 
+contains several languages and a web design application:
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/progr1.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Programming menu.}
+\label{fig:progr1}
+\end{figure}
+\noindent
+Each programming language here comes with a Help of its own, so we 
+will be brief. 
+
+\subsection{Karel the Robot}
+
+Clicking on "Karel" launches a famous educational 
+programming language Karel the Robot that was created at the Stanford 
+University and is used to teach programming in many countries all over 
+the world (Fig. \ref{fig:progr2}). Teachers prefer Karel over other 
+educational languages because of its minimum overhead (students can 
+start programming in the first class) and because a smooth transition 
+to Python.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/progr2.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Karel the Robot - illustrative screenshot.}
+\label{fig:progr2}
+\end{figure}
+\noindent
+Textbook, Solution Manual and a YouTube Video are available via the link "Tutorials and Videos"
+on NCLab's front page. There is an extensive suite of exercises (games) among 
+displayed projects that you can clone into your account. All of them are described in the 
+tutorial.
+
+\subsection{Python}
+
+\subsection{CUDA}
+
+\subsection{JavaScript}
+
+\subsection{WebDesign}
+
+
+\section{Physics Module}
+
+\subsection{Kinematics}
+
+\subsection{Solid Mechanics}
+
+\subsection{Electromagnetics}
+
+\subsection{Fluid Dynamics}
+
+
+\section{Math Module}
+
+\subsection{Fractal Explorer}
+
+
+\subsection{ODE}
+
+
+\subsection{PDE}
 
 \end{document}

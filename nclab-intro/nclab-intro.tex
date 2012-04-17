@@ -555,7 +555,7 @@ will be brief.
 
 \subsection{Karel the Robot}
 
-Clicking on "Karel" launches a famous educational 
+Clicking on "Karel" launches the famous educational 
 programming language Karel the Robot that was created at the Stanford 
 University and is used to teach programming in many countries all over 
 the world (Fig. \ref{fig:progr2}). Teachers prefer Karel over other 
@@ -579,32 +579,239 @@ tutorial.
 
 \subsection{Python}
 
+Clicking on the Python icon in the Programming Module launches Python 
+worksheet, where you can start programming instantly (Fig. \ref{fig:progr3}).
+ 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/progr3.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Python programming - illustrative screenshot.}
+\label{fig:progr3}
+\end{figure}
+\noindent
+The interpreter on the server side is Python 2.7 and Python 3.3 is in preparation. 
+Textbook is available via the link "Tutorials and Videos" on NCLab's front page
+and via the Help button. 
+
 \subsection{CUDA}
 
-\subsection{JavaScript}
+The CUDA worksheet provides massively parallel GPU programming via PyCUDA (Python 
+wrappers to CUDA). Tutorial is available via the link "Tutorials and Videos" 
+on NCLab's front page and via the Help button, and there are around 30 
+displayed projects where you can learn both basic and advanced aspects of CUDA
+programming. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/progr4.png}
+\end{center}
+%\vspace{-2mm}
+\caption{CUDA programming - illustrative screenshot.}
+\label{fig:progr4}
+\end{figure}
+\noindent
+
+
+\subsection{Javascript}
+
+The Javascript (JS) worksheet provides JS programming using the Google V8 engine 
+on server side. In other words, the Javascript is not processed in the web browser but 
+on the remote server similarly to Python. 
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/progr5.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Javascript programming based on Google V8 - illustrative screenshot.}
+\label{fig:progr5}
+\end{figure}
+\noindent
+More information is available in the Help section.
 
 \subsection{WebDesign}
 
+The Web Design kit is an integrated environment for the design of web pages.
+The graphical application contains three input panels for HTML, JS and CSS, and 
+one output panel. The web page is changing in real time when any of the three 
+input panels are edited. The output panel can be detached and magnified for better 
+viewing comfort. Users belonging to an institutions and 
+users operating NCLab in Full Version can have their web pages hosted.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/progr6.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Web Design kit - illustrative screenshot.}
+\label{fig:progr6}
+\end{figure}
+\noindent
+More information is available in the Help section.
 
 \section{Physics Module}
 
+The Physics module contains a quickly growing number of graphical applications 
+from many different areas including kinematics, solid mechanics, 
+fluid dynamics, electromagnetics, and others.
+
 \subsection{Kinematics}
+
+Kinematics deals with moving objects.  
+Classical application from this field -- Projectile Motion -- enables computing 
+the trajectory of a flying projectile either with or without considering 
+air friction. Illustrative screenshot is shown in Fig. 
+\ref{fig:kinem1}. 
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/kinem1.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Projectile motion.}
+\label{fig:kinem1}
+\end{figure}
+\noindent
 
 \subsection{Solid Mechanics}
 
+Solid mechanics deals with deformation of solid objects. NCLab 
+offers an Elasticity module that allows the user to define an
+arbitrary 2D object, define its material properties (density, Young modulus, 
+Poisson ratio), prescribe displacements and acting forces on the boundary, 
+and calculate displacements and stresses inside the object. This application  
+uses the Hermes library (http://hpfem.org/hermes) for the finite element 
+analysis (FEA) part. Illustrative screenshot is provided in Fig. \ref{fig:elast1}.
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/elast1.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Elasticity analysis of a hollow steel pipe of square cross-section that is loaded from above.}
+\label{fig:elast1}
+\end{figure}
+\noindent
+The simulation process consists of several steps: geometry definition, 
+mesh generation, problem definition, computaion, and postprocessing. 
+The application will walk you through these steps, and Help 
+is available for each of them.
+
 \subsection{Electromagnetics}
 
+The Electromagnetics module contains at the moment two modules: an axisymmetric 
+capacitor model and a general electrostatics model. In both cases one calculates 
+the distribution of the electric field surrounding charged objects. Boundary 
+conditions can be prescribed voltage on some part of the boundary and / or 
+prescribed electric charge density on another part of boundary. Two illustrative 
+screenshots of the capacitor model are provided below.
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/capac1.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Plate capacitor - axisymmetric model.}
+\label{fig:capac1}
+\end{figure}
+\noindent
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/capac2.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Capacitor model - results.}
+\label{fig:capac2}
+\end{figure}
+\noindent
+
+
 \subsection{Fluid Dynamics}
+
+The Fluid Dynamics module contains a model of draining a tank filled with water. 
+Illustrative screenshot is shown in Fig. \ref{fig:tank1}.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/tank1.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Draining a tank with water.}
+\label{fig:tank1}
+\end{figure}
+
 
 
 \section{Math Module}
 
+The Math module contains several graphical applications including the Fractal 
+Explorer, and applications for ordinary differential equations (ODE) and partial 
+differential equations (PDE). Besides this, symbolic and numerical math 
+as well as graph theory are available through Python libraries Sympy,
+Numpy, Scipy, Pylab, NetworkX and others. These will be discussed in the following 
+documents.
+
 \subsection{Fractal Explorer}
+
+The Fractal Explorer allows you to get acquainted with beautiful 
+fractal structures of the Mandelbrot and Julia sets. Tutorial 
+is available via the "Tutorials and Videos" link on NCLab's front page. 
+Sample screenshot showing a Julia set is below:
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/julia.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Julia fractal.}
+\label{fig:julia}
+\end{figure}
+
+
 
 
 \subsection{ODE}
 
+Part of the Ordinary Differential Equations (ODE) section are advanced Java applets JODE by Marek 
+Rychlik (University of Tucson) for plotting slope fields and solutions 
+of two-ODE and three-ODE systems. Illustrative screenshot of the slope 
+field application is below.
+
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/jode1.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Slope fields with JODE.}
+\label{fig:jode1}
+\end{figure}
+
 
 \subsection{PDE}
+
+The Partial Differential Equations (PDE) section contains a Finite Element Analysis (FEA)
+application for solving general linear second-order equations with constant coefficients.
+Illustrative screenshot is shown below.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/pde1.png}
+\end{center}
+%\vspace{-2mm}
+\caption{Solving linear second-order PDE.}
+\label{fig:pde1}
+\end{figure}
+
+
+
 
 \end{document}

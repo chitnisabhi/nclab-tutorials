@@ -122,8 +122,15 @@ covered in Pattis' book is available in the Basic Version free of charge.
 
 \section{Introduction}
 
-In this introductory course you will learn principles of computer programming with the 
-help of an interactive graphical application {\em Karel the Robot} in NCLab. 
+This course will teach you principles of modern algorithmic design and  
+computer programming with the help of an interactive graphical application 
+{\em Karel the Robot} in NCLab. Taking this course will make it much easier 
+for you to learn Python, C++ and other programming languages. In particular we 
+recommend that after Karel you continue with Python, a powerful programming 
+language that is used across all science and engineering areas. The textbook
+{\em Python Programming for Beginners} is available in PDF via the link 
+"Tutorials and Videos" on NCLab home page (same as the PDF file that you 
+are reading right now). 
 
 \subsection{Brief history}
 
@@ -136,84 +143,69 @@ science fiction play R.U.R. (Rossum's Universal Robots).
 
 \subsection{Who is Karel?}
 
-Karel is a little robot that lives in a maze. 
-He was born with five simple commands:
+Karel is a little robot that lives in a maze, and the maze contains gems that he loves to collect!
+He was created with only five simple commands in his memory:
 \begin{itemize}
-\item {\color{green} \tt go} one step forward, 
-\item {\color{green} \tt get} a gem, 
-\item {\color{green} \tt left} turn, 
-\item {\color{green} \tt right} turn, 
-\item {\color{green} \tt put} a gem on the ground. 
+\item {\color{green} \tt go} ... make one step forward.
+\item {\color{green} \tt get} ... pick up a gem from the ground. 
+\item {\color{green} \tt left} ... turn to the left.
+\item {\color{green} \tt right} ... turn to the right. 
+\item {\color{green} \tt put} ... put a gem on the ground. 
 \end{itemize}
-He has five built-in sensors that allow him to check:
+He also has five built-in sensors that allow him to check his immediate surroundings:
 \begin{itemize}
-\item if a {\color{green} \tt wall} is in his way, 
-\item if a {\color{green} \tt gem} is within his reach, 
-\item if he is facing {\color{green} \tt north,} 
-\item if he is at {\color{green} \tt home,}
-\item if his bag is {\color{green} \tt empty.} 
+\item {\color{green} \tt wall} ... true if he would crash into a wall by making one more step, false otherwise. 
+\item {\color{green} \tt gem} ... true if he stands on a gem, false otherwise.
+\item {\color{green} \tt north} ... true if he is facing North, false otherwise.
+\item {\color{green} \tt home} ... true if he is at home, false otherwise.
+\item {\color{green} \tt empty} ... true if his bag with gems is empty, false otherwise. 
 \end{itemize}
-The maze contains gems that he loves to collect. You will help him solve various 
-tasks that he could not accomplish without your help, and on the 
-way you will become a great programmer!
+You will help him solve various tasks that he could not accomplish without your help, 
+and on the way you will become a great programmer!
 
-\subsection{What is the {\em one reason} why I should go through this tutorial?}
+\subsection{Tell me {\em one reason} why I should take this course}
 
-You will learn to design great algorithms -- an ability that 
+Computer programming skills are highly valued nowadays, and they will be even more 
+valued in the future. In this course you will learn to design great algorithms -- an ability that 
 is completely language-independent. In other 
 words, you can learn the same with a technically complicated conventional 
 programming language, battling technical problems most of the time,
 or you can learn it with Karel the easy way.
-Despite its simple form, Karel is not a toy language. It contains all elements 
+Despite its playful appearance, Karel is \underline{not a toy language}. It contains all elements 
 of modern procedural programming. The complexity of algorithms 
 that you will encounter in this course ranges from {\em very simple} 
 to {\em very tough}.
 
 \subsection{How does Karel differ from conventional programming languages?}
 
-The biggest difference between Karel and all conventional 
+The biggest difference between Karel and conventional procedural
 programming languages is that it {\em does not contain any mathematics}.
-Believe it or not -- Karel does not know numbers. The exercises that you 
-will be solving will teach you to break complex tasks into simpler ones
-that are easier to handle, and to design simple and elegant algorithms.
+Believe it or not -- Karel does not know numbers! In this course, you 
+will solve many exercises whose objective is to teach you how to 
+design great algorithms, and math is not needed for that. 
 Thanks to the beautiful simplicity of Karel's language, the resulting 
-computer codes are very easy to write as well. The essential aspect
-of programming, really, is to {\em design great algorithms}, and Karel 
-is perfect for that.
+computer codes are crystal clear.
  
 After finishing this tutorial, you will be able to transition instantly to
-Python, a powerful modern programming language that is used nowadays across
-all engineering and scientific disciplines. In fact, you will be only learning 
-language-specific details, because the most important thing -- algorithmic 
-thinking -- you will already know.
+Python, a powerful modern programming language. And then, you will be only 
+learning language-specific details, because the most important thing -- 
+algorithmic thinking -- you will already have.
  
-\section{Getting Started}
+\section{Explore NCLab}
 
-In order to make the most of this tutorial, we invite you
-to create an account in NCLab and log in. More instructions 
-on how to do this are given at the beginning of the introductory 
-tutorial "Meet Your New Graphing Calculator" that is available in 
-PDF via a link on NCLab home page {\tt http://nclab.com}.
-After login, you will see a desktop with several icons on it,
-as shown in Fig. \ref{fig:desktop}. 
+Before beginning this course, we invite you to create an account in 
+NCLab, log in, and take a while to explore the great variety of activities 
+that NCLab offers. A great companion reading is {\em Intro to NCLab - Part I 
+(Meet the Cloud)} that is available in PDF via the link "Tutorials and Videos"
+on NCLab home page {\tt http://nclab.com}.\\
 
+\section{Meet Karel}
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/desktop.png}
-\end{center}
-%\vspace{-2mm}
-\caption{NCLab desktop after login.}
-\vspace{-1cm}
-\label{fig:desktop}
-\end{figure}
-\newpage
-
-\subsection{Launching Karel via the Programming icon}
-
-Karel can be launched in several ways. The simplest one is to click on the icon 
+Karel can be launched in several different ways. The simplest one is to click on the icon 
 "Programming" and select "Karel" in the menu. This will launch the application 
 and load a randomly selected maze, as shown in Fig. \ref{fig:init}.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}

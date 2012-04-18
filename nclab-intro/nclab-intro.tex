@@ -801,7 +801,7 @@ field application is below.
 The Partial Differential Equations (PDE) section contains a Finite Element Analysis (FEA)
 application for solving general linear second-order equations with constant coefficients.
 Illustrative screenshot is shown below.
-
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/pde1.png}
@@ -811,7 +811,32 @@ Illustrative screenshot is shown below.
 \label{fig:pde1}
 \end{figure}
 
+\section{Solid Modeling (CAD)}
 
+NCLab provides solid modeling via PLaSM (Programming Language for Solid Modeling). In contrast to standard
+CAD systems such as SolidWorks or AutoCAD, PLaSM is a scripting language that 
+allows the user to create, translate, rotate and scale objects via simple commands, 
+as well as create their unions and intersections, and subtract objects from each other.  
+In this way, one can acquire the geometrical principles of solid modeling very naturally.
+For illustration, the following short script renders a metal cube:
+\newpage
+\begin{verbatim}
+from pyplasm import *
+color = [0.9, 0.9, 0.9]
+c = CUBE(1.0)
+lab.view(c, color)
+\end{verbatim}
+Fig. \ref{fig:plasm1} shows more advanced models of a 3D gear and 
+a temple:
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/plasm1.png}
+\end{center}
+%\vspace{-2mm}
+\caption{3D model of a gear created with PLaSM.}
+\label{fig:plasm1}
+\end{figure}
 
 
 \end{document}

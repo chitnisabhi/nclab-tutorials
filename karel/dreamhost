@@ -1,26 +1,16 @@
-cp nclab-intro.pdf intro.pdf 
-cp intro.pdf intro_en.pdf 
-cp intro.pdf intro_de.pdf 
-cp intro.pdf intro_cz.pdf 
-cp intro.pdf intro_sp.pdf 
-cp intro.pdf intro_pl.pdf 
-cp nclab-intro.pdf nclab-intro_en.pdf 
-cp nclab-intro.pdf nclab-intro_de.pdf 
-cp nclab-intro.pdf nclab-intro_cz.pdf 
-cp nclab-intro.pdf nclab-intro_sp.pdf 
-cp nclab-intro.pdf nclab-intro_pl.pdf 
+cp karel.pdf karel_en.pdf 
+cp karel.pdf karel_de.pdf 
+cp karel.pdf karel_cz.pdf 
+cp karel.pdf karel_sp.pdf 
+cp karel.pdf karel_pl.pdf 
 
-scp *intro*.pdf femhub@femhub.com:~/femhub.com/public/docs/
+scp karel*.pdf femhub@femhub.com:~/femhub.com/public/docs/
 
-rm intro_en.pdf
-rm intro_cz.pdf
-rm intro_de.pdf
-rm intro_sp.pdf
-rm intro_pl.pdf
-rm intro.pdf
-rm nclab-intro_en.pdf
-rm nclab-intro_de.pdf
-rm nclab-intro_cz.pdf
-rm nclab-intro_sp.pdf
-rm nclab-intro_pl.pdf
+rm karel_en.pdf
+rm karel_cz.pdf
+rm karel_de.pdf
+rm karel_sp.pdf
+rm karel_pl.pdf
+rm karel.pdf
+
 

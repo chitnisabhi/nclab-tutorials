@@ -142,13 +142,47 @@ particular www.python.org.
 
 \section{Introduction}
 
+Before beginning this course, we invite you to create an account in 
+NCLab, log in, and take a while to explore the many activities 
+that NCLab offers. A great companion reading is {\em Intro to NCLab - Part I 
+(Meet the Cloud)} that is available in PDF via the link "Tutorials and Videos"
+on NCLab home page {\tt http://nclab.com}.
+
+\subsection{Compiled and interpreted programming languages}
+
+Let us explain the main difference between {\em compiled} and {\em interpreted} programming languages. 
+{\em Compilation} is a process where human-readable {\em source code (text)} is translated by
+means of a {\em compiler} and a {\em linker}
+into a binary {\em executable file} which then can be run on the concrete computer. The same 
+source code, compiled on different hardware architectures, yields different binaries. 
+
+On the other hand, programs written in {\em interpreted (scripting)} programming languages are 
+"read" at runtime -- they are not compiled and there are no binaries. 
+Programs 
+written in compiled languages are usually more efficient than programs written in the interpreted 
+ones because the former take better advantage of the underlying hardware. On the other hand,
+interpreted languages are usually more universal and easier to use. Compiled 
+programming languages include C, C++, Fortran, and many others. Few examples of interpreted 
+languages are Python, Lua, Perl and Ruby. 
+
 \subsection{Basic facts about Python}
 
-Python is a modern, powerful programming language that is also very intuitive and 
-easy to learn. It has efficient high-level 
-data structures and a simple but effective approach to object-oriented programming. 
-Python's elegant syntax and dynamic typing, together with its interpreted nature, 
-make it an ideal language for beginners. 
+Python is a powerful modern programming language that is used in many areas of 
+engineering and science. Its interpreted character along with a very intuitive syntax make Python an 
+ideal language for beginners. 
+
+Python was conceived in the late 1980s and its implementation was started in December 1989
+by Guido van Rossum at CWI in the Netherlands. Rossum also gave it a name originated
+in his favorite television series {\em Monty Python's Flying Circus}.
+Python 2.0 was released in October 2000 and Python 3.0 in December 2008. Python was
+awarded the TIOBE {\em Programming Language of the Year} award twice (2007, 2010), which is 
+given to the language with the greatest growth in popularity over the course of a year.
+
+Python is a multi-paradigm programming language. Rather than forcing programmers to 
+adopt a particular style of programming, it permits several styles: {\em structured (procedural) 
+programming} and {\em object-oriented programming} are fully supported, and there are a number 
+of language features which support {\em functional programming}. 
+
 In this short course you will 
 learn the most important aspects of the language and be able to 
 write a wide range of programs by yourself. Depending on your objectives, this course 
@@ -156,45 +190,24 @@ might be all you will ever need. We hope that you will like Python and want
 to learn more -- and there is much more to learn out there. References to materials
 covering more advanced topics and object-oriented programming are given in Section \ref{sec:adv}.
 
-\subsection{Creating an account in NCLab}
+\subsection{Libraries - the strong side of Python}
 
-In order to make the most of this tutorial, create an account in NCLab and log in. More instructions 
-on how to do this are given at the beginning of the introductory 
-tutorial "Meet Your New Graphing Calculator" that is available in 
-PDF from NCLab's home page {\tt http://nclab. com}.
-After login, you will see a desktop with several icons on it,
-as shown in Fig. \ref{fig:desktop}. 
+Python comes with a powerful {\em standard library} that contains plentiful functionality
+to ease work with constants, types, functions, exceptions, strings, data, 
+mathematics, cryptography, parallel processing and other things. 
+Python also has a number of scientific libraries. Most important of them are Scipy, 
+Numpy, Pylab, Matplotlib, and Sympy. Exploring Python libraries will be a significant 
+part of this course. 
 
+\subsection{Launching a Python project in NCLab}
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.9\textwidth]{img/desktop.png}
-\end{center}
-\vspace{-2mm}
-\caption{NCLab desktop after login.}
-\label{fig:desktop}
-\end{figure}
-\newpage
-
-\subsection{Cloning displayed projects vs. typing examples yourself}
-
-All examples that we are going to work with in the following are also available 
-as Displayed Projects. This means that you can clone them by launching the File
-Manager, going to the {\em Project} menu, and clicking on {\em Clone}. This will launch 
-a window with many displayed projects from various areas of programming,
-math and computing. Look for projects whose names start with "Tutorial - Python".
-After you locate a project that you would like to clone, click on it,
-and then click on the button {\em Clone} at the bottom of the window. This will
-create exact copy of that project in your account, and you can open it 
-by clicking on it in the File Manager. You can change the project in any way 
-you like, the changes will not affect the original Displayed Project. 
-
-Alternatively, you can type the examples by yourself, which is the 
-recommended way. What you do with your own hands will come back much easier 
-when you do it again. And moreover, the introductory examples have no more than 
-a couple of lines anyway. So, in the File Manager's {\em Project} menu 
-choose {\em New} $\rightarrow$ {\em Python}. This will launch an 
-empty Python project, as shown in Fig. \ref{fig:python}.\\[-7mm]
+There are multiple ways to launch a Python project in NCLab. First, it is 
+possible to clone and experiment with many existing displayed Python 
+projects via File Manager $\rightarrow$ 
+Project $\rightarrow$ Clone. New (empty) Python project can be launched via 
+the Programming menu or via File Manager $\rightarrow$ 
+Project $\rightarrow$ New $\rightarrow$ Python. An empty Python project
+is shown in Fig. \ref{fig:python}.
 
 
 \begin{figure}[!ht]
@@ -205,25 +218,24 @@ empty Python project, as shown in Fig. \ref{fig:python}.\\[-7mm]
 \caption{Launching a new Python project.}
 \label{fig:python}
 \end{figure}
-\vspace{-1cm}
 \noindent
+NCLab works as follows: Python code is typed into the input cell, 
+sent to the cloud where it is interpreted, and the results are sent 
+back to your computer / laptop / tablet and displayed in your web browser.  
+Let's try this!
 \newpage
 
-\section{Hello, World!}
 
-In NCLab, you can type a Python code in the web browser, send it to a remote 
-server where it gets processed, and after that the output is sent back to you 
-and displayed in the web browser. Let's try this!
 
-\subsection{Typing code and sending it to server}
+\subsection{Hello, World!}
+
 
 Click into the input cell and type {\tt print "Hello, World!"}.
-Then click on the "run" link under the input cell and your program will be sent to the server. 
+Then click on the "run" link under the input cell, and the text "Hello, World!"
+will be displayed 
+in a new yellow {\em output cell} as shown in Fig. \ref{fig:python-2}.
 
-\subsection{Receiving output}
-
-The response should come back instantly, and it should be displayed 
-in a new yellow {\em output cell} as shown in Fig. \ref{fig:python-2}.\\[-7mm]
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -233,11 +245,49 @@ in a new yellow {\em output cell} as shown in Fig. \ref{fig:python-2}.\\[-7mm]
 \caption{Response received from the cloud is shown in a yellow output cell.}
 \label{fig:python-2}
 \end{figure}
-\vspace{-1cm}
-\newpage
-\section{Using Python as calculator}
+\noindent
+The Python project can contain three types of cells - input cells, output cells, 
+and descriptive text cells. Input cells as well as text cells can be added via 
+the Edit menu. New input cells can be also added easily by clicking on "add" under
+an existing input cell. Input cells and text cells can be removed by clicking on 
+"remove" under them. The easiest way to remove a selected output cell is to 
+click on it with the mouse and press Delete on the keyboard. 
+All output cells can be removed at once via the Edit menu. Pressing the 
+blue arrow button will evaluate (run) all input cells in the project. Clicking on "run" under
+an input cell will run only the contents of that input cell. More details can be 
+found in the introductory tutorial {\em NCLab Intro - Part I (Meet the Cloud)} that 
+can be downloaded in PDF via the "Tutorials and Videos" button on NCLab home page.
 
-The Python input cell can be used as a calculator. 
+\subsection{Review questions}
+
+\begin{enumerate}
+\item Explain the main difference between compiled and scripting (interpreted) languages.
+\item Which languages take better advantage of the underlying hardware architecture?
+\item Give three examples of compiled programming languages.
+\item Give three examples of interpreted programming languages.
+\item Where does the name "Python" of the programming language come from?
+\item Is Python a compiled or an interpreted programming language?
+\item When was the implementation of Python started?
+\item Name three programming styles that Python permits.
+\item Describe how displayed Python projects can be cloned in NCLab.
+\item Name two different ways to launch a new Python project in NCLab.
+\item Describe how Python programs are processed in NCLab.
+\item Name three types of cells that a Python project in NCLab can contain.
+\item How can you evaluate all input cells at once?
+\item How can you evaluate just one input cell of your choice?
+\item Name two different ways to add a new input cell.
+\item How can you add a new text cell?
+\item How can you remove an input cell or a text cell?
+\item How can you remove all output cells at once?
+\item Name at least three scientific libraries for Python.
+\item Write a Python program that will print your name.
+\end{enumerate}
+
+
+\section{Using Python as a calculator}
+
+NCLab features a pocket calculator 
+The Python input cell can be used as a powerful calculator. 
 
 \subsection{Addition, subtraction}
 
@@ -412,12 +462,15 @@ Output:
 \begin{verbatim}
 7.3890560989306504
 \end{verbatim}
-Elementary functions that one can import from Numpy include:\\
+Elementary functions (and constants) that one can import from Numpy are listed
+below. We also show their arguments for clarity, but the functions are imported without 
+them. For example, the absolute value function is imported via {\tt from numpy import abs}.\\
 
 %{\small
 \begin{center}
 \begin{tabular}{|l|l|}
 \hline
+pi &  $\pi$\\
 abs($x$) &  absolute value of $x$\\
 arccos($x$) &  inverse cosine of $x$ \\
 arccosh($x$) &  inverse hyperbolic cosine of $x$ \\
@@ -503,17 +556,111 @@ Output:
 5
 \end{verbatim}
 
-\section{Variables}
+\subsection{Review questions}
+
+Log in to NCLab and launch a new Python project. Perform the following 
+calculations using the Python interpreter:
+\begin{enumerate}
+\item 
+$$
+  987654321 - 123456789
+$$
+\item 
+$$
+  \frac{8237456 + 289374}{23784}
+$$ 
+\item 
+$$
+  \frac{8237456 + 289374}{23784 + \frac{8237456 + 289374}{23784}}
+$$ 
+\item 
+$$
+  \frac{8237456 + 289374}{23784 + \frac{8237456 + 289374}{23784 + \frac{8237456 + 289374}{23784}}}
+$$ 
+
+\item 
+$$
+  3645^2
+$$
+\item 
+$$
+  318476256 \ \mbox{modulo} \ 7
+$$
+\item 
+$$
+  e^8
+$$
+\item 
+$$
+  \ln 4082374
+$$
+\item 
+$$
+  \sin(\pi / 4)
+$$
+\item 
+$$
+  (1 + 2i)(3 - i)
+$$
+where $i$ is the imaginary unit.
+\end{enumerate}
+
+\section{Functions}
+
+Functions are self-contained programs that perform a specific task. Many 
+predefined functions are available in the standard library and in the scientific libraries. 
+We will talk about those later. Now let us explain how the user can define his/her own functions.
+
+\subsection{Defining new functions}
+
+Defining functions in Python is almost the same as defining new commands 
+in Karel the Robot (for example, one uses the same keyword {\tt def}). In addition, 
+Python functions can accept {\em parameters}. Usually, a function returns 
+some result -- in that case one uses an optional {\tt return}. For example, 
+the following simple function {\tt add(a, b)} adds two numbers {\tt a} and {\tt b} 
+and returns the result:
+
+\begin{verbatim}
+def add(a, b):
+    return a + b
+\end{verbatim}
+Note the mandatory colon ':' at the end of the function declaration line. The following 
+function does not return anything:
+
+\begin{verbatim}
+def say_hello():
+    print "Hello!"
+\end{verbatim}
+This was a very short introduction to functions, that was needed to get us started.
+There is much more to say about functions, and we will return to them later.
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item Write a function {\tt multiply(a, b)} that returns the product of the 
+      numbers {\tt a} and {\tt b}.
+\item Write a function {\tt square(a)} that returns the square of {\tt a}.
+\item Write a function {\tt hypotenuse(a, b)} that adds {\tt a} squared to {\tt b} squared,
+      and returns square root of the result.
+\end{enumerate}
+
+\section{Using variables}
+
+Variables are used to store information for later use in our program. The information
+we wish to store can be a number, a text string, a logical value ({\tt True} or {\tt False}),
+and many other things. 
+
+\subsection{Assigning a value}
 
 In Python (and other languages as well) the symbol '{\tt =}' is used to assign 
-a value to a variable. This operation does not produce any output. For
-example:
+some value to a {\em variable}. This operation does not produce any output. For
+example, the code
 
 \begin{verbatim}
 width = 20
 height = 5*5
 \end{verbatim}
-Output:
+has the following output:
 
 \begin{verbatim}
 
@@ -559,18 +706,23 @@ A value can be assigned to several variables at the same time:
 
 \begin{verbatim}
 x = y = z = 0.0
-x
-y
-z
+print "x =", x
+print "y =", y
+print "z =", z
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-0.0
-0.0
-0.0
+x = 0.0
+y = 0.0
+z = 0.0
 \end{verbatim}
-Variables must be defined (have a value assigned) before they can be 
+Python is very generous with variables -- it will figure out the type of a variable 
+at runtime, depending on the value that we first store in it. This is very different 
+from languages such as C, C++ where we need to declare the type of every variable 
+before its first use. 
+
+However, variables must be defined (have a value assigned) before they can be 
 used. For example, when trying to print a variable {\tt value} that 
 was never used before, we get an error:
 
@@ -579,48 +731,51 @@ Traceback (most recent call last):
   File "<nclab>", line 1, in <module>
 NameError: name 'value' is not defined
 \end{verbatim}
-The simplest way to increase the value of a variable by a given number is to use the '{\tt +=}' 
+The simplest way to increase the value of a numerical variable by a given number is to use the '{\tt +=}' 
 command:
 
 \begin{verbatim}
 v = 1
 v += 3
-print v
+print "v =", v
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-4
+v = 4
 \end{verbatim}
-We can also subtract a number from a variable:
+We can also subtract a number from a numerical variable:
 
 \begin{verbatim}
-print v -= 1
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-3
-\end{verbatim}
-We can multiply a variable with a number:
-
-\begin{verbatim}
-print v *= 4
+v -= 1
+print "New value of v is", v
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-12
+New value of v is 3
 \end{verbatim}
-And finally, we can divide a variable with a number:
+We can multiply a numerical variable with a number:
 
 \begin{verbatim}
-print v /= 6
+v *= 4
+print "Now v is", v
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-2
+Now v is 12
+\end{verbatim}
+And finally, we can divide a numerical variable with a number:
+
+\begin{verbatim}
+v /= 6
+print "Finally, v is", v
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+Finally, v is 2
 \end{verbatim}
 It is possible to use existing variables to assign a value to a new variable:
 
@@ -629,30 +784,129 @@ a = 1
 b = 2.5
 c = 0.5
 d = (a + b) / c
-d
+print "d =", d
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-7.0
+d = 7.0
 \end{verbatim}
 And this lucky number means the end of this section!
 
-\section{Defining new functions}
+\subsection{Local variables}
 
-Functions are little self-contained programs that perform a specific task, 
-and you can reuse them in your program many times.
-Defining functions in Python is almost the same as defining new commands 
-in Karel the Robot -- one uses the same keyword {\tt def}. Python functions 
-can accept any number of variables as parameters. Usually, a function returns 
-some result -- in that case one uses an optional {\tt return}. For example, 
-the following simple function {\tt adds} adds two numbers and returns the result:
+If a variable was first used in a function, then it is {\em local} to this 
+function. Imagine an aquarium -- a fish born in an aquarium will always 
+stay in that aquarium. If we try to access the variable outside that function,
+even though the function was already called, the variable will be unknown. Look
+at the following code:
 
 \begin{verbatim}
 def add(a, b):
-    return a + b
+    c = a + b
+    return c
+
+print "Sum of 3 and 4 is", add(3, 4)
+print c
 \end{verbatim}
-Note the mandatory colon ':' at the end of the function declaration line.
+The variable {\tt c} is local to the function {\tt add}. The output is:
+
+\begin{verbatim}
+Sum of 3 and 4 is 7
+Traceback (most recent call last):
+  File "<nclab>", line 6, in <module>
+NameError: name 'c' is not defined
+\end{verbatim}
+
+\subsection{How to spoil your code}
+
+Once a variable is used in the main program, 
+then it is {\em global}, meaning that you could use it in 
+any function that you define. Like in the following 
+code:
+
+\begin{verbatim}
+val = 5.0
+
+def msg():
+    print "val =", val
+
+msg()
+\end{verbatim}
+Brrr, this code is ugly! But it works (unfortunately), see the output:
+
+\begin{verbatim}
+val = 5.0
+\end{verbatim}
+{\em Using global variables in functions is a bad habit that makes
+codes difficult to understand, prone to mistakes, and extremely difficult to fix}.\\
+
+\noindent
+A function should 
+obtain all the data it needs through its arguments. Imagine that a unit of soldiers 
+would act based not only on orders it receives (that's the argument 
+list), but also based on rumors that some of the soldiers read in a Sunday magazine. 
+That would not work well.\\
+
+\noindent
+A clean version of the above code is
+
+\begin{verbatim}
+def msg(v):
+    print "val =", v
+
+val = 5.0
+
+msg(val)
+\end{verbatim}
+Can you see the difference? Now the function {\tt msg} is {\em readable} -- you do not 
+need to look elsewhere in the program to understand what it does. The output is:
+
+\begin{verbatim}
+val = 5.0
+\end{verbatim}
+
+\subsection{Local vs. global variables}
+
+Sometimes, in longer programs, it may happen that we create by accident a global variable 
+whose name matches the name of a local variable in some function. This is not a problem
+-- if this happens, priority is always given to the local variable. Look at the 
+following code:
+
+\begin{verbatim}
+c = 5.0
+
+def add(a, b):
+    c = a + b
+    return c
+
+print "1 + 2 =", add(1, 2)
+\end{verbatim}
+The output is:
+
+\begin{verbatim}
+1 + 2 = 3
+\end{verbatim}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item
+\item
+\item Find the output of the following code:
+\begin{verbatim}
+c = 5.0
+
+def add(a, b):
+    print "c =", c
+    c = a + b
+    print "c =", c
+    return c
+
+print "1 + 2 =", add(1, 2)
+\end{verbatim}
+
+\end{enumerate}
 
 \section{Boolean expressions}
 

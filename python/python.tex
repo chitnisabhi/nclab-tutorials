@@ -559,11 +559,15 @@ Output:
 \subsection{Review questions}
 
 Log in to NCLab and launch a new Python project. Perform the following 
-calculations using the Python interpreter:
+calculations using the Python interpreter, and provide the code.
 \begin{enumerate}
 \item 
 $$
   987654321 - 123456789
+$$
+\item 
+$$
+\frac{8}{5}
 $$
 \item 
 $$
@@ -577,7 +581,6 @@ $$
 $$
   \frac{8237456 + 289374}{23784 + \frac{8237456 + 289374}{23784 + \frac{8237456 + 289374}{23784}}}
 $$ 
-
 \item 
 $$
   3645^2
@@ -585,6 +588,10 @@ $$
 \item 
 $$
   318476256 \ \mbox{modulo} \ 7
+$$
+\item 
+$$
+  \frac{3\cdot 2^2}{5} 
 $$
 \item 
 $$
@@ -616,7 +623,7 @@ We will talk about those later. Now let us explain how the user can define his/h
 Defining functions in Python is almost the same as defining new commands 
 in Karel the Robot (for example, one uses the same keyword {\tt def}). In addition, 
 Python functions can accept {\em parameters}. Usually, a function returns 
-some result -- in that case one uses an optional {\tt return}. For example, 
+some result -- in that case one uses an optional {\tt return} statement. For example, 
 the following simple function {\tt add(a, b)} adds two numbers {\tt a} and {\tt b} 
 and returns the result:
 
@@ -624,37 +631,58 @@ and returns the result:
 def add(a, b):
     return a + b
 \end{verbatim}
-Note the mandatory colon ':' at the end of the function declaration line. The following 
-function does not return anything:
+Note the mandatory colon ':' at the end of the function declaration line. The two lines of code above 
+are a {\em function declaration} -- they do not produce any output and the function is not called. In order to 
+call the function, one has to write additional code such as
+
+\begin{verbatim}
+add(5, 3)
+\end{verbatim}
+This will produce an output:
+
+\begin{verbatim}
+8
+\end{verbatim}
+To mention another example, the following function does not return anything:
 
 \begin{verbatim}
 def say_hello():
     print "Hello!"
 \end{verbatim}
-This was a very short introduction to functions, that was needed to get us started.
-There is much more to say about functions, and we will return to them later.
+Such a function is not very useful but it illustrates that the {\tt return} statement
+does not have to be used. \\
+
+\noindent
+Let us stop here for the moment. What we know about functions now is good for some time, 
+and we will learn more about them as we progress.
 
 \subsection{Review questions}
 
 \begin{enumerate}
-\item Write a function {\tt multiply(a, b)} that returns the product of the 
-      numbers {\tt a} and {\tt b}.
-\item Write a function {\tt square(a)} that returns the square of {\tt a}.
+\item Write a function {\tt multiply(var1, var2)} that returns the product of the 
+      numbers {\tt var1} and {\tt var2}.
+\item Write a function {\tt square(val)} that returns the square of {\tt val}.
 \item Write a function {\tt hypotenuse(a, b)} that adds {\tt a} squared to {\tt b} squared,
       and returns square root of the result.
 \end{enumerate}
 
-\section{Using variables}
+\section{Variables}
 
 Variables are used to store information for later use in our program. The information
 we wish to store can be a number, a text string, a logical value ({\tt True} or {\tt False}),
 and many other things. 
 
-\subsection{Assigning a value}
+\subsection{Assigning values to variables}
 
 In Python (and other languages as well) the symbol '{\tt =}' is used to assign 
-some value to a {\em variable}. This operation does not produce any output. For
-example, the code
+values to variables. It is not the same as the equality symbol in Mathematics. 
+The code
+
+\begin{verbatim}
+a = 1
+\end{verbatim}
+should be read {\em "Assign the value 1 to the variable a"} and not {\em "a equals to one"}.
+The assignment operation does not produce any output. For example, the code
 
 \begin{verbatim}
 width = 20
@@ -665,8 +693,35 @@ has the following output:
 \begin{verbatim}
 
 \end{verbatim}
-(Yes, there is none!) If we want to see the values, we need to print the 
-variables. To do this, it suffices to type the variable's name:
+(Yes, there is none!) A value can be assigned to several variables at the same time:
+
+\begin{verbatim}
+x = y = z = 0.0
+print "x =", x
+print "y =", y
+print "z =", z
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+x = 0.0
+y = 0.0
+z = 0.0
+\end{verbatim}
+Variables must be defined (have a value assigned) before they can be 
+used. For example, when trying to print a variable {\tt value} that 
+was never used before, we get an error:
+
+\begin{verbatim}
+Traceback (most recent call last):
+  File "<nclab>", line 1, in <module>
+NameError: name 'value' is not defined
+\end{verbatim}
+
+\subsection{Printing variables}
+
+If we want to see the value of a variable, we need to print it.
+To do this, it suffices to type the variable's name:
 
 \begin{verbatim}
 width
@@ -702,35 +757,16 @@ Output:
 The width of the object is 20
 And its height is 25
 \end{verbatim}
-A value can be assigned to several variables at the same time:
 
-\begin{verbatim}
-x = y = z = 0.0
-print "x =", x
-print "y =", y
-print "z =", z
-\end{verbatim}
-Output:
+\subsection{Dynamical type interpretation}
 
-\begin{verbatim}
-x = 0.0
-y = 0.0
-z = 0.0
-\end{verbatim}
 Python is very generous with variables -- it will figure out the type of a variable 
 at runtime, depending on the value that we first store in it. This is very different 
-from languages such as C, C++ where we need to declare the type of every variable 
+from compiled languages such as C, C++ where one needs to declare the type of every variable 
 before its first use. 
 
-However, variables must be defined (have a value assigned) before they can be 
-used. For example, when trying to print a variable {\tt value} that 
-was never used before, we get an error:
+\subsection{Changing values of variables}
 
-\begin{verbatim}
-Traceback (most recent call last):
-  File "<nclab>", line 1, in <module>
-NameError: name 'value' is not defined
-\end{verbatim}
 The simplest way to increase the value of a numerical variable by a given number is to use the '{\tt +=}' 
 command:
 
@@ -791,7 +827,23 @@ Output:
 \begin{verbatim}
 d = 7.0
 \end{verbatim}
-And this lucky number means the end of this section!
+Of course, apples cannot be mixed with oranges. When we try to 
+add a number to a text string,
+
+\begin{verbatim}
+a = "My car is a Ferrari."
+b = 3.5
+
+c = a + b
+\end{verbatim}
+then the interpreter rightfully complains:
+
+\begin{verbatim}
+Traceback (most recent call last):
+  File "<nclab>", line 4, in <module>
+TypeError: cannot concatenate 'str' and 'float' objects
+\end{verbatim}
+
 
 \subsection{Local variables}
 
@@ -809,7 +861,7 @@ def add(a, b):
 print "Sum of 3 and 4 is", add(3, 4)
 print c
 \end{verbatim}
-The variable {\tt c} is local to the function {\tt add}. The output is:
+The output is:
 
 \begin{verbatim}
 Sum of 3 and 4 is 7
@@ -846,7 +898,7 @@ A function should
 obtain all the data it needs through its arguments. Imagine that a unit of soldiers 
 would act based not only on orders it receives (that's the argument 
 list), but also based on rumors that some of the soldiers read in a Sunday magazine. 
-That would not work well.\\
+That might not work well!\\
 
 \noindent
 A clean version of the above code is
@@ -868,7 +920,7 @@ val = 5.0
 
 \subsection{Local vs. global variables}
 
-Sometimes, in longer programs, it may happen that we create by accident a global variable 
+Sometimes, especially in longer programs, it may happen that we create by accident a global variable 
 whose name matches the name of a local variable in some function. This is not a problem
 -- if this happens, priority is always given to the local variable. Look at the 
 following code:
@@ -891,8 +943,24 @@ The output is:
 \subsection{Review questions}
 
 \begin{enumerate}
-\item
-\item
+\item What are variables used for?
+\item Does assigning a value to a variable produce any output?
+\item Can one assign the same value to multiple variables at once? 
+\item What error does one get when trying to use a variable before a value was assigned to it?
+\item Does one need to declare types of variables in Python?
+\item What is the shortest way to print the value of a variable and what is the 
+      recommended way?
+\item Write code that will assign value $3$ to a variable $v$ and then increase the value of 
+      the variable by $5$.
+\item Write code that will assign value $4.5$ to a variable $a$, value $2.5$ to a variable 
+      $b$, and define a new variable $c = a^b$. 
+\item What do we mean by a {\em local variable}?
+\item Can one define a variable in a function, and then use it outside the function?
+\item What do we mean by a {\em global variable}?
+\item Can one define a variable outside a function, and then use it inside the function? 
+\item Why should all variables be passed to functions as their arguments?
+\item If the name of a local variable in a function coincides with the name of a global variable,
+      which one is used in the function? 
 \item Find the output of the following code:
 \begin{verbatim}
 c = 5.0
@@ -905,7 +973,94 @@ def add(a, b):
 
 print "1 + 2 =", add(1, 2)
 \end{verbatim}
+\end{enumerate}
 
+\subsection{Exercises}
+
+\begin{enumerate}
+\item The number $\pi$ can be written as an infinite series 
+$$
+\pi = 4\left(1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - \ldots     \right).
+$$
+Write a function {\tt approx\_pi} that returns an approximation of $\pi$ using a truncated 
+series where the last fraction used is $1/13$.
+\item {\em Arithmetic sequence} is a progression of $n$ numbers $a_1$, $a_2$, $\ldots$, $a_n$
+that increase by the same difference $d$. For example, 
+$$
+5, 7, 9, 11, 13, 15, 17
+$$
+is an arithmetic sequence with $n = 7$, $a_1 = 5$ and $d = 2$. It holds
+$$
+a_n = a_1 + (n-1)d.
+$$
+There is a well known formula for the sum of such a sequence:
+$$
+S = \frac{n}{2}(a_1 + a_n).
+$$
+And now the exercise: Write a function {\tt summation\_arithmetic} that takes arbitrary 
+values of $n$, $a_1$ and $d$ as arguments, and calculates and returns the sum
+of the corresponding arithmetic sequence! 
+\item {\em Geometric sequence} is a progression of $n$ numbers $a_1$, $a_2$, $\ldots$, $a_n$
+where the next number is calculated by multiplying the last one with a quotient $q$.
+For example, 
+$$
+1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \frac{1}{16}
+$$
+is a geometric sequence with $n = 5$, $a_1 = 1$ and $q = 1/2$. It is 
+$$
+a_n = a_1 \cdot q^{n-1}.
+$$
+If $q \not = 1$, then the formula for the sum of such a sequence is
+$$
+S = a_1\frac{1 - q^n}{1 - q}
+$$
+Write a function {\tt summation\_geometric} that takes arbitrary 
+values of $n$, $a_1$ and $q \not = 1$ as arguments, and calculates 
+and returns the sum of the corresponding geometric sequence! 
+\item {\em Sales prediction}. The East Coast sales division of a company usually generates $P$
+percent of total sales each year. Write a function {\tt sales\_prediction} to predict how much 
+the East Coast division will generate if the company has $S$ dollars in sales the next year. 
+Your function should take $P$ and $S$ as arguments. Use
+your function with the numbers $P = 62\ \%$ and $S = 4.6$ million dollars. 
+\item {\em Sales tax}. 
+Write a function {\tt sales\_tax} that calculates the total sales tax on a $P$ dollars purchase. 
+Assume the state sales tax is $ST$ percent, and the county sales tax is $CT$ percent. All $P$, $ST$ and 
+$CT$ should be the arguments of your function. Use the
+function with the following numbers: $P = 52$ dollars, $ST = 5 \%$, $CT = 2 \ \%$.
+\item {\em Restaurant bill}. Write a function {\tt restaurant\_bill} 
+that computes the tax and tip on a restaurant bill for a patron with 
+$M$ dollars meal charge. The tax is $P$ percent of the meal cost. The tip is $T$ percent of the total after 
+adding the tax. Your function should take $M$, $P$ and $T$ as arguments and print the meal cost, 
+tax amount, tip amount, and total bill. Use your function with the numbers $M = 44.50$ dollars, 
+$P = 6.75 \ \%$ and $T = 15 \ \%$. 
+\item {\em Gas consumption I}. In Europe, gas consumption of a car is reported in liters per 100 kilometers. In the U.S. 
+it is reported in miles per gallon. Write a function {\tt conversion\_eu\_to\_us} that converts a given European 
+gas consumption $C$ into the U.S. scale. One mile is 1.6 kilometers, and one gallon is 3.78541178 liters. 
+\item {\em Gas consumption II}. Write a function {\tt conversion\_us\_to\_eu} that converts a given U.S.
+gas consumption $C$ into the European scale.
+\item {\em Distance per tank of gas}. A car with a $G$ gallon gas tank averages $A$ miles per gallon 
+when driven in town and 
+$B$ miles per gallon when driven on the highway. Write a function {\tt distance} that calculates and prints 
+the distance the car can travel on one tank of gas when driven in town and when driven on the highway. 
+Use your function with $G = 20$ gallons, $A = 21.5$ miles per gallon, $B = 26.8$ miles per gallon. 
+\item {\em Circuit board price.} An electronics company sells circuit boards at a $P$ percent profit. 
+Write a function {\tt circuit\_board\_price} 
+that calculates the selling price of a circuit board that costs them $D$ dollars to
+produce. Use your function with $P = 40\ \%$ and $D = 12.67$ dollars.
+\item {\em Gross pay}. A particular employee earns $E$ dollars annually. Write a function 
+{\tt gross\_pay} that determines and prints what the amount of his gross pay will be for each pay period 
+if he is paid twice a month (24 pay checks per year) and if he is paid bi-weekly (26 checks per 
+year). Use your function with $E = 32,500$ dollars.
+\item {\em Stock gain}. Kathryn bought $600$ shares of stock at a price of $A$ dollars per share. 
+One year later she 
+sold them for $B$ dollars per share. Write a function {\tt stock\_gain} that calculates and 
+displays the following:
+\begin{itemize}
+\item The total amount paid for the stock.
+\item The total amount received from selling the stock.
+\item The total amount of money she gained.
+\end{itemize}
+Use your function with the values $A = 21.77$ dollars and $B = 26.44$ dollars.
 \end{enumerate}
 
 \section{Boolean expressions}

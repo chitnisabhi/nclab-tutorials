@@ -1,0 +1,16 @@
+cp python.pdf python_en.pdf 
+cp python.pdf python_de.pdf 
+cp python.pdf python_cz.pdf 
+cp python.pdf python_sp.pdf 
+cp python.pdf python_pl.pdf 
+
+scp python*.pdf femhub@femhub.com:~/femhub.com/public/docs/
+
+rm python_en.pdf
+rm python_cz.pdf
+rm python_de.pdf
+rm python_sp.pdf
+rm python_pl.pdf
+rm python.pdf
+
+

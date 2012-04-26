@@ -178,17 +178,18 @@ to {\em extremely tough}.
 
 \subsection{How does Karel differ from conventional programming languages?}
 
-The biggest difference between Karel and conventional procedural
-programming languages is that it {\em does not contain any mathematics}.
-Believe it or not -- Karel does not know numbers! In this course, you 
-will solve many exercises whose objective is to teach you how to 
-design great algorithms, and math is not needed for that. 
-Thanks to the beautiful simplicity of Karel's language, the resulting 
-computer codes are crystal clear.
+The biggest conceptual difference between Karel and standard procedural
+programming languages such as Python, C, C++ or Fortran is that {\em the robot does not 
+know numbers}. At least not until we get to advanced levels that are beyond 
+the original Pattis' book. In the basic course, you will solve many exercises 
+whose objective is to teach you how to design great algorithms, and math is 
+not needed for that. Thanks to the beautiful simplicity of Karel's language, 
+the resulting computer codes are crystal clear.
  
 After finishing this tutorial, you will be able to transition instantly to
 Python, a powerful modern programming language. And then, you will be only 
-learning language-specific details, because the most important skill in computer programming -- designing great algorithms -- you will already have.
+learning language-specific details, because the most important skill in 
+computer programming -- designing great algorithms -- you will already have.
  
 \section{Explore NCLab}
 
@@ -285,23 +286,94 @@ Karel operates in four modes:
 
 \subsection{Review questions}
 
+All questions in this textbook are multiple-choice.
+
 \begin{enumerate}
-\item Name the university where Karel the Robot was created.
-\item What is the biggest difference between Karel and conventional procedural programming languages?
-\item Where does Karel live and what objects can be found there?
+\item Name the university where Karel the Robot was created:
+\begin{enumerate}
+\item[A1] MIT
+\item[A2] Princeton
+\item[A3] Harvard
+\item[A4] Stanford
+\end{enumerate}
+\item What is the biggest conceptual difference between Karel and standard
+      procedural programming languages such as Python, C, C++ or Fortran?
+\begin{enumerate}
+\item[A1] Karel only knows five commands.
+\item[A2] Karel only can do simple algorithms.
+\item[A3] Karel does not know math.
+\item[A4] Karel has only five sensors.
+\end{enumerate}
+\item Where does Karel live and what objects does he like to collect?
+\begin{enumerate}
+\item[A1] Karel lives in a maze and he likes to collect gems.
+\item[A2] Karel lives in a cave and he likes to collect gold nuggets.
+\item[A3] Karel lives on an island and he likes to collect coconuts.
+\item[A4] Karel lives in a marketplace and he likes to collect coins from the ground.
+\end{enumerate}
 \item List five commands that Karel knows.
+\begin{enumerate}
+\item[A1] step, right, left, put, get
+\item[A2] go, right, left, put, pick
+\item[A3] step, right, left, put, pick
+\item[A4] go, right, left, put, get
+\end{enumerate}
 \item What sensors does the robot have?
-\item Describe how you would clone a displayed Karel project "Karel - Exercise - C01 - Sprint".
+\begin{enumerate}
+\item[A1] wall, home, north, gem, empty
+\item[A2] wall, done, north, gem, empty 
+\item[A3] wall, home, north, gem, full
+\item[A4] clear, home, north, gem, empty 
+\end{enumerate}
+\item What can you do with a displayed Karel project that you clone into your account?.
+\begin{enumerate}
+\item[A1] Only open and view
+\item[A2] Only run but not edit.
+\item[A3] Only edit and run but not save
+\item[A4] Edit, save, and run
+\end{enumerate}
 \item What are the four modes of the Karel application?
+\begin{enumerate}
+\item[A1] Manual mode, Build mode, Program mode, Game mode
+\item[A2] Mode 1, Mode 2, Mode 3, Mode 4
+\item[A3] Beginner mode, Intermediate mode, Advanced mode, Expert mode
+\item[A4] Karel has no modes
+\end{enumerate}
 \item What is the difference between Level 1 and Level 2?
+\begin{enumerate}
+\item[A1] In Level 2 the robot has more sensors. 
+\item[A2] In Level 2 one can only guide the robot with the mouse.
+\item[A3] In Level 2 one can only use 5 commands
+\item[A4] In Level 2 programs can contain 
+      conditions, loops, and custom commands.
+\end{enumerate}
 \item What is the most important skill in computer programming?
+\begin{enumerate}
+\item[A1] Writing short programs
+\item[A2] Designing great algorithms
+\item[A3] Writing fast programs
+\item[A4] Knowing many programming languages
+\end{enumerate}
 \item What is the programming language that you should learn after Karel?
+\begin{enumerate}
+\item[A1] C
+\item[A2] Fortran
+\item[A3] Haskell
+\item[A4] Python
+\end{enumerate}
 \end{enumerate}
 
 
 \section{Section A - Operating the Robot in Manual Mode}
 
-In Manual mode, the robot can be operated using the mouse and five buttons Go, Left, Right, Get and Put 
+\noindent
+{\bf Objectives}: 
+\begin{itemize}
+\item Learn to operate the robot with the mouse.\\
+\end{itemize}
+
+\noindent
+In Manual mode, the robot can be operated using the mouse and five buttons Go, Left, Right, Put and Get 
 whose meaning was explained above. There are thirteen exercises A01 - A13 for you to solve.
 Each exercise can be cloned via the File Manager's 
 Project menu as described in Paragraph \ref{cloning}. 
@@ -322,8 +394,10 @@ Use the buttons on the left to get him home quickly! }
 \end{figure}
 \noindent
 Pressing Start will start 
-the exercise, and at this time also the buttons Go, Get, Left, Right, and Put appear, 
+the exercise, and at this time also the buttons Go, Left, Right, Put and Get appear, 
 as shown in Fig. \ref{fig:a01b}.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -334,7 +408,6 @@ as shown in Fig. \ref{fig:a01b}.
 \label{fig:a01b}
 \end{figure}
 
-\newpage
 
 \subsection{Exercise A02 - Olympic Games 1980}
 
@@ -352,6 +425,7 @@ the robot home as fast as possible. Karel's personal record is four seconds. How
 \end{figure}
 \noindent
 
+\newpage
 \subsection{Exercise A03 - Get Button}
 
 {\em Today is Karel's lucky day because he is about to find his first gem. 
@@ -365,15 +439,16 @@ home!}
 \vspace{-4mm}
 \caption{Karel is about to find his first gem.}
 \label{fig:a03}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
 \noindent
-\newpage
 
 \subsection{Exercise A04 - Olympic Games 1984}
 
 {\em It is Robolympic season again! Run home as fast as you can, 
 and collect all three gems on the way! Karel's personal record is 10 seconds.}
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -539,9 +614,18 @@ return home in time!}\\[-7mm]
 
 \section{Section B - Bridge to Programming}
 
+\noindent
+{\bf Objectives}: 
+\begin{itemize}
+\item Type and run programs in input cells.
+\item Add, clear, and remove input cells.
+\item Learn to operate the robot via written commands.
+\end{itemize}
+
+\noindent
 In this Section we will learn to use written commands {\tt go}, {\tt get}, {\tt left}, {\tt right}, and {\tt put} 
 instead of pressing the buttons Go, Get, Left, Right, and Put. The written commands do exactly the same as the 
-buttons. 
+corresponding buttons. 
 
 \subsection{Entering and running programs}
 
@@ -594,7 +678,6 @@ the same as pressing the Go button. Always write one command per line.}
 \end{figure}
 \noindent
 
-\newpage
 \subsection{Exercise B02 - Get Command}
 
 {\em Write a program for Karel to collect all gems and get home! 
@@ -610,6 +693,8 @@ Remember that typing "get" is the same as pressing the Get button.}\\[-7mm]
 \vspace{-4mm}
 \end{figure}
 \noindent
+
+\newpage
 
 \subsection{Exercise B03 - Left and Right Commands}
 
@@ -627,13 +712,14 @@ the Left or Right button, respectively.}\\[-7mm]
 \vspace{-4mm}
 \end{figure}
 \noindent
-\newpage
 
 \subsection{Exercise B04 - Put Command}
 
 {\em Write a program for Karel to pick up the gem, turn around, make 
 two steps, put the gem on the ground, and return home! Remember: 
 Writing "put" is exactly the same as pressing the Put button.}
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -649,23 +735,51 @@ Writing "put" is exactly the same as pressing the Put button.}
 
 \section{Section C - Counting Loop}
 
-In the last Section we successfully crossed the bridge between Clicking  
-and Programming. The bridge collapsed, there is no way back. But do not worry
-about that, the land of Programming is much more beautiful!
+\noindent
+{\bf Objectives}: 
+\begin{itemize}
+\item Understand the difference between {\em algorithm} and {\em program}. 
+\item Learn about two main types of programming mistakes.
+\item Understand what we mean by {\em bugs} and {\em debugging}.
+\item Learn to make the robot repeat a command or a sequence of commands.
+\item Learn how to repeat tasks that involve repetitions.
+\end{itemize}
 
-\subsection{Programming wisdom}
+\noindent
+In Section B we successfully crossed the bridge between Clicking  
+and Programming. The bridge collapsed, there is no way back. But do 
+not worry about that, the land of Programming is much more beautiful!
 
-In Section B we learned that Karel accepts written commands as an alternative to 
-manual control. He always obeys the commands {\em exactly}. It may happen that 
-you plan one thing, tell it to the robot, but the robot does something different.
-In that case you need to go back, look at your program, and see where the 
-mistake is. Mistakes in programs are called {\em bugs} and the procedure of eliminating them 
-is called {\em debugging}. Depending on how careful you 
-were while preparing and writing your program, and how complex the program is,
-this may take quite a bit of time. It really helps to be careful and 
-think twice before writing a program. You have to go in your mind through 
-all the commands that you want the robot to follow. You have to play the program 
-in your head, then the robot will do exactly what you want him to do. 
+\subsection{Algorithms, programs, and bugs}
+
+Karel always obeys {\em precisely} the commands that we give him. It may happen that 
+we plan one thing but to our surprise the robot does something different. In most cases this 
+happens when our {\em algorithm} is wrong. By {\em algorithm} we mean a sequence of 
+logical steps that we prepare for the robot to fulfill his task. 
+An algorithm needs to be thought out very carefully before we start writing 
+it down using the commands of the programming language. When we are finished 
+with that, what we have is called {\em program} or {\em computer code}. 
+Preparing a good algorithm is the important step -- when our algorithm is good, then 
+the program is easy to write.
+
+Mistakes in algorithms are called {\em logical errors}. A logical error is, for 
+example, when we crash the robot into a wall because we forgot to make a turn.
+Mistakes such as mis-spelling a command or forgetting indentation are related to 
+the {\em syntax} and they are called {\em syntactical errors}. Of these two types, 
+logical errors are usually much more difficult to find. 
+
+In general, mistakes or either kind are called {\em bugs} and the procedure of 
+eliminating them is called {\em debugging}. Depending on how careful we 
+were while preparing our algorithm and writing the program, debugging takes either 
+a short time or a long time. It does not happen often that a program works correctly
+right away. 
+
+When we commit a syntactical error (such as mis-spelling a command)
+the robot will write an error message without doing anything else.
+If our algorithm contains a logical error based on which the robot crashes 
+into a wall, if we ask him to collect a gem where there is none, or if we 
+ask him to put a gem on the ground while his bag is empty, then he will
+write an error message and stop executing the program. 
 
 \subsection{The {\tt repeat} command}
 
@@ -730,6 +844,9 @@ so that he does not crash into a wall.
 \subsection{Review questions} 
 
 \begin{enumerate}
+\item What is an algorithm?
+\item How do we proceed to convert an algorithm into a program?
+\item What are the two main types of programming mistakes?
 \item What is a {\em bug} in a computer code?
 \item What do we mean by {\em debugging}?
 \item What is {\em body of loop} and why is it indented?
@@ -777,7 +894,6 @@ so that he does not crash into a wall.
 {\em Karel is feeling lucky today. He wants to just step outside his house, 
 turn around five times, then pick up one gem somewhere, and get back inside!}
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -798,6 +914,8 @@ Write a program for the robot to step out of his garage, put 10 gems on the grou
 and then turn back and get back inside! Use the {\tt repeat} command for any repeated 
 action.}
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{img/c04.png}
@@ -809,8 +927,6 @@ action.}
 \end{figure}
 \noindent
 
-
-\newpage
 
 
 \subsection{Exercise C05 - String of Gems}
@@ -829,9 +945,20 @@ than three lines.}.
 \vspace{-4mm}
 \end{figure}
 \noindent
-
+\newpage
 \section{Section D - Conditions}
 
+\noindent
+{\bf Objectives}: 
+\begin{itemize}
+\item Understand the function of Karel's five sensors.
+\item Learn to use the sensors in conjunction with {\em conditions} to help Karel 
+      check his surroundings and react accordingly. For example, you will learn to first 
+      check whether wall is ahead before making a step forward, checking whether there
+      is a gem on the ground before attempting to pick it up, etc.
+\end{itemize}
+
+\noindent
 Karel has built-in sensors to better navigate in the maze:
 
 \subsection{Karel's five sensors}
@@ -873,13 +1000,6 @@ else
   repeat 2
     left
 \end{verbatim}
-
-\subsection{Errors}
-
-If you crash the robot into a wall, if you ask him to collect a gem where there
-is none, or if you ask him to put a gem on the ground while 
-his bag is empty, {\bf he will throw an error}. This means that 
-he will write an errro message and stop executing the program. 
 
 \subsection{Programming wisdom}
 
@@ -971,7 +1091,6 @@ Currently, some shelves are empty. Write a program for Karel to
 inspect all shelves and put a gem where one is missing! After that, he needs to get 
 home as usual. With one 
 command per line, your program should have at most 7 lines.}
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -988,6 +1107,14 @@ command per line, your program should have at most 7 lines.}
 
 \section{Section E - Conditional Loop}
 
+\noindent
+{\bf Objectives}: 
+\begin{itemize}
+\item Learn to repeat a command or a sequence of commands when it is not known 
+      how many repetitions will be needed.
+\end{itemize}
+
+\noindent
 In this section we will learn another type of loop that is highly useful 
 in programming.
 
@@ -1117,7 +1244,17 @@ and do not forget to collect all the gems on the way!}
 \end{figure}
 \noindent
 
+\newpage
+
 \section{Section F - Defining New Commands}
+
+\noindent
+{\bf Objectives}: 
+\begin{itemize}
+\item Learn to never copy and paste computer code.
+\item Learn to recognize smaller tasks that can be solved without solving the big task.
+\item Learn to bring more structure and clarity into your programs by introducing new commands.
+\end{itemize}
 
 \subsection{Programming wisdom}
 
@@ -1307,7 +1444,6 @@ def foursteps
       which direction he is facing.
 \end{enumerate}
 
-\newpage
 
 \subsection{Exercise F01 - Four Star Hotel}
 
@@ -1328,7 +1464,7 @@ def foursteps
 \subsection{Exercise F02 - U-Haul}
 
 {\em Write a program for the robot to move the 6x6 square of gems to the opposite corner of the maze. The task is finished when the robot is back home.}
-
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1369,7 +1505,7 @@ def foursteps
 \vspace{-4mm}
 \caption{This time Karel installs windows.}
 \label{fig:f04}
-\vspace{-10mm}
+%\vspace{-10mm}
 \end{figure}
 \noindent
 
@@ -1394,11 +1530,11 @@ no repeating parts whatsoever in your program!}
 \end{figure}
 \noindent
 
-
+\newpage
 \subsection{Exercise F06 - Diamond Staircase}
 
 {\em Write a program for Karel to climb the stairs, collect all gems, and get home!}
-\newpage
+
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1552,6 +1688,14 @@ and that it does not contain any loops.}
 
 \section{Section G - Logical Variables}
 
+\noindent
+{\bf Objectives}: 
+\begin{itemize}
+\item Learn to work with elementary and complex logical operations.
+\item Learn to define and use logical variables.
+\end{itemize}
+
+\noindent
 In programming, variables are used to store information for later use. This information can 
 be a number, word, sentence, or simply a "True" or "False". We will start
 with the last type. 

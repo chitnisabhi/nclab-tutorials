@@ -125,9 +125,10 @@ covered in Pattis' book is available in the Basic Version free of charge.
 This course will teach you principles of modern algorithmic design and  
 computer programming with the help of an interactive graphical application 
 {\em Karel the Robot} in NCLab. Taking this course will make it much easier 
-for you to learn Python, C++ and other advanced programming languages. In particular we 
+for you to learn Python, C, C++ and other advanced programming languages. In particular we 
 recommend that after Karel you continue with Python, a powerful programming 
-language that is used across all science and engineering areas. The textbook
+language that is used across all science and engineering areas, and yet it is 
+technically simpler to handle than C or C++. The textbook
 {\em Python Programming for Beginners} is available in PDF via the link 
 "Tutorials and Videos" on NCLab home page.
 
@@ -142,8 +143,8 @@ science fiction play R.U.R. (Rossum's Universal Robots).
 
 \subsection{Who is Karel?}
 
-Karel is a little robot that lives in a maze, and the maze contains gems that he loves to collect!
-He was created with only five simple commands in his memory:
+Karel is a little robot that lives in a maze, and there are gems in the maze that he loves to collect!
+He was manufactured with only five simple commands in his memory:
 \begin{itemize}
 \item {\color{green} \tt go} ... make one step forward.
 \item {\color{green} \tt get} ... pick up a gem from the ground. 
@@ -163,35 +164,151 @@ During this course you will help Karel solve many exciting tasks starting with v
 gradually progressing to more challenging. In this way Karel becomes a great robot, and you 
 will become a great programmer!
 
-\subsection{Tell me {\em one reason} why I should take this course}
+\subsection{Why should I take this course?}
 
-Computer programming skills are highly valued nowadays, and they will be even more 
-valued in the future. In this course you will learn to design great algorithms -- an ability that 
-is completely language-independent. In other 
-words, you can learn the same with a technically complicated conventional 
-programming language, battling technical problems most of the time,
-or you can learn it with Karel the easy way.
-Despite its playful appearance, Karel is {\em not a toy language}. It contains all elements 
+Computer programming skills are highly valued today, and they will be even more 
+valued in the future. Karel's language is so natural that you will be able to 
+focus on designing great algorithms. This is the most important skill in 
+computer programming. In other words, you could start learning programming 
+with a technically 
+complicated conventional programming language as well, but you would spend lots of time 
+battling technical problems. The advantage of starting with Karel is that 
+when moving on to other languages, you will be able to focus on the technical 
+differences, as the programming concepts you will already understand.
+
+
+\subsection{Is Karel a simple-minded language?}
+
+Definitely not! Despite its playful appearance, Karel contains all elements 
 of modern procedural programming. The complexity of algorithms 
 that you will encounter in this course ranges from {\em extremely simple} 
-to {\em extremely tough}.
-
-\subsection{How does Karel differ from conventional programming languages?}
+to {\em extremely tough}. Towards the end of this course you will encounter 
+tasks that will make your head spin. However, Karel is very light on 
+technicalities, which is very good for someone who is just starting out.
 
 The biggest conceptual difference between Karel and standard procedural
 programming languages such as Python, C, C++ or Fortran is that {\em the robot does not 
 know numbers}. At least not until we get to advanced levels that are beyond 
 the original Pattis' book. In the basic course, you will solve many exercises 
 whose objective is to teach you how to design great algorithms, and math is 
-not needed for that. Thanks to the beautiful simplicity of Karel's language, 
-the resulting computer codes are crystal clear.
+not needed for that. After finishing this tutorial, you will be able to transition 
+smoothly to Python where you can do as much math as you like!
  
-After finishing this tutorial, you will be able to transition instantly to
-Python, a powerful modern programming language. And then, you will be only 
-learning language-specific details, because the most important skill in 
-computer programming -- designing great algorithms -- you will already have.
- 
-\section{Explore NCLab}
+\subsection{Review questions}
+
+All review questions in this textbook are multiple-choice. One or more 
+answers may be correct.
+
+\begin{enumerate}
+\item Name the university where Karel the Robot was created:
+\begin{enumerate}
+\item[A1] MIT
+\item[A2] Princeton
+\item[A3] Harvard
+\item[A4] Stanford
+\end{enumerate}
+\item What is the programming language that you should learn after Karel?
+\begin{enumerate}
+\item[A1] C
+\item[A2] Python
+\item[A3] Haskell
+\item[A4] Fortran
+\end{enumerate}
+\item What is the biggest conceptual difference between Karel and standard
+      procedural programming languages such as Python, C, C++ or Fortran?
+\begin{enumerate}
+\item[A1] Karel only knows five commands.
+\item[A2] Karel only can do simple algorithms.
+\item[A3] Karel does not know math.
+\item[A4] Karel has only five sensors.
+\end{enumerate}
+\item Where does Karel live and what objects does he like to collect?
+\begin{enumerate}
+\item[A1] Karel lives in a maze and he likes to collect gems.
+\item[A2] Karel lives in a cave and he likes to collect gold nuggets.
+\item[A3] Karel lives on an island and he likes to collect coconuts.
+\item[A4] Karel lives in a marketplace and he likes to collect coins from the ground.
+\end{enumerate}
+\item What is the command that moves the robot one step forward?
+\begin{enumerate}
+\item[A1] step
+\item[A2] forward
+\item[A3] go
+\item[A4] move
+\end{enumerate}
+\item What is the command that turns the robot to the left?
+\begin{enumerate}
+\item[A1] left\_turn
+\item[A2] turn\_left
+\item[A3] turnleft
+\item[A4] left
+\end{enumerate}
+\item What is the command that turns the robot to the right?
+\begin{enumerate}
+\item[A1] right\_turn
+\item[A2] right
+\item[A3] turnright
+\item[A4] turn\_right
+\end{enumerate}
+\item What is the command to pick up a gem from the ground?
+\begin{enumerate}
+\item[A1] pick
+\item[A2] pick\_gem
+\item[A3] get
+\item[A4] get\_gem
+\end{enumerate}
+\item What is the command to drop a gem on the ground?
+\begin{enumerate}
+\item[A1] put
+\item[A2] drop\_gem
+\item[A3] drop 
+\item[A4] put\_gem
+\end{enumerate}
+\item What sensor helps the robot avoid crashing into walls?
+\begin{enumerate}
+\item[A1] wall\_ahead
+\item[A2] wall
+\item[A3] crash
+\item[A4] danger
+\end{enumerate}
+\item What sensor helps the robot detect gems?
+\begin{enumerate}
+\item[A1] detect\_gem
+\item[A2] see\_gem
+\item[A3] gem
+\item[A4] near\_gem
+\end{enumerate}
+\item What sensor does the robot use to check whether he has any gems in his bag?
+\begin{enumerate}
+\item[A1] bag\_full
+\item[A2] bag\_empty
+\item[A3] has\_gems
+\item[A4] empty
+\end{enumerate}
+\item What sensor helps the robot detect his orientation?
+\begin{enumerate}
+\item[A1] south
+\item[A2] north
+\item[A3] east
+\item[A4] west
+\end{enumerate}
+\item What sensor helps the robot detect whether he is at home?
+\begin{enumerate}
+\item[A1] at\_home
+\item[A2] finished
+\item[A3] home
+\item[A4] stop
+\end{enumerate}
+\item What is the most important skill in computer programming?
+\begin{enumerate}
+\item[A1] Writing short programs.
+\item[A2] Designing great algorithms.
+\item[A3] Writing programs quickly.
+\item[A4] Knowing many programming languages.
+\end{enumerate}
+\end{enumerate}
+
+\section{Exploring NCLab}
 
 Before beginning this course, we invite you to create an account in 
 NCLab, log in, and take a while to explore the many activities 
@@ -199,11 +316,16 @@ that NCLab offers. A great companion reading is {\em Intro to NCLab - Part I
 (Meet the Cloud)} that is available in PDF via the link "Tutorials and Videos"
 on NCLab home page {\tt http://nclab.com}.\\
 
-\section{Meet Karel}
+\subsection{Review questions}
+
+Review questions for this Section are located in the document {\em Intro to NCLab - Part I 
+(Meet the Cloud)}.
+
+\section{Launching Karel}
 
 Karel can be launched in several different ways. The simplest one is to click on the icon 
 "Programming" and select "Karel" in the menu. This will launch the application 
-and load a randomly selected maze, as shown in Fig. \ref{fig:init}.
+with a randomly generated maze, as shown in Fig. \ref{fig:init}.
 
 \newpage
 
@@ -219,49 +341,68 @@ and load a randomly selected maze, as shown in Fig. \ref{fig:init}.
 Karel will be launched in {\em Programming mode} which is the most-frequently 
 used one. You can easily switch to the {\em Manual mode}, {\em Builder},
 and {\em Game mode} in the menu. Game mode is available in Full Version only. 
-These modes will be discussed in more detail later.
+These modes will be discussed in Paragraph \ref{levels}.
 
-\subsection{Cloning Karel projects} \label{cloning}
+\subsection{Karel's window} \label{menu}
+
+The application window contains two lines of menus and information on top,
+work area on the left, maze on the right, and status bar on the bottom.
+The menus are fairly intuitive, so let us just explain a few selected functions, starting 
+with the {\em File} menu:
+
+{\em Open} will open a file from your NCLab account (not from your hard disk). {\em New} will generate a new random maze.
+{\em Clone} will copy a Displayed Project into your account (to be discussed in Paragraph \ref{cloning}). 
+{\em Display} will submit your project for review. If you think that 
+      other users would find your program or game interesting, this is the way to make it 
+      available to them. Upon passing the review, your project will be added to Displayed Projects.
+
+{\em Edit} menu allows you to operate with input and text cells (to be discussed in 
+Section \ref{sec:editmenu}). In {\em Settings} you can change Karel's {\em Level} (to be discussed
+in Paragraph \ref{levels}), change his speed, and adjust sound preferences. The blue arrow and square 
+buttons are used to run and stop programs, and the two buttons next to them can be used to increase and decrease 
+font size. The pair of icons on far right is the step counter (that can be reset by clicking on it) and 
+gem counter that indicates how many gems Karel has in his bag.
+
+\subsection{Cloning Displayed Projects} \label{cloning}
 
 All programs and exercises that we will work with are
 available for you to clone. To do this, 
 click on the File Manager icon. In the File Manager's menu go to 
-"Project" and then click on "Clone". This will launch a new window 
+{\em Project} and then click on {\em Clone}. This will launch a new window 
 with Displayed Projects as shown in Fig. \ref{fig:cloning}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{img/cloning.png}
 \end{center}
 %\vspace{-2mm}
-\caption{File Manager's "Project" menu allows you to clone many Karel projects.}
+\caption{File Manager's {\em Project} menu allows you to clone many Karel projects.}
 \label{fig:cloning}
 \end{figure}
 \noindent
 All projects whose names start with "Karel - Exercise" are of particular interest 
 for this tutorial. Their solutions have names starting with "Karel - Solution". 
 Any of them can be cloned into your account via clicking on the project name in the window, 
-and pressing the button "Clone".
+and pressing the button {\em Clone}.
 
 In the File Manager's right-hand side panel, you will see the list of all 
 projects that you cloned. Click on any of them to launch it. You are free to 
 use the cloned projects as they are, or modify them in any way you like. Your 
 modifications will not affect the original. And, you can 
 always synchronize your version with the original, via 
-a right-click on the project in the File Manager and selecting "Synchronize".
+a right-click on the project in the File Manager and selecting {\em Synchronize}.
 Beware though -- synchronizing with the original will erase any changes that 
 you made to the project.
 
 \subsection{Basic and Full Versions}
 
-If you are using NCLab in Basic Version, some restrictions apply (this does not concern
-institution-sponsored users): The number of saved files is limited, private projects are 
-not enabled. and Game mode in Karel is not enabled. Basic Version can be upgraded to Full
-via the "Upgrade" icon on desktop.
+Users sponsored by an institution are using NCLab in Full Version. Some limitations 
+apply to users who use NCLab in Basic Version (see Terms of Use for details). These 
+users have an Upgrade icon on their Desktop, that they can use to upgrade 
+NCLab to Full Version for a symbolic monthly subscription fee.
 
-\subsection{Karel modes}
+\subsection{Karel modes} \label{levels}
 
 Karel operates in four modes:
 \begin{itemize}
@@ -286,51 +427,13 @@ Karel operates in four modes:
 
 \subsection{Review questions}
 
-All questions in this textbook are multiple-choice.
-
 \begin{enumerate}
-\item Name the university where Karel the Robot was created:
-\begin{enumerate}
-\item[A1] MIT
-\item[A2] Princeton
-\item[A3] Harvard
-\item[A4] Stanford
-\end{enumerate}
-\item What is the biggest conceptual difference between Karel and standard
-      procedural programming languages such as Python, C, C++ or Fortran?
-\begin{enumerate}
-\item[A1] Karel only knows five commands.
-\item[A2] Karel only can do simple algorithms.
-\item[A3] Karel does not know math.
-\item[A4] Karel has only five sensors.
-\end{enumerate}
-\item Where does Karel live and what objects does he like to collect?
-\begin{enumerate}
-\item[A1] Karel lives in a maze and he likes to collect gems.
-\item[A2] Karel lives in a cave and he likes to collect gold nuggets.
-\item[A3] Karel lives on an island and he likes to collect coconuts.
-\item[A4] Karel lives in a marketplace and he likes to collect coins from the ground.
-\end{enumerate}
-\item List five commands that Karel knows.
-\begin{enumerate}
-\item[A1] step, right, left, put, get
-\item[A2] go, right, left, put, pick
-\item[A3] step, right, left, put, pick
-\item[A4] go, right, left, put, get
-\end{enumerate}
-\item What sensors does the robot have?
-\begin{enumerate}
-\item[A1] wall, home, north, gem, empty
-\item[A2] wall, done, north, gem, empty 
-\item[A3] wall, home, north, gem, full
-\item[A4] clear, home, north, gem, empty 
-\end{enumerate}
 \item What can you do with a displayed Karel project that you clone into your account?.
 \begin{enumerate}
-\item[A1] Only open and view
-\item[A2] Only run but not edit.
-\item[A3] Only edit and run but not save
-\item[A4] Edit, save, and run
+\item[A1] View but not run
+\item[A2] View and run but not edit
+\item[A3] View, run and edit but not save
+\item[A4] View, run, edit, save, they are all yours
 \end{enumerate}
 \item What are the four modes of the Karel application?
 \begin{enumerate}
@@ -339,27 +442,13 @@ All questions in this textbook are multiple-choice.
 \item[A3] Beginner mode, Intermediate mode, Advanced mode, Expert mode
 \item[A4] Karel has no modes
 \end{enumerate}
-\item What is the difference between Level 1 and Level 2?
+\item What is the difference between Levels 1 and 2?
 \begin{enumerate}
 \item[A1] In Level 2 the robot has more sensors. 
 \item[A2] In Level 2 one can only guide the robot with the mouse.
 \item[A3] In Level 2 one can only use 5 commands
 \item[A4] In Level 2 programs can contain 
       conditions, loops, and custom commands.
-\end{enumerate}
-\item What is the most important skill in computer programming?
-\begin{enumerate}
-\item[A1] Writing short programs
-\item[A2] Designing great algorithms
-\item[A3] Writing fast programs
-\item[A4] Knowing many programming languages
-\end{enumerate}
-\item What is the programming language that you should learn after Karel?
-\begin{enumerate}
-\item[A1] C
-\item[A2] Fortran
-\item[A3] Haskell
-\item[A4] Python
 \end{enumerate}
 \end{enumerate}
 
@@ -369,7 +458,7 @@ All questions in this textbook are multiple-choice.
 \noindent
 {\bf Objectives}: 
 \begin{itemize}
-\item Learn to operate the robot with the mouse.\\
+\item Learn to operate the robot in Manual mode.\\
 \end{itemize}
 
 \noindent
@@ -448,7 +537,6 @@ home!}
 {\em It is Robolympic season again! Run home as fast as you can, 
 and collect all three gems on the way! Karel's personal record is 10 seconds.}
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -457,8 +545,10 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 \vspace{-4mm}
 \caption{Karel's second Robolympic Games.}
 \label{fig:a04}
+\vspace{-1cm}
 \end{figure}
 \noindent
+\newpage
 
 
 \subsection{Exercise A05 - Left Button}
@@ -475,7 +565,6 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 \vspace{-1cm}
 \end{figure}
 \noindent
-\newpage
 
 
 \subsection{Exercise A06 - Olympic Games 1988 }
@@ -489,9 +578,11 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 \vspace{-4mm}
 \caption{Karel's third Robolympic Games.}
 \label{fig:a06}
+\vspace{-1cm}
 \end{figure}
 \noindent
 
+\newpage
 
 \subsection{Exercise A07 - Right Button}
 
@@ -507,7 +598,6 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 \vspace{-1cm}
 \end{figure}
 \noindent
-\newpage
 
 \subsection{Exercise A08 - Olympic Games 1992}
 
@@ -525,7 +615,7 @@ Be careful not to crash, this is a tricky level! Karel's personal record is 26 s
 \vspace{-4mm}
 \end{figure}
 \noindent
-
+\newpage
 
 \subsection{Exercise A09 - Maze Quest}
 
@@ -542,7 +632,6 @@ Help him to collect the gem and find his way home!}\\[-7mm]
 \vspace{-4mm}
 \end{figure}
 \noindent
-\newpage
 
 \subsection{Exercise A10 - Labyrinth}
 
@@ -559,6 +648,7 @@ home. Remember - think first before going anywhere!}
 \vspace{-4mm}
 \end{figure}
 \noindent
+\newpage
 
 
 \subsection{Exercise A11 - Diamond Mine}
@@ -576,7 +666,6 @@ on the left to collect all gems and get back home in time!}
 \vspace{-4mm}
 \end{figure}
 \noindent
-\newpage
 
 \subsection{Exercise A12 - Gem Harvest}
 
@@ -593,6 +682,7 @@ Help Karel collect all gems in this maze and return home!}\\[-7mm]
 \vspace{-4mm}
 \end{figure}
 \noindent
+\newpage
 
 
 \subsection{Exercise A13 - Put Button}
@@ -610,40 +700,18 @@ return home in time!}\\[-7mm]
 \vspace{-4mm}
 \end{figure}
 \noindent
-\newpage
 
 \section{Section B - Bridge to Programming}
 
 \noindent
 {\bf Objectives}: 
 \begin{itemize}
-\item Type and run programs in input cells.
-\item Add, clear, and remove input cells.
-\item Learn to operate the robot via written commands.
+\item Learn to operate the robot in Programming mode
 \end{itemize}
 
 \noindent
-In this Section we will learn to use written commands {\tt go}, {\tt get}, {\tt left}, {\tt right}, and {\tt put} 
-instead of pressing the buttons Go, Get, Left, Right, and Put. The written commands do exactly the same as the 
-corresponding buttons. 
-
-\subsection{Entering and running programs}
-
-There are a couple of simple new rules to remember:
-\begin{enumerate} 
-\item Programs are entered into input cells on the left (one will appear after you press Start).
-\item Always type one command per line -- this does not hold only for Karel but for 
-      programming in general. It makes computer code much easier to read.
-\item There should not be empty spaces in front of commands.
-\item Clicking on "clear" under an input cell will erase its contents.
-\item You can add a new input cell by clicking on "add" (located under each input cell). 
-      Having multiple input cells can be useful, for example, to test various versions 
-      of your program, or if you want to run parts of your program separately. 
-\item Clicking on "remove" under an input cell will remove it. All text in that cell will be lost.
-\item Run programs via the blue arrow button in the menu (this will run all 
-      cells). Each cell can be run separately by clicking on "run" (located under 
-      each input cell). 
-\end{enumerate}
+In Programming mode, the robot obeys written commands {\tt go}, {\tt get}, {\tt left}, {\tt right}, and {\tt put}.
+These commands have the same function as pressing the buttons Go, Get, Left, Right, and Put in Manual mode.
 You can clone all exercises in this Section into your account via the File Manager's Project
 menu, same as you did with the ones in Section A.
 
@@ -651,15 +719,12 @@ menu, same as you did with the ones in Section A.
 
 \begin{enumerate}
 \item Name the five written commands that you can use to guide Karel.
-\item Where do we enter programs for Karel?
-\item Should we enter empty spaces in front of commands?
-\item How many commands per line should we type?
-\item How can we add a new input cell?
-\item When can having multiple input cells be useful?
-\item How can we erase all text from an input cell?
-\item How can we remove an input cell?
-\item How can we evaluate all input cells at once?
-\item How can we evaluate just one selected input cell?
+\begin{enumerate}
+\item[A1] step, right, left, put, get
+\item[A2] go, right, left, put, get
+\item[A3] step, right, left, put, pick
+\item[A4] go, right, left, put, pick
+\end{enumerate}
 \end{enumerate}
 
 \subsection{Exercise B01 - Go Command}
@@ -732,8 +797,7 @@ Writing "put" is exactly the same as pressing the Put button.}
 \end{figure}
 \noindent
 
-
-\section{Section C - Counting Loop}
+\section{Intermission - Algorithms, Programs, and Bugs}
 
 \noindent
 {\bf Objectives}: 
@@ -741,17 +805,7 @@ Writing "put" is exactly the same as pressing the Put button.}
 \item Understand the difference between {\em algorithm} and {\em program}. 
 \item Learn about two main types of programming mistakes.
 \item Understand what we mean by {\em bugs} and {\em debugging}.
-\item Learn to make the robot repeat a command or a sequence of commands.
-\item Learn how to repeat tasks that involve repetitions.
 \end{itemize}
-
-\noindent
-In Section B we successfully crossed the bridge between Clicking  
-and Programming. The bridge collapsed, there is no way back. But do 
-not worry about that, the land of Programming is much more beautiful!
-
-\subsection{Algorithms, programs, and bugs}
-
 Karel always obeys {\em precisely} the commands that we give him. It may happen that 
 we plan one thing but to our surprise the robot does something different. In most cases this 
 happens when our {\em algorithm} is wrong. By {\em algorithm} we mean a sequence of 
@@ -780,6 +834,34 @@ If our algorithm contains a logical error based on which the robot crashes
 into a wall, if we ask him to collect a gem where there is none, or if we 
 ask him to put a gem on the ground while his bag is empty, then he will
 write an error message and stop executing the program. 
+
+\subsection{Review questions} 
+
+\begin{enumerate}
+\item What is an algorithm?
+\item How do we proceed to convert an algorithm into a program?
+\item What are the two main types of programming mistakes?
+\item What is a {\em bug} in a computer code?
+\item What do we mean by {\em debugging}?
+\end{enumerate}
+
+\section{Section C - Counting Loop}
+
+\noindent
+{\bf Objectives}: 
+\begin{itemize}
+\item Understand the difference between {\em algorithm} and {\em program}. 
+\item Learn about two main types of programming mistakes.
+\item Understand what we mean by {\em bugs} and {\em debugging}.
+\item Learn to work better with input and text cells.
+\item Learn to make the robot repeat any command or a sequence of commands.
+\end{itemize}
+
+\noindent
+In Section B we successfully crossed the bridge between Clicking  
+and Programming. The bridge collapsed, there is no way back. But do 
+not worry about that, the land of Programming is much more beautiful!
+
 
 \subsection{The {\tt repeat} command}
 
@@ -844,11 +926,6 @@ so that he does not crash into a wall.
 \subsection{Review questions} 
 
 \begin{enumerate}
-\item What is an algorithm?
-\item How do we proceed to convert an algorithm into a program?
-\item What are the two main types of programming mistakes?
-\item What is a {\em bug} in a computer code?
-\item What do we mean by {\em debugging}?
 \item What is {\em body of loop} and why is it indented?
 \item What are the two possible indents that we can use?
 \item Write a program for Karel to rotate 360 degrees.
@@ -946,6 +1023,104 @@ than three lines.}.
 \end{figure}
 \noindent
 \newpage
+
+\section{Intermission - Working with Input and Text Cells} \label{sec:editmenu}
+
+\noindent
+{\bf Objectives}: 
+\begin{itemize}
+\item Learn why descriptive text cells are useful and how to insert them.
+\item Learn when it makes sense to have multiple input cells and how to add them.
+\item Learn how to run all input cells at once, and how to run them individually.
+\item Learn how to clear, remove and merge cells.
+\end{itemize}
+There are a couple of simple new rules to remember:
+\begin{enumerate} 
+\item Programs are entered into input cells on the left (one will appear after you press Start).
+\item Always type one command per line -- this does not hold only for Karel but for any
+      programming language. It makes computer code much easier to read.
+\item Clicking on "clear" under an input cell will erase its contents.
+\item You can add a new input cell by clicking on "add" (located under each input cell). 
+      Having multiple input cells can be useful, for example, to test various versions 
+      of your program, or if you want to run parts of your program separately. 
+\item Clicking on "remove" under an input cell will remove it. All text in that cell will be lost.
+\item Run programs via the blue arrow button in the menu (this will evaluate all input
+      cells). Each cell can be evaluated individually by clicking on "run" (located under 
+      each input cell). If there is just one input cell, both options are equivalent.
+\item Running programs can be stopped using the blue square button in the menu.
+\end{enumerate}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item Where do we enter programs for Karel?
+\begin{enumerate}
+\item[A1] In Microsoft Word.
+\item[A2] In DreamWeaver.
+\item[A3] We upload them from hard disk.
+\item[A4] In input cells.
+\end{enumerate}
+\item How many commands per line should we type?
+\begin{enumerate}
+\item[A1] At least two.
+\item[A2] As many as possible.
+\item[A3] Only one.
+\item[A4] At most five.
+\end{enumerate}
+\item How can we add a new input cell?
+\begin{enumerate}
+\item[A1] Clicking on "add" under an existing input cell.
+\item[A2] Through "Add new input cell" in the Edit menu.
+\item[A3] Through "New" in File menu.
+\item[A4] Through "Clone" in File menu.
+\end{enumerate}
+\item When should we have multiple input cells?
+\begin{enumerate}
+\item[A1] When our program contains more than one command.
+\item[A2] When we want to run parts of the program separately.
+\item[A3] When a command is repeated multiple times.
+\item[A4] When the program is longer than 10 lines.
+\end{enumerate}
+\item What do we need to do in order to erase all text from an input cell?
+\begin{enumerate}
+\item[A1] Close Karel, logout from NCLab and login again. 
+\item[A2] Restart Karel.
+\item[A3] Remove the input cell and add a new one in its place.
+\item[A4] Click on "clear" under the input cell.
+\end{enumerate}
+\item How can we remove an input cell?
+\begin{enumerate}
+\item[A1] Click on "add" under the input cell.
+\item[A2] Click on "remove" under the input cell.
+\item[A3] Click on "clear" under the input cell.
+\item[A4] Switch to Build mode and back.
+\end{enumerate}
+\item How can we evaluate all input cells at once?
+\begin{enumerate}
+\item[A1] Through "Expand all cells" in Edit menu.
+\item[A2] Click on the blue square button.
+\item[A3] Click on "run" under the last input cell.
+\item[A4] Click on the blue arrow button.
+\end{enumerate}
+\item How should running programs be stopped?
+\begin{enumerate}
+\item[A1] Click on the blue arrow button.
+\item[A2] Close the main Karel window.
+\item[A3] Click on the blue square button.
+\item[A4] Click on "stop" under the last input cell.
+\end{enumerate}
+\item How can we evaluate just one selected input cell?
+\begin{enumerate}
+\item[A1] 
+\item[A2] 
+\item[A3] 
+\item[A4] 
+\end{enumerate}
+\end{enumerate}
+
+
+
+
 \section{Section D - Conditions}
 
 \noindent
@@ -1493,7 +1668,7 @@ def foursteps
 \end{figure}
 \noindent
 
-\subsection{Exercise F04 - Blind Carpenter}
+\subsection{\ \ Exercise F04 - Blind Carpenter}
 
 {\em Karel is a blind carpenter who needs to install windows (gems) into a newly built house. All he knows is that the house is a rectangle and that each window is exactly one tile large, But he can't see where the openings for the windows are. Install the windows and return home!}
 
@@ -1511,7 +1686,7 @@ def foursteps
 
 
 
-\subsection{Exercise F05 - Pirate Ship}
+\subsection{\ \ Exercise F05 - Pirate Ship}
 
 {\em Karel is on a pirate ship! Write a program for him to collect all 
 gems and run away (to his home) before the pirates are back. Here Karel 
@@ -1531,7 +1706,7 @@ no repeating parts whatsoever in your program!}
 \noindent
 
 \newpage
-\subsection{Exercise F06 - Diamond Staircase}
+\subsection{\ \ Exercise F06 - Diamond Staircase}
 
 {\em Write a program for Karel to climb the stairs, collect all gems, and get home!}
 
@@ -1548,7 +1723,7 @@ no repeating parts whatsoever in your program!}
 \noindent
 
 
-\subsection{Exercise F07 - Plucking Flowers}
+\subsection{\ \ Exercise F07 - Plucking Flowers}
 
 {\em Write a program for Karel to pluck all flowers that grow at the fence of his garden (gems), and get back home! Note two level of repetitions - the fence has four edges, and it takes 7 steps to walk each edge.}
 
@@ -1564,7 +1739,7 @@ no repeating parts whatsoever in your program!}
 \end{figure}
 \noindent
 
-\subsection{Exercise F08 - Gems for Friends}
+\subsection{\ \ Exercise F08 - Gems for Friends}
 
 {\em Karel has three gems in his bag, that he wants to give to his three friends R2, D2 and Marvin who live close by. They are very good friends, so Karel is allowed to enter their homes at any time. Write a program for Karel to put a gem on the ground in the middle of each friend's home, and then get back to his own house! Hint: There will be an outer loop of four repetitions, that will contains inner repetitions in it.}
 
@@ -1580,7 +1755,7 @@ no repeating parts whatsoever in your program!}
 \end{figure}
 \noindent
 
-\subsection{Exercise F09 - Diamond Rectangle}
+\subsection{\ \ Exercise F09 - Diamond Rectangle}
 
 {\em Karel stands in front of a rectangle with unknown dimensions. He knows that the rectangle is surrounded with gems. Sometimes the gems are piled up, but he does not know how many gems are in each pile. Write a program for the robot to walk around the rectangle, collect all gems, and get home!}
 
@@ -1597,7 +1772,7 @@ no repeating parts whatsoever in your program!}
 \end{figure}
 \noindent
 
-\subsection{Exercise F10 - Gem Jam!}
+\subsection{\ \ Exercise F10 - Gem Jam!}
 
 {\em In this maze, gems are distributed randomly along the walls. Otherwise 
 the maze is empty. Karel's home is in the south-west corner, and the robot 
@@ -1617,7 +1792,7 @@ all the gems and return home!}
 
 \newpage
 
-\subsection{Exercise F11 - The Matrix}
+\subsection{\ \ Exercise F11 - The Matrix}
 
 {\em Write a program for Karel to collect all gems and get back home! The record is 
 210 steps made. Can you do it with fewer steps?}
@@ -1633,7 +1808,7 @@ all the gems and return home!}
 \end{figure}
 \noindent
 
-\subsection{Exercise F12 - Escape from Alcatraz}
+\subsection{\ \ Exercise F12 - Escape from Alcatraz}
 
 {\em Karel is escaping from the Alcatraz prison! At the moment he is in an underground labyrinth with many tunnels but only one of them leads to his freedom. He cannot know which one is it, so he needs to search them one by one. Start by going straight ahead to the nearest wall. Then use the right-hand rule to search the tunnels.}
 
@@ -1650,7 +1825,7 @@ all the gems and return home!}
 \end{figure}
 \noindent
 
-\subsection{Exercise F13 - Border Patrol}
+\subsection{\ \ Exercise F13 - Border Patrol}
 
 {\em Write a program for Karel to check the perimeter of the maze using the 
 right-hand rule. Do not forget to pick up all gems that you find on the way.}
@@ -1666,7 +1841,7 @@ right-hand rule. Do not forget to pick up all gems that you find on the way.}
 \end{figure}
 \noindent
 
-\subsection{Exercise F14 - Ariadne's Thread}
+\subsection{\ \ Exercise F14 - Ariadne's Thread}
 
 {\em In an ancient Greek legend, princess Ariadne saved the life of her 
 beloved Theseus by giving him a thread that he used to avoid getting lost 

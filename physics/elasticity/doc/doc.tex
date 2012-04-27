@@ -46,7 +46,8 @@ Poisson ratio $\nu$. In these subdomains, the material is assumed homogeneous.
 \noindent
 On the boundary, one can prescribe {\em displacements} (right vertical edge 
 in Fig. 1), {\em surface force} (top edge), or nothing (curved parts and the 
-inner triangle). Prescribing nothing is equivalent to prescribing zero surface force. 
+inner triangle). Prescribing nothing is equivalent to prescribing zero surface force.
+Other boundary conditions one can prescribe are {\em normal force}, or {\em pressure}.
 The model accounts for volumetric forces caused by the gravity or another acceleration. 
 Calculated are displacements and the Von Mises stress.
 
@@ -77,7 +78,7 @@ $$
 
 \section{Boundary Conditions}
 
-There are two types of boundary conditions:
+There are four types of boundary conditions:
 \begin{itemize}
 \item {\em Fixed displacement}: $u_1 = u^*_1$ and $u_2 = u^*_2$ where $u^*_1, u^*_2$ are constants.
       Setting these constants to zero means a fixed boundary that does not move, but nonzero 
@@ -86,6 +87,12 @@ There are two types of boundary conditions:
       the boundary. 
 \item {\em Surface force}: $f_1 = f^*_1$ and $f_2 = f^*_2$ where $f^*_1, f^*_2$ are constants.
       It is possible to prescribe different surface forces on different parts of 
+      the boundary.
+\item {\em Normal force}: Similar to {\em surface force}, but the components are calculated from the value, according to the normal direction to the boundary.
+      It is possible to prescribe different normal forces on different parts of 
+      the boundary.
+\item {\em Pressure}: Constant pressure in $Pa$ on the part of the boundary.
+      It is possible to prescribe different pressures on different parts of 
       the boundary.
 \item {\em Free boundary}: Where neither displacement nor surface force is prescribed, the
       boundary remains free. This is equivalent to prescribing $f_1 = 0$ N and $f_2 = 0$ N.

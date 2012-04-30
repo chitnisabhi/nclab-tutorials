@@ -122,6 +122,13 @@ covered in Pattis' book is available in the Basic Version free of charge.
 
 \section{Introduction}
 
+\subsection{Objectives} 
+
+\begin{itemize}
+\item Learn basic facts about the Karel language and its history. 
+\item Learn how Karel differs from other programming languages.
+\item Learn what this course will help you achieve.
+\end{itemize}
 This course will teach you principles of modern algorithmic design and  
 computer programming with the help of an interactive graphical application 
 {\em Karel the Robot} in NCLab. Taking this course will make it much easier 
@@ -310,6 +317,11 @@ answers may be correct.
 
 \section{Exploring NCLab}
 
+\subsection{Objectives} 
+
+\begin{itemize}
+\item Get acquainted with NCLab.
+\end{itemize}
 Before beginning this course, we invite you to create an account in 
 NCLab, log in, and take a while to explore the many activities 
 that NCLab offers. A great companion reading is {\em Intro to NCLab - Part I 
@@ -323,20 +335,27 @@ Review questions for this Section are located in the document {\em Intro to NCLa
 
 \section{Launching Karel}
 
+\subsection{Objectives} 
+\begin{itemize}
+\item Learn to launch Karel and work with the graphical application.
+\item Learn to clone displayed projects.
+\item Learn that karel has several modes.
+\end{itemize}
 Karel can be launched in several different ways. The simplest one is to click on the icon 
 {\em Programming} and select {\em Karel} in the menu. This will launch the application 
 with a randomly generated maze, as shown in Fig. \ref{fig:init}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{img/init.png}
 \end{center}
-%\vspace{-2mm}
+\vspace{-2mm}
 \caption{Launching Karel via the Programming icon.}
 \label{fig:init}
+\vspace{-1cm}
 \end{figure}
+\newpage
 \noindent
 Karel will be launched in {\em Programming mode} which is the most-frequently 
 used one. You can easily switch to the {\em Manual mode}, {\em Builder},
@@ -371,7 +390,7 @@ click on the File Manager icon. In the File Manager's menu go to
 {\em Project} and then click on {\em Clone}. This will launch a new window 
 with Displayed Projects as shown in Fig. \ref{fig:cloning}.
 
-
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{img/cloning.png}
@@ -395,12 +414,12 @@ a right-click on the project in the File Manager and selecting {\em Synchronize}
 Keep in mind though -- synchronizing with the original will erase any changes that 
 you made to the project.
 
-\subsection{Basic and Full Versions}
-
-Users sponsored by an institution are using NCLab in Full Version. Some limitations 
-apply to users who use NCLab in Basic Version (see Terms of Use for details). These 
-users have an Upgrade icon on their Desktop, that they can use to upgrade 
-NCLab to Full Version for a symbolic monthly subscription fee.
+%\subsection{Basic and Full Versions}
+%
+%Users sponsored by an institution are using NCLab in Full Version. Some limitations 
+%apply to users who use NCLab in Basic Version (see Terms of Use for details). These 
+%users have an Upgrade icon on their Desktop, that they can use to upgrade 
+%NCLab to Full Version for a symbolic monthly subscription fee.
 
 \subsection{Karel modes} \label{levels}
 
@@ -455,25 +474,21 @@ Karel operates in four modes:
 
 \section{Section A - Operating the Robot in Manual Mode}
 
-\noindent
-{\bf Objectives}: 
+\subsection{Objectives} 
 \begin{itemize}
-\item Learn to operate the robot in Manual mode.\\
+\item Learn to operate the robot in Manual mode using five buttons Left, Right, Go, Get and Put.
 \end{itemize}
-
-\noindent
-In Manual mode, the robot can be operated using the mouse and five buttons Go, Left, Right, Put and Get 
-whose meaning was explained above. There are thirteen exercises A01 - A13 for you to solve.
+There are thirteen exercises A01 - A13 for you to solve.
 Each exercise can be cloned via the File Manager's 
-Project menu as described in Paragraph \ref{cloning}. 
+{\em Project} menu as described in Paragraph \ref{cloning}. 
 Do not skip levels since each one has something new! 
 
+\newpage
 \subsection{Exercise A01 - Go Button}
 
 {\em Karel is returning from a long walk and his batteries are running out. 
 Use the buttons on the left to get him home quickly! }
 
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{img/a01.png}
@@ -703,17 +718,14 @@ return home in time!}\\[-7mm]
 
 \section{Section B - Bridge to Programming}
 
-\noindent
-{\bf Objectives}: 
+\subsection{Objectives} 
+ 
 \begin{itemize}
-\item Learn to operate the robot in Programming mode.
+\item Start operating the robot in Programming mode using simple instructions.
 \end{itemize}
-
-\noindent
 In Programming mode, the robot obeys written commands 
 {\tt left}, {\tt right}, {\tt go}, {\tt get}, and {\tt put}.
-These commands have exactly the same function as pressing the buttons Left, Right, Go, 
-Get, and Put in Manual mode.
+These commands have exactly the same function as the corresponding buttons in Manual mode.
 You can clone all exercises in this Section into your account via the File Manager's {\em Project}
 menu, same as you did with the ones in Section A.
 
@@ -757,6 +769,7 @@ menu, same as you did with the ones in Section A.
 \end{enumerate}
 \end{enumerate}
 
+\newpage
 \subsection{Exercise B01 - Go Command}
 
 {\em Write a program that gets Karel home! Remember: Always write one command per line.}
@@ -825,8 +838,8 @@ two steps, put the gem on the ground, and return home!}
 
 \section{Intermission - Algorithms, Programs, and Bugs}
 
-\noindent
-{\bf Objectives}: 
+\subsection{Objectives} 
+ 
 \begin{itemize}
 \item Understand the difference between {\em algorithm} and {\em program}. 
 \item Learn the difference between {\em syntactical} and {\em logical} mistakes.
@@ -885,14 +898,14 @@ write an error message and stop executing the program.
 \item[A3] Web browser needs upgrading.
 \item[A4] Our algorithm contains a logical mistake.
 \end{enumerate}
-\item What is a {\em logical} mistake?
+\item What of the following is a {\em logical} mistake?
 \begin{enumerate}
 \item[A1] Mistake in an algorithm that causes the robot to do something unexpected.
 \item[A2] Opening Karel through the Programming menu instead of through File Manager. 
 \item[A3] Typing a command in a wrong way, such as {\tt lft} instead of {\tt left}.
 \item[A4] Learning Fortran.
 \end{enumerate}
-\item What is a {\em syntactical} mistake?
+\item What of the following is a {\em syntactical} mistake?
 \begin{enumerate}
 \item[A1] Writing two commands on the same line.
 \item[A2] Having two empty characters between commands.
@@ -910,8 +923,8 @@ write an error message and stop executing the program.
 
 \section{Section C - Counting Loop}
 
-\noindent
-{\bf Objectives}: 
+\subsection{Objectives} 
+
 \begin{itemize}
 \item Learn to make the robot repeat a command or a sequence of commands.
 \end{itemize}
@@ -1116,8 +1129,8 @@ than three lines.}.
 
 \section{Intermission - Working with Input and Text Cells} \label{sec:editmenu}
 
-\noindent
-{\bf Objectives}: 
+\subsection{Objectives} 
+ 
 \begin{itemize}
 \item Learn why descriptive text cells are useful and how to insert them.
 \item Learn when it makes sense to have multiple input cells and how to add them.
@@ -1214,8 +1227,8 @@ There are a couple of simple new rules to remember:
 
 \section{Section D - Conditions}
 
-\noindent
-{\bf Objectives}: 
+\subsection{Objectives} 
+
 \begin{itemize}
 \item Understand the function of Karel's five sensors.
 \item Learn to use the sensors in conjunction with {\em conditions} to help Karel 
@@ -1373,8 +1386,8 @@ command per line, your program should have at most 7 lines.}
 
 \section{Section E - Conditional Loop}
 
-\noindent
-{\bf Objectives}: 
+\subsection{Objectives} 
+ 
 \begin{itemize}
 \item Learn to repeat a command or a sequence of commands when it is not known 
       how many repetitions will be needed.
@@ -1514,8 +1527,8 @@ and do not forget to collect all the gems on the way!}
 
 \section{Section F - Defining New Commands}
 
-\noindent
-{\bf Objectives}: 
+\subsection{Objectives} 
+ 
 \begin{itemize}
 \item Learn to never copy and paste computer code.
 \item Learn to recognize smaller tasks that can be solved without solving the big task.
@@ -1743,7 +1756,7 @@ def foursteps
 \end{figure}
 \noindent
 
-\subsection{Exercise F03 - Egg Hunt}
+\subsection{\ \ Exercise F03 - Egg Hunt}
 
 {\em Write a program for Karel to search all cells and collect all eggs (gems) that he can find. The task is finished when the robot is back home.}
 
@@ -1954,8 +1967,8 @@ and that it does not contain any loops.}
 
 \section{Section G - Logical Variables}
 
-\noindent
-{\bf Objectives}: 
+\subsection{Objectives} 
+ 
 \begin{itemize}
 \item Learn to work with elementary and complex logical operations.
 \item Learn to define and use logical variables.

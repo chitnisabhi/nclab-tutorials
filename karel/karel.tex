@@ -151,6 +151,7 @@ science fiction play R.U.R. (Rossum's Universal Robots).
 \subsection{Who is Karel?}
 
 Karel is a little robot that lives in a maze, and there are gems in the maze that he loves to collect!
+Sometimes multiple gems lie on each other, and in that case there is a number that shows their amount.
 He was manufactured with only five simple commands in his memory:
 \begin{itemize}
 \item {\color{green} \tt go} ... make one step forward.
@@ -774,10 +775,10 @@ return home in time!}\\[-7mm]
 \subsection{Objectives} 
  
 \begin{itemize}
-\item Start operating the robot in Programming mode using simple instructions.
+\item Start operating the robot in Programming mode.
 \end{itemize}
-In Programming mode, the robot obeys written commands 
-{\tt left}, {\tt right}, {\tt go}, {\tt get}, and {\tt put}.
+In Programming mode, we type commands into an input cell located in the left panel.
+The robot obeys written commands {\tt left}, {\tt right}, {\tt go}, {\tt get}, and {\tt put}.
 These commands have exactly the same function as the corresponding buttons in Manual mode.
 You can clone all exercises in this Section into your account via the File Manager's {\em Project}
 menu, same as you did with the ones in Section A.
@@ -785,12 +786,12 @@ menu, same as you did with the ones in Section A.
 \subsection{Review questions}
 
 \begin{enumerate}
-\item What command moves the robot one step forward?
+\item Where do we enter programs for Karel?
 \begin{enumerate}
-\item[A1] forward
-\item[A2] step
-\item[A3] go
-\item[A4] move
+\item[A1] In Microsoft Word.
+\item[A2] In DreamWeaver.
+\item[A3] We upload them from hard disk.
+\item[A4] In input cells.
 \end{enumerate}
 \item What command turns the robot to the left?
 \begin{enumerate}
@@ -910,8 +911,9 @@ the program is easy to write.
 
 Mistakes in algorithms are called {\em logical errors}. A logical error is, for 
 example, when we crash the robot into a wall because we forgot to make a turn.
-Mistakes such as mis-spelling a command or forgetting indentation are related to 
-the {\em syntax} and they are called {\em syntactical errors}. Of these two types, 
+Mistakes such as mis-spelling a command, writing "1o" instead of "10", or forgetting 
+indentation are related to 
+{\em syntax} and they are called {\em syntactical errors}. Of these two types, 
 logical errors are usually much more difficult to find. 
 
 In general, mistakes or either kind are called {\em bugs} and the procedure of 
@@ -920,12 +922,17 @@ were while preparing our algorithm and writing the program, debugging takes eith
 a short time or a long time. It does not happen often that a program works correctly
 right away. 
 
-When we commit a syntactical error (such as mis-spelling a command)
-the robot will write an error message without doing anything else.
-If our algorithm contains a logical error based on which the robot crashes 
-into a wall, if we ask him to collect a gem where there is none, or if we 
-ask him to put a gem on the ground while his bag is empty, then he will
+When we commit a syntactical error,
+the robot will write an error message and do nothing.
+If our algorithm contains a logical error, then he will
 write an error message and stop executing the program. 
+The most usual logical error are:
+
+\begin{itemize}
+\item Karel crashes into a wall.
+\item The robot tries to collect a gem where is none.
+\item He attempts to put a gem on the ground while his bag is empty.
+\end{itemize}
 
 \subsection{Review questions} 
 
@@ -965,6 +972,13 @@ write an error message and stop executing the program.
 \item[A3] Mis-spelling a command.  
 \item[A4] Mistake that causes the robot to do something unexpected.
 \end{enumerate}
+\item What of the following will cause an error message?
+\begin{enumerate}
+\item[A1] Turning the robot four times to the left or right.
+\item[A2] Putting two or more gems on each other.
+\item[A3] Putting a gem while the bag is empty.
+\item[A4] Returning home without any gems.
+\end{enumerate}
 \item What do we mean by {\em debuging}?
 \begin{enumerate}
 \item[A1] Apologizing after we ask a friend too many questions.
@@ -985,16 +999,25 @@ write an error message and stop executing the program.
 \noindent
 In Section B we successfully crossed the bridge between manual control 
 and programming. The bridge collapsed, there is no way back. But do 
-not worry about that, the land of Programming is much more beautiful!
+not worry about that! The land of Programming is much more beautiful,
+and once you understand its beauty, you will never want to leave.
 
 
 \subsection{The {\tt repeat} command}
 
-The counting loop, represented by the {\tt repeat} command, can save 
-us lots of writing when something is repeated. For example, for 
-Karel to make seven steps forward we could type:
+The {\em counting loop}, represented by the {\tt repeat} command, can save 
+us lots of writing when something is repeated a given number of times. 
+For example, for Karel to make 15 steps forward we could type:
 
 \begin{verbatim}
+go
+go
+go
+go
+go
+go
+go
+go
 go
 go
 go
@@ -1007,7 +1030,7 @@ But this is neither efficient nor elegant. Instead, the same can be
 achieved by telling Karel to {\tt repeat} the {\tt go} command {\tt 7} times:
 
 \begin{verbatim}
-repeat 7
+repeat 15
   go
 \end{verbatim}
 There are a few simple rules that we need to remember when using the {\tt repeat} command:
@@ -1046,47 +1069,106 @@ repeat 10
 \end{verbatim}
 After you figure it out, launch Karel via the {\em Programming} menu, enter this code into
 the input cell, and run it! But before you do, remember to switch to {\em Build mode} and make 
-some free space around the robot 
+some free space in front of the robot 
 so that he does not crash into a wall.
 
 \subsection{Review questions} 
 
 \begin{enumerate}
-\item What command do we use to make the robot repeat something a given number of times?
+\item What command should we use to make the robot repeat something a given number of times?
 \begin{enumerate}
-\item[A1] 
-\item[A2] 
-\item[A3] 
-\item[A4] 
+\item[A1] {\tt repetition}
+\item[A2] {\tt loop}
+\item[A3] {\tt for}
+\item[A4] {\tt repeat}
 \end{enumerate}
-\item What is {\em body of loop} and why is it indented?
+\item Why should we always write one command per line?
 \begin{enumerate}
-\item[A1] 
-\item[A2] 
-\item[A3] 
-\item[A4] 
+\item[A1] To keep the code readable.
+\item[A2] To make the code look longer.
+\item[A3] Because all programming languages require that.
+\item[A4] Because it speeds up communication with server.
 \end{enumerate}
-\item What are the two possible indents that we can use?
+\item What is the {\em body of a loop}?
 \begin{enumerate}
-\item[A1] 
-\item[A2] 
-\item[A3] 
-\item[A4] 
+\item[A1] Body of a loop is the number that follows the {\tt repeat} command. 
+\item[A2] The command on the first line following the {\tt repeat} command.
+\item[A3] One or more commands that follow the {\tt repeat} command and are indented.
+\item[A4] One or more commands that follow the {\tt repeat} command and are not indented.
 \end{enumerate}
-\item Write a program for Karel to rotate 360 degrees.
+\item Why does the body of a loop need to be indented?
 \begin{enumerate}
-\item[A1] 
-\item[A2] 
-\item[A3] 
-\item[A4] 
+\item[A1] To make clear where the body of the loop begins and where it ends.
+\item[A2] It does not have to be indented, the indentation is optional.
+\item[A3] Because the code is visually nicer.
+\item[A4] Because the code is easier to read.
 \end{enumerate}
-\item Write a program for Karel to pick up 5 gems from the ground, walk 10 steps forward, put the 5 gems 
-      on the ground again, turn back, and return to its original position. 
+\item Which of the following programs will rotate Karel 360 degrees?
 \begin{enumerate}
 \item[A1] 
+\begin{verbatim}
+ left
+ left
+ left
+ left
+\end{verbatim}
 \item[A2] 
+\begin{verbatim}
+ repeat 2
+   right
+   right
+\end{verbatim}
 \item[A3] 
+\begin{verbatim}
+ repeat 4
+   left
+\end{verbatim}
 \item[A4] 
+\begin{verbatim}
+ repeat 2
+   repeat 2
+     right
+\end{verbatim}
+\end{enumerate}
+\item Karel needs to pick up 5 gems from the ground, walk 10 steps forward, and put the 5 gems 
+      on the ground again. Which ones of the following programs will do that?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+ repeat 5
+   get
+   repeat 10
+     go
+     repeat 5
+       put
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+ repeat 5
+   get
+ repeat 10
+   go
+ repeat 5
+   put
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+ repeat 5
+   get
+   repeat 10
+     go
+   repeat 5
+     put
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+ repeat 5
+ get
+ repeat 10
+ go
+ repeat 5
+ put
+\end{verbatim}
 \end{enumerate}
 \end{enumerate}
 
@@ -1105,7 +1187,6 @@ so that he does not crash into a wall.
 \end{figure}
 \noindent
 
-\newpage
 
 \subsection{Exercise C02 - Lucky Strike}
 
@@ -1122,6 +1203,7 @@ so that he does not crash into a wall.
 \end{figure}
 \noindent
 
+\newpage
 
 \subsection{Exercise C03 - Feelin' Lucky}
 
@@ -1156,11 +1238,11 @@ action.}
 \vspace{-4mm}
 \caption{Karel is getting ready for garage sale.}
 \label{fig:c04}
-\vspace{-4mm}
+\vspace{-10mm}
 \end{figure}
 \noindent
 
-
+\newpage
 
 \subsection{Exercise C05 - String of Gems}
 
@@ -1168,7 +1250,6 @@ action.}
 Writing one command per line, your program should not have more 
 than three lines.}.
 
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{img/c05.png}
@@ -1176,7 +1257,7 @@ than three lines.}.
 \vspace{-4mm}
 \caption{Nine gems are between Karel and his home.}
 \label{fig:c05}
-\vspace{-10mm}
+%\vspace{-10mm}
 \end{figure}
 \noindent
 
@@ -1185,50 +1266,68 @@ than three lines.}.
 \subsection{Objectives} 
  
 \begin{itemize}
-\item Learn why descriptive text cells are useful and how to insert them.
+\item Learn how to add descriptive text cells.
 \item Learn when it makes sense to have multiple input cells and how to add them.
 \item Learn how to run all input cells at once, and how to run them individually.
-\item Learn how to clear, remove and merge cells.
+\item Learn how to clear, collapse, remove and merge cells.
 \end{itemize}
-There are a couple of simple new rules to remember:
+It is a very good habit to add comments to programs (every line starting with the '{\tt \#}'
+symbol is a comment) and also to include descriptive 
+texts in Karel worksheets, since descriptions make it easier for someone else to 
+understand your program. Sometimes you may be in the position of the "someone else" yourself,
+when you return to your own program some time after you wrote it. Here are a couple of 
+simple new rules to remember:
 \begin{enumerate} 
-\item Programs are entered into input cells on the left (one will appear after you press Start).
-\item Always type one command per line -- this does not hold only for Karel but for any
-      programming language. It makes computer code much easier to read.
-\item Clicking on "clear" under an input cell will erase its contents.
-\item You can add a new input cell by clicking on "add" (located under each input cell). 
+\item New text cell can be added above or under the current cell via the option 
+      {\em Add new text cell} in the Edit menu. 
+      After an empty text cell appears, click into it and add text. The text can be 
+      formatted using Restructured Text Format (RST). After your text is finished, click 
+      on {\em save} under the text cell. 
+\item The most commonly used formatting operations in RST are 
+      \begin{itemize}
+      \item Making some text bold face. For this, put a double asterisk '{\tt **}' on either 
+      side of the text. For example, type {\tt **This is bold face**} in RST.
+      \item Headings are obtained by undelining some text with the '{\tt =}' symbols.
+      An example of a heading is:
+\begin{verbatim}
+This is a Heading
+=================
+\end{verbatim}
+      \item The RST format is very popular and so it is easy to Google more information
+      if needed.
+      \end{itemize}
+\item New input cell can be added by clicking on {\em add} (located under each input cell). 
       Having multiple input cells can be useful, for example, to test various versions 
       of your program, or if you want to run parts of your program separately. 
-\item Clicking on "remove" under an input cell will remove it. All text in that cell will be lost.
+\item Clicking on {\em clear} under an input cell will erase its contents.
+\item Any cell can be collapsed by clicking on the bracket located on its right side. Collapsed
+      cells can be expanded by clicking on the blue button that appears when a cell is 
+      collapsed.
+\item Clicking on {\em remove} under an input cell will remove it. All text in that cell will be lost.
 \item Run programs via the blue arrow button in the menu (this will evaluate all input
-      cells). Each cell can be evaluated individually by clicking on "run" (located under 
+      cells). Each cell can be evaluated individually by clicking on {\em run} (located under 
       each input cell). If there is just one input cell, both options are equivalent.
-\item Running programs can be stopped using the blue square button in the menu.
+\item Running programs can be stopped using the blue square button in the menu. 
+\item If a particular
+      input cell needs to be stopped, then use the {\em stop} button under that cell.
 \end{enumerate}
 
 \subsection{Review questions}
 
 \begin{enumerate}
-\item Where do we enter programs for Karel?
+\item How can a new text cell be added?
 \begin{enumerate}
-\item[A1] In Microsoft Word.
-\item[A2] In DreamWeaver.
-\item[A3] We upload them from hard disk.
-\item[A4] In input cells.
-\end{enumerate}
-\item How many commands per line should we type?
-\begin{enumerate}
-\item[A1] At least two.
-\item[A2] As many as possible.
-\item[A3] Only one.
-\item[A4] At most five.
+\item[A1] By clicking on {\em add} under an existing input cell.
+\item[A2] Through {\em Add new text cell} in the Edit menu.
+\item[A3] Through {\em New} in File menu.
+\item[A4] Through {\em Clone} in File menu.
 \end{enumerate}
 \item How can we add a new input cell?
 \begin{enumerate}
-\item[A1] Clicking on "add" under an existing input cell.
-\item[A2] Through "Add new input cell" in the Edit menu.
-\item[A3] Through "New" in File menu.
-\item[A4] Through "Clone" in File menu.
+\item[A1] By clicking on {\em add} under an existing input cell.
+\item[A2] Through {\em Add new input cell} in the Edit menu.
+\item[A3] Through {\em New} in File menu.
+\item[A4] Through {\em Clone} in File menu.
 \end{enumerate}
 \item When should we have multiple input cells?
 \begin{enumerate}
@@ -1242,20 +1341,27 @@ There are a couple of simple new rules to remember:
 \item[A1] Close Karel, logout from NCLab and login again. 
 \item[A2] Restart Karel.
 \item[A3] Remove the input cell and add a new one in its place.
-\item[A4] Click on "clear" under the input cell.
+\item[A4] Click on {\em clear} under the input cell.
 \end{enumerate}
-\item How can we remove an input cell?
+\item How can a cell be collapsed?
 \begin{enumerate}
-\item[A1] Click on "add" under the input cell.
-\item[A2] Click on "remove" under the input cell.
-\item[A3] Click on "clear" under the input cell.
+\item[A1] Click on {\em remove} under the input cell.
+\item[A2] Through {\em Collapse} in File menu.
+\item[A3] By clicking on the bracket on the right of the cell.
+\item[A4] By clicking on {\em collapse} under the cell.
+\end{enumerate}
+\item How can an input cell be removed?
+\begin{enumerate}
+\item[A1] Click on {\em add} under the input cell.
+\item[A2] Click on {\em remove} under the input cell.
+\item[A3] Click on {\em clear} under the input cell.
 \item[A4] Switch to Build mode and back.
 \end{enumerate}
 \item How can we evaluate all input cells at once?
 \begin{enumerate}
-\item[A1] Through "Expand all cells" in Edit menu.
+\item[A1] Through {\em Expand all cells} in Edit menu.
 \item[A2] Click on the blue square button.
-\item[A3] Click on "run" under the last input cell.
+\item[A3] Click on {\em run} under the last input cell.
 \item[A4] Click on the blue arrow button.
 \end{enumerate}
 \item How should running programs be stopped?
@@ -1263,15 +1369,15 @@ There are a couple of simple new rules to remember:
 \item[A1] Click on the blue arrow button.
 \item[A2] Close the main Karel window.
 \item[A3] Click on the blue square button.
-\item[A4] Click on "stop" under the last input cell.
+\item[A4] Click on {\em stop} under the last input cell.
 \end{enumerate}
 \item How can we evaluate just one selected input cell?
 \begin{enumerate}
-\item[A1] We have to copy and paste the contents of all 
+\item[A1] Copy and paste the contents of all 
           input cells into the first one, and remove them.
 \item[A2] Clicking on the blue arrow button in the menu. 
-\item[A3] Clicking on "run" under the input cell.
-\item[A4] Clicking on "remove" under the input cell.
+\item[A3] Clicking on {\em run} under the input cell.
+\item[A4] Clicking on {\em remove} under the input cell.
 \end{enumerate}
 \end{enumerate}
 

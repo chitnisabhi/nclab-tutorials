@@ -114,16 +114,34 @@ Numpy, Pylab, Matplotlib, Sympy and other projects.
 
 \section{Introduction}
 
-All examples in this section are available in the displayed project 
-"Math - Tutorial - 08 - Calculus". You can clone the project into 
-your user account via the menu Project $\rightarrow$ Clone in the File 
-Manager, and experiment with the examples on your own.
-Let us remind the reader that for symbolic calculations we need to 
-import Sympy, and declare symbolic variables:
+NCLab uses the Sympy library for algebra, calculus, differential equations, and related 
+symbolic calculations. In the following we will show Sympy's basic usage. The library 
+is much more powerful, and in order to learn more, we encourage you to visit Sympy's
+home page {\tt http://sympy.org}. 
+
+You can either type the 
+following examples yourself (recommended) or clone the displayed project 
+"Math - Tutorial - 08 - Calculus" through the File Manager's
+{\em Project} menu. Remember that after launching a Python worksheet and 
+typing text into an input cell, you need to click on the blue arrow button 
+or on "run" under the input cell to have the script sent to the cloud and 
+processed.
+
+\section{Declaring symbolical variables}
+
+We start by importing the Sympy library:
+
 \begin{verbatim}
 from sympy import *
-x, y, z  = symbols("xyz")
 \end{verbatim}
+Then we need to declare the names of symbolic variables (otherwise Sympy would 
+view those symbols as undefined constants). If we know that we are going to work 
+with expressions and functions of $x$, $y$ and/or $z$, we may declare these symbols 
+at once:
+\begin{verbatim}
+x, y, z = symbols("xyz")
+\end{verbatim}
+With this, we are ready to go!
 
 \section{Calculating limits}
 

@@ -373,12 +373,13 @@ represent:
 \item {\em File Manager}, used to manage files and folders, and to clone work published by other users.
 \item {\em Programming} module provides programming in 
       \begin{itemize}
-      \item Karel the Robot (popular educational language for beginners),
-      \item Python (modern programming language for advanced applications), 
-      \item Javascript 
-      (most popular language for web development), 
-      \item CUDA (massively parallel programming on graphic cards),
-      \item Web Design with HTML, Javascript and CSS. 
+      \item Karel the Robot (popular educational language for beginners).
+      \item Python (modern programming language for advanced applications). Python is 
+            very popular in engineering and science because it is interpreted (not compiled as C or C++),
+            has simple syntax, and comes with powerful libraries.
+      \item Javascript (most popular language for web development). 
+      \item CUDA (massively parallel programming on graphic cards).
+      \item Web Design with HTML, Javascript (JS) and CSS. 
       \end{itemize}
 \item {\em Physics} module provides various physics simulation tools in Kinematics,
       Solid Mechanics, Fluid Dynamics, Electromagnetics, and other areas. 
@@ -595,11 +596,16 @@ The interpreter on the server side is Python 2.7 and Python 3.3 is in preparatio
 Textbook is available via the link "Tutorials and Videos" on NCLab's front page
 and via the Help button. 
 
-\subsection{CUDA}
+\subsection{Parallel computing with GPUs}
 
-CUDA is an Nvidia language for massively parallel programming with Graphics Processing 
-Units (GPUs). The CUDA worksheet provides programming via PyCUDA (Python wrappers to CUDA). 
-Tutorial to PyCUDA is available via the link "Tutorials and Videos" 
+GPU stands for {\em Graphics Processing Unit} and massively parallel computing with GPUs
+is one of the hottest new trends in Computational Science. The main advantage 
+of GPUs over standard CPUs (Central Processing Units) is that on the same price 
+level, GPUs provide much larger number of cores and Flops (number of floating 
+operations per second) compared to CPUs.
+ 
+CUDA is an Nvidia language for GPUs. The CUDA worksheet provides programming via 
+PyCUDA (Python wrappers to CUDA). Tutorial to PyCUDA is available via the link "Tutorials and Videos" 
 on NCLab's front page and via the Help button, and there are around 30 
 displayed projects where you can learn both basic and advanced aspects of CUDA
 programming. 
@@ -814,13 +820,17 @@ Illustrative screenshot is shown below.
 
 \section{Solid Modeling (CAD)}
 
-NCLab provides solid modeling via PLaSM (Programming Language for Solid Modeling). In contrast to standard
-CAD systems such as SolidWorks or AutoCAD, PLaSM is a scripting language that 
-allows the user to create, translate, rotate and scale objects via simple commands, 
-as well as to create their unions and intersections, and subtract objects from each other.  
-In this way, one can acquire the geometrical principles of solid modeling very naturally.
+Solid Modeling is the basic principle of CAD systems -- complicated geometries 
+and shapes are created using simple objects that can be translated, rotated and scaled. 
+One can also create their unions and intersections, and subtract objects 
+from each other. NCLab provides Solid Modeling via PLaSM (Programming Language for Solid 
+Modeling). 
+
+Professional CAD systems such as SolidWorks or AutoCAD are aimed at maximizing the engineer's
+productivity. Therefore, their functionality is highly automated. In contrast to them, PLaSM 
+is a scripting language that allows the user to gain a better insight into the underlying 
+geometrical operations, as well as create parameter-dependent designs. 
 For illustration, the following short script renders a metal cube:
-\newpage
 \begin{verbatim}
 from pyplasm import *
 color = [0.9, 0.9, 0.9]
@@ -839,21 +849,82 @@ a temple:
 \label{fig:plasm1}
 \end{figure}
 \noindent
-To learn more, read the PLaSM tutorial and watch a three-part YouTube video.
+To learn more, read the PLaSM tutorial and watch a three-part YouTube video!
+\newpage
 
 \section{Review Questions}
 
 \begin{enumerate}
-\item What is the "cloud"?
+\item What is {\em Cloud}?
+\begin{enumerate}
+\item[A1] Large pool of interconnected computers.
+\item[A2] Local LAN network in an organization or school.
+\item[A3] Computer that is equipped with keyboard but not monitor.
+\item[A4] Company that manufactures large computer clusters.
+\end{enumerate}
 \item Name at least one free cloud service.
-\item What is SaaS?
+\begin{enumerate}
+\item[A1] Gmail.
+\item[A2] United States Postal Service
+\item[A3] Fedex
+\item[A4] UPS
+\end{enumerate}
+\item What does the abbreviation {\em SaaS} stand for?
+\begin{enumerate}
+\item[A1] Simple and always Stable.
+\item[A2] Synchronized and automated Service.
+\item[A3] Software as a Service.
+\item[A4] Super addictive and Sweet.
+\end{enumerate}
 \item What is WebGL?
-\item What are GPU and CUDA?
-\item Name the two most famous fractal sets.
-\item What is Python? Of course we do not mean the snake!
+\begin{enumerate}
+\item[A1] Webinar on Grenade Launchers.
+\item[A2] Advanced 3D graphics in the web browser.
+\item[A3] Web page of the Girls Life magazine.
+\item[A4] Abbreviation for "Good Luck" among web designers.
+\end{enumerate}
+\item What is the main advantage of GPUs over CPUs?
+\begin{enumerate}
+\item[A1] GPUs are smaller and lighter than CPUs.
+\item[A2] GPUs are cheaper than CPUs.
+\item[A3] GPUs provide much more computing power than similarly priced CPUs.
+\item[A4] GPUs can operate without electricity.
+\end{enumerate}
+\item Name one of the most famous fractal sets.
+\begin{enumerate}
+\item[A1] Mandelbrot.
+\item[A2] Zuckerberg.
+\item[A3] Heisenberg.
+\item[A4] Heidenhain.
+\end{enumerate}
+\item What makes the Python programming language popular?
+\begin{enumerate}
+\item[A1] It comes with free compilers.
+\item[A2] It does not need any libraries.
+\item[A3] C++ is written in Python.
+\item[A4] It is easy to use and comes with powerful libraries.
+\end{enumerate}
 \item What is Javascript?
+\begin{enumerate}
+\item[A1] Most popular programming language for web development.
+\item[A2] Program written in the Java programming language.
+\item[A3] Script written in the Java programming language.
+\item[A4] The Java runtime environment. 
+\end{enumerate}
 \item Name the three basic components of Web Design.
+\begin{enumerate}
+\item[A1] Compiler, interpreter, linker.
+\item[A2] HTML, CSS and JS.
+\item[A3] Computer, keyboard, mouse.
+\item[A4] Firefox, Chrome, Safari.
+\end{enumerate}
 \item What is Solid Modeling?
+\begin{enumerate}
+\item[A1] Method to create arbitrary geometries via simple objects.
+\item[A2] Computer modeling in Solid Mechanics.
+\item[A3] Computer modeling in Solid State Physics.
+\item[A4] Modeling with {\em Solid} (a computer modeling software).
+\end{enumerate}
 \end{enumerate}
 
 \end{document}

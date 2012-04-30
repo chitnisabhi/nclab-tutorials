@@ -1401,9 +1401,24 @@ Karel has built-in sensors to better navigate in the maze:
 
 \subsection{Karel's five sensors}
 
-The first one is an infrared sensor that the robot uses to determine 
-whether it is safe to make one step forward, or whether there is a wall.
-The usage can be illustrated using a simple program "Careful step" 
+\noindent
+\underline{{\tt wall} sensor}
+
+The first one is an infrared sensor {\tt wall} that the robot uses to determine 
+whether it is safe to make one step forward, or whether there is a wall. This is 
+illustrated in Fig. \ref{fig:dede-ifelse}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/salih-ifelse.png}
+\end{center}
+\vspace{-4mm}
+\caption{Illustration of the {\tt wall} sensor.}
+\label{fig:dede-ifelse}
+%\vspace{-10mm}
+\end{figure}
+\noindent
+The usage of the {\tt wall} sensor in a program can be illustrated using a simple program "Careful step" 
 where Karel first checks whether there is a wall ahead before
 making a step. If there is wall, he turns back: 
 
@@ -1415,19 +1430,35 @@ if wall
 else
   go
 \end{verbatim}
-Note that the symbol {\tt \#} introduces a comment, meaning that the line 
+As we mentioned before, the symbol '{\tt \#}' introduces a comment, meaning that the line 
 of code behind it is ignored by the robot.
 The {\tt else} branch does not have to be there if it is not needed. Notice the indentation 
 of the bodies of the {\tt if} and {\tt else} branches - this is analogous 
-to how we indent the body of the {\tt repeat} command.
+to how we indent the body of the {\tt repeat} command.\\
 
-Besides {\tt wall}, the robot can check the following:
-\begin{itemize}
-\item {\tt gem} ... is there a gem where he stands?
-\item {\tt empty} ... is his bag with gems empty?
-\item {\tt north} ... is he facing North?
-\item {\tt home} ... is he at home?
-\end{itemize}
+\noindent
+\underline{{\tt gem} sensor}
+
+This sensor returns true if the robot stands on a gem, false otherwise. \\
+
+\noindent
+\underline{{\tt empty} sensor}
+
+This sensor returns true if the robot's bag with gems is empty, false otherwise. \\
+
+\noindent
+\underline{{\tt north} sensor}
+
+This sensor returns true if the robot is facing North, false otherwise.\\
+
+\noindent
+\underline{{\tt home} sensor}
+
+This sensor returns true if the robot is at home, false otherwise.\\
+
+\noindent
+\underline{Testing opposites}
+
 Karel can also use the reserved word {\tt not} to test the opposites.
 For illustration, the previous program can be rewritten as follows, without changing its function:
 \begin{verbatim}
@@ -1439,7 +1470,7 @@ else
     left
 \end{verbatim}
 
-\subsection{Programming wisdom}
+\subsection{Programming hints}
 
 Good programmer is a careful programmer! Errors can be avoided by always checking the 
 appropriate sensor before making an action. A few examples of careful actions:
@@ -1694,7 +1725,7 @@ and do not forget to collect all the gems on the way!}
 \item Learn to bring more structure and clarity into your programs by introducing new commands.
 \end{itemize}
 
-\subsection{Programming wisdom}
+\subsection{Programming hints}
 
 {\em Always look for small tasks that can be solved independently of the big ones.
 Solve the small tasks first, and you'll see that the big ones get much simpler. The 
@@ -1714,7 +1745,7 @@ previous infinite loop!
 \end{figure}
 
 
-\subsection{More programming wisdom}
+\subsection{More programming hints}
 
 A new command should be defined whenever it becomes clear that the same 
 action is repeated in the algorithm multiple times (yes, we talk about the algorithm,

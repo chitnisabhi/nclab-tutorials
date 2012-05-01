@@ -2410,13 +2410,13 @@ and that it does not contain any loops.}\\[-7mm]
 
 \noindent
 In programming, variables are used to store information for later use. This information can 
-be a number, word, sentence, or simply a "True" or "False". We will start
+be a number, word, sentence, or simply a {\em True} or {\em False}. We will start
 with the last type. 
 
-\subsection{Simple logical expressions}
-Logical expressions are expressions that can be answered with either "True" or 
-"False". We say that the "True" or the "False" is their value. Here are some 
-real-life examples, try to answer them with "True" or "False":
+\subsection{Logical expressions}
+Logical expressions are expressions that can be answered with either {\em True} or 
+{\em False}. We say that the {\em True} or the {\em False} is their value. Here are some 
+real-life examples, try to answer them with {\em True} or {\em False}:
 
 \begin{itemize}
 \item "I am 15 years old."
@@ -2425,59 +2425,63 @@ real-life examples, try to answer them with "True" or "False":
 \end{itemize}
 And here are some Karel examples:
 \begin{itemize}
-\item wall (True if the robot is facing a wall, False otherwise)
-\item home (True if the robot is home, False otherwise)
-\item gem (True if the robot stands on a gem, False otherwise)
-\item north (True if the robot is facing North, False otherwise)
-\item empty (True if the robot does not have any gems on him, False otherwise)
+\item wall ({\em True} if the robot is facing a wall, {\em False} otherwise)
+\item home ({\em True} if the robot is home, {\em False} otherwise)
+\item gem ({\em True} if the robot stands on a gem, {\em False} otherwise)
+\item north ({\em True} if the robot is facing North, {\em False} otherwise)
+\item empty ({\em True} if the robot does not have any gems on him, {\em False} otherwise)
 \end{itemize}
 
-\subsection{Logical operations and logical variables}
+\subsection{Logical variables}
 
 In programming as well as in real life we often deal with logical expressions that are 
-fairly complex. Often we use two or more simple logical expressions in one sentence, that 
-are combined via logical operations.
+fairly complex. Often we use two or more simple logical expressions in one sentence, 
+and moreover combine them with logical operations {\em and}, {\em or} or {\em not}.
 
-For example, the sentence "I will go ski on Saturday if weather is good and if 
+For example, the sentence "I will go skiing on Saturday if weather is good and if 
 Michael goes as well." includes three simple logical expressions. Let's call 
-them for brevity
+them for brevity\\
 
-\begin{itemize}
-\item A = "I will go skiing on Saturday",
-\item B = "the weather is good",
-\item C = "Michael goes as well".  
-\end{itemize}
-There is also a logical operation "and" involved between the expressions B and C.
+\noindent
+A = "I will go skiing on Saturday."\\
+B = "The weather is good."\\
+C = "Michael goes as well."\\
+
+\noindent
+There is a logical operation {\em and} between the expressions B and C.
 
 The original sentence can be written briefly as "if (B and C) then A". We love this kind of 
-brevity in programming! The letters A, B and C are logical variables. Logical variables 
-can only represent "True" or "False", and their purpose is to ease the operation with 
+brevity in programming! A, B and C are {\em logical variables}. Logical variables 
+can only represent {\em True} or {\em False}, and their purpose is to ease the operation with 
 longer expressions.
 Regarding the original sentence, we could go one step further and define a new logical variable\\
 
 \noindent
-D = B and C.\\
+D = B {\em and} C.\\
 
 \noindent
-Then, the sentence would become "if D then A". It is worth mentioning the following 
-property of the logical "and":\\
+Then, the sentence would become just "if D then A"! 
+
+\subsection{Logical operations}
+
+It is worth mentioning the following properties of the logical operation {\em and}:\\
 
 \begin{center}
-\framebox{(A and B) is True only if both A and B are True. Otherwise A and B is False.}
+\framebox{(A {\em and} B) is {\em True} only if both A and B are {\em True}. Otherwise A {\em and} B is {\em False}.}
 \end{center}
 \vspace{4mm}
 \noindent
-We also have a logical "or" with the following property:\\
+The logical operation {\em or} has the following properties:\\
 
 \begin{center}
-\framebox{(A or B) is True if at least one of A, B is True. If both A. B are False, (A or B) is False.}
+\framebox{(A {\em or} B) is {\em True} if at least one of A, B is {\em True}. If both A. B are {\em False}, (A {\em or} B) is {\em False}.}
 \end{center}
 \vspace{4mm}
 \noindent
-We also use the logical operation "not" with the following property:\\
+We also use the logical operation {\em not} with the following property:\\
 
 \begin{center}
-\framebox{(not A) is True if A is False and vice versa.}
+\framebox{({\em not} A) is {\em True} if A is {\em False} and vice versa.}
 \end{center}
 
 
@@ -2485,45 +2489,71 @@ We also use the logical operation "not" with the following property:\\
 
 \begin{enumerate}
 \item What are {\em variables} used for in programming? 
+\begin{enumerate}
+\item[A1] To generate random data.
+\item[A2] To make programs shorter.
+\item[A3] To store information for later use.
+\item[A4] To create variable mazes.
+\end{enumerate}
 \item What is a {\em logical expression}? 
-\item A is True and B is False. What is then the value of (A and not (A or B)) ?
-\item A is True and B is True. What is then the value of (A and not (A and not B)) ?
+\begin{enumerate}
+\item[A1] Expression that makes sense.
+\item[A2] Expression that is always true. 
+\item[A3] Expression that is either true or false.
+\item[A4] Expression that cannot be false.
+\end{enumerate}
+\item A is {\em True} and B is {\em False}. What is then the value of (A {\em and} {\em not} (A {\em or} B)) ?
+\begin{enumerate}
+\item[A1] {\em False}.
+\item[A2] {\em True}.
+\item[A3] It can be both {\em True} and {\em False}.
+\item[A4] Neither {\em True} nor {\em False}.
+\end{enumerate}
+\item A is {\em True} and B is {\em True}. What is then the value of (A {\em and} {\em not} (A {\em and} {\em not} B)) ?
+\begin{enumerate}
+\item[A1] {\em False}.
+\item[A2] {\em True}.
+\item[A3] It can be both {\em True} and {\em False}.
+\item[A4] Neither {\em True} nor {\em False}.
+\end{enumerate}
 \end{enumerate}
 
 \subsection{Exercise G01 - Numerology I}
 
-{\em Each box contains an integer number between 0 and 9. The numbers are not known to Karel a-priori. He needs to enter each box and recognize the number in it. Let's call this number N. When he leaves the box, he needs to create a pile of N gems. The task finishes when this is done for all boxes and the robot gets home.}
+{\em Each 3x5 box contains an integer number between 0 and 9. The numbers are not known to Karel a-priori. He needs to enter each box and recognize the number in it. Let's call this number N. When he leaves the box, he needs to create a pile of N gems. The task finishes when this is done for all boxes and the robot gets home.}
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{img/g10.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel decided to become a numerologist.}
+\caption{Karel decided to learn numbers after all.}
 \label{fig:g10}
 \vspace{-4mm}
 \end{figure}
 \noindent
+\newpage
 
 \subsection{Exercise G02 - Numerology II}
 
-{\em There is a pile of N gems before the entrance to the box. It is known that N is between zero and 9. Karel needs to enter the box and render the number N. The task finishes when this is done and the robot gets home.}
+{\em There is a pile of N gems before the entrance to the box. It is known that N is between zero and 9. Karel needs to enter the box and render the number N. The task finishes when this is done and the robot gets home.}\\[-7mm]
 
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{img/g11.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel is typing numbers.}
+\caption{Karel is learning to render numbers.}
 \label{fig:g11}
-\vspace{-4mm}
+\vspace{-10mm}
 \end{figure}
 \noindent
 
 \subsection{Exercise G03 - Numerology III}
 
-{\em Add the numbers! Remember - Karel cannot see what numbers are in the boxes as you can see them. They can be any integers between 0 and 9. The task finishes when the robot gets home.}
+{\em The boxes contain randomly generated numbers between 0 and 9. Your task is to teach Karel how to 
+add them together, and render the result into the double-box below. Use the functionality developed
+in the previous two tasks!}\\[-7mm]
 
 
 \begin{figure}[!ht]
@@ -2531,11 +2561,12 @@ We also use the logical operation "not" with the following property:\\
 \includegraphics[width=0.7\textwidth]{img/g12.png}
 \end{center}
 \vspace{-4mm}
-\caption{Adding numbers without using math!}
+\caption{Karel is adding randomly generated numbers.}
 \label{fig:g12}
-\vspace{-4mm}
+\vspace{-10mm}
 \end{figure}
 \noindent
+\newpage
 
 \subsection{Exercise G04 - Eight Queens}
 

@@ -1884,8 +1884,8 @@ where they are. Write a program for Karel to find his friends!}\\[-7mm]
 \subsection{Objectives} 
  
 \begin{itemize}
-\item Learn to never copy and paste computer code.
-\item Learn to recognize smaller tasks that can be solved without solving the big task.
+\item Learn that replicating computer code is a very bad habit.
+\item Learn that splitting the big task into smaller ones will simplify the solution a lot. 
 \item Learn to bring more structure and clarity into your programs by introducing new commands.
 \end{itemize}
 
@@ -1894,12 +1894,13 @@ where they are. Write a program for Karel to find his friends!}\\[-7mm]
 {\em Always look for small tasks that can be solved independently of the big ones.
 Solve the small tasks first, and you'll see that the big ones get much simpler. The 
 importance of what we just said cannot be stressed more. Please read these three 
-lines once more.}\\
+lines once more.}
 
+\newpage
 \noindent
 The fact that you are reading this line of text proves that you are not 
 a perfect programmer yet. Otherwise you would be stuck forever in the 
-previous infinite loop!
+previous three lines that form an infinite loop!
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1909,7 +1910,7 @@ previous infinite loop!
 \end{figure}
 
 
-\subsection{More programming hints}
+\subsection{Never replicate code in a program!}
 
 A new command should be defined whenever it becomes clear that the same 
 action is repeated in the algorithm multiple times (yes, we talk about the algorithm,
@@ -1918,8 +1919,8 @@ code repeats itself at various places, then probably you did not do a good job
 designing the algorithm.
 
 Sometimes it might be 
-tempting to just copy and paste the same code several times in the 
-program, because it does the same thing, but never do it! This would be very bad programming
+tempting to just replicate the same code several times in the 
+program, because it does the same thing, but do not do it! This would be very bad programming
 and sooner or later your own code would punish you for that. 
 You would make a small change at one place but forget to do it 
 in all the other places. Then your code would start 
@@ -2069,15 +2070,91 @@ def foursteps
 \subsection{Review questions}
 
 \begin{enumerate}
+\item Should we, or should we not always try to split a big task into smaller ones?
+\begin{enumerate}
+\item[A1] No, because the resulting program would be too long.
+\item[A2] Yes, because then we can only solve those ones that we like.
+\item[A3] Yes, because then we can ask friends to solve some of them for us.
+\item[A4] Yes, because the big task becomes simpler to solve.
+\end{enumerate}
+\item Should we, or should we not replicate computer code?
+\begin{enumerate}
+\item[A1] Yes, because the resulting program is faster.
+\item[A2] Yes, because we do not have to think about new commands.
+\item[A3] No, because our code would become prone to errors.
+\item[A4] No, because the Karel language does not allow that.
+\end{enumerate}
 \item When should a new command be defined?
-\item What will happen when we copy and paste the same code 
-      to multiple places in our program?
-\item Write a new command {\tt emptybag} that empties Karel's bag.
-\item Write a new command {\tt turnsouth} that turns Karel to the South no matter 
-      which direction he is facing.
+\begin{enumerate}
+\item[A1] Whenever the same command is repeated on two consecutive lines in the code.
+\item[A2] Whenever the algorithm contains an action that is repeated multiple times
+          (a small task inside a big one).
+\item[A3] Whenever the code contains an {\tt if - else} statement.
+\item[A4] If the code is longer than 100 lines.
+\end{enumerate}
+\item Which command will empty the robot's bag without causing an error?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+def emptybag
+  while gem
+    put
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+def emptybag
+  while not gem
+    put
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+def emptybag
+  while empty
+    put
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+def emptybag
+  while not empty
+    put
+\end{verbatim}
+\end{enumerate}
+\item Which command will turn Karel to the South no matter 
+      which direction he faces initially?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+def turnsouth
+  while north
+    repeat 2
+      left
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+def turnsouth
+  while not north
+    repeat 2
+      left
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+def turnsouth
+  while not north
+    repeat 3
+      left
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+def turnsouth
+  while not north
+    left
+  repeat 2
+    left
+\end{verbatim}
+\end{enumerate}
 \end{enumerate}
 
-
+\newpage
 \subsection{Exercise F01 - Four Star Hotel}
 
 {\em Before getting home, Karel has to collect all four stars of gems!}
@@ -2097,7 +2174,6 @@ def foursteps
 \subsection{Exercise F02 - U-Haul}
 
 {\em Write a program for the robot to move the 6x6 square of gems to the opposite corner of the maze. The task is finished when the robot is back home.}
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2109,6 +2185,7 @@ def foursteps
 \vspace{-10mm}
 \end{figure}
 \noindent
+\newpage
 
 \subsection{\ \ Exercise F03 - Egg Hunt}
 
@@ -2138,10 +2215,10 @@ def foursteps
 \vspace{-4mm}
 \caption{This time Karel installs windows.}
 \label{fig:f04}
-%\vspace{-10mm}
+\vspace{-10mm}
 \end{figure}
 \noindent
-
+\newpage
 
 
 \subsection{\ \ Exercise F05 - Pirate Ship}
@@ -2163,7 +2240,6 @@ no repeating parts whatsoever in your program!}
 \end{figure}
 \noindent
 
-\newpage
 \subsection{\ \ Exercise F06 - Diamond Staircase}
 
 {\em Write a program for Karel to climb the stairs, collect all gems, and get home!}
@@ -2176,14 +2252,15 @@ no repeating parts whatsoever in your program!}
 \vspace{-4mm}
 \caption{This time Karel has to do some climbing.}
 \label{fig:g01}
-\vspace{-4mm}
+\vspace{-10mm}
 \end{figure}
 \noindent
+\newpage
 
 
 \subsection{\ \ Exercise F07 - Plucking Flowers}
 
-{\em Write a program for Karel to pluck all flowers that grow at the fence of his garden (gems), and get back home! Note two level of repetitions - the fence has four edges, and it takes 7 steps to walk each edge.}
+{\em Write a program for Karel to pluck all flowers that grow at the fence of his garden (gems), and get back home! Note two levels of repetition.}\\[-7mm]
 
 
 \begin{figure}[!ht]
@@ -2199,7 +2276,7 @@ no repeating parts whatsoever in your program!}
 
 \subsection{\ \ Exercise F08 - Gems for Friends}
 
-{\em Karel has three gems in his bag, that he wants to give to his three friends R2, D2 and Marvin who live close by. They are very good friends, so Karel is allowed to enter their homes at any time. Write a program for Karel to put a gem on the ground in the middle of each friend's home, and then get back to his own house! Hint: There will be an outer loop of four repetitions, that will contains inner repetitions in it.}
+{\em Karel has three gems in his bag, that he wants to give to his three friends R2, D2 and Marvin who live close by. Write a program for Karel to put a gem on the ground in the middle of each friend's home, and then return to his own home.}\\[-7mm]
 
 
 \begin{figure}[!ht]
@@ -2209,15 +2286,15 @@ no repeating parts whatsoever in your program!}
 \vspace{-4mm}
 \caption{Karel is going to give gems to his three friends R2, D2 and Marvin.}
 \label{fig:g03}
-\vspace{-4mm}
+\vspace{-10mm}
 \end{figure}
 \noindent
+\newpage
 
 \subsection{\ \ Exercise F09 - Diamond Rectangle}
 
-{\em Karel stands in front of a rectangle with unknown dimensions. He knows that the rectangle is surrounded with gems. Sometimes the gems are piled up, but he does not know how many gems are in each pile. Write a program for the robot to walk around the rectangle, collect all gems, and get home!}
+{\em Karel stands in front of a rectangle with unknown dimensions. He knows that the rectangle is surrounded with gems. Write a program for the robot to walk around the rectangle, collect all gems, and get home!}\\[-7mm]
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2235,7 +2312,7 @@ no repeating parts whatsoever in your program!}
 {\em In this maze, gems are distributed randomly along the walls. Otherwise 
 the maze is empty. Karel's home is in the south-west corner, and the robot 
 stands on the right of it, facing east. Write a program for Karel to collect 
-all the gems and return home!}
+all the gems and return home!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2253,7 +2330,7 @@ all the gems and return home!}
 \subsection{\ \ Exercise F11 - The Matrix}
 
 {\em Write a program for Karel to collect all gems and get back home! The record is 
-210 steps made. Can you do it with fewer steps?}
+210 steps made. Can you do it with fewer steps?}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2268,9 +2345,8 @@ all the gems and return home!}
 
 \subsection{\ \ Exercise F12 - Escape from Alcatraz}
 
-{\em Karel is escaping from the Alcatraz prison! At the moment he is in an underground labyrinth with many tunnels but only one of them leads to his freedom. He cannot know which one is it, so he needs to search them one by one. Start by going straight ahead to the nearest wall. Then use the right-hand rule to search the tunnels.}
+{\em Karel is escaping from the Alcatraz prison! At the moment he is in an underground labyrinth with many random tunnels but only one of them leads to his freedom. Use the right-hand rule to find your way out!}\\[-7mm]
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2279,14 +2355,15 @@ all the gems and return home!}
 \vspace{-4mm}
 \caption{Karel is escaping from the Alcatraz prison.}
 \label{fig:g07}
-\vspace{-8mm}
+\vspace{-10mm}
 \end{figure}
 \noindent
+\newpage
 
 \subsection{\ \ Exercise F13 - Border Patrol}
 
 {\em Write a program for Karel to check the perimeter of the maze using the 
-right-hand rule. Do not forget to pick up all gems that you find on the way.}
+right-hand rule. Do not forget to pick up all gems that you find on the way.}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2295,7 +2372,7 @@ right-hand rule. Do not forget to pick up all gems that you find on the way.}
 \vspace{-4mm}
 \caption{Border Patrol.}
 \label{fig:g08}
-\vspace{-10mm}
+\vspace{-12mm}
 \end{figure}
 \noindent
 
@@ -2307,7 +2384,7 @@ in the maze of king Minos and kill a feared beast Minotaurus. Karel uses
 a similar technique - he leaves behind him a chain of gems that helps him 
 to safely find his way back home. Your program needs to work for an 
 arbitrary maze. You can assume that the string of gems is continuous 
-and that it does not contain any loops.}
+and that it does not contain any loops.}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2316,15 +2393,18 @@ and that it does not contain any loops.}
 \vspace{-4mm}
 \caption{Maze of king Minos, home of the beast Minotaurus.}
 \label{fig:g09}
+\vspace{-10mm}
 \end{figure}
 \noindent
+
+\newpage
 
 \section{Section G - Logical Variables}
 
 \subsection{Objectives} 
  
 \begin{itemize}
-\item Learn to work with elementary and complex logical operations.
+\item Learn to work with elementary and more complex logical expressions.
 \item Learn to define and use logical variables.
 \end{itemize}
 

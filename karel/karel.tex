@@ -1492,28 +1492,135 @@ if not empty
   put
 \end{verbatim}
 
-
 \subsection{Review questions}
 
 \begin{enumerate}
-\item What are the five sensors that Karel can use, and what do they do?
-\item Can he  see from where he stands whether a wall is two steps ahead?
-\item Can he check without turning whether a wall is on his right?
-\item Can he check from where he stands whether a gem is one step away?
+\item When does the {\tt gem} sensor check true?
+\begin{enumerate}
+\item[A1] There is at least one gem in the maze.
+\item[A2] There is at least one gem in front of the robot.
+\item[A3] There are one or more gems under the robot.
+\item[A4] The robot's bag contains at least one gem.
+\end{enumerate}
+\item When does the {\tt North} sensor check true?
+\begin{enumerate}
+\item[A1] The robot's home is North of him.
+\item[A2] The robot is North of his home.
+\item[A3] The robot faces South.
+\item[A4] The robot faces North.
+\end{enumerate}
+\item When does the {\tt empty} sensor check true?
+\begin{enumerate}
+\item[A1] The robot's bag is empty.
+\item[A2] There are no gems where the robot stands.
+\item[A3] There are no gems in the maze.
+\item[A4] There are not gems in the robot's home.
+\end{enumerate}
+\item When does the {\tt home} sensor check true?
+\begin{enumerate}
+\item[A1] Robot's home is right in front of the robot.
+\item[A2] The robot is in his home.
+\item[A3] Robot's home is straight ahead of the robot.
+\item[A4] The robot needs to go home to drop all gems that he collected.
+\end{enumerate}
+\item When does the {\tt wall} sensor check true?
+\begin{enumerate}
+\item[A1] The robot will reach a wall with one or more steps. 
+\item[A2] There is a wall on the robot's right-hand side.
+\item[A3] There is a wall right in front of the robot.
+\item[A4] There is a wall on the robot's left-hand side.
+\end{enumerate}
+\item When can Karel see from where he stands whether a wall is two steps ahead?
+\begin{enumerate}
+\item[A1] Never.
+\item[A2] If his home is not in the way.
+\item[A3] If no gem is in the way.
+\item[A4] If no other wall is in the way.
+\end{enumerate}
+\item When can the robot check without turning whether a wall is on his right?
+\begin{enumerate}
+\item[A1] Any time, there is the sensor {\tt right} for that.
+\item[A2] Any time, there is the sensor {\tt wall} for that.
+\item[A3] Only if he is not at home.
+\item[A4] Never.
+\end{enumerate}
+\item Can Karel check from where he stands whether a gem is one step away?
+\begin{enumerate}
+\item[A1] Yes, there is the sensor {\tt gem} for that.
+\item[A2] No.
+\item[A3] Yes but the gem must be in front of him.
+\item[A4] Yes but not when he is at home.
+\end{enumerate}
 \item Can he check from where he stands whether his home is one step away?
-\item Can he check whether he has at least one gem in the bag?
-\item Can he check without turning whether he faces West?
-\item Write a program for Karel to check whether Karel stands on a gem, and if so, to pick it up.
-\item Write a program for Karel to check whether his bag is not empty, and if not, to put one gem on the ground. 
-\item Write a program for Karel to turn North. 
+\begin{enumerate}
+\item[A1] Yes but his home must be in front of him.
+\item[A2] Yes, there is the sensor {\tt home} for that.
+\item[A3] No.
+\item[A4] Yes but not when he is at home.
+\end{enumerate}
+\item Can the robot check whether he has at least one gem in the bag?
+\begin{enumerate}
+\item[A1] No.
+\item[A2] Yes, he can use the {\tt gem} sensor. 
+\item[A3] No, the sensor gem only works for one gem.
+\item[A4] Yes, he can use the {\tt empty} sensor.
+\end{enumerate}
+\item Which program makes Karel check whether he stands on a gem, and if so, to pick it up.
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+if gem
+  get
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+if not empty
+  get
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+if get
+  gem
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+if empty
+  get
+\end{verbatim}
+\end{enumerate}
+\item Which program will turn Karel always to the North?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+repeat 4
+  if not north 
+    left
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+if not north 
+  left
+else 
+  right
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+if south
+  repeat 2
+    right
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+if not north 
+  right
+\end{verbatim}\end{enumerate}
 
 \end{enumerate}
 
 \subsection{Exercise D01 - In the Fog}
 
 {\em Several gems lie on the ground between the robot and his home which is 10 steps away. 
-He cannot see where they are exactly since his sensor only tells him if a gem is right 
-under him.  And besides that, nothing is visible in today's foggy weather anyway. 
+He cannot see where the gems are though. 
 Write a program for Karel to collect all gems and get home. With one command per 
 line, your program should have at most 4 lines.}
 
@@ -1523,19 +1630,17 @@ line, your program should have at most 4 lines.}
 \includegraphics[width=0.7\textwidth]{img/d01.png}
 \end{center}
 \vspace{-4mm}
-\caption{With zero visibility, Karel needs to rely on his sensors.}
+\caption{Several gems are at random positions between the robot and his home.}
 \label{fig:d01}
 \vspace{-4mm}
 \end{figure}
 \noindent
 
-\newpage
-
 \subsection{Exercise D02 - Stony Meadows}
 
 {\em Karel is walking on a meadows that is covered with irregularly 
 scattered stones. Write a program for the robot to get to his home, 
-avoiding stones, and collecting all three gems!  }
+avoiding stones, and collecting all gems!  }
 
 
 \begin{figure}[!ht]
@@ -1545,10 +1650,11 @@ avoiding stones, and collecting all three gems!  }
 \vspace{-4mm}
 \caption{Karel is crossing a stony meadows.}
 \label{fig:d02}
-\vspace{-4mm}
+\vspace{-10mm}
 \end{figure}
 \noindent
 
+\newpage
 
 
 
@@ -1583,29 +1689,28 @@ command per line, your program should have at most 7 lines.}
       how many repetitions will be needed.
 \end{itemize}
 
-\noindent
-In this section we will learn another type of loop that is highly useful 
-in programming.
-
 \subsection{The {\tt while} command}
 
 Often Karel needs to repeat something, {\em not knowing in advance how many repetitions
-there will be}. This can be the case, for example, 
-when he is asked to walk straight ahead until he reaches the closest wall.
-Remember that he only can see walls that are right ahead of him; walls 
+there will be}. So, the {\tt repeat} command is not practical. This can be the case, for example, 
+when the robot is asked to walk straight ahead until he reaches the closest wall.
+Remember that he only can see walls that are right ahead of him -- walls 
 that are further away he can't see. Such a program would be:
 
 \begin{verbatim}
 while not wall
   go
 \end{verbatim}
-Or, he may be asked to walk until he gets home:
+Or, Karel may be asked to walk until he gets home:
 
 \begin{verbatim}
 while not home
   go
 \end{verbatim}
-Or, he may be asked to empty his bag (he does not know how many gems are in it): 
+Beware though -- {\bf this program is dangerous} since the robot will crash into a wall
+if his home is not straight ahead of him!
+
+Another example: The robot may be asked to empty his bag (he does not know how many gems are in it): 
  
 \begin{verbatim}
 while not empty
@@ -1625,7 +1730,7 @@ facing):
 while not north
   left
 \end{verbatim}
-At last, Karel is asked to 
+At last, let us face the following situation: Karel is asked to 
 turn South, walk straight ahead until he reaches the closest wall, and 
 collect all gems that he can find on the way:
 
@@ -1655,15 +1760,75 @@ is the only direction that he can check!
 
 \begin{enumerate}
 \item What is the difference between the {\tt repeat} and {\tt while} loops?
-\item Write a program for Karel to turn North {\em not using} the {\tt while} loop. 
-\item Then write a program for Karel to turn North {\em using} the {\tt while} loop. 
-      Compare the length and elegance of this program with the one from the 
-      previous question.
+\begin{enumerate}
+\item[A1] Body of the {\tt while} loop does not have to be indented.
+\item[A2] The {\tt while} loop only can be used when the number of repetitions is known a priori.
+\item[A3] The {\tt repeat} loop can do 100 repetitions maximum.
+\item[A4] The {\tt repeat} loop only can be used when the number of repetitions is known a priori.
+\end{enumerate}
+\item Which program will always turn Karel to face West?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+repeat 4
+  left
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+while not west
+  right
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+while not north
+  left
+left
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+while not north 
+  right
+right
+\end{verbatim}
+\end{enumerate}
+\item The maze does not contain any gems and any walls except for the ones that form the outer rectangular boundary.
+      The robot stands in the south-west corner facing East. Which program will make the robot walk along the 
+      boundary of the maze and bring him back to the original position?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+repeat 4
+  while not wall
+    go
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+repeat 4
+  while not wall
+    go
+  left
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+repeat 4
+  while not wall
+    go
+  right
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+repeat 4
+  while not wall
+    left
+  go
+\end{verbatim}
+\end{enumerate}
 \end{enumerate}
 
 \subsection{Exercise E01 - South West}
 
-{\em Karel is lost and he does not even know whether he is facing north, south, east or west! He only knows that his home is in the south-west corner of the maze. Write a program for the robot to get there. Hint: First you need to orient the robot to face north, that's the only direction that he can check with his sensors.}
+{\em Karel is somewhere in the maze, facing a random direction. Write a program for the robot to get 
+to his home which is in the south-west corner!}\\[-7mm]
 
 
 \begin{figure}[!ht]
@@ -1680,13 +1845,11 @@ is the only direction that he can check!
 
 \subsection{Exercise E02 - Hide-and-Seek}
 
-{\em Karel's friends are hiding. He knows that he has to go straight 
-ahead to find them. When he finds a gem, he has to turn left and keep 
-walking. Eventually, he will get to the place where his friends are 
-hiding. If he gets home, stop. Write a program for Karel to do this, 
-and do not forget to collect all the gems on the way!}
+{\em Karel's friends are hiding. To find them, he has to straight ahead 
+and whenever he finds a gem, he has to collect it, 
+turn left, and keep walking. Eventually, they said, he will get to the place 
+where they are. Write a program for Karel to find his friends!}\\[-7mm]
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1695,8 +1858,10 @@ and do not forget to collect all the gems on the way!}
 \vspace{-4mm}
 \caption{Karel plays hide-and-seek with his friends.}
 \label{fig:e02}
+\vspace{-10mm}
 \end{figure}
 \noindent
+\newpage
 
 \subsection{Exercise E03 - Walk the Line}
 
@@ -1709,11 +1874,10 @@ and do not forget to collect all the gems on the way!}
 \vspace{-4mm}
 \caption{Karel only knows that his home is on the other side of the wall.}
 \label{fig:e03}
-\vspace{-10mm}
+%\vspace{-10mm}
 \end{figure}
 \noindent
 
-\newpage
 
 \section{Section F - Defining New Commands}
 

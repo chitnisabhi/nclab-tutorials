@@ -93,17 +93,20 @@
 
 \subsection*{NCLab's Karel vs. the Original Version}
 This publication features {\em Karel the Robot}, a programming language 
-designed by Richard E. Pattis. Compared to its original version that was
-strongly influenced by Pascal, the NCLab version is closer to Python.
+designed by Richard E. Pattis. Compared to the original version that
+appeared in the 1980s and was strongly influenced by Pascal, the NCLab 
+version is closer to Python.
 There are some other differences as well that make Karel in NCLab easier to use 
 for kids -- Karel collects gems instead of beepers, he has a home in the 
 maze, and he uses commands that are much easier for kids to understand
 and type. For example, {\tt pickbeeper} was replaced with {\tt get}, 
-{\tt front-is-clear} was replaced with {\tt wall}, etc. Python 
-colons following every command are omitted because using the SHIFT key 
-was causing difficulties to some 5 years old programmers. 
-Otherwise we have not changed Pattis' original ideas and all functionality 
-covered in Pattis' book is available in the Basic Version free of charge. 
+{\tt front-is-clear} was replaced with {\tt wall}, etc. We also introduced
+a new command {\tt right} so that Karel acts more like a standard robot 
+(in the original version of the language, where he only knew how to turn 
+{\tt left}, he was swirling like a little tornado while solving more complex tasks).
+Python colons following every command are omitted in the NCLab's version 
+because using the SHIFT key was causing difficulties to 5 years old programmers. 
+Otherwise we have not changed Pattis' original ideas significantly.
 
 \normalsize
 
@@ -360,8 +363,8 @@ with a randomly generated maze, as shown in Fig. \ref{fig:init}.
 \noindent
 Karel will be launched in {\em Programming mode} which is the most-frequently 
 used one. You can easily switch to the {\em Manual mode}, {\em Build mode},
-and {\em Game mode} in the menu. Game mode is available in Full Version only. 
-These modes will be discussed in Paragraph \ref{levels}.
+and {\em Game mode} in the menu. These modes will be discussed in Paragraph 
+\ref{levels}.
 
 \subsection{Karel's window} \label{menu}
 
@@ -414,13 +417,6 @@ always synchronize your version with the original, via
 a right-click on the project in the File Manager and selecting {\em Synchronize}.
 Keep in mind though -- synchronizing with the original will erase any changes that 
 you made to the project.
-
-%\subsection{Basic and Full Versions}
-%
-%Users sponsored by an institution are using NCLab in Full Version. Some limitations 
-%apply to users who use NCLab in Basic Version (see Terms of Use for details). These 
-%users have an Upgrade icon on their Desktop, that they can use to upgrade 
-%NCLab to Full Version for a symbolic monthly subscription fee.
 
 \subsection{Karel modes} \label{levels}
 
@@ -484,7 +480,7 @@ menu button. Then, five buttons Left, Right, Go, Get and Put will appear in the 
 Their functions are self-explanatory. When you first clone a Karel Exercise ("A" section contains 
 games in manual mode) and then 
 run it, there is not even need to switch to Manual mode -- just press the Start button and you are 
-all set (Game mode is enabled in Full Version only).
+all set.
 
 \subsection{Review questions}
 

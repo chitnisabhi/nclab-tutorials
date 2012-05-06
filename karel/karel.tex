@@ -562,7 +562,7 @@ all set.
 \item[A3] Step aside towards East and then make one step forward.
 \item[A4] Turn left.
 \end{enumerate}
-\item Choose one or more correct answers from the four options below!
+\item Select one or more correct statements from the four options below!
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=3cm]{img/button-left-1.png}\ \ \
@@ -837,11 +837,19 @@ return home in time!}\\[-7mm]
 \begin{itemize}
 \item Start operating the robot in Programming mode.
 \end{itemize}
-In Programming mode, we type commands into an input cell located in the left panel.
-The robot obeys written commands {\tt left}, {\tt right}, {\tt go}, {\tt get}, and {\tt put}.
-These commands have exactly the same function as the corresponding buttons in Manual mode.
-You can clone all exercises in this Section into your account via the File Manager's {\em Project}
-menu, same as you did with the ones in Section A.
+In Programming mode, commands for the robot are entered into an input cell located in the left panel.
+These commands are {\tt left}, {\tt right}, {\tt go}, {\tt get}, and {\tt put}.
+Their function is the same as the function of the corresponding buttons in Manual mode.
+One or more commands form a {\em computer program (computer code)}. Often 
+we just say {\em program} or {\em code}.
+
+There are two simple rules to remember:
+\begin{enumerate}
+\item Always type one command per line.
+\item Do not enter empty characters in front of commands. 
+\end{enumerate}
+Ignoring these rules would not make your program invalid, but your code would be 
+difficult to read. It is important to write a clean, transparent code that is easy to read. 
 
 \subsection{Review questions}
 
@@ -853,35 +861,65 @@ menu, same as you did with the ones in Section A.
 \item[A3] We upload them from hard disk.
 \item[A4] In input cells.
 \end{enumerate}
-\item What command turns the robot to the left?
+\item Do we have to write one command per line?
 \begin{enumerate}
-\item[A1] left
-\item[A2] turnleft
-\item[A3] left\_turn
-\item[A4] turn\_left
+\item[A1] Yes, otherwise the program would not run.
+\item[A2] No, but any commands beyond the first are ignored.
+\item[A3] No, but it makes the code easier to read.
+\item[A4] Yes, otherwise the program would not work correctly.
 \end{enumerate}
-\item What command turns the robot to the right?
+\item The robot's initial situation is as shown in the image. His bag with gems is empty.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=4cm]{img/maze-0.png}
+\end{center}
+\end{figure}
+\newpage
+\noindent
+Read the following program and select one or more correct statements!
+\begin{verbatim}
+go
+right
+get
+go
+right 
+go
+\end{verbatim}
 \begin{enumerate}
-\item[A1] right\_turn
-\item[A2] right
-\item[A3] turnright
-\item[A4] turn\_right
+\item[A1] The robot will return home with no gems in thebag.
+\item[A2] The robot will return home with one gem in thebag.
+\item[A3] The robot will not return home and he will have no gems in the bag.
+\item[A4] The robot will not return home and he will have one gem in the bag.
 \end{enumerate}
-\item What command tells Karel to pick up a gem from the ground?
+\item The robot's initial situation is the same as in the previous question. He has not gems 
+in his bag. Read the following program and select one or more correct statements from the four options below!
+\begin{verbatim}
+go
+get
+left
+go
+left
+go
+get
+right
+right
+go
+right
+go
+put
+go
+left 
+go
+\end{verbatim}
 \begin{enumerate}
-\item[A1] pick
-\item[A2] pick\_gem
-\item[A3] get
-\item[A4] get\_gem
-\end{enumerate}
-\item What command tells the robot to drop a gem on the ground?
-\begin{enumerate}
-\item[A1] put
-\item[A2] drop\_gem
-\item[A3] drop 
-\item[A4] put\_gem
+\item[A1] The robot will return home with two gems in the bag.
+\item[A2] The robot will return home with only one gem in the bag.
+\item[A3] The robot will not return home and he will have two gems in the bag.
+\item[A4] The robot will not return home and he will have only one gem in the bag.
 \end{enumerate}
 \end{enumerate}
+Before continuing, please clone into your account all exercises from the B-Section via the File Manager's {\em Project}
+menu.
 
 \newpage
 \subsection{Exercise B01 - Go Command}

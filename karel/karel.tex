@@ -475,9 +475,54 @@ Karel operates in four modes:
 \begin{itemize}
 \item Learn to operate the robot in Manual mode.
 \end{itemize}
+\newpage
+\noindent
+Before we begin, let us review the four directions on the compass:
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/compass.png}
+\vspace{-0mm}
+%\caption{Karel's four possible orientations.}
+%\label{fig:ori}
+\end{center}
+\vspace{-1cm}
+\end{figure}
+\noindent
 When launching Karel through the Programming icon, switch to Manual mode using the corresponding 
-menu button. Then, five buttons Left, Right, Go, Get and Put will appear in the panel on the left.
-Their functions are self-explanatory. When you first clone a Karel Exercise ("A" section contains 
+menu button. Then, five buttons Left, Right, Go, Get and Put will appear in the panel on the left,
+as shown in Fig. \ref{fig:buttons}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=6.2cm]{img/buttons-all.png}
+\vspace{-0mm}
+\caption{Karel's buttons in manual mode (robot facing East).}
+\label{fig:buttons}
+\end{center}
+\end{figure}
+\noindent
+The function of the buttons is self-explanatory -- pressing Left will turn the robot 90 degrees to the left,
+pressing Right will turn him 90 degrees to the right, and pressing Go will move him one step forward 
+(watch out and do not crash into a wall!). Upon pressing Put the robot will reach into his bag with gems, 
+take one, and put it on the ground where he stands. Make sure that the bag is not empty before you do this!
+An indicator showing how many gems are in the bag is in the upper right corner of the window. Last, upon pressing 
+Get the robot will pick up a gem from the ground where he stands. Before you ask the robot to get a gem,
+make sure that there is a gem on the ground though, or he will get annoyed!
+
+When the robot turns, the arrows on the buttons adjust automatically to his new 
+orientation. This is illustrated in Fig. \ref{fig:buttons2}.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=6.2cm]{img/buttons-all-2.png}
+\vspace{-0mm}
+\caption{Karel's buttons in manual mode (robot facing West).}
+\label{fig:buttons2}
+\end{center}
+\end{figure}
+
+\noindent
+When you first clone a Karel Exercise ("A" section contains 
 games in manual mode) and then 
 run it, there is not even need to switch to Manual mode -- just press the Start button and you are 
 all set.
@@ -492,40 +537,59 @@ all set.
 \item[A3] By pressing the Manual mode button.
 \item[A4] Through the File menu.
 \end{enumerate}
-\item What is the Button that moves the robot one step forward?
+\item Look at  the arrows and decide which direction the robot is facing!
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=6.2cm]{img/buttons-all-3.png}
+\end{center}
+\end{figure}
 \begin{enumerate}
-\item[A1] Step
-\item[A2] Forward
-\item[A3] Go
-\item[A4] Move
+\item[A1] North.
+\item[A2] South.
+\item[A3] East.
+\item[A4] West.
 \end{enumerate}
-\item What is the button that turns the robot to the left?
+\item What is the function of the following button?
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=3cm]{img/button-left-1.png}
+\end{center}
+\end{figure}
 \begin{enumerate}
-\item[A1] Left\_turn
-\item[A2] Turn\_left
-\item[A3] Turnleft
-\item[A4] Left
+\item[A1] Make one step forward, turn left, and make one step forward.
+\item[A2] Make one step forward and turn left
+\item[A3] Step aside towards East and then make one step forward.
+\item[A4] Turn left.
 \end{enumerate}
-\item What is the button that turns the robot to the right?
+\item Choose one or more correct answers from the four options below!
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=3cm]{img/button-left-1.png}\ \ \
+\includegraphics[width=3cm]{img/button-left-2.png}\ \ \
+\includegraphics[width=3cm]{img/button-left-3.png}\ \ \
+\includegraphics[width=3cm]{img/button-left-4.png}
+\end{center}
+\end{figure}
+
 \begin{enumerate}
-\item[A1] Right\_turn
-\item[A2] Right
-\item[A3] Turnright
-\item[A4] Turn\_right
+\item[A1] All these buttons will turn the robot 90 degrees to the right.
+\item[A2] Two of the buttons will turn the robot to the left, the other two will turn him to the right.
+\item[A3] The last button on the right will turn the robot to the left.
+\item[A4] The last button on the right will turn the robot to the right.
 \end{enumerate}
-\item What is the button to pick up a gem from the ground?
+\item After you press the following button, the robot will:
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=3cm]{img/button-right-4.png}
+\end{center}
+\end{figure}
 \begin{enumerate}
-\item[A1] Pick
-\item[A2] Pick\_gem
-\item[A3] Get
-\item[A4] Get\_gem
-\end{enumerate}
-\item What is the button to drop a gem on the ground?
-\begin{enumerate}
-\item[A1] Put
-\item[A2] Drop\_gem
-\item[A3] Drop 
-\item[A4] Put\_gem
+\item[A1] Turn left and face West.
+\item[A2] Turn right and face West.
+\item[A3] Turn right and face East
+\item[A4] Turn right and face South.
 \end{enumerate}
 \end{enumerate}
 There are thirteen exercises A01 - A13 for you to solve.

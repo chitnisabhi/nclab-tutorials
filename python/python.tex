@@ -825,10 +825,11 @@ where $i$ is the imaginary unit.
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn how to define new functions in Python.
+\item Learn why and how we define new functions in Python.
 \end{itemize}
-{\em Functions}, sometimes also called {\em procedures} are (usually short) self-contained programs that perform a specific task. Many 
-predefined functions are available in the standard library and in the scientific libraries. 
+{\em Functions}, sometimes also called {\em procedures} are (usually short) self-contained programs that perform a specific task. 
+We define them in order to isolate self-contained functionality and make it easily reusable.
+Many predefined functions are available in the standard library and in the scientific libraries. 
 We will talk about those later. Now let us explain how the user can define his/her own functions.
 
 \subsection{Defining new functions}
@@ -847,7 +848,7 @@ def add(a, b):
     return a + b
 \end{verbatim}
 The round brackets in the function definition are mandatory even if no arguments are passed.
-Note the mandatory colon ':' at the end of the function declaration line. The two lines of code above 
+Also note the mandatory colon ':' at the end of the function declaration line. The two lines of code above 
 are a {\em function declaration} -- they do not produce any output and the function is not called. 
 
 In order to call the function, one has to write additional code such as
@@ -873,12 +874,12 @@ sufficient for some time, and we will learn more when needed.
 \subsection{Review questions}
 
 \begin{enumerate}
-\item What do we mean by a {\em function} in Python? 
+\item Why do we define {\em functions (procedures)} in programming? 
 \begin{enumerate}
-\item[A1] 
-\item[A2] 
-\item[A3] 
-\item[A4] 
+\item[A1] To isolate self-contained functionality and make it easily reusable.
+\item[A2] To make computer programs faster.
+\item[A3] To split long programs into multiple segments that have fewer lines.
+\item[A4] We should not use functions, it is not a good programming practice.
 \end{enumerate}
 \end{enumerate}
 

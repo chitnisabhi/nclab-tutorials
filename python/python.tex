@@ -142,6 +142,15 @@ particular www.python.org.
 
 \section{Introduction}
 
+\subsection{Objectives}
+
+\begin{itemize}
+\item Get acquainted with NCLab.
+\item Learn the difference between compiled and interpreted programming languages.
+\item Learn basic facts about Python and its powerful accompanying libraries.
+\item Understand how Python programming works in NCLab.
+\item Write and run your first Python program.
+\end{itemize}
 Before beginning this course, we invite you to create an account in 
 NCLab, log in, and take a while to explore the many activities 
 that NCLab offers. A great companion reading is {\em Intro to NCLab - Part I 
@@ -153,16 +162,16 @@ on NCLab home page {\tt http://nclab.com}.
 Let us explain the main difference between {\em compiled} and {\em interpreted} programming languages. 
 {\em Compilation} is a process where human-readable {\em source code (text)} is translated by
 means of a {\em compiler} and a {\em linker}
-into a binary {\em executable file} which then can be run on the concrete computer. The same 
+into a {\em binary (executable) file} which then can be run on the concrete computer. The same 
 source code, compiled on different hardware architectures, yields different binaries. 
 
-On the other hand, programs written in {\em interpreted (scripting)} programming languages are 
-"read" at runtime -- they are not compiled and there are no binaries. 
-Programs 
+{\em Interpreted (scripting)} programming languages are more recent than the compiled ones. 
+A program that is written using an interpreted language is "read" (parsed) at runtime -- it is 
+not compiled and there are no binaries. Programs 
 written in compiled languages are usually more efficient than programs written in the interpreted 
 ones because the former take better advantage of the underlying hardware. On the other hand,
 interpreted languages are usually more universal and easier to use. Compiled 
-programming languages include C, C++, Fortran, and many others. Few examples of interpreted 
+programming languages include Pascal, C, C++, Fortran, and many others. Few examples of interpreted 
 languages are Python, Lua, Perl and Ruby. 
 
 \subsection{Basic facts about Python}
@@ -190,7 +199,7 @@ might be all you will ever need. We hope that you will like Python and want
 to learn more -- and there is much more to learn out there. References to materials
 covering more advanced topics and object-oriented programming are given in Section \ref{sec:adv}.
 
-\subsection{Libraries - the strong side of Python}
+\subsection{Libraries - the strong companion of Python}
 
 Python comes with a powerful {\em standard library} that contains plentiful functionality
 to ease work with constants, types, functions, exceptions, strings, data, 
@@ -199,17 +208,24 @@ Python also has a number of scientific libraries. Most important of them are Sci
 Numpy, Pylab, Matplotlib, and Sympy. Exploring Python libraries will be a significant 
 part of this course. 
 
+\subsection{How does Python programming in NCLab work?}
+
+In NCLab, Python code is typed into one or more input cells in the {\em Python worksheet}. 
+The code is sent (as a text string) to a remote server where it is interpreted, and the 
+results are sent back to your computer / laptop / tablet, and displayed in your web 
+browser.  Let's try this!
+
 \subsection{Launching a Python project in NCLab}
 
 There are multiple ways to launch a Python project in NCLab. First, it is 
 possible to clone and experiment with many existing displayed Python 
 projects via File Manager $\rightarrow$ 
 Project $\rightarrow$ Clone. New (empty) Python project can be launched via 
-the Programming menu or via File Manager $\rightarrow$ 
-Project $\rightarrow$ New $\rightarrow$ Python. An empty Python project
+the {\em Programming} menu or via File Manager $\rightarrow$ 
+Project $\rightarrow$ New $\rightarrow$ Python. An empty Python worksheet
 is shown in Fig. \ref{fig:python}.
 
-
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{img/python.png}
@@ -218,21 +234,13 @@ is shown in Fig. \ref{fig:python}.
 \caption{Launching a new Python project.}
 \label{fig:python}
 \end{figure}
-\noindent
-NCLab works as follows: Python code is typed into the input cell, 
-sent to the cloud where it is interpreted, and the results are sent 
-back to your computer / laptop / tablet and displayed in your web browser.  
-Let's try this!
-\newpage
-
 
 
 \subsection{Hello, World!}
 
-
 Click into the input cell and type {\tt print "Hello, World!"}.
-Then click on the "run" link under the input cell, and the text "Hello, World!"
-will be displayed 
+Then click on {\tt run} link under the input cell, and the text 
+"Hello, World!" will be displayed 
 in a new yellow {\em output cell} as shown in Fig. \ref{fig:python-2}.
 
 \newpage
@@ -245,58 +253,193 @@ in a new yellow {\em output cell} as shown in Fig. \ref{fig:python-2}.
 \caption{Response received from the cloud is shown in a yellow output cell.}
 \label{fig:python-2}
 \end{figure}
-\noindent
-The Python project can contain three types of cells - input cells, output cells, 
+
+\subsection{Input, output and text cells}
+
+The Python worksheet contains three types of cells - input cells, output cells, 
 and descriptive text cells. Input cells as well as text cells can be added via 
-the Edit menu. New input cells can be also added easily by clicking on "add" under
+the {\em Edit} menu. New input cells can be also added easily by clicking on {\tt add} under
 an existing input cell. Input cells and text cells can be removed by clicking on 
-"remove" under them. The easiest way to remove a selected output cell is to 
-click on it with the mouse and press Delete on the keyboard. 
-All output cells can be removed at once via the Edit menu. Pressing the 
-blue arrow button will evaluate (run) all input cells in the project. Clicking on "run" under
-an input cell will run only the contents of that input cell. More details can be 
-found in the introductory tutorial {\em NCLab Intro - Part I (Meet the Cloud)} that 
+{\tt remove} under them. The easiest way to remove a selected output cell is to 
+click on it with the mouse and press DELETE on the keyboard. 
+All output cells can be removed at once via {\em Remove all output} in the {\em Edit} menu. 
+
+\subsection{Various ways to run programs}
+
+Pressing the blue arrow button will run all input cells in the project. Clicking 
+on {\tt run} under an input cell will run only the contents of that input cell. 
+Same effect can be achieved by holding CTRL and pressing ENTER. Holding SHIFT
+and pressing ENTER will evaluate the current input cell and create an additional one
+under it.
+
+More details on cells can be found in the introductory tutorial {\em NCLab Intro - 
+Part I (Meet the Cloud)} that 
 can be downloaded in PDF via the "Tutorials and Videos" button on NCLab home page.
 
 \subsection{Review questions}
 
+In all multiple-choice questions in this textbook, one or more answers can be correct. 
 \begin{enumerate}
-\item Explain the main difference between compiled and scripting (interpreted) languages.
-\item Which languages take better advantage of the underlying hardware architecture?
+\item What is the difference between a compiled and a scripting programming language?
+\begin{enumerate}
+\item[A1] Programs written in compiled languages are binary files. 
+\item[A2] Compiled languages are easier to use than the scripting ones.
+\item[A3] Programs written in scripting languages are usually more efficient than programs 
+          written in the compiled ones.
+\item[A4] Scripting languages do not require a compiler.
+\end{enumerate}
+\item What languages take better advantage of the underlying hardware architecture
+      and why?
+\begin{enumerate}
+\item[A1] Scripting languages because they are less hardware-dependent.
+\item[A2] Compiled languages because the executable files are tailored 
+          to the concrete hardware.
+\item[A3] Compiled languages because  they do not require a linker.
+\item[A4] Scripting languages because they do not require a compiler.
+\end{enumerate}
 \item Give three examples of compiled programming languages.
+\begin{enumerate}
+\item[A1] Fortran, C++ and Lua.
+\item[A2] Python, Ruby and C.
+\item[A3] C, C++ and Fortran.
+\item[A4] Python, Lua and Perl.
+\end{enumerate}
 \item Give three examples of interpreted programming languages.
+\begin{enumerate}
+\item[A1] Pascal, Perl and Python.
+\item[A2] Lua, C and C++.
+\item[A3] Perl, Python and Ruby. 
+\item[A4] C, C++ and Fortran.
+\end{enumerate}
 \item Where does the name "Python" of the programming language come from?
-\item Is Python a compiled or an interpreted programming language?
+\begin{enumerate}
+\item[A1] The snake, {\em Python regius}.
+\item[A2] TV show in Great Britain.
+\item[A3] Recognized brand name of remote start systems.
+\item[A4] Recognized brand name of aquarium products.
+\end{enumerate}
 \item When was the implementation of Python started?
+\begin{enumerate}
+\item[A1] 1989
+\item[A2] 1995
+\item[A3] 2000
+\item[A4] 2005
+\end{enumerate}
 \item Name three programming styles that Python permits.
-\item Describe how displayed Python projects can be cloned in NCLab.
-\item Name two different ways to launch a new Python project in NCLab.
-\item Describe how Python programs are processed in NCLab.
-\item Name three types of cells that a Python project in NCLab can contain.
-\item How can you evaluate all input cells at once?
-\item How can you evaluate just one input cell of your choice?
-\item Name two different ways to add a new input cell.
-\item How can you add a new text cell?
-\item How can you remove an input cell or a text cell?
-\item How can you remove all output cells at once?
-\item Name at least three scientific libraries for Python.
-\item Write a Python program that will print your name.
+\begin{enumerate}
+\item[A1] Compiled, interpreted, scripting.
+\item[A2] Structured, object-oriented, functional.
+\item[A3] Procedural, object-oriented, binary.
+\item[A4] Good, bad, ugly.
+\end{enumerate}
+\item How can displayed Python projects be cloned in NCLab?
+\begin{enumerate}
+\item[A1] In Python worksheet through the {\em File} menu.
+\item[A2] Through File Manager's {\em Project} menu.
+\item[A3] Using the button {\em Displayed projects} that is available on NCLab front page.
+\item[A4] Python projects cannot be cloned.
+\end{enumerate}
+\item How can new Python project be launched in NCLab?
+\begin{enumerate}
+\item[A1] Through the {\em Programming} menu.
+\item[A2] Through File Manager's {\em Settings} menu.
+\item[A3] Through File Manager's {\em Project} menu.
+\item[A4] Through the Math module.
+\end{enumerate}
+\item How are Python programs processed in NCLab?
+\begin{enumerate}
+\item[A1] They are translated into Javascript and run as a standard web browser application.
+\item[A2] They are interpreted on a remote server.
+\item[A3] They are interpreted on your PC computer / laptop / tablet.
+\item[A4] They are translated into Flash.
+\end{enumerate}
+\item What are the types of cells that a Python worksheet in NCLab can contain?
+\begin{enumerate}
+\item[A1] Error message cells.
+\item[A2] Output cells.
+\item[A3] Input cells.
+\item[A4] Descriptive text cells.
+\end{enumerate}
+\item How can all input cells in a Python worksheet be evaluated at once?
+\begin{enumerate}
+\item[A1] By typing Evaluate in the last input cell and hitting ENTER.
+\item[A2] By clicking on {\tt run} under the last input cell.
+\item[A3] By clicking on {\em Evaluate all} in the {\em File} menu. 
+\item[A4] By clicking on the blue arrow button in the menu.
+\end{enumerate}
+\item How can a single input cell be evaluated?
+\begin{enumerate}
+\item[A1] By clicking on {\tt save} under the input cell.
+\item[A2] By clicking on the blue arrow button in the menu.
+\item[A3] By clicking on {\tt run} under the input cell.
+\item[A4] By clicking on the blue square button in the menu.
+\end{enumerate}
+\item What is the way to add a new input cell?
+\begin{enumerate}
+\item[A1] Click on {\tt add} under an input cell. 
+\item[A2] Click on {\em New} in the {\em File} menu.
+\item[A3] Click on the larger "A" icon in the menu.
+\item[A4] Click on {\em New input cell} in {\em Edit} menu.
+\end{enumerate}
+\item How can a new text cell be added?
+\begin{enumerate}
+\item[A1] Click on {\tt add} under an input cell. 
+\item[A2] Click on {\em New text cell} in the {\em Edit} menu.
+\item[A3] Click on {\em New} in the {\em File} menu.
+\item[A4] Click on the smaller "A" icon in the menu.
+\end{enumerate}
+\item What is the way to remove an input cell or a text cell?
+\begin{enumerate}
+\item[A1] Click on {\tt remove} under the cell. 
+\item[A2] Click on {\tt clear} under the cell. 
+\item[A3] Click on {\em Clear active cell} in the {\em Edit} menu.
+\item[A4] Click on {\em Close} in the {\em File} menu.
+\end{enumerate}
+\item How can an input cell be evaluated without using the mouse?
+\begin{enumerate}
+\item[A1] Hold CTRL and press ENTER.
+\item[A2] Hold SHIFT and press ENTER.
+\item[A3] Press ENTER twice.
+\item[A4] Press CTRL + ALT + SHIFT.
+\end{enumerate}
+\item Which of the following are scientific libraries for Python?
+\begin{enumerate}
+\item[A1] GNU Scientific Library.
+\item[A2] Numpy.
+\item[A3] Scipy.
+\item[A4] Sympy.
+\end{enumerate}
 \end{enumerate}
 
+\subsection{Exercises}
+
+\begin{enumerate}
+\item Write a Python program that prints your name. Run it by clicking on the blue arrow button.
+\item Write a Python program that prints the name of your favorite animal. 
+      Run it by clicking on {\tt run} under the input cell.
+\item Write a Python program that prints the name of your favorite singer 
+      or music band. Run it without using the mouse.
+\end{enumerate}
 
 \section{Using Python as a calculator}
 
-NCLab features a pocket calculator 
-The Python input cell can be used as a powerful calculator. 
+\subsection{Objectives}
+
+\begin{itemize}
+\item Learn how to do both simple and advanced math operations in the Python worksheet.
+\end{itemize}
+As you certainly noticed, NCLab has a small pocket calculator for quick anytime 
+calculations. In this section we will see that also the Python worksheet can be 
+used as a calculator, which is backed up by hundreds of processors and much more powerful indeed.
 
 \subsection{Addition, subtraction}
 
-Try it and type 
+Launch a new Python project and in the input cell type:
 
 \begin{verbatim}
 3 + 6
 \end{verbatim}
-The click on the "run" link under the input cell. The output is
+Then click on the {\tt run} link under the input cell. The output should be displayed quickly:
 
 \begin{verbatim}
 9
@@ -416,16 +559,20 @@ Output:
 \begin{verbatim}
 20
 \end{verbatim}
-\subsection{Order of Operations}
+\subsection{Order of operations}
 Python respects the standard order of operations:
 
 \begin{itemize} 
-\item Brackets have the highest priority, 
+\item Round brackets have the highest priority,
 \item then exponentiation, 
 \item then multiplication and division (same priority),
 \item the lowest priority have addition and subtraction.
 \end{itemize}
-To illustrate this, we can try the following:
+Note that no other brackets such as {\tt \{ \}} and {\tt [ ]} are 
+admissible in mathematical expressions since they have a different 
+function in the programming language.
+
+To illustrate the priority of operations, we can try the following:
 
 \begin{verbatim}
 3**4 / 27 * 5 + 3 * 5
@@ -558,8 +705,69 @@ Output:
 
 \subsection{Review questions}
 
-Log in to NCLab and launch a new Python project. Perform the following 
-calculations using the Python interpreter, and provide the code.
+\begin{enumerate}
+\item What is the result of $11 / 4$ in Python?
+\begin{enumerate}
+\item[A1] {\tt 2.75}
+\item[A2] {\tt 2}
+\item[A3] {\tt 3}
+\item[A4] Error message is thrown.
+\end{enumerate}
+\item Type $3^2$ using Python syntax:
+\begin{enumerate}
+\item[A1] {\tt 3\^{}2}
+\item[A2] {\tt 3\^{}\^{}2}
+\item[A3] {\tt 3*2}
+\item[A4] {\tt 3**2}
+\end{enumerate}
+\item Type $5$ modulo $2$ using Python syntax:
+\begin{enumerate}
+\item[A1] {\tt 5 / 2}
+\item[A2] {\tt 5 \% 2}
+\item[A3] {\tt 5 \& 2}
+\item[A4] {\tt 5 \&\& 2}
+\end{enumerate}
+\item What is the result of $1**4*2$ in Python?
+\begin{enumerate}
+\item[A1] {\tt 0}
+\item[A2] {\tt 1}
+\item[A3] {\tt 2}
+\item[A4] {\tt 4}
+\end{enumerate}
+\item What do we need to type into an empty Python worksheet in order to evaluate sin($\pi/4$)?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+from numpy import sin
+sin(pi/4)
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+from numpy import sin, pi
+sin(pi/4)
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+from trigonometry import *
+sin(pi/4)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+from trigonometry import sin, pi
+sin(pi/4)
+\end{verbatim}
+\end{enumerate}
+\item Which of the following are correct ways to define a complex number?
+\begin{enumerate}
+\item[A1] {\tt 2 + 3j}
+\item[A2] {\tt 2 + 3J}
+\item[A3] {\tt 2 + 3*j}
+\item[A4] {\tt 2 + 3*J}
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Exercises}
+Perform the following calculations using the Python worksheet.
 \begin{enumerate}
 \item 
 $$
@@ -614,16 +822,23 @@ where $i$ is the imaginary unit.
 
 \section{Functions}
 
-Functions are self-contained programs that perform a specific task. Many 
+\subsection{Objectives}
+
+\begin{itemize}
+\item Learn how to define new functions in Python.
+\end{itemize}
+{\em Functions}, sometimes also called {\em procedures} are (usually short) self-contained programs that perform a specific task. Many 
 predefined functions are available in the standard library and in the scientific libraries. 
 We will talk about those later. Now let us explain how the user can define his/her own functions.
 
 \subsection{Defining new functions}
 
-Defining functions in Python is almost the same as defining new commands 
-in Karel the Robot (for example, one uses the same keyword {\tt def}). In addition, 
-Python functions can accept {\em parameters}. Usually, a function returns 
-some result -- in that case one uses an optional {\tt return} statement. For example, 
+Defining functions in Python is very similar to defining new commands 
+in Karel the Robot, and the reasons for using them are 100 \% identical.
+In order to define a new function, one uses the same keyword {\tt def}.
+There is one difference though -- Python functions can {\em accept arguments} and 
+they can {\em return results}. Usually, a function returns 
+some result. In that case one uses an optional {\tt return} statement. For example, 
 the following simple function {\tt add(a, b)} adds two numbers {\tt a} and {\tt b} 
 and returns the result:
 
@@ -631,9 +846,11 @@ and returns the result:
 def add(a, b):
     return a + b
 \end{verbatim}
+The round brackets in the function definition are mandatory even if no arguments are passed.
 Note the mandatory colon ':' at the end of the function declaration line. The two lines of code above 
-are a {\em function declaration} -- they do not produce any output and the function is not called. In order to 
-call the function, one has to write additional code such as
+are a {\em function declaration} -- they do not produce any output and the function is not called. 
+
+In order to call the function, one has to write additional code such as
 
 \begin{verbatim}
 add(5, 3)
@@ -643,20 +860,29 @@ This will produce an output:
 \begin{verbatim}
 8
 \end{verbatim}
-To mention another example, the following function does not return anything:
+To show another example, the following function does not take any arguments 
+and it does not return any results:
 
 \begin{verbatim}
 def say_hello():
     print "Hello!"
 \end{verbatim}
-Such a function is not very useful but it illustrates that the {\tt return} statement
-does not have to be used. \\
-
-\noindent
-Let us stop here for the moment. What we know about functions now is good for some time, 
-and we will learn more about them as we progress.
+Let us stop here for the moment. What we just learned about defining new functions will be 
+sufficient for some time, and we will learn more when needed.
 
 \subsection{Review questions}
+
+\begin{enumerate}
+\item What do we mean by a {\em function} in Python? 
+\begin{enumerate}
+\item[A1] 
+\item[A2] 
+\item[A3] 
+\item[A4] 
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Exercises}
 
 \begin{enumerate}
 \item Write a function {\tt multiply(var1, var2)} that returns the product of the 
@@ -667,6 +893,13 @@ and we will learn more about them as we progress.
 \end{enumerate}
 
 \section{Variables}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
+
 
 Variables are used to store information for later use in our program. The information
 we wish to store can be a number, a text string, a logical value ({\tt True} or {\tt False}),
@@ -1065,6 +1298,12 @@ Use your function with the values $A = 21.77$ dollars and $B = 26.44$ dollars.
 
 \section{Boolean expressions}
 
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
+
 Boolean expressions are the foundation of every procedural programming 
 language including Python. Remember how the value of a variable 
 is assigned and printed? 
@@ -1174,6 +1413,12 @@ v6 = not v5
 to end this section in a positive way!
 
 \section{Strings}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
 
 By a {\em string} we mean a text surrounded by double or single quotes, such as 
 {\tt "this is a string"} or {\tt 'and this is a string as well'}.
@@ -1317,6 +1562,12 @@ Perhaps this lesson could be longer but it isn't!
 
 \section{Conditions}
 
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
+
 Each procedural programming language including Python enables conditional 
 execution of code. What does this mean? Imagine that you have to write
 a program to calculate
@@ -1412,6 +1663,12 @@ and the next one is going to be simpler!
 
 \section{The {\tt while} loop}\label{sec:while}
 
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
+
 Loops are a powerful tool as they allow us to use the computer to solve
 tasks that would take many hours, months, or even years to a human person. 
 Let's do something really simple. We know that the sine and cosine functions 
@@ -1462,6 +1719,12 @@ The {\tt for} loop will be discussed in Section \ref{sec:forloop}.\\
 This section is finished, good job!
 
 \section{More on functions}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
 
 Let us mention a few additional useful facts related to 
 Python function. Let us begin with the function that we already saw
@@ -1633,6 +1896,12 @@ with the next one.
 
 \section{Tuples}
 
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
+
 Sometimes we need to store data that does not change in time - such as 
 the names of weekdays, or names of months. For this we use {\em tuples}.
 To define a tuple, enclose comma-separated items in round brackets: 
@@ -1690,6 +1959,12 @@ Tuples become especially useful in combination with the {\tt for}
 loop that will be discussed in Section \ref{sec:forloop}. 
 
 \section{Lists}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
 
 \noindent
 Lists are similar to tuples, and all indexing and slicing works in the same way. 
@@ -1804,6 +2079,12 @@ concepts in Python!
 
 \section{Dictionaries}
 
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
+
 Sometimes we need to store additional information for 
 people (or general items) in a list. The classical example is 
 a phone number, but it may be age, weight, address, family 
@@ -1895,6 +2176,12 @@ expected {\tt for} loop!
 
 \section{The {\tt for} loop} \label{sec:forloop}
 
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
+
 Before we bring up the {\tt for} loop, let us introduce the {\tt range()}
 function. This functions is used with an argument $N$ and it returns 
 a list of integer numbers $0$, $1$, $\ldots$, $N-1$. For example:
@@ -1967,12 +2254,24 @@ This concludes Section 13 - now you know all the loops there are!
 
 \section{Plotting}
 
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
+
 Using graphics and plotting graphs of functions of one variable, 
 general curves in the plane, and functions of two variables is 
 explained in great detail in the introductory course "Meet Your 
 New Graphing Calculator" that is available on NCLab's Tutorials page.
 
 \section{Using libraries}\label{subsec:importinglib}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item
+\end{itemize}
 
 Using libraries is an indivisible part of Python programming. We have 
 used the Numpy library to import some mathematical functions in Section 

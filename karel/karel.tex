@@ -1977,7 +1977,7 @@ where they are. Write a program for Karel to find his friends!}\\[-7mm]
 \noindent
 
 
-\section{Section F - Defining New Commands}
+\section{Section F - Defining New Commands} \label{sec:newcom}
 
 \subsection{Objectives} 
  
@@ -2006,7 +2006,6 @@ previous three lines that form an infinite loop!
 \end{center}
 \vspace{-1cm}
 \end{figure}
-
 
 \subsection{Never replicate code in a program!}
 
@@ -2497,7 +2496,224 @@ and that it does not contain any loops.}\\[-7mm]
 
 \newpage
 
-\section{Section G - Logical Variables}
+\section{Section G - Recursion}
+
+\subsection{Objectives} 
+ 
+\begin{itemize}
+\item Understand what recursion is and when it is advantageous to use it.
+\item Learn to write good recursive algorithms.
+\end{itemize}
+By {\em recursion} we mean that a command makes a call to itself.
+
+\subsection{How it works} 
+
+Consider the following program:
+\begin{verbatim}
+def reach_wall
+  if not wall
+    go
+    reach_wall
+
+reach_wall
+\end{verbatim}
+Imagine that the initial position of the robot is like in Fig. \ref{fig:rec1}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=6cm]{img/rec-1.png}
+\end{center}
+\vspace{-4mm}
+\caption{Robot's initial position.}
+\label{fig:rec1}
+\vspace{-4mm}
+\end{figure}
+\noindent
+When the command {\tt reach\_wall} is first called, the robot stands three steps away from the wall and 
+thus the {\tt if not wall} condition passes. Then the command {\tt go} follows and the robot's 
+position changes as shown in Fig. \ref{fig:rec2}. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=6cm]{img/rec-2.png}
+\end{center}
+\vspace{-4mm}
+\caption{Robot's position after the first {\tt if not wall} condition passes and he makes the first step forward.}
+\label{fig:rec2}
+\vspace{-10mm}
+\end{figure}
+\newpage
+\noindent
+Next the robot executes the {\tt reach\_wall} command that follows the {\tt go} command. A good way to 
+understand what happens is to imagine that the command is replaced with its own body. The corresponding 
+program would look as follows:
+
+\begin{verbatim}
+if not wall
+  go
+  if not wall
+    go
+    reach_wall
+\end{verbatim}
+\noindent
+Since the robot is two steps away from the wall, the second {\tt if not wall} condition passes and 
+he makes a second step forward. His new position is shown in Fig. \ref{fig:rec3}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=6cm]{img/rec-3.png}
+\end{center}
+\vspace{-4mm}
+\caption{Robot's position after the second {\tt if not wall} condition passes and he makes a second step forward.}
+\label{fig:rec3}
+%\vspace{-10mm}
+\end{figure}
+\noindent
+Next the robot executes the third {\tt reach\_wall} command. Again we can imagine that the command 
+is replaced with its own body. The corresponding program would look as follows:
+
+\begin{verbatim}
+if not wall
+  go
+  if not wall
+    go
+    if not wall
+      go
+      reach_wall
+\end{verbatim}
+\noindent
+Since the robot is one step away from the wall, the third {\tt if not wall} condition passes and 
+he makes a third step forward. His new position is shown in Fig. \ref{fig:rec4}.
+
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=6cm]{img/rec-4.png}
+\end{center}
+\vspace{-4mm}
+\caption{Robot's position after the third {\tt if not wall} condition passes and he makes a third step forward.}
+\label{fig:rec4}
+%\vspace{-10mm}
+\end{figure}
+\noindent
+Next the robot executes the {\tt reach\_wall} command again and we can imagine that the command 
+is replaced with its own body. The corresponding program would look as follows:
+
+\begin{verbatim}
+if not wall
+  go
+  if not wall
+    go
+    if not wall
+      go
+      if not wall
+        go
+        reach_wall
+\end{verbatim}
+\noindent
+However, now the robot is facing the wall and thus the {\tt if not wall} condition does not pass.  
+This means that the program is finished!
+
+\subsection{The base case}
+
+We have just seen one important fact: To prevent infinite recursion, one always needs {\tt if} or {\tt if-else} 
+statement of some sort where one branch makes a recursive call, and the other branch does not. The branch without a recursive 
+call is called the {\em base case}. A bad example of recursive command without a base case would be 
+
+\begin{verbatim}
+def left_forever
+  left
+  left_forever
+\end{verbatim}
+\noindent
+You can guess where the name of this command comes from! Fortunately, the program can be stopped using 
+either the blue square button or the {\tt stop} button under the input cell.
+
+\subsection{When should recursion be used?}
+
+The recursive command {\tt reach\_wall} that we defined above may not be the most useful example 
+since the same functionality could be achieved more elegantly without recursion, just with
+
+\begin{verbatim}
+def reach_wall
+  while not wall
+    go
+\end{verbatim}
+If there is a small task that needs to be solved repeatedly in order to get a bigger task done,
+then often one can write both a non-recursive and a recursive algorithm. Recall for example the Diamond
+Staircase example from Section \ref{sec:newcom}. The small task there was to climb one step and pick 
+up the gem, ending up facing east. The non-recursive version of the algorithm would be:
+
+\begin{verbatim}
+def climb_one_step
+  left
+  go
+  right
+  go
+  get
+
+while not home
+  climb_one_step
+\end{verbatim}
+The recursive version of the algorithm looks as follows:
+
+\begin{verbatim}
+def climb_the_stairs
+  if not home
+    left
+    go
+    right
+    go
+    get
+    climb_the_stairs
+
+climb_the_stairs
+\end{verbatim}
+If it is easy to write a non-recursive version of an algorithm, then it should be used
+because in general, non-recursive algorithms are faster. 
+Recursive version of an algorithm should be used if a non-recursive version would 
+be difficult to design. For example, nearly all code written for tree-like structures 
+is recursive. Also many sorting algorithms are more naturally written in recursive form.
+We will come to these subjects later.
+
+\subsection{Mutually recursive commands}
+
+Recursion can have interesting forms. In its simplest shape, a command 
+calls itself in its own body. But, we can have a pair of commands
+that call themselves mutually, such as the commands {\tt odd} and 
+{\tt even} in the following example (that also solves the Diamond Staircase
+problem by the way):
+ 
+\begin{verbatim}
+def climb_step
+    left
+    go
+    right
+    go
+    get 
+
+def odd
+  if not home
+    climb_step
+    even
+    
+def even
+  if not home
+    climb_step
+    odd
+    
+odd
+\end{verbatim}
+Obviously this program is not the most efficient one to solve the 
+Diamond Staircase problem, but it is great for illustration purposes.
+
+\subsection{Review questions}
+
+
+\subsection{Exercises}
+
+
+\section{Section H - Logical Variables}
 
 \subsection{Objectives} 
  
@@ -2681,7 +2897,7 @@ in the previous two tasks!}\\[-7mm]
 \end{figure}
 \noindent
 
-\subsection{Exercise G05 - BubbleSort}
+\subsection{\ \ Exercise G05 - BubbleSort}
 
 {\em Karel stands in front of four piles of gems, let's enumerate them by 1, 2, 3 and 4. He does not know how many gems are in each pile. All he knows is that each pile contains between 1 and 4 gems, and that two or more piles can be equally large. Sort the piles in such a way that the smallest pile is on the left and the largest on the right. Use the BubbleSort algorithm: Implement a function that switches two adjacent piles if the one on the right has fewer gems than the one on the left. Apply this function to piles 1 and 2, then to piles 2 and 3, then to piles 3 and 4. Now it is certain that the largest number is on the right-most position! Next, do the same for just the first three piles. Last, apply the function to piles 1 and 2, and you are done! }
 

@@ -939,9 +939,138 @@ def ariadnes_thread
 ariadnes_thread
 \end{verbatim}
 
-\subsection{G01 - Sweep Maze}
+\subsection{G01 - Homage to Lemmings}
 
-Coming soon.
+\begin{verbatim}
+# Turn back.
+def back
+  repeat 2
+    left
+  
+# Add layer of gems, return, and
+# get ready for next layer.
+def addlayer
+  if not home
+    while not wall 
+      go
+      put
+    # Turn back and return.
+    back
+    while gem
+      go
+    back
+    # Get ready for next layer.
+    go
+    left
+    go 
+    right
+    addlayer
+    
+addlayer\end{verbatim}
+
+\subsection{G03 - Diamond Tree}
+
+\begin{verbatim}
+# Turn back.
+def back
+  repeat 2
+    left
+
+# Right angle.
+def rangle
+  go
+  right
+  go
+  
+# Left angle.
+def langle
+  go
+  left
+  go
+  
+# Return from left branch to base.
+def return_from_left_branch
+  right
+  rangle
+  back
+  
+# Return from right branch to base.
+def return_from_right_branch
+  left
+  langle
+  back
+  
+# Robot faces left wall after 
+# an attempt to find new branch 
+# on the left.
+def return_from_left_wall
+  left
+  go
+  back
+  
+# Robot faces right wall after
+# an attempt to find new branch 
+# on the right.
+def return_from_right_wall
+  right
+  go
+  back
+  
+# Assumes that Karel stands on a gem.
+def left_branch
+  # Is there a wall in the North?
+  if not wall
+    go
+    left
+    # Is there a wall in the West?
+    if not wall
+      go
+      right
+      if gem
+        climb_tree
+      return_from_left_branch
+    else
+      return_from_left_wall
+
+# Assumes that Karel stands on a gem.
+def right_branch
+  # Is there a wall in the North?
+  if not wall
+    go
+    right
+    # Is there a wall in the East?
+    if not wall
+      go
+      left
+      if gem
+        climb_tree
+      return_from_right_branch
+    else
+      return_from_right_wall
+
+# Traverse recursively first the 
+# left and then the right branch.
+# Then pick up the base gem.
+def climb_tree
+  left_branch
+  right_branch
+  if gem
+    get
+
+# Move to tree.    
+go
+# Traverse it recursively.
+climb_tree
+# Go home.
+right
+rangle
+\end{verbatim}
+
+\subsection{G03 - Sweep Maze}
+
+\begin{verbatim}
+aaa
+\end{verbatim}
 
 \subsection{H01 - Numerology I}
 

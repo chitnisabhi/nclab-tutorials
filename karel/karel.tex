@@ -106,7 +106,9 @@ a new command {\tt right} so that Karel acts more like a standard robot
 {\tt left}, he was swirling like a little tornado while solving more complex tasks).
 Python colons following every command are omitted in the NCLab's version 
 because using the SHIFT key was causing difficulties to 5 years old programmers. 
-Otherwise we have not changed Pattis' original ideas significantly.
+NCLab's Karel has a manual mode and three programming levels. Levels 1 and 2  
+correspond to the Pattis' book. Level 3 brings a GPS device and the concept of 
+variables. 
 
 \normalsize
 
@@ -319,23 +321,23 @@ answers may be correct.
 \end{enumerate}
 \end{enumerate}
 
-\section{Exploring NCLab}
-
-\subsection{Objectives} 
-
-\begin{itemize}
-\item Get acquainted with NCLab.
-\end{itemize}
-Before beginning this course, we invite you to create an account in 
-NCLab, log in, and take a while to explore the many activities 
-that NCLab offers. A great companion reading is {\em Intro to NCLab - Part I 
-(Meet the Cloud)} that is available in PDF via the link "Tutorials and Videos"
-on NCLab home page {\tt http://nclab.com}.
-
-\subsection{Review questions}
-
-Review questions for this Section are located in the document {\em Intro to NCLab - Part I 
-(Meet the Cloud)}.
+%\section{Exploring NCLab}
+%
+%\subsection{Objectives} 
+%
+%\begin{itemize}
+%\item Get acquainted with NCLab.
+%\end{itemize}
+%Before beginning this course, we invite you to create an account in 
+%NCLab, log in, and take a while to explore the many activities 
+%that NCLab offers. A great companion reading is {\em Intro to NCLab - Part I 
+%(Meet the Cloud)} that is available in PDF via the link "Tutorials and Videos"
+%on NCLab home page {\tt http://nclab.com}.
+%
+%\subsection{Review questions}
+%
+%Review questions for this Section are located in the document {\em Intro to NCLab - Part I 
+%(Meet the Cloud)}.
 
 \section{Launching Karel}
 
@@ -348,18 +350,18 @@ Review questions for this Section are located in the document {\em Intro to NCLa
 Karel can be launched in several different ways. The simplest one is to click on the icon 
 {\em Programming} and select {\em Karel} in the menu. This will launch the application 
 with a randomly generated maze, as shown in Fig. \ref{fig:init}.
+\newpage
 
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{img/init.png}
+\includegraphics[width=\textwidth]{img/init.png}
 \end{center}
 \vspace{-2mm}
 \caption{Launching Karel via the Programming icon.}
 \label{fig:init}
-\vspace{-1cm}
+%\vspace{-4mm}
 \end{figure}
-\newpage
 \noindent
 Karel will be launched in {\em Programming mode} which is the most-frequently 
 used one. You can easily switch to the {\em Manual mode}, {\em Build mode},
@@ -388,21 +390,19 @@ gem counter that indicates how many gems Karel has in his bag.
 
 \subsection{Cloning Displayed Projects} \label{cloning}
 
-All programs and exercises that we will work with are
-available for you to clone. To do this, 
-click on the File Manager icon. In the File Manager's menu go to 
-{\em Project} and then click on {\em Clone}. This will launch a new window 
+All programs and exercises that we will work with are available for you to clone. 
+To do this, click on {\em Clone} in Karel's File menu. This will launch a new window 
 with Displayed Projects as shown in Fig. \ref{fig:cloning}.
 
-\newpage
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{img/cloning.png}
+\includegraphics[width=\textwidth]{img/cloning.png}
 \end{center}
 %\vspace{-2mm}
-\caption{File Manager's {\em Project} menu allows you to clone many Karel projects.}
+\caption{Many exercises and games are available through the File menu.}
 \label{fig:cloning}
 \end{figure}
+\newpage
 \noindent
 All projects whose names start with "Karel - Exercise" are of particular interest 
 for this tutorial. Their solutions have names starting with "Karel - Solution". 
@@ -432,10 +432,10 @@ Karel operates in four modes:
       the buttons Go, Get, Left, Right, and Put in Manual mode.
 \item Level 2 is where the actual programming begins. On top of the commands from Level 1, programs can contain 
       conditions, loops, and custom commands.
-\item Level 3 teaches the user to operate with logical and numerical variables, and with computer memory. Karel  
-      also has receives a GPS device. This Level is in preparation.
-\item Level 4 teaches the basics of object-oriented programming. This Level is in preparation.
-\item Level 5 teaches the basics of parallel programming. This Level is in preparation.
+\item In Level 3 Karel furthermore receives a GPS device. The user will learn to work with logical 
+      and numerical variables. 
+\item Level 4 will teach the basics of object-oriented programming. This Level is in preparation.
+\item Level 5 will teach the basics of parallel programming. This Level is in preparation.
 \end{itemize}
 \item {\em Build mode:} This mode allows the user to create custom mazes.
 \item {\em Game mode:} Makes it possible to create and play games. 
@@ -475,7 +475,6 @@ Karel operates in four modes:
 \begin{itemize}
 \item Learn to operate the robot in Manual mode.
 \end{itemize}
-\newpage
 \noindent
 Before we begin, let us review the four directions on the compass:
 
@@ -492,6 +491,8 @@ Before we begin, let us review the four directions on the compass:
 When launching Karel through the Programming icon, switch to Manual mode using the corresponding 
 menu button. Then, five buttons Left, Right, Go, Get and Put will appear in the panel on the left,
 as shown in Fig. \ref{fig:buttons}.
+
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2830,19 +2831,29 @@ algorithm for the robot to collect all gems from the tree and get home!  }
 \end{figure}
 \noindent
 
-\section{Section H - Logical Variables}
+\section{Section H - Variables}
 
 \subsection{Objectives} 
  
 \begin{itemize}
+\item Learn to store information in numerical and logical variables.
 \item Learn to work with elementary and more complex logical expressions.
-\item Learn to define and use logical variables.
 \end{itemize}
 
 \noindent
 In programming, variables are used to store information for later use. This information can 
-be a number, word, sentence, or simply a {\em True} or {\em False}. We will start
-with the last type. 
+be a number, word, sentence, or simply a {\em True} or {\em False}. \\
+
+\begin{center}
+\framebox{
+Switch Karel to Level 3 
+in Settings to use the new functionality presented in this section.}
+\end{center}
+\vspace{4mm}
+
+\subsection{GPS device and numerical variables}
+
+Coming soon.
 
 \subsection{Logical expressions}
 Logical expressions are expressions that can be answered with either {\em True} or 
@@ -3001,7 +3012,7 @@ in the previous two tasks!}\\[-7mm]
 \noindent
 \newpage
 
-\subsection{Exercise H04 - Eight Queens}
+\subsection{\ \ Exercise H04 - Eight Queens}
 
 {\em Karel stands on an 8 x 8 chess board along with eight queens (the gems). Recall that a chess queen dominates its row, its column, as well as both diagonals that pass through her position. Nothing may stand in these fields or she will destroy it. Currently, some queens are threatening each other. Write a program for Karel to correct the positions of the queens in such a way that none of them is threatened. Your program should be able to do it for any initial distribution of the queens. Enter the home after you are finished.}
 

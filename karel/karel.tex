@@ -2931,7 +2931,7 @@ print "Number of steps:", num
 
 \subsection{Creating numerical variables}
 
-In Karel, numerical variables can be created in four different ways: 
+In Karel, numerical variables can be created in several different ways: 
 \begin{enumerate}
 \item By setting them to zero. For example, new variable {\tt a} is created and set to zero by typing 
 \begin{verbatim}
@@ -2950,6 +2950,8 @@ pos1 = gpsy
 \begin{verbatim}
 var2 = var1
 \end{verbatim}
+\item Initialize them with value returned by an existing function, as it was shown in the previous 
+paragraph. 
 \end{enumerate}
 
 \subsection{Changing values of numerical variables}
@@ -2957,7 +2959,6 @@ var2 = var1
 The value of a numerical variable can be updated at any time by redefining it via 
 one of the four options described in the previous paragraph. For example, let's say that 
 Karel stands as shown in Fig. \ref{fig:var1}.
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/variables1.png}
@@ -3022,6 +3023,7 @@ Went 7 steps before reaching a wall.
 \end{enumerate}
 \item What values will the variables {\tt gpsx} and {\tt gpsy} have when Karel's
 position is as shown in Fig. \ref{fig:var2}?
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/variables2.png}
@@ -3054,8 +3056,9 @@ Then call the function and print the result.}
 \vspace{-4mm}
 \caption{Karel is measuring his room.}
 \label{fig:h01}
-\vspace{-4mm}
+\vspace{-10mm}
 \end{figure}
+\newpage
 \noindent
 
 \subsection{Exercise H02 - Accounting}

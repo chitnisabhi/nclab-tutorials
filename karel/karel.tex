@@ -2833,12 +2833,19 @@ algorithm for the robot to collect all gems from the tree and get home!  }
 
 \section{Section H - Variables}
 
+Now we are entering exciting Level 3! Karel grew up and left the home of his 
+parents to go through life on his own. Therefore, his home will not be present
+in the following exercises and games anymore. There are a few more changes
+that reflect Karel's growing up, including numerical and logical variables,
+and functions returning values. Therefore, do do not forget to adjust the 
+Level in Settings accordingly.
+
 \subsection{Objectives} 
  
 \begin{itemize}
-\item Understand what variables are and that they can have different types.
-\item Learn to work with numerical variables and print results.
-\item Learn to write custom functions that return a value. 
+\item Understand what variables are good for, and that they can have different types.
+\item Learn to work with numerical variables and print them.
+\item Learn that custom functions (commands) can return values. 
 \end{itemize}
 
 \noindent
@@ -2854,9 +2861,9 @@ when you were about two years old, you did the following:
 \begin{verbatim}
 my_name = "Melissa"
 \end{verbatim}
-Since then, each time someone calls a name, you retrieve in your brain the value of the variable
-{\tt my\_name}, compare it to the name that you hear, and if you get a match then you turn around to see 
-who is calling you. Imagine that we would not be able to use that variable!
+Since then, each time someone called a name, you retrieved in your brain the value of the variable
+{\tt my\_name}, compared it to the name that you heard, and if you got a match then you turned around 
+to see who was calling you. Imagine that we would not be able to use that variable!
 
 The variable {\tt my\_name} stores a word (string of characters). We also use many numerical variables such as
 {\tt seconds\_per\_minute} whose value is 60, {\tt minutes\_per\_hour} whose value is 60 as well, 
@@ -2868,22 +2875,12 @@ Next let's look at logical variables. Those are variables that only can store tw
 {\em True} or {\em False}, and we use a huge number of them. One such example may be {\tt I\_speak\_a\_foreign\_language}.
 For someone this variable has the value {\em False}, for someone it is {\em True}. The important 
 thing is that when someone asks you about that, you do not need to go check the records in the language 
-school -- you just know it. The value is {\em stored}, it does not have to be {\em created}.
+school -- you just know it. The value is {\em stored}, it does not have to be {\em created} each time 
+it is needed.
 
-Before we move on, please:\\
+\subsection{Reading GPS coordinates}
 
-
-
-\begin{center}
-\framebox{
-Switch Karel to Level 3 
-in Settings to use the new functionality presented in this section.}
-\end{center}
-\vspace{4mm}
-
-\subsection{Getting GPS coordinates and printing}
-
-Karel's coolest Christmas present is a new GPS device that allows him to determine his position 
+Karel's coolest Christmas present was a new GPS device that allows him to determine his position 
 in the maze. With it, he will never get lost again! He can retrieve his coordinates at any time via the 
 commands {\tt gpsx} and {\tt gpsy}. He also has a new ability to output results via the {\tt print} 
 command. The usage of these commands is best illustrated using the following short program where 
@@ -2907,8 +2904,30 @@ is 12 tiles. Therefore, while Karel stands in the north-east corner, the output 
 Horizontal position: 14
 Vertical position: 11
 \end{verbatim}
-Try it! Also move Karel to other parts of the maze in Builder and run the program again
+Try it! Also move Karel to other parts of the maze in Build mode and run the program again
 to make yourself familiar with how the GPS device works.
+
+\subsection{Functions returning values}
+
+In Level 3 we can use the reserved word {\tt return} inside the body of
+a function (command) to return a value. For example, the following function 
+{\tt count\_steps} will return the number of steps the robot needed to 
+make in order to reach the closest wall in the direction that he was facing:
+
+\begin{verbatim}
+def count_steps
+  n = zero
+  while not wall
+    go
+    inc(n)
+  return n
+\end{verbatim}
+The function can be then used as follows:
+
+\begin{verbatim}
+num = count_steps
+print "Number of steps:", num 
+\end{verbatim}
 
 \subsection{Creating numerical variables}
 
@@ -3024,36 +3043,70 @@ position is as shown in Fig. \ref{fig:var2}?
 
 \subsection{Exercise H01 - Tape Measure}
 
-{\em Karel stands inside of a rectangle with unknown dimensions. Write a new function {\tt tape\_measure}  
+{\em Karel stands inside of a room (rectangle) with unknown dimensions. Write function {\tt measure}  
 where the robot will determine the width of the rectangle (in the west-east direction) and return it. 
 Then call the function and print the result.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/var3.png}
+\includegraphics[height=0.4\textwidth]{img/h01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is measuring his room.}
-\label{fig:var3}
+\label{fig:h01}
 \vspace{-4mm}
 \end{figure}
 \noindent
 
 \subsection{Exercise H02 - Accounting}
 
-{\em .}
+{\em Karel has an unknown number of gems in his bag. Write a function {\tt accounting} for the 
+robot to count the gems and return their number. Then call the function and print the result.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/var3.png}
+\includegraphics[height=0.4\textwidth]{img/h02.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel is measuring his room.}
-\label{fig:var3}
+\caption{Karel is counting his gems.}
+\label{fig:h02}
 \vspace{-4mm}
 \end{figure}
 \noindent
 
+\subsection{Exercise H03 - Orchard}
+
+{\em Write a function {\tt orchard} for the robot to count apples (gems) in his orchard. There are no walls
+to crash into. After the function is ready, call it and print the result.}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{img/h03.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is counting apples in his orchard.}
+\label{fig:h03}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsection{Exercise H04 - Carpet size}
+
+{\em Karel needs new carpet! Write a function {\tt area} for the robot to calculate 
+the area (number of tiles) of his apartment and return it. After that, call the function 
+and print the result. You can assume that his apartment has a simple shape -- wherever 
+he stands, when he goes north, south, east or west he will always reach exterior wall.}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{img/h04.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is measuring area of his apartment before installing new carpet.}
+\label{fig:h04}
+\vspace{-4mm}
+\end{figure}
+\noindent
 
 \section{Section I - Logic}
 

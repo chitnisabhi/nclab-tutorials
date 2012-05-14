@@ -2836,13 +2836,43 @@ algorithm for the robot to collect all gems from the tree and get home!  }
 \subsection{Objectives} 
  
 \begin{itemize}
-\item Learn to store information in numerical and logical variables.
-\item Learn to work with elementary and more complex logical expressions.
+\item Understand what variables are and that they can have different types.
+\item Learn to work with numerical variables and print results.
+\item Learn to write custom functions that return a value. 
 \end{itemize}
 
 \noindent
-In programming, variables are used to store information for later use. This information can 
-be a number, word, sentence, or simply a {\em True} or {\em False}. \\
+In programming, variables are used to store useful information for later use. This information can 
+be a number, word, sentence, or anything else. 
+
+\subsection{Various types of variables}
+
+All of us are using variables in our lives. One of 
+the first ones is our own name. With a bit of abstraction (and say that your name is "Melissa"), 
+when you were about two years old, you did the following:
+
+\begin{verbatim}
+my_name = "Melissa"
+\end{verbatim}
+Since then, each time someone calls a name, you retrieve in your brain the value of the variable
+{\tt my\_name}, compare it to the name that you hear, and if you get a match then you turn around to see 
+who is calling you. Imagine that we would not be able to use that variable!
+
+The variable {\tt my\_name} stores a word (string of characters). We also use many numerical variables such as
+{\tt seconds\_per\_minute} whose value is 60, {\tt minutes\_per\_hour} whose value is 60 as well, 
+{\tt hours\_per\_day} whose value is 24, and we could go on. The last three variables do not change 
+too often, most likely they will not change during our lives. But we also use variables whose 
+values change, such as {\tt days\_per\_year}, {\tt number\_of\_my\_pets}, etc.
+
+Next let's look at logical variables. Those are variables that only can store two possible values --
+{\em True} or {\em False}, and we use a huge number of them. One such example may be {\tt I\_speak\_a\_foreign\_language}.
+For someone this variable has the value {\em False}, for someone it is {\em True}. The important 
+thing is that when someone asks you about that, you do not need to go check the records in the language 
+school -- you just know it. The value is {\em stored}, it does not have to be {\em created}.
+
+Before we move on, please:\\
+
+
 
 \begin{center}
 \framebox{
@@ -2851,9 +2881,187 @@ in Settings to use the new functionality presented in this section.}
 \end{center}
 \vspace{4mm}
 
-\subsection{GPS device and numerical variables}
+\subsection{Getting GPS coordinates and printing}
 
-Coming soon.
+Karel's coolest Christmas present is a new GPS device that allows him to determine his position 
+in the maze. With it, he will never get lost again! He can retrieve his coordinates at any time via the 
+commands {\tt gpsx} and {\tt gpsy}. He also has a new ability to output results via the {\tt print} 
+command. The usage of these commands is best illustrated using the following short program where 
+Karel determines his coordinates in the maze and prints them:
+
+\begin{verbatim}
+print "Horizontal position:", gpsx
+print "Vertical position:", gpsy
+\end{verbatim}
+The south-west corner of the maze is the origin of the coordinate system and it has 
+coordinates [0, 0]. In other words, if the above program is executed while Karel stands 
+in the south-west corner, the output is
+
+\begin{verbatim}
+Horizontal position: 0
+Vertical position: 0
+\end{verbatim}
+The maze's width (in west-east direction) is 15 tiles, and its height (in south-north direction) 
+is 12 tiles. Therefore, while Karel stands in the north-east corner, the output of the program is
+\begin{verbatim}
+Horizontal position: 14
+Vertical position: 11
+\end{verbatim}
+Try it! Also move Karel to other parts of the maze in Builder and run the program again
+to make yourself familiar with how the GPS device works.
+
+\subsection{Creating numerical variables}
+
+In Karel, numerical variables can be created in four different ways: 
+\begin{enumerate}
+\item By setting them to zero. For example, new variable {\tt a} is created and set to zero by typing 
+\begin{verbatim}
+a = zero
+\end{verbatim}
+\item By setting them to {\tt gpsx}. For example, new variable {\tt var} is created and set to {\tt gpsx} by typing
+\begin{verbatim}
+var = gpsx
+\end{verbatim}
+\item By setting them to {\tt gpsy}. For example, new variable {\tt pos1} is created and set to {\tt gpsy} by typing
+\begin{verbatim}
+pos1 = gpsy
+\end{verbatim}
+\item Initialize them with an existing value. For example, if we already have a variable {\tt var1}, then a new variable 
+{\tt var2} can be created as follows:
+\begin{verbatim}
+var2 = var1
+\end{verbatim}
+\end{enumerate}
+
+\subsection{Changing values of numerical variables}
+
+The value of a numerical variable can be updated at any time by redefining it via 
+one of the four options described in the previous paragraph. For example, let's say that 
+Karel stands as shown in Fig. \ref{fig:var1}.
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{img/variables1.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel's initial position.}
+\label{fig:var1}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+The program
+
+\begin{verbatim}
+a = gpsx
+print "Start position:", a
+repeat 5
+  go
+a = gpsx 
+print "End position:", a
+\end{verbatim}
+will produce the following output:
+
+\begin{verbatim}
+Start position: 5
+End position: 10
+\end{verbatim}
+Another way to change the value of a numerical variable is to increase it by one or 
+decrease it by one via the functions {\tt inc()} and 
+{\tt dec()}, respectively. Consider again Karel's initial position as shown 
+in Fig. \ref{fig:var1}. Then the code
+
+\begin{verbatim}
+a = zero
+while not wall
+  go
+  inc(a)
+print "Went", a, "steps before reaching a wall."
+\end{verbatim}
+will have the following output:
+
+\begin{verbatim}
+Went 7 steps before reaching a wall.
+\end{verbatim}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item What are {\em variables} used for in programming? 
+\begin{enumerate}
+\item[A1] To generate random data.
+\item[A2] To make programs shorter.
+\item[A3] To store useful information.
+\item[A4] To create variable mazes.
+\end{enumerate}
+\item Let's introduce a variable {\tt my\_age} that stores your age in years.
+      This variable is:
+\begin{enumerate}
+\item[A1] Numerical.
+\item[A2] Logical.
+\item[A3] Both numerical and logical.
+\item[A4] Neither numerical nor logical.
+\end{enumerate}
+\item What values will the variables {\tt gpsx} and {\tt gpsy} have when Karel's
+position is as shown in Fig. \ref{fig:var2}?
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{img/variables2.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is reading his GPS device again..}
+\label{fig:var2}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+\begin{enumerate}
+\item[A1] {\tt gpsx} is 7 and {\tt gpsy} is 12.
+\item[A2] {\tt gpsx} is 8 and {\tt gpsy} is 0.
+\item[A3] {\tt gpsx} is 8 and {\tt gpsy} is 12.
+\item[A4] {\tt gpsx} is 7 and {\tt gpsy} is 11.
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Exercise H01 - Tape Measure}
+
+{\em Karel stands inside of a rectangle with unknown dimensions. Write a new function {\tt tape\_measure}  
+where the robot will determine the width of the rectangle (in the west-east direction) and return it. 
+Then call the function and print the result.}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{img/var3.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is measuring his room.}
+\label{fig:var3}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsection{Exercise H02 - Accounting}
+
+{\em .}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{img/var3.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is measuring his room.}
+\label{fig:var3}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+
+\section{Section I - Logic}
+
+\subsection{Objectives} 
+ 
+\begin{itemize}
+\item Learn to work with elementary and more complex logical expressions.
+\end{itemize}
 
 \subsection{Logical expressions}
 Logical expressions are expressions that can be answered with either {\em True} or 
@@ -2930,13 +3138,6 @@ We also use the logical operation {\em not} with the following property:\\
 \subsection{Review questions}
 
 \begin{enumerate}
-\item What are {\em variables} used for in programming? 
-\begin{enumerate}
-\item[A1] To generate random data.
-\item[A2] To make programs shorter.
-\item[A3] To store information for later use.
-\item[A4] To create variable mazes.
-\end{enumerate}
 \item What is a {\em logical expression}? 
 \begin{enumerate}
 \item[A1] Expression that makes sense.
@@ -2960,13 +3161,13 @@ We also use the logical operation {\em not} with the following property:\\
 \end{enumerate}
 \end{enumerate}
 
-\subsection{Exercise H01 - Numerology I}
+\subsection{Exercise I01 - Numerology I}
 
 {\em Each 3x5 box contains an integer number between 0 and 9. The numbers are not known to Karel a-priori. He needs to enter each box and recognize the number in it. Let's call this number N. When he leaves the box, he needs to create a pile of N gems. The task finishes when this is done for all boxes and the robot gets home.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/h01.png}
+\includegraphics[height=0.4\textwidth]{img/i01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel decided to learn numbers after all.}
@@ -2976,7 +3177,7 @@ We also use the logical operation {\em not} with the following property:\\
 \noindent
 \newpage
 
-\subsection{Exercise H02 - Numerology II}
+\subsection{Exercise I02 - Numerology II}
 
 {\em There is a pile of N gems before the entrance to each box. It is known that N is between zero and 9. 
 Karel needs to enter each box and render the number N. The task finishes when this is done and the robot 
@@ -2984,7 +3185,7 @@ gets home.}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/h02.png}
+\includegraphics[height=0.4\textwidth]{img/i02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is learning to render numbers.}
@@ -2993,7 +3194,7 @@ gets home.}\\[-7mm]
 \end{figure}
 \noindent
 
-\subsection{Exercise H03 - Numerology III}
+\subsection{Exercise I03 - Numerology III}
 
 {\em The boxes contain randomly generated numbers between 0 and 9. Your task is to teach Karel how to 
 add them together, and render the result into the double-box below. Use the functionality developed
@@ -3002,7 +3203,7 @@ in the previous two tasks!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/h03.png}
+\includegraphics[height=0.4\textwidth]{img/i03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is adding randomly generated numbers.}
@@ -3012,13 +3213,13 @@ in the previous two tasks!}\\[-7mm]
 \noindent
 \newpage
 
-\subsection{\ \ Exercise H04 - Eight Queens}
+\subsection{\ \ Exercise I04 - Eight Queens}
 
 {\em Karel stands on an 8 x 8 chess board along with eight queens (the gems). Recall that a chess queen dominates its row, its column, as well as both diagonals that pass through her position. Nothing may stand in these fields or she will destroy it. Currently, some queens are threatening each other. Write a program for Karel to correct the positions of the queens in such a way that none of them is threatened. Your program should be able to do it for any initial distribution of the queens. Enter the home after you are finished.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/h04.png}
+\includegraphics[height=0.4\textwidth]{img/i04.png}
 \end{center}
 \vspace{-4mm}
 \caption{The famous eight queens problem.}
@@ -3027,14 +3228,14 @@ in the previous two tasks!}\\[-7mm]
 \end{figure}
 \noindent
 
-\subsection{\ \ Exercise H05 - BubbleSort}
+\subsection{\ \ Exercise I05 - BubbleSort}
 
 {\em Karel stands in front of four piles of gems, let's enumerate them by 1, 2, 3 and 4. He does not know how many gems are in each pile. All he knows is that each pile contains between 1 and 4 gems, and that two or more piles can be equally large. Sort the piles in such a way that the smallest pile is on the left and the largest on the right. Use the BubbleSort algorithm: Implement a function that switches two adjacent piles if the one on the right has fewer gems than the one on the left. Apply this function to piles 1 and 2, then to piles 2 and 3, then to piles 3 and 4. Now it is certain that the largest number is on the right-most position! Next, do the same for just the first three piles. Last, apply the function to piles 1 and 2, and you are done! }
 
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/h05.png}
+\includegraphics[height=0.4\textwidth]{img/i05.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is sorting four piles of gems.}

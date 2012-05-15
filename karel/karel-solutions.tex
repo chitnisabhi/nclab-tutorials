@@ -940,7 +940,7 @@ def addlayer
     
 addlayer\end{verbatim}
 
-\subsection{G03 - Diamond Tree}
+\subsection{G02 - Diamond Tree}
 
 \begin{verbatim}
 # Turn back.
@@ -1044,7 +1044,89 @@ rangle
 aaa
 \end{verbatim}
 
-\subsection{H01 - Numerology I}
+\subsection{H01 - Tape Measure}
+
+\begin{verbatim}
+def measure
+  # Go to the west wall
+  # and turn east:
+  while not north
+    left
+  left
+  while not wall
+    go
+  repeat 2
+    left
+  # Start measuring:
+  len = zero
+  while not wall
+    inc(len)
+    go
+  return len
+  
+l = measure
+print "Width of the room is", l
+\end{verbatim}
+
+\subsection{H02 - Accounting}
+
+\begin{verbatim}
+def accounting
+  num = zero
+  while not empty
+    put
+    inc(num)
+  return num
+
+n = accounting
+print "I have", n, "gems in the bag."
+\end{verbatim}
+
+
+\subsection{H03 - Orchard}
+
+\begin{verbatim}
+def orchard
+  num = zero
+  repeat 6
+    # Check the tile you stand on:
+    while gem
+      inc(num)
+    # Check the rest of the row:
+    while not wall
+      go
+      while gem
+        inc(num)
+    # Move to next row and turn back:
+    left
+    if not wall
+      go
+    left
+    # Check the tile you stand on:
+    while gem
+      inc(num)
+    # Check the rest of the row:
+    while not wall
+      go
+      while gem
+        inc(num)
+    # Move to next row and turn back:
+    right
+    if not wall
+      go
+    right
+
+n = orchard
+print "There are", n, "apples in the orchard."
+\end{verbatim}
+
+
+\subsection{H04 - Carpet size}
+
+Coming soon.
+
+
+\subsection{I01 - Numerology I}
 
 \begin{verbatim}
 # The algorithm below assumes a coordinate
@@ -1072,7 +1154,7 @@ aaa
 #           Else ... 5
 \end{verbatim}
 
-\subsection{H02 - Numerology II}
+\subsection{I02 - Numerology II}
 
 \begin{verbatim}
 # We will use the same coordinate
@@ -1106,7 +1188,7 @@ aaa
 #   Put gem at (1, 2)
 \end{verbatim}
 
-\subsection{H03 - Numerology III}
+\subsection{I03 - Numerology III}
 
 \begin{verbatim}
 # Hints:

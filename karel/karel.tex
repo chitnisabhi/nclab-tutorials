@@ -3032,7 +3032,7 @@ Went 7 steps before reaching a wall.
 \item[A3] To store useful information.
 \item[A4] To create variable mazes.
 \end{enumerate}
-\item What values will the variables {\tt gpsx} and {\tt gpsy} have when Karel's
+\item What values do the variables {\tt gpsx} and {\tt gpsy} have when Karel's
 position is as shown in Fig. \ref{fig:var2}?
 \newpage
 \begin{figure}[!ht]
@@ -3052,37 +3052,49 @@ position is as shown in Fig. \ref{fig:var2}?
 \item[A3] {\tt gpsx} is 8 and {\tt gpsy} is 12.
 \item[A4] {\tt gpsx} is 7 and {\tt gpsy} is 11.
 \end{enumerate}
-\item Which of the following four programs is invalid?
+\item What values will the variables {\tt gpsx} and {\tt gpsy} have after
+Karel executes the following program? He starts from the position shown 
+in Fig. \ref{fig:var2} again.
+\begin{verbatim}
+repeat 5
+  while not wall
+    go
+    if gem
+      get
+  left
+\end{verbatim}
 \begin{enumerate}
-\item[A1] {\tt a = gpsx}
-\item[A2] {\tt a = gpsy}
-\item[A3] {\tt a = zero}
-\item[A4] {\tt a = 7}
+\item[A1] {\tt gpsx} is 7 and {\tt gpsy} is 7.
+\item[A2] {\tt gpsx} is 0 and {\tt gpsy} is 10.
+\item[A3] {\tt gpsx} is 9 and {\tt gpsy} is 7.
+\item[A4] {\tt gpsx} is 9 and {\tt gpsy} is 11.
 \end{enumerate}
-\item Which of the following four programs is invalid?
+
+\item Which of the following four programs is/are invalid?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
-var1 = zero
-var2 = var1 + 1
+a = gpsx
+inc(a)
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
-var1 = gpsx
-var2 = inc(var1)
+b = 7
+dec(b)
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
-var1 = gpsy
-var2 = dec(var1)
+c = zero
+d = inc(c)
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
-var1 = zero
-var1 = gpsx
+e = zero
+e = gpsx
+e = gpsy
 \end{verbatim}
 \end{enumerate}
-\item Which of the following four programs is invalid?
+\item Which of the following four programs is/are invalid?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -3104,7 +3116,7 @@ def count_steps
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
-proc count_steps
+def count_steps
   n = zero
   while not wall
     go
@@ -3128,6 +3140,7 @@ proc count_steps
 where the robot will determine the width of the rectangle (in the west-east direction) and return it. 
 Then call the procedure and print the result.}
 
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/h01.png}
@@ -3135,9 +3148,8 @@ Then call the procedure and print the result.}
 \vspace{-4mm}
 \caption{Karel is measuring his room.}
 \label{fig:h01}
-\vspace{-10mm}
+\vspace{-4mm}
 \end{figure}
-\newpage
 \noindent
 
 \subsection{Exercise H02 - Accounting}
@@ -3158,7 +3170,9 @@ robot to count the gems and return their number. Then call the procedure and pri
 
 \subsection{\ \ Exercise H03 - Orchard}
 
-{\em Write a procedure {\tt orchard} for the robot to count apples (gems) in his orchard. There are no walls
+{\em Write a procedure {\tt orchard} for the robot to count apples (gems) in his orchard. The position of 
+trees as well as the number of apples per tree are random. The initial position of the robot is 
+in the south-west corner, facing east. There are no walls
 to crash into. After the procedure is ready, call it and print the result.}
 
 \begin{figure}[!ht]
@@ -3176,9 +3190,10 @@ to crash into. After the procedure is ready, call it and print the result.}
 
 {\em Karel needs new carpet! Write a procedure {\tt carpet} for the robot to calculate 
 the area (number of tiles) of his apartment and return it. After that, call the procedure 
-and print the result. You can assume that his apartment has a simple shape -- wherever 
-he stands, when he goes north, south, east or west he will always reach exterior wall.}
-
+and print the result. His apartment is random but it has a simple shape -- wherever 
+the robot stands, when he goes north, south, east or west he will always reach exterior wall.
+The initial position of the robot is at the west wall of the bottom row, facing east.}
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/h04.png}
@@ -3304,44 +3319,46 @@ We also use the logical operation {\em not} with the following property:\\
 \end{enumerate}
 \end{enumerate}
 
-\subsection{Exercise I01 - Numerology I}
+\subsection{Exercise I01 - Reading numbers}
 
-{\em Each 3x5 box contains an integer number between 0 and 9. The numbers are not known to Karel a-priori. He needs to enter each box and recognize the number in it. Let's call this number N. When he leaves the box, he needs to create a pile of N gems. The task finishes when this is done for all boxes and the robot gets home.}
+{\em Each 3x5 box contains a random integer number between 0 and 9. Write a procedure "readnumber" 
+where Karel enters a box, determines the number in it, and returns it. Initial position of the 
+robot is at the entrance of the box, facing north. Then use this procedure to determine the numbers 
+in the three boxes as shown in the screenshot. }
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/i01.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel decided to learn numbers after all.}
+\caption{Karel is learning to recognize numbers.}
 \label{fig:g10}
 \vspace{-4mm}
 \end{figure}
 \noindent
 \newpage
 
-\subsection{Exercise I02 - Numerology II}
+\subsection{Exercise I02 - Writing numbers}
 
-{\em There is a pile of N gems before the entrance to each box. It is known that N is between zero and 9. 
-Karel needs to enter each box and render the number N. The task finishes when this is done and the robot 
-gets home.}\\[-7mm]
+{\em There is a pile of gems at the entrance of each box. The number of gems in each pile is random between 0 and 9. Write a procedure "writenumber" where Karel counts the gems in the pile, enters the box, and renders the number. Then use the procedure to render numbers in three boxes as shown in the screenshot. }\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/i02.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel is learning to render numbers.}
+\caption{Karel is learning to write numbers.}
 \label{fig:g11}
 \vspace{-10mm}
 \end{figure}
 \noindent
 
-\subsection{Exercise I03 - Numerology III}
+\subsection{Exercise I03 - Adding Numbers}
 
-{\em The boxes contain randomly generated numbers between 0 and 9. Your task is to teach Karel how to 
-add them together, and render the result into the double-box below. Use the functionality developed
-in the previous two tasks!}\\[-7mm]
+{\em The two upper boxes contain randomly generated numbers between 0 and 9. Karel stands at the entrance of the first box,
+facing north. Write a function {\tt addnumbers} where Karel will enter each box, determine the number in it,
+and then add the numbers together and return the result. Also render the result in the double-box below. 
+Use the functionality developed in the previous two tasks!}\\[-7mm]
 
 
 \begin{figure}[!ht]
@@ -3354,12 +3371,12 @@ in the previous two tasks!}\\[-7mm]
 %\vspace{-10mm}
 \end{figure}
 \noindent
-\newpage
 
 \subsection{\ \ Exercise I04 - Eight Queens}
 
-{\em Karel stands on an 8 x 8 chess board along with eight queens (the gems). Recall that a chess queen dominates its row, its column, as well as both diagonals that pass through her position. Nothing may stand in these fields or she will destroy it. Currently, some queens are threatening each other. Write a program for Karel to correct the positions of the queens in such a way that none of them is threatened. Your program should be able to do it for any initial distribution of the queens. Enter the home after you are finished.}
+{\em Karel stands on an 8 x 8 chess board along with eight queens (the gems). Recall that a chess queen dominates its row, its column, as well as both diagonals that pass through her position. Nothing may stand in these fields or she will destroy it. Currently, some queens are threatening each other. Write a program for Karel to correct the positions of the queens in such a way that none of them is threatened. Your program should be able to do it for any initial distribution of the queens. }
 
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/i04.png}
@@ -3373,15 +3390,16 @@ in the previous two tasks!}\\[-7mm]
 
 \subsection{\ \ Exercise I05 - BubbleSort}
 
-{\em Karel stands in front of four piles of gems, let's enumerate them by 1, 2, 3 and 4. He does not know how many gems are in each pile. All he knows is that each pile contains between 1 and 4 gems, and that two or more piles can be equally large. Sort the piles in such a way that the smallest pile is on the left and the largest on the right. Use the BubbleSort algorithm: Implement a procedure that switches two adjacent piles if the one on the right has fewer gems than the one on the left. Apply this procedure to piles 1 and 2, then to piles 2 and 3, then to piles 3 and 4. Now it is certain that the largest number is on the right-most position! Next, do the same for just the first three piles. Last, apply the procedure to piles 1 and 2, and you are done! }
-
+{\em Karel stands in front of 9 piles of gems, containing randomly between 1 and 9 gems. Two or more piles can 
+be equally large. Sort the piles in such a way that the smallest pile is on the left and the largest on the 
+right. Use the BubbleSort algorithm.}
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/i05.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel is sorting four piles of gems.}
+\caption{BubbleSort algorithm.}
 \label{fig:g13}
 \vspace{-4mm}
 \end{figure}
@@ -3409,7 +3427,8 @@ in NCLab for you. We would also recommend that you learn Javascript since this
 is the most popular language for web development. Depending on your 
 other hobbies or interests, C++ or even Fortran might be interesting. 
 In any case, the NCLab Team wishes you good luck, and keep us in your 
-favorite bookmarks! \hfill{} Your NCLab Team
+favorite bookmarks! \\
+\hbox{} \hfill{} Your NCLab Team
 
 
 

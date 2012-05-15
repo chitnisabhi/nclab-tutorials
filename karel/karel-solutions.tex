@@ -675,115 +675,87 @@ while not home
   left
 \end{verbatim}
 
-\subsection{F11 - The Matrix (Ver. 1)}
+\subsection{F11 - The Matrix}
 
 \begin{verbatim}
-# Go forward till you reach wall,
-# collect gems on the way.
-def get_till_wall
-  while not wall
+# Pick up 15 gems:
+def get15
+  if gem
+    get
+  repeat 14
     go
     if gem
       get
-  
-def there_and_back
-  repeat 2
+      
+# Pick up 11 gems:
+def get11
+  if gem
+    get
+  repeat 10
     go
-  right
-  get_till_wall
+    if gem
+      get
+      
+# Left turn:
+def leftturn
   left
   go
-  if gem
+  if gem 
     get
   go
-  if gem
-    get
   left
-  get_till_wall
+  
+# Right turn:
+def rightturn
   right
-  
-repeat 4
-  get_till_wall
+  go
+  if gem 
+    get
+  go
   right
+
+# Clear two columns:
+def clear2columns
+  get11
+  leftturn
+  get11
+  rightturn
+
+# Clear two rows:
+def clear2rows
+  get15
+  leftturn
+  get15
+  rightturn
   
-repeat 3
-  there_and_back  
-  
-go
-go
+# Get to initial position:     
 right
+go
 
-repeat 2
-  there_and_back  
+# First clear all vertical aisles:
+repeat 3
+  clear2columns
+get11
+leftturn
+get11
 
-repeat 2
-  left
-while not wall
-  go
+# Get in position to clear horizontal
+# aisles:
 left
-while not home
-  while not wall
-    go
-  left
-\end{verbatim}
 
-\subsection{F11 - The Matrix (Ver. 2)}
-
-\begin{verbatim}
-# Go forward till you reach wall,
-# collect gems on the way.
-def get_till_wall
-  while not wall
-    if gem
-      get
-    go
-    if gem
-      get
-  
-def there_and_back
-  go 
-  right
-  get_till_wall
-  left
-  go
-  if gem
-    get
-  go
-  if gem
-    get
-  left
-  get_till_wall
-  right
-  if not wall
-    go
-  if gem
-    get
-  
-# Clean vertical aisles.
-repeat 4
-  there_and_back  
-
-# Go through the corner.
-right
-go
-if gem
-  get
-
-# Clean horizontal aisles.
+# Clear all horizontal aisles:
 repeat 2
-  there_and_back  
-  
-# The rest.
-go
-repeat 3
-  right
-  get_till_wall
-repeat 2
-  left
+  clear2rows
+get15
+leftturn
+get15
+
+# Get ready to return home:
+left
+
+# Go home:
 while not home
-  while not wall
-    go
-  left
+  go
 \end{verbatim}
 
 \subsection{F12 - Escape from Alcatraz}

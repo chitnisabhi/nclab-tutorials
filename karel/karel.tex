@@ -63,52 +63,88 @@
 \def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
 
 % TO INPUT BACKGROUND IMAGE
-\usepackage{eso-pic}
-\newcommand\BackgroundPic{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight]{img/karel-frontpage.png}
-%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
-\vfill
-}}}
+%\usepackage{eso-pic}
+%\newcommand\BackgroundPic{
+%\put(0,0){
+%\parbox[b][\paperheight]{\paperwidth}{
+%\vfill
+%\centering
+%\includegraphics[width=\paperwidth,height=\paperheight]{img/karel-frontpage.png}
+%%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
+%\vfill
+%}}}
 
 \begin{document}
 
 % INPUTTING BACKGROUND IMAGE
-\AddToShipoutPicture{\BackgroundPic}
-\vbox{}
-\pagestyle{empty}
-\newpage
-\textwidth=15.5cm
-\ClearShipoutPicture
-\newpage
+%\AddToShipoutPicture{\BackgroundPic}
+%\vbox{}
+%\pagestyle{empty}
+%\newpage
+%\textwidth=15.5cm
+%\ClearShipoutPicture
+%\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/NCLab-Programming-1.png}
+\end{center}
+\end{figure}
+
+\vspace{1.5cm}
+
+\begin{center}
+{\huge \bf First Course in Programming}
+\end{center}
+
+\begin{figure}[!ht]
+\begin{center}
+\vspace{-6mm}
+\includegraphics[width=0.4\textwidth]{img/karel-logo.png}
+\vbox{}
+\vspace{-9mm}
+\end{center}
+\end{figure}
+\begin{center}
+{\huge \bf with Karel the Robot}
+\end{center}
+\vbox{}
+\vfill
+\begin{center}
+This textbook is part of the online course {\em Intro to Programming with NCLab},
+available at {\tt introtoprogramming.net}. Any use of this textbook without current subscription 
+to this online course is strictly prohibited. Copyright 2012 FEMhub Inc. All rights reserved.
+\end{center}
+\newpage
+\noindent
+
+\newpage
+\pagestyle{empty}
 \section*{}
 \small
-\input ../common/aboutnclab.tex
-
-\subsection*{NCLab's Karel vs. the Original Version}
-This publication features {\em Karel the Robot}, a programming language 
-designed by Richard E. Pattis. Compared to the original version that
-appeared in the 1980s and was strongly influenced by Pascal, the NCLab 
-version is closer to Python.
-There are some other differences as well that make Karel in NCLab easier to use 
-for kids -- Karel collects gems instead of beepers, he has a home in the 
-maze, and he uses commands that are much easier for kids to understand
-and type. For example, {\tt pickbeeper} was replaced with {\tt get}, 
-{\tt front-is-clear} was replaced with {\tt wall}, etc. We also introduced
-a new command {\tt right} so that Karel acts more like a standard robot 
-(in the original version of the language, where he only knew how to turn 
-{\tt left}, he was swirling like a little tornado while solving more complex tasks).
-Python colons following every command are omitted in the NCLab's version 
-because using the SHIFT key was causing difficulties to 5 years old programmers. 
-NCLab's Karel has a manual mode and three programming levels. Levels 1 and 2  
-correspond to the Pattis' book. Level 3 brings a GPS device and the concept of 
-variables. 
+%\input ../common/aboutnclab.tex
+%
+%\subsection*{NCLab's Karel vs. the Original Version}
+%This publication features {\em Karel the Robot}, a programming language 
+%designed by Richard E. Pattis. Compared to the original version that
+%appeared in the 1980s and was strongly influenced by Pascal, the NCLab 
+%version is closer to Python.
+%There are some other differences as well that make Karel in NCLab easier to use 
+%for kids -- Karel collects gems instead of beepers, he has a home in the 
+%maze, and he uses commands that are much easier for kids to understand
+%and type. For example, {\tt pickbeeper} was replaced with {\tt get}, 
+%{\tt front-is-clear} was replaced with {\tt wall}, etc. We also introduced
+%a new command {\tt right} so that Karel acts more like a standard robot 
+%(in the original version of the language, where he only knew how to turn 
+%{\tt left}, he was swirling like a little tornado while solving more complex tasks).
+%Python colons following every command are omitted in the NCLab's version 
+%because using the SHIFT key was causing difficulties to 5 years old programmers. 
+%NCLab's Karel has a manual mode and three programming levels. Levels 1 and 2  
+%correspond to the Pattis' book. Level 3 brings a GPS device and the concept of 
+%variables. 
 
 \normalsize
 
@@ -136,13 +172,11 @@ variables.
 \end{itemize}
 This course will teach you principles of modern algorithmic design and  
 computer programming with the help of an interactive graphical application 
-{\em Karel the Robot} in NCLab. Taking this course will make it much easier 
+{\em Karel the Robot}. Taking this course will make it much easier 
 for you to learn Python, C, C++ and other advanced programming languages. In particular we 
 recommend that after Karel you continue with Python, a powerful programming 
 language that is used across all science and engineering areas, and yet it is 
-technically simpler to handle than C or C++. The textbook
-{\em Python Programming for Beginners} is available in PDF via the link 
-"Tutorials and Videos" on NCLab home page.
+technically simpler to handle than C or C++. 
 
 \subsection{Brief history}
 
@@ -321,24 +355,6 @@ answers may be correct.
 \end{enumerate}
 \end{enumerate}
 
-%\section{Exploring NCLab}
-%
-%\subsection{Objectives} 
-%
-%\begin{itemize}
-%\item Get acquainted with NCLab.
-%\end{itemize}
-%Before beginning this course, we invite you to create an account in 
-%NCLab, log in, and take a while to explore the many activities 
-%that NCLab offers. A great companion reading is {\em Intro to NCLab - Part I 
-%(Meet the Cloud)} that is available in PDF via the link "Tutorials and Videos"
-%on NCLab home page {\tt http://nclab.com}.
-%
-%\subsection{Review questions}
-%
-%Review questions for this Section are located in the document {\em Intro to NCLab - Part I 
-%(Meet the Cloud)}.
-
 \section{Launching Karel}
 
 \subsection{Objectives} 
@@ -375,7 +391,7 @@ work area on the left, maze on the right, and status bar on the bottom.
 The menus are fairly intuitive, so let us just explain a few selected 
 functions, starting with the {\em File} menu:
 
-{\em Open} will open a file from your NCLab account (not from your hard disk). {\em New} will generate a new random maze.
+{\em Open} will open a file from your account (not from your hard disk). {\em New} will generate a new random maze.
 {\em Clone} will copy a Displayed Project into your account (to be discussed in Paragraph \ref{cloning}). 
 {\em Display} will submit your project for review. If you think that 
       other users would find your program or game interesting, this is the way to make it 
@@ -1436,7 +1452,7 @@ This is a Heading
 \end{enumerate}
 \item What do we need to do in order to erase all text from an input cell?
 \begin{enumerate}
-\item[A1] Close Karel, logout from NCLab and login again. 
+\item[A1] Close Karel, logout, and login again. 
 \item[A2] Restart Karel.
 \item[A3] Remove the input cell and add a new one in its place.
 \item[A4] Click on {\em clear} under the input cell.
@@ -3416,17 +3432,17 @@ right. Use the BubbleSort algorithm.}
 
 Congratulations on making it to the end of the tutorial! We hope that you
 enjoyed it. If you can think of any ways to improve the application 
-Karel the Robot in NCLab or this tutorial, please let us know. If you 
+Karel the Robot or this tutorial, please let us know. If you 
 have an interesting game for Karel, please let us know as well. 
 
 Although you may feel like an Almighty Programmer right now, we would
 recommend staying humble. Even the most experienced programmers are
 learning new things all the time. If you enjoy programming, your next 
-language to learn may be Python. We have a Python Programming tutorial
-in NCLab for you. We would also recommend that you learn Javascript since this 
+language to learn may be Python. We would also recommend that you 
+learn Javascript since this 
 is the most popular language for web development. Depending on your 
 other hobbies or interests, C++ or even Fortran might be interesting. 
-In any case, the NCLab Team wishes you good luck, and keep us in your 
+In any case, our team wishes you good luck, and keep us in your 
 favorite bookmarks! \\
 \hbox{} \hfill{} Your NCLab Team
 

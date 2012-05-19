@@ -62,49 +62,56 @@
 
 \def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
 
-% TO INPUT BACKGROUND IMAGE
-\usepackage{eso-pic}
-\newcommand\BackgroundPic{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight]{img/karel-sol-frontpage.png}
-%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
-\vfill
-}}}
+
 
 \begin{document}
 
-% INPUTTING BACKGROUND IMAGE
-\AddToShipoutPicture{\BackgroundPic}
-\vbox{}
-\pagestyle{empty}
-\newpage
-\textwidth=15.5cm
-\ClearShipoutPicture
-\newpage
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\pagestyle{empty}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/NCLab-Programming-1.png}
+\end{center}
+\end{figure}
+
+\vspace{1.5cm}
+
+\begin{center}
+{\huge \bf Karel the Robot}
+\end{center}
+
+\begin{figure}[!ht]
+\begin{center}
+\vspace{-6mm}
+\includegraphics[width=0.4\textwidth]{img/karel-logo.png}
+\vbox{}
+\vspace{-9mm}
+\end{center}
+\end{figure}
+\begin{center}
+{\huge \bf Solution Manual}
+\end{center}
+\vbox{}
+\vfill
+\begin{center}
+This Solution Manual is part of the online course {\em Intro to Programming with NCLab},
+available at {\tt introtoprogramming.net}. Any use of this Solution Manual without current subscription 
+to {\em Intro to Programming with NCLab} is prohibited. \\
+Copyright 2012 FEMhub Inc. All rights reserved.
+\end{center}
+\newpage
+\noindent
+
+\newpage
+\pagestyle{empty}
+
+
 \section*{}
 \small
-\input ../common/aboutnclab.tex
-
-\subsection*{NCLab's Karel vs. the Original Version}
-This publication features {\em Karel the Robot}, a programming language 
-designed by Richard E. Pattis. Compared to its original version that was
-strongly influenced by Pascal, the NCLab version is closer to Python.
-There are some other differences as well that make Karel in NCLab easier to use 
-for kids -- Karel collects gems instead of beepers, he has a home in the 
-maze, and he uses commands that are much easier for kids to understand
-and type. For example, {\tt pickbeeper} was replaced with {\tt get}, 
-{\tt front-is-clear} was replaced with {\tt wall}, etc. Python 
-colons following every command are omitted because using the SHIFT key 
-was causing difficulties to some 5 years old programmers.
-Otherwise we have not changed Pattis' original ideas and all functionality 
-covered in Pattis' book is available in the Basic Version of the Programming
-module free of charge. 
 
 \normalsize
 

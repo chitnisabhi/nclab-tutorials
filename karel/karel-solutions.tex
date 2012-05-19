@@ -918,7 +918,38 @@ def ariadnes_thread
 ariadnes_thread
 \end{verbatim}
 
-\subsection{G01 - Homage to Lemmings}
+\subsection{G01 - Speleologist}
+
+\begin{verbatim}
+# Descend one step, explore the rest,
+# and return:
+def explore
+  if not wall
+    go
+    right
+    if not wall
+      go
+      left
+      explore
+      right
+      go
+      left
+      go
+    else
+      right
+      go
+  else 
+    repeat 2
+      left
+      go
+    
+# Explore cave and return home:
+explore
+while not home
+  go
+\end{verbatim}
+
+\subsection{G02 - Homage to Lemmings}
 
 \begin{verbatim}
 # Turn back.
@@ -945,9 +976,10 @@ def addlayer
     right
     addlayer
     
-addlayer\end{verbatim}
+addlayer
+\end{verbatim}
 
-\subsection{G02 - Diamond Tree}
+\subsection{G03 - Diamond Tree}
 
 \begin{verbatim}
 # Turn back.
@@ -1043,12 +1075,6 @@ climb_tree
 # Go home.
 right
 rangle
-\end{verbatim}
-
-\subsection{G03 - Sweep Maze}
-
-\begin{verbatim}
-aaa
 \end{verbatim}
 
 \subsection{H01 - Tape Measure}

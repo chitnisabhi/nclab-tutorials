@@ -2508,7 +2508,7 @@ and that it does not contain any loops.}\\[-7mm]
 \vspace{-4mm}
 \caption{Maze of king Minos, home of the beast Minotaurus.}
 \label{fig:f14}
-\vspace{-10mm}
+\vspace{-4mm}
 \end{figure}
 \noindent
 
@@ -2554,7 +2554,6 @@ reach_wall
 \end{verbatim}
 Imagine that the initial position of the robot is like in Fig. \ref{fig:rec1}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2602,9 +2601,8 @@ he makes a second step forward. His new position is shown in Fig. \ref{fig:rec3}
 \vspace{-4mm}
 \caption{Robot's position after the second {\tt if not wall} condition passes and he makes a second step forward.}
 \label{fig:rec3}
-\vspace{-10mm}
+\vspace{-4mm}
 \end{figure}
-\newpage
 \noindent
 Next the robot executes the third {\tt reach\_wall} command. Again we can imagine that the command 
 is replaced with its own body. The corresponding program would look as follows:
@@ -2813,56 +2811,70 @@ def turn_north
 
 \end{enumerate}
 
-\subsection{Exercise G01 - Homage to Lemmings}
+\subsection{Exercise G01 - Speleologist}
 
-{\em  Karel has many gems in his bag, and he needs to build a heap shown in Fig. \ref{fig:g01} before he can 
-enter his home. Use recursion. }
-
+{\em Karel stands at the entrance to a cave and wants to explore it. Write a recursive program for the robot to descend the staircase to the bottom, return back, and enter his home! The number of steps in the staircase is random.   }
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/g01.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel needs to build a heap of gems before he can get home.}
+\caption{Karel became a speleologist.}
 \label{fig:g01}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 
-\subsection{Exercise G02 - Diamond Tree}
+\subsection{Exercise G02 - Homage to Lemmings}
 
-{\em Karel stands under a diamond tree, with his home next to him on the the right. 
-The tree is random -- at any point it can have 
-a branch in the north-west or in the north-east direction (or in both). Write a recursive 
-algorithm for the robot to collect all gems from the tree and get home!  }
-\newpage
+{\em  Karel has many gems in his bag, and he needs to build a heap shown in Fig. \ref{fig:g02} before he can 
+enter his home. Use recursion. }
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/g02.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel is climbing a diamond tree.}
+\caption{Karel needs to build a heap of gems before he can get home.}
 \label{fig:g02}
-\vspace{-4mm}
+%\vspace{-1cm}
 \end{figure}
 \noindent
 
-\subsection{Exercise G03 - Maze Sweep}
+\subsection{Exercise G03 - Diamond Tree}
 
-{\em Karel's home is at an unknown location in the maze. Write a recursive program for the robot to search the maze till he finds it! }
-
+{\em Karel stands under a diamond tree, with his home next to him on the the right. 
+The tree is random -- at any point it can have 
+a branch in the north-west or in the north-east direction (or in both). Write a recursive 
+algorithm for the robot to collect all gems from the tree and get home!  }
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{img/g03.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel is sweeping the maze, looking for his home.}
+\caption{Karel is traversing a random diamond tree.}
 \label{fig:g03}
-%\vspace{-1cm}
+\vspace{-4mm}
 \end{figure}
 \noindent
+
+%\subsection{Exercise G03 - Maze Sweep}
+%
+%{\em Karel's home is at an unknown location in the maze. Write a recursive program for the robot to search the maze till he finds it! }
+%
+%
+%\begin{figure}[!ht]
+%\begin{center}
+%\includegraphics[height=0.4\textwidth]{img/g03.png}
+%\end{center}
+%\vspace{-4mm}
+%\caption{Karel is sweeping the maze, looking for his home.}
+%\label{fig:g03}
+%%\vspace{-1cm}
+%\end{figure}
+%\noindent
 
 \section{Section H - Variables}
 

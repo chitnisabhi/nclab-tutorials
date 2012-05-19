@@ -62,68 +62,49 @@
 
 \def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
 
-% TO INPUT BACKGROUND IMAGE
-\usepackage{eso-pic}
-\newcommand\BackgroundPic{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight]{img/python-frontpage.png}
-%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
-\vfill
-}}}
-
 \begin{document}
 
-% INPUTTING BACKGROUND IMAGE
-\AddToShipoutPicture{\BackgroundPic}
-\vbox{}
 \pagestyle{empty}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/NCLab-Programming-1.png}
+\end{center}
+\end{figure}
+
+\vspace{1.5cm}
+
+\begin{center}
+{\huge \bf Python Programming}
+\end{center}
+
+\begin{figure}[!ht]
+\begin{center}
+\vspace{-6mm}
+\includegraphics[width=0.4\textwidth]{img/python-logo.png}
+\vbox{}
+\vspace{-9mm}
+\end{center}
+\end{figure}
+\begin{center}
+{\huge \bf for Beginners}
+\end{center}
+\vbox{}
+\vfill
+\begin{center}
+This textbook is part of the online course {\em Intro to Programming with NCLab},
+available at {\tt introtoprogramming.net}. Any use without current subscription 
+to {\em Intro to Programming with NCLab} is prohibited.
+Copyright 2012 FEMhub Inc. All rights reserved.
+\end{center}
 \newpage
-\textwidth=15.5cm
-\ClearShipoutPicture
+\noindent
+
 \newpage
+\pagestyle{empty}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section*{}
-\small
-\subsection*{About NCLab}
-Networked Computing Laboratory (NCLab) is a popular Internet-based framework for 
-programming, mathematics, computer modeling, 
-and scientific computing. It serves students, instructors, researchers, and the general 
-public. NCLab can be used free of charge for personal non-commercial purposes such as 
-private hobby or self-education, as well as for individual non-funded academic research.
-All other use is subject to {\bf purchasing a license} for a symbolic fee. The fees are as low as 
-\$1 per user per month for educational use, and they are used to support the development 
-and operational expenses. NCLab is a product of FEMhub Inc. The name "NCLab" is 
-registered with the U.S. Patent and Trademark Office (USPTO) under Trademark No. 85420518.
-
-\subsection*{Terms of Use and Pricing}
-More details on purchasing a license and using NCLab are provided in the online documents 
-{\bf Pricing} and {\bf Terms of Use} that are accessible from NCLab's home page 
-{\tt http://nclab.com}.
-
-\subsection*{Contact Information}
-General inquiries: {\tt info@femhub.com}\\
-Sales: {\tt sales@femhub.com}\\
-NCLab support: {\tt support@nclab.com}\\
-Agros \& Hermes support: {\tt support@femhub.com}\\
-Web page: {\tt http://femhub.com}\\
-{Physical address}\\
-FEMhub Inc.\\
-5490 Twin Creeks Dr.\\
-Reno, NV 89523
-
-\subsection*{About This Publication}
-This publication can be copied and distributed without any restrictions
-as long as reference to NCLab and FEMhub Inc. is preserved.
-
-\subsection*{Acknowledgement}
-This publication was created with the help of many freely 
-available web resources related to Python, in
-particular www.python.org.
 
 \normalsize
 
@@ -147,7 +128,7 @@ particular www.python.org.
 \begin{itemize}
 \item Learn the difference between compiled and interpreted programming languages.
 \item Learn basic facts about Python and its powerful accompanying libraries.
-\item Understand how Python programming works in NCLab.
+\item Understand how Python programming works in the web browser.
 \item Write and run your first Python program.
 \end{itemize}
 
@@ -202,16 +183,16 @@ Python also has a number of scientific libraries. Most important of them are Sci
 Numpy, Pylab, Matplotlib, and Sympy. Exploring Python libraries will be a significant 
 part of this course. 
 
-\subsection{How does Python programming in NCLab work?}
+\subsection{How does Python programming in work in the web browser?}
 
-In NCLab, Python code is typed into one or more input cells in the {\em Python worksheet}. 
+In the browser, Python code is typed into one or more input cells in the {\em Python worksheet}. 
 The code is sent (as a text string) to a remote server where it is interpreted, and the 
 results are sent back to your computer / laptop / tablet, and displayed in your web 
 browser.  Let's try this!
 
-\subsection{Launching a Python project in NCLab}
+\subsection{Launching a Python project}
 
-There are multiple ways to launch a Python project in NCLab. First, it is 
+There are multiple ways to launch a Python project. First, it is 
 possible to clone and experiment with many existing displayed Python 
 projects via File Manager $\rightarrow$ 
 Project $\rightarrow$ Clone. New (empty) Python project can be launched via 
@@ -265,10 +246,6 @@ on {\tt run} under an input cell will run only the contents of that input cell.
 Same effect can be achieved by holding CTRL and pressing ENTER. Holding SHIFT
 and pressing ENTER will evaluate the current input cell and create an additional one
 under it.
-
-More details on cells can be found in the introductory tutorial {\em NCLab Intro - 
-Part I (Meet the Cloud)} that 
-can be downloaded in PDF via the "Tutorials and Videos" button on NCLab home page.
 
 \subsection{Review questions}
 
@@ -326,28 +303,28 @@ In all multiple-choice questions in this textbook, one or more answers can be co
 \item[A3] Procedural, object-oriented, binary.
 \item[A4] Good, bad, ugly.
 \end{enumerate}
-\item How can displayed Python projects be cloned in NCLab?
+\item How can displayed Python projects be cloned?
 \begin{enumerate}
 \item[A1] In Python worksheet through the {\em File} menu.
 \item[A2] Through File Manager's {\em Project} menu.
-\item[A3] Using the button {\em Displayed projects} that is available on NCLab front page.
+\item[A3] Using the icon {\em Displayed projects} on Desktop.
 \item[A4] Python projects cannot be cloned.
 \end{enumerate}
-\item How can new Python project be launched in NCLab?
+\item How can new Python project be launched?
 \begin{enumerate}
 \item[A1] Through the {\em Programming} menu.
 \item[A2] Through File Manager's {\em Settings} menu.
 \item[A3] Through File Manager's {\em Project} menu.
 \item[A4] Through the Math module.
 \end{enumerate}
-\item How are Python programs processed in NCLab?
+\item How are Python programs processed?
 \begin{enumerate}
 \item[A1] They are translated into Javascript and run as a standard web browser application.
 \item[A2] They are interpreted on a remote server.
 \item[A3] They are interpreted on your PC computer / laptop / tablet.
 \item[A4] They are translated into Flash.
 \end{enumerate}
-\item What are the types of cells that a Python worksheet in NCLab can contain?
+\item What are the types of cells that a Python worksheet can contain?
 \begin{enumerate}
 \item[A1] Error message cells.
 \item[A2] Output cells.
@@ -422,7 +399,7 @@ In all multiple-choice questions in this textbook, one or more answers can be co
 \begin{itemize}
 \item Learn how to do both simple and advanced math operations in the Python worksheet.
 \end{itemize}
-As you certainly noticed, NCLab has a small pocket calculator for quick anytime 
+As you certainly noticed, there is a small pocket calculator for quick anytime 
 calculations. In this section we will see that also the Python worksheet can be 
 used as a calculator, which is backed up by hundreds of processors and much more powerful indeed.
 
@@ -2255,11 +2232,7 @@ This concludes Section 13 - now you know all the loops there are!
 \begin{itemize}
 \item
 \end{itemize}
-
-Using graphics and plotting graphs of functions of one variable, 
-general curves in the plane, and functions of two variables is 
-explained in great detail in the introductory course "Meet Your 
-New Graphing Calculator" that is available on NCLab's Tutorials page.
+Coming soon.
 
 \section{Using libraries}\label{subsec:importinglib}
 

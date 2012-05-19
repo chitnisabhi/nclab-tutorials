@@ -209,12 +209,11 @@ from everywhere, any time. Once you get used to it, there is no way back.
 
 \subsection{NCLab and K-12 Education}
 
-NCLab is a web-based framework that provides 
-instant access to programming, web design, math, physics, 3D CAD design, computer
-modeling, and scientific computing. You do not have to install it or care about 
-anything -- NCLab 
-is automatically available in any classroom that has Internet access. In 
-contrast to traditional educational software products, 
+NCLab is an Online STEM Laboratory that provides 
+instant access to computer simulations in physics and chemistry, 3D CAD design, 
+engineering-level computer modeling, and scientific computing. You do not have 
+to install any software -- NCLab is automatically available in any classroom that 
+has Internet access. In contrast to traditional educational software products, 
 users can access their accounts and work from anywhere and at any time.
 Students can start a problem at school, finish the rest at home, and notify 
 the instructor about the completion with one mouse click. Most importantly, 
@@ -373,13 +372,9 @@ represent:
 \item {\em File Manager}, used to manage files and folders, and to clone work published by other users.
 \item {\em Programming} module provides programming in 
       \begin{itemize}
-      \item Karel the Robot (popular educational language for beginners).
-      \item Python (modern programming language for advanced applications). Python is 
-            very popular in engineering and science because it is interpreted (not compiled as C or C++),
-            has simple syntax, and comes with powerful libraries.
+      \item Python (high-level dynamical programming language). 
       \item Javascript (most popular language for web development). 
       \item CUDA (massively parallel programming on graphic cards).
-      \item Web Design with HTML, Javascript (JS) and CSS. 
       \end{itemize}
 \item {\em Physics} module provides various physics simulation tools in Kinematics,
       Solid Mechanics, Fluid Dynamics, Electromagnetics, and other areas. 
@@ -454,8 +449,8 @@ have any files or folders there (Fig. \ref{fig:fileman}).
 \end{figure}
 \noindent
 However, this can be changed quickly. Click on the menu Project $\rightarrow$ Clone. This will
-launch a window with many displayed projects from various areas of programming, web design, math, 
-physics, 3D computer aided design, and engineering simulations (Fig. \ref{fig:fileman2}).
+launch a window with many displayed projects from various areas of math, 
+physics, chemistry, 3D computer aided design, and engineering simulations (Fig. \ref{fig:fileman2}).
 
 \newpage
 
@@ -470,7 +465,7 @@ physics, 3D computer aided design, and engineering simulations (Fig. \ref{fig:fi
 \noindent
 You can view the contents of any displayed project by double-clicking on it. You can 
 clone any project into your account by just clicking on it once, and then clicking on 
-the button "Clone". Let's say that we want to learn Python programming. After cloning 
+the button "Clone". Let's say that we want to work with Python. After cloning 
 the project "Python - Intro", we will see the following in the File Manager:
 
 \newpage
@@ -537,126 +532,30 @@ File Manager's menu and this worksheet. Try to:
 \item Access a Python Tutorial via the Help button.
 \end{itemize}
 
-\section{Programming Module}
-
-Clicking on the Programming icon launches programming menu that 
-contains several languages and a web design application:
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/progr1.png}
-\end{center}
-%\vspace{-2mm}
-\caption{Programming menu.}
-\label{fig:progr1}
-\end{figure}
-\noindent
-Each programming language here comes with a Help of its own, so we 
-will be brief. 
-
-\subsection{Karel the Robot}
-
-Clicking on "Karel" launches the famous educational 
-programming language Karel the Robot that was created at the Stanford 
-University and is used to teach programming in many countries all over 
-the world (Fig. \ref{fig:progr2}). Teachers prefer Karel over other 
-educational languages because of its minimum overhead (students can 
-start programming in the first class) and because a smooth transition 
-to Python.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/progr2.png}
-\end{center}
-%\vspace{-2mm}
-\caption{Karel the Robot - illustrative screenshot.}
-\label{fig:progr2}
-\end{figure}
-\noindent
-Textbook, Solution Manual and a YouTube Video are available via the link "Tutorials and Videos"
-on NCLab's front page. There is an extensive suite of exercises (games) among 
-displayed projects that you can clone into your account. All of them are described in the 
-tutorial.
-
-\subsection{Python}
-
-Clicking on the Python icon in the Programming Module launches Python 
-worksheet, where you can start programming instantly (Fig. \ref{fig:progr3}).
- 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/progr3.png}
-\end{center}
-%\vspace{-2mm}
-\caption{Python programming - illustrative screenshot.}
-\label{fig:progr3}
-\end{figure}
-\noindent
-The interpreter on the server side is Python 2.7 and Python 3.3 is in preparation. 
-Textbook is available via the link "Tutorials and Videos" on NCLab's front page
-and via the Help button. 
-
-\subsection{Parallel computing with GPUs}
-
-GPU stands for {\em Graphics Processing Unit} and massively parallel computing with GPUs
-is one of the hottest new trends in Computational Science. The main advantage 
-of GPUs over standard CPUs (Central Processing Units) is that on the same price 
-level, GPUs provide much larger number of cores and Flops (number of floating 
-operations per second) compared to CPUs.
- 
-CUDA is an Nvidia language for GPUs. The CUDA worksheet provides programming via 
-PyCUDA (Python wrappers to CUDA). Tutorial to PyCUDA is available via the link "Tutorials and Videos" 
-on NCLab's front page and via the Help button, and there are around 30 
-displayed projects where you can learn both basic and advanced aspects of CUDA
-programming. 
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/progr4.png}
-\end{center}
-%\vspace{-2mm}
-\caption{CUDA programming - illustrative screenshot.}
-\label{fig:progr4}
-\end{figure}
-\noindent
 
 
-\subsection{Javascript}
 
-The Javascript (JS) worksheet provides JS programming using the Google V8 engine 
-on server side. In other words, the Javascript is not processed in the web browser but 
-on the remote server similarly to Python. 
-\newpage
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/progr5.png}
-\end{center}
-%\vspace{-2mm}
-\caption{Javascript programming based on Google V8 - illustrative screenshot.}
-\label{fig:progr5}
-\end{figure}
-\noindent
-More information is available in the Help section.
 
-\subsection{WebDesign}
 
-The Web Design kit is an integrated environment for the design of web pages.
-The graphical application contains three input panels for HTML, JS and CSS, and 
-one output panel. The web page is changing in real time when any of the three 
-input panels are edited. The output panel can be detached and magnified for better 
-viewing comfort. Users belonging to an institutions and 
-users operating NCLab in Full Version can have their web pages hosted.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/progr6.png}
-\end{center}
-%\vspace{-2mm}
-\caption{Web Design kit - illustrative screenshot.}
-\label{fig:progr6}
-\end{figure}
-\noindent
-More information is available in the Help section.
+%\subsection{WebDesign}
+%
+%The Web Design kit is an integrated environment for the design of web pages.
+%The graphical application contains three input panels for HTML, JS and CSS, and 
+%one output panel. The web page is changing in real time when any of the three 
+%input panels are edited. The output panel can be detached and magnified for better 
+%viewing comfort. Users belonging to an institutions and 
+%users operating NCLab in Full Version can have their web pages hosted.
+%
+%\begin{figure}[!ht]
+%\begin{center}
+%\includegraphics[width=\textwidth]{img/progr6.png}
+%\end{center}
+%%\vspace{-2mm}
+%\caption{Web Design kit - illustrative screenshot.}
+%\label{fig:progr6}
+%\end{figure}
+%\noindent
+%More information is available in the Help section.
 
 \section{Physics Module}
 
@@ -671,7 +570,7 @@ Classical application from this field -- Projectile Motion -- enables computing
 the trajectory of a flying projectile either with or without considering 
 air friction. Illustrative screenshot is shown in Fig. 
 \ref{fig:kinem1}. 
-\newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/kinem1.png}
@@ -680,6 +579,7 @@ air friction. Illustrative screenshot is shown in Fig.
 \caption{Projectile motion.}
 \label{fig:kinem1}
 \end{figure}
+\newpage
 \noindent
 
 \subsection{Solid Mechanics}
@@ -691,7 +591,6 @@ Poisson ratio), prescribe displacements and acting forces on the boundary,
 and calculate displacements and stresses inside the object. This application  
 uses the Hermes library (http://hpfem.org/hermes) for the finite element 
 analysis (FEA) part. Illustrative screenshot is provided in Fig. \ref{fig:elast1}.
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/elast1.png}
@@ -700,6 +599,7 @@ analysis (FEA) part. Illustrative screenshot is provided in Fig. \ref{fig:elast1
 \caption{Elasticity analysis of a hollow steel pipe of square cross-section that is loaded from above.}
 \label{fig:elast1}
 \end{figure}
+\newpage
 \noindent
 The simulation process consists of several steps: geometry definition, 
 mesh generation, problem definition, computaion, and postprocessing. 
@@ -714,7 +614,6 @@ the distribution of the electric field surrounding charged objects. Boundary
 conditions can be prescribed voltage on some part of the boundary and / or 
 prescribed electric charge density on another part of boundary. Two illustrative 
 screenshots of the capacitor model are provided below.
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/capac1.png}
@@ -852,6 +751,30 @@ a temple:
 To learn more, read the PLaSM tutorial and watch a three-part YouTube video!
 \newpage
 
+\section{Parallel computing with GPUs}
+
+GPU stands for {\em Graphics Processing Unit} and massively parallel computing with GPUs
+is one of the hottest new trends in Computational Science. The main advantage 
+of GPUs over standard CPUs (Central Processing Units) is that on the same price 
+level, GPUs provide much larger number of cores and Flops (number of floating 
+operations per second) compared to CPUs.
+ 
+CUDA is an Nvidia language for GPUs. The CUDA worksheet provides programming via 
+PyCUDA (Python wrappers to CUDA). Tutorial to PyCUDA is available via the link "Tutorials and Videos" 
+on NCLab's front page and via the Help button, and there are around 30 
+displayed projects where you can learn both basic and advanced aspects of CUDA
+programming. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/progr4.png}
+\end{center}
+%\vspace{-2mm}
+\caption{CUDA programming - illustrative screenshot.}
+\label{fig:progr4}
+\end{figure}
+\noindent
+
 \section{Review Questions}
 
 \begin{enumerate}
@@ -896,27 +819,6 @@ To learn more, read the PLaSM tutorial and watch a three-part YouTube video!
 \item[A2] Zuckerberg.
 \item[A3] Heisenberg.
 \item[A4] Heidenhain.
-\end{enumerate}
-\item What makes the Python programming language popular?
-\begin{enumerate}
-\item[A1] It comes with free compilers.
-\item[A2] It does not need any libraries.
-\item[A3] C++ is written in Python.
-\item[A4] It is easy to use and comes with powerful libraries.
-\end{enumerate}
-\item What is Javascript?
-\begin{enumerate}
-\item[A1] Most popular programming language for web development.
-\item[A2] Program written in the Java programming language.
-\item[A3] Script written in the Java programming language.
-\item[A4] The Java runtime environment. 
-\end{enumerate}
-\item Name the three basic components of Web Design.
-\begin{enumerate}
-\item[A1] Compiler, interpreter, linker.
-\item[A2] HTML, CSS and JS.
-\item[A3] Computer, keyboard, mouse.
-\item[A4] Firefox, Chrome, Safari.
 \end{enumerate}
 \item What is Solid Modeling?
 \begin{enumerate}

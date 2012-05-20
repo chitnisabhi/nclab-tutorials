@@ -71,14 +71,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagestyle{empty}
+\vbox{}
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/NCLab-Programming-1.png}
-\end{center}
-\end{figure}
 
-\vspace{1.5cm}
+\vspace{5cm}
 
 \begin{center}
 {\huge \bf Karel the Robot}
@@ -98,15 +94,12 @@
 \vbox{}
 \vfill
 \begin{center}
-This Solution Manual is part of the online course {\em Intro to Programming with NCLab},
-available at {\tt introtoprogramming.net}. Any use of this Solution Manual without current subscription 
-to {\em Intro to Programming with NCLab} is prohibited. \\
+This Solution Manual is part of the online course {\tt http://introtoprogramming.net}.\\
 Copyright 2012 FEMhub Inc. All rights reserved.
 \end{center}
 \newpage
 \noindent
 
-\newpage
 \pagestyle{empty}
 
 
@@ -918,7 +911,36 @@ def ariadnes_thread
 ariadnes_thread
 \end{verbatim}
 
-\subsection{G01 - Speleologist}
+\subsection{G01 - Cheese!}
+
+\begin{verbatim}
+def peel_edge
+  go
+  while gem
+    get
+    go
+  repeat 3
+    right
+    go
+  go
+  if gem
+    get
+    peel_edge
+      
+# Eat the cheese:
+peel_edge
+
+# Return home:
+while not north
+  left
+while not wall
+go
+left
+while not home
+  go
+\end{verbatim}
+
+\subsection{G02 - Speleologist}
 
 \begin{verbatim}
 # Descend one step, explore the rest,
@@ -949,7 +971,7 @@ while not home
   go
 \end{verbatim}
 
-\subsection{G02 - Homage to Lemmings}
+\subsection{G03 - Homage to Lemmings}
 
 \begin{verbatim}
 # Turn back.
@@ -979,7 +1001,7 @@ def addlayer
 addlayer
 \end{verbatim}
 
-\subsection{G03 - Diamond Tree}
+\subsection{G04 - Diamond Tree}
 
 \begin{verbatim}
 # Turn back.

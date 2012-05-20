@@ -1,164 +1,3 @@
-\documentclass[article,A4,12pt]{llncs}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathrsfs, bm}
-
-\usepackage{graphicx}
-\usepackage{tabularx}
-\usepackage{subfig}
-\usepackage{epsf,times}
-\usepackage{color}
-\usepackage{wrapfig}
-\usepackage{cases}
-\usepackage{multicol}
-
-\usepackage[T1]{fontenc}
-%\newcommand{\tmname}[1]{\textsc{#1}}
-%\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
-%\newcommand{\tmsamp}[1]{\textsf{#1}}
-%\newcommand{\tmtextsc}[1]{{\scshape{#1}}}
-%\newcommand{\tmtextsl}[1]{{\slshape{#1}}}
-%\newcommand{\tmtexttt}[1]{{\ttfamily{#1}}}
-
-\leftmargin=0.0cm
-\oddsidemargin=0.5cm
-\evensidemargin=0.5cm
-\topmargin=0cm
-\textwidth=16.0cm
-%\textheight=21.5cm
-\textheight=20.0cm
-\pagestyle{plain}
-\setlength{\columnsep}{20pt}
-
-\def\m{\mathbf{m}}
-\def\H{\mathbf{H}}
-\def\E{\mathbf{E}}
-\newcommand{\vepsi}{{\varepsilon}}
-\def\hnorm#1#2{\vert\,#1\,\vert_{#2}}
-\newcommand{\R}{{\mathbb R}}
-\newcommand{\Sph}{{\mathbb S}}
-\def\x{\mathbf{x}}
-\def\hvec{\overline{\mathbf{h}}}
-\def\evec{\overline{\mathbf{e}}}
-
-\newcommand{ \etal}{\mbox{\emph{et al. }}}
-
-\newcommand\vect[1]{\mbf{#1}}
-\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}} 
-\newcommand{\RC}[1]{#1 $\times$ #1 $\times$ #1}
-\def\um{$\mu$m}
-\def\C{$^{\circ}\mathrm{C}$}
-
-\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
-
-% DEFINITION OF CUSTOM FONT SIZE
-\newcommand{\customfontA}{\fontsize{50}{55}\selectfont}
-\newcommand{\customfontB}{\fontsize{14.4}{20}\selectfont}
-\newcommand{\customfontC}{\fontsize{30}{35}\selectfont}
-
-\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
-
-\def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
-
-% TO INPUT BACKGROUND IMAGE
-%\usepackage{eso-pic}
-%\newcommand\BackgroundPic{
-%\put(0,0){
-%\parbox[b][\paperheight]{\paperwidth}{
-%\vfill
-%\centering
-%\includegraphics[width=\paperwidth,height=\paperheight]{img/karel-frontpage.png}
-%%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
-%\vfill
-%}}}
-
-\begin{document}
-
-% INPUTTING BACKGROUND IMAGE
-%\AddToShipoutPicture{\BackgroundPic}
-%\vbox{}
-%\pagestyle{empty}
-%\newpage
-%\textwidth=15.5cm
-%\ClearShipoutPicture
-%\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagestyle{empty}
-
-%\begin{figure}[!ht]
-%\begin{center}
-%\includegraphics[width=\textwidth]{img/NCLab-Programming-1.png}
-%\end{center}
-%\end{figure}
-\vbox{}
-\vspace{5cm}
-
-\begin{center}
-{\huge \bf First Course in Programming}
-\end{center}
-
-\begin{figure}[!ht]
-\begin{center}
-\vspace{-6mm}
-\includegraphics[width=0.4\textwidth]{img/karel-logo.png}
-\vbox{}
-\vspace{-9mm}
-\end{center}
-\end{figure}
-\begin{center}
-{\huge \bf with Karel the Robot}
-\end{center}
-\vbox{}
-\vfill
-\begin{center}
-This textbook is part of the online course {\tt http://introtoprogramming.net}.\\
-Copyright 2012 FEMhub Inc. All rights reserved.
-\end{center}
-\newpage
-\noindent
-
-\newpage
-\pagestyle{empty}
-\section*{}
-\small
-%\input ../common/aboutnclab.tex
-%
-%\subsection*{NCLab's Karel vs. the Original Version}
-%This publication features {\em Karel the Robot}, a programming language 
-%designed by Richard E. Pattis. Compared to the original version that
-%appeared in the 1980s and was strongly influenced by Pascal, the NCLab 
-%version is closer to Python.
-%There are some other differences as well that make Karel in NCLab easier to use 
-%for kids -- Karel collects gems instead of beepers, he has a home in the 
-%maze, and he uses commands that are much easier for kids to understand
-%and type. For example, {\tt pickbeeper} was replaced with {\tt get}, 
-%{\tt front-is-clear} was replaced with {\tt wall}, etc. We also introduced
-%a new command {\tt right} so that Karel acts more like a standard robot 
-%(in the original version of the language, where he only knew how to turn 
-%{\tt left}, he was swirling like a little tornado while solving more complex tasks).
-%Python colons following every command are omitted in the NCLab's version 
-%because using the SHIFT key was causing difficulties to 5 years old programmers. 
-%NCLab's Karel has a manual mode and three programming levels. Levels 1 and 2  
-%correspond to the Pattis' book. Level 3 brings a GPS device and the concept of 
-%variables. 
-
-\normalsize
-
-\newpage
-%{\ }
-\setcounter{tocdepth}{2}
-\tableofcontents
-%\pagestyle{plain}
-
-\newpage
-
-\pagestyle{plain}
-\setcounter{page}{1}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
 
@@ -169,13 +8,6 @@ Copyright 2012 FEMhub Inc. All rights reserved.
 \item Learn how Karel differs from other programming languages.
 \item Learn what this course will help you achieve.
 \end{itemize}
-This course will teach you principles of modern algorithmic design and  
-computer programming with the help of an interactive graphical application 
-{\em Karel the Robot}. Taking this course will make it much easier 
-for you to learn Python, C, C++ and other advanced programming languages. In particular we 
-recommend that after Karel you continue with Python, a powerful programming 
-language that is used across all science and engineering areas, and yet it is 
-technically simpler to handle than C or C++. 
 
 \subsection{Brief history}
 
@@ -370,7 +202,7 @@ with a randomly generated maze, as shown in Fig. \ref{fig:init}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{img/init.png}
+\includegraphics[width=\textwidth]{imgk/init.png}
 \end{center}
 \vspace{-2mm}
 \caption{Launching Karel via the Programming icon.}
@@ -411,7 +243,7 @@ with Displayed Projects as shown in Fig. \ref{fig:cloning}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{img/cloning.png}
+\includegraphics[width=\textwidth]{imgk/cloning.png}
 \end{center}
 %\vspace{-2mm}
 \caption{Many exercises and games are available through the File menu.}
@@ -495,7 +327,7 @@ Before we begin, let us review the four directions on the compass:
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/compass.png}
+\includegraphics[width=0.5\textwidth]{imgk/compass.png}
 \vspace{-0mm}
 %\caption{Karel's four possible orientations.}
 %\label{fig:ori}
@@ -511,7 +343,7 @@ as shown in Fig. \ref{fig:buttons}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=6.2cm]{img/buttons-all.png}
+\includegraphics[width=6.2cm]{imgk/buttons-all.png}
 \vspace{-0mm}
 \caption{Karel's buttons in manual mode (robot facing East).}
 \label{fig:buttons}
@@ -530,7 +362,7 @@ When the robot turns, the arrows on the buttons adjust automatically to his new
 orientation. This is illustrated in Fig. \ref{fig:buttons2}.
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=6.2cm]{img/buttons-all-2.png}
+\includegraphics[width=6.2cm]{imgk/buttons-all-2.png}
 \vspace{-0mm}
 \caption{Karel's buttons in manual mode (robot facing West).}
 \label{fig:buttons2}
@@ -556,7 +388,7 @@ all set.
 \item Look at  the arrows and decide which direction the robot is facing!
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=6.2cm]{img/buttons-all-3.png}
+\includegraphics[width=6.2cm]{imgk/buttons-all-3.png}
 \end{center}
 \end{figure}
 \begin{enumerate}
@@ -569,7 +401,7 @@ all set.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=3cm]{img/button-left-1.png}
+\includegraphics[width=3cm]{imgk/button-left-1.png}
 \end{center}
 \end{figure}
 \begin{enumerate}
@@ -581,10 +413,10 @@ all set.
 \item Select one or more correct statements from the four options below!
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=3cm]{img/button-left-1.png}\ \ \
-\includegraphics[width=3cm]{img/button-left-2.png}\ \ \
-\includegraphics[width=3cm]{img/button-left-3.png}\ \ \
-\includegraphics[width=3cm]{img/button-left-4.png}
+\includegraphics[width=3cm]{imgk/button-left-1.png}\ \ \
+\includegraphics[width=3cm]{imgk/button-left-2.png}\ \ \
+\includegraphics[width=3cm]{imgk/button-left-3.png}\ \ \
+\includegraphics[width=3cm]{imgk/button-left-4.png}
 \end{center}
 \end{figure}
 
@@ -598,7 +430,7 @@ all set.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=3cm]{img/button-right-4.png}
+\includegraphics[width=3cm]{imgk/button-right-4.png}
 \end{center}
 \end{figure}
 \begin{enumerate}
@@ -621,7 +453,7 @@ Use the buttons on the left to get him home quickly! }
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a01.png}
+\includegraphics[height=0.4\textwidth]{imgk/a01.png}
 \end{center}
 \vspace{-4mm}
 \caption{In the first exercise you need to help the robot get home.}
@@ -635,7 +467,7 @@ as shown in Fig. \ref{fig:a01b}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a01b.png}
+\includegraphics[height=0.4\textwidth]{imgk/a01b.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel can be guided manually, using five buttons located in the left panel.}
@@ -650,7 +482,7 @@ the robot home as fast as possible. Karel's personal record is four seconds. How
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a02.png}
+\includegraphics[height=0.4\textwidth]{imgk/a02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is training for Robolympic Games.}
@@ -667,7 +499,7 @@ home!}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a03.png}
+\includegraphics[height=0.4\textwidth]{imgk/a03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is about to find his first gem.}
@@ -685,7 +517,7 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a04.png}
+\includegraphics[height=0.4\textwidth]{imgk/a04.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel's second Robolympic Games.}
@@ -701,7 +533,7 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a05.png}
+\includegraphics[height=0.4\textwidth]{imgk/a05.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is about to learn how to make a left turn.}
@@ -718,7 +550,7 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a06.png}
+\includegraphics[height=0.4\textwidth]{imgk/a06.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel's third Robolympic Games.}
@@ -734,7 +566,7 @@ and collect all three gems on the way! Karel's personal record is 10 seconds.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a07.png}
+\includegraphics[height=0.4\textwidth]{imgk/a07.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel needs to collect two gems and get home.}
@@ -752,7 +584,7 @@ Be careful not to crash, this is a tricky level! Karel's personal record is 26 s
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a08.png}
+\includegraphics[height=0.4\textwidth]{imgk/a08.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel's fourth Robolympic Games.}
@@ -767,7 +599,7 @@ Be careful not to crash, this is a tricky level! Karel's personal record is 26 s
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a09.png}
+\includegraphics[height=0.4\textwidth]{imgk/a09.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel needs to collect five gems.}
@@ -784,7 +616,7 @@ home. Remember - think first before going anywhere!}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a10.png}
+\includegraphics[height=0.4\textwidth]{imgk/a10.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel needs to find his way home in a labyrinth.}
@@ -801,7 +633,7 @@ on the left to collect all gems and get back home in time!}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a11.png}
+\includegraphics[height=0.4\textwidth]{imgk/a11.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel found an abandoned diamond mine.}
@@ -818,7 +650,7 @@ Help Karel collect all gems in this maze and return home!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a12.png}
+\includegraphics[height=0.4\textwidth]{imgk/a12.png}
 \end{center}
 \vspace{-4mm}
 \caption{If gems are piled up, then a number is showing their amount.}
@@ -835,7 +667,7 @@ return home in time!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/a13.png}
+\includegraphics[height=0.4\textwidth]{imgk/a13.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel needs to put five gems on the table.}
@@ -886,7 +718,7 @@ difficult to read. It is important to write a clean, transparent code that is ea
 \item The robot's initial situation is as shown in the image. His bag with gems is empty.
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=4cm]{img/maze-0.png}
+\includegraphics[width=4cm]{imgk/maze-0.png}
 \end{center}
 \end{figure}
 \newpage
@@ -943,7 +775,7 @@ menu.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/b01.png}
+\includegraphics[height=0.4\textwidth]{imgk/b01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Moving Karel forward via the {\tt go} command.}
@@ -958,7 +790,7 @@ menu.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/b02.png}
+\includegraphics[height=0.4\textwidth]{imgk/b02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Collecting gems using the {\tt get} command.}
@@ -975,7 +807,7 @@ menu.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/b03.png}
+\includegraphics[height=0.4\textwidth]{imgk/b03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Turning to the left and to the right via the {\tt left} and {\tt right} commands.}
@@ -993,7 +825,7 @@ end of the cross and return home!}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/b04.png}
+\includegraphics[height=0.4\textwidth]{imgk/b04.png}
 \end{center}
 \vspace{-4mm}
 \caption{Relocating a gem requires both {\tt get} and {\tt put} commands.}
@@ -1291,7 +1123,7 @@ so that he does not crash into a wall.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/c01.png}
+\includegraphics[height=0.4\textwidth]{imgk/c01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel gets home elegantly, using the {\tt repeat} command.}
@@ -1307,7 +1139,7 @@ so that he does not crash into a wall.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/c02.png}
+\includegraphics[height=0.4\textwidth]{imgk/c02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is about to find a pile of 12 gems!}
@@ -1326,7 +1158,7 @@ turn around five times, then pick up one gem somewhere, and get back inside!}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/c03.png}
+\includegraphics[height=0.4\textwidth]{imgk/c03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is feeling lucky today.}
@@ -1346,7 +1178,7 @@ action.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/c04.png}
+\includegraphics[height=0.4\textwidth]{imgk/c04.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is getting ready for garage sale.}
@@ -1365,7 +1197,7 @@ than three lines.}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/c05.png}
+\includegraphics[height=0.4\textwidth]{imgk/c05.png}
 \end{center}
 \vspace{-4mm}
 \caption{Nine gems are between Karel and his home.}
@@ -1523,7 +1355,7 @@ illustrated in Fig. \ref{fig:dede-ifelse}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/salih-ifelse.png}
+\includegraphics[height=0.4\textwidth]{imgk/salih-ifelse.png}
 \end{center}
 \vspace{-4mm}
 \caption{This is how Karel uses the {\tt wall} sensor!}
@@ -1741,7 +1573,7 @@ line, your program should have at most 4 lines.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/d01.png}
+\includegraphics[height=0.4\textwidth]{imgk/d01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Several gems are at random positions between the robot and his home.}
@@ -1759,7 +1591,7 @@ avoiding stones, and collecting all gems!  }
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/d02.png}
+\includegraphics[height=0.4\textwidth]{imgk/d02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is crossing a stony meadows.}
@@ -1783,7 +1615,7 @@ command per line, your program should have at most 7 lines.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/d03.png}
+\includegraphics[height=0.4\textwidth]{imgk/d03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Filling empty shelves with gems.}
@@ -1947,7 +1779,7 @@ to his home which is in the south-west corner!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/e01.png}
+\includegraphics[height=0.4\textwidth]{imgk/e01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel only knows that his home is in the SW corner of the maze.}
@@ -1967,7 +1799,7 @@ where they are. Write a program for Karel to find his friends!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/e02.png}
+\includegraphics[height=0.4\textwidth]{imgk/e02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel plays hide-and-seek with his friends.}
@@ -1983,7 +1815,7 @@ where they are. Write a program for Karel to find his friends!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/e03.png}
+\includegraphics[height=0.4\textwidth]{imgk/e03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel only knows that his home is on the other side of the wall.}
@@ -2018,7 +1850,7 @@ previous three lines that form an infinite loop!
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.3\textwidth]{img/smiley.png}
+\includegraphics[width=0.3\textwidth]{imgk/smiley.png}
 \end{center}
 \vspace{-1cm}
 \end{figure}
@@ -2275,7 +2107,7 @@ def turnsouth
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f01.png}
+\includegraphics[height=0.4\textwidth]{imgk/f01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel needs to collect four stars of gems.}
@@ -2290,7 +2122,7 @@ def turnsouth
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f02.png}
+\includegraphics[height=0.4\textwidth]{imgk/f02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel needs to move the gems to the opposite corner of the maze.}
@@ -2307,7 +2139,7 @@ def turnsouth
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f03.png}
+\includegraphics[height=0.4\textwidth]{imgk/f03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Easter is here, Karel is on egg hunt!}
@@ -2323,7 +2155,7 @@ def turnsouth
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f04.png}
+\includegraphics[height=0.4\textwidth]{imgk/f04.png}
 \end{center}
 \vspace{-4mm}
 \caption{This time Karel installs windows.}
@@ -2344,7 +2176,7 @@ no repeating parts whatsoever in your program!}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f05.png}
+\includegraphics[height=0.4\textwidth]{imgk/f05.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel found a pirate treasure.}
@@ -2361,7 +2193,7 @@ get home. The number of steps in the staircase is random. }
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f06.png}
+\includegraphics[height=0.4\textwidth]{imgk/f06.png}
 \end{center}
 \vspace{-4mm}
 \caption{This time Karel has to do some climbing.}
@@ -2379,7 +2211,7 @@ get home. The number of steps in the staircase is random. }
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f07.png}
+\includegraphics[height=0.4\textwidth]{imgk/f07.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is plucking flowers along his fence.}
@@ -2395,7 +2227,7 @@ get home. The number of steps in the staircase is random. }
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f08.png}
+\includegraphics[height=0.4\textwidth]{imgk/f08.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is going to give gems to his three friends R2, D2 and Marvin.}
@@ -2412,7 +2244,7 @@ get home. The number of steps in the staircase is random. }
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f09.png}
+\includegraphics[height=0.4\textwidth]{imgk/f09.png}
 \end{center}
 \vspace{-4mm}
 \caption{This time Karel does not know the size of the rectangle.}
@@ -2430,7 +2262,7 @@ all the gems and return home!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f10.png}
+\includegraphics[height=0.4\textwidth]{imgk/f10.png}
 \end{center}
 \vspace{-4mm}
 \caption{Gem Jam!}
@@ -2447,7 +2279,7 @@ all the gems and return home!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f11.png}
+\includegraphics[height=0.4\textwidth]{imgk/f11.png}
 \end{center}
 \vspace{-4mm}
 \caption{The Matrix.}
@@ -2463,7 +2295,7 @@ all the gems and return home!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f12.png}
+\includegraphics[height=0.4\textwidth]{imgk/f12.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is escaping from the Alcatraz prison.}
@@ -2480,7 +2312,7 @@ right-hand rule. Do not forget to pick up all gems that you find on the way.}\\[
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f13.png}
+\includegraphics[height=0.4\textwidth]{imgk/f13.png}
 \end{center}
 \vspace{-4mm}
 \caption{Border Patrol.}
@@ -2501,7 +2333,7 @@ and that it does not contain any loops.}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/f14.png}
+\includegraphics[height=0.4\textwidth]{imgk/f14.png}
 \end{center}
 \vspace{-4mm}
 \caption{Maze of king Minos, home of the beast Minotaurus.}
@@ -2555,7 +2387,7 @@ Imagine that the initial position of the robot is like in Fig. \ref{fig:rec1}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=6cm]{img/rec-1.png}
+\includegraphics[width=6cm]{imgk/rec-1.png}
 \end{center}
 \vspace{-4mm}
 \caption{Robot's initial position.}
@@ -2569,7 +2401,7 @@ position changes as shown in Fig. \ref{fig:rec2}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=6cm]{img/rec-2.png}
+\includegraphics[width=6cm]{imgk/rec-2.png}
 \end{center}
 \vspace{-4mm}
 \caption{Robot's position after the first {\tt if not wall} condition passes and he makes the first step forward.}
@@ -2594,7 +2426,7 @@ he makes a second step forward. His new position is shown in Fig. \ref{fig:rec3}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=6cm]{img/rec-3.png}
+\includegraphics[width=6cm]{imgk/rec-3.png}
 \end{center}
 \vspace{-4mm}
 \caption{Robot's position after the second {\tt if not wall} condition passes and he makes a second step forward.}
@@ -2620,7 +2452,7 @@ he makes a third step forward. His new position is shown in Fig. \ref{fig:rec4}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=6cm]{img/rec-4.png}
+\includegraphics[width=6cm]{imgk/rec-4.png}
 \end{center}
 \vspace{-4mm}
 \caption{Robot's position after the third {\tt if not wall} condition passes and he makes a third step forward.}
@@ -2818,7 +2650,7 @@ Write a recursive algorithm for the robot to eat all the cheese and return home!
  }
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/g01.png}
+\includegraphics[height=0.4\textwidth]{imgk/g01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is eating cheese.}
@@ -2833,7 +2665,7 @@ Write a recursive algorithm for the robot to eat all the cheese and return home!
 {\em Karel stands at the entrance to a cave and wants to explore it. Write a recursive program for the robot to descend the staircase to the bottom, return back, and enter his home! The number of steps in the staircase is random.}
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/g02.png}
+\includegraphics[height=0.4\textwidth]{imgk/g02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel became a speleologist.}
@@ -2849,7 +2681,7 @@ enter his home. Use recursion.}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/g03.png}
+\includegraphics[height=0.4\textwidth]{imgk/g03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel needs to build a heap of gems before he can get home.}
@@ -2859,7 +2691,7 @@ enter his home. Use recursion.}\\[-7mm]
 \newpage
 \noindent
 
-\subsection{Exercise G04 - Diamond Tree}
+\subsection{\ \ Exercise G04 - Diamond Tree}
 
 {\em Karel stands under a diamond tree, with his home next to him on the the right. 
 The tree is random -- at any point it can have 
@@ -2868,7 +2700,7 @@ algorithm for the robot to collect all gems from the tree and get home!  }
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/g04.png}
+\includegraphics[height=0.4\textwidth]{imgk/g04.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is traversing a random diamond tree.}
@@ -3012,7 +2844,7 @@ one of the four options described in the previous paragraph. For example, let's 
 Karel stands as shown in Fig. \ref{fig:var1}.
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/variables1.png}
+\includegraphics[height=0.4\textwidth]{imgk/variables1.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel's initial position.}
@@ -3069,7 +2901,7 @@ position is as shown in Fig. \ref{fig:var2}?
 \newpage
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/variables2.png}
+\includegraphics[height=0.4\textwidth]{imgk/variables2.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is reading his GPS device again..}
@@ -3175,7 +3007,7 @@ Then call the procedure and print the result.}
 \newpage
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/h01.png}
+\includegraphics[height=0.4\textwidth]{imgk/h01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is measuring his room.}
@@ -3191,7 +3023,7 @@ robot to count the gems and return their number. Then call the procedure and pri
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/h02.png}
+\includegraphics[height=0.4\textwidth]{imgk/h02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is counting his gems.}
@@ -3209,7 +3041,7 @@ to crash into. After the procedure is ready, call it and print the result.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/h03.png}
+\includegraphics[height=0.4\textwidth]{imgk/h03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is counting apples in his orchard.}
@@ -3228,7 +3060,7 @@ The initial position of the robot is at the west wall of the bottom row, facing 
 \newpage
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/h04.png}
+\includegraphics[height=0.4\textwidth]{imgk/h04.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is measuring area of his apartment before installing new carpet.}
@@ -3360,7 +3192,7 @@ in the three boxes as shown in the screenshot. }
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/i01.png}
+\includegraphics[height=0.4\textwidth]{imgk/i01.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is learning to recognize numbers.}
@@ -3376,7 +3208,7 @@ in the three boxes as shown in the screenshot. }
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/i02.png}
+\includegraphics[height=0.4\textwidth]{imgk/i02.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is learning to write numbers.}
@@ -3395,7 +3227,7 @@ Use the functionality developed in the previous two tasks!}\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/i03.png}
+\includegraphics[height=0.4\textwidth]{imgk/i03.png}
 \end{center}
 \vspace{-4mm}
 \caption{Karel is adding randomly generated numbers.}
@@ -3404,14 +3236,14 @@ Use the functionality developed in the previous two tasks!}\\[-7mm]
 \end{figure}
 \noindent
 
-\subsection{\ \ Exercise I04 - Eight Queens}
+\subsection{Exercise I04 - Eight Queens}
 
 {\em Karel stands on an 8 x 8 chess board along with eight queens (the gems). Recall that a chess queen dominates its row, its column, as well as both diagonals that pass through her position. Nothing may stand in these fields or she will destroy it. Currently, some queens are threatening each other. Write a program for Karel to correct the positions of the queens in such a way that none of them is threatened. Your program should be able to do it for any initial distribution of the queens. }
 
 \newpage
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/i04.png}
+\includegraphics[height=0.4\textwidth]{imgk/i04.png}
 \end{center}
 \vspace{-4mm}
 \caption{The famous eight queens problem.}
@@ -3428,7 +3260,7 @@ right. Use the BubbleSort algorithm.}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=0.4\textwidth]{img/i05.png}
+\includegraphics[height=0.4\textwidth]{imgk/i05.png}
 \end{center}
 \vspace{-4mm}
 \caption{BubbleSort algorithm.}
@@ -3438,33 +3270,3 @@ right. Use the BubbleSort algorithm.}
 \noindent
 
 
-
-
-
-
-
-
-\section{What Next?}
-
-Congratulations on making it to the end of the tutorial! We hope that you
-enjoyed it. If you can think of any ways to improve the application 
-Karel the Robot or this tutorial, please let us know. If you 
-have an interesting game for Karel, please let us know as well. 
-
-Although you may feel like an Almighty Programmer right now, we would
-recommend staying humble. Even the most experienced programmers are
-learning new things all the time. If you enjoy programming, your next 
-language to learn may be Python. We would also recommend that you 
-learn Javascript since this 
-is the most popular language for web development. Depending on your 
-other hobbies or interests, C++ or even Fortran might be interesting. 
-In any case, our team wishes you good luck, and keep us in your 
-favorite bookmarks! \\
-\hbox{} \hfill{} Your NCLab Team
-
-
-
-
-
-
-\end{document}

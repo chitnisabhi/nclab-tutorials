@@ -3,28 +3,29 @@ cp karel.pdf karel_de.pdf
 cp karel.pdf karel_cz.pdf 
 cp karel.pdf karel_sp.pdf 
 cp karel.pdf karel_pl.pdf 
+rm karel.pdf
 
 cp karel-solutions.pdf karel-solutions_en.pdf 
 cp karel-solutions.pdf karel-solutions_de.pdf 
 cp karel-solutions.pdf karel-solutions_cz.pdf 
 cp karel-solutions.pdf karel-solutions_sp.pdf 
 cp karel-solutions.pdf karel-solutions_pl.pdf 
+rm karel-solutions.pdf
 
-scp karel*.pdf femhub@femhub.com:~/femhub.com/public/docs/
+scp karel-preview.pdf femhub@femhub.com:~/femhub.com/public/docs/
+scp karel_*.pdf femhub@femhub.com:~/femhub.com/public/docs/
 
 rm karel_en.pdf
 rm karel_cz.pdf
 rm karel_de.pdf
 rm karel_sp.pdf
 rm karel_pl.pdf
-rm karel.pdf
 
 rm karel-solutions_en.pdf
 rm karel-solutions_cz.pdf
 rm karel-solutions_de.pdf
 rm karel-solutions_sp.pdf
 rm karel-solutions_pl.pdf
-rm karel-solutions.pdf
 
 
 

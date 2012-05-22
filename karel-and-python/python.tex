@@ -1,4 +1,4 @@
-
+\setcounter{section}{0}
 \section{Introduction}
 
 \subsection{Objectives}
@@ -6,13 +6,12 @@
 \begin{itemize}
 \item Learn the difference between compiled and interpreted programming languages.
 \item Learn basic facts about Python and its powerful accompanying libraries.
-\item Understand how Python programming works in the web browser.
+\item Understand how Python programming works in the cloud setting.
 \item Write and run your first Python program.
 \end{itemize}
 
 \subsection{Compiled and interpreted programming languages}
 
-Let us explain the main difference between {\em compiled} and {\em interpreted} programming languages. 
 {\em Compilation} is a process where human-readable {\em source code (text)} is translated by
 means of a {\em compiler} and a {\em linker}
 into a {\em binary (executable) file} which then can be run on the concrete computer. The same 
@@ -21,7 +20,7 @@ source code, compiled on different hardware architectures, yields different bina
 {\em Interpreted (scripting)} programming languages are more recent than the compiled ones. 
 A program that is written using an interpreted language is "read" (parsed) at runtime -- it is 
 not compiled and there are no binaries. Programs 
-written in compiled languages are usually more efficient than programs written in the interpreted 
+written using compiled languages are usually more efficient than programs written using the interpreted 
 ones because the former take better advantage of the underlying hardware. On the other hand,
 interpreted languages are usually more universal and easier to use. Compiled 
 programming languages include Pascal, C, C++, Fortran, and many others. Few examples of interpreted 
@@ -29,8 +28,8 @@ languages are Python, Lua, Perl and Ruby.
 
 \subsection{Basic facts about Python}
 
-Python is a powerful modern programming language that is used in many areas of 
-engineering and science. Its interpreted character along with a very intuitive syntax make Python an 
+Python is a powerful modern programming language that is used in many areas of business, 
+engineering, and science. Its interpreted character along with a very intuitive syntax make Python an 
 ideal language for beginners. 
 
 Python was conceived in the late 1980s and its implementation was started in December 1989
@@ -45,23 +44,23 @@ adopt a particular style of programming, it permits several styles: {\em structu
 programming} and {\em object-oriented programming} are fully supported, and there are a number 
 of language features which support {\em functional programming}. 
 
-In this short course you will 
-learn the most important aspects of the language and be able to 
-write a wide range of programs by yourself. Depending on your objectives, this course 
-might be all you will ever need. We hope that you will like Python and want
-to learn more -- and there is much more to learn out there. References to materials
-covering more advanced topics and object-oriented programming are given in Section \ref{sec:adv}.
+In this course you will 
+learn the most important aspects of the language and you will be able to 
+use the programming language to solve a large variety of problems. 
+Depending on your objectives, this course may be all you will ever need. 
+We hope that you will like Python and want to learn more -- and there is much 
+more to learn out there. References to materials covering more advanced topics 
+and object-oriented programming are given in Section \ref{sec:adv}.
 
-\subsection{Libraries - the strong companion of Python}
+\subsection{Libraries - Python programmer's strong companion}
 
 Python comes with a powerful {\em standard library} that contains plentiful functionality
 to ease work with constants, types, functions, exceptions, strings, data, 
 mathematics, cryptography, parallel processing and other things. 
 Python also has a number of scientific libraries. Most important of them are Scipy, 
-Numpy, Pylab, Matplotlib, and Sympy. Exploring Python libraries will be a significant 
-part of this course. 
+Numpy, Pylab, Matplotlib, and Sympy.
 
-\subsection{How does Python programming in work in the web browser?}
+\subsection{How does Python programming work in the cloud environment?}
 
 In the browser, Python code is typed into one or more input cells in the {\em Python worksheet}. 
 The code is sent (as a text string) to a remote server where it is interpreted, and the 
@@ -109,7 +108,7 @@ in a new yellow {\em output cell} as shown in Fig. \ref{fig:python-2}.
 
 \subsection{Input, output and text cells}
 
-The Python worksheet contains three types of cells - input cells, output cells, 
+As in Karel, there are three types of cells in the Python worksheet - input cells, output cells, 
 and descriptive text cells. Input cells as well as text cells can be added via 
 the {\em Edit} menu. New input cells can be also added easily by clicking on {\tt add} under
 an existing input cell. Input cells and text cells can be removed by clicking on 
@@ -127,7 +126,7 @@ under it.
 
 \subsection{\ \ Review questions}
 
-In all multiple-choice questions in this textbook, one or more answers can be correct. 
+As in the first part of the textbook, one or more answers can be correct. 
 \begin{enumerate}
 \item What is the difference between a compiled and a scripting programming language?
 \begin{enumerate}
@@ -260,7 +259,7 @@ In all multiple-choice questions in this textbook, one or more answers can be co
 \end{enumerate}
 \end{enumerate}
 
-\subsection{\ \ Exercises}
+\subsection{\ \ Programming exercises}
 
 \begin{enumerate}
 \item Write a Python program that prints your name. Run it by clicking on the blue arrow button.
@@ -270,16 +269,15 @@ In all multiple-choice questions in this textbook, one or more answers can be co
       or music band. Run it without using the mouse.
 \end{enumerate}
 
-\section{Using Python as a calculator}
+\section{Using Python as an advanced calculator}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn how to do both simple and advanced math operations in the Python worksheet.
+\item Learn how to use Python for advanced math operations.
 \end{itemize}
-As you certainly noticed, there is a small pocket calculator for quick anytime 
-calculations. In this section we will see that also the Python worksheet can be 
-used as a calculator, which is backed up by hundreds of processors and much more powerful indeed.
+The Python worksheet can be used as a powerful calculator and graphing utility. 
+We will, however, begin with very simple math operations.
 
 \subsection{Addition, subtraction}
 
@@ -432,24 +430,24 @@ Output:
 30
 \end{verbatim}
 \subsection{Using empty characters makes you code better readable}
-Your code will be much better readable when you use empty
+Your code will be much better readable if you use empty
 characters on either side of arithmetic symbols, as well as 
 after commas. Hence, you should never write things like {\tt 3**4/27*5+3*5}.
 
 \subsection{Using mathematical functions}
 
-In order to calculate square roots, exponentials, sins, cosins, tangents, and all other 
-simple functions, the best way is to import Numpy. Numpy is a standard Python library 
+In order to calculate square roots, exponentials, sines, cosines, tangents, and many other 
+math functions, the best way is to import Numpy. Numpy is a powerful Python library 
 for numerical computations. To import it, just include the following 
 line in your code:
 
 \begin{verbatim}
 from numpy import *
 \end{verbatim}
-Here the symbol {\tt *} stands for "everything". If you wanted to import just one or two 
+Here the symbol '{\tt *}' stands for "everything". If you wanted to import just one or two 
 functions, you could do that as well by just giving their names, separated by commas. 
 
-After Numpy is imported, we can calculate for example $e^2$:
+After Numpy is imported, we can calculate, for example, $e^2$:
 
 \begin{verbatim}
 exp(2)
@@ -615,7 +613,7 @@ sin(pi/4)
 \end{enumerate}
 \end{enumerate}
 
-\subsection{\ \ Exercises}
+\subsection{\ \ Programming exercises}
 Perform the following calculations using the Python worksheet.
 \begin{enumerate}
 \item 
@@ -629,14 +627,6 @@ $$
 \item 
 $$
   \frac{8237456 + 289374}{23784}
-$$ 
-\item 
-$$
-  \frac{8237456 + 289374}{23784 + \frac{8237456 + 289374}{23784}}
-$$ 
-\item 
-$$
-  \frac{8237456 + 289374}{23784 + \frac{8237456 + 289374}{23784 + \frac{8237456 + 289374}{23784}}}
 $$ 
 \item 
 $$
@@ -674,22 +664,18 @@ where $i$ is the imaginary unit.
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn what functions are.
-\item Learn why and how we define them.
+\item Learn how to define and use custom functions.
 \end{itemize}
-{\em Functions}, sometimes also called {\em procedures} are (usually short) self-contained programs that perform a specific task. 
-We define them in order to isolate self-contained functionality and make it easily reusable.
+{\em Functions} are self-contained programs that take some input parameters (arguments), 
+perform a specific task,
+and return results. We define them for the same reason we defined custom commands and procedures 
+in Karel the Robot -- to isolate self-contained functionality and make it easily reusable.
 Many predefined functions are available in the standard library and in the scientific libraries. 
 We will talk about those later. Now let us explain how the user can define his/her own functions.
 
 \subsection{Defining new functions}
 
-Defining functions in Python is very similar to defining new commands 
-in Karel the Robot, and the reasons for using them are 100 \% identical.
-In order to define a new function, one uses the same keyword {\tt def}.
-There is one difference though -- Python functions can {\em accept arguments} and 
-they can {\em return results}. Usually, a function returns 
-some result. In that case one uses an optional {\tt return} statement. For example, 
+Definition of a new function begins with the keyword {\tt def}. For example, 
 the following simple function {\tt add(a, b)} adds two numbers {\tt a} and {\tt b} 
 and returns the result:
 
@@ -700,13 +686,12 @@ def add(a, b):
 The round brackets in the function definition are mandatory even if no arguments are passed.
 Also note the mandatory colon ':' at the end of the function declaration line. The two lines of code above 
 are a {\em function declaration} -- they do not produce any output and the function is not called. 
-
-In order to call the function, one has to write additional code such as
+In order to call the function, we need to write one additional line, such as:
 
 \begin{verbatim}
 add(5, 3)
 \end{verbatim}
-This will produce an output:
+This will produce the following output:
 
 \begin{verbatim}
 8
@@ -718,28 +703,51 @@ and it does not return any results:
 def say_hello():
     print "Hello!"
 \end{verbatim}
-Let us stop here for the moment. What we just learned about defining new functions will be 
-sufficient for some time, and we will learn more when needed.
+Let us stop here for the moment. What we just learned about defining new functions is 
+sufficient for now.
 
 \subsection{Review questions}
 
 \begin{enumerate}
-\item Why do we define {\em functions (procedures)} in programming? 
+\item Why do we define {\em functions} in programming? 
 \begin{enumerate}
 \item[A1] To isolate self-contained functionality and make it easily reusable.
 \item[A2] To make computer programs faster.
 \item[A3] To split long programs into multiple segments that have fewer lines.
 \item[A4] We should not use functions, it is not a good programming practice.
 \end{enumerate}
+\item Which of the following are correct function definitions?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+def subtract(a, b)
+  return a - b
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+def subtract(a, b):
+  return a - b
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+def subtract[a, b]
+  return a - b
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+def subtract(a, b):
+  return b - a
+\end{verbatim}
+\end{enumerate}
 \end{enumerate}
 
-\subsection{Exercises}
+\subsection{Programming exercises}
 
 \begin{enumerate}
-\item Write a function {\tt multiply(var1, var2)} that returns the product of the 
+\item Write a Python function {\tt multiply(var1, var2)} that returns the product of the 
       numbers {\tt var1} and {\tt var2}.
-\item Write a function {\tt square(val)} that returns the square of {\tt val}.
-\item Write a function {\tt hypotenuse(a, b)} that adds {\tt a} squared to {\tt b} squared,
+\item Write a Python function {\tt square(val)} that returns the square of {\tt val}.
+\item Write a Python function {\tt hypotenuse(a, b)} that adds {\tt a} squared to {\tt b} squared,
       and returns square root of the result.
 \end{enumerate}
 
@@ -748,36 +756,19 @@ sufficient for some time, and we will learn more when needed.
 \subsection{Objectives}
 
 \begin{itemize}
-\item
+\item Learn to work with variables in Python.
+\item Understand dynamic type interpretation.
+\item Learn the difference between local and global variables.
+\item Understand that keeping variables local is a good programming practice.
+\item Learn about {\em variable shadowing}.
 \end{itemize}
-
-
-Variables are used to store information for later use in our program. The information
-we wish to store can be a number, a text string, a logical value ({\tt True} or {\tt False}),
-and many other things. 
+The reason why we use variables is the same in Karel the Robot, Python, and all other programming 
+languages -- to store useful information for later use. Also the way we work with variables is almost the 
+same, so we will just mention a few new features in Python.
 
 \subsection{Assigning values to variables}
 
-In Python (and other languages as well) the symbol '{\tt =}' is used to assign 
-values to variables. It is not the same as the equality symbol in Mathematics. 
-The code
-
-\begin{verbatim}
-a = 1
-\end{verbatim}
-should be read {\em "Assign the value 1 to the variable a"} and not {\em "a equals to one"}.
-The assignment operation does not produce any output. For example, the code
-
-\begin{verbatim}
-width = 20
-height = 5*5
-\end{verbatim}
-has the following output:
-
-\begin{verbatim}
-
-\end{verbatim}
-(Yes, there is none!) A value can be assigned to several variables at the same time:
+In Python, several variables can be initialized at the same time:
 
 \begin{verbatim}
 x = y = z = 0.0
@@ -802,52 +793,29 @@ Traceback (most recent call last):
 NameError: name 'value' is not defined
 \end{verbatim}
 
-\subsection{Printing variables}
+\subsection{Dynamic type interpretation}
 
-If we want to see the value of a variable, we need to print it.
-To do this, it suffices to type the variable's name:
-
-\begin{verbatim}
-width
-height
-\end{verbatim}
-Output:
+Python is very generous with variable types -- it will figure out the type of a variable 
+at runtime, depending on the value that we store in it. The type can even change at runtime.
+For example, let us look at the following code:
 
 \begin{verbatim}
-20
-25
+a = 5
+print a
+a = "Hi!"
+print a
+a = True
+print a
 \end{verbatim}
-Or, we can use the print command:
+The output is 
 
 \begin{verbatim}
-print width
-print height
+5
+Hi!
+True
 \end{verbatim}
-Output:
-
-\begin{verbatim}
-20
-25
-\end{verbatim}
-The output can be made more informative (strongly encouraged!):
-
-\begin{verbatim}
-print "The width of the object is", width
-print "And its height is", height
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-The width of the object is 20
-And its height is 25
-\end{verbatim}
-
-\subsection{Dynamical type interpretation}
-
-Python is very generous with variables -- it will figure out the type of a variable 
-at runtime, depending on the value that we first store in it. This is very different 
-from compiled languages such as C, C++ where one needs to declare the type of every variable 
-before its first use. 
+This is very different from compiled languages such as C, C++ where one needs to declare the type 
+of every variable before its first use, and the type cannot be changed afterwards. 
 
 \subsection{Changing values of variables}
 
@@ -928,14 +896,14 @@ Traceback (most recent call last):
 TypeError: cannot concatenate 'str' and 'float' objects
 \end{verbatim}
 
+\subsection{Local and global variables}
 
-\subsection{Local variables}
-
-If a variable was first used in a function, then it is {\em local} to this 
-function. Imagine an aquarium -- a fish born in an aquarium will always 
-stay in that aquarium. If we try to access the variable outside that function,
-even though the function was already called, the variable will be unknown. Look
-at the following code:
+If a variable was defined inside of a function, then it is {\em local} to that
+function. Imagine a lake -- a fish born in a lake will always 
+stay in that lake (fishing neglected). If we try to access 
+the variable outside that function, even though the function was 
+already called, the variable will be unknown. Look at the following 
+code:
 
 \begin{verbatim}
 def add(a, b):
@@ -953,8 +921,12 @@ Traceback (most recent call last):
   File "<nclab>", line 6, in <module>
 NameError: name 'c' is not defined
 \end{verbatim}
+In computer programming, {\em we want all our variables to be local}, because 
+this avoids name clashes and minimizes the risk of unwanted side effects.
+Mistakes such as unwanted overwriting of the value stored in a global variable 
+belong to the worst to deal with.
 
-\subsection{How to spoil your code}
+\subsection{Sure method to spoil your code}
 
 Once a variable is used in the main program, 
 then it is {\em global}, meaning that you could use it in 
@@ -974,11 +946,15 @@ Brrr, this code is ugly! But it works (unfortunately), see the output:
 \begin{verbatim}
 val = 5.0
 \end{verbatim}
-{\em Using global variables in functions is a bad habit that makes
-codes difficult to understand, prone to mistakes, and extremely difficult to fix}.\\
+Remember:\\
 
+\begin{center}
+{\em Passing global variables to functions is a bad habit that makes your code\\
+     difficult to understand, prone to mistakes, and extremely difficult to fix}.\\
+\end{center}
+\vspace{4mm}
 \noindent
-A function should 
+A function should always
 obtain all the data it needs through its arguments. Imagine that a unit of soldiers 
 would act based not only on orders it receives (that's the argument 
 list), but also based on rumors that some of the soldiers read in a Sunday magazine. 
@@ -1002,71 +978,120 @@ need to look elsewhere in the program to understand what it does. The output is:
 val = 5.0
 \end{verbatim}
 
-\subsection{Local vs. global variables}
+\subsection{Variable shadowing}
 
-Sometimes, especially in longer programs, it may happen that we create by accident a global variable 
-whose name matches the name of a local variable in some function. This is not a problem
--- if this happens, priority is always given to the local variable. Look at the 
-following code:
+Sometimes, by accident or intentionally, we may have two different 
+variables of the same name in the code. Look, for example, at this short program:
 
 \begin{verbatim}
-c = 5.0
+c = 5
 
 def add(a, b):
     c = a + b
+    print "c =", c
     return c
 
-print "1 + 2 =", add(1, 2)
+add(1, 2)
+print "c =", c
 \end{verbatim}
-The output is:
+The output is
 
 \begin{verbatim}
-1 + 2 = 3
+c = 3
+c = 5
 \end{verbatim}
+There is no 
+problem with the last line of the program because the local variable {\tt c}, defined
+inside of the function {\tt add}, is no longer defined there. But inside of the function
+{\tt add}, both the global variable {\tt c} and the local variable {\tt c} are defined at 
+the same time. This is commonly referred to as {\em variable shadowing}, and we need to 
+remember that if this happens, {\bf the local variable is used}.
 
 \subsection{Review questions}
 
 \begin{enumerate}
-\item What are variables used for?
-\item Does assigning a value to a variable produce any output?
-\item Can one assign the same value to multiple variables at once? 
-\item What error does one get when trying to use a variable before a value was assigned to it?
-\item Does one need to declare types of variables in Python?
-\item What is the shortest way to print the value of a variable and what is the 
-      recommended way?
-\item Write code that will assign value $3$ to a variable $v$ and then increase the value of 
-      the variable by $5$.
-\item Write code that will assign value $4.5$ to a variable $a$, value $2.5$ to a variable 
-      $b$, and define a new variable $c = a^b$. 
-\item What do we mean by a {\em local variable}?
-\item Can one define a variable in a function, and then use it outside the function?
-\item What do we mean by a {\em global variable}?
-\item Can one define a variable outside a function, and then use it inside the function? 
-\item Why should all variables be passed to functions as their arguments?
-\item If the name of a local variable in a function coincides with the name of a global variable,
-      which one is used in the function? 
-\item Find the output of the following code:
+\item Which of the following code(s) is/are invalid in Python?
+\begin{enumerate}
+\item[A1] 
 \begin{verbatim}
-c = 5.0
-
-def add(a, b):
-    print "c =", c
-    c = a + b
-    print "c =", c
-    return c
-
-print "1 + 2 =", add(1, 2)
+a = b = 1
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+a = 1 = b
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+a = a
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+a + b = 5
 \end{verbatim}
 \end{enumerate}
+\item When can a given variable have different types in a Python program?
+\begin{enumerate}
+\item[A1] Any time.
+\item[A2] Never.
+\item[A3] Only when variable shadowing takes place.
+\item[A4] Only when the types are real number and integer number.
+\end{enumerate}
+\item We have two variables {\tt a} and {\tt b} and need to swap their values. Which of the 
+following codes will do it?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+a = b = a
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+a = b
+b = a
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+a = b
+c = a
+b = a
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+c = a
+a = b
+b = c
+\end{verbatim}
+\end{enumerate}
+\item Should we preferably use local variables, or global variables, and why?
+\begin{enumerate}
+\item[A1] Global variables because they can be all defined in one place.
+\item[A2] Global variables because it yields a faster code.
+\item[A3] Local variables because then we can use shadowing.
+\item[A4] Local variables because our code is less prone to mistakes. 
+\end{enumerate}
+\item Should we use global variables in functions and why?
+\begin{enumerate}
+\item[A1] Yes, the function definition is simpler.
+\item[A2] Yes, the program is less prone to mistakes.
+\item[A3] No, it makes the code less transparent and more prone to mistakes.
+\item[A4] No, Python does not allow it.
+\end{enumerate}
+\item What is variable shadowing?
+\begin{enumerate}
+\item[A1] There are two or more functions that all use a local variable of the same name.
+\item[A2] The type of a global variable is changed by assigning value of a different type to it. 
+\item[A3] The type of a local variable is changed by assigning value of a different type to it. 
+\item[A4] There is a local variable whose name matches the name of a global one.
+\end{enumerate}
+\end{enumerate}
 
-\subsection{\ \ Exercises}
+\subsection{Programming exercises}
 
 \begin{enumerate}
 \item The number $\pi$ can be written as an infinite series 
 $$
 \pi = 4\left(1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - \ldots     \right).
 $$
-Write a function {\tt approx\_pi} that returns an approximation of $\pi$ using a truncated 
+Write a Python function {\tt approx\_pi()} that returns an approximation of $\pi$ using a truncated 
 series where the last fraction used is $1/13$.
 \item {\em Arithmetic sequence} is a progression of $n$ numbers $a_1$, $a_2$, $\ldots$, $a_n$
 that increase by the same difference $d$. For example, 
@@ -1081,7 +1106,7 @@ There is a well known formula for the sum of such a sequence:
 $$
 S = \frac{n}{2}(a_1 + a_n).
 $$
-And now the exercise: Write a function {\tt summation\_arithmetic} that takes arbitrary 
+And now the exercise: Write a function {\tt summation\_arithmetic(n, a1, d)} that takes arbitrary 
 values of $n$, $a_1$ and $d$ as arguments, and calculates and returns the sum
 of the corresponding arithmetic sequence! 
 \item {\em Geometric sequence} is a progression of $n$ numbers $a_1$, $a_2$, $\ldots$, $a_n$
@@ -1098,46 +1123,45 @@ If $q \not = 1$, then the formula for the sum of such a sequence is
 $$
 S = a_1\frac{1 - q^n}{1 - q}
 $$
-Write a function {\tt summation\_geometric} that takes arbitrary 
+Write a function {\tt summation\_geometric(n, a1, q)} that takes arbitrary 
 values of $n$, $a_1$ and $q \not = 1$ as arguments, and calculates 
 and returns the sum of the corresponding geometric sequence! 
 \item {\em Sales prediction}. The East Coast sales division of a company usually generates $P$
-percent of total sales each year. Write a function {\tt sales\_prediction} to predict how much 
+percent of total sales each year. Write a function {\tt sales\_prediction(P, S)} to predict how much 
 the East Coast division will generate if the company has $S$ dollars in sales the next year. 
-Your function should take $P$ and $S$ as arguments. Use
-your function with the numbers $P = 62\ \%$ and $S = 4.6$ million dollars. 
+Use your function with the numbers $P = 62\ \%$ and $S = 4.6$ million dollars. 
 \item {\em Sales tax}. 
-Write a function {\tt sales\_tax} that calculates the total sales tax on a $P$ dollars purchase. 
-Assume the state sales tax is $ST$ percent, and the county sales tax is $CT$ percent. All $P$, $ST$ and 
-$CT$ should be the arguments of your function. Use the
+Write a function {\tt sales\_tax(P, ST, CT)} that calculates the total sales tax on a $P$ dollars purchase. 
+Assume the state sales tax is $ST$ percent, and the county sales tax is $CT$ percent. Use the
 function with the following numbers: $P = 52$ dollars, $ST = 5 \%$, $CT = 2 \ \%$.
-\item {\em Restaurant bill}. Write a function {\tt restaurant\_bill} 
+\item {\em Restaurant bill}. Write a function {\tt restaurant\_bill(M, P, T)} 
 that computes the tax and tip on a restaurant bill for a patron with 
 $M$ dollars meal charge. The tax is $P$ percent of the meal cost. The tip is $T$ percent of the total after 
-adding the tax. Your function should take $M$, $P$ and $T$ as arguments and print the meal cost, 
-tax amount, tip amount, and total bill. Use your function with the numbers $M = 44.50$ dollars, 
-$P = 6.75 \ \%$ and $T = 15 \ \%$. 
+adding the tax. Your function should print the meal cost, 
+tax amount, and tip amount, and return the total bill. Use your function with 
+the numbers $M = 44.50$ dollars, $P = 6.75 \ \%$ and $T = 15 \ \%$. 
 \item {\em Gas consumption I}. In Europe, gas consumption of a car is reported in liters per 100 kilometers. In the U.S. 
-it is reported in miles per gallon. Write a function {\tt conversion\_eu\_to\_us} that converts a given European 
+it is reported in miles per gallon. Write a function {\tt conversion\_eu\_to\_us(C)} that converts a given European 
 gas consumption $C$ into the U.S. scale. One mile is 1.6 kilometers, and one gallon is 3.78541178 liters. 
-\item {\em Gas consumption II}. Write a function {\tt conversion\_us\_to\_eu} that converts a given U.S.
+\item {\em Gas consumption II}. Write a function {\tt conversion\_us\_to\_eu(C)} that converts a given U.S.
 gas consumption $C$ into the European scale.
 \item {\em Distance per tank of gas}. A car with a $G$ gallon gas tank averages $A$ miles per gallon 
 when driven in town and 
-$B$ miles per gallon when driven on the highway. Write a function {\tt distance} that calculates and prints 
+$B$ miles per gallon when driven on the highway. Write a function {\tt distance(G, A, B)} 
+that calculates and prints 
 the distance the car can travel on one tank of gas when driven in town and when driven on the highway. 
 Use your function with $G = 20$ gallons, $A = 21.5$ miles per gallon, $B = 26.8$ miles per gallon. 
 \item {\em Circuit board price.} An electronics company sells circuit boards at a $P$ percent profit. 
-Write a function {\tt circuit\_board\_price} 
+Write a function {\tt circuit\_board\_price(P, D)} 
 that calculates the selling price of a circuit board that costs them $D$ dollars to
 produce. Use your function with $P = 40\ \%$ and $D = 12.67$ dollars.
 \item {\em Gross pay}. A particular employee earns $E$ dollars annually. Write a function 
-{\tt gross\_pay} that determines and prints what the amount of his gross pay will be for each pay period 
+{\tt gross\_pay(E)} that determines and prints what the amount of his gross pay will be for each pay period 
 if he is paid twice a month (24 pay checks per year) and if he is paid bi-weekly (26 checks per 
 year). Use your function with $E = 32,500$ dollars.
 \item {\em Stock gain}. Kathryn bought $600$ shares of stock at a price of $A$ dollars per share. 
 One year later she 
-sold them for $B$ dollars per share. Write a function {\tt stock\_gain} that calculates and 
+sold them for $B$ dollars per share. Write a function {\tt stock\_gain(A, B)} that calculates and 
 displays the following:
 \begin{itemize}
 \item The total amount paid for the stock.
@@ -1147,21 +1171,24 @@ displays the following:
 Use your function with the values $A = 21.77$ dollars and $B = 26.44$ dollars.
 \end{enumerate}
 
-\section{Boolean expressions}
+\section{Logic}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item
+\item Review Boolean expressions, operations, and variables.
 \end{itemize}
+There are virtually no changes compared to Karel the Robot, so we will 
+only revisit the subject briefly. 
 
-Boolean expressions are the foundation of every procedural programming 
-language including Python. Remember how the value of a variable 
-is assigned and printed? 
+\subsection{Boolean expressions}
+
+Let's begin with creating a variable 
+and printing it:
 
 \begin{verbatim}
 a = 1
-a
+print a
 \end{verbatim}
 Output:
 
@@ -1171,52 +1198,67 @@ Output:
 Now type
 
 \begin{verbatim}
-a > 0
+print a > 0
 \end{verbatim}
 Output:
 
 \begin{verbatim}
 True
 \end{verbatim}
-And,
+Although the syntax looks a bit unusual, this is a correct
+Python code -- since {\tt a} is one, the Boolean expression {\tt a > 0}
+is {\tt True}. This is the value that gets printed. We can try it the other 
+way round:
 
 \begin{verbatim}
-a < 0
+print a < 0
 \end{verbatim}
 Output:
 
 \begin{verbatim}
 False
 \end{verbatim}
-Conditions {\tt a > 0} and {\tt a < 0} are {\em Boolean expressions} whose value is either 
-{\tt True} or {\tt False}. Conditions related to numbers often contain the following operators:
 
-\begin{itemize}
-\item[(1)] {\tt >} {$\ldots$} greater than, 
-\item[(2)] {\tt >=} {$\ldots$} greater than or equal to, 
-\item[(3)] {\tt <=} {$\ldots$} less than or equal to, 
-\item[(4)] {\tt <} {$\ldots$} less than, 
-\item[(5)] {\tt ==} {$\ldots$} equal to, 
-\item[(6)] {\tt !=} {$\ldots$} not equal to, 
-\item[(7)] {\tt <>} {$\ldots$} not equal to (same as {\tt !=}).
-\end{itemize}
-We can store the value of a Boolean expression in a variable:
+\subsection{Boolean variables}
 
+We can also store the value of the expression {\tt a > 0} in a Boolean variable,
+and print it:
 \begin{verbatim}
-v1 = (a > 0)
-v1
+b = a < 0
+print b
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-True
+False
 \end{verbatim}
-Such variable {\tt v1} is called {\em Boolean variable}. With Boolean variables we can do all standard 
-logical operations such as {\tt and}:
+Boolean expressions involving numbers often contain the following operators:
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+Symbol & Meaning \\
+\hline
+{\tt >} & greater than\\
+{\tt >=} & greater than or equal to\\
+{\tt <=} & less than or equal to\\
+{\tt <} & less than\\
+{\tt ==} & equal to\\
+{\tt !=} & not equal to\\
+{\tt <>} & not equal to (same as {\tt !=})\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Boolean operations}
+
+With Boolean variables we can do logical operations such as {\tt and}:
 
 \begin{verbatim}
-v2 = (a < 5)
-v1 and v2
+a = 1
+v1 = a > 0
+v2 = a < 5
+print v1 and v2
 \end{verbatim}
 Output:
 
@@ -1226,8 +1268,8 @@ True
 Logical {\tt or}:
 
 \begin{verbatim}
-v3 = (a > 10)
-v1 or v3
+v3 = a > 10
+print v1 or v3
 \end{verbatim}
 Output:
 
@@ -1238,45 +1280,73 @@ Negation:
 
 \begin{verbatim}
 v4 = not v1
-v4
+print v4
 \end{verbatim}
 Output:
 
 \begin{verbatim}
 False
 \end{verbatim}
-Sometimes logical expressions can be more complicated, but this is no problem:
+Sometimes logical expressions can be more complicated, but this is no problem
+as we always can use round brackets: 
 
 \begin{verbatim}
 v5 = not ((v1 and v2) or (v3 and not v4))
-v5
 \end{verbatim}
-Output:
 
-\begin{verbatim}
-False
-\end{verbatim}
-Last let us type
+\subsection{Review questions}
 
-\begin{verbatim}
-v6 = not v5
-\end{verbatim}
-to end this section in a positive way!
+\begin{enumerate}
+\item Let {\tt a} and {\tt b} be Boolean variables. What is the 
+result of {\tt (a or b) or (not (a or b))}
+\begin{enumerate}
+\item[A1] {\tt False}
+\item[A2] Undefined.
+\item[A3] {\tt False} or {\tt True}, depending on the values of {\tt a} and {\tt b}.
+\item[A4] {\tt True}
+\end{enumerate}
+\item Let {\tt a} and {\tt b} be Boolean variables. What is the 
+result of {\tt (a and b) and (not (a and b))}
+\begin{enumerate}
+\item[A1] Undefined.
+\item[A2] {\tt False} or {\tt True}, depending on the values of {\tt a} and {\tt b}.
+\item[A3] {\tt True}
+\item[A4] {\tt False}
+\end{enumerate}
+\end{enumerate}
+
+
+\subsection{Programming exercises}
+
+\begin{enumerate}
+\item Write a Python function {\tt checknumber(n)} where {\tt n} is an arbitrary 
+      integer number, that returns {\tt True} if {\tt n} is even and {\tt False}
+      otherwise.
+\item Consider a quadratic equation $ax^2 + bx + c = 0$ where $a, b, c$ are real numbers 
+      and $a \not = 0$. Write a Python function 
+      {\tt hasrealroots(a, b, c)} that returns {\tt True} if the equation has 
+      at least one real root, and {\tt False} otherwise.
+\item Write a Python function {\tt liesincircle(R, x, y)} that returns {\tt True} if 
+      the point with planar coordinates {\tt [x, y]} lies in a circle of radius {\tt R}
+      whose center is at the origin {\tt [0, 0]}. If the point lies on the border of the 
+      circle or outside, the function should return {\tt False}.
+\end{enumerate}
 
 \section{Strings}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item
+\item Learn to work with text strings.
 \end{itemize}
-
 By a {\em string} we mean a text surrounded by double or single quotes, such as 
 {\tt "this is a string"} or {\tt 'and this is a string as well'}.
 Strings are useful to make outputs more informative, but 
 they have many other uses as well. For example, they can represent data 
 in databases such as in a phone book. So we need to understand them well,
 as well as various operations that we can do with them.
+
+\subsection{Using quotes}
 
 Let us first understand how to use quotes in strings. The safest way is to use 
 them with a backslash:
@@ -1299,7 +1369,10 @@ Output:
 \begin{verbatim}
 "It doesn't matter."
 \end{verbatim}
-When we want to use multi-line strings, the best way is to enclose them 
+
+\subsection{Multiline strings}
+
+When we want to use multiline strings, the best way is to enclose them 
 in triple quotes:
 
 \begin{verbatim}
@@ -1323,6 +1396,9 @@ As of some one gently rapping, rapping at my chamber door.
 `'Tis some visitor,' I muttered, `tapping at my chamber door -
 Only this, and nothing more.'
 \end{verbatim}
+
+\subsection{Concatenation and repetition}
+
 Strings can be concatenated (glued together) with the '{\tt +}' operator, and repeated with '{\tt *}':
 
 \begin{verbatim}
@@ -1345,10 +1421,12 @@ Output:
 \begin{verbatim}
 I yelled "Help me!" "Help me!" "Help me!"
 \end{verbatim}
+
+\subsection{Using indices}
+
 Individual letters forming a string can be accessed via indices. The indices 
 start from zero, as in C and C++. It is also handy to use the index {\tt -1} 
 for the last index, {\tt -2} for the one-before-last etc.
-
 
 \begin{verbatim}
 word = "breakfast"
@@ -1365,6 +1443,9 @@ Second character: r
 Last character: t
 One-before-last character: s
 \end{verbatim}
+
+\subsection{Slicing}
+
 We can also access substrings, this is called {\em slicing}:
 
 \begin{verbatim}
@@ -1409,7 +1490,10 @@ Output:
 \begin{verbatim}
 7
 \end{verbatim}
-Perhaps this lesson could be longer but it isn't!
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
 
 \section{Conditions}
 
@@ -1512,6 +1596,11 @@ else:
 If your head hurts, do not worry. This section is over 
 and the next one is going to be simpler!
 
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+
 \section{The {\tt while} loop}\label{sec:while}
 
 \subsection{Objectives}
@@ -1568,6 +1657,11 @@ The {\tt for} loop will be discussed in Section \ref{sec:forloop}.\\
 
 \noindent
 This section is finished, good job!
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
 
 \section{More on functions}
 
@@ -1745,6 +1839,11 @@ input for the {\tt sqrt()} function is detected. What you do depends on
 your code -- for example you can skip this value of {\tt x} and calculate 
 with the next one. 
 
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+
 \section{Tuples}
 
 \subsection{Objectives}
@@ -1752,7 +1851,6 @@ with the next one.
 \begin{itemize}
 \item
 \end{itemize}
-
 Sometimes we need to store data that does not change in time - such as 
 the names of weekdays, or names of months. For this we use {\em tuples}.
 To define a tuple, enclose comma-separated items in round brackets: 
@@ -1808,6 +1906,11 @@ Output:
 \end{verbatim}
 Tuples become especially useful in combination with the {\tt for}
 loop that will be discussed in Section \ref{sec:forloop}. 
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
 
 \section{Lists}
 
@@ -1928,6 +2031,11 @@ Output:
 This is the end of the section - now you know one of the most powerful 
 concepts in Python!
 
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+
 \section{Dictionaries}
 
 \subsection{Objectives}
@@ -2025,6 +2133,11 @@ There are other functions you can use to work with dictionaries - too many to go
 through right now. We'll leave the lesson at this point, and move to the long 
 expected {\tt for} loop!
 
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+
 \section{The {\tt for} loop} \label{sec:forloop}
 
 \subsection{Objectives}
@@ -2103,6 +2216,11 @@ December
 \end{verbatim}
 This concludes Section 13 - now you know all the loops there are!
 
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+
 \section{Plotting}
 
 \subsection{Objectives}
@@ -2111,6 +2229,11 @@ This concludes Section 13 - now you know all the loops there are!
 \item
 \end{itemize}
 Coming soon.
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
 
 \section{Using libraries}\label{subsec:importinglib}
 
@@ -2133,6 +2256,10 @@ matrix algebra and differential equations, is Sympy ({\tt http://www.sympy.org})
 Documentation on the Python Standard Library can be found at 
 {\tt http://docs.python.org/library/}. A long list of packages for Python 
 programmers can be found at {\tt http://pypi.python. org/pypi/}.
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
 
 
 \section{Other recommended topics in Python} \label{sec:adv}

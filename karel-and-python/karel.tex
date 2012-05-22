@@ -2745,8 +2745,8 @@ too often, most likely they will not change during our lives. But we also use va
 values change, such as {\tt days\_per\_year}, {\tt number\_of\_my\_pets}, etc.
 
 Next let's look at logical variables. Those are variables that only can store two possible values --
-{\em True} or {\em False}, and we use a huge number of them. One such example may be {\tt I\_speak\_a\_foreign\_language}.
-For someone this variable has the value {\em False}, for someone it is {\em True}. The important 
+{\tt True} or {\tt False}, and we use a huge number of them. One such example may be {\tt I\_speak\_a\_foreign\_language}.
+For someone this variable has the value {\tt False}, for someone it is {\tt True}. The important 
 thing is that when someone asks you about that, you do not need to go check the records in the language 
 school -- you just know it. The value is {\em stored}, it does not have to be {\em created} each time 
 it is needed. Logical variables will be discussed in more detail shortly, now let us explore 
@@ -3074,9 +3074,9 @@ The initial position of the robot is at the west wall of the bottom row, facing 
 \end{itemize}
 
 \subsection{Logical expressions}
-As we already know, logical expressions are expressions that can be answered with either {\em True} or 
-{\em False}. We say that the {\em True} or the {\em False} is their value. Here are some 
-real-life examples, try to answer them with {\em True} or {\em False}:
+As we already know, logical expressions are expressions that can be answered with either {\tt True} or 
+{\tt False}. We say that the {\tt True} or the {\tt False} is their value. Here are some 
+real-life examples, try to answer them with {\tt True} or {\tt False}:
 
 \begin{itemize}
 \item "I am 15 years old."
@@ -3085,11 +3085,11 @@ real-life examples, try to answer them with {\em True} or {\em False}:
 \end{itemize}
 And here are some Karel examples:
 \begin{itemize}
-\item wall ({\em True} if the robot is facing a wall, {\em False} otherwise)
-\item home ({\em True} if the robot is home, {\em False} otherwise)
-\item gem ({\em True} if the robot stands on a gem, {\em False} otherwise)
-\item north ({\em True} if the robot is facing North, {\em False} otherwise)
-\item empty ({\em True} if the robot does not have any gems on him, {\em False} otherwise)
+\item wall ({\tt True} if the robot is facing a wall, {\tt False} otherwise)
+\item home ({\tt True} if the robot is home, {\tt False} otherwise)
+\item gem ({\tt True} if the robot stands on a gem, {\tt False} otherwise)
+\item north ({\tt True} if the robot is facing North, {\tt False} otherwise)
+\item empty ({\tt True} if the robot does not have any gems on him, {\tt False} otherwise)
 \end{itemize}
 
 \subsection{Logical variables}
@@ -3112,7 +3112,7 @@ There is a logical operation {\em and} between the expressions B and C.
 
 The original sentence can be written briefly as "if (B and C) then A". We love this kind of 
 brevity in programming! A, B and C are {\em logical variables}. Logical variables 
-can only represent {\em True} or {\em False}, and their purpose is to ease the operation with 
+can only represent {\tt True} or {\tt False}, and their purpose is to ease the operation with 
 longer expressions.
 Regarding the original sentence, we could go one step further and define a new logical variable\\
 
@@ -3127,21 +3127,21 @@ Then, the sentence would become just "if D then A"!
 It is worth mentioning the following properties of the logical operation {\em and}:\\
 
 \begin{center}
-\framebox{(A {\em and} B) is {\em True} only if both A and B are {\em True}. Otherwise A {\em and} B is {\em False}.}
+\framebox{(A {\em and} B) is {\tt True} only if both A and B are {\tt True}. Otherwise A {\em and} B is {\tt False}.}
 \end{center}
 \vspace{4mm}
 \noindent
 The logical operation {\em or} has the following properties:\\
 
 \begin{center}
-\framebox{(A {\em or} B) is {\em True} if at least one of A, B is {\em True}. If both A. B are {\em False}, (A {\em or} B) is {\em False}.}
+\framebox{(A {\em or} B) is {\tt True} if at least one of A, B is {\tt True}. If both A. B are {\tt False}, (A {\em or} B) is {\tt False}.}
 \end{center}
 \vspace{4mm}
 \noindent
 We also use the logical operation {\em not} with the following property:\\
 
 \begin{center}
-\framebox{({\em not} A) is {\em True} if A is {\em False} and vice versa.}
+\framebox{({\em not} A) is {\tt True} if A is {\tt False} and vice versa.}
 \end{center}
 
 
@@ -3163,19 +3163,19 @@ We also use the logical operation {\em not} with the following property:\\
 \item[A3] Expression that is either true or false.
 \item[A4] Expression that cannot be false.
 \end{enumerate}
-\item A is {\em True} and B is {\em False}. What is then the value of (A {\em and} {\em not} (A {\em or} B)) ?
+\item A is {\tt True} and B is {\tt False}. What is then the value of (A {\em and} {\em not} (A {\em or} B)) ?
 \begin{enumerate}
-\item[A1] {\em False}.
-\item[A2] {\em True}.
-\item[A3] It can be both {\em True} and {\em False}.
-\item[A4] Neither {\em True} nor {\em False}.
+\item[A1] {\tt False}.
+\item[A2] {\tt True}.
+\item[A3] It can be both {\tt True} and {\tt False}.
+\item[A4] Neither {\tt True} nor {\tt False}.
 \end{enumerate}
-\item A is {\em True} and B is {\em True}. What is then the value of (A {\em and} {\em not} (A {\em and} {\em not} B)) ?
+\item A is {\tt True} and B is {\tt True}. What is then the value of (A {\em and} {\em not} (A {\em and} {\em not} B)) ?
 \begin{enumerate}
-\item[A1] {\em False}.
-\item[A2] {\em True}.
-\item[A3] It can be both {\em True} and {\em False}.
-\item[A4] Neither {\em True} nor {\em False}.
+\item[A1] {\tt False}.
+\item[A2] {\tt True}.
+\item[A3] It can be both {\tt True} and {\tt False}.
+\item[A4] Neither {\tt True} nor {\tt False}.
 \end{enumerate}
 \end{enumerate}
 

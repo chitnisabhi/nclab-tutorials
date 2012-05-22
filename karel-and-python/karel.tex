@@ -2710,13 +2710,14 @@ parents to go through life on his own. Therefore, his home will not be present
 in the following exercises and games anymore. There are a few more changes
 that reflect Karel's growing up, including numerical and logical variables,
 and procedures. Therefore, do not forget to adjust the 
-Level in Settings accordingly.
+Level in Settings accordingly. A compact overview of new functionality in Level 3
+can be found in Section \ref{sec:newfunc3}.
 
 \subsection{Objectives} 
  
 \begin{itemize}
-\item Understand what variables are good for, and that they can have different types.
-\item Learn to work with numerical variables and print them.
+\item Understand the concept of variables.
+\item Learn to work with numerical and logical variables.
 \item Learn to use procedures that return values. 
 \end{itemize}
 
@@ -2755,7 +2756,7 @@ the numerical ones.
 
 Karel's coolest Christmas present was a new GPS device that allows him to determine his position 
 in the maze. With it, he will never get lost again! He can retrieve his coordinates at any time via the 
-commands {\tt gpsx} and {\tt gpsy}. He also has a new ability to output results via the {\tt print} 
+kaywords {\tt gpsx} and {\tt gpsy}. He also has a new ability to output results via the {\tt print} 
 command. The usage of these commands is best illustrated using the following short program where 
 Karel determines his coordinates in the maze and prints them:
 
@@ -2862,7 +2863,11 @@ End position: 10
 \end{verbatim}
 Another way to change the value of a numerical variable is to increase it by one or 
 decrease it by one via the commands {\tt inc()} and 
-{\tt dec()}, respectively. Consider again Karel's initial position as shown 
+{\tt dec()}, respectively. Commands {\tt inc(a, num)} and 
+{\tt dec(a, num)} will increase / decrease the value of variable {\tt a}
+by an integer number {\tt num}.
+
+Consider again Karel's initial position as shown 
 in Fig. \ref{fig:var1}. Then the code
 
 \begin{verbatim}
@@ -2910,7 +2915,7 @@ position is as shown in Fig. \ref{fig:var2}?
 \end{enumerate}
 \item What values will the variables {\tt gpsx} and {\tt gpsy} have after
 Karel executes the following program? He starts from the position shown 
-in Fig. \ref{fig:var2} again.
+in Fig. \ref{fig:var2}.
 \begin{verbatim}
 repeat 5
   while not wall
@@ -2926,7 +2931,7 @@ repeat 5
 \item[A4] {\tt gpsx} is 9 and {\tt gpsy} is 11.
 \end{enumerate}
 
-\item Which of the following four programs is/are invalid?
+\item Which of the following programs is/are invalid?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -2940,22 +2945,22 @@ dec(b)
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
-c = zero
-d = inc(c)
+gpsx = 0
+inc(gpsx)
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
-e = zero
+e = 1
 e = gpsx
 e = gpsy
 \end{verbatim}
 \end{enumerate}
-\item Which of the following four programs is/are invalid?
+\item Which of the following programs is/are invalid?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
 def count_steps
-  n = zero
+  n = 0
   while not wall
     go
     inc(n)
@@ -2964,16 +2969,16 @@ def count_steps
 \item[A2] 
 \begin{verbatim}
 def count_steps
-  n = zero
+  n = 0
   while not wall
     go
-    inc(n)
+    inc(n, 1)
   print "Number of steps made =", n
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 def count_steps
-  n = zero
+  n = 0
   while not wall
     go
     inc(n)
@@ -2981,7 +2986,6 @@ def count_steps
 \item[A4] 
 \begin{verbatim}
 proc count_steps
-  n = zero
   while not wall
     go
     inc(n)
@@ -3261,7 +3265,7 @@ right. Use the BubbleSort algorithm.}
 \end{figure}
 \noindent
 
-\section{Appendix - Overview of Functionality by Level}
+\section{Appendix - Overview of Functionality by Level}\label{sec:newfunc3}
 
 \subsection{Level 0 (Section \ref{sec:manual})}
 
@@ -3321,6 +3325,7 @@ New keywords:
 \item {\tt dec(a)} ... decreases the value of variable {\tt a} by one.
 \item {\tt dec(a, value)} ... decreases the value of variable {\tt a} by {\tt value}.
 \item {\tt rand} ... random command (returns randomly True or False).
+\item {\tt return} ... returns a value, to be used in procedures.
 \item {\tt and} ... binary logical {\em and}.
 \item {\tt or} ... binary logical {\em or}.
 \item {\tt not} ... unary logical {\em not}.

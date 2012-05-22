@@ -315,7 +315,7 @@ Karel operates in four modes:
 \end{enumerate}
 
 
-\section{Section A - Operating the Robot in Manual Mode}
+\section{Section A - Operating the Robot in Manual Mode} \label{sec:manual}
 
 \subsection{Objectives} 
 \begin{itemize}
@@ -676,7 +676,7 @@ return home in time!}\\[-7mm]
 \noindent
 \newpage
 
-\section{Section B - Bridge to Programming}
+\section{Section B - Bridge to Programming} \label{sec:bridge}
 
 \subsection{Objectives} 
  
@@ -834,7 +834,7 @@ end of the cross and return home!}
 \noindent
 \newpage
 
-\section{Intermission - Algorithms, Programs, and Bugs}
+\section{Intermission - Algorithms, Programs, and Bugs} \label{sec:interm1}
 
 \subsection{Objectives} 
  
@@ -932,7 +932,7 @@ The most usual logical error are:
 \end{enumerate}
 \end{enumerate}
 
-\section{Section C - Counting Loop}
+\section{Section C - Counting Loop} \label{sec:repeat}
 
 \subsection{Objectives} 
 
@@ -1328,7 +1328,7 @@ This is a Heading
 
 
 
-\section{Section D - Conditions}
+\section{Section D - Conditions} \label{sec:cond}
 
 \subsection{Objectives} 
 
@@ -1625,7 +1625,7 @@ command per line, your program should have at most 7 lines.}
 
 
 
-\section{Section E - Conditional Loop}
+\section{Section E - Conditional Loop} \label{sec:whilek}
 
 \subsection{Objectives} 
  
@@ -1854,7 +1854,7 @@ previous three lines that form an infinite loop!
 \vspace{-1cm}
 \end{figure}
 
-\subsection{Never replicate code in a program!}
+\subsection{Never replicate computer code!}
 
 A new command should be defined whenever it becomes clear that the same 
 action is repeated in the algorithm multiple times (yes, we talk about the algorithm,
@@ -1970,7 +1970,7 @@ while not home
 It is the task of the first exercise in this Section to implement this program. But before we 
 do so, let us mention one very important thing.
 
-\subsection{Solution procedure revisited (and corrected)}
+\subsection{Solution procedure revisited}
 
 Let's forget the commands that we defined above.
 Experienced programmer would never approach the problem the way we did.
@@ -2343,7 +2343,7 @@ and that it does not contain any loops.}\\[-7mm]
 
 \newpage
 
-\section{Section G - Recursion}
+\section{Section G - Recursion} \label{sec:recursion}
 
 \subsection{Objectives} 
  
@@ -2710,7 +2710,7 @@ algorithm for the robot to collect all gems from the tree and get home!  }
 
 
 
-\section{Section H - Variables}
+\section{Section H - Variables} \label{sec:var}
 
 Now we are entering exciting Level 3! Karel grew up and left the home of his 
 parents to go through life on his own. Therefore, his home will not be present
@@ -2724,7 +2724,7 @@ Level in Settings accordingly.
 \begin{itemize}
 \item Understand what variables are good for, and that they can have different types.
 \item Learn to work with numerical variables and print them.
-\item Learn to use procedures. 
+\item Learn to use procedures that return values. 
 \end{itemize}
 
 \noindent
@@ -2798,7 +2798,7 @@ make in order to reach the closest wall in the direction that he was facing:
 
 \begin{verbatim}
 def count_steps
-  n = zero
+  n = 0
   while not wall
     go
     inc(n)
@@ -2811,13 +2811,13 @@ num = count_steps
 print "Number of steps:", num 
 \end{verbatim}
 
-\subsection{Creating numerical variables}
+\subsection{Creating numerical variables} \label{par:var}
 
 In Karel, numerical variables can be created in several different ways: 
 \begin{enumerate}
-\item By setting them to zero. For example, new variable {\tt a} is created and set to zero by typing 
+\item By setting them to an integer number. For example, new variable {\tt a} is created and set to zero by typing 
 \begin{verbatim}
-a = zero
+a = 0
 \end{verbatim}
 \item By setting them to {\tt gpsx}. For example, new variable {\tt var} is created and set to {\tt gpsx} by typing
 \begin{verbatim}
@@ -3068,7 +3068,7 @@ The initial position of the robot is at the west wall of the bottom row, facing 
 \end{figure}
 \noindent
 
-\section{Section I - Logic}
+\section{Section I - Logic} \label{sec:logic}
 
 \subsection{Objectives} 
  
@@ -3268,4 +3268,73 @@ right. Use the BubbleSort algorithm.}
 \end{figure}
 \noindent
 
+\section{Appendix - Overview of Functionality by Level}
 
+\subsection{Level 0 (Section \ref{sec:manual})}
+
+In Level 0, Karel can be guided by clicking on buttons:
+\begin{itemize}
+\item Go ... make one step forward.
+\item Left ... turn left.
+\item Right ... turn right.
+\item Put ... put a gem on the ground.
+\item Get ... pick up a gem from the ground.
+\end{itemize}
+
+\subsection{Level 1 (Section \ref{sec:bridge})}
+
+In Level 1, Karel can be guided by typing the commands:
+\begin{itemize}
+\item {\tt go} ... make one step forward.
+\item {\tt left} ... turn left.
+\item {\tt right} ... turn right.
+\item {\tt put} ... put a gem on the ground.
+\item {\tt get} ... pick up a gem from the ground.
+\end{itemize}
+
+\subsection{Level 2 (Sections \ref{sec:interm1} -- \ref{sec:recursion})}
+
+New commands:
+\begin{itemize}
+\item {\tt if - else} ... condition.
+\item {\tt repeat} ... counting loop (repeat an action a given number of times).
+\item {\tt while} ... conditional loop (repeat an action while a condition is satisfied).
+\item {\tt def} ... define a new command.
+\end{itemize}
+Additional new keywords:
+\begin{itemize}
+\item {\tt wall} ... sensor that checks True if the robot faces a wall.
+\item {\tt gem} ... sensor that checks True if there is a gem within the robot's reach.
+\item {\tt empty} ... sensor that checks True if the robot's bag with gems is empty.
+\item {\tt home} ... sensor that checks True if the robot is at home.
+\item {\tt north} ... sensor that checks True if the robot faces North.
+\end{itemize}
+New functionality:
+\begin{itemize}
+\item Recursion (a command can make a call to itself).
+\end{itemize}
+
+\subsection{Level 3 (Sections \ref{sec:var}, \ref{sec:logic})}
+
+New keywords:
+\begin{itemize}
+\item {\tt print} ... print strings and variables.
+\item {\tt gpsx} ... GPS coordinate in the horizontal direction.
+\item {\tt gpsy} ... GPS coordinate in the vertical direction.
+\item {\tt a = 0} ... create a new variable {\tt a} and initialize it with zero (or another 
+      integer number).\\ For additional ways to initialize variables see Subsection \ref{par:var}.
+\item {\tt inc(a)} ... increases the value of variable {\tt a} by one.
+\item {\tt inc(a, value)} ... increases the value of variable {\tt a} by {\tt value}.
+\item {\tt dec(a)} ... decreases the value of variable {\tt a} by one.
+\item {\tt dec(a, value)} ... decreases the value of variable {\tt a} by {\tt value}.
+\item {\tt rand} ... random command (returns randomly True or False).
+\item {\tt and} ... binary logical {\em and}.
+\item {\tt or} ... binary logical {\em or}.
+\item {\tt not} ... unary logical {\em not}.
+\end{itemize}
+New functionality:
+\begin{itemize}
+\item Numerical and logical (Boolean) variables.
+\item Complex logical expressions.
+\item Procedures can return values.
+\end{itemize}

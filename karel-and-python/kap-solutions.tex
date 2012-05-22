@@ -1202,87 +1202,175 @@ print "There are", n, "apples in the orchard."
 \end{verbatim}
 
 
-\subsection{H04 - Carpet size}
-
-Coming soon.
-
-
-\subsection{I01 - Numerology I}
+\subsection{H04 - New Carpet}
 
 \begin{verbatim}
-# The algorithm below assumes a coordinate
-# system in each cell where (1, 1) is the 
-# bottom-left corner, (3, 1) is the bottom-right 
-# corner, etc. Below, "gem11" means that 
-# there is a gem at (1, 1), and so on.
-# If not gem21 ... 1, 7, or 4.
-#   If gem23 ... 4
-#   Else 
-#     If gem25 ... 7
-#     Else ... 1
-# Else
-#   If not gem23 ... 0
-#   Else ... 2, 3, 5, 6, 8, 9
-#     If no gem32 ... 2
-#     Else ... 3, 5, 6, 8, 9
-#       If gem12 ... 6, 8
-#         If gem34 ... 8
-#         Else ... 6
-#       Else ... 3, 5, 9
-#         If not gem14 ... 3
-#         Else ... 5, 9
-#           If gem34 ... 9
-#           Else ... 5
+# Count tiles in one row. Assumes
+# that Karel stands at the West end 
+# of the row, facing East: 
+def check_row
+  n = 1
+  while not wall
+    go 
+    inc(n)
+  return n
+  
+# Assumes that Karel is at the 
+# East end of a row, facing East:
+def one_row_up
+  finished = False
+  left
+  while wall
+    left
+    if not wall 
+      go
+    else 
+      finished = True 
+    right
+  go
+  return finished
+
+# Move to the West end of row 
+# and turn East. Assumes that 
+# Karel faces North:
+def get_west
+  left
+  while not wall
+    go
+  repeat 2
+    left
+  
+# Measure the area:
+def carpet
+  a = check_row
+  while one_row_up
+    get_west
+    inc(a, check_row)
+  return a
+  
+# Calculate and print apartment area:
+area = carpet
+print "Carpet size =", area
 \end{verbatim}
 
-\subsection{I02 - Numerology II}
+
+\subsection{I01 - Reading Numbers}
 
 \begin{verbatim}
-# We will use the same coordinate
-# system as in Numerology I. We 
-# will also use logical variables 
-# is 0, is1, is2, ..., is9 (isN is
-# True if the number of gems is N,
-# and it is False otherwise).
-#
-# If not (is1 or is4 or is7)
-#   Put gem at (1, 1)
-#   Put gem at (2, 1)
-# Put gem at (3, 1)
-# If not is2
-#   Put gem at (3, 2)
-# Put gem at (3, 3)
-# If not (is5 or is6)
-#   Put gem at (3, 4)
-# Put gem at (3, 5)
-# If not (is1 or is4)
-#   Put gem at (2, 5)
-# If not is1
-#   Put gem at (1, 5)
-# If not (is1 or is2 or is3 or is7))
-#   Put gem at (1, 4)
-# If not (is1 or is 7)
-#   Put gem at (1, 3)
-# If not (is0 or is1 or is7)
-#   Put gem at (2, 3)
-# If is0 or is2 or is6 or is8
-#   Put gem at (1, 2)
+# Make two steps:
+def go2
+  repeat 2 
+    go
+
+# Read number in box:
+def readnumber
+  # First detect gems
+  # at key positions:
+  go
+  gem10 = gem
+  go2
+  gem12 = gem
+  go2
+  gem14 = gem
+  right
+  go
+  right
+  go
+  gem23 = gem
+  right
+  go2
+  gem03 = gem
+  left
+  go2
+  gem01 = gem
+  left
+  go
+  right
+  go2
+  repeat 2
+    left
+  
+  # Decide what number is in 
+  # the box:
+  if gem10
+    # 0, 2, 4, 5, 6, 8:
+    if gem12
+      # 2, 3, 5, 6, 8:
+      if gem03
+        # 5, 6, 8:
+        if gem23
+          # 4:
+          return 4
+        else
+          # 5, 6:
+          if gem01
+            # 6:
+            return 6
+          else 
+            # 5:
+            return 5
+    else
+      # 0:
+      return 0
+  else
+    # 1, 4, 7:
+    if gem12
+      # 4:
+      return 4
+    else
+      # 1,7:
+      if gem14
+        # 7:
+        return 7
+      else
+        # 1:
+        return 1
+
+# Main program:
+n1 = readnumber
+print "Number in the first box is", n1
+
+# Move to second box:
+right
+repeat 3
+  go
+left
+
+n2 = readnumber
+print "Number in the second box is", n2
+
+# Move to third box:
+right
+repeat 3
+  go
+left
+
+n3 = readnumber
+print "Number in the third box is", n3
 \end{verbatim}
 
-\subsection{I03 - Numerology III}
+\subsection{I02 - Writing Numbers}
 
 \begin{verbatim}
-# Hints:
-# (1) Use the function from Numerology I 
-# that helps Karel recognize the
-# number in the cell.
-# (2) Analyze the combinations of
-# the two numbers to see if the first 
-# output cell will contain a '1' or
-# nothing, and what the number in the 
-# second cell will be. 
-# (3) Render the number(s) using 
-# the function written in Numerology II.
+# Coming soon.
+\end{verbatim}
+
+\subsection{I03 - Adding Numbers}
+
+\begin{verbatim}
+# Coming soon.
+\end{verbatim}
+
+\subsection{I04 - Eight Queens}
+
+\begin{verbatim}
+# Coming soon.
+\end{verbatim}
+
+\subsection{I05 - BubbleSort}
+
+\begin{verbatim}
+# Coming soon.
 \end{verbatim}
 
 

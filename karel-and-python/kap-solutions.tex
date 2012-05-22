@@ -73,34 +73,59 @@
 \pagestyle{empty}
 \vbox{}
 
+\pagestyle{empty}
 
-\vspace{5cm}
+%\begin{figure}[!ht]
+%\begin{center}
+%\includegraphics[width=\textwidth]{img/NCLab-Programming-1.png}
+%\end{center}
+%\end{figure}
+\vbox{}
+\vspace{2cm}
 
 \begin{center}
-{\huge \bf Karel the Robot}
+{\huge \bf First Course in Programming}
 \end{center}
 
 \begin{figure}[!ht]
 \begin{center}
 \vspace{-6mm}
-\includegraphics[width=0.4\textwidth]{img/karel-logo.png}
+\includegraphics[width=0.26\textheight]{imgk/karel-logo.png}\ \ \ \ \ \ 
+\includegraphics[width=0.2\textheight]{imgp/python-logo.png}
 \vbox{}
 \vspace{-9mm}
 \end{center}
 \end{figure}
 \begin{center}
-{\huge \bf Solution Manual}
+{\huge \bf with Karel the Robot and Python}
 \end{center}
+\vbox{}
+\vspace{3cm}
+\centerline{\Large \bf Solution Manual}
+\begin{center}
+\vfill
+{\large
+{\bf Pavel Solin}, University of Nevada, Reno\\
+{\bf Salih Dede}, Coral Academy of Science, Reno
+}
+\end{center}
+\newpage
 \vbox{}
 \vfill
 \begin{center}
-This Solution Manual is part of the online course {\tt http://introtoprogramming.net}.\\
+{\large
+This solution manual is part of the online course 
+{\em Intro to Programming with Karel the Robot and Python} 
+({\tt http://introtoprogramming.net}). Its use is allowed only with current subscription.
+Distribution to unauthorized users in any way including 
+posting on the web is prohibited. \\
+}
+\vfill
+
 Copyright 2012 FEMhub Inc. All rights reserved.
 \end{center}
-\newpage
-\noindent
 
-\pagestyle{empty}
+
 
 
 \section*{}
@@ -1099,7 +1124,22 @@ right
 rangle
 \end{verbatim}
 
-\subsection{H01 - Tape Measure}
+\subsection{H01 - Accounting}
+
+\begin{verbatim}
+def accounting
+  num = zero
+  while not empty
+    put
+    inc(num)
+  return num
+
+n = accounting
+print "I have", n, "gems in the bag."
+\end{verbatim}
+
+
+\subsection{H02 - Tape Measure}
 
 \begin{verbatim}
 def measure
@@ -1121,20 +1161,6 @@ def measure
   
 l = measure
 print "Width of the room is", l
-\end{verbatim}
-
-\subsection{H02 - Accounting}
-
-\begin{verbatim}
-def accounting
-  num = zero
-  while not empty
-    put
-    inc(num)
-  return num
-
-n = accounting
-print "I have", n, "gems in the bag."
 \end{verbatim}
 
 

@@ -1351,7 +1351,100 @@ print "Number in the third box is", n3
 \subsection{I02 - Writing Numbers}
 
 \begin{verbatim}
-# Coming soon.
+# Count gems.
+def countgems
+  num = 0
+  while gem
+    get
+    inc(num)
+  return num
+
+def writenumber
+  n = countgems
+  print "Writing number", n
+  go
+  # Position [1, 0]:
+  if n != 1 and n != 4 and n != 7
+    put
+  right
+  go
+  left
+  # Position [2, 0]:
+  put
+  go
+  # Position [2, 1]:
+  if n != 2:
+    put
+  go
+  # Position [2, 2]:
+  put
+  go
+  # Position [2, 3]:
+  if n != 5
+    put
+  go
+  # Position [2, 4]:
+  put
+  left
+  go
+  # Position [1, 4]:
+  if n != 1 and n != 4
+    put
+  go
+  left
+  # Position [0, 4]:
+  if n != 1
+    put
+  go
+  # Position [0, 3]:
+  if n != 1 and n != 2 and n != 3 and n != 7
+    put
+  go
+  # Position [0, 2]:
+  if n != 1 and n != 7
+    put
+  # Position [1, 2]:
+  if n == 8 
+    left 
+    go
+    put
+    repeat 2
+      right
+    go
+    left
+  go
+  # Position [0, 1]:
+  if n == 0 or n == 2 or n == 6 or n == 8
+    put
+  go
+  left
+  # Position [0, 0]:
+  if n != 1 and n != 4 and n != 7
+    put
+  # Exit:
+  go
+  right
+  repeat 2
+    go
+  repeat 2
+    left
+  
+# Main program:
+writenumber
+
+# Move to the second box:
+right
+repeat 3
+  go
+left
+writenumber
+
+# Move to the third box:
+right
+repeat 3
+  go
+left
+writenumber
 \end{verbatim}
 
 \subsection{I03 - Adding Numbers}

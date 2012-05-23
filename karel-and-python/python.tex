@@ -751,7 +751,7 @@ def subtract(a, b):
       and returns square root of the result.
 \end{enumerate}
 
-\section{Variables}
+\section{More on Variables}
 
 \subsection{Objectives}
 
@@ -1171,7 +1171,7 @@ displays the following:
 Use your function with the values $A = 21.77$ dollars and $B = 26.44$ dollars.
 \end{enumerate}
 
-\section{Logic}
+\section{Review of Logic}
 
 \subsection{Objectives}
 
@@ -1332,177 +1332,14 @@ result of {\tt (a and b) and (not (a and b))}
       circle or outside, the function should return {\tt False}.
 \end{enumerate}
 
-\section{Strings}
+\section{More on Conditions}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn to work with text strings.
+\item Review and refine your knowledge of conditions.
+\item Learn to always perform sanity checks of user input.
 \end{itemize}
-By a {\em string} we mean a text surrounded by double or single quotes, such as 
-{\tt "this is a string"} or {\tt 'and this is a string as well'}.
-Strings are useful to make outputs more informative, but 
-they have many other uses as well. For example, they can represent data 
-in databases such as in a phone book. So we need to understand them well,
-as well as various operations that we can do with them.
-
-\subsection{Using quotes}
-
-Let us first understand how to use quotes in strings. The safest way is to use 
-them with a backslash:
-
-\begin{verbatim}
-"I said \"yes\"."
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-'I said "yes".'
-\end{verbatim}
-Another example:
-
-\begin{verbatim}
-"It doesn\'t matter."
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-"It doesn't matter."
-\end{verbatim}
-
-\subsection{Multiline strings}
-
-When we want to use multiline strings, the best way is to enclose them 
-in triple quotes:
-
-\begin{verbatim}
-edgar = """
-Once upon a midnight dreary, while I pondered weak and weary,
-Over many a quaint and curious volume of forgotten lore,
-While I nodded, nearly napping, suddenly there came a tapping,
-As of some one gently rapping, rapping at my chamber door.
-`'Tis some visitor,' I muttered, `tapping at my chamber door -
-Only this, and nothing more.'
-"""
-print edgar
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-Once upon a midnight dreary, while I pondered weak and weary,
-Over many a quaint and curious volume of forgotten lore,
-While I nodded, nearly napping, suddenly there came a tapping,
-As of some one gently rapping, rapping at my chamber door.
-`'Tis some visitor,' I muttered, `tapping at my chamber door -
-Only this, and nothing more.'
-\end{verbatim}
-
-\subsection{Concatenation and repetition}
-
-Strings can be concatenated (glued together) with the '{\tt +}' operator, and repeated with '{\tt *}':
-
-\begin{verbatim}
-word = 'Help' + 'me!'
-print "I yelled" + 3 * word
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-I yelledHelpme!Helpme!Helpme!
-\end{verbatim}
-You can see that empty spaces matter. Let's try again:
-
-\begin{verbatim}
-word = '\"Help' + ' me!\" '
-print "I yelled " + 3 * word
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-I yelled "Help me!" "Help me!" "Help me!"
-\end{verbatim}
-
-\subsection{Using indices}
-
-Individual letters forming a string can be accessed via indices. The indices 
-start from zero, as in C and C++. It is also handy to use the index {\tt -1} 
-for the last index, {\tt -2} for the one-before-last etc.
-
-\begin{verbatim}
-word = "breakfast"
-print "First character:", word[0]
-print "Second character:", word[1]
-print "Last character:", word[-1]
-print "One-before-last character:", word[-2]
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-First character: b
-Second character: r
-Last character: t
-One-before-last character: s
-\end{verbatim}
-
-\subsection{Slicing}
-
-We can also access substrings, this is called {\em slicing}:
-
-\begin{verbatim}
-w1 = "bicycle"
-w2 = w1[0:3]
-print w2
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-bic
-\end{verbatim}
-An omitted first index in a slice defaults to zero:
-
-\begin{verbatim}
-w3 = w1[0:2]
-print w3
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-bi
-\end{verbatim}
-An omitted second index defaults to the length of the string:
-
-\begin{verbatim}
-w4 = w1[2:]
-print w4
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-cycle
-\end{verbatim}
-And by the way, the length of a string can be obtained via the {\tt len()} function:
-
-\begin{verbatim}
-print len(w1)
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-7
-\end{verbatim}
-
-\subsection{Review questions}
-
-\subsection{Programming exercises}
-
-\section{Conditions}
-
-\subsection{Objectives}
-
-\begin{itemize}
-\item
-\end{itemize}
-
 Each procedural programming language including Python enables conditional 
 execution of code. What does this mean? Imagine that you have to write
 a program to calculate
@@ -1601,7 +1438,7 @@ and the next one is going to be simpler!
 \subsection{Programming exercises}
 
 
-\section{The {\tt while} loop}\label{sec:while}
+\section{More on the {\tt while} loop}\label{sec:while}
 
 \subsection{Objectives}
 
@@ -1842,6 +1679,377 @@ with the next one.
 \subsection{Review questions}
 
 \subsection{Programming exercises}
+
+\section{Strings}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item Learn to work with text strings.
+\end{itemize}
+By a {\em string} we mean a text surrounded by double or single quotes, such as 
+{\tt "this is a string"} or {\tt 'this is a string as well'}.
+Strings are useful to make outputs more informative, but 
+they have many other uses as well. For example, they can represent data 
+in databases such as in a phone book. So we need to understand them well,
+as well as various operations that we can do with them.
+
+\subsection{Using quotes}
+
+Let us first understand how to use quotes in strings. The safest way is to use 
+them with a backslash:
+
+\begin{verbatim}
+print "I said \"yes\"."
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+'I said "yes".'
+\end{verbatim}
+Another example:
+
+\begin{verbatim}
+print "It doesn\'t matter."
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+"It doesn't matter."
+\end{verbatim}
+
+\subsection{Multiline strings and backslashes}
+
+If we want to use multiline strings, the best way is to enclose them 
+in triple quotes: 
+
+\begin{verbatim}
+edgar = """
+Once upon a midnight dreary, while I pondered weak and weary,
+Over many a quaint and curious volume of forgotten lore,
+While I nodded, nearly napping, suddenly there came a tapping,
+As of some one gently rapping, rapping at my chamber door.
+`'Tis some visitor,' I muttered, `tapping at my chamber door -
+Only this, and nothing more.'
+"""
+print edgar
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+
+Once upon a midnight dreary, while I pondered weak and weary,
+Over many a quaint and curious volume of forgotten lore,
+While I nodded, nearly napping, suddenly there came a tapping,
+As of some one gently rapping, rapping at my chamber door.
+`'Tis some visitor,' I muttered, `tapping at my chamber door -
+Only this, and nothing more.'
+
+\end{verbatim}
+Yes, there is one empty line on top and one on bottom. The reason is that 
+Python inserted newline symbols there. If we want to avoid these empty lines, 
+we have to include a backslash after the first triple quote, and also at the 
+end of the last line before the closing triple quote. The backslash prevents 
+Python from inserting a newline symbol into the string. Let us show one more 
+example on backslashes. The string 
+
+\begin{verbatim}
+"""\
+This is the first line,
+and this is the second line.\
+""" 
+\end{verbatim}
+will render as
+
+\begin{verbatim}
+'This is the first line,\nand this is the second line.' 
+\end{verbatim}
+When a backslash is included at the end of the first line of text,
+
+\begin{verbatim}
+"""\
+This is the first line,\
+and this is the second line.\
+""" 
+\end{verbatim}
+we obtain 
+
+\begin{verbatim}
+'This is the first line,and this is the second line.'
+\end{verbatim}
+Yes we need to watch for empty characters! Inserting one before the second 
+backslash,
+
+\begin{verbatim}
+"""\
+This is the first line, \
+and this is the second line.\
+""" 
+\end{verbatim}
+we finally obtain 
+
+\begin{verbatim}
+'This is the first line, and this is the second line.'
+\end{verbatim}
+
+
+\subsection{Concatenation and repetition}
+
+Strings can be concatenated (glued together) with the '{\tt +}' operator, and repeated with '{\tt *}':
+
+\begin{verbatim}
+word = 'Help' + 'me!'
+print "I yelled" + 3 * word
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+I yelledHelpme!Helpme!Helpme!
+\end{verbatim}
+You can see that empty spaces matter. Let's try again:
+
+\begin{verbatim}
+word = '\"Help' + ' me!\" '
+print "I yelled " + 3 * word
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+I yelled "Help me!" "Help me!" "Help me!"
+\end{verbatim}
+
+\subsection{Using indices}
+
+Individual letters forming a string can be accessed via indices. The indices 
+start from zero. It is also handy to use the index {\tt -1} 
+for the last index, {\tt -2} for the one-before-last etc.
+
+\begin{verbatim}
+word = "breakfast"
+print "First character:", word[0]
+print "Second character:", word[1]
+print "Last character:", word[-1]
+print "One-before-last character:", word[-2]
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+First character: b
+Second character: r
+Last character: t
+One-before-last character: s
+\end{verbatim}
+
+\subsection{Slicing}
+
+We can also access substrings, this is called {\em slicing}:
+
+\begin{verbatim}
+w1 = "bicycle"
+w2 = w1[0:3]
+print w2
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+bic
+\end{verbatim}
+An omitted first index in a slice defaults to zero:
+
+\begin{verbatim}
+w3 = w1[0:2]
+print w3
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+bi
+\end{verbatim}
+An omitted second index defaults to the length of the string:
+
+\begin{verbatim}
+w4 = w1[2:]
+print w4
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+cycle
+\end{verbatim}
+And by the way, the length of a string can be obtained via the {\tt len()} function:
+
+\begin{verbatim}
+print len(w1)
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+7
+\end{verbatim}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item What of the following are correct ways to include quotes in a string?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+"I say "goodbye", you say "hello""
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+"I say /"goodbye/", you say /"hello/""
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+"I say \"goodbye\", you say \"hello\""
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+"I say \'goodbye\', you say \'hello\'"
+\end{verbatim}
+\end{enumerate}
+\item What of the following are correct ways to define a multiline string?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+/*
+I say "High", you say "Low".
+You say "Why?" And I say "I don't know".
+*/
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+"""\
+I say "High", you say "Low".
+You say "Why?" And I say "I don't know".\
+"""
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+I say "High", you say "Low". \
+You say "Why?" And I say "I don't know".
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+"I say "High", you say "Low". \
+You say "Why?" And I say "I don't know"."
+\end{verbatim}
+\end{enumerate}
+\item What output will be produced with the following code?
+\begin{verbatim}
+s1 = "Thank you"
+s2 = "very"
+s3 = "much!"
+print s1 + 5*s2 + s3
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+Thank you very very very very very much!
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+Thank youveryveryveryveryverymuch!
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+Thankyouveryveryveryveryverymuch!
+\end{verbatim}
+\item[A4] 
+None - an error will be thrown.
+\end{enumerate}
+\item What output will be produced with the following code?
+\begin{verbatim}
+s1 = "intermediate"
+s2 = s1[7] + s1[4] + s1[3] + s1[6] + s1[5]
+print s2
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+dream
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+dreem
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+dieta
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+tamer
+\end{verbatim}
+\end{enumerate}
+\item What output will be produced with the following code?
+\begin{verbatim}
+s1 = "intermediate"
+s2 = s1[:5]
+print s2
+s3 = s1[5:10]
+print s3
+s4 = s1[-2] + s1[-1]
+print s4
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+intermediate
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+inter
+media
+et
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+inter
+media
+te
+\end{verbatim}
+\item[A4] 
+None - an error will be thrown.
+\end{enumerate}
+\item What is the way to measure and print the length of a string {\tt str}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+print length(str)
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+print len(str)
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+print abs(str)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+print str[0]
+\end{verbatim}
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Programming exercises}
+
+\begin{enumerate}
+\item Write a function {\tt countletters(str, letter)} that will count 
+all occurences of the one-letter string {\tt letter} in the string {\tt str}, 
+and return their number. 
+\item Write a function {\tt countwords(str, word)} that will count 
+all occurences of the string {\tt word} in the string {\tt str}, and 
+return their number. You can assume that {\tt len(str)} is always greater 
+or equal to {\tt len(word)}.
+\item Write a function {\tt searchandreplace(str, word1, word2)} that will 
+find all occurences of the string {\tt word1} in the string {\tt str}, and 
+replace them with the string {\tt word2}. You can assume that {\tt len(word1)} 
+is equal to {\tt len(word2)}. Return the new string.
+\end{enumerate}
+
 
 
 \section{Tuples}

@@ -1,0 +1,3 @@
+cp doc.pdf capacitor.pdf
+scp capacitor.pdf femhub@femhub.com:~/femhub.com/public/docs/
+

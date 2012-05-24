@@ -1,0 +1,3 @@
+cp doc.pdf elasticity.pdf
+scp elasticity.pdf femhub@femhub.com:~/femhub.com/public/docs/
+

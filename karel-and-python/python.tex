@@ -269,15 +269,16 @@ As in the first part of the textbook, one or more answers can be correct.
       or music band. Run it without using the mouse.
 \end{enumerate}
 
-\section{Using Python as an advanced calculator}
+\section{Using Python as a graphing calculator}
 
 \subsection{Objectives}
 
 \begin{itemize}
 \item Learn how to use Python for advanced math operations.
+\item Plotting graphs of functions of one and two variables, as well as planar curves.
 \end{itemize}
 The Python worksheet can be used as a powerful calculator and graphing utility. 
-We will, however, begin with very simple math operations.
+Let us begin with the simplest math operations.
 
 \subsection{Addition, subtraction}
 
@@ -310,6 +311,7 @@ Output:
 \begin{verbatim}
 5.4
 \end{verbatim}
+
 \subsection{Multiplication}
 Multiplication is done using the '{\tt *}' symbol as in
 
@@ -550,6 +552,356 @@ Output:
 5
 \end{verbatim}
 
+
+\subsection{\ \ Plotting functions of one variable}\label{plotting}
+
+Plotting can be done via the Pylab library. The Pylab {\tt plot} command takes two
+arrays: $x$-coordinates and $y$-coordinates of points on a curve. Between the 
+points, the curve is interpolated linearly. Let us illustrate this on a simple 
+example with just five points [0, 0], [1, 2], [2, 0.5], [3, 2.5] and [4, 0]:
+
+\begin{verbatim}
+from pylab import *
+x = [0,0, 1.0, 2.0, 3.0, 4.0]
+y = [0.0, 2.0, 0.5, 2.5, 0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+The commands {\tt clf()}, {\tt plot()} and {\tt lab.show()} do clear the canvas, 
+plot the graph, and show the graph, respectively.
+The output is shown in Fig. \ref{fig:plot}.
+
+
+\begin{figure}[!ht]
+\begin{center}
+\hbox{}
+\hspace{-6mm}
+\includegraphics[width=0.56\textwidth]{imgp/plot.png}
+\end{center}
+\vspace{-2mm}
+\caption{Piecewise-linear curve with five points.}
+\label{fig:plot}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+In the following we will discuss more options and show some useful techniques.
+Let's say, for example, that we want to plot the function $f(x) = \sin(x)$
+in the interval $(0, 2\pi)$. The array of $x$-coordinates of equidistant points 
+between 0 and $\pi$ with step 0.05 can be created easily using the command {\tt arange}:
+
+\begin{verbatim}
+from numpy import *
+x = arange(0, 2*pi, 0.05)
+\end{verbatim}
+Changing the step size will change the resolution - with a smaller step the resolution will 
+be finer and vice-versa. Next, the array of $y$-coordinates of the points is obtained via
+
+\begin{verbatim}
+y = sin(x)
+\end{verbatim}
+The last part we already know:
+
+\begin{verbatim}
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\noindent
+The output is shown in Fig. \ref{fig:plot1}.\\[-7mm]
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot1.png}
+\end{center}
+\vspace{-6mm}
+\caption{Plotting $\sin(x)$ in interval $(0, 2\pi)$ with subdivision step 0.05.}
+\label{fig:plot1}
+\vspace{-2mm}
+\end{figure}
+\noindent
+
+\subsection{Labels, colors, and styles}
+
+The plot can be made nicer by adding a label, and also the color 
+and the line style can be changed. Let us start with adding a label:
+
+\begin{verbatim}
+plot(x, y, 'b-', label = "Solid blue line")
+legend()
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot2}.\\[-7mm]
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot2.png}
+\end{center}
+\vspace{-6mm}
+\caption{Adding a label.}
+\label{fig:plot2}
+%\vspace{-1cm}
+\end{figure}
+\newpage
+\noindent
+Next let us change the color to red and line style to dashed: 
+
+\begin{verbatim}
+clf()
+plot(x, y, 'r--', label = "Dashed red line")
+legend()
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot3}.\\[-7mm]
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot3.png}
+\end{center}
+\vspace{-6mm}
+\caption{Same graph using dashed red line.}
+\vspace{-1cm}
+\label{fig:plot3}
+\end{figure}
+\newpage
+\noindent
+The graph can be plotted using green color and small dots rather than 
+a solid or dashed line:
+
+\begin{verbatim}
+clf()
+plot(x, y, 'g.', label = "Dashed red line")
+legend()
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot4}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot4.png}
+\end{center}
+\vspace{-6mm}
+\caption{Same graph using dotted green line.}
+\label{fig:plot4}
+%\vspace{-5mm}
+\end{figure}
+\noindent
+\noindent
+Last let us stay with green color but make the dots larger:
+
+\begin{verbatim}
+clf()
+plot(x, y, 'go', label = "Dashed red line")
+legend()
+lab.show()
+\end{verbatim}
+\noindent
+The output is shown in Fig. \ref{fig:plot5}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot5.png}
+\end{center}
+\vspace{-6mm}
+\caption{Same graph using large green dots.}
+\label{fig:plot5}
+%\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsection{Scaling axes and showing grid}
+
+In the previous plots, the function graphs were fitted into the 
+display window, which means that the horizontal and vertical 
+exas were scaled differently. This can be changed by including the 
+{\tt axis('equal')} command after calling {\tt plot()}. Also, 
+grid can be displayed by using the {\tt grid()} command:
+
+\begin{verbatim}
+from numpy import *
+from pylab import *
+x = arange(0, 2*pi, 0.05)
+y = sin(x)
+clf()
+plot(x, y, label="sin(x)")
+axis('equal')
+grid()
+legend()
+lab.show()
+\end{verbatim}
+\noindent
+The output is shown in Fig. \ref{fig:plot8}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot8.png}
+\end{center}
+\vspace{-4mm}
+\caption{Scaling axes equally and showing grid.}
+\label{fig:plot8}
+\vspace{-2mm}
+\end{figure}
+\noindent
+The scaling of axes can be returned to the automatic fit option via
+{\tt axis('auto')} if needed.
+
+\subsection{Adjusting plot limits}
+
+Plot limits can be set using the {\tt xlim()} and {\tt ylim()}
+functions after {\tt plot()}. For example, we can stretch the sine
+function from Fig. \ref{fig:plot8} to span the entire width of the 
+canvas as follows:
+
+\begin{verbatim}
+from numpy import *
+from pylab import *
+x = arange(0, 2*pi, 0.05)
+y = sin(x)
+clf()
+plot(x, y, label="sin(x)")
+xlim(0, 2*pi)
+axis('equal')
+grid()
+legend()
+lab.show()
+\end{verbatim}
+\noindent
+The output is shown in Fig. \ref{fig:plot9}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot9.png}
+\end{center}
+\vspace{-4mm}
+\caption{Setting plot linits on the horizontal axis to $0$ and $2\pi$.}
+\label{fig:plot9}
+\vspace{-2mm}
+\end{figure}
+\noindent
+
+
+\subsection{Plotting multiple functions at once}
+
+This can be done very easily, just do not use the {\tt clf()}
+command between the plots and you can have as many graphs 
+in one figure as needed. Let us do three:
+
+\begin{verbatim}
+from numpy import *
+from pylab import *
+x = arange(0.5, 5, 0.05)
+y1 = 1./x
+y2 = 1. / (1 + x**2)
+y3 = exp(-x)
+axis=("equal")
+clf()
+plot(x, y1, label="y1")
+plot(x, y2, label="y2")
+plot(x, y3, label="y3")
+legend()
+lab.show()
+\end{verbatim}
+\noindent
+The output is shown in Fig. \ref{fig:plot7}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot7.png}
+\end{center}
+\vspace{-4mm}
+\caption{Plotting graphs of functions $1/x$, $1 / (1 + x^2)$ and $e^{-x}$ in interval $(0.5, 5)$.}
+\label{fig:plot7}
+\vspace{-2mm}
+\end{figure}
+\noindent
+The {\tt plot()} command in Pylab is much more powerful, we just saw a small 
+fraction of its functionality. For a complete list of options 
+visit the Pylab page {\tt http:// www.scipy.org/PyLab}.
+
+\subsection{\ \ Plotting planar curves}
+
+The concept of plotting based on two arrays of $x$ and $y$ coordinates
+allows us to do much more than only plot graphs of functions of one variable.
+We can easily plot more general curves such as circles, spirals and others.
+Let us illustrate this on a spiral that this parameterized 
+by 
+$$
+x(t) = t \cos(t), \ \ \ \ 
+y(t) = t \sin(t)
+$$ 
+in the interval $(0, 10)$ for $t$. The complete code is
+
+\begin{verbatim}
+from pylab import *
+from numpy import *
+t = arange(0, 10, 0.05)
+x = t*cos(t)
+y = t*sin(t)
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot6}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot6.png}
+\end{center}
+\vspace{-6mm}
+\caption{Plotting a spiral.}
+\label{fig:plot6}
+\vspace{-0mm}
+\end{figure}
+\noindent
+
+
+\subsection{\ \ Plotting functions of two variables with WebGL}
+
+For this functionality, your browser has to support WebGL (most of modern browsers do, 
+with the exception of Internet Explorer). See the introductory tutorial {\em Welcome to NCLab}
+on the page {\tt http://femhub.com/nclab-tutorials/} for detailed instructions on how to enable WebGL. 
+
+\begin{verbatim}
+from numpy import sin, sqrt, arctan
+
+# Define intervals on the x and y axes.
+x0 = 0.0
+x1 = 10.0
+y0 = 0.0
+y1 = 10.0
+
+# Define the corresponding divisions.
+nx = 100
+ny = 100
+
+# Define a function:
+def f(x, y):
+    return sin(sqrt(x**2 + y**2))
+
+# Render the surface using WebGL.
+lab.surface((x0, x1, nx), (y0, y1, ny), f)
+\end{verbatim}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{imgp/webgl.png}
+\end{center}
+\vspace{-2mm}
+\caption{Plotting functions of two variables.}
+\label{fig:webgl}
+%\vspace{-1cm}
+\end{figure}
+
+
+
+
+
+
 \subsection{\ \ Review questions}
 
 \begin{enumerate}
@@ -611,6 +963,95 @@ sin(pi/4)
 \item[A3] {\tt 2 + 3*j}
 \item[A4] {\tt 2 + 3*J}
 \end{enumerate}
+\item Which of the following codes will draw a square with vertices [0, 0], [1, 0], [1, 1], [0, 1]?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+from pylab import *
+x = [0.0, 1.0, 1.0, 0.0]
+y = [0.0, 0.0, 1.0, 1.0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+from pylab import *
+x = [0.0, 0.0, 1.0, 1.0]
+y = [0.0, 1.0, 1.0, 0.0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+from pylab import *
+x = [0.0, 1.0, 1.0, 0.0, 0.0]
+y = [0.0, 0.0, 1.0, 1.0, 0.0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+from pylab import *
+x = [0.0, 0.0, 1.0, 1.0, 0.0]
+y = [0.0, 1.0, 1.0, 0.0, 0.0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\end{enumerate}
+\item Which of the following codes will plot a cosine function in the interval $(0, \pi)$ using dashed green line with
+the step 0.01?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+from numpy import cos, pi
+from pylab import *
+x = arange(0, pi, 0.01)
+y = cos(x)
+axis=("equal")
+clf()
+plot(x, y, 'g-', label="cos(x)")
+legend()
+lab.show()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+from numpy import cos, pi
+from pylab import *
+x = arange(0, pi, 0.01)
+y = cos(x)
+clf()
+plot(x, y, 'g--')
+lab.show()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+from numpy import cos, pi
+from pylab import *
+x = arange(0, pi, 0.01)
+y = cos(x)
+axis=("equal")
+clf()
+plot(x, y, 'g--', label="cos(x)")
+legend()
+lab.show()
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+from numpy import cos, pi
+from pylab import *
+x = arange(0, pi, 0.01)
+y = cos(x)
+axis=("equal")
+clf()
+plot(x, y, 'g..', label="cos(x)")
+legend()
+lab.show()
+\end{verbatim}
+\end{enumerate}
 \end{enumerate}
 
 \subsection{\ \ Programming exercises}
@@ -657,6 +1098,15 @@ $$
   (1 + 2i)(3 - i)
 $$
 where $i$ is the imaginary unit.
+\item Write a Python program to plot a polygon with $N$ equally-long edges that is inscribed into a circle of 
+center $[x_0, y_0]$ and radius $R > 0$. Here $N \ge 3$ is an integer number and $x_0, y_0, R$ are real numbers
+The user should be able to change all of them. Axes should be scaled equally.
+\item Write a Python program to plot a circle of center $[x_0, y_0]$ and radius $R > 0$, where 
+$x_0, y_0$ and $R$ are variables that the user can change. Axes should be scaled equally.
+\item Write a Python program to plot an ellipse with focal points $[x_0, 0]$ and $[-x_0, 0]$ where 
+$x_0 > 0$ is a variable that the user can change. Axes should be scaled equally.
+\item The function {\tt random()} returns a random number between $0$ and $1$ (it can be $0.0$ but it cannot be $1.0$).
+Write a Python program to render a path connecting five random points in the unit square $[0, 1) \times [0, 1)$. 
 \end{enumerate}
 
 \section{Functions}
@@ -2429,18 +2879,7 @@ This concludes Section 13 - now you know all the loops there are!
 \subsection{Programming exercises}
 
 
-\section{Plotting}
 
-\subsection{Objectives}
-
-\begin{itemize}
-\item
-\end{itemize}
-Coming soon.
-
-\subsection{Review questions}
-
-\subsection{Programming exercises}
 
 
 \section{Using libraries}\label{subsec:importinglib}

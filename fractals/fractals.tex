@@ -1,116 +1,93 @@
-\documentclass[article,A4,12pt]{llncs}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathrsfs, bm}
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{graphicx}
-\usepackage{tabularx}
-\usepackage{subfig}
-\usepackage{epsf,times}
-\usepackage{color}
-\usepackage{wrapfig}
-\usepackage{cases}
-\usepackage{multicol}
 
-\usepackage[T1]{fontenc}
-%\newcommand{\tmname}[1]{\textsc{#1}}
-%\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
-%\newcommand{\tmsamp}[1]{\textsf{#1}}
-%\newcommand{\tmtextsc}[1]{{\scshape{#1}}}
-%\newcommand{\tmtextsl}[1]{{\slshape{#1}}}
-%\newcommand{\tmtexttt}[1]{{\ttfamily{#1}}}
-
-\leftmargin=0.0cm
-\oddsidemargin=0.5cm
-\evensidemargin=0.5cm
-\topmargin=0cm
-\textwidth=16.0cm
-%\textheight=21.5cm
-\textheight=20.0cm
-\pagestyle{plain}
-\setlength{\columnsep}{20pt}
-
-\def\m{\mathbf{m}}
-\def\H{\mathbf{H}}
-\def\E{\mathbf{E}}
-\newcommand{\vepsi}{{\varepsilon}}
-\def\hnorm#1#2{\vert\,#1\,\vert_{#2}}
-\newcommand{\R}{{\mathbb R}}
-\newcommand{\Sph}{{\mathbb S}}
-\def\x{\mathbf{x}}
-\def\hvec{\overline{\mathbf{h}}}
-\def\evec{\overline{\mathbf{e}}}
-
-\newcommand{ \etal}{\mbox{\emph{et al. }}}
-
-\newcommand\vect[1]{\mbf{#1}}
-\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}} 
-\newcommand{\RC}[1]{#1 $\times$ #1 $\times$ #1}
-\def\um{$\mu$m}
-\def\C{$^{\circ}\mathrm{C}$}
-
-\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
-
-% DEFINITION OF CUSTOM FONT SIZE
-\newcommand{\customfontA}{\fontsize{50}{55}\selectfont}
-\newcommand{\customfontB}{\fontsize{14.4}{20}\selectfont}
-\newcommand{\customfontC}{\fontsize{30}{35}\selectfont}
-
-\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
-
-\def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
-
-% TO INPUT BACKGROUND IMAGE
-\usepackage{eso-pic}
-\newcommand\BackgroundPic{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight]{img/fractals-frontpage.png}
-%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
-\vfill
-}}}
+\pagestyle{empty}
 
 \begin{document}
 
-% INPUTTING BACKGROUND IMAGE
-\AddToShipoutPicture{\BackgroundPic}
+\large
+
 \vbox{}
-\pagestyle{empty}
+\begin{figure}[!ht]
+%\hspace{-4mm}
+\includegraphics[width=8cm]{img/logo.png}
+\vspace{6mm}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+%\hspace{-4mm}
+\includegraphics[width=16cm]{img/fractals-frontpage.png}
+\vspace{8mm}
+\end{center}
+\end{figure}
+
+\centerline{\Huge \bf Gentle Introduction to Fractals}
+
+\vfill
+
+\centerline{\Large www.nclab.com}
+
 \newpage
-\textwidth=15.5cm
-\ClearShipoutPicture
-\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 \section*{}
 \small
 \input ../common/aboutnclab.tex
 
-\subsection*{Acknowledgement}
-This publication was created with the help of freely available information about fractals
-including the cited references and materials from Wikipedia (http://wikipedia.org).
+%\subsection*{Acknowledgement}
+%This publication was created with the help of numerous freely 
+%available web resources and tutorials related to Python, Scipy,
+%Numpy, Pylab, Matplotlib, Sympy and other projects.
 
 \normalsize
 
 \newpage
 %{\ }
-%\tableofcontents
+\setcounter{tocdepth}{2}
+\tableofcontents
 %\pagestyle{plain}
+
+\newpage
 
 \pagestyle{plain}
 \setcounter{page}{1}
 
-\section*{Gentle Introduction to Fractals}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\pagestyle{plain}
+
+\section{Fractals Basics}
 
 Prior to explaining the usage of the interactive graphical application 
 Fractal Explorer in NCLab, let us briefly summarize the concept, history, 
 and mathematical foundation of fractals.
 
-\subsection*{Concept}
+\subsection{Concept}
 
 The word "fractal" often has different connotations for laypeople than mathematicians, where 
 the layperson is more likely to be familiar with {\em fractal art} than a mathematical concept. 
@@ -140,9 +117,9 @@ the missing middle section of each edge.\\[-6mm]
 \includegraphics[width=3cm]{img/s3.png}
 \includegraphics[width=3cm]{img/s4.png}
 \end{center}
-\vspace{-4mm}
+%\vspace{-4mm}
 \caption{First four Von Koch's curves.}
-\vspace{-4mm}
+%\vspace{-4mm}
 \end{figure}
 
 \noindent
@@ -152,9 +129,8 @@ yet. In order to get a fractal, one
 has to do this infinitely many times, and take the limit. \\
 
 \noindent
-Can you show that the boundary of the limit geometry has an infinite length?
+Can you show that the boundary of the limit geometry has an infinite length?\\
 
-\newpage
 
 \noindent
 This is quite interesting, given that obviously the area of the resulting fractal is finite.
@@ -169,7 +145,7 @@ because the wavy pattern would always re-appear, albeit at a smaller size, essen
 a little more of the tape measure into the total length measured each time one attempted to 
 fit it tighter and tighter to the curve. 
 
-\subsection*{History}
+\subsection{History}
 
 The mathematical roots of the idea of fractals have been traced through a formal path of published 
 works, starting in the 17th century with notions of recursion, then moving through increasingly 
@@ -180,7 +156,7 @@ century \cite{f4,f5}. The term "fractal" was first used by mathematician Benoit 
 1975. Mandelbrot based it on the Latin {\em fractus} meaning "broken" or "fractured", and used 
 it to extend the concept of theoretical fractional dimensions to geometric patterns in nature.
 
-\subsection*{Mathematical Foundation}
+\subsection{Mathematical Foundation}
 
 Mathematically, a fractal is a mathematical set that has a fractal dimension that usually exceeds its topological 
 dimension \cite{f1} and may fall between the integers \cite{f2}. Fractals are typically self-similar 
@@ -270,13 +246,14 @@ Trochet, Holly (2009). "A History of Fractal Geometry". MacTutor History of Math
 %--------------------------------------------------------------------------------------
 %--------------------------------------------------------------------------------------
 
-\section*{Fractal Explorer}
+\section{Fractal Explorer}
 
 The Fractal Explorer in NCLab allows the users to get familiar with the structure of the Mandelbrot
 and Julia sets (Newton set is in preparation). It can be launched by clicking on the 
 {\em Fractals} icon on the desktop. The following Fig. \ref{fig:man-1} shows the classical 
 Mandelbrot set.\\
 
+\clearpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/mandelbrot-1.png}
@@ -302,13 +279,13 @@ Zooming in and out is done via the mouse wheel as shown in Fig. \ref{fig:man-2}.
 \noindent
 The menubar contains four items: {\em View}, {\em Formula}, {\em Tools} and {\em Colors}.
 
-\subsection*{View Menu}
+\subsection{View Menu}
 The View menu allows the user to switch between the Standard and Artistic views. When Standard view
 is selected, the fractal is calculated using the standard iteration formula that was described earlier. 
 With Artistic view, the Monte Carlo method is used to calculate the fractal, which has some 
 interesting visual effects.
 
-\subsection*{Formula Menu}
+\subsection{Formula Menu}
 
 Here the user can select between the Mandelbrot and Julia sets. If the latter is selected, two
 sliders in the bottom part of the window are activated, as shown in 
@@ -331,7 +308,7 @@ $c = c_r + i c_i$ in the formula $f(z) = z^2 + c$. When they are moved, the Juli
 fractal changes instantly. Of course not all values of the Julia constants are 
 available through the sliders. This brings us to the {\em Tools} menu.
 
-\subsection*{Tools Menu}
+\subsection{Tools Menu}
 
 This menu can be used to
 
@@ -341,12 +318,12 @@ This menu can be used to
 \item Reset the center and zoom to initial values.
 \end{itemize}
 
-\subsection*{Colors Menu}
+\subsection{Colors Menu}
 
 In the Colors menu one can choose between the default palette and a wide
 range of linear gradients. Fig. \ref{fig:lingrad} shows the linear gradient 
 menu.
-
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{img/lingrad.png}

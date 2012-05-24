@@ -1,129 +1,66 @@
-\documentclass[article,A4,12pt]{llncs}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathrsfs, bm}
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{graphicx}
-\usepackage{tabularx}
-\usepackage{subfig}
-\usepackage{epsf,times}
-\usepackage{color}
-\usepackage{wrapfig}
-\usepackage{cases}
-\usepackage{multicol}
 
-\usepackage[T1]{fontenc}
-%\newcommand{\tmname}[1]{\textsc{#1}}
-%\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
-%\newcommand{\tmsamp}[1]{\textsf{#1}}
-%\newcommand{\tmtextsc}[1]{{\scshape{#1}}}
-%\newcommand{\tmtextsl}[1]{{\slshape{#1}}}
-%\newcommand{\tmtexttt}[1]{{\ttfamily{#1}}}
-
-\leftmargin=0.0cm
-\oddsidemargin=0.5cm
-\evensidemargin=0.5cm
-\topmargin=0cm
-\textwidth=16.0cm
-%\textheight=21.5cm
-\textheight=20.0cm
-\pagestyle{plain}
-\setlength{\columnsep}{20pt}
-
-\def\m{\mathbf{m}}
-\def\H{\mathbf{H}}
-\def\E{\mathbf{E}}
-\newcommand{\vepsi}{{\varepsilon}}
-\def\hnorm#1#2{\vert\,#1\,\vert_{#2}}
-\newcommand{\R}{{\mathbb R}}
-\newcommand{\Sph}{{\mathbb S}}
-\def\x{\mathbf{x}}
-\def\hvec{\overline{\mathbf{h}}}
-\def\evec{\overline{\mathbf{e}}}
-
-\newcommand{ \etal}{\mbox{\emph{et al. }}}
-
-\newcommand\vect[1]{\mbf{#1}}
-\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}} 
-\newcommand{\RC}[1]{#1 $\times$ #1 $\times$ #1}
-\def\um{$\mu$m}
-\def\C{$^{\circ}\mathrm{C}$}
-
-\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
-
-% DEFINITION OF CUSTOM FONT SIZE
-\newcommand{\customfontA}{\fontsize{50}{55}\selectfont}
-\newcommand{\customfontB}{\fontsize{14.4}{20}\selectfont}
-\newcommand{\customfontC}{\fontsize{30}{35}\selectfont}
-
-\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
-
-\def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
-
-% TO INPUT BACKGROUND IMAGE
-\usepackage{eso-pic}
-\newcommand\BackgroundPic{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight]{img/intro-frontpage.png}
-%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
-\vfill
-}}}
+\pagestyle{empty}
 
 \begin{document}
 
-% INPUTTING BACKGROUND IMAGE
-\AddToShipoutPicture{\BackgroundPic}
+\large
+
 \vbox{}
-\pagestyle{empty}
-\newpage
-\textwidth=15.5cm
-\ClearShipoutPicture
+\begin{figure}[!ht]
+%\hspace{-4mm}
+\includegraphics[width=8cm]{img/logo.png}
+\vspace{12mm}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+%\hspace{-4mm}
+\includegraphics[width=14cm]{img/webgl.png}
+\vspace{16mm}
+\end{center}
+\end{figure}
+
+\centerline{\Huge \bf NCLab as a Graphing Calculator}
+
+\vfill
+
+\centerline{\Large www.nclab.com}
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 \section*{}
 \small
-\subsection*{About NCLab}
-Networked Computing Laboratory (NCLab) is a popular Internet-based framework for 
-programming, mathematics, computer modeling, 
-and scientific computing. It serves students, instructors, researchers, and the general 
-public. NCLab can be used free of charge for personal non-commercial purposes such as 
-private hobby or self-education, as well as for individual non-funded academic research.
-All other use is subject to {\bf purchasing a license} for a symbolic fee. The fees are as low as 
-\$1 per user per month for educational use, and they are used to support the development 
-and operational expenses. NCLab is a product of FEMhub Inc. The name "NCLab" is 
-registered with the U.S. Patent and Trademark Office (USPTO) under Trademark No. 85420518.
+\input ../common/aboutnclab.tex
 
-\subsection*{Terms of Use and Pricing}
-More details on purchasing a license and using NCLab are provided in the online documents 
-{\bf Pricing} and {\bf Terms of Use} that are accessible from NCLab's home page 
-{\tt http://nclab.com}.
-
-\subsection*{Contact Information}
-General inquiries: {\tt info@femhub.com}\\
-Sales: {\tt sales@femhub.com}\\
-NCLab support: {\tt support@nclab.com}\\
-Agros \& Hermes support: {\tt support@femhub.com}\\
-Web page: {\tt http://femhub.com}\\
-{Physical address}\\
-FEMhub Inc.\\
-5490 Twin Creeks Dr.\\
-Reno, NV 89523
-
-\subsection*{About This Publication}
-This publication can be copied and distributed without any restrictions
-as long as reference to NCLab and FEMhub Inc. is preserved.
-
-\subsection*{Acknowledgement}
-This publication was created with the help of numerous freely 
-available web resources and tutorials related to Python, Scipy,
-Numpy, Pylab, Matplotlib, Sympy and other projects.
+%\subsection*{Acknowledgement}
+%This publication was created with the help of numerous freely 
+%available web resources and tutorials related to Python, Scipy,
+%Numpy, Pylab, Matplotlib, Sympy and other projects.
 
 \normalsize
 
@@ -138,7 +75,11 @@ Numpy, Pylab, Matplotlib, Sympy and other projects.
 \pagestyle{plain}
 \setcounter{page}{1}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\pagestyle{plain}
 
 
 \section{Introduction}
@@ -156,19 +97,17 @@ is that they only have a few functions, and thus can be operated using a few but
 \end{figure}
 \noindent
 Compared to this calculator, NCLab provides an enormous functionality 
-that would require thousands and thousands of buttons. So instead of buttons,
+that would require hundreds of buttons. So instead of buttons,
 in NCLab we use simple commands to get the results we want. The language used 
 to talk to NCLab is called Python. Using Python is very intuitive, 
 as we shall see in a moment.
 
 \section{Launching a Python Project}
 
-Begin with clicking on the File Manager icon, which launches the File 
-Manager. Next go to the menu Project in the upper-left corner. There go 
-through the submenu New to Python and click. This will lanuch a new Python 
-project, as illustrated in Fig. \ref{fig:python}. The same can be achieved
-by clicking on the icon Programming. In the menu that appears, click on 
-Python. 
+Python worksheet can be launched through the File Manager or through 
+the Programming icon on Desktop. Let's do for example the latter. 
+This will lanuch a new Python worksheet, as illustrated in Fig. 
+\ref{fig:python}. 
 
 \newpage
 
@@ -177,20 +116,10 @@ Python.
 \includegraphics[width=\textwidth]{img/python.png}
 \end{center}
 %\vspace{-2mm}
-\caption{Python project.}
+\caption{Python worksheet.}
 \label{fig:python}
 \end{figure}
 \noindent
-For now we will be using Python for simple math operations only,
-but you could start writing an advanced Python program right 
-here if you wanted. An introduction to the Python programming 
-language is the subject of another NCLab tutorial.
-
-Before we begin, it is a good idea to save your project under some 
-name. This is done through the menu File and submenu Save. For 
-now we can save the project in the base folder. Later you can create 
-a new folder through the File Manager's menu Folder, and drag there
-the project by mouse, to keep your data organized.
 
 \section{Cloning Displayed Projects}
 
@@ -216,8 +145,6 @@ the link "run" right under the input cell. This sends a request to
 the cloud, it is processed there, and an answer comes back instantly. 
 It is displayed in a new (yellow) {\em output cell}, as shown in 
 Fig. \ref{fig:1p3}.
-
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -404,7 +331,7 @@ web page \\ {\tt http://www.scipy.org/Numpy\_Functions\_by\_Category}.
 \section{Plotting Functions of One Variable}\label{plotting}
 
 Plotting can be done via the Pylab library. Pylab is a standard Python library that is 
-superior in almost every way to MATLAB. To use Pylab, login to NCLab and launch a Python 
+superior in many ways to MATLAB (expensive commercial product). To use Pylab, login to NCLab and launch a Python 
 worksheet first.
 
 The Pylab {\tt plot} command takes two
@@ -460,7 +387,7 @@ plot(x, y)
 lab.show()
 \end{verbatim}
 \noindent
-The output is shown in Fig. \ref{fig:plot1}.
+The output is shown in Fig. \ref{fig:plot1}.\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -469,7 +396,7 @@ The output is shown in Fig. \ref{fig:plot1}.
 \vspace{-6mm}
 \caption{Plotting $\sin(x)$ in interval $(0, 2\pi)$ with subdivision step 0.05.}
 \label{fig:plot1}
-%\vspace{-2mm}
+\vspace{-2mm}
 \end{figure}
 \noindent
 The plot can be made nicer by adding a label, and also the color 
@@ -481,8 +408,7 @@ plot(x, y, 'b-', label = lb)
 legend()
 lab.show()
 \end{verbatim}
-The output is shown in Fig. \ref{fig:plot2}.
-\newpage
+The output is shown in Fig. \ref{fig:plot2}.\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -491,9 +417,9 @@ The output is shown in Fig. \ref{fig:plot2}.
 \vspace{-6mm}
 \caption{Adding a label.}
 \label{fig:plot2}
-%\vspace{-1cm}
+\vspace{-1cm}
 \end{figure}
-
+\newpage
 \noindent
 Next let us change the color to red and line style to dashed: 
 
@@ -538,10 +464,9 @@ The output is shown in Fig. \ref{fig:plot4}.
 \vspace{-6mm}
 \caption{Same graph using dotted green line.}
 \label{fig:plot4}
-\vspace{-5mm}
+%\vspace{-5mm}
 \end{figure}
 \noindent
-\newpage
 \noindent
 Last let us stay with green color but make the dots larger:
 
@@ -555,6 +480,7 @@ lab.show()
 \noindent
 The output is shown in Fig. \ref{fig:plot5}.
 
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{img/plot5.png}
@@ -562,7 +488,7 @@ The output is shown in Fig. \ref{fig:plot5}.
 \vspace{-6mm}
 \caption{Same graph using large green dots.}
 \label{fig:plot5}
-\vspace{-4mm}
+%\vspace{-4mm}
 \end{figure}
 \noindent
 For a complete list of options available for the {\tt plot} command, 
@@ -608,7 +534,8 @@ The output is shown in Fig. \ref{fig:plot6}.
 \section{Plotting Functions of Two Variables with WebGL}
 
 For this functionality, your browser has to support WebGL (most of modern browsers do, 
-with the exception of Internet Explorer). NCLab offers the following simple way to plot 
+with the exception of Internet Explorer). See the introductory tutorial {\em Welcome to NCLab!}
+for detailed instructions on how to enable WebGL. NCLab offers the following simple way to plot 
 functions of two variables:
 
 \begin{verbatim}

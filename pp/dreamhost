@@ -1,0 +1,7 @@
+cp pp.pdf pp_en.pdf
+cp pp.pdf pp_cz.pdf
+cp pp.pdf pp_de.pdf
+cp pp.pdf pp_sp.pdf
+cp pp.pdf pp_pl.pdf
+
+scp pp*.pdf femhub@femhub.com:~/femhub.com/public/docs/

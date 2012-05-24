@@ -1,0 +1,7 @@
+cp me.pdf me_en.pdf
+cp me.pdf me_cz.pdf
+cp me.pdf me_de.pdf
+cp me.pdf me_sp.pdf
+cp me.pdf me_pl.pdf
+
+scp me*.pdf femhub@femhub.com:~/femhub.com/public/docs/

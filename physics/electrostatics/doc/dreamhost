@@ -1,0 +1,3 @@
+cp doc.pdf electrostatics.pdf
+scp electrostatics.pdf femhub@femhub.com:~/femhub.com/public/docs/
+

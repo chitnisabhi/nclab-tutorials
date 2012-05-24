@@ -1,100 +1,66 @@
-\documentclass[article,A4,12pt]{llncs}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathrsfs, bm}
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{graphicx}
-\usepackage{tabularx}
-\usepackage{subfig}
-\usepackage{epsf,times}
-\usepackage{color}
-\usepackage{wrapfig}
-\usepackage{cases}
-\usepackage{multicol}
 
-\usepackage[T1]{fontenc}
-%\newcommand{\tmname}[1]{\textsc{#1}}
-%\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
-%\newcommand{\tmsamp}[1]{\textsf{#1}}
-%\newcommand{\tmtextsc}[1]{{\scshape{#1}}}
-%\newcommand{\tmtextsl}[1]{{\slshape{#1}}}
-%\newcommand{\tmtexttt}[1]{{\ttfamily{#1}}}
-
-\leftmargin=0.0cm
-\oddsidemargin=0.5cm
-\evensidemargin=0.5cm
-\topmargin=0cm
-\textwidth=16.0cm
-%\textheight=21.5cm
-\textheight=20.0cm
-\pagestyle{plain}
-\setlength{\columnsep}{20pt}
-
-\def\m{\mathbf{m}}
-\def\H{\mathbf{H}}
-\def\E{\mathbf{E}}
-\newcommand{\vepsi}{{\varepsilon}}
-\def\hnorm#1#2{\vert\,#1\,\vert_{#2}}
-\newcommand{\R}{{\mathbb R}}
-\newcommand{\Sph}{{\mathbb S}}
-\def\x{\mathbf{x}}
-\def\hvec{\overline{\mathbf{h}}}
-\def\evec{\overline{\mathbf{e}}}
-
-\newcommand{ \etal}{\mbox{\emph{et al. }}}
-
-\newcommand\vect[1]{\mbf{#1}}
-\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}} 
-\newcommand{\RC}[1]{#1 $\times$ #1 $\times$ #1}
-\def\um{$\mu$m}
-\def\C{$^{\circ}\mathrm{C}$}
-
-\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
-
-% DEFINITION OF CUSTOM FONT SIZE
-\newcommand{\customfontA}{\fontsize{50}{55}\selectfont}
-\newcommand{\customfontB}{\fontsize{14.4}{20}\selectfont}
-\newcommand{\customfontC}{\fontsize{30}{35}\selectfont}
-
-\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
-
-\def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
-
-% TO INPUT BACKGROUND IMAGE
-\usepackage{eso-pic}
-\newcommand\BackgroundPic{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight]{img/intro-frontpage.png}
-%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
-\vfill
-}}}
+\pagestyle{empty}
 
 \begin{document}
 
-% INPUTTING BACKGROUND IMAGE
-\AddToShipoutPicture{\BackgroundPic}
+\large
+
 \vbox{}
-\pagestyle{empty}
-\newpage
-\textwidth=15.5cm
-\ClearShipoutPicture
+\begin{figure}[!ht]
+%\hspace{-4mm}
+\includegraphics[width=8cm]{img/logo.png}
+\vspace{12mm}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+%\hspace{-4mm}
+\includegraphics[width=14cm]{img/desktop-0.png}
+\vspace{16mm}
+\end{center}
+\end{figure}
+
+\centerline{\Huge \bf Welcome to NCLab!}
+
+\vfill
+
+\centerline{\Large www.nclab.com}
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \section*{}
 \small
 \input ../common/aboutnclab.tex
 
-\subsection*{Acknowledgement}
-This publication was created with the help of numerous freely 
-available web resources and tutorials related to Python, Scipy,
-Numpy, Pylab, Matplotlib, Sympy and other projects.
+%\subsection*{Acknowledgement}
+%This publication was created with the help of numerous freely 
+%available web resources and tutorials related to Python, Scipy,
+%Numpy, Pylab, Matplotlib, Sympy and other projects.
 
 \normalsize
 
@@ -109,129 +75,22 @@ Numpy, Pylab, Matplotlib, Sympy and other projects.
 \pagestyle{plain}
 \setcounter{page}{1}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{What is the {\em Cloud}?}
-
-Using cloud computing or cloud computers sounds like a rocket science, but it is not,
-and it really changes things for the better. Chances are that you are using 
-it already, without even knowing. For example, if you are using free email services of Gmail, 
-Hotmail, Yahoo or another such provider, then your data are stored on the cloud. If you are 
-using free Google docs to acces your Word or Excel files from anywhere, you are using the cloud
-as well. 
-
-\subsection{Basic Facts}
-
-In the IT sense of the word, and with a bit of simplification, the {\em cloud} 
-is a pool of interconnected computers. They come in different sizes depending on the provider - 
-large cloud facilities have millions of computers but some companies are running 
-their own private clouds with relatively few ones. The computers in large clouds
-are not very similar to your desktop PC -- they are stripped off many unnecessary 
-things, compacted, and interconnected into a powerful grid. Their processors 
-typically contain multiple {\em computing cores} that can share the same memory.
-Such {\em multicore processors} are much more efficient compared to (clusters 
-of) PCs with equivalent number of cores.
-
-The main advantage of the cloud is its {\em elasticity}. Upon your request, the
-provider will assemble for you an {\em instance} with the parameters that 
-you need. An instance means a computer with given parameters (number of processors, 
-hard disk size, memory). An instance is created within a minute or so, and the user can upgrade 
-or downgrade it dynamically, depending on the actual needs. After the instance is 
-no longer needed, it is dissolved and the same hardware is used to build instances 
-for other users. The following is a realistic example of how such instances may 
-look like (just the name of the provider was omitted):\\
-
-\begin{center}
-\begin{tabular}{|l|l|l|l|}
-\hline
-{\bf Small instance} & 1.7 GB of memory & 1 core & 160 GB hard disk \\
-\hline
-{\bf Medium instance} & 7.5 GB of memory & 4 cores & 850 GB hard disk \\
-\hline
-{\bf Large instance} & 15 GB of memory & 8 cores & 1690 GB hard disk \\
-\hline
-\end{tabular}
-\end{center}
-
-\vspace{4mm}
-\noindent
-Importantly - these three instances are created by grouping the same resources together 
-in different ways. 
-It is quite interesting to look at the prices:
-
-\begin{center}
-\begin{tabular}{|l|l|}
-\hline
-{\bf Small instance} &	\$0.085 per hour\\
-\hline
-{\bf Medium instance}&	\$0.34 per hour	\\
-\hline
-{\bf Large instance}&	\$0.68 per hour\\
-\hline
-\end{tabular}
-\end{center}
-
-\vspace{4mm}
-\noindent
-With such low prices, literally anyone has now access to 
-a powerful computer -- that otherwise would cost many thousands of dollars -- 
-for just cents per hour. This brings new wonderful opportunities to ordinary users
-and educators.
-
-\subsection{Software as a Service (SaaS)}
-
-Another big change that cloud computing brings is in how software is handled. 
-Traditionally, one would buy a software in a big box with a small CD in it, 
-and install it on one's computer. This model is now being challenged by a new 
-approach called {\em Software as a Service (SaaS)}. The user does not have 
-to own a copy of the software physically. Instead, the software is running 
-on a remote server and accessed by users over the Internet. Typically, paying 
-for the access is much less expensive compared to buying the software. If you like,
-think about it like watching a movie on Netflix vs. buying a DVD. 
-
-\subsection{Access from Mobile Platforms}
-
-Last but not least, since the software is running on the cloud, the user's hardware 
-does not matter so much anymore. The only really important things is to be able to 
-run a web browser and access the Internet. This can be done on anything between smart 
-phones, tablets, netbooks, laptops, and desktop computers. 
-
-\subsection{Some Myths}
-
-Very often, cloud computing is mentioned in the context of large 
-computations in science, engineering, finance, and other fields. This is because there are many 
-cloud providers and they need to show off. But in reality, the clouds are mostly
-busy processing small tasks of ordinary users. In that case, you may say, a standard 
-office PC should be enough. Not exactly. Once you are not in your office, for example
-while traveling, it is difficult to reach your office PC and do things as usual. 
-The cloud changes that -- it allows you to access your data 
-from everywhere, any time. Once you get used to it, there is no way back. 
-
-\subsection{NCLab and K-12 Education}
-
-NCLab is an Online STEM Laboratory that provides 
-instant access to computer simulations in physics and chemistry, 3D CAD design, 
-engineering-level computer modeling, and scientific computing. You do not have 
-to install any software -- NCLab is automatically available in any classroom that 
-has Internet access. In contrast to traditional educational software products, 
-users can access their accounts and work from anywhere and at any time.
-Students can start a problem at school, finish the rest at home, and notify 
-the instructor about the completion with one mouse click. Most importantly, 
-however, NCLab invites K-12 teachers and students to discover new exciting 
-areas that were out of their reach before.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 
-\section{Getting Started}
+\pagestyle{plain}
 
-In order to explore NCLab, first visit its home page {\tt http://nclab.com}.
-Under the logo you will see a slide show representing selected activities 
-offered by NCLab. The Cloud Monitor, located under the slide show, displays 
-the current load on the core cluster. By default, NCLab runs on six nodes 
-with a total of 200 computing cores, and has approximately 200 GB of memory 
-available for immediate use. These parameters are scaled dynamically 
-as needed. 
+\section{Welcome!}
+
+NCLab is a popular Online STEM Laboratory that serves thousands of students, instructors and 
+researchers all over the world. It helps its users complete projects in many STEM fields ranging from
+symbolical and numerical mathematics, computer simulations in physics and chemistry, 3D computer 
+aided design (CAD), computer programming, and web design to engineering-level computer simulations 
+in various areas including solid mechanics, fluid dynamics, electromagnetics, neutronics and others. 
+NCLab can be used {\bf free of charge for personal non-commercial purposes} such as private 
+hobby or self-education, as well as for individual non-funded academic research. Institutions 
+need to {\bf purchase a license} for a symbolical fee. 
 
 \begin{figure}[!ht]
 \begin{center}
@@ -244,45 +103,53 @@ as needed.
 \end{figure}
 
 \noindent
-The User Statistics window, located in the 
-bottom-right corner, provides current overview of NCLab's users and their projects. 
-The window above User Statistics is a WebGL tester. WebGL is a very recent 
-web-browser technology that supports {\em amazing} 3D graphics. 
+Please visit NCLab's home page {\tt http://nclab.com}. The page features a slide show 
+illustrating various activities offered by NCLab, and it provides links to related resources such 
+as NCLab Blog, Tutorials, Displayed Projects, and others. Sign up for NCLab Newsletter 
+in order to receive information about new functionality, webinars, and related topics! 
 
 \subsection{WebGL}
 
-WebGL is a web browser analogy of OpenGL (realistic hardware-supported 3D graphics). 
-The technology is so new that it is 
-turned off in some web browsers by default. It should work in modern web browsers 
-(not Internet Explorer) and on reasonable new computers. To test whether your web 
-browser and graphic card support it,  
-click on the "Test WebGL" button. If you see a window 
-similar to the one in Fig. \ref{fig:webgl2} then you are fine. 
+WebGL is one of the most amazing features of NCLab, and at the same time one of the most 
+problematic ones, 
+so let us provide a short explanation of what goes on. {\bf You do not need to worry about WebGL 
+unless you work with 3D geometries, CAD models, or need to plot graphs of functions of two 
+variables.} 
+
+For those who do -- WebGL is a web browser analogy of OpenGL 
+(hardware-accelerated 3D graphics) that provides amazing 3D graphics. The technology is 
+still experimental and it is turned off in some web browsers by default. Often an upgrade of 
+graphics drivers combined with adjusting your browser's settings are needed to make it work. 
+WebGL should work in modern web browsers with the exception of Internet Explorer 
+where it is not supported.
+
+Because of WebGL problems, we provide a "Test WebGL" button on NCLab's home page. Click on it.
+If you see a window similar to the one in Fig. \ref{fig:webgl2} then you are fine. \\
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/webgl2.png}
 \end{center}
-\vspace{-2mm}
+%\vspace{-2mm}
 \caption{WebGL Tester.}
 \label{fig:webgl2}
 \end{figure}
 \noindent
-Now you can click into the WebGL tester window, and move 
-your mouse while keeping the left button pressed, to see WebGL in action.
+Now you can click into the WebGL tester window and move 
+your mouse while keeping the left button pressed to see WebGL in action.
+However, you might well see an error message similar to the one shown in Fig. \ref{fig:nowebgl}.\\
 
-However, you may also see a message similar to the one shown in Fig. \ref{fig:nowebgl}.
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{img/nowebgl.png}
 \end{center}
-\vspace{-2mm}
+%\vspace{-2mm}
 \caption{Message saying that WebGL is not enabled.}
 \label{fig:nowebgl}
 \end{figure}
+
 \noindent
-There may be multiple reasons for this message:
+Below are some of the most usual reasons why WebGL is not working:
 \begin{enumerate}
 \item {\em You are using Internet Explorer (IE)}. IE does not have WebGL support. If you are using this web browser, please install another 
 one such as Chrome, Firefox, Safari etc. This takes only minutes (at most) and it is highly rewarding in terms 
@@ -290,9 +157,15 @@ of improved Internet experience. In fact, poor performance of IE was causing suc
 we eventually decided to banish IE. 
 \item {\em Your browser is outdated.} We recommend that you upgrade your web browser to the newest version, this 
 can never hurt. 
-\item {\em Your browser has WebGL disabled.} Try to get into the Settings of your browser (in Firefox this is via 
-{\tt about:flags}) and search for "WebGL". Once you find it, enable it. You will be asked to restart your web browser.
-\item {\em Everything failed.} In this case, try to upgrade your graphics drivers. This should help. If you still have 
+\item {\em Your browser has WebGL disabled.} Try the following:
+\begin{enumerate}
+\item Firefox: Type {\tt about:config} in the address bar and hit enter. Ignore a message about harming your 
+      warranty. In the search bar type {\tt webgl} and double-click on {\tt webgl.force-enable} and 
+      {\tt webgl.prefer-native-gl} to set them to {\tt true}. Restart your browser (reloading page is not enough).
+\item Chrome: Type {\tt about:flags} in the address bar and hit enter. Ignore a message saying that these 
+      experiments may bite. Use CTRL + F to search for WebGL and enable it. Restart your browser. 
+\end{enumerate}
+\item {\em Everything fails.} In this case, try to upgrade your graphics drivers. This should help. If you still have 
 problems, go to the page {\tt www.webgl.org} and try to find help there. You can also google for "graphic cards that 
 support webgl" which will give you and idea whether your graphic card s supported or not. 
 \item As a general observation, WebGL works almost always in Safari on more recent Mac systems  
@@ -301,21 +174,20 @@ support webgl" which will give you and idea whether your graphic card s supporte
 \subsection{Creating an Account}
 
 A login dialog where
-users enter their username, password and institution code is located in the 
-top-right corner. In order to create a new account, click on the link "Create free account" which is next to
-"Username". The following window appears:
+users enter their username, password and institution code (relevant for institution-sponsored users
+only) is located in the top-right corner. In order to create a new account, click on the link "Create 
+account" which is next to "Username". The following window appears:\\
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/create-account.png}
+\includegraphics[width=0.6\textwidth]{img/create-account.png}
 \end{center}
-\vspace{-4mm}
+%\vspace{-4mm}
 \caption{Creating new account.}
 \label{fig:creacc}
 \end{figure}
-
+\newpage
 \noindent
 In this form, enter your preferred username, email address (to be used only if you ask
 us to generate a new password for you), and password twice. Next:
@@ -333,45 +205,19 @@ After accepting the Terms of Use and clicking OK, you are ready to login!
 \subsection{After Login}
 
 The interior of NCLab is similar to a standard computer desktop, except that the 
-icons are different (Fig. \ref{fig:desktop}). Many users maximize 
-the web browser window to make the desktop experience even more realistic.
+icons are different (see front page screenshot). Many users maximize the web browser 
+window via F11 to make the desktop experience even more realistic.
 If any member of any of your groups is in NCLab at the time you log in, the Groups icon 
-will be lighted green.
+are lighted green. If you do not like the default desktop background, it can be 
+changed easily in Settings.
 
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/desktop.png}
-\end{center}
-%\vspace{-2mm}
-\caption{NCLab desktop after login. The green light at "Groups" means that someone in your 
-         groups is online.}
-\label{fig:desktop}
-\end{figure}
-\noindent
-If you do not like the default desktop background, it can be changed easily in Settings, as shown in 
-Fig. \ref{fig:desktop}.
-\newpage
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/desktop2.png}
-\end{center}
-%\vspace{-2mm}
-\caption{Changing desktop background.}
-\label{fig:desktop2}
-\end{figure}
-\noindent
-
-
-\noindent
-Groups were already mentioned. The other icons
-represent:
+Besides Groups, the other icons represent:
 
 \begin{itemize}
 \item {\em File Manager}, used to manage files and folders, and to clone work published by other users.
 \item {\em Programming} module provides programming in 
       \begin{itemize}
+      \item Karel the Robot (famous educational programming language). 
       \item Python (high-level dynamical programming language). 
       \item Javascript (most popular language for web development). 
       \item CUDA (massively parallel programming on graphic cards).
@@ -382,9 +228,13 @@ represent:
       to explore Fractals and generate beautiful fractal art), ODE module to explore 
       ordinary differential equations, and PDE module to explore partial differential 
       equations. 
+\item {\em Web Design} module is an integrated graphical application where you can 
+      enter HTML, CSS and JS code and edit your web page in real time. 
+\item {\em CAD} module features the PLaSM library (Programming Language for Solid Modeling).
+      The library is used through scripting and a GUI is currently in progress.
 \item {\em Calculator} is a calculator! 
 \end{itemize}
-More modules are on the way. 
+Chemistry module and other modules are on the way. 
 
 \subsection{Groups and Chat}
 
@@ -441,24 +291,25 @@ have any files or folders there (Fig. \ref{fig:fileman}).
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{img/fileman1.png}
+\includegraphics[width=0.9\textwidth]{img/fileman1.png}
 \end{center}
-%\vspace{-2mm}
+\vspace{-2mm}
 \caption{Initial launch of File Manager.}
 \label{fig:fileman}
+\vspace{-1cm}
 \end{figure}
+\newpage
 \noindent
 However, this can be changed quickly. Click on the menu Project $\rightarrow$ Clone. This will
 launch a window with many displayed projects from various areas of math, 
 physics, chemistry, 3D computer aided design, and engineering simulations (Fig. \ref{fig:fileman2}).
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{img/fileman2.png}
+\includegraphics[width=0.9\textwidth]{img/fileman2.png}
 \end{center}
-%\vspace{-2mm}
+\vspace{-2mm}
 \caption{List of displayed projects.}
 \label{fig:fileman2}
 \end{figure}
@@ -596,10 +447,10 @@ analysis (FEA) part. Illustrative screenshot is provided in Fig. \ref{fig:elast1
 \includegraphics[width=\textwidth]{img/elast1.png}
 \end{center}
 %\vspace{-2mm}
-\caption{Elasticity analysis of a hollow steel pipe of square cross-section that is loaded from above.}
+\caption{Elasticity analysis of a hollow steel pipe of square cross-section that is loaded from above
+         (shown is Von Mises stress).}
 \label{fig:elast1}
 \end{figure}
-\newpage
 \noindent
 The simulation process consists of several steps: geometry definition, 
 mesh generation, problem definition, computaion, and postprocessing. 
@@ -749,7 +600,6 @@ a temple:
 \end{figure}
 \noindent
 To learn more, read the PLaSM tutorial and watch a three-part YouTube video!
-\newpage
 
 \section{Parallel computing with GPUs}
 
@@ -774,6 +624,116 @@ programming.
 \label{fig:progr4}
 \end{figure}
 \noindent
+
+\section{Appendix - What is the {\em Cloud}?}
+
+Using cloud computing or cloud computers sounds like a rocket science, but it is not,
+and it really changes things for the better. Chances are that you are using 
+it already, without even knowing. For example, if you are using free email services of Gmail, 
+Hotmail, Yahoo or another such provider, then your data are stored on the cloud. If you are 
+using free Google docs to acces your Word or Excel files from anywhere, you are using the cloud
+as well. 
+
+\subsection{Basic Facts}
+
+In the IT sense of the word, and with a bit of simplification, the {\em cloud} 
+is a pool of interconnected computers. They come in different sizes depending on the provider - 
+large cloud facilities have millions of computers but some companies are running 
+their own private clouds with relatively few ones. The computers in large clouds
+are not very similar to your desktop PC -- they are stripped off many unnecessary 
+things, compacted, and interconnected into a powerful grid. Their processors 
+typically contain multiple {\em computing cores} that can share the same memory.
+Such {\em multicore processors} are much more efficient compared to (clusters 
+of) PCs with equivalent number of cores.
+
+The main advantage of the cloud is its {\em elasticity}. Upon your request, the
+provider will assemble for you an {\em instance} with the parameters that 
+you need. An instance means a computer with given parameters (number of processors, 
+hard disk size, memory). An instance is created within a minute or so, and the user can upgrade 
+or downgrade it dynamically, depending on the actual needs. After the instance is 
+no longer needed, it is dissolved and the same hardware is used to build instances 
+for other users. The following is a realistic example of how such instances may 
+look like (just the name of the provider was omitted):\\
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+{\bf Small instance} & 1.7 GB of memory & 1 core & 160 GB hard disk \\
+\hline
+{\bf Medium instance} & 7.5 GB of memory & 4 cores & 850 GB hard disk \\
+\hline
+{\bf Large instance} & 15 GB of memory & 8 cores & 1690 GB hard disk \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{4mm}
+\noindent
+Importantly - these three instances are created by grouping the same resources together 
+in different ways. 
+It is quite interesting to look at the prices:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+{\bf Small instance} &	\$0.085 per hour\\
+\hline
+{\bf Medium instance}&	\$0.34 per hour	\\
+\hline
+{\bf Large instance}&	\$0.68 per hour\\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{4mm}
+\noindent
+With such low prices, literally anyone has now access to 
+a powerful computer -- that otherwise would cost many thousands of dollars -- 
+for just cents per hour. This brings new wonderful opportunities to ordinary users
+and educators.
+
+\subsection{Software as a Service (SaaS)}
+
+Another big change that cloud computing brings is in how software is handled. 
+Traditionally, one would buy a software in a big box with a small CD in it, 
+and install it on one's computer. This model is now being challenged by a new 
+approach called {\em Software as a Service (SaaS)}. The user does not have 
+to own a copy of the software physically. Instead, the software is running 
+on a remote server and accessed by users over the Internet. Typically, paying 
+for the access is much less expensive compared to buying the software. If you like,
+think about it like watching a movie on Netflix vs. buying a DVD. 
+
+\subsection{Access from Mobile Platforms}
+
+Last but not least, since the software is running on the cloud, the user's hardware 
+does not matter so much anymore. The only really important things is to be able to 
+run a web browser and access the Internet. This can be done on anything between smart 
+phones, tablets, netbooks, laptops, and desktop computers. 
+
+\subsection{Some Myths}
+
+Very often, cloud computing is mentioned in the context of large 
+computations in science, engineering, finance, and other fields. This is because there are many 
+cloud providers and they need to show off. But in reality, the clouds are mostly
+busy processing small tasks of ordinary users. In that case, you may say, a standard 
+office PC should be enough. Not exactly. Once you are not in your office, for example
+while traveling, it is difficult to reach your office PC and do things as usual. 
+The cloud changes that -- it allows you to access your data 
+from everywhere, any time. Once you get used to it, there is no way back. 
+
+\subsection{NCLab and K-12 Education}
+
+NCLab is an Online STEM Laboratory that provides 
+instant access to computer simulations in physics and chemistry, 3D CAD design, 
+engineering-level computer modeling, and scientific computing. You do not have 
+to install any software -- NCLab is automatically available in any classroom that 
+has Internet access. In contrast to traditional educational software products, 
+users can access their accounts and work from anywhere and at any time.
+Students can start a problem at school, finish the rest at home, and notify 
+the instructor about the completion with one mouse click. Most importantly, 
+however, NCLab invites K-12 teachers and students to discover new exciting 
+areas that were out of their reach before.
+
 
 \section{Review Questions}
 

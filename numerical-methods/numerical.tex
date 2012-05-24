@@ -1,95 +1,67 @@
-\documentclass[article,A4,12pt]{llncs}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathrsfs, bm}
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{graphicx}
-\usepackage{tabularx}
-\usepackage{subfig}
-\usepackage{epsf,times}
-\usepackage{color}
-\usepackage{wrapfig}
-\usepackage{cases}
-\usepackage{multicol}
 
-\usepackage[T1]{fontenc}
-%\newcommand{\tmname}[1]{\textsc{#1}}
-%\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
-%\newcommand{\tmsamp}[1]{\textsf{#1}}
-%\newcommand{\tmtextsc}[1]{{\scshape{#1}}}
-%\newcommand{\tmtextsl}[1]{{\slshape{#1}}}
-%\newcommand{\tmtexttt}[1]{{\ttfamily{#1}}}
-
-\leftmargin=0.0cm
-\oddsidemargin=0.5cm
-\evensidemargin=0.5cm
-\topmargin=0cm
-\textwidth=16.0cm
-%\textheight=21.5cm
-\textheight=20.0cm
-\pagestyle{plain}
-\setlength{\columnsep}{20pt}
-
-\def\m{\mathbf{m}}
-\def\H{\mathbf{H}}
-\def\E{\mathbf{E}}
-\newcommand{\vepsi}{{\varepsilon}}
-\def\hnorm#1#2{\vert\,#1\,\vert_{#2}}
-\newcommand{\R}{{\mathbb R}}
-\newcommand{\Sph}{{\mathbb S}}
-\def\x{\mathbf{x}}
-\def\hvec{\overline{\mathbf{h}}}
-\def\evec{\overline{\mathbf{e}}}
-
-\newcommand{ \etal}{\mbox{\emph{et al. }}}
-
-\newcommand\vect[1]{\mbf{#1}}
-\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}} 
-\newcommand{\RC}[1]{#1 $\times$ #1 $\times$ #1}
-\def\um{$\mu$m}
-\def\C{$^{\circ}\mathrm{C}$}
-
-\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
-
-% DEFINITION OF CUSTOM FONT SIZE
-\newcommand{\customfontA}{\fontsize{50}{55}\selectfont}
-\newcommand{\customfontB}{\fontsize{14.4}{20}\selectfont}
-\newcommand{\customfontC}{\fontsize{30}{35}\selectfont}
-
-\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
-
-\def\clovek#1{\noindent\bgroup\vbox{\noindent#1}\egroup\vskip1em}
-
-% TO INPUT BACKGROUND IMAGE
-\usepackage{eso-pic}
-\newcommand\BackgroundPic{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight]{img/numerical-frontpage.png}
-%\includegraphics[width=\paperwidth,height=\paperheight]{img/background.jpg}
-\vfill
-}}}
+\pagestyle{empty}
 
 \begin{document}
 
-% INPUTTING BACKGROUND IMAGE
-\AddToShipoutPicture{\BackgroundPic}
+\large
+
 \vbox{}
-\pagestyle{empty}
-\newpage
-\textwidth=15.5cm
-\ClearShipoutPicture
+\begin{figure}[!ht]
+%\hspace{-4mm}
+\includegraphics[width=8cm]{img/logo.png}
+\vspace{25mm}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+%\hspace{-4mm}
+\hspace{-7mm}
+\includegraphics[width=10cm]{img/numerical-frontpage.png}
+\vspace{25mm}
+\end{center}
+\end{figure}
+
+\centerline{\Huge \bf Numerical Methods in Python}
+
+\vfill
+
+\centerline{\Large www.nclab.com}
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 \section*{}
 \small
 \input ../common/aboutnclab.tex
+
+%\subsection*{Acknowledgement}
+%This publication was created with the help of numerous freely 
+%available web resources and tutorials related to Python, Scipy,
+%Numpy, Pylab, Matplotlib, Sympy and other projects.
 
 \normalsize
 
@@ -104,8 +76,11 @@
 \pagestyle{plain}
 \setcounter{page}{1}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\pagestyle{plain}
 \section{Introduction}
 
 NCLab is a perfect place for instructors and students of Numerical Methods 

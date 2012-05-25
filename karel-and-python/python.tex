@@ -671,7 +671,7 @@ a solid or dashed line:
 
 \begin{verbatim}
 clf()
-plot(x, y, 'g.', label = "Dashed red line")
+plot(x, y, 'g.', label = "Dotted green line")
 legend()
 lab.show()
 \end{verbatim}
@@ -692,7 +692,7 @@ Last let us stay with green color but make the dots larger:
 
 \begin{verbatim}
 clf()
-plot(x, y, 'go', label = "Dashed red line")
+plot(x, y, 'go', label = "Bigger green dots")
 legend()
 lab.show()
 \end{verbatim}
@@ -713,9 +713,9 @@ The output is shown in Fig. \ref{fig:plot5}.
 
 \subsection{\ \ Scaling axes and showing grid}
 
-In the previous plots, the function graphs were fitted into the 
+In the previous plots, function graphs were fitted into the 
 display window, which means that the horizontal and vertical 
-exas were scaled differently. This can be changed by including the 
+axes were scaled differently. This can be changed by including the 
 {\tt axis('equal')} command after calling {\tt plot()}. Also, 
 grid can be displayed by using the {\tt grid()} command:
 
@@ -828,7 +828,7 @@ visit the Pylab page {\tt http:// www.scipy.org/PyLab}.
 The concept of plotting based on two arrays of $x$ and $y$ coordinates
 allows us to do much more than only plot graphs of functions of one variable.
 We can easily plot more general curves such as circles, spirals and others.
-Let us illustrate this on a spiral that this parameterized 
+Let us illustrate this on a spiral that is parameterized 
 by 
 $$
 x(t) = t \cos(t), \ \ \ \ 
@@ -864,8 +864,8 @@ The output is shown in Fig. \ref{fig:plot6}.
 For 3D plots it is practical to use the {\tt mplot3d} toolkit of the 
 Python library Matplotlib. Let us begin with 
 parametric 3D curves since this is analogous to how we handled planar curves in 
-Subsection \ref{subsec:planarcurves}. 3D curves are sequences of 3D points
-represented via three arrays of $x$, $y$ and $z$ coordinates, respectively. As an 
+the previous paragraph. 3D curves are sequences of linearly interpolated 3D points
+represented via three arrays of $x$, $y$ and $z$ coordinates. As an 
 example we will plot the curve $x(t), y(t), z(t)$ where
 
 $$
@@ -887,8 +887,8 @@ mpl.rcParams['legend.fontsize'] = 15
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 
-# Define interval for parameter 't'
-# and its division:
+# Define interval for parameter 't' and its
+# division (arange can be used as well):
 t = linspace(-2, 2, 100)
 
 # Define the curve:
@@ -937,8 +937,8 @@ import matplotlib.pyplot as plt
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 
-# Define intervals on the 'x' and 'y' axes
-# and their divisions:
+# Define intervals on the 'x' and 'y' axes and 
+# their divisions (arange can be used as well):
 x = linspace(-pi, pi, 30)
 y = linspace(-pi, pi, 30)
 
@@ -1263,6 +1263,27 @@ $x_0, y_0$ and $R$ are variables that the user can change. Axes should be scaled
 $x_0 > 0$ is a variable that the user can change. Axes should be scaled equally.
 \item The function {\tt random()} returns a random number between $0$ and $1$ (it can be $0.0$ but it cannot be $1.0$).
 Write a Python program to generate and plot a random triangle that lies in the unit square $[0, 1) \times [0, 1)$. 
+\item Display wireframe plot of the function 
+$$
+f(x, y) = e^{-x^2 - y^2}
+$$
+in the square $(-3, 3)\times (-3, 3)$.
+\item Display solid surface plot of the function 
+$$
+f(x, y) = 5 - \sqrt{x^2 + y^2}
+$$
+in the square $(-2, 2)\times (-2, 2)$.
+\item Display contour plot of the function 
+$$
+f(x, y) = \sin(x) \cos(y) 
+$$
+in the square $(-2\pi, 2\pi)\times (-2\pi, 2\pi)$.
+\item Display WebGL plot of the function
+$$
+f(x, y) = e^{-x^2 - y^2}
+$$
+in the square $(-1, 1)\times (-1, 1)$.
+
 \end{enumerate}
 
 \section{Functions}

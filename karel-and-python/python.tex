@@ -621,7 +621,7 @@ The output is shown in Fig. \ref{fig:plot1}.\\[-7mm]
 \end{figure}
 \noindent
 
-\subsection{Labels, colors, and styles}
+\subsection{\ \ Labels, colors, and styles}
 
 The plot can be made nicer by adding a label, and also the color 
 and the line style can be changed. Let us start with adding a label:
@@ -711,7 +711,7 @@ The output is shown in Fig. \ref{fig:plot5}.
 \end{figure}
 \noindent
 
-\subsection{Scaling axes and showing grid}
+\subsection{\ \ Scaling axes and showing grid}
 
 In the previous plots, the function graphs were fitted into the 
 display window, which means that the horizontal and vertical 
@@ -748,7 +748,7 @@ The output is shown in Fig. \ref{fig:plot8}.
 The scaling of axes can be returned to the automatic fit option via
 {\tt axis('auto')} if needed.
 
-\subsection{Adjusting plot limits}
+\subsection{\ \ Adjusting plot limits}
 
 Plot limits can be set using the {\tt xlim()} and {\tt ylim()}
 functions after {\tt plot()}. For example, we can stretch the sine
@@ -784,7 +784,7 @@ The output is shown in Fig. \ref{fig:plot9}.
 \noindent
 
 
-\subsection{Plotting multiple functions at once}
+\subsection{\ \ Plotting multiple functions at once}
 
 This can be done very easily, just do not use the {\tt clf()}
 command between the plots and you can have as many graphs 
@@ -1019,6 +1019,12 @@ at {\tt http://matplotlib.sourceforge.net/mpl\_toolkits/mplot3d}.
 For this functionality, your browser has to support WebGL (most of modern browsers do, 
 with the exception of Internet Explorer). See the introductory tutorial {\em Welcome to NCLab}
 on the page {\tt http://femhub.com/nclab-tutorials/} for detailed instructions on how to enable WebGL. 
+In the following example, we plot the graph of the function 
+
+$$
+  f(x, y) = \sin(\sqrt{x^2 + y^2})
+$$
+in the square $(0, 10) \times (0, 10)$.
 
 \begin{verbatim}
 from numpy import sin, sqrt, arctan
@@ -1033,20 +1039,21 @@ y1 = 10.0
 nx = 100
 ny = 100
 
-# Define a function:
+# Define the function:
 def f(x, y):
     return sin(sqrt(x**2 + y**2))
 
 # Render the surface using WebGL.
 lab.surface((x0, x1, nx), (y0, y1, ny), f)
 \end{verbatim}
+The output is shown in Fig. \ref{fig:webgl}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{imgp/webgl.png}
+\includegraphics[width=0.6\textwidth]{imgp/webgl.png}
 \end{center}
 \vspace{-2mm}
-\caption{Plotting functions of two variables.}
+\caption{Plotting functions of two variables with WebGL.}
 \label{fig:webgl}
 %\vspace{-1cm}
 \end{figure}
@@ -1304,6 +1311,176 @@ def say_hello():
 \end{verbatim}
 Let us stop here for the moment. What we just learned about defining new functions is 
 sufficient for now.
+
+
+
+Let us mention a few additional useful facts related to 
+Python function. Let us begin with the function that we already saw
+before:
+
+\begin{verbatim}
+def add(a, b):
+    return a + b
+\end{verbatim}
+
+\subsection{Passing arbitrary arguments}
+
+Python does not require that we specify the type of function arguments. 
+What does it mean? The above function {\tt add} works for 
+numbers, but it will also add two strings together, or any other 
+objects where the operation '+' is defined. Let's try this:
+
+\begin{verbatim}
+def add(a, b):
+    return a + b
+
+word1 = "Good "
+word2 = "Evening"
+print add(word1, word2)
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+Good Evening
+\end{verbatim}
+
+\subsection{Returning multiple results}
+
+Python functions can return multiple results if needed.
+Let us look at the following simple example:
+
+\begin{verbatim}
+def powers(a):
+    return a**1, a**2, a**3
+
+var1 = 5
+print powers(var1)
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+(5, 25, 125)
+\end{verbatim}
+We can also store the results in variables:
+
+\begin{verbatim}
+var1 = 5
+p1, p2, p3 = powers(var1)
+print p1, p2, p3
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+5 25 125
+\end{verbatim}
+
+\subsection{Using default arguments}
+
+Python makes it possible to set a default value for a parameter.
+that will use if the parameter is omitted. Parameters with 
+default values must always be at the end. 
+
+For illustration, let us return to the function {\tt add}, and let us 
+imagine that very often (but not always) the second number that we
+are adding is 10. Then it makes sense to write the function {\tt add}
+as follows:
+
+\begin{verbatim}
+def add(a, b = 10):
+    return a + b
+\end{verbatim}
+The function will work as before when called with two arguments: 
+
+\begin{verbatim}
+A = 5
+B = 1
+add(A, B)
+\end{verbatim}
+Output:
+\begin{verbatim}
+6
+\end{verbatim}
+But it can be also called with the second argument omitted:
+\begin{verbatim}
+A = 5
+B = 1
+add(A)
+\end{verbatim}
+Output:
+\begin{verbatim}
+15
+\end{verbatim}
+
+\subsection{Good coding practices}
+
+Let's write a function that will look for a character {\tt c} 
+in a string {\tt s}. If the character is found, it will return its index. 
+If not, it will return -1:
+
+\begin{verbatim}
+# Finds the first occurence of a given character in a given 
+# string, and returns its position. If not found, returns -1. 
+def find_char(c, s):
+    if len(c) != 1: 
+        print "c must be a single character!"
+        return -2
+    n = 0
+    while s[n] != c:
+        n += 1
+        if n == len(s):
+            return -1
+    return n
+\end{verbatim}
+Some remarks are in order. First of all notice the comment after the 
+symbol '{\tt \#}'. Any text behind this symbol till the end of line is ignored 
+by the interpreter, and thus one can use it for descriptions. {\bf Writing 
+comments is strongly encouraged}. They make your program more readable for others
+{\em and also for you}. Keep in mind that everything is perfectly clear to you 
+at the time you are writing the program. But when you return to it in 6 months, 
+without good comments you will have a hard time to remember why you wrote that 
+function, and what exactly it was supposed to do. 
+
+Second -- humans make mistakes. Whenever a function is to be used by a human
+and it assumes something (such as that {\tt c} is a single character), {\bf check
+it}. This means to write some extra code, but this extra effort pays off big time.
+The user may not be a bad person who intentionally wants to crash your 
+code (although there are such people!), but people do not read instructions, 
+forget them, and can make a variety 
+of mistakes. Sometimes these tests are called {\em sanity checks} -- basically
+making sure that the function received correct data.
+
+Third -- whenever there is 
+a situation where your code can crash, check the input. If something is wrong,
+do not let the program crash and rather {\bf take care of the problem youself}. 
+Give the user (or yourself) a message that something happened in the program that 
+was not supposed 
+to happen. It saves you many a headache and lots of time wasted by going through 
+your code and trying to find out why it does not work as expected. This is called 
+{\em debugging} and for beginners it typically takes more time than writing the 
+code itself. An example, bad code first:
+
+\begin{verbatim}
+from numpy import sqrt
+...
+a = sqrt(x)
+\end{verbatim}
+(here {\tt sqrt()} is the square root function and we import it from Numpy). If
+for any reason {\tt x} is negative at the moment the square root is calculated,
+the program crashes. So a better code is:
+
+\begin{verbatim}
+from numpy import sqrt
+....
+if x > 0:
+    a = sqrt(x)
+else:
+    print "Sqrt(x) attempted with x =", x
+    ...
+\end{verbatim}
+The second triple dots stand for an action that you take when incorrect 
+input for the {\tt sqrt()} function is detected. What you do depends on 
+your code -- for example you can skip this value of {\tt x} and calculate 
+with the next one. 
 
 \subsection{Review questions}
 
@@ -2099,185 +2276,7 @@ This section is finished, good job!
 \subsection{Programming exercises}
 
 
-\section{More on functions}
 
-\subsection{Objectives}
-
-\begin{itemize}
-\item
-\end{itemize}
-
-Let us mention a few additional useful facts related to 
-Python function. Let us begin with the function that we already saw
-before:
-
-\begin{verbatim}
-def add(a, b):
-    return a + b
-\end{verbatim}
-
-\subsection{Passing arbitrary arguments}
-
-Python does not require that we specify the type of function arguments. 
-What does it mean? The above function {\tt add} works for 
-numbers, but it will also add two strings together, or any other 
-objects where the operation '+' is defined. Let's try this:
-
-\begin{verbatim}
-def add(a, b):
-    return a + b
-
-word1 = "Good "
-word2 = "Evening"
-print add(word1, word2)
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-Good Evening
-\end{verbatim}
-
-\subsection{Returning multiple results}
-
-Python functions can return multiple results if needed.
-Let us look at the following simple example:
-
-\begin{verbatim}
-def powers(a):
-    return a**1, a**2, a**3
-
-var1 = 5
-print powers(var1)
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-(5, 25, 125)
-\end{verbatim}
-We can also store the results in variables:
-
-\begin{verbatim}
-var1 = 5
-p1, p2, p3 = powers(var1)
-print p1, p2, p3
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-5 25 125
-\end{verbatim}
-
-\subsection{Using default arguments}
-
-Python makes it possible to set a default value for a parameter.
-that will use if the parameter is omitted. Parameters with 
-default values must always be at the end. 
-
-For illustration, let us return to the function {\tt add}, and let us 
-imagine that very often (but not always) the second number that we
-are adding is 10. Then it makes sense to write the function {\tt add}
-as follows:
-
-\begin{verbatim}
-def add(a, b = 10):
-    return a + b
-\end{verbatim}
-The function will work as before when called with two arguments: 
-
-\begin{verbatim}
-A = 5
-B = 1
-add(A, B)
-\end{verbatim}
-Output:
-\begin{verbatim}
-6
-\end{verbatim}
-But it can be also called with the second argument omitted:
-\begin{verbatim}
-A = 5
-B = 1
-add(A)
-\end{verbatim}
-Output:
-\begin{verbatim}
-15
-\end{verbatim}
-
-\subsection{Good coding practices}
-
-Let's write a function that will look for a character {\tt c} 
-in a string {\tt s}. If the character is found, it will return its index. 
-If not, it will return -1:
-
-\begin{verbatim}
-# Finds the first occurence of a given character in a given 
-# string, and returns its position. If not found, returns -1. 
-def find_char(c, s):
-    if len(c) != 1: 
-        print "c must be a single character!"
-        return -2
-    n = 0
-    while s[n] != c:
-        n += 1
-        if n == len(s):
-            return -1
-    return n
-\end{verbatim}
-Some remarks are in order. First of all notice the comment after the 
-symbol '{\tt \#}'. Any text behind this symbol till the end of line is ignored 
-by the interpreter, and thus one can use it for descriptions. {\bf Writing 
-comments is strongly encouraged}. They make your program more readable for others
-{\em and also for you}. Keep in mind that everything is perfectly clear to you 
-at the time you are writing the program. But when you return to it in 6 months, 
-without good comments you will have a hard time to remember why you wrote that 
-function, and what exactly it was supposed to do. 
-
-Second -- humans make mistakes. Whenever a function is to be used by a human
-and it assumes something (such as that {\tt c} is a single character), {\bf check
-it}. This means to write some extra code, but this extra effort pays off big time.
-The user may not be a bad person who intentionally wants to crash your 
-code (although there are such people!), but people do not read instructions, 
-forget them, and can make a variety 
-of mistakes. Sometimes these tests are called {\em sanity checks} -- basically
-making sure that the function received correct data.
-
-Third -- whenever there is 
-a situation where your code can crash, check the input. If something is wrong,
-do not let the program crash and rather {\bf take care of the problem youself}. 
-Give the user (or yourself) a message that something happened in the program that 
-was not supposed 
-to happen. It saves you many a headache and lots of time wasted by going through 
-your code and trying to find out why it does not work as expected. This is called 
-{\em debugging} and for beginners it typically takes more time than writing the 
-code itself. An example, bad code first:
-
-\begin{verbatim}
-from numpy import sqrt
-...
-a = sqrt(x)
-\end{verbatim}
-(here {\tt sqrt()} is the square root function and we import it from Numpy). If
-for any reason {\tt x} is negative at the moment the square root is calculated,
-the program crashes. So a better code is:
-
-\begin{verbatim}
-from numpy import sqrt
-....
-if x > 0:
-    a = sqrt(x)
-else:
-    print "Sqrt(x) attempted with x =", x
-    ...
-\end{verbatim}
-The second triple dots stand for an action that you take when incorrect 
-input for the {\tt sqrt()} function is detected. What you do depends on 
-your code -- for example you can skip this value of {\tt x} and calculate 
-with the next one. 
-
-\subsection{Review questions}
-
-\subsection{Programming exercises}
 
 \section{Strings}
 

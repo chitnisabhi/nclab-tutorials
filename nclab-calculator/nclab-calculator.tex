@@ -248,33 +248,6 @@ It is useful to see how NCLab reports errors, so let's do it!
 Since the error message in Fig. \ref{fig:divzero} mentioned modulo, we added there one more 
 input cell demonstrating how modulo is done -- using the \% symbol.
 
-\section{Commutative, Associative and Distributive Laws}
-
-The validity of these laws can be verified easily on examples. One just enters
-a code similar to 
-
-\begin{verbatim}
-a = 2
-b = 3
-print "a + b =", a + b
-print "b + a =", b + a
-\end{verbatim}
-and clicks on the link "run" under the input cell. The output 
-is shown in Fig. \ref{fig:commut}. 
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{img/commut.png}
-\end{center}
-\vspace{-4mm}
-\caption{Commutative Law holds!}
-\label{fig:commut}
-%\vspace{-6mm}
-\end{figure}
-
-
-
-
 \section{List of Elementary Functions}
 
 In order to calculate square roots, exponentials, sins, cosins, tangents, and all other 
@@ -328,14 +301,10 @@ web page \\ {\tt http://www.scipy.org/Numpy\_Functions\_by\_Category}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Plotting Functions of One Variable}\label{plotting}
+\section{Plotting functions of one variable}\label{plotting}
 
-Plotting can be done via the Pylab library. Pylab is a standard Python library that is 
-superior in many ways to MATLAB (expensive commercial product). To use Pylab, login to NCLab and launch a Python 
-worksheet first.
-
-The Pylab {\tt plot} command takes two
-lists: $x$-coordinates and $y$-coordinates of points on a curve. Between the 
+Plotting can be done via the Pylab library. The Pylab {\tt plot} command takes two
+arrays: $x$-coordinates and $y$-coordinates of points on a curve. Between the 
 points, the curve is interpolated linearly. Let us illustrate this on a simple 
 example with just five points [0, 0], [1, 2], [2, 0.5], [3, 2.5] and [4, 0]:
 
@@ -350,7 +319,7 @@ lab.show()
 The commands {\tt clf()}, {\tt plot()} and {\tt lab.show()} do clear the canvas, 
 plot the graph, and show the graph, respectively.
 The output is shown in Fig. \ref{fig:plot}.
-
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -387,7 +356,8 @@ plot(x, y)
 lab.show()
 \end{verbatim}
 \noindent
-The output is shown in Fig. \ref{fig:plot1}.\\[-7mm]
+The output is shown in Fig. \ref{fig:plot1}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -399,16 +369,18 @@ The output is shown in Fig. \ref{fig:plot1}.\\[-7mm]
 \vspace{-2mm}
 \end{figure}
 \noindent
+
+\section{Labels, colors, and styles}
+
 The plot can be made nicer by adding a label, and also the color 
 and the line style can be changed. Let us start with adding a label:
 
 \begin{verbatim}
-lb = "Solid blue line"
-plot(x, y, 'b-', label = lb)
+plot(x, y, 'b-', label = "Solid blue line")
 legend()
 lab.show()
 \end{verbatim}
-The output is shown in Fig. \ref{fig:plot2}.\\[-7mm]
+The output is shown in Fig. \ref{fig:plot2}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -417,29 +389,27 @@ The output is shown in Fig. \ref{fig:plot2}.\\[-7mm]
 \vspace{-6mm}
 \caption{Adding a label.}
 \label{fig:plot2}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
 \newpage
 \noindent
 Next let us change the color to red and line style to dashed: 
 
 \begin{verbatim}
-lb = "Dashed red line"
 clf()
-plot(x, y, 'r--', label = lb)
+plot(x, y, 'r--', label = "Dashed red line")
 legend()
 lab.show()
 \end{verbatim}
 The output is shown in Fig. \ref{fig:plot3}.
 
-
-
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{img/plot3.png}
 \end{center}
-\vspace{-2mm}
+\vspace{-6mm}
 \caption{Same graph using dashed red line.}
+%\vspace{-4mm}
 \label{fig:plot3}
 \end{figure}
 \noindent
@@ -447,14 +417,12 @@ The graph can be plotted using green color and small dots rather than
 a solid or dashed line:
 
 \begin{verbatim}
-lb = "Dashed red line"
 clf()
-plot(x, y, 'g.', label = lb)
+plot(x, y, 'g.', label = "Dashed red line")
 legend()
 lab.show()
 \end{verbatim}
 The output is shown in Fig. \ref{fig:plot4}.
-
 \newpage
 
 \begin{figure}[!ht]
@@ -467,19 +435,16 @@ The output is shown in Fig. \ref{fig:plot4}.
 %\vspace{-5mm}
 \end{figure}
 \noindent
-\noindent
 Last let us stay with green color but make the dots larger:
 
 \begin{verbatim}
-lb = "Dashed red line"
 clf()
-plot(x, y, 'go', label = lb)
+plot(x, y, 'go', label = "Dashed red line")
 legend()
 lab.show()
 \end{verbatim}
 \noindent
 The output is shown in Fig. \ref{fig:plot5}.
-
 
 \begin{figure}[!ht]
 \begin{center}
@@ -491,10 +456,116 @@ The output is shown in Fig. \ref{fig:plot5}.
 %\vspace{-4mm}
 \end{figure}
 \noindent
-For a complete list of options available for the {\tt plot} command, 
+
+\section{Scaling axes and showing grid}
+
+In the previous plots, the function graphs were fitted into the 
+display window, which means that the horizontal and vertical 
+exas were scaled differently. This can be changed by including the 
+{\tt axis('equal')} command after calling {\tt plot()}. Also, 
+grid can be displayed by using the {\tt grid()} command:
+
+\begin{verbatim}
+from numpy import *
+from pylab import *
+x = arange(0, 2*pi, 0.05)
+y = sin(x)
+clf()
+plot(x, y, label="sin(x)")
+axis('equal')
+grid()
+legend()
+lab.show()
+\end{verbatim}
+\noindent
+The output is shown in Fig. \ref{fig:plot8}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.53\textwidth]{img/plot8.png}
+\end{center}
+\vspace{-4mm}
+\caption{Scaling axes equally and showing grid.}
+\label{fig:plot8}
+\end{figure}
+\noindent
+The scaling of axes can be returned to the automatic fit option via
+{\tt axis('auto')} if needed.
+
+\section{Adjusting plot limits}
+
+Plot limits can be set using the {\tt xlim()} and {\tt ylim()}
+functions after {\tt plot()}. For example, we can stretch the sine
+function from Fig. \ref{fig:plot8} to span the entire width of the 
+canvas as follows:
+
+\begin{verbatim}
+from numpy import *
+from pylab import *
+x = arange(0, 2*pi, 0.05)
+y = sin(x)
+clf()
+plot(x, y, label="sin(x)")
+xlim(0, 2*pi)
+axis('equal')
+grid()
+legend()
+lab.show()
+\end{verbatim}
+\noindent
+The output is shown in Fig. \ref{fig:plot9}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.53\textwidth]{img/plot9.png}
+\end{center}
+\vspace{-4mm}
+\caption{Setting plot linits on the horizontal axis to $0$ and $2\pi$.}
+\label{fig:plot9}
+\vspace{-2mm}
+\end{figure}
+\noindent
+
+
+\section{Plotting multiple functions at once}
+
+This can be done very easily, just do not use the {\tt clf()}
+command between the plots and you can have as many graphs 
+in one figure as needed. Let us do three:
+
+\begin{verbatim}
+from numpy import *
+from pylab import *
+x = arange(0.5, 5, 0.05)
+y1 = 1./x
+y2 = 1. / (1 + x**2)
+y3 = exp(-x)
+axis=("equal")
+clf()
+plot(x, y1, label="y1")
+plot(x, y2, label="y2")
+plot(x, y3, label="y3")
+legend()
+lab.show()
+\end{verbatim}
+\noindent
+The output is shown in Fig. \ref{fig:plot7}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.55\textwidth]{img/plot7.png}
+\end{center}
+\vspace{-4mm}
+\caption{Plotting graphs of functions $1/x$, $1 / (1 + x^2)$ and $e^{-x}$ in interval $(0.5, 5)$.}
+\label{fig:plot7}
+\end{figure}
+\noindent
+The {\tt plot()} command in Pylab is much more powerful, we just saw a small 
+fraction of its functionality. For a complete list of options 
 visit the Pylab page {\tt http:// www.scipy.org/PyLab}.
 
-\section{Plotting General Planar Curves}
+\section{Plotting parametric 2D curves}\label{subsec:planarcurves}
 
 The concept of plotting based on two arrays of $x$ and $y$ coordinates
 allows us to do much more than only plot graphs of functions of one variable.
@@ -519,6 +590,8 @@ lab.show()
 \end{verbatim}
 The output is shown in Fig. \ref{fig:plot6}.
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{img/plot6.png}
@@ -526,17 +599,176 @@ The output is shown in Fig. \ref{fig:plot6}.
 \vspace{-6mm}
 \caption{Plotting a spiral.}
 \label{fig:plot6}
-\vspace{-4mm}
+\vspace{-0mm}
 \end{figure}
 \noindent
 
+\section{Plotting parametric 3D curves}
 
-\section{Plotting Functions of Two Variables with WebGL}
+For 3D plots it is practical to use the {\tt mplot3d} toolkit of the 
+Python library Matplotlib. Let us begin with 
+parametric 3D curves since this is analogous to how we handled planar curves in 
+Subsection \ref{subsec:planarcurves}. 3D curves are sequences of 3D points
+represented via three arrays of $x$, $y$ and $z$ coordinates, respectively. As an 
+example we will plot the curve $x(t), y(t), z(t)$ where
+
+$$
+x(t) = (1 + t^2) \sin(2 \pi t), \ \ \ y(t) = (1 + t^2) \cos(2 \pi t), \ \ \ z(t) = t,
+$$
+and where the parameter $t$ lies in the interval $(-2, 2)$.
+
+\begin{verbatim}
+# Import Numpy and Matplotlib:
+from numpy import *
+import matplotlib as mpl
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+
+# Set legend font size (optional):
+mpl.rcParams['legend.fontsize'] = 15
+
+# Setup the 3D plot:
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+
+# Define interval for parameter 't'
+# and its division:
+t = linspace(-2, 2, 100)
+
+# Define the curve:
+x = (1 + t**2) * sin(2 * pi * t)
+y = (1 + t**2) * cos(2 * pi * t)
+z = t
+
+# Plot the curve
+ax.plot(x, y, z, label='Parametric 3D curve')
+ax.legend()
+
+# Show the plot:
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot3d-1}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/plot3d-1.png}
+\end{center}
+\vspace{-4mm}
+\caption{Plotting a parametric 3D curve.}
+\label{fig:plot3d-1}
+%\vspace{-1cm}
+\end{figure}
+
+
+\section{Plotting functions of two variables}
+
+There are several ways to plot graphs of functions of two variables, 
+first let us do this with Matplotlib's {\tt mplot3d} toolkit, then we will
+use WebGL. We will plot the graph of the function 
+
+$$
+  f(x, y) = \sin(x) \sin(y)
+$$
+in the square $(-\pi, \pi) \times (-\pi, \pi)$.
+
+\begin{verbatim}
+# Import Numpy and Matplotlib:
+from numpy import *
+from mpl_toolkits.mplot3d import axes3d
+import matplotlib.pyplot as plt
+
+# Setup the 3D plot:
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+
+# Define intervals on the 'x' and 'y' axes
+# and their divisions:
+x = linspace(-pi, pi, 30)
+y = linspace(-pi, pi, 30)
+
+# Create Cartesian grid:
+X, Y = meshgrid(x, y)
+
+# Calculate values at grid points:
+Z = sin(X) * sin(Y)
+
+# Plot the data:
+ax.plot_wireframe(X, Y, Z, rstride=1, cstride=1)
+
+# Show the plot:
+lab.show()
+\end{verbatim}
+The parameters {\tt rstride} (row stride) and {\tt cstride} (column stride)
+can be used to make the plot coarser when they are set to 2, 3, etc.
+The output is shown in Fig. \ref{fig:plot3d-2}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/plot3d-2.png}
+\end{center}
+\vspace{-4mm}
+\caption{Wireframe plot of the function $f(x, y)$.}
+\label{fig:plot3d-2}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Solid surface plot can be obtained by replacing in the above code 
+{\tt plot\_wireframe} with {\tt plot\_surface}. 
+The output is shown in Fig. \ref{fig:plot3d-3}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/plot3d-3.png}
+\end{center}
+\vspace{-4mm}
+\caption{Surface plot of the function $f(x, y)$.}
+\label{fig:plot3d-3}
+%\vspace{-1cm}
+\end{figure}
+\newpage
+
+\noindent
+Contour plot can be obtained by replacing in the above code 
+the line 
+
+\begin{verbatim}
+ax.plot_wireframe(X, Y, Z, rstride=1, cstride=1)
+\end{verbatim}
+with 
+
+\begin{verbatim}
+cset = ax.contour(X, Y, Z)
+ax.clabel(cset)
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot3d-4}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/plot3d-4.png}
+\end{center}
+\vspace{-4mm}
+\caption{Contour plot of the function $f(x, y)$.}
+\label{fig:plot3d-4}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+We have only mentioned the most basic Matplotlib's functionality, for more options 
+we refer to the tutorial 
+at {\tt http://matplotlib.sourceforge.net/mpl\_toolkits/mplot3d}.
+
+
+\section{Plotting functions of two variables with WebGL}
 
 For this functionality, your browser has to support WebGL (most of modern browsers do, 
-with the exception of Internet Explorer). See the introductory tutorial {\em Welcome to NCLab!}
-for detailed instructions on how to enable WebGL. NCLab offers the following simple way to plot 
-functions of two variables:
+with the exception of Internet Explorer). See the introductory tutorial {\em Welcome to NCLab}
+on the page {\tt http://femhub.com/ nclab-tutorials/} for detailed instructions on how to enable WebGL. 
+In the following example, we plot the graph of the function 
+
+$$
+  f(x, y) = \sin(\sqrt{x^2 + y^2})
+$$
+in the square $(0, 10) \times (0, 10)$.
 
 \begin{verbatim}
 from numpy import sin, sqrt, arctan
@@ -558,113 +790,17 @@ def f(x, y):
 # Render the surface using WebGL.
 lab.surface((x0, x1, nx), (y0, y1, ny), f)
 \end{verbatim}
+The output is shown in Fig. \ref{fig:webgl}.
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{img/webgl.png}
 \end{center}
 \vspace{-2mm}
-\caption{Plotting functions of two variable.}
+\caption{Plotting functions of two variables with WebGL.}
 \label{fig:webgl}
 %\vspace{-1cm}
 \end{figure}
-
-
-\section{Plotting General Triangulated Surfaces with WebGL}
-
-NCLab also supports plotting of general 3D surfaces via WebGL. The surface needs 
-to be composed of linear triangles (same as for Open GL). There is a simple 
-format in NCLab that one has to follow. Let us illustrate it on a sequence of very 
-simple examples. First we will plot one triangle only. 
-
-\begin{verbatim}
-# Define color:
-color = [0.4, 0.9, 0.6]
-
-# Render a single triangle.
-lab.visualize({'vertices': [0, 0, 1, 1, 0, 1, 1, 1, 1], 
-               'indices': [0, 1, 2],
-               'color': color})
-\end{verbatim}
-The numbers in {\tt color} are the RGB components scaled between 0 and 1. Further,
-{\tt vertices} are triplets of coordinates of the grid points in 3D, {\tt indices}
-are also triplets but of integers. Each such triplet contains indices of the vertices
-of one triangle. Last is the parameter {\tt color}. 
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{img/tria1.png}
-\end{center}
-\vspace{-2mm}
-\caption{Plotting a single triangle.}
-\label{fig:tria1}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-When the {\tt color} parameter is omitted, the plot will be colored 
-using the $x$-coordinate as a function value. For illustration, let us plot the 
-same triangle as above:
-
-\begin{verbatim}
-# Render a single triangle (omit the color parameter).
-lab.visualize({'vertices': [0, 0, 1, 1, 0, 1, 1, 1, 1], 
-               'indices': [0, 1, 2]})
-\end{verbatim}
-Output:
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{img/tria2.png}
-\end{center}
-\vspace{-2mm}
-\caption{Plotting a single triangle (color omitted).}
-\label{fig:tria2}
-\end{figure}
-\noindent
-Now let us plot two triangles. just to understand the data format a bit better.
-We have 4 grid points, therefore the {\tt vertices} array contains 12 numbers
-and the {\tt indices} array contains 6 numbers (three per triangle).
-
-\begin{verbatim}
-lab.visualize({'vertices': [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1], \
-               'indices': [0, 1, 2, 0, 3, 1], \
-               'edges': [0, 1],
-               'color': color})
-\end{verbatim}
-Output:
-\newpage
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{img/tria3.png}
-\end{center}
-\vspace{-2mm}
-\caption{Plotting two triangles.}
-\label{fig:tria3}
-\end{figure}
-\noindent
-Note the new parameters {\tt edges} that contains pairs of integer indices
-that define edges using the array of vertices.\\
-
-\noindent
-There can be up to tens of thousands of triangles in more complicated surfaces.
-This will work, but keep in mind that rendering large volumes of data takes
-more time.
-
-\section{Interested in 3D Geometrical Modeling?}
-At last, if you are interested in 3D geometrical modeling or CAD, we invite you to 
-explore PLaSM (Programming Language for Solid Modeling) that is available in 
-NCLab. PLaSM can be imported in any Python worksheet by typing 
-
-\begin{verbatim}
-from pyplasm import *
-\end{verbatim}
-Comprehensive tutorial in PDF along with three videos are available on NCLab's
-Tutorial page.
-
-
-
-\end{document}
-
 
 
 

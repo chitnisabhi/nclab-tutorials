@@ -275,7 +275,7 @@ As in the first part of the textbook, one or more answers can be correct.
 
 \begin{itemize}
 \item Learn how to use Python for advanced math operations.
-\item Plotting graphs of functions of one and two variables, as well as planar curves.
+\item Plotting graphs of functions of one and two variables, as well as parametric 2D and 3D curves.
 \end{itemize}
 The Python worksheet can be used as a powerful calculator and graphing utility. 
 Let us begin with the simplest math operations.
@@ -823,7 +823,7 @@ The {\tt plot()} command in Pylab is much more powerful, we just saw a small
 fraction of its functionality. For a complete list of options 
 visit the Pylab page {\tt http:// www.scipy.org/PyLab}.
 
-\subsection{\ \ Plotting planar curves}
+\subsection{\ \ Plotting parametric 2D curves}\label{subsec:planarcurves}
 
 The concept of plotting based on two arrays of $x$ and $y$ coordinates
 allows us to do much more than only plot graphs of functions of one variable.
@@ -858,6 +858,160 @@ The output is shown in Fig. \ref{fig:plot6}.
 \vspace{-0mm}
 \end{figure}
 \noindent
+
+\subsection{\ \ Plotting parametric 3D curves}
+
+For 3D plots it is practical to use the {\tt mplot3d} toolkit of the 
+Python library Matplotlib. Let us begin with 
+parametric 3D curves since this is analogous to how we handled planar curves in 
+Subsection \ref{subsec:planarcurves}. 3D curves are sequences of 3D points
+represented via three arrays of $x$, $y$ and $z$ coordinates, respectively. As an 
+example we will plot the curve $x(t), y(t), z(t)$ where
+
+$$
+x(t) = (1 + t^2) \sin(2 \pi t), \ \ \ y(t) = (1 + t^2) \cos(2 \pi t), \ \ \ z(t) = t,
+$$
+and where the parameter $t$ lies in the interval $(-2, 2)$.
+
+\begin{verbatim}
+# Import Numpy and Matplotlib:
+from numpy import *
+import matplotlib as mpl
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+
+# Set legend font size (optional):
+mpl.rcParams['legend.fontsize'] = 15
+
+# Setup the 3D plot:
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+
+# Define interval for parameter 't'
+# and its division:
+t = linspace(-2, 2, 100)
+
+# Define the curve:
+x = (1 + t**2) * sin(2 * pi * t)
+y = (1 + t**2) * cos(2 * pi * t)
+z = t
+
+# Plot the curve
+ax.plot(x, y, z, label='Parametric 3D curve')
+ax.legend()
+
+# Show the plot:
+lab.show()
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot3d-1}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot3d-1.png}
+\end{center}
+\vspace{-4mm}
+\caption{Plotting a parametric 3D curve.}
+\label{fig:plot3d-1}
+%\vspace{-1cm}
+\end{figure}
+
+
+\subsection{\ \ Plotting functions of two variables}
+
+There are several ways to plot graphs of functions of two variables, 
+first let us do this with Matplotlib's {\tt mplot3d} toolkit, then we will
+use WebGL. We will plot the graph of the function 
+
+$$
+  f(x, y) = \sin(x) \sin(y)
+$$
+in the square $(-\pi, \pi) \times (-\pi, \pi)$.
+
+\begin{verbatim}
+# Import Numpy and Matplotlib:
+from numpy import *
+from mpl_toolkits.mplot3d import axes3d
+import matplotlib.pyplot as plt
+
+# Setup the 3D plot:
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+
+# Define intervals on the 'x' and 'y' axes
+# and their divisions:
+x = linspace(-pi, pi, 30)
+y = linspace(-pi, pi, 30)
+
+# Create Cartesian grid:
+X, Y = meshgrid(x, y)
+
+# Calculate values at grid points:
+Z = sin(X) * sin(Y)
+
+# Plot the data:
+ax.plot_wireframe(X, Y, Z, rstride=1, cstride=1)
+
+# Show the plot:
+lab.show()
+\end{verbatim}
+The parameters {\tt rstride} (row stride) and {\tt cstride} (column stride)
+can be used to make the plot coarser when they are set to 2, 3, etc.
+The output is shown in Fig. \ref{fig:plot3d-2}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot3d-2.png}
+\end{center}
+\vspace{-4mm}
+\caption{Wireframe plot of the function $f(x, y)$.}
+\label{fig:plot3d-2}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Solid surface plot can be obtained by replacing in the above code 
+{\tt plot\_wireframe} with {\tt plot\_surface}. 
+The output is shown in Fig. \ref{fig:plot3d-3}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot3d-3.png}
+\end{center}
+\vspace{-4mm}
+\caption{Surface plot of the function $f(x, y)$.}
+\label{fig:plot3d-3}
+%\vspace{-1cm}
+\end{figure}
+\newpage
+
+\noindent
+Contour plot can be obtained by replacing in the above code 
+the line 
+
+\begin{verbatim}
+ax.plot_wireframe(X, Y, Z, rstride=1, cstride=1)
+\end{verbatim}
+with 
+
+\begin{verbatim}
+cset = ax.contour(X, Y, Z)
+ax.clabel(cset)
+\end{verbatim}
+The output is shown in Fig. \ref{fig:plot3d-4}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/plot3d-4.png}
+\end{center}
+\vspace{-4mm}
+\caption{Contour plot of the function $f(x, y)$.}
+\label{fig:plot3d-4}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+We have only mentioned the most basic Matplotlib's functionality, for more options 
+we refer to the tutorial 
+at {\tt http://matplotlib.sourceforge.net/mpl\_toolkits/mplot3d}.
 
 
 \subsection{\ \ Plotting functions of two variables with WebGL}
@@ -896,11 +1050,6 @@ lab.surface((x0, x1, nx), (y0, y1, ny), f)
 \label{fig:webgl}
 %\vspace{-1cm}
 \end{figure}
-
-
-
-
-
 
 \subsection{\ \ Review questions}
 
@@ -1106,7 +1255,7 @@ $x_0, y_0$ and $R$ are variables that the user can change. Axes should be scaled
 \item Write a Python program to plot an ellipse with focal points $[x_0, 0]$ and $[-x_0, 0]$ where 
 $x_0 > 0$ is a variable that the user can change. Axes should be scaled equally.
 \item The function {\tt random()} returns a random number between $0$ and $1$ (it can be $0.0$ but it cannot be $1.0$).
-Write a Python program to render a path connecting five random points in the unit square $[0, 1) \times [0, 1)$. 
+Write a Python program to generate and plot a random triangle that lies in the unit square $[0, 1) \times [0, 1)$. 
 \end{enumerate}
 
 \section{Functions}

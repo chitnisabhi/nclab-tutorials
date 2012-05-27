@@ -1286,17 +1286,18 @@ in the square $(-1, 1)\times (-1, 1)$.
 
 \end{enumerate}
 
-\section{Functions}
+\section{More on Functions}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn to define custom functions in Python.
+\item Review and refine your knowledge of functions.
 \item Learn to use default arguments and return multiple values.
 \end{itemize}
-Custom {\em functions} in Python are the same thing as custom procedures in Karel,
-but in Python they can moreover {\em accept arguments}. Recall that new procedures in Karel were 
-defined to make some functionality easily reusable -- functions in Python are defined for the same reason.
+Custom {\em functions} in Python are the same thing as in Karel, 
+but in Python they can moreover {\em accept arguments}. Recall that 
+functions in Karel were defined to make some functionality easily 
+reusable -- in Python they are defined for the same reason.
 
 \subsection{Defining new functions}
 
@@ -1682,6 +1683,7 @@ def hypotenuse(a = 5, b = 5):
 \subsection{Objectives}
 
 \begin{itemize}
+\item Review and refine your knowledge of variables.
 \item Understand dynamic type interpretation.
 \item Learn about {\em local} and {\em global} variables.
 \item Understand why global variables should be avoided.
@@ -1842,7 +1844,7 @@ NameError: name 'c' is not defined
 In computer programming, {\em we want all our variables to be local}, because 
 this avoids name clashes and minimizes the risk of unwanted side effects.
 Mistakes such as unwanted overwriting of the value stored in a global variable 
-belong to the worst to deal with.
+belong to the most difficult ones to find.
 
 \subsection{Sure method to spoil your code}
 
@@ -2096,8 +2098,8 @@ Use your function with the values $A = 21.77$ dollars and $B = 26.44$ dollars.
 \begin{itemize}
 \item Review Boolean expressions, operations, and variables.
 \end{itemize}
-There are virtually no changes compared to Karel the Robot, so we will 
-only revisit the subject briefly. 
+Logic is always a useful review topic, so let's return to it briefly although logic in Python is 
+virtually the same as in Karel the Robot.
 
 \subsection{Boolean expressions}
 
@@ -2233,7 +2235,6 @@ result of {\tt (a and b) and (not (a and b))}
 \end{enumerate}
 \end{enumerate}
 
-
 \subsection{Programming exercises}
 
 \begin{enumerate}
@@ -2250,174 +2251,162 @@ result of {\tt (a and b) and (not (a and b))}
       circle or outside, the function should return {\tt False}.
 \end{enumerate}
 
-\section{More on Conditions}
+\section{More on Conditions and the Conditional Loop} \label{sec:while}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item Review and refine your knowledge of conditions.
-\item Learn to always perform sanity checks of user input.
+\item Review your knowledge of conditions and learn about the {\tt elif} statement.
+\item Use the conditional loop to make a first trip into scientific computing.
 \end{itemize}
-Each procedural programming language including Python enables conditional 
-execution of code. What does this mean? Imagine that you have to write
-a program to calculate
-$$
-\frac{1}{9 - x^2}
-$$
-for any value of $x$. Of course, this is simple:
+Conditions and the conditional loop ({\tt while} loop) are very similar in Karel 
+and Python, so we just need to learn about a few minor extensions.
+
+For {\tt if - else} conditions, Python brings the {\tt elif} statement that simplifies 
+the handling of multiple branches. If you think that "elif" sounds a lot like "else if" then 
+you are absolutely right! Let us show an example:
+
+Imagine that we have five boxes for apples: Box A is for apples that weight under 
+5 ounzes, box B for apples that weight at least five but less than 10 ounzes, 
+box C for apples that weight at least 10 but less than 15 ounzes, etc. Apples weighting 
+20 ounzes or more will all be put into box E. Here is a function that, given 
+a weight of an apple, chooses the correct box for it:
 
 \begin{verbatim}
-result = 1. / (9 - x**2)
-print "Result is", result
+def box(weight):
+    if weight < 5:
+        return "A"
+    elif weight < 10:
+        return "B"
+    elif weight < 15:
+        return "C"
+    elif weight < 20:
+        return "D"
+    else:
+        return "E"
 \end{verbatim}
-However, when a user calls your program with $x = 3$ or $x = -3$, then
-it crashes!
+Note the mandatory colon ':' after every {\tt if}, {\tt elif} and {\tt else} statement. Also
+the {\tt while} loop in Python has a mandatory colon, this is virtually the only 
+(and cosmetic) difference between Python and Karel.
+
+Next let's put the {\tt while} loop to work. We have used this loop in Karel a lot,
+but Karel usually did at most few dozens of cycles. In reality, computers can easily 
+do millions or billions of cycles or more. In computing, we call them {\em iterations}.
+Actually, our programming skills are already good enough to tackle an entry-level
+scientific computing problem, so let's give it a try! 
+
+We are interested in finding an angle $x$ that is equal
+to its own cosine. Let's our Python plotting skills shine and write a code to plot the graphs of
+the functions $\cos(x)$ and $x$:
 
 \begin{verbatim}
-Traceback (most recent call last):
-  File "<nclab>", line 1, in <module>
-ZeroDivisionError: float division by zero
+from numpy import pi, cos
+from pylab import *
+x = arange(0, pi/2, 0.01)
+y = cos(x)
+z = x
+clf()
+plot(x, y, label="cos(x)")
+plot(x, z, label="x")
+legend()
+lab.show()
 \end{verbatim}
-This is not a good thing to happen, and thus we need to be more careful.
-Here is an alternative version of the program that will not crash:
+The output is shown in Fig. \ref{fig:xcosx}.
 
-\begin{verbatim}
-if (x == 3) or (x == -3):
-    print "Result is undefined, division by zero!"
-    result_defined = False
-else:
-    result = 1. / (9 - x**2)
-    print "Result is", result
-    result_defined = True
-\end{verbatim}
-Notice that the lines in the {\tt if} and {\tt else} branches are indented,
-The indent means that a command is still inside the {\tt if} or {\tt else}
-branch.
-
-Failure to use indents properly will result into an incorrect program. For 
-example, if we forgot to indent the last line in the above program,
-
-\begin{verbatim}
-if (x == 3) or (x == -3):
-    print "Result is undefined, division by zero!"
-    result_defined = False
-else:
-    result = 1. / (9 - x**2)
-    print "1 / (9 - x**2) =", result
-result_defined = True
-\end{verbatim}
-then the last line would be outside of the {\tt if - else} statement, and
-thus the variable {\tt result\_ defined} would be always {\tt True}!\\
-
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{imgp/xcosx.png}
+\end{center}
+\vspace{-2mm}
+\caption{Graphs of the functions $\cos(x)$ and $x$ in the interval $(0, \pi/2)$.}
+\label{fig:xcosx}
+\end{figure}
 \noindent
-Sometimes the {\tt else} branch is not needed, and in that case it can be omitted:
+Looking at the graphs, clearly the solution is somewhere 
+between $0.7$ and $0.8$. 
+An engineer would not be extremely happy with such an answer though, 
+so we need to make this guess more accurate. Looking at the graphs again, we can see
+that in order to reach the intersection point, we can depart from zero and make very 
+small steps to the right while the graph of $\cos(x)$ is above the graph of $x$.
+Let's do this, and stop 
+at the first point where $\cos(x)$ will be less than $x$. Our step will be called {\tt dx},
+and our moving point on the $x$-axis will be called simply {\tt x}. We will also count 
+steps via the variable {\tt n}. Choosing {\tt dx = 1e-6} will give us the result accurate 
+to five decimal digits:
 
 \begin{verbatim}
-if (x != 3) and (x != -3):
-    result = 1. / (9 - x**2)
-    print "Result is", result
-    result_defined = True
-\end{verbatim}
-Sometimes we need to consider more cases. For this, we can use {\tt elif}
-(abbreviation for "else if"):
-
-\begin{verbatim}
-if (x == 3) or (x == -3):
-    print "Result is undefined, division by zero!"
-elif abs(x) < 3:
-    print "Result is positive."
-else:
-    print "Result is negative."
-\end{verbatim}
-There can be more {\tt elif} statements if needed. \\
-
-\noindent
-In more complicated cases, conditions can be embedded in other conditions:
-
-\begin{verbatim}
-if (x == 3) or (x == -3):
-    print "Result is undefined, division by zero!"
-elif abs(x) < 3:
-    if x < 0:
-        print "x is negative and result is positive."
-    else: 
-        print "x is positive and result is positive."
-else:
-    if x < 0:
-        print "x is negative and result is negative."
-    else: 
-        print "x is positive and result is negative."
-\end{verbatim}
-If your head hurts, do not worry. This section is over 
-and the next one is going to be simpler!
-
-\subsection{Review questions}
-
-\subsection{Programming exercises}
-
-
-\section{More on the {\tt while} loop}\label{sec:while}
-
-\subsection{Objectives}
-
-\begin{itemize}
-\item
-\end{itemize}
-
-Loops are a powerful tool as they allow us to use the computer to solve
-tasks that would take many hours, months, or even years to a human person. 
-Let's do something really simple. We know that the sine and cosine functions 
-intersect somewhere between $x = 0$ and $x = \pi/2$. Let's make this more accurate!
-
-\begin{verbatim}
-from numpy import sin, cos
+from numpy import cos
 x = 0
 dx = 1e-6
-while cos(x) - sin(x) > 0:
-    x += dx    
+n = 0
+while cos(x) > x:
+    x += dx
+    n += 1
 print "Result is approximately", x
+print "Steps made:", n
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-Result is approximately 0.785399000002
+Result is approximately 0.739086
+Steps made: 739086
 \end{verbatim}
-In other words, the {\tt while} loop run 785399 times before 
-the function $\cos(x) - \sin(x)$ flipped the sign! Can you 
+In other words, the {\tt while} loop run 739086 times. Can you 
 imagine doing this on your pocket calculator?
 
-The above program deserves some more comments: First, the sine and cosine 
-functions are imported from the Numpy library. Using libraries 
-is a standard part of Python programming. In particular, Numpy 
-is a large collection of numerical algorithms and functions, and 
-more about it will be said in Section \ref{subsec:importinglib},
-Second, there are much more sophisticated algorithms for solving 
-the equation $\cos(x) - \sin(x) = 0$ numerically, such as the Newton's 
-method. These are also available in Numpy.
+We should remark that the numerical method that we used was rather 
+naive and in fact it took quite a bit of CPU time. Scientific computing
+is an exciting field where researchers develop new methods that 
+can solve problems like this more accurately and using less CPU time. 
+In particular, for our problem there are much more powerful methods that can do the
+same or better job using just five or six steps (!). One of them 
+is the {\em Newton's method}. If you like what we did here, we encourage 
+you to explore more math functionality and in particular numerical 
+methods in NCLab. There are displayed projects for the Newton's method
+and other methods to solve nonlinear equations and nonlinear equation systems.
 
-The body of the {\tt while} loop needs to be indented, similarly as
-the bodies of the {\tt if} and {\tt else} statements. The body of
-the {\tt while} loop
-is repeated as long as the condition behind the keyword {\tt while}
-is satisfied. If it is not satisfied the first time, the entire 
-loop is skipped. 
 
-It is typical for {\tt while} loops that the condition contains 
-an expression that depends on a variable that is changed inside the 
-loop. This was the case in the above program as well. In other 
-words, we use the {\tt while} loop {\bf if we do not know the number of 
-repetitions in advance.} If we know that something needs to be done
-a known number of times (such as 1000 times), we use the {\tt for} loop.
-The {\tt for} loop will be discussed in Section \ref{sec:forloop}.\\
 
-\noindent
-This section is finished, good job!
 
 \subsection{Review questions}
 
 \subsection{Programming exercises}
 
-
+\begin{enumerate}
+\item There is a jar of volume $V$ that is full of water. Every day, 
+$P$ per cent of the water volume evaporates. Write a function 
+{\tt water(V, P, R)} that prints the remaining water volume day
+by day. The process stops when the volume is less than or equal to 
+a residual volume $R$. Your function should return the number of 
+days the process took. Include a condition at the beginning 
+of the function that will output a warning and return zero 
+if (a) $R > V$ or (b) $V <= 0$ or (c) $R <= 0$.
+\item Imagine that you stand on a very high bridge $H$ meters above 
+the river and throw a stone with velocity $v$ in horizontal direction. 
+The coordinates of the flying stone as functions of time $t$ are
+$x(t) = t v$ and $y(t) = H - 0.5gt^2$ where $g = 9.81$ kgms$^{-2}$ is
+the gravitational acceleration. Use these formulas to write a function 
+{\tt stone(t, H, v)} that for any time {\tt t} returns the $x$ and 
+$y$ coordinates of the flying stone. Then calculate and plot the trajectory 
+of the stone since the moment it leaves your hand until it falls into the 
+river! Hint: Proceed by choosing a small time step {\tt dt} such 
+as $0.01$ seconds, and use the function {\tt stone(t, H, v)} to generate 
+a sequence of points for the {\tt plot()} command.  
+\item The way Archimedes first estimated the value of $\pi$ was 
+by taking a circle and calculating the perimeters of inscribed and 
+circumscribed equilateral polygons with many edges. Let's do the same 
+with the help of a computer! Proceed as follows: Choose some radius 
+$R > 0$. Write a function {\tt in(R, n)} that will calculate the perimeter 
+of an equilateral polygon with $n$ edges that is inscribed into the
+circle of radius $R$. Then write a function {\tt out(R, n)}
+that calculates the perimeter of a circumscribed equilateral polygon 
+with $n$ edges. Choose a tolerance {\tt tol} such as {\tt 1e-3} and 
+begin with $n = 3$. For each $n$ calculate the values {\tt in(R, n)}
+and {\tt out(R, n)}. While the difference between these areas is 
+greater than {\tt tol}, keep increasing $n$ by one. After the while 
+loop finishes, take the final perimeters, divide them by $2 R$, and 
+you just calculated a lower and upper estimate of $\pi$! 
+\end{enumerate}
 
 
 \section{Strings} \label{sec:strings}
@@ -3169,6 +3158,75 @@ This concludes Section 13 - now you know all the loops there are!
 \subsection{Programming exercises}
 
 
+\section{Handling Exceptions}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item Learn to handle {\em exceptions} -- situations when the code would crash.
+\item Learn to always check the sanity of user data.
+\end{itemize}
+
+Imagine that you have to write a Python function to evaluate
+$$
+f(x) = \frac{1}{9 - x^2}
+$$
+for any value of $x$. Of course, this is simple:
+
+\begin{verbatim}
+def f(x):
+    return 1. / (9 - x**2)
+\end{verbatim}
+However, when a user calls the function with $x = 3$ or $x = -3$, then
+it crashes!
+
+\begin{verbatim}
+Traceback (most recent call last):
+  File "<nclab>", line 1, in <module>
+ZeroDivisionError: float division by zero
+\end{verbatim}
+We need to be more careful. Here is an alternative version of the function 
+{\tt f(x)} that will not crash:
+
+\begin{verbatim}
+def f(x):
+    if x != 3 and x != -3:
+        return 1. / (9 - x**2)
+    else:
+        print "Division by zero detected, returning 0."
+        return 0
+\end{verbatim}
+However, it is useful to slow down here and look at what we have. The fact that
+the warning sentence is printed is not very useful, because it is printed as output for 
+the human user. What if there is nobody to read it? Even if division by zero 
+happens, the function returns zero (a valid number) and the program continues on.
+Python (and other languages) has an elegant way to take care of exceptional situations 
+such as runtime errors!
+
+In the following we are going to explain the handling of {\em exceptions}. In contrast 
+to {\em predicting} what possibily could go wrong and include conditions to detect wrong 
+input, we do not check the input and let it simply happen. How does it sound? Let us 
+return to the original simple form of the function {\tt f(x)}:
+
+\begin{verbatim}
+def f(x):
+    return 1. / (9 - x**2)
+\end{verbatim}
+This is the function that we will use. However, we will call it in such a way that 
+an exceptional situation (here division by zero) is captured. For this we use the 
+{\tt try} command:
+ 
+\begin{verbatim}
+try:
+    result = f(a)
+except ZeroDivisionError:
+    print "Division by zero detected, performing action A."
+else:
+    print "Evaluation of f(a) was successful, preforming scenario B."
+\end{verbatim}
+Notice that the lines in the {\tt if} and {\tt else} branches are indented,
+The indent means that a command is still inside the {\tt if} or {\tt else}
+branch.
 
 
 

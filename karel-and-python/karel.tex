@@ -2720,7 +2720,7 @@ Now we are entering exciting Level 3! Karel grew up and left the home of his
 parents to go through life on his own. Therefore, his home will not be present
 in the following exercises and games anymore. There are a few more changes
 that reflect Karel's growing up, including numerical and logical variables,
-and procedures. Therefore, do not forget to adjust the 
+and functions. Therefore, do not forget to adjust the 
 Level in Settings accordingly. A compact overview of new functionality in Level 3
 can be found in Section \ref{sec:newfunc3}.
 
@@ -2729,7 +2729,7 @@ can be found in Section \ref{sec:newfunc3}.
 \begin{itemize}
 \item Understand the concept of variables.
 \item Learn to work with numerical and logical variables.
-\item Learn to use procedures that return values. 
+\item Learn to use functions that return values. 
 \end{itemize}
 
 \noindent
@@ -2792,12 +2792,12 @@ Vertical position: 11
 Try it! Also move Karel to other parts of the maze in Build mode and run the program again
 to make yourself familiar with how the GPS device works.
 
-\subsection{Procedures}
+\subsection{Functions}
 
 In Level 3 we can use the reserved word {\tt return} inside the body of
 a command to return a value. Commands that can (but do not have to) 
-return values are called {\em procedures}. They are also defined using the 
-keyword {\tt def}. For example, the following procedure
+return values are called {\em functions}. They are also defined using the 
+keyword {\tt def}. For example, the following function
 {\tt count\_steps} will return the number of steps the robot needed to 
 make in order to reach the closest wall in the direction that he was facing:
 
@@ -2809,7 +2809,7 @@ def count_steps
         inc(n)
     return n
 \end{verbatim}
-The procedure can be then used as follows:
+The function can be then used as follows:
 
 \begin{verbatim}
 num = count_steps
@@ -2837,7 +2837,7 @@ pos1 = gpsy
 \begin{verbatim}
 var2 = var1
 \end{verbatim}
-\item Initialize them with value returned by an existing procedure, as it was shown in the previous 
+\item Initialize them with value returned by an existing function, as it was shown in the previous 
 paragraph. 
 \end{enumerate}
 
@@ -3007,8 +3007,8 @@ proc count_steps
 
 \subsection{Exercise H01 - Accounting}
 
-{\em Karel has an unknown number of gems in his bag. Write a procedure {\tt accounting} for the 
-robot to count the gems and return their number. Then call the procedure and print the result.}
+{\em Karel has an unknown number of gems in his bag. Write a function {\tt accounting} for the 
+robot to count the gems and return their number. Then call the function and print the result.}
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3024,9 +3024,9 @@ robot to count the gems and return their number. Then call the procedure and pri
 
 \subsection{Exercise H02 - Tape Measure}
 
-{\em Karel stands inside of a room (rectangle) with unknown dimensions. Write procedure {\tt measure}  
+{\em Karel stands inside of a room (rectangle) with unknown dimensions. Write function {\tt measure}  
 where the robot will determine the width of the rectangle (in the west-east direction) and return it. 
-Then call the procedure and print the result.}
+Then call the function and print the result.}
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3041,10 +3041,10 @@ Then call the procedure and print the result.}
 
 \subsection{\ \ Exercise H03 - Orchard}
 
-{\em Write a procedure {\tt orchard} for the robot to count apples (gems) in his orchard. The position of 
+{\em Write a function {\tt orchard} for the robot to count apples (gems) in his orchard. The position of 
 trees as well as the number of apples per tree are random. The initial position of the robot is 
 in the south-west corner, facing east. There are no walls
-to crash into. After the procedure is ready, call it and print the result.}
+to crash into. After the function is ready, call it and print the result.}
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3059,8 +3059,8 @@ to crash into. After the procedure is ready, call it and print the result.}
 
 \subsection{\ \ Exercise H04 - New Carpet}
 
-{\em Karel needs new carpet! Write a procedure {\tt carpet} for the robot to calculate 
-the area (number of tiles) of his apartment and return it. After that, call the procedure 
+{\em Karel needs new carpet! Write a function {\tt carpet} for the robot to calculate 
+the area (number of tiles) of his apartment and return it. After that, call the function 
 and print the result. His apartment is random but it has a simple shape -- wherever 
 the robot stands, when he goes north, south, east or west he will always reach exterior wall.
 The initial position of the robot is at the west wall of the bottom row, facing east.}
@@ -3194,10 +3194,10 @@ We also use the logical operation {\em not} with the following property:\\
 
 \subsection{Exercise I01 - Reading numbers}
 
-{\em Each 3x5 box contains a random integer number between 0 and 9. Write a procedure "readnumber" 
+{\em Each 3x5 box contains a random integer number between 0 and 9. Write a function "readnumber" 
 where Karel enters a box, determines the number in it, and returns it. Initial position of the 
 robot is at the entrance of the box, facing north. The final position of the robot should be the same. 
-Use this procedure to determine the numbers in the three boxes as shown in the screenshot. }
+Use this function to determine the numbers in the three boxes as shown in the screenshot. }
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3213,7 +3213,7 @@ Use this procedure to determine the numbers in the three boxes as shown in the s
 
 \subsection{Exercise I02 - Writing numbers}
 
-{\em There is a pile of gems at the entrance of each box. The number of gems in each pile is random between 0 and 9. Write a procedure "writenumber" where Karel counts the gems in the pile, enters the box, and renders the number. Then use the procedure to render numbers in three boxes as shown in the screenshot. }\\[-7mm]
+{\em There is a pile of gems at the entrance of each box. The number of gems in each pile is random between 0 and 9. Write a function "writenumber" where Karel counts the gems in the pile, enters the box, and renders the number. Then use the function to render numbers in three boxes as shown in the screenshot. }\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3340,7 +3340,7 @@ New keywords:
 \item {\tt dec(a)} ... decreases the value of variable {\tt a} by one.
 \item {\tt dec(a, value)} ... decreases the value of variable {\tt a} by {\tt value}.
 \item {\tt rand} ... random command (returns randomly True or False).
-\item {\tt return} ... returns a value, to be used in procedures.
+\item {\tt return} ... returns a value, to be used in functions.
 \item {\tt and} ... binary logical {\em and}.
 \item {\tt or} ... binary logical {\em or}.
 \item {\tt not} ... unary logical {\em not}.
@@ -3349,5 +3349,5 @@ New functionality:
 \begin{itemize}
 \item Numerical and logical (Boolean) variables.
 \item Complex logical expressions.
-\item Procedures can return values.
+\item Functions can return values.
 \end{itemize}

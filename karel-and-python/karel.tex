@@ -185,6 +185,8 @@ answers may be correct.
 \end{enumerate}
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Launching Karel}
 
 \subsection{Objectives} 
@@ -314,6 +316,7 @@ Karel operates in four modes:
 \end{enumerate}
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Section A - Operating the Robot in Manual Mode} \label{sec:manual}
 
@@ -669,6 +672,8 @@ return home in time!}\\[-7mm]
 \end{figure}
 \noindent
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Section B - Bridge to Programming} \label{sec:bridge}
 
 \subsection{Objectives} 
@@ -826,6 +831,8 @@ end of the cross and return home!}
 \noindent
 \newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Intermission - Algorithms, Programs, and Bugs} \label{sec:interm1}
 
 \subsection{Objectives} 
@@ -924,6 +931,8 @@ The most usual logical error are:
 \end{enumerate}
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Section C - Counting Loop} \label{sec:repeat}
 
 \subsection{Objectives} 
@@ -967,7 +976,7 @@ achieved by telling Karel to {\tt repeat} the {\tt go} command {\tt 7} times:
 
 \begin{verbatim}
 repeat 15
-  go
+    go
 \end{verbatim}
 There are a few simple rules that we need to remember when using the {\tt repeat} command:
 
@@ -982,14 +991,14 @@ To illustrate what the indentation does, let's look at a code that will move the
 
 \begin{verbatim}
 repeat 4
-  go
-  go
+    go
+    go
 \end{verbatim}
 Compare to a code that will only move the robot 5 steps forward:
 
 \begin{verbatim}
 repeat 4
-  go
+    go
 go
 \end{verbatim}
 Multiple {\tt repeat} commands can be {\em nested}. This means that a {\tt repeat} command 
@@ -998,10 +1007,10 @@ still holds. Can you figure out what the following code does?
 
 \begin{verbatim}
 repeat 10
-  repeat 5
-    go
-  repeat 2
-    left
+    repeat 5
+        go
+    repeat 2
+        left
 \end{verbatim}
 After you figure it out, launch Karel via the {\em Programming} menu, enter this code into
 the input cell, and run it! But before you do, remember to switch to {\em Build mode} and make 
@@ -1051,19 +1060,19 @@ so that he does not crash into a wall.
 \item[A2] 
 \begin{verbatim}
  repeat 2
-   right
-   right
+     right
+     right
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
  repeat 4
-   left
+     left
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
  repeat 2
-   repeat 2
-     right
+     repeat 2
+         right
 \end{verbatim}
 \end{enumerate}
 \item Karel needs to pick up 5 gems from the ground, walk 10 steps forward, and put the 5 gems 
@@ -1072,29 +1081,29 @@ so that he does not crash into a wall.
 \item[A1] 
 \begin{verbatim}
  repeat 5
-   get
-   repeat 10
-     go
-     repeat 5
-       put
+     get
+     repeat 10
+         go
+         repeat 5
+             put
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
  repeat 5
-   get
+     get
  repeat 10
-   go
+     go
  repeat 5
-   put
+     put
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
  repeat 5
-   get
-   repeat 10
-     go
-   repeat 5
-     put
+     get
+     repeat 10
+         go
+     repeat 5
+         put
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
@@ -1196,6 +1205,8 @@ than three lines.}.
 %\vspace{-10mm}
 \end{figure}
 \noindent
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Intermission - Working with Input and Text Cells} \label{sec:editmenu}
 
@@ -1317,8 +1328,7 @@ This is a Heading
 \end{enumerate}
 \end{enumerate}
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Section D - Conditions} \label{sec:cond}
 
@@ -1361,10 +1371,10 @@ making a step. If there is wall, he turns back:
 \begin{verbatim}
 # Program "Careful step".
 if wall
-  repeat 2
-    left
+    repeat 2
+        left
 else
-  go
+    go
 \end{verbatim}
 As we mentioned before, the symbol '{\tt \#}' introduces a comment, meaning that the line 
 of code behind it is ignored by the robot.
@@ -1401,10 +1411,10 @@ changing its function:
 \begin{verbatim}
 # Program "Careful step".
 if not wall
-  go
+    go
 else
-  repeat 2
-    left
+    repeat 2
+        left
 \end{verbatim}
 
 \subsection{Programming hints}
@@ -1414,19 +1424,19 @@ appropriate sensor before making an action. A few examples of careful actions:
  
 \begin{verbatim}
 if not wall
-  go
+    go
 \end{verbatim}
 Another example:
  
 \begin{verbatim}
 if gem
-  get
+    get
 \end{verbatim}
 And a last one:
  
 \begin{verbatim}
 if not empty
-  put
+    put
 \end{verbatim}
 
 \subsection{Review questions}
@@ -1507,22 +1517,22 @@ if not empty
 \item[A1] 
 \begin{verbatim}
 if gem
-  get
+    get
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
 if not empty
-  get
+    get
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 if get
-  gem
+    gem
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
 if empty
-  get
+    get
 \end{verbatim}
 \end{enumerate}
 \item Which program will turn Karel always to the North?
@@ -1530,26 +1540,26 @@ if empty
 \item[A1] 
 \begin{verbatim}
 repeat 4
-  if not north 
-    left
+    if not north 
+        left
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
 if not north 
-  left
+    left
 else 
-  right
+    right
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 if south
-  repeat 2
-    right
+    repeat 2
+        right
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
 if not north 
-  right
+    right
 \end{verbatim}\end{enumerate}
 
 \end{enumerate}
@@ -1616,7 +1626,7 @@ command per line, your program should have at most 7 lines.}
 \end{figure}
 \noindent
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Section E - Conditional Loop} \label{sec:whilek}
 
@@ -1637,13 +1647,13 @@ that are further away he can't see. Such a program would be:
 
 \begin{verbatim}
 while not wall
-  go
+    go
 \end{verbatim}
 Or, Karel may be asked to walk until he gets home:
 
 \begin{verbatim}
 while not home
-  go
+    go
 \end{verbatim}
 Beware though -- {\bf this program is dangerous} since the robot will crash into a wall
 if his home is not straight ahead of him!
@@ -1652,21 +1662,21 @@ Another example: The robot may be asked to empty his bag (he does not know how m
  
 \begin{verbatim}
 while not empty
-  put
+    put
 \end{verbatim}
 Or, he may be asked to collect all gems from a pile (he does not know 
 how many gems there are):
 
 \begin{verbatim}
 while gem
-  get
+    get
 \end{verbatim}
 Or we may ask him to turn to face North (he does not know which direction he is
 facing):
 
 \begin{verbatim}
 while not north
-  left
+    left
 \end{verbatim}
 At last, let us face the following situation: Karel is asked to 
 turn South, walk straight ahead until he reaches the closest wall, and 
@@ -1675,21 +1685,21 @@ collect all gems that he can find on the way:
 \begin{verbatim}
 # First turn North.
 while not north
-  left
+    left
 
 # Then turn South.
 repeat 2
-  left
+    left
 
 # Go straight ahead and pick all gems.
 while not wall
-  if gem
-    get
-  go
+    if gem
+        get
+    go
 
 # Pick gem at the wall (if any).
 if gem
-  get
+    get
 \end{verbatim}
 Notice that we first need to turn the robot to face North -- this is because North 
 is the only direction that he can check!
@@ -1709,23 +1719,23 @@ is the only direction that he can check!
 \item[A1] 
 \begin{verbatim}
 repeat 4
-  left
+    left
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
 while not west
-  right
+    right
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 while not north
-  left
+    left
 left
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
 while not north 
-  right
+    right
 right
 \end{verbatim}
 \end{enumerate}
@@ -1736,29 +1746,29 @@ right
 \item[A1] 
 \begin{verbatim}
 repeat 4
-  while not wall
-    go
+    while not wall
+        go
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
 repeat 4
-  while not wall
-    go
-  left
+    while not wall
+        go
+    left
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 repeat 4
-  while not wall
-    go
-  right
+    while not wall
+        go
+    right
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
 repeat 4
-  while not wall
-    left
-  go
+    while not wall
+        left
+    go
 \end{verbatim}
 \end{enumerate}
 \end{enumerate}
@@ -1767,7 +1777,6 @@ repeat 4
 
 {\em Karel is somewhere in the maze, facing a random direction. Write a program for the robot to get 
 to his home which is in the south-west corner!}\\[-7mm]
-
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1779,7 +1788,6 @@ to his home which is in the south-west corner!}\\[-7mm]
 \vspace{-8mm}
 \end{figure}
 \noindent
-
 
 \subsection{Exercise E02 - Hide-and-Seek}
 
@@ -1816,6 +1824,7 @@ where they are. Write a program for Karel to find his friends!}\\[-7mm]
 \end{figure}
 \noindent
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Section F - Defining New Commands} \label{sec:newcom}
 
@@ -1876,8 +1885,8 @@ as follows:
 
 \begin{verbatim}
 def back
-  repeat 2
-    left
+    repeat 2
+        left
 \end{verbatim}
 Note the indent -- the body of a new command needs to be indented 
 analogously to the bodies of loops and conditions.
@@ -1917,8 +1926,8 @@ follows:
 {\small
 \begin{verbatim}
 def foursteps
-  repeat 4
-    go
+    repeat 4
+        go
 \end{verbatim}
 }
 \noindent
@@ -1944,9 +1953,9 @@ There are still repetitions that must be eliminated! So we define a new command
 {\small
 \begin{verbatim}
 def walkedge
-  right
-  foursteps
-  get
+    right
+    foursteps
+    get
 \end{verbatim}
 }
 \noindent
@@ -1956,7 +1965,7 @@ Now with the new commands {\tt foursteps} and
 {\small
 \begin{verbatim}
 while not home
-  walkedge
+    walkedge
 \end{verbatim}
 }
 \noindent
@@ -1976,7 +1985,7 @@ be solved, he would write:
 {\small
 \begin{verbatim}
 while not home
-  walkedge
+    walkedge
 \end{verbatim}
 }
 \noindent
@@ -1985,9 +1994,9 @@ Next he would define the new command {\tt walkedge} as follows:
 {\small
 \begin{verbatim}
 def walkedge
-  right
-  foursteps
-  get
+    right
+    foursteps
+    get
 \end{verbatim}
 }
 \noindent
@@ -1999,8 +2008,8 @@ define:
 {\small
 \begin{verbatim}
 def foursteps
-  repeat 4
-    go
+    repeat 4
+        go
 \end{verbatim}
 }
 
@@ -2034,26 +2043,26 @@ def foursteps
 \item[A1] 
 \begin{verbatim}
 def emptybag
-  while gem
-    put
+    while gem
+        put
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
 def emptybag
-  while not gem
-    put
+    while not gem
+        put
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 def emptybag
-  while empty
-    put
+    while empty
+        put
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
 def emptybag
-  while not empty
-    put
+    while not empty
+        put
 \end{verbatim}
 \end{enumerate}
 \item Which command will turn Karel to the South no matter 
@@ -2062,31 +2071,31 @@ def emptybag
 \item[A1] 
 \begin{verbatim}
 def turnsouth
-  while north
-    repeat 2
-      left
+    while north
+        repeat 2
+            left
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
 def turnsouth
-  while not north
-    repeat 2
-      left
+    while not north
+        repeat 2
+            left
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 def turnsouth
-  while not north
-    repeat 3
-      left
+    while not north
+        repeat 3
+            left
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
 def turnsouth
-  while not north
-    left
-  repeat 2
-    left
+    while not north
+        left
+    repeat 2
+        left
 \end{verbatim}
 \end{enumerate}
 \end{enumerate}
@@ -2336,6 +2345,8 @@ and that it does not contain any loops.}\\[-7mm]
 
 \newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Section G - Recursion} \label{sec:recursion}
 
 \subsection{Objectives} 
@@ -2350,9 +2361,9 @@ With a bit of abstraction, our algorithm is:
 
 \begin{verbatim}
 Descend_staircase
-  Descend one step
-  If this was not the last step
-    Descend_staircase
+    Descend one step
+    If this was not the last step
+        Descend_staircase
 \end{verbatim}
 Recursion is not advantageous for all types of problems, but it can be really 
 helpful, especially for problems where 
@@ -2368,9 +2379,9 @@ directly or through other commands.
 Consider the following program:
 \begin{verbatim}
 def reach_wall
-  if not wall
-    go
-    reach_wall
+    if not wall
+        go
+        reach_wall
 
 reach_wall
 \end{verbatim}
@@ -2407,10 +2418,10 @@ program would look as follows:
 
 \begin{verbatim}
 if not wall
-  go
-  if not wall
     go
-    reach_wall
+    if not wall
+        go
+        reach_wall
 \end{verbatim}
 \noindent
 Since the robot is two steps away from the wall, the second {\tt if not wall} condition passes and 
@@ -2431,12 +2442,12 @@ is replaced with its own body. The corresponding program would look as follows:
 
 \begin{verbatim}
 if not wall
-  go
-  if not wall
     go
     if not wall
-      go
-      reach_wall
+        go
+        if not wall
+            go
+            reach_wall
 \end{verbatim}
 \noindent
 Since the robot is one step away from the wall, the third {\tt if not wall} condition passes and 
@@ -2457,14 +2468,14 @@ is replaced with its own body. The corresponding program would look as follows:
 
 \begin{verbatim}
 if not wall
-  go
-  if not wall
     go
     if not wall
-      go
-      if not wall
         go
-        reach_wall
+        if not wall
+            go
+            if not wall
+                go
+                reach_wall
 \end{verbatim}
 \noindent
 However, now the robot is facing the wall and thus the {\tt if not wall} condition does not pass.  
@@ -2479,8 +2490,8 @@ call is called the {\em base case}. A bad example of a recursive command without
 
 \begin{verbatim}
 def left_forever
-  left
-  left_forever
+    left
+    left_forever
 \end{verbatim}
 \noindent
 You can guess where the name of this command comes from! Fortunately, the program can be stopped using 
@@ -2493,8 +2504,8 @@ since the same functionality could be achieved more elegantly without recursion,
 
 \begin{verbatim}
 def reach_wall
-  while not wall
-    go
+    while not wall
+        go
 \end{verbatim}
 If there is a small task that needs to be solved repeatedly in order to get a bigger task done,
 then often one can write both a non-recursive and a recursive algorithm. Recall for example the Diamond
@@ -2503,26 +2514,26 @@ up the gem, ending up facing east. The non-recursive version of the algorithm wo
 
 \begin{verbatim}
 def climb_one_step
-  left
-  go
-  right
-  go
-  get
-
-while not home
-  climb_one_step
-\end{verbatim}
-The recursive version of the algorithm looks as follows:
-
-\begin{verbatim}
-def climb_the_stairs
-  if not home
     left
     go
     right
     go
     get
-    climb_the_stairs
+
+while not home
+    climb_one_step
+\end{verbatim}
+The recursive version of the algorithm looks as follows:
+
+\begin{verbatim}
+def climb_the_stairs
+    if not home
+        left
+        go
+        right
+        go
+        get
+        climb_the_stairs
 
 climb_the_stairs
 \end{verbatim}
@@ -2550,14 +2561,14 @@ def climb_step
     get 
 
 def odd
-  if not home
-    climb_step
-    even
+    if not home
+        climb_step
+        even
     
 def even
-  if not home
-    climb_step
-    odd
+    if not home
+        climb_step
+        odd
     
 odd
 \end{verbatim}
@@ -2598,36 +2609,36 @@ Diamond Staircase problem, but it is great for illustration purposes.
 \item Which of the four recursive commands below does the same as this non-recursive one?
 \begin{verbatim}
 def turn_north
-  while not north
-    right
+    while not north
+        right
 \end{verbatim}
 \begin{enumerate}
 \item[A1]
 \begin{verbatim}
 def turn_north
-  right
-  turn_north
+    right
+    turn_north
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
 def turn_north
-  if not north
-    right
-  turn_north
+    if not north
+        right
+    turn_north
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 def turn_north
-  if not north
-    right
-    turn_north
+    if not north
+        right
+        turn_north
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
 def turn_north
-  right
-  if not north 
-    turn_north
+    right
+    if not north 
+        turn_north
 \end{verbatim}
 \end{enumerate}
 
@@ -2701,7 +2712,7 @@ algorithm for the robot to collect all gems from the tree and get home!  }
 \end{figure}
 \noindent
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Section H - Variables} \label{sec:var}
 
@@ -2792,11 +2803,11 @@ make in order to reach the closest wall in the direction that he was facing:
 
 \begin{verbatim}
 def count_steps
-  n = 0
-  while not wall
-    go
-    inc(n)
-  return n
+    n = 0
+    while not wall
+        go
+        inc(n)
+    return n
 \end{verbatim}
 The procedure can be then used as follows:
 
@@ -2851,7 +2862,7 @@ The program
 a = gpsx
 print "Start position:", a
 repeat 5
-  go
+    go
 a = gpsx 
 print "End position:", a
 \end{verbatim}
@@ -2873,8 +2884,8 @@ in Fig. \ref{fig:var1}. Then the code
 \begin{verbatim}
 a = zero
 while not wall
-  go
-  inc(a)
+    go
+    inc(a)
 print "Went", a, "steps before reaching a wall."
 \end{verbatim}
 will have the following output:
@@ -2918,11 +2929,11 @@ Karel executes the following program? He starts from the position shown
 in Fig. \ref{fig:var2}.
 \begin{verbatim}
 repeat 5
-  while not wall
-    go
-    if gem
-      get
-  left
+    while not wall
+        go
+        if gem
+            get
+    left
 \end{verbatim}
 \begin{enumerate}
 \item[A1] {\tt gpsx} is 7 and {\tt gpsy} is 7.
@@ -2960,36 +2971,36 @@ e = gpsy
 \item[A1] 
 \begin{verbatim}
 def count_steps
-  n = 0
-  while not wall
-    go
-    inc(n)
-  return n
+    n = 0
+    while not wall
+        go
+        inc(n)
+    return n
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
 def count_steps
-  n = 0
-  while not wall
-    go
-    inc(n, 1)
-  print "Number of steps made =", n
+    n = 0
+    while not wall
+        go
+        inc(n, 1)
+    print "Number of steps made =", n
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 def count_steps
-  n = 0
-  while not wall
-    go
-    inc(n)
+    n = 0
+    while not wall
+        go
+        inc(n)
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
 proc count_steps
-  while not wall
-    go
-    inc(n)
-  return n
+    while not wall
+        go
+        inc(n)
+    return n
 \end{verbatim}
 \end{enumerate}
 \end{enumerate}
@@ -3064,6 +3075,8 @@ The initial position of the robot is at the west wall of the bottom row, facing 
 \vspace{-4mm}
 \end{figure}
 \noindent
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Section I - Logic} \label{sec:logic}
 
@@ -3264,6 +3277,8 @@ right. Use the BubbleSort algorithm.}
 \vspace{-4mm}
 \end{figure}
 \noindent
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Appendix - Overview of Functionality by Level}\label{sec:newfunc3}
 

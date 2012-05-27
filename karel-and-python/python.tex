@@ -269,7 +269,7 @@ As in the first part of the textbook, one or more answers can be correct.
       or music band. Run it without using the mouse.
 \end{enumerate}
 
-\section{Using Python as a graphing calculator}
+\section{Using Python as a graphing calculator} \label{sec:calc}
 
 \subsection{Objectives}
 
@@ -1291,64 +1291,51 @@ in the square $(-1, 1)\times (-1, 1)$.
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn how to define and use custom functions.
+\item Learn to define custom functions in Python.
+\item Learn to use default arguments and return multiple values.
 \end{itemize}
-{\em Functions} are self-contained programs that take some input parameters (arguments), 
-perform a specific task,
-and return results. We define them for the same reason we defined custom commands and procedures 
-in Karel the Robot -- to isolate self-contained functionality and make it easily reusable.
-Many predefined functions are available in the standard library and in the scientific libraries. 
-We will talk about those later. Now let us explain how the user can define his/her own functions.
+Custom {\em functions} in Python are the same thing as custom procedures in Karel,
+but in Python they can moreover {\em accept arguments}. Recall that new procedures in Karel were 
+defined to make some functionality easily reusable -- functions in Python are defined for the same reason.
 
 \subsection{Defining new functions}
 
-Definition of a new function begins with the keyword {\tt def}. For example, 
-the following simple function {\tt add(a, b)} adds two numbers {\tt a} and {\tt b} 
+Definition of a new function begins with the keyword {\tt def} as in Karel. In Python,
+we moreover use round brackets for arguments and a colon at the end of the line. 
+For example, the following function adds two numbers
 and returns the result:
 
 \begin{verbatim}
 def add(a, b):
     return a + b
 \end{verbatim}
-The round brackets in the function definition are mandatory even if no arguments are passed.
-Also note the mandatory colon ':' at the end of the function declaration line. The two lines of code above 
-are a {\em function declaration} -- they do not produce any output and the function is not called. 
+The round brackets in the function definition are mandatory even if no arguments are passed,
+and the {\tt return} statement can be omitted if not needed.
+The two lines of code above 
+are a {\em function declaration} -- they do not produce any output.
 In order to call the function, we need to write one additional line, such as:
 
 \begin{verbatim}
-add(5, 3)
+print "5 + 3 is", add(5, 3)
 \end{verbatim}
 This will produce the following output:
 
 \begin{verbatim}
-8
+5 + 3 is 8
 \end{verbatim}
 To show another example, the following function does not take any arguments 
 and it does not return any results:
 
 \begin{verbatim}
-def say_hello():
+def hello():
     print "Hello!"
-\end{verbatim}
-Let us stop here for the moment. What we just learned about defining new functions is 
-sufficient for now.
-
-
-
-Let us mention a few additional useful facts related to 
-Python function. Let us begin with the function that we already saw
-before:
-
-\begin{verbatim}
-def add(a, b):
-    return a + b
 \end{verbatim}
 
 \subsection{Passing arbitrary arguments}
 
 Python does not require that we specify the type of function arguments. 
-What does it mean? The above function {\tt add} works for 
-numbers, but it will also add two strings together, or any other 
+What does it mean? The above function {\tt add(a, b)} works for real
+numbers, complex numbers, vectors, strings, and any other 
 objects where the operation '+' is defined. Let's try this:
 
 \begin{verbatim}
@@ -1356,54 +1343,144 @@ def add(a, b):
     return a + b
 
 word1 = "Good "
-word2 = "Evening"
+word2 = "Evening!"
 print add(word1, word2)
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-Good Evening
+Good Evening!
+\end{verbatim}
+Things like this make Python very intuitive and easy to use. In conventional languages such as C or C++, 
+we would have to define different functions: {\tt add\_real\_numbers(a, b)} for real numbers,
+{\tt add\_complex\_numbers(a, b)} for complex numbers numbers, {\tt add\_strings(a, b)} for strings, etc. 
+In C, they would be as follows:
+
+\begin{verbatim}
+double add_real_numbers(double a, double b)
+{
+  return a + b;
+}
+\end{verbatim}
+and
+
+\begin{verbatim}
+# include <complex.h>
+complex add_complex_numbers(complex a, complex b)
+{
+  return a + b;
+}
+\end{verbatim}
+and 
+
+\begin{verbatim}
+void add_strings(const char* a_in, const char* b_in, char* c_out)
+{
+  strcpy(c_out, a_in);
+  strcat(c_out, b_in);
+  return;
+}
 \end{verbatim}
 
-\subsection{Returning multiple results}
+\subsection{Returning multiple values}
 
-Python functions can return multiple results if needed.
-Let us look at the following simple example:
+Python functions can return multiple values which often comes handy.
+For example, the following function returns the 
+second, third, and fourth powers of a number:
 
 \begin{verbatim}
 def powers(a):
-    return a**1, a**2, a**3
+    return a**2, a**3, a**4
+\end{verbatim}
+This is how the function is used:
 
-var1 = 5
-print powers(var1)
+\begin{verbatim}
+var1 = 2
+print "Powers are", powers(var1)
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-(5, 25, 125)
+Powers are (4, 8, 16)
 \end{verbatim}
-We can also store the results in variables:
+We can also store the returned values in three separate variables:
 
 \begin{verbatim}
-var1 = 5
-p1, p2, p3 = powers(var1)
-print p1, p2, p3
+var1 = 3
+p2, p3, p4 = powers(var1)
+print "Powers are", p2, p3, p4
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-5 25 125
+Powers are 9 27 81
+\end{verbatim}
+Look how complicated the same program would be in C/C++:
+
+\begin{verbatim}
+void powers(double a, double* p2, double* p2, double* p3)
+{
+  *p2 = pow(a, 2);
+  *p3 = pow(a, 3);
+  *p4 = pow(a, 4);
+  return;
+}
+
+int main()
+{
+  double p1, p2, p3;
+  double a = 2;
+  powers(a, &p2, &p2, &p3);
+  printf("Powers are %g, %g, %g.\n", p2, p3, p4);
+}
 \end{verbatim}
 
 \subsection{Using default arguments}
 
-Python makes it possible to set a default value for a parameter.
-that will use if the parameter is omitted. Parameters with 
-default values must always be at the end. 
+Holland is the most bicycle friendly country in the world. Imagine that you 
+work for the Holland Census Bureau. Your task is to ask 10000 
+people how they go to work, and enter their answers into a database. 
+The program for entering data into the database was written by one of 
+your colleagues, and it can be used as follows:
 
-For illustration, let us return to the function {\tt add}, and let us 
+\begin{verbatim}
+add_database_entry("John", "Smith", "walks")
+\end{verbatim}
+or 
+\begin{verbatim}
+add_database_entry("Louis", "Armstrong", "bicycle")
+\end{verbatim}
+or
+\begin{verbatim}
+add_database_entry("Jim", "Bridger", "horse")
+\end{verbatim}
+etc. Since you are in Holland, it can be expected that $99 \%$ of people 
+are using the bicycle. In principle you could call the function {\tt add\_database\_entry()} 
+to enter each answer, but with 9900 bicyclists out of 10000 respondents you would have to 
+type {\tt "bicycle"} MANY times. 
+
+Fortunately, Python offers a smarter way to do this. We can define a new function 
+
+\begin{verbatim}
+def enter(first, last, transport = "bicycle"):
+    enter_into_database(first, last, transport)
+\end{verbatim}
+This is a simple ({\em "thin"}) {\em wrapper} to the function {\tt add\_database\_entry()} 
+that allows us to omit the third argument in the function call and autocomplete 
+it with a {\em default argument} {\tt "bicycle"}. In other words, now we do not have to 
+type {\tt "bicycle"} for Louis Armstrong or any other bicyclist:
+
+\begin{verbatim}
+enter("Louis", "Armstrong")
+\end{verbatim}
+Only if we meet a rare someone who uses a car, we type 
+
+\begin{verbatim}
+enter("Niki", "Lauda", "car")
+\end{verbatim}
+Another example: Let us return to the function {\tt add()}, and let us 
 imagine that very often (but not always) the second number that we
-are adding is 10. Then it makes sense to write the function {\tt add}
+are adding is 10. Then it makes sense to write the function {\tt add()}
 as follows:
 
 \begin{verbatim}
@@ -1424,84 +1501,63 @@ Output:
 But it can be also called with the second argument omitted:
 \begin{verbatim}
 A = 5
-B = 1
 add(A)
 \end{verbatim}
 Output:
 \begin{verbatim}
 15
 \end{verbatim}
-
-\subsection{Good coding practices}
-
-Let's write a function that will look for a character {\tt c} 
-in a string {\tt s}. If the character is found, it will return its index. 
-If not, it will return -1:
-
+\underline{Some rules to remember}:
+\begin{itemize}
+\item Default arguments need to be introduced {\bf after} standard (non-default) arguments. In other words, the 
+      following code will result into an error:
 \begin{verbatim}
-# Finds the first occurence of a given character in a given 
-# string, and returns its position. If not found, returns -1. 
-def find_char(c, s):
-    if len(c) != 1: 
-        print "c must be a single character!"
-        return -2
-    n = 0
-    while s[n] != c:
-        n += 1
-        if n == len(s):
-            return -1
-    return n
+def add(a = 5, b):
+    return a + b
 \end{verbatim}
-Some remarks are in order. First of all notice the comment after the 
-symbol '{\tt \#}'. Any text behind this symbol till the end of line is ignored 
-by the interpreter, and thus one can use it for descriptions. {\bf Writing 
-comments is strongly encouraged}. They make your program more readable for others
-{\em and also for you}. Keep in mind that everything is perfectly clear to you 
-at the time you are writing the program. But when you return to it in 6 months, 
-without good comments you will have a hard time to remember why you wrote that 
-function, and what exactly it was supposed to do. 
-
-Second -- humans make mistakes. Whenever a function is to be used by a human
-and it assumes something (such as that {\tt c} is a single character), {\bf check
-it}. This means to write some extra code, but this extra effort pays off big time.
-The user may not be a bad person who intentionally wants to crash your 
-code (although there are such people!), but people do not read instructions, 
-forget them, and can make a variety 
-of mistakes. Sometimes these tests are called {\em sanity checks} -- basically
-making sure that the function received correct data.
-
-Third -- whenever there is 
-a situation where your code can crash, check the input. If something is wrong,
-do not let the program crash and rather {\bf take care of the problem youself}. 
-Give the user (or yourself) a message that something happened in the program that 
-was not supposed 
-to happen. It saves you many a headache and lots of time wasted by going through 
-your code and trying to find out why it does not work as expected. This is called 
-{\em debugging} and for beginners it typically takes more time than writing the 
-code itself. An example, bad code first:
-
+This is the error message:
 \begin{verbatim}
-from numpy import sqrt
-...
-a = sqrt(x)
-\end{verbatim}
-(here {\tt sqrt()} is the square root function and we import it from Numpy). If
-for any reason {\tt x} is negative at the moment the square root is calculated,
-the program crashes. So a better code is:
+  File "<nclab>", line 1
+SyntaxError: non-default argument follows default argument
 
-\begin{verbatim}
-from numpy import sqrt
-....
-if x > 0:
-    a = sqrt(x)
-else:
-    print "Sqrt(x) attempted with x =", x
-    ...
 \end{verbatim}
-The second triple dots stand for an action that you take when incorrect 
-input for the {\tt sqrt()} function is detected. What you do depends on 
-your code -- for example you can skip this value of {\tt x} and calculate 
-with the next one. 
+\item If multiple default arguments are present, they have to follow the non-default ones.
+      If the number of arguments in the function call is less than the total number of default and non-default
+      arguments, then first all non-default arguments are assigned, and then the default ones from 
+      left to right. To illustrate this, assume the function:
+\begin{verbatim}
+def add(x, a = 2, b = 3):
+    return x + a + b
+\end{verbatim}
+This function can be called as follows:
+\begin{verbatim}
+print add(1)
+\end{verbatim}
+In this case, the value {\tt 1} is assigned to {\tt x} and {\tt a} and {\tt b} take the default values.
+The output will be 
+\begin{verbatim}
+6
+\end{verbatim}
+When the function is called with just two values,
+\begin{verbatim}
+print add(5, 6)
+\end{verbatim}
+then the value {\tt 5} is assigned to {\tt x}, {\tt 6} to {\tt a}, and {\tt b} takes the default value {\tt 3}.
+The output is
+\begin{verbatim}
+14
+\end{verbatim}
+However, it is always a good idea to be as transparent as possible. Therefore a better code is 
+\begin{verbatim}
+print add(1, a = 6)
+\end{verbatim}
+Then the result is the same, {\tt 14}, but it is clear even to non-experts what is going on. Moreover,
+in this way we can also define the value of {\tt b} without having to define the value of {\tt a}:
+\begin{verbatim}
+print add(1, b = 6)
+\end{verbatim}
+Now {\tt x} is {\tt 1}, {\tt a} has the default value {\tt 2} and the result is {\tt 9}.
+\end{itemize}
 
 \subsection{Review questions}
 
@@ -1518,22 +1574,92 @@ with the next one.
 \item[A1] 
 \begin{verbatim}
 def subtract(a, b)
-  return a - b
+    return a - b
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
 def subtract(a, b):
-  return a - b
+    return a - b
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
 def subtract[a, b]
-  return a - b
+    return a - b
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
-def subtract(a, b):
-  return b - a
+def subtract(a, b = 5):
+    return a - b
+\end{verbatim}
+\end{enumerate}
+\item When do we have to specify argument types in Python functions?
+\begin{enumerate}
+\item[A1] Never.
+\item[A2] Always.
+\item[A3] Always except for numbers and text strings.
+\item[A4] Only when default arguments are used.
+\end{enumerate}
+\item We know from Section \ref{sec:calc} that the modulo operation calculates the 
+      rest after integer division. Assume positive integers $a > 0$ and $b > 0$.
+      The number $a$ can be decomposed as follows:
+      $$
+      a = nb + r
+      $$  
+      where $n \ge 0$ and $0 \le r < b$ are integers.
+      Which of the following functions will do the job
+      and return the numbers {\tt n} and {\tt r} ?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+def splitnumber(a, b)
+    return a / b, a % b
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+def splitnumber(a, b)
+    return a % b, a / b
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+def splitnumber(a, b):
+    n = a / b
+    r = a % b
+    return n
+    return r
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+def splitnumber(a, b):
+    return a / b, a % b
+\end{verbatim}
+\end{enumerate}
+\item Of the following four functions, choose the best one to calculate the hypotenuse
+      of a right-angled triangle when you know that most of the time one of its shorter
+      edges will be 5 cm long?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+from numpy import sqrt
+def hypotenuse(a, b):
+    return sqrt(a**2 + b**2)
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+from numpy import sqrt
+def hypotenuse(a = 5, b):
+    return sqrt(a**2 + b**2)
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+from numpy import sqrt
+def hypotenuse(a, b = 5):
+    return sqrt(a**2 + b**2)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+from numpy import sqrt
+def hypotenuse(a = 5, b = 5):
+    return sqrt(a**2 + b**2)
 \end{verbatim}
 \end{enumerate}
 \end{enumerate}
@@ -1541,11 +1667,14 @@ def subtract(a, b):
 \subsection{Programming exercises}
 
 \begin{enumerate}
-\item Write a Python function {\tt multiply(var1, var2)} that returns the product of the 
-      numbers {\tt var1} and {\tt var2}.
-\item Write a Python function {\tt square(val)} that returns the square of {\tt val}.
-\item Write a Python function {\tt hypotenuse(a, b)} that adds {\tt a} squared to {\tt b} squared,
-      and returns square root of the result.
+\item Write a Python function {\tt circle} that accept an arbitrary positive radius $R > 0$
+      as argument, and returns the area and the perimeter of a circle with radius $R$.
+\item Write a Python function {\tt squarearea} that returns the area of a square whose 
+      edge is $a$ cm long. You know that most of the time the edge length wil be 1 cm,
+      so make this function callable without any arguments.
+\item Write a Python function {\tt rectanglearea} that returns the area of a rectangle 
+      whose edges are $a$ and $b$ cm long. You know that most of the time one of the edges 
+      will measure 3 cm, so make the function callable with only one argument.
 \end{enumerate}
 
 \section{More on Variables}
@@ -1553,15 +1682,14 @@ def subtract(a, b):
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn to work with variables in Python.
 \item Understand dynamic type interpretation.
-\item Learn the difference between local and global variables.
-\item Understand that keeping variables local is a good programming practice.
+\item Learn about {\em local} and {\em global} variables.
+\item Understand why global variables should be avoided.
 \item Learn about {\em variable shadowing}.
 \end{itemize}
 The reason why we use variables is the same in Karel the Robot, Python, and all other programming 
 languages -- to store useful information for later use. Also the way we work with variables is almost the 
-same, so we will just mention a few new features in Python.
+same, so we will just mention a few aspects that are new in Python.
 
 \subsection{Assigning values to variables}
 
@@ -1580,19 +1708,12 @@ x = 0.0
 y = 0.0
 z = 0.0
 \end{verbatim}
-Variables must be defined (have a value assigned) before they can be 
-used. For example, when trying to print a variable {\tt value} that 
-was never used before, we get an error:
-
-\begin{verbatim}
-Traceback (most recent call last):
-  File "<nclab>", line 1, in <module>
-NameError: name 'value' is not defined
-\end{verbatim}
+As in Karel, variables must be defined (have a value assigned) before they can be 
+used. 
 
 \subsection{Dynamic type interpretation}
 
-Python is very generous with variable types -- it will figure out the type of a variable 
+Python is very generous with the types of variables -- it will figure out the type of a variable 
 at runtime, depending on the value that we store in it. The type can even change at runtime.
 For example, let us look at the following code:
 
@@ -1612,12 +1733,12 @@ Hi!
 True
 \end{verbatim}
 This is very different from compiled languages such as C, C++ where one needs to declare the type 
-of every variable before its first use, and the type cannot be changed afterwards. 
+of every variable before its first use, and the type then cannot be changed. 
 
 \subsection{Changing values of variables}
 
-The simplest way to increase the value of a numerical variable by a given number is to use the '{\tt +=}' 
-command:
+The simplest way to increase the value of a numerical variable in Python by a given number 
+is to use the '{\tt +=}' command:
 
 \begin{verbatim}
 v = 1
@@ -2299,7 +2420,7 @@ This section is finished, good job!
 
 
 
-\section{Strings}
+\section{Strings} \label{sec:strings}
 
 \subsection{Objectives}
 

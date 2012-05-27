@@ -2972,13 +2972,21 @@ create a new string {\tt str2} and add into it what is needed.
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn when one should use tuples.
-\item Learn when one should use lists.
-\item Learn when one should use dictionaries. 
+\item Learn to work with Python's fundamental data structures -- tuples, lists, and dictionaries. 
 \end{itemize}
-Sometimes we need to store data that does not change in time - such as 
-the names of weekdays, or names of months. For this we use {\em tuples}.
-To define a tuple, enclose comma-separated items in round brackets: 
+Tuples, lists, and dictionaries belong to the most important data structures in Python, and the 
+language offers a wide range of functionality to work with them efficiently. They become 
+especially useful in combination with the {\tt for}
+loop that was already mentioned in Subsection \ref{subsec:forstr}, and that will be 
+discussed in more detail in Section \ref{sec:forloop}. \\
+
+\noindent
+\underline{Tuples}\\
+
+Let us begin with tuples. Tuples are perfect for sequences 
+of data that does not change in time - such as 
+the names of weekdays, or names of months. To define a tuple, 
+enclose comma-separated items in round brackets:
 
 \begin{verbatim}
 months = ('January', 'February', 'March', 'April', 'May', 'June',\
@@ -3029,12 +3037,8 @@ Output:
 \begin{verbatim}
 12
 \end{verbatim}
-Tuples become especially useful in combination with the {\tt for}
-loop that was already mentioned in Subsection \ref{subsec:forstr} 
-and that will be discussed in more detail in Section \ref{sec:forloop}. \\
+\underline{Lists}\\
 
-
-\noindent
 Lists are similar to tuples, and all indexing and slicing works in the same way. 
 The biggest difference between a tuple 
 and a list is that {\bf items in a list can be changed}. So, we use
@@ -3142,10 +3146,8 @@ Output:
 \begin{verbatim}
 5
 \end{verbatim}
-This is the end of the section - now you know one of the most powerful 
-concepts in Python!\\
+\underline{Dictionaries}\\
 
-\noindent
 Sometimes we need to store additional information for 
 people (or general items) in a list. The classical example is 
 a phone number, but it may be age, weight, address, family 

@@ -2263,8 +2263,9 @@ Conditions and the conditional loop ({\tt while} loop) are very similar in Karel
 and Python, so we just need to learn about a few minor extensions.
 
 For {\tt if - else} conditions, Python brings the {\tt elif} statement that simplifies 
-the handling of multiple branches. If you think that "elif" sounds a lot like "else if" then 
-you are absolutely right! Let us show an example:
+the handling of cases with more than two options. If you think that "elif" sounds a lot like "else if" then 
+you are absolutely right! The {\tt elif} statement could be replaced with regular {\tt else: if}
+but it would mean more indentation. Let us show an example:
 
 Imagine that we have five boxes for apples: Box A is for apples that weight under 
 5 ounzes, box B for apples that weight at least five but less than 10 ounzes, 
@@ -2289,7 +2290,44 @@ Note the mandatory colon ':' after every {\tt if}, {\tt elif} and {\tt else} sta
 the {\tt while} loop in Python has a mandatory colon, this is virtually the only 
 (and cosmetic) difference between Python and Karel.
 
-Next let's put the {\tt while} loop to work. We have used this loop in Karel a lot,
+To make sure that we understand the advantage of the {\tt elif} statement, let us rewrite 
+the function {\tt box(weight)} without it:
+
+\begin{verbatim}
+def box(weight):
+    if weight < 5:
+        return "A"
+    else:
+        if weight < 10:
+            return "B"
+        else:
+            if weight < 15:
+                return "C"
+            else:
+                if weight < 20:
+                    return "D"
+                else:
+                    return "E"
+\end{verbatim}
+There is another, even less elegant way:
+
+\begin{verbatim}
+def box(weight):
+    if weight < 5:
+        return "A"
+    if weight >= 5 and weight < 10:
+        return "B"
+    if weight >= 10 and weight < 15:
+        return "C"
+    if weight >= 15 and weight < 20:
+        return "D"
+    if weight >= 20:
+        return "E"
+\end{verbatim}
+So we can see that the {\tt elif} command is a useful one!
+
+Next let's put the {\tt while} loop to work. Recall that this loop should be used 
+if the number of repetitions is not known a priori. We have used this loop in Karel a lot,
 but Karel usually did at most few dozens of cycles. In reality, computers can easily 
 do millions or billions of cycles or more. In computing, we call them {\em iterations}.
 Actually, our programming skills are already good enough to tackle an entry-level
@@ -2365,10 +2403,32 @@ you to explore more math functionality and in particular numerical
 methods in NCLab. There are displayed projects for the Newton's method
 and other methods to solve nonlinear equations and nonlinear equation systems.
 
-
-
-
 \subsection{Review questions}
+
+\begin{enumerate}
+\item When should the {\tt elif} statement be used?
+\begin{enumerate}
+\item[A1] It should not be used as it can be always written using {\tt if - else} statements. 
+\item[A2] When there are more than two options in the {\tt if - else} condition. 
+\item[A3] When the logical expression in the {\tt if} branch is not likely to be True.
+\item[A4] When the logical expression in the {\tt if} branch is likely to be True.
+\end{enumerate}
+\item When should the {\tt while} loop be used?
+\begin{enumerate}
+\item[A1] When we cannot use the {\tt if - else} condition.
+\item[A2] When we know exactly how many repetitions there are.
+\item[A3] When the loop contains a variable that decreases to zero.
+\item[A4] When the number of repetitions is not know a priori.
+\end{enumerate}
+\item What is the Newton's method?
+\begin{enumerate}
+\item[A1] Method to determine force from mass and gravity.
+\item[A2] Method for approximate solution of nonlinear equations.
+\item[A3] Method to calculate Newton integrals.
+\item[A4] Method to determine duration of free fall of an abject.
+\end{enumerate}
+\end{enumerate}
+
 
 \subsection{Programming exercises}
 
@@ -2781,12 +2841,14 @@ is equal to {\tt len(word2)}. Return the new string.
 
 
 
-\section{Tuples}
+\section{Tuples, Lists and Dictionaries}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item
+\item Learn when one should use tuples.
+\item Learn when one should use lists.
+\item Learn when one should use dictionaries. 
 \end{itemize}
 Sometimes we need to store data that does not change in time - such as 
 the names of weekdays, or names of months. For this we use {\em tuples}.
@@ -2842,20 +2904,8 @@ Output:
 12
 \end{verbatim}
 Tuples become especially useful in combination with the {\tt for}
-loop that will be discussed in Section \ref{sec:forloop}. 
+loop that will be discussed in Section \ref{sec:forloop}. \\
 
-\subsection{Review questions}
-
-\subsection{Programming exercises}
-
-
-\section{Lists}
-
-\subsection{Objectives}
-
-\begin{itemize}
-\item
-\end{itemize}
 
 \noindent
 Lists are similar to tuples, and all indexing and slicing works in the same way. 
@@ -2966,21 +3016,9 @@ Output:
 5
 \end{verbatim}
 This is the end of the section - now you know one of the most powerful 
-concepts in Python!
+concepts in Python!\\
 
-\subsection{Review questions}
-
-\subsection{Programming exercises}
-
-
-\section{Dictionaries}
-
-\subsection{Objectives}
-
-\begin{itemize}
-\item
-\end{itemize}
-
+\noindent
 Sometimes we need to store additional information for 
 people (or general items) in a list. The classical example is 
 a phone number, but it may be age, weight, address, family 
@@ -3080,7 +3118,7 @@ expected {\tt for} loop!
 \subsection{Objectives}
 
 \begin{itemize}
-\item
+\item Learn to use the for loop -- the counting loop in Python.
 \end{itemize}
 
 Before we bring up the {\tt for} loop, let us introduce the {\tt range()}

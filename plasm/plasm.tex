@@ -38,32 +38,40 @@
 %\hspace{-4mm}
 %\hspace{-20mm}
 \includegraphics[width=10cm]{img/plasm-frontpage.png}
-\vspace{21mm}
+\vspace{16mm}
 \end{center}
 \end{figure}
 
-\centerline{\Huge \bf Solid Modeling with PLaSM}
+\begin{center}
+{\Huge \bf Solid Modeling with PLaSM}
 
+\vbox{}
+\vspace{1cm}
 \vfill
-
-\centerline{\Large www.nclab.com}
-
+{\large
+{\bf Pavel Solin}, University of Nevada, Reno, USA\\
+{\bf Alberto Paoluzzi}, University of Rome, Italy
+}
+\end{center}
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\vbox{}
+\vfill
+\begin{center}
+{\large
+This textbook is part of the online course 
+{\em Intro to CAD} 
+({\tt http://introtocad.net}) and its use is allowed with current subscription only.
+Distribution or sharing is not allowed. \\
+}
+\vfill
 
-\section*{}
-\small
-\input ../common/aboutnclab.tex
+Copyright 2012 FEMhub Inc. All rights reserved.
+\end{center}
 
-%\subsection*{Acknowledgement}
-%This publication was created with the help of numerous freely 
-%available web resources and tutorials related to Python, Scipy,
-%Numpy, Pylab, Matplotlib, Sympy and other projects.
-
-\normalsize
 
 \newpage
 %{\ }
@@ -81,8 +89,11 @@
 \newpage
 
 \pagestyle{plain}
+\setcounter{page}{1}
 
-\section{What is PLaSM?}
+\section{Getting Started}
+
+\subsection{What is PLaSM?}
 
 PLaSM ({\em Programming Language for Solid Modeling}) is a powerful design language
 that enables geometrical modeling of 3D objects via simple commands.
@@ -107,32 +118,6 @@ through PLaSM's usage. Soon, you will be able to create advanced
 \label{fig:pisa}
 \end{figure}
 
-\section{Getting Started}
-
-In order to make the most of this tutorial, we invite the 
-reader to create an account in NCLab and log in. More instructions 
-on how to do this are given at the beginning of the introductory 
-tutorial "Meet Your New Graphing Calculator" that is available in 
-PDF via a link on NCLab home page {\tt http://nclab.com}. \\
-
-\noindent
-{\bf NOTE}: Your web browser needs to support WebGL, otherwise you will not be able to 
-work with PLaSM properly. For this reason, a WebGL test button is provided 
-on NCLab's front page.\\
-
-\noindent
-After logging in, you will see a desktop with several icons on it,
-as shown in Fig. \ref{fig:desktop}. 
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/desktop.png}
-\end{center}
-%\vspace{-2mm}
-\caption{NCLab desktop after login.}
-\label{fig:desktop}
-\end{figure}
-
 \subsection{Cloning Displayed Projects}
 
 All examples that we are going to work with in the following are also available 
@@ -147,13 +132,13 @@ by clicking on it in the File Manager. You can change the project in any way
 you like, the changes will not affect the original Displayed Project. 
 
 
-\subsection{Launching a new Python project}
+\subsection{Launching a new PLaSM project}
 
 Alternatively, you can type the examples by yourself, which is the 
 recommended way. Our introductory examples have no more than 
 a couple of lines anyway. So, in the File Manager's {\em Project} menu 
 choose {\em New} $\rightarrow$ {\em Python}. This will launch an 
-empty Python project, as shown in Fig. \ref{fig:python}.
+empty PLaSM project, as shown in Fig. \ref{fig:python}.
 
 
 \begin{figure}[!ht]
@@ -161,7 +146,7 @@ empty Python project, as shown in Fig. \ref{fig:python}.
 \includegraphics[width=\textwidth]{img/python.png}
 \end{center}
 %\vspace{-2mm}
-\caption{Launching a new Python project.}
+\caption{Launching a new PLaSM project.}
 \label{fig:python}
 \end{figure}
 \noindent

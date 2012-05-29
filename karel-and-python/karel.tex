@@ -1047,7 +1047,7 @@ so that he does not crash into a wall.
 \item[A3] Because the code is visually nicer.
 \item[A4] Because the code is easier to read.
 \end{enumerate}
-\item Which of the following programs will rotate Karel 360 degrees?
+\item Which program(s) will rotate Karel 360 degrees?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -1270,7 +1270,7 @@ This is a Heading
 \end{enumerate}
 \item How can we add a new input cell?
 \begin{enumerate}
-\item[A1] By clicking on {\tt add} under an existing input cell.
+\item[A1] Click on {\tt add} under an existing input cell.
 \item[A2] Through {\tt Add new input cell} in the Edit menu.
 \item[A3] Through {\tt New} in File menu.
 \item[A4] Through {\tt Clone} in File menu.
@@ -1282,7 +1282,7 @@ This is a Heading
 \item[A3] When a command is repeated multiple times.
 \item[A4] When the program is longer than 10 lines.
 \end{enumerate}
-\item What do we need to do in order to erase all text from an input cell?
+\item What is the best way to erase all text from an input cell?
 \begin{enumerate}
 \item[A1] Close Karel, logout, and login again. 
 \item[A2] Restart Karel.
@@ -1293,8 +1293,8 @@ This is a Heading
 \begin{enumerate}
 \item[A1] Click on {\tt remove} under the input cell.
 \item[A2] Through {\tt Collapse} in File menu.
-\item[A3] By clicking on the bracket on the right of the cell.
-\item[A4] By clicking on {\tt collapse} under the cell.
+\item[A3] Click on the bracket on the right of the cell.
+\item[A4] Click on {\tt collapse} under the cell.
 \end{enumerate}
 \item How can an input cell be removed?
 \begin{enumerate}
@@ -1321,9 +1321,9 @@ This is a Heading
 \begin{enumerate}
 \item[A1] Copy and paste the contents of all 
           input cells into the first one, and remove them.
-\item[A2] Clicking on the blue arrow button in the menu. 
-\item[A3] Clicking on {\tt run} under the input cell.
-\item[A4] Clicking on {\tt remove} under the input cell.
+\item[A2] Click on the blue arrow button in the menu. 
+\item[A3] Click on {\tt run} under the input cell.
+\item[A4] Click on {\tt remove} under the input cell.
 \end{enumerate}
 \end{enumerate}
 
@@ -1460,7 +1460,7 @@ if not empty
 \item[A1] The robot's bag is empty.
 \item[A2] There are no gems where the robot stands.
 \item[A3] There are no gems in the maze.
-\item[A4] There are not gems in the robot's home.
+\item[A4] There are no gems in the robot's home.
 \end{enumerate}
 \item When does the {\tt home} sensor check true?
 \begin{enumerate}
@@ -1511,7 +1511,7 @@ if not empty
 \item[A3] No, the sensor gem only works for one gem.
 \item[A4] Yes, he can use the {\tt empty} sensor.
 \end{enumerate}
-\item Which program makes Karel check whether he stands on a gem, and if so, to pick it up.
+\item Which program(s) make Karel check whether he stands on a gem, and if so, to pick it up?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -1534,7 +1534,7 @@ if empty
     get
 \end{verbatim}
 \end{enumerate}
-\item Which program will turn Karel always to the North?
+\item Which program(s) will turn Karel to the North, regardless the direction he is facing?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -1559,7 +1559,8 @@ if south
 \begin{verbatim}
 if not north 
     right
-\end{verbatim}\end{enumerate}
+\end{verbatim}
+\end{enumerate}
 
 \end{enumerate}
 
@@ -1735,11 +1736,13 @@ left
 \begin{verbatim}
 while not north 
     right
-right
+left
 \end{verbatim}
 \end{enumerate}
-\item The maze does not contain any gems and any walls except for the ones that form the outer rectangular boundary.
-      The robot stands in the south-west corner facing East. Which program will make the robot walk along the 
+\item The maze does not contain any gems and any walls except for the ones that 
+      form the outer rectangular boundary.
+      The robot stands in the south-west corner facing East. Which program will 
+      make the robot walk along the 
       boundary of the maze and bring him back to the original position?
 \begin{enumerate}
 \item[A1] 
@@ -1825,7 +1828,7 @@ where they are. Write a program for Karel to find his friends!}\\[-7mm]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Section F - Defining New Commands} \label{sec:newcom}
+\section{Section F - Custom Commands} \label{sec:newcom}
 
 \subsection{Objectives} 
  
@@ -2037,7 +2040,7 @@ def foursteps
 \item[A3] Whenever the code contains an {\tt if - else} statement.
 \item[A4] If the code is longer than 100 lines.
 \end{enumerate}
-\item Which command will empty the robot's bag without causing an error?
+\item Which command(s) will empty the robot's bag without causing an error?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -2064,8 +2067,8 @@ def emptybag
         put
 \end{verbatim}
 \end{enumerate}
-\item Which command will turn Karel to the South no matter 
-      which direction he faces initially?
+\item Which command(s) will turn Karel to the South no matter 
+      which direction he is facing?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -2103,7 +2106,6 @@ def turnsouth
 \subsection{Exercise F01 - Four Star Hotel}
 
 {\em This time Karel has to collect all four stars of gems!}
-
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2595,14 +2597,14 @@ Diamond Staircase problem, but it is great for illustration purposes.
 \begin{enumerate}
 \item[A1] Recursion turns into an infinite loop.
 \item[A2] The program throws an error.
-\item[A3] The program will run and end as expected.
+\item[A3] The program will end after the first call to the recursive command.
 \item[A4] The program does not throw an error but the robot will do nothing.
 \end{enumerate}
-\item When is recursion likely to be useful?
+\item When should recursion be used?
 \begin{enumerate}
-\item[A1] Our algorithm contains multiple conditional statements.
-\item[A2] Our algorithm contains multiple repetitions.
-\item[A3] After solving part of the problem, the rest is very similar to the original problem.
+\item[A1] The algorithm contains multiple conditional statements.
+\item[A2] The algorithm contains multiple repetitions.
+\item[A3] After solving part of the problem, the remaining task is similar to the original problem.
 \item[A4] Our program contains multiple new commands.
 \end{enumerate}
 \item Which of the four recursive commands below does the same as this non-recursive one?
@@ -2640,7 +2642,6 @@ def turn_north
         turn_north
 \end{verbatim}
 \end{enumerate}
-
 \end{enumerate}
 
 \subsection{Exercise G01 - Cheese Please}
@@ -2910,7 +2911,7 @@ position is as shown in Fig. \ref{fig:var2}?
 \includegraphics[height=0.4\textwidth]{imgk/variables2.png}
 \end{center}
 \vspace{-4mm}
-\caption{Karel is reading his GPS device again..}
+\caption{Karel is reading his GPS device again.}
 \label{fig:var2}
 %\vspace{-1cm}
 \end{figure}
@@ -2939,8 +2940,7 @@ repeat 5
 \item[A3] {\tt gpsx} is 9 and {\tt gpsy} is 7.
 \item[A4] {\tt gpsx} is 9 and {\tt gpsy} is 11.
 \end{enumerate}
-
-\item Which of the following programs is/are invalid?
+\item Which of the following programs are invalid?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -2964,7 +2964,7 @@ e = gpsx
 e = gpsy
 \end{verbatim}
 \end{enumerate}
-\item Which of the following programs is/are invalid?
+\item Which of the following programs are invalid?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}

@@ -416,17 +416,45 @@ go
   \begin{itemize}
     \item A1: To make clear where the body of the loop begins and where it ends.
   \end{itemize}
-\item Which of the following programs will rotate Karel 360 degrees?
+\item Which program(s) will rotate Karel 360 degrees?
   \begin{itemize}
-    \item A1
-    \item A2
-    \item A3
-    \item A4
+    \item A1:
+\begin{verbatim}
+ left
+ left
+ left
+ left
+\end{verbatim}
+    \item A2:
+\begin{verbatim}
+ repeat 2
+     right
+     right
+\end{verbatim}
+    \item A3:
+\begin{verbatim}
+ repeat 4
+     left
+\end{verbatim}
+    \item A4:
+\begin{verbatim}
+ repeat 2
+     repeat 2
+         right
+\end{verbatim}
   \end{itemize}
 \item Karel needs to pick up 5 gems from the ground, walk 10 steps forward, and put the 5 gems 
       on the ground again. Which one(s) of the following programs will do that?
   \begin{itemize}
-    \item A2
+    \item A2:
+\begin{verbatim}
+ repeat 5
+     get
+ repeat 10
+     go
+ repeat 5
+     put
+\end{verbatim}
   \end{itemize}
 \end{enumerate}
 
@@ -526,11 +554,69 @@ repeat 10
   \end{itemize}
 \end{enumerate}
 
-
-
 \section{Section D - Conditions}
 
 \subsection{Review questions}
+
+\begin{enumerate}
+\item When does the {\tt gem} sensor check true?
+  \begin{itemize}
+    \item A3: There are one or more gems under the robot.
+  \end{itemize}
+\item When does the {\tt North} sensor check true?
+  \begin{itemize}
+    \item A4: The robot faces North.
+  \end{itemize}
+\item When does the {\tt empty} sensor check true?
+  \begin{itemize}
+    \item A1: The robot's bag is empty.
+  \end{itemize}
+\item When does the {\tt home} sensor check true?
+  \begin{itemize}
+    \item A2: The robot is in his home.
+  \end{itemize}
+\item When does the {\tt wall} sensor check true?
+  \begin{itemize}
+    \item A3: There is a wall right in front of the robot.
+  \end{itemize}
+\item When can Karel see from where he stands whether a wall is two steps ahead?
+  \begin{itemize}
+    \item A1: Never.
+  \end{itemize}
+\item When can the robot check without turning whether a wall is on his right?
+  \begin{itemize}
+    \item A4: Never.
+  \end{itemize}
+\item Can Karel check from where he stands whether a gem is one step away?
+  \begin{itemize}
+    \item A2: No.
+  \end{itemize}
+\item Can he check from where he stands whether his home is one step away?
+  \begin{itemize}
+    \item A3: No.
+  \end{itemize}
+\item Can the robot check whether he has at least one gem in the bag?
+  \begin{itemize}
+    \item A4: Yes, he can use the {\tt empty} sensor.
+  \end{itemize}
+\item Which program(s) make Karel check whether he stands on a gem, and if so, to pick it up?
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+if gem
+    get
+\end{verbatim}
+  \end{itemize}
+\item Which program(s) will turn Karel to the North, regardless the direction he is facing?
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+repeat 4
+    if not north 
+        left
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
 
 \subsection{Programming exercises}
 
@@ -578,6 +664,42 @@ repeat 11
 \section{Section E - Conditional Loop}
 
 \subsection{Review questions}
+
+\begin{enumerate}
+\item What is the difference between the {\tt repeat} and {\tt while} loops?
+  \begin{itemize}
+    \item A4: The {\tt repeat} loop only can be used when the number of repetitions is known a priori.
+  \end{itemize}
+\item Which program(s) will always turn Karel to face West?
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+while not north
+    left
+left
+\end{verbatim}
+    \item A4:
+\begin{verbatim}
+while not north 
+    right
+left
+\end{verbatim}
+  \end{itemize}
+\item The maze does not contain any gems and any walls except for the ones that 
+      form the outer rectangular boundary.
+      The robot stands in the south-west corner facing East. Which program will 
+      make the robot walk along the 
+      boundary of the maze and bring him back to the original position?
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+repeat 4
+    while not wall
+        go
+    left
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
 
 \subsection{Programming exercises}
 
@@ -629,9 +751,47 @@ while not home
 \end{verbatim}
 
 
-\section{Section F - Defining New Commands}
+\section{Section F - Custom Commands}
 
 \subsection{Review questions}
+
+\begin{enumerate}
+\item Should we, or should we not always try to split a big task into smaller ones?
+  \begin{itemize}
+    \item A4: Yes, because the big task becomes simpler to solve.
+  \end{itemize}
+\item Should we, or should we not replicate computer code?
+  \begin{itemize}
+    \item A3: No, because our code would become prone to errors.
+  \end{itemize}
+\item When should a new command be defined?
+  \begin{itemize}
+    \item A2: Whenever the algorithm contains an action that is repeated multiple times
+          (a small task inside a big one).
+  \end{itemize}
+\item Which command(s) will empty the robot's bag without causing an error?
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+def emptybag
+    while not empty
+        put
+\end{verbatim}
+  \end{itemize}
+\item Which command(s) will turn Karel to the South no matter 
+      which direction he is facing?
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+def turnsouth
+    while not north
+        left
+    repeat 2
+        left
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
 
 \subsection{Programming exercises}
 
@@ -1223,6 +1383,44 @@ ariadnes_thread
 
 \subsection{Review questions}
 
+\begin{enumerate}
+\item There are three commands {\tt A}, {\tt B}, {\tt C}. Identify all cases of recursion in the four options below!
+  \begin{itemize}
+    \item A2: {\tt C} calls {\tt B}, {\tt B} calls {\tt C}, {\tt C} calls {\tt A}.
+    \item A3: {\tt C} calls {\tt B}, {\tt B} calls {\tt A}, {\tt A} calls {\tt C}.
+    \item A4: {\tt C} calls {\tt B}, {\tt B} calls {\tt A}, {\tt A} calls {\tt B}.
+  \end{itemize}
+\item What do we mean by {\em base case}?
+  \begin{itemize}
+    \item A4: Branch of a conditional statement that does not make a recursive call.
+  \end{itemize}
+\item What happens if base case is not present?
+  \begin{itemize}
+    \item A1: Recursion turns into an infinite loop.
+  \end{itemize}
+\item When should recursion be used?
+  \begin{itemize}
+    \item A3: After solving part of the problem, the remaining task is similar to the original problem.
+  \end{itemize}
+\item Which of the four recursive commands below does the same as this non-recursive one?
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+def turn_north
+    if not north
+        right
+        turn_north
+\end{verbatim}
+    \item A4:
+\begin{verbatim}
+def turn_north
+    right
+    if not north 
+        turn_north
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
 \subsection{Programming exercises}
 
 \subsubsection{G01 - Cheese Please}
@@ -1417,6 +1615,62 @@ rangle
 
 \subsection{Review questions}
 
+\begin{enumerate}
+\item What are {\em variables} used for in programming? 
+  \begin{itemize}
+    \item A3: To store useful information.
+  \end{itemize}
+\item What values do the variables {\tt gpsx} and {\tt gpsy} have when Karel's
+position is as shown in Fig. \ref{fig:var2s}?
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/variables2.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel is reading his GPS device.}
+\label{fig:var2s}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+  \begin{itemize}
+    \item A4: {\tt gpsx} is 7 and {\tt gpsy} is 11.
+  \end{itemize}
+\item What values will the variables {\tt gpsx} and {\tt gpsy} have after
+Karel executes the following program? He starts from the position shown 
+in Fig. \ref{fig:var2s}.
+\begin{verbatim}
+repeat 5
+    while not wall
+        go
+        if gem
+            get
+    left
+\end{verbatim}
+  \begin{itemize}
+    \item A2: {\tt gpsx} is 0 and {\tt gpsy} is 10.
+  \end{itemize}
+\item Which of the following programs is/are invalid?
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+gpsx = 0
+inc(gpsx)
+\end{verbatim}
+  \end{itemize}
+\item Which of the following programs are invalid?
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+proc count_steps
+    while not wall
+        go
+        inc(n)
+    return n
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
+
 \subsection{Programming exercises}
 
 \subsubsection{H01 - Accounting}
@@ -1552,6 +1806,26 @@ print "Carpet size =", area
 \section{Section I - Logic}
 
 \subsection{Review questions}
+
+\begin{enumerate}
+\item Let's introduce a variable {\tt my\_age} that stores your age in years.
+      This variable is:
+  \begin{itemize}
+    \item A1: Numerical.
+  \end{itemize}
+\item What is a {\em logical expression}? 
+  \begin{itemize}
+    \item A3: Expression that is either true or false.
+  \end{itemize}
+\item A is {\tt True} and B is {\tt False}. What is then the value of (A {\em and} {\em not} (A {\em or} B)) ?
+  \begin{itemize}
+    \item A1: {\tt False}.
+  \end{itemize}
+\item A is {\tt True} and B is {\tt True}. What is then the value of (A {\em and} {\em not} (A {\em and} {\em not} B)) ?
+  \begin{itemize}
+    \item A2: {\tt True}.
+  \end{itemize}
+\end{enumerate}
 
 \subsection{Programming exercises}
 
@@ -1767,14 +2041,7 @@ writenumber
 # Coming soon.
 \end{verbatim}
 
-
-
-
-
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \part{Python}
 

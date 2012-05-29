@@ -2147,6 +2147,64 @@ Coming soon.
 
 \subsection{Review questions}
 
+\begin{enumerate}
+\item What is the result of $11 / 4$ in Python?
+  \begin{itemize}
+    \item A2: {\tt 2}
+  \end{itemize}
+\item Type $3^2$ using Python syntax:
+  \begin{itemize}
+    \item A4: {\tt 3**2}
+  \end{itemize}
+\item Type $5$ modulo $2$ using Python syntax:
+  \begin{itemize}
+    \item A2: {\tt 5 \% 2}
+  \end{itemize}
+\item What is the result of $1**4*2$ in Python?
+  \begin{itemize}
+    \item A3: {\tt 2}
+  \end{itemize}
+\item What do we need to type into an empty Python worksheet in order to evaluate sin($\pi/4$)?
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+from numpy import sin, pi
+sin(pi/4)
+\end{verbatim}
+  \end{itemize}
+\item Which of the following are correct ways to define a complex number?
+  \begin{itemize}
+    \item A1: {\tt 2 + 3j}
+    \item A2: {\tt 2 + 3J}
+  \end{itemize}
+\item Which of the following codes will draw a square with vertices [0, 0], [1, 0], [1, 1], [0, 1]?
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+from pylab import *
+x = [0.0, 1.0, 1.0, 0.0, 0.0]
+y = [0.0, 0.0, 1.0, 1.0, 0.0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+  \end{itemize}
+\item Which of the following codes will plot a cosine function in the interval $(0, \pi)$ using dashed green line with
+the step 0.01?
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+from numpy import cos, pi
+from pylab import *
+x = arange(0, pi, 0.01)
+y = cos(x)
+clf()
+plot(x, y, 'g--')
+lab.show()
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
 \subsection{Programming exercises}
 
 Coming soon.

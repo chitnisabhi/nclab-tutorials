@@ -137,7 +137,7 @@ $$
 $$
 This is done as follows:
 \begin{verbatim}
-y = Function('f')
+y = Function("f")
 A = dsolve(diff(y(x), x) + 9*y(x) - 1, y(x))
 pprint(A)
 \end{verbatim}
@@ -154,7 +154,7 @@ $$
 $$
 This is done as follows:
 \begin{verbatim}
-y = Function('f')
+y = Function("f")
 A = dsolve(diff(y(x), x) + y(x) * x, y(x))
 pprint(A)
 \end{verbatim}
@@ -179,7 +179,7 @@ $$
 $$
 This is done as follows:
 \begin{verbatim}
-y = Function('f')
+y = Function("f")
 A = dsolve((x**2 - 9)*diff(y(x), x) + y(x) * x, y(x))
 pprint(A)
 \end{verbatim}
@@ -200,7 +200,7 @@ $$
 $$
 This is done as follows:
 \begin{verbatim}
-y = Function('f')
+y = Function("f")
 A = dsolve((x**2 - 9)*diff(y(x), x) + y(x) * x - x**2, y(x))
 pprint(A)
 \end{verbatim}
@@ -229,7 +229,7 @@ $$
 $$
 This is done as follows:
 \begin{verbatim}
-y = Function('f')
+y = Function("f")
 A = dsolve(diff(y(x), x) + y(x)**2 * x**2, y(x))
 pprint(A)
 \end{verbatim}

@@ -275,7 +275,7 @@ As in the first part of the textbook, one or more answers can be correct.
 
 \begin{itemize}
 \item Learn how to use Python for advanced math operations.
-\item Plotting graphs of functions of one and two variables, as well as parametric 2D and 3D curves.
+\item Plot graphs of functions of one and two variables, as well as parametric 2D and 3D curves.
 \end{itemize}
 The Python worksheet can be used as a powerful calculator and graphing utility. 
 Let us begin with the simplest math operations.
@@ -1608,17 +1608,17 @@ def subtract(a, b = 5):
       $$  
       where $n \ge 0$ and $0 \le r < b$ are integers.
       Which of the following functions will do the job
-      and return the numbers {\tt n} and {\tt r} ?
+      and return the numbers {\tt nb} and {\tt r} ?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
-def splitnumber(a, b)
+def splitnumber(a, b):
     return a / b, a % b
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
-def splitnumber(a, b)
-    return a % b, a / b
+def splitnumber(a, b):
+    return a - a % b, a % b
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
@@ -1631,12 +1631,12 @@ def splitnumber(a, b):
 \item[A4] 
 \begin{verbatim}
 def splitnumber(a, b):
-    return a / b, a % b
+    return (a / b) * (a % b), a % b
 \end{verbatim}
 \end{enumerate}
 \item Of the following four functions, choose the best one to calculate the hypotenuse
       of a right-angled triangle when you know that most of the time one of its shorter
-      edges will be 5 cm long?
+      edges will be 5 cm long.
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -1687,7 +1687,7 @@ def hypotenuse(a = 5, b = 5):
 \item Understand dynamic type interpretation.
 \item Learn about {\em local} and {\em global} variables.
 \item Understand why global variables should be avoided.
-\item Learn about {\em variable shadowing}.
+\item Learn about {\em shadowing} of variables.
 \end{itemize}
 The reason why we use variables is the same in Karel the Robot, Python, and all other programming 
 languages -- to store useful information for later use. Also the way we work with variables is almost the 
@@ -2257,7 +2257,7 @@ result of {\tt (a and b) and (not (a and b))}
 
 \begin{itemize}
 \item Review your knowledge of conditions and learn about the {\tt elif} statement.
-\item Use the conditional loop to make a first trip into scientific computing.
+\item Use the {\tt while} loop to make your first trip to scientific computing.
 \end{itemize}
 Conditions and the conditional loop ({\tt while} loop) are very similar in Karel 
 and Python, so we just need to learn about a few minor extensions.
@@ -3402,7 +3402,7 @@ branch.
 \subsection{Objectives}
 
 \begin{itemize}
-\item
+\item Learn basic facts about the Scipy, Numpy, Pylab, Matplotlib, and Sympy libraries.
 \end{itemize}
 
 Using libraries is an indivisible part of Python programming. We have 

@@ -2214,6 +2214,58 @@ Coming soon.
 
 \subsection{Review questions}
 
+\begin{enumerate}
+\item Why do we define {\em functions} in programming? 
+  \begin{itemize}
+    \item A1: To isolate self-contained functionality and make it easily reusable.
+  \end{itemize}
+\item Which of the following are correct function definitions?
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+def subtract(a, b):
+    return a - b
+\end{verbatim}
+    \item A4:
+\begin{verbatim}
+def subtract(a, b = 5):
+    return a - b
+\end{verbatim}
+  \end{itemize}
+\item When do we have to specify argument types in Python functions?
+  \begin{itemize}
+    \item A1: Never
+  \end{itemize}
+\item The modulo operation calculates the 
+      rest after integer division. Assume positive integers $a > 0$ and $b > 0$.
+      The number $a$ can be decomposed as follows:
+      $$
+      a = nb + r
+      $$  
+      where $n \ge 0$ and $0 \le r < b$ are integers.
+      Which of the following functions will do the job
+      and return the numbers {\tt nb} and {\tt r} ?
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+def splitnumber(a, b):
+    return a - a % b, a % b
+\end{verbatim}
+  \end{itemize}
+\item Of the following four functions, choose the best one to calculate the hypotenuse
+      of a right-angled triangle when you know that most of the time one of its shorter
+      edges will be 5 cm long.
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+from numpy import sqrt
+def hypotenuse(a, b = 5):
+    return sqrt(a**2 + b**2)
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
+
 \subsection{Programming exercises}
 
 Coming soon.

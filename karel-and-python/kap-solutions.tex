@@ -139,22 +139,188 @@ Copyright 2012 FEMhub Inc. All rights reserved.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Solutions to Tutorial Games}
+\part{Karel the Robot}
 
-This Solution Manual provides solutions to all exercises in the 
-Programming mode of the tutorial "First Course in Programming with
-Karel the Robot", as well as to some other games. All programs shown 
-in the following are also available through the File Manager's Project 
-$\rightarrow$ Clone menu.
+\section{Introduction}
 
+\subsection{Review questions}
 
-\subsection{B01 - Go Command}
+\begin{enumerate}
+\item Name the university where Karel the Robot was created.
+  \begin{itemize}
+    \item A4: Stanford
+  \end{itemize}
+\item What is the programming language that you should learn after Karel?
+  \begin{itemize}
+    \item A2: Python
+  \end{itemize}
+\item What is the biggest conceptual difference between Karel and standard
+      procedural programming languages such as Python, C, C++ or Fortran?
+  \begin{itemize}
+    \item A3: Karel does not know math.
+  \end{itemize}
+\item Where does Karel live and what objects does he like to collect?
+  \begin{itemize}
+    \item A1: Karel lives in a maze and he likes to collect gems.
+  \end{itemize}
+\item What is the command that moves the robot one step forward?
+  \begin{itemize}
+    \item A3: go
+  \end{itemize}
+\item What is the command that turns the robot to the left?
+  \begin{itemize}
+    \item A4: left
+  \end{itemize}
+\item What is the command that turns the robot to the right?
+  \begin{itemize}
+    \item A2: right
+  \end{itemize}
+\item What is the command to pick up a gem from the ground?
+  \begin{itemize}
+    \item A3: get
+  \end{itemize}
+\item What is the command to drop a gem on the ground?
+  \begin{itemize}
+    \item A1: put
+  \end{itemize}
+\item What sensor helps the robot avoid crashing into walls?
+  \begin{itemize}
+    \item A2: wall
+  \end{itemize}
+\item What sensor helps the robot detect gems?
+  \begin{itemize}
+    \item A3: gem
+  \end{itemize}
+\item What sensor does the robot use to check whether he has any gems in his bag?
+  \begin{itemize}
+    \item A4: empty
+  \end{itemize}
+\item What sensor helps the robot detect his orientation?
+  \begin{itemize}
+    \item A2: north
+  \end{itemize}
+\item What sensor helps the robot detect whether he is at home?
+  \begin{itemize}
+    \item A3: home
+  \end{itemize}
+\item What is the most important skill in computer programming?
+  \begin{itemize}
+    \item A2: Designing great algorithms.
+  \end{itemize}
+\end{enumerate}
+
+\section{Launching Karel}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item What can you do with displayed Karel projects that you clone into your account?.
+  \begin{itemize}
+    \item A4: View, run, edit, save, whatever, they are all yours!
+  \end{itemize}
+\item What are the four modes of the Karel application?
+  \begin{itemize}
+    \item A1: Manual mode, Build mode, Program mode, Game mode.
+  \end{itemize}
+\item What is the difference between Levels 1 and 2?
+  \begin{itemize}
+    \item A4: In Level 2 programs can contain conditions, loops, and custom commands.
+  \end{itemize}
+\end{enumerate}
+
+\section{Section A - Operating the Robot in Manual Mode}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item How can Karel be switched to Manual mode?
+  \begin{itemize}
+    \item A3: By pressing the Manual mode button.
+  \end{itemize}
+\item Look at  the arrows and decide which direction the robot is facing!
+  \begin{itemize}
+    \item A2: South
+  \end{itemize}
+\item What is the function of the following button?
+  \begin{itemize}
+    \item A4: Turn left.
+  \end{itemize}
+\item Select one or more correct statements from the four options below!
+  \begin{itemize}
+    \item A3: The last button on the right will turn the robot to the left.
+  \end{itemize}
+\item After you press the following button, the robot will:
+  \begin{itemize}
+    \item A2: Turn right and face West.
+  \end{itemize}
+\end{enumerate}
+
+\section{Section B - Bridge to Programming}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item Where do we enter programs for Karel?
+  \begin{itemize}
+    \item A4: In input cells.
+  \end{itemize}
+\item Do we have to write one command per line?
+  \begin{itemize}
+    \item A3: No, but it makes the code easier to read.
+  \end{itemize}
+\item The robot's initial situation is as shown in the image. His bag with gems is empty. 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=4cm]{imgk/maze-0.png}
+\end{center}
+\end{figure}
+\noindent
+      Read the following program and select one or more correct statements!
+\begin{verbatim}
+go
+right
+get
+go
+right 
+go
+\end{verbatim}
+  \begin{itemize}
+    \item A2: The robot will return home with one gem in the bag.
+  \end{itemize}
+\item The robot's initial situation is the same as in the previous question. He has no gems 
+in his bag. Read the following program and select one or more correct statements from the four options below!
+\begin{verbatim}
+go
+get
+left
+go
+left
+go
+get
+right
+right
+go
+right
+go
+put
+go
+left 
+go
+\end{verbatim}
+  \begin{itemize}
+    \item A4: The robot will not return home and he will have only one gem in the bag.
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Programming exercises}
+
+\subsubsection*{B01 - Go Command}
 \begin{verbatim}
 go
 go
 \end{verbatim}
 
-\subsection{B02 - Get Command}
+\subsubsection{B02 - Get Command}
 \begin{verbatim}
 go
 get
@@ -165,9 +331,7 @@ get
 go
 \end{verbatim}
 
-
-
-\subsection{B03 - Left and Right Commands}
+\subsubsection{B03 - Left and Right Commands}
 \begin{verbatim}
 left
 go
@@ -180,9 +344,7 @@ left
 go
 \end{verbatim}
 
-
-
-\subsection{B04 - Put Command}
+\subsubsection{B04 - Put Command}
 \begin{verbatim}
 go
 get
@@ -198,14 +360,85 @@ left
 go
 \end{verbatim}
 
+\section{Intermission - Algorithms, Programs, and Bugs}
 
-\subsection{C01 - Sprint}
+\subsection{Review questions}
+
+\begin{enumerate}
+\item What is an {\em algorithm}?
+  \begin{itemize}
+    \item A4: Sequence of logical steps leading to the solution of the given task.
+  \end{itemize}
+\item What is a {\em program}?
+  \begin{itemize}
+    \item A3: Algorithm that is translated from human language to programming language.
+  \end{itemize}
+\item If the robot does something unexpected, what is the most probable reason for that?
+  \begin{itemize}
+    \item A4: Our algorithm contains a logical mistake.
+  \end{itemize}
+\item What of the following is a {\em logical} mistake?
+  \begin{itemize}
+    \item A1: Mistake in an algorithm that causes the robot to do something unexpected.
+  \end{itemize}
+\item What of the following is a {\em syntactical} mistake?
+  \begin{itemize}
+    \item A3: Mis-spelling a command.  
+  \end{itemize}
+\item What of the following will cause an error message?
+  \begin{itemize}
+    \item A3: Putting a gem while the bag is empty.
+  \end{itemize}
+\item What do we mean by {\em debugging}?
+  \begin{itemize}
+    \item A3: Looking for mistakes when our program does not work.
+  \end{itemize}
+\end{enumerate}
+
+\section{Section C - Counting Loop}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item What command should we use to make the robot repeat something a given number of times?
+  \begin{itemize}
+    \item A4: {\tt repeat}
+  \end{itemize}
+\item Why should we always write one command per line?
+  \begin{itemize}
+    \item A1: To keep the code readable.
+  \end{itemize}
+\item What is the {\em body} of a {\tt repeat} loop?
+  \begin{itemize}
+    \item A3: One or more commands that follow the {\tt repeat} command and are indented.
+  \end{itemize}
+\item Why does the body of a loop need to be indented?
+  \begin{itemize}
+    \item A1: To make clear where the body of the loop begins and where it ends.
+  \end{itemize}
+\item Which of the following programs will rotate Karel 360 degrees?
+  \begin{itemize}
+    \item A1
+    \item A2
+    \item A3
+    \item A4
+  \end{itemize}
+\item Karel needs to pick up 5 gems from the ground, walk 10 steps forward, and put the 5 gems 
+      on the ground again. Which one(s) of the following programs will do that?
+  \begin{itemize}
+    \item A2
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Programming exercises}
+
+\subsubsection{C01 - Sprint}
 \begin{verbatim}
 repeat 10
   go
 \end{verbatim}
 
-\subsection{C02 - Lucky Strike}
+\subsubsection{C02 - Lucky Strike}
 \begin{verbatim}
 left
 repeat 5
@@ -217,7 +450,7 @@ repeat 5
   go
 \end{verbatim}
 
-\subsection{C02 - Feelin' Lucky}
+\subsubsection{C03 - Feelin' Lucky}
 \begin{verbatim}
 go
 repeat 20
@@ -231,7 +464,7 @@ repeat 4
   go
 \end{verbatim}
 
-\subsection{C02 - Garage Sale}
+\subsubsection{C04 - Garage Sale}
 \begin{verbatim}
 go
 repeat 10
@@ -241,14 +474,67 @@ repeat 2
 go
 \end{verbatim}
 
-\subsection{C05 - String of Gems}
+\subsubsection{C05 - String of Gems}
 \begin{verbatim}
 repeat 10
   go
   get
 \end{verbatim}
 
-\subsection{D01 - In the Fog}
+
+\section{Intermission - Working with Input and Text Cells}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item How can a new text cell be added?
+  \begin{itemize}
+    \item A2: Through {\tt Add new text cell} in the Edit menu.
+  \end{itemize}
+\item How can we add a new input cell?
+  \begin{itemize}
+    \item A1: Click on {\tt add} under an existing input cell.
+    \item A2: Through {\tt Add new input cell} in the Edit menu.
+  \end{itemize}
+\item When should we have multiple input cells?
+  \begin{itemize}
+    \item A2: When we want to run parts of the program separately.
+  \end{itemize}
+\item What is the best way to erase all text from an input cell?
+  \begin{itemize}
+    \item A4: Click on {\tt clear} under the input cell.
+  \end{itemize}
+\item How can a cell be collapsed?
+  \begin{itemize}
+    \item A3: Click on the bracket on the right of the cell.
+  \end{itemize}
+\item How can an input cell be removed?
+  \begin{itemize}
+    \item A2: Click on {\tt remove} under the input cell.
+  \end{itemize}
+\item How can we evaluate all input cells at once?
+  \begin{itemize}
+    \item A2: Click on the blue square button.
+  \end{itemize}
+\item How should running programs be stopped?
+  \begin{itemize}
+    \item A3: Click on the blue square button.
+  \end{itemize}
+\item How can we evaluate just one selected input cell?
+  \begin{itemize}
+    \item A3: Click on {\tt run} under the input cell.
+  \end{itemize}
+\end{enumerate}
+
+
+
+\section{Section D - Conditions}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+\subsubsection{D01 - In the Fog}
 \begin{verbatim}
 repeat 10
   if gem
@@ -256,7 +542,7 @@ repeat 10
   go
 \end{verbatim}
 
-\subsection{D02 - Stony Meadows}
+\subsubsection{D02 - Stony Meadows}
 \begin{verbatim}
 repeat 14
   if gem
@@ -274,7 +560,7 @@ repeat 14
     left
 \end{verbatim}
 
-\subsection{D03 - Filling the Blanks}
+\subsubsection{D03 - Filling the Blanks}
 \begin{verbatim}
 repeat 11
   go
@@ -289,7 +575,13 @@ repeat 11
 \end{verbatim}
 
 
-\subsection{E01 - South West}
+\section{Section E - Conditional Loop}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+\subsubsection{E01 - South West}
 \begin{verbatim}
 # orient the robot to face north:
 while not north
@@ -307,7 +599,7 @@ while not home
   go
 \end{verbatim}
 
-\subsection{E02 - Hide-and-Seek}
+\subsubsection{E02 - Hide-and-Seek}
 \begin{verbatim}
 while not home
   if not wall
@@ -317,7 +609,7 @@ while not home
     get
 \end{verbatim}
 
-\subsection{E03 - Walk the Line}
+\subsubsection{E03 - Walk the Line}
 \begin{verbatim}
 # align the robot with the wall:
 while not wall
@@ -336,7 +628,14 @@ while not home
     right
 \end{verbatim}
 
-\subsection{F01 - Four Star Hotel}
+
+\section{Section F - Defining New Commands}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+\subsubsection{F01 - Four Star Hotel}
 \begin{verbatim}
 # Shortcut for three commands:
 def gogetgo
@@ -366,7 +665,7 @@ repeat 3
   go
 \end{verbatim}
 
-\subsection{F02 - U-Haul}
+\subsubsection{F02 - U-Haul}
 \begin{verbatim}
 # Define function to either
 # get or put a gem:
@@ -429,7 +728,7 @@ while not home
   go
 \end{verbatim}
 
-\subsection{F03 - Egg Hunt}
+\subsubsection{F03 - Egg Hunt}
 \begin{verbatim}
 # Get all gems in pile:
 def getall
@@ -518,7 +817,7 @@ repeat 2
   go
 \end{verbatim}
 
-\subsection{F04 - Blind Carpenter}
+\subsubsection{F04 - Blind Carpenter}
 \begin{verbatim}
 # Find nearest corner:
 def find_corner
@@ -551,8 +850,7 @@ while not home
   check_window
 \end{verbatim}
 
-
-\subsection{F05 - Pirate Ship}
+\subsubsection{F05 - Pirate Ship}
 \begin{verbatim}
 # The three commands below are 
 # elementary and you should be
@@ -615,8 +913,7 @@ while not home
   emptyaisle
 \end{verbatim}
 
-\subsection{F06 - Diamond Staircase}
-
+\subsubsection{F06 - Diamond Staircase}
 \begin{verbatim}
 def onestep
   left
@@ -629,8 +926,7 @@ while not home
   onestep
 \end{verbatim}
 
-\subsection{F07 - Plucking Flowers}
-
+\subsubsection{F07 - Plucking Flowers}
 \begin{verbatim}
 repeat 4
   repeat 7
@@ -639,8 +935,7 @@ repeat 4
   left
 \end{verbatim}
 
-\subsection{F08 - Gems for Friends}
-
+\subsubsection{F08 - Gems for Friends}
 \begin{verbatim}
 # go four steps forward:
 def foursteps
@@ -661,8 +956,7 @@ repeat 4
     left
 \end{verbatim}
 
-\subsection{F09 - Diamond Rectangle}
-
+\subsubsection{F09 - Diamond Ring}
 \begin{verbatim}
 go
 while not home
@@ -682,8 +976,7 @@ while not home
     go
 \end{verbatim}
 
-\subsection{F10 - Gem Jam}
-
+\subsubsection{F10 - Gem Jam}
 \begin{verbatim}
 while not home
   while not wall
@@ -693,8 +986,7 @@ while not home
   left
 \end{verbatim}
 
-\subsection{F11 - The Matrix}
-
+\subsubsection{F11 - The Matrix}
 \begin{verbatim}
 # Pick up 15 gems:
 def get15
@@ -776,8 +1068,7 @@ while not home
   go
 \end{verbatim}
 
-\subsection{F12 - Escape from Alcatraz}
-
+\subsubsection{F12 - Escape from Alcatraz}
 \begin{verbatim}
 # Align the robot so that wall is 
 # on its right.
@@ -819,8 +1110,7 @@ while not wall
 search_tunnels
 \end{verbatim}
 
-\subsection{F13 - Border Patrol}
-
+\subsubsection{F13 - Border Patrol}
 \begin{verbatim}
 # Align the robot so that wall is 
 # on its right.
@@ -866,8 +1156,7 @@ def border_patrol
 border_patrol
 \end{verbatim}
 
-\subsection{F14 - Ariadne's Thread}
-
+\subsubsection{F14 - Ariadne's Thread}
 \begin{verbatim}
 # Turn back:
 def back
@@ -929,7 +1218,14 @@ def ariadnes_thread
 ariadnes_thread
 \end{verbatim}
 
-\subsection{G01 - Cheese!}
+
+\section{Section G - Recursion}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+\subsubsection{G01 - Cheese Please}
 
 \begin{verbatim}
 def peel_edge
@@ -958,7 +1254,7 @@ while not home
   go
 \end{verbatim}
 
-\subsection{G02 - Speleologist}
+\subsubsection{G02 - Speleologist}
 
 \begin{verbatim}
 # Descend one step, explore the rest,
@@ -989,7 +1285,7 @@ while not home
   go
 \end{verbatim}
 
-\subsection{G03 - Homage to Lemmings}
+\subsubsection{G03 - Homage to Lemmings}
 
 \begin{verbatim}
 # Turn back.
@@ -1019,7 +1315,7 @@ def addlayer
 addlayer
 \end{verbatim}
 
-\subsection{G04 - Diamond Tree}
+\subsubsection{G04 - Diamond Tree}
 
 \begin{verbatim}
 # Turn back.
@@ -1117,7 +1413,13 @@ right
 rangle
 \end{verbatim}
 
-\subsection{H01 - Accounting}
+\section{Section H - Variables}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+\subsubsection{H01 - Accounting}
 
 \begin{verbatim}
 def accounting
@@ -1132,7 +1434,7 @@ print "I have", n, "gems in the bag."
 \end{verbatim}
 
 
-\subsection{H02 - Tape Measure}
+\subsubsection{H02 - Tape Measure}
 
 \begin{verbatim}
 def measure
@@ -1157,7 +1459,7 @@ print "Width of the room is", l
 \end{verbatim}
 
 
-\subsection{H03 - Orchard}
+\subsubsection{H03 - Apple Orchard}
 
 \begin{verbatim}
 def orchard
@@ -1195,7 +1497,7 @@ print "There are", n, "apples in the orchard."
 \end{verbatim}
 
 
-\subsection{H04 - New Carpet}
+\subsubsection{H04 - New Carpet}
 
 \begin{verbatim}
 # Count tiles in one row. Assumes
@@ -1247,7 +1549,13 @@ print "Carpet size =", area
 \end{verbatim}
 
 
-\subsection{I01 - Reading Numbers}
+\section{Section I - Logic}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+\subsubsection{I01 - Reading Numbers}
 
 \begin{verbatim}
 # Make two steps:
@@ -1342,7 +1650,7 @@ n3 = readnumber
 print "Number in the third box is", n3
 \end{verbatim}
 
-\subsection{I02 - Writing Numbers}
+\subsubsection{I02 - Writing Numbers}
 
 \begin{verbatim}
 # Count gems.
@@ -1441,23 +1749,224 @@ left
 writenumber
 \end{verbatim}
 
-\subsection{I03 - Adding Numbers}
+\subsubsection{I03 - Adding Numbers}
 
 \begin{verbatim}
 # Coming soon.
 \end{verbatim}
 
-\subsection{I04 - Eight Queens}
+\subsubsection{I04 - Eight Queens}
 
 \begin{verbatim}
 # Coming soon.
 \end{verbatim}
 
-\subsection{I05 - BubbleSort}
+\subsubsection{I05 - BubbleSort}
 
 \begin{verbatim}
 # Coming soon.
 \end{verbatim}
+
+
+
+
+
+
+
+
+
+
+\part{Python}
+
+\setcounter{section}{0}
+\section{Introduction}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item What is the difference between a compiled and a scripting programming language?
+  \begin{itemize}
+    \item A4: Scripting languages do not require a compiler.
+  \end{itemize}
+\item What languages take better advantage of the underlying hardware architecture
+      and why?
+  \begin{itemize}
+    \item A2: Compiled languages because the executable files are tailored 
+          to the concrete hardware.
+  \end{itemize}
+\item Give three examples of compiled programming languages.
+  \begin{itemize}
+    \item A3: C, C++ and Fortran.
+  \end{itemize}
+\item Give three examples of interpreted programming languages.
+  \begin{itemize}
+    \item A3: Perl, Python and Ruby. 
+  \end{itemize}
+\item Where does the name "Python" of the programming language come from?
+  \begin{itemize}
+    \item A2: TV show in Great Britain.
+  \end{itemize}
+\item When was the implementation of Python started?
+  \begin{itemize}
+    \item A1: 1989
+  \end{itemize}
+\item Name three programming styles that Python permits.
+  \begin{itemize}
+    \item A2: Structured, object-oriented, functional.
+  \end{itemize}
+\item Name three programming styles that Python permits.
+  \begin{itemize}
+    \item A2: Structured, object-oriented, functional.
+  \end{itemize}
+\item How can displayed Python projects be cloned?
+  \begin{itemize}
+    \item A2: Through File Manager's {\em Project} menu.
+  \end{itemize}
+\item How can new Python project be launched?
+  \begin{itemize}
+    \item A2: Through the {\em Programming} menu.
+    \item A3: Through File Manager's {\em Project} menu.
+  \end{itemize}
+\item How are Python programs processed in NCLab?
+  \begin{itemize}
+    \item A2: They are interpreted on a remote server.
+  \end{itemize}
+\item  What are the types of cells that a Python worksheet can contain?
+  \begin{itemize}
+    \item A2: Output cells.
+    \item Input cells.
+    \item Descriptive text cells.
+  \end{itemize}
+\item How can all input cells in a Python worksheet be evaluated at once?
+  \begin{itemize}
+    \item A4: By clicking on the blue arrow button in the menu.
+  \end{itemize}
+\item How can a single input cell be evaluated?
+  \begin{itemize}
+    \item A3: By clicking on {\tt run} under the input cell.
+  \end{itemize}
+\item What is the way to add a new input cell?
+  \begin{itemize}
+    \item A1: Click on {\tt add} under an input cell. 
+    \item A4: Click on {\em New input cell} in {\em Edit} menu.
+  \end{itemize}
+\item How can a new text cell be added?
+  \begin{itemize}
+    \item A2: Click on {\em New text cell} in the {\em Edit} menu.
+  \end{itemize}
+\item What is the way to remove an input cell or a text cell?
+  \begin{itemize}
+    \item A1: Click on {\tt remove} under the cell. 
+  \end{itemize}
+\item How can an input cell be evaluated without using the mouse?
+  \begin{itemize}
+    \item A1: Hold CTRL and press ENTER.
+    \item A2: Hold SHIFT and press ENTER.
+  \end{itemize}
+\item Which of the following are scientific libraries for Python?
+  \begin{itemize}
+    \item A2: Numpy.
+    \item A3: Scipy.
+    \item A4: Sympy.
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{Using Python as Graphing Calculator}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{More on Functions}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{More on Variables}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{Review of Logic}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{More on Conditions and the Conditional Loop}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{Strings}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{Tuples, Lists, and Dictionaries}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{The {\tt for} Loop} 
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{Handling Exceptions}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{Using Libraries}
+
+\subsection{Review questions}
+
+\subsection{Programming exercises}
+
+Coming soon.
+
+
+
 
 
 \end{document}

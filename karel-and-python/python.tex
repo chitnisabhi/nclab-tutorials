@@ -2257,15 +2257,36 @@ result of {\tt (a and b) and (not (a and b))}
 
 \begin{itemize}
 \item Review your knowledge of conditions and learn about the {\tt elif} statement.
-\item Use the {\tt while} loop to make your first trip to scientific computing.
+\item Learn to generate random numbers in Python.
+\item Learn to use the {\tt break} statement to terminate the loop.
+\item Learn to use the {\tt continue} statement to skip the rest of the loop's body.
+\item Use the {\tt while} loop to make your first trip into scientific computing.
 \end{itemize}
-Conditions and the conditional loop ({\tt while} loop) are very similar in Karel 
-and Python, so we just need to learn about a few minor extensions.
+Conditions in Python are almost the same as in Karel the Robot. There is one practical 
+new feature though -- the {\tt elif} statement that simplifies 
+cases with more than two options. If you think that "elif" sounds a lot like "else if" then 
+you are absolutely right! Typing 
 
-For {\tt if - else} conditions, Python brings the {\tt elif} statement that simplifies 
-the handling of cases with more than two options. If you think that "elif" sounds a lot like "else if" then 
-you are absolutely right! The {\tt elif} statement could be replaced with regular {\tt else: if}
-but it would mean more indentation. Let us show an example:
+\begin{verbatim}
+    if logical_expression_1:
+        do_action_1
+    elif logical_expression_2:
+        do_action_2
+    else:
+        do_action_3
+\end{verbatim}
+means exactly the same as
+
+\begin{verbatim}
+    if logical_expression_1:
+        do_action_1
+    else:
+        if logical_expression_2:
+            do_action_2
+        else:
+            do_action_3
+\end{verbatim}
+Clearly, the latter involves more indentation. Let us now show a concrete example:
 
 Imagine that we have five boxes for apples: Box A is for apples that weight under 
 5 ounzes, box B for apples that weight at least five but less than 10 ounzes, 
@@ -2326,8 +2347,144 @@ def box(weight):
 \end{verbatim}
 So we can see that the {\tt elif} command is a useful one!
 
-Next let's put the {\tt while} loop to work. Recall that this loop should be used 
-if the number of repetitions is not known a priori. We have used this loop in Karel a lot,
+\subsection{Generating random numbers in Python}
+
+Same in Karel, Python, and all other programming 
+languages -- the {\tt while} loop is a conditional loop that should be used whenever the number of repetitions 
+is not known a-priori. Let us illustrate this using random numbers -- what can be more uncertain than that?
+Random numbers between 
+zero and one can be generated in Python as follows:
+
+\begin{verbatim}
+from random import *
+a = random()
+print "This is a random number between 0 and 1:", a
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+This is a random number between 0 and 1: 0.999415184986
+\end{verbatim}
+As a simple exercise, let us generate and print random numbers between 
+zero and one as long as they are less than 0.75. We certainly do not know 
+how many repetitions will be done!
+
+\begin{verbatim}
+from random import *
+a = random()
+while a < 0.75:
+    print a
+    a = random()
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+0.383771890647
+0.068637471541
+0.0850385942776
+0.682442836322
+0.168282761575
+0.121694025066
+0.185099163429
+0.606740825997
+0.209771333501
+0.186191737708
+0.608456569449
+0.591009262698
+\end{verbatim}
+Running the program once more gives another output:
+
+\begin{verbatim}
+0.637423013735
+0.533383497321
+0.240830918488
+0.343139647492
+0.718014397238
+0.698931548709
+0.363558456088
+\end{verbatim}
+
+\subsection{The {\tt break} statement}
+
+The last example can be used to 
+introduce the {\tt break} statement. This is a useful way to exit a loop at any time,
+no questions asked.
+If multiple loops are embedded, then the {\tt break} statement only breaks the closest 
+one. We can rewrite the above program as follows: 
+
+\begin{verbatim}
+from random import *
+while True:
+    a = random()
+    if a >= 0.75: 
+        break
+    print a
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+0.486690683395
+0.232518153456
+0.38084453626
+\end{verbatim}
+Combining {\tt while True:} with the {\tt break} statement in this way is 
+quite popular among Python programmers. The technique should not be overused 
+though since it is not a perfect example of structured programming. It is 
+just a shortcut whose purpose is to save one additional {\tt if - else} statement
+inside the loop's body. Nevertheless, it is good to know that the 
+{\tt break} statement exists and one day you will find use for it.
+
+\subsection{The {\tt continue} statement}
+
+Sometimes it is practical to skip the rest of the loop's body and start over. Python 
+has the {\tt continue} command for this. To illustrate its use, let us write 
+a program that will generate triplets of random numbers between zero and one
+until all three of them are greater than 0.9. We also want to know how many 
+attempts were needed. 
+
+Clearly, after the first number is generated and it is less or equal to 0.9,
+it does not make any sense to generate the other two. That's when 
+we use the {\tt continue} command. If the first number is greater than 0.9 
+but the second one is less or equal to 0.9, it is time to use the {\tt continue} 
+command once again. Here is the code:
+
+\begin{verbatim}
+from random import *
+counter = 0
+while True:
+    counter += 1
+    a1 = random()
+    if a1 <= 0.9:
+        continue
+    a2 = random()
+    if a2 <= 0.9:
+        continue
+    a3 = random()
+    if a3 <= 0.9:
+        continue
+    print "Finally the desired triplet:" 
+    print a1, a2, a3
+    print "It took", counter, "attempts to get it!"
+    break
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+Finally the desired triplet:
+0.921077479893 0.956493808495 0.917136354634
+It took 1168 attempts to get it!
+\end{verbatim}
+Running the program once more:
+
+\begin{verbatim}
+Finally the desired triplet:
+0.922450872182 0.964451255861 0.969381004134
+It took 2757 attempts to get it!
+\end{verbatim}
+
+\subsection{A trip into scientific computing}
+
+We have used the {\tt while} loop in Karel a lot,
 but Karel usually did at most few dozens of cycles. In reality, computers can easily 
 do millions or billions of cycles or more. In computing, we call them {\em iterations}.
 Actually, our programming skills are already good enough to tackle an entry-level
@@ -2419,6 +2576,62 @@ and other methods to solve nonlinear equations and nonlinear equation systems.
 \item[A2] When we know exactly how many repetitions there are.
 \item[A3] When the loop contains a variable that decreases to zero.
 \item[A4] When the number of repetitions is not know a priori.
+\end{enumerate}
+\item What is the purpose of the {\tt break} statement?
+\begin{enumerate}
+\item[A1] Stop the program.
+\item[A2] Exit a loop. If multiple loops are embedded, exit all of them.
+\item[A3] Exit the body of an {\tt if} or {\tt else} statement.
+\item[A4] Exit a loop. If multiple loops are embedded, exit just the closest one.
+\end{enumerate}
+\item What will the output of the following program be?
+\begin{verbatim}
+a = 0
+while True:
+    a += 1
+    if a < 8:
+        continue
+    print a
+    break
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+0
+1
+2
+3
+4
+5
+6
+7
+8
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+1
+2
+3
+4
+5
+6
+7
+8
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+1
+2
+3
+4
+5
+6
+7
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+8
+\end{verbatim}
 \end{enumerate}
 \item What is the Newton's method?
 \begin{enumerate}
@@ -2800,7 +3013,7 @@ You say "Why?" And I say "I don't know".
 You say "Why?" And I say "I don't know"."
 \end{verbatim}
 \end{enumerate}
-\item What output will be produced with the following code?
+\item What output will be produced by the following code?
 \begin{verbatim}
 s1 = "Thank you"
 s2 = "very"
@@ -2820,10 +3033,9 @@ Thank youveryveryveryveryverymuch!
 \begin{verbatim}
 Thankyouveryveryveryveryverymuch!
 \end{verbatim}
-\item[A4] 
-None - an error will be thrown.
+\item[A4] None - an error will be thrown.
 \end{enumerate}
-\item What output will be produced with the following code?
+\item What output will be produced by the following code?
 \begin{verbatim}
 s1 = "intermediate"
 s2 = s1[7] + s1[4] + s1[3] + s1[6] + s1[5]
@@ -2874,10 +3086,9 @@ inter
 media
 te
 \end{verbatim}
-\item[A4] 
-None - an error will be thrown.
+\item[A4] None - an error will be thrown.
 \end{enumerate}
-\item What is the way to measure and print the length of a string {\tt str}?
+\item What is the correct way to measure and print the length of a string {\tt str}?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
@@ -2945,7 +3156,6 @@ t
 kfas
 \end{verbatim}
 \end{enumerate}
-
 \end{enumerate}
 
 \subsection{Programming exercises}
@@ -2967,7 +3177,7 @@ create a new string {\tt str2} and add into it what is needed.
 
 
 
-\section{Tuples, Lists, and Dictionaries}
+\section{Tuples, Lists, and Dictionaries}\label{sec:lists}
 
 \subsection{Objectives}
 
@@ -2978,10 +3188,9 @@ Tuples, lists, and dictionaries belong to the most important data structures in 
 language offers a wide range of functionality to work with them efficiently. They become 
 especially useful in combination with the {\tt for}
 loop that was already mentioned in Subsection \ref{subsec:forstr}, and that will be 
-discussed in more detail in Section \ref{sec:forloop}. \\
+discussed in more detail in Section \ref{sec:forloop}. 
 
-\noindent
-\underline{Tuples}\\
+\subsection{Tuples}
 
 Let us begin with tuples. Tuples are perfect for sequences 
 of data that does not change in time - such as 
@@ -2992,7 +3201,7 @@ enclose comma-separated items in round brackets:
 months = ('January', 'February', 'March', 'April', 'May', 'June',\
 'July', 'August', 'September', 'October', 'November', 'December')
 \end{verbatim}
-The items in the tuple {\tt months} are all strings, but this does not 
+The items in the tuple {\tt months} are all strings, but they do not
 have to be. A tuple can be very heterogeneous -- it can contain strings,
 numbers, other tuples, etc. Although -- in simplicity is beauty, we
 do not have to always take advantage of the extreme possibilities.
@@ -3000,8 +3209,9 @@ It is important to remember that {\bf a tuple, once defined, cannot
 be changed} in the sense that no new items can be added and existing 
 items cannot be deleted.
 
-Items in a tuple are referenced by indices pretty much as characters 
-are referenced in a string:
+Items in a tuple are referenced by indices, in the same way as individual 
+characters are referenced in a text string. Remember that indices always 
+start from zero:
 
 \begin{verbatim}
 print "First month:", months[0]
@@ -3037,9 +3247,15 @@ Output:
 \begin{verbatim}
 12
 \end{verbatim}
-\underline{Lists}\\
+
+\subsection{Lists}
 
 Lists are similar to tuples, and all indexing and slicing works in the same way. 
+Empty list {\tt L} is defined as follows:
+
+\begin{verbatim}
+L = []
+\end{verbatim}
 The biggest difference between a tuple 
 and a list is that {\bf items in a list can be changed}. So, we use
 lists for items that can change in time. Let's say that there are 
@@ -3146,22 +3362,60 @@ Output:
 \begin{verbatim}
 5
 \end{verbatim}
-\underline{Dictionaries}\\
-
-Sometimes we need to store additional information for 
-people (or general items) in a list. The classical example is 
-a phone number, but it may be age, weight, address, family 
-status and/or many other things. In this context, the 
-people's names are said to be {\em keys} and the additional 
-information are the corresponding {\em values}. The data structure
-containing the keys and the values is a {\em dictionary}. An
-example of a short phone book is:
+Another useful operation with lists is their {\em zipping}. The {\tt zip} command takes two lists as arguments 
+and creates a new list of pairs. Example:
 
 \begin{verbatim}
-phonebook = {'Andrew Parson':8806336, \
-'Emily Everett':6784346, 'Peter Power':7658344, \
-'Lewis Lame':1122345}
+A = [1, 2, 3]
+B = ['x', 'y', 'z']
+print zip(A, B)
 \end{verbatim}
+Output:
+
+\begin{verbatim}
+[(1, 'x'), (2, 'y'), (3, 'z')]
+\end{verbatim}
+If the lists are not equally-long, the superfluous items in the longer list 
+are skipped:
+
+\begin{verbatim}
+A = [1, 2, 3, 4, 5]
+B = ['x', 'y', 'z']
+print zip(A, B)
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+[(1, 'x'), (2, 'y'), (3, 'z')]
+\end{verbatim}
+
+\subsection{Dictionaries}
+
+Sometimes we need to store additional information for 
+people (or general items) in a list. Such information may be  
+their phone number, age, weight, address, family 
+status and/or many other things. In this context, the 
+people's names are said to be {\em keys} and the additional 
+information are the corresponding {\em values}. Of course this 
+is not only about people, we can have a list of cars and the 
+additional information to each car may be its price, mileage, or
+gas consumption. And we should not forget to mention a real 
+dictionary, where the keys can be English words and the values the 
+corresponding Spanish translations.
+
+The data structure containing keys and values is called a {\em dictionary}. 
+An empty dictionary {\tt D} is defined as follows:
+
+\begin{verbatim}
+D = {}
+\end{verbatim}
+An example of a phone book would be:
+
+\begin{verbatim}
+phonebook = {'Peter Parson': 8806336, 'Emily Everett': 6784346, \
+'Lewis Lame': 1122345}
+\end{verbatim}
+{\bf Note the curly brackets.} 
 Once we have created a new phone book, we may want to add a new person to it:
 
 \begin{verbatim}
@@ -3171,21 +3425,20 @@ print phonebook
 Output:
 
 \begin{verbatim}
-{'Silly Sam': 1234567, 'Emily Everett': 6784346, 
-'Andrew Parson': 8806336, 'Lewis Lame': 1122345, 
-'Peter Power': 7658344}
+{'Peter Parson': 8806336, 'Emily Everett': 6784346,
+'Lewis Lame': 1122345, 'Silly Sam': 1234567}
 \end{verbatim}
 And we can also delete a person from the phonebook:
 
 \begin{verbatim}
-del phonebook['Andrew Parson']
+del phonebook['Peter Parson']
 print phonebook
 \end{verbatim}
 Output:
 
 \begin{verbatim}
-{'Silly Sam': 1234567, 'Emily Everett': 6784346, 
-'Lewis Lame': 1122345, 'Peter Power': 7658344}
+{'Emily Everett': 6784346, 'Lewis Lame': 1122345, 
+'Silly Sam': 1234567}
 \end{verbatim}
 We can check if a key is in the dictionary:
 
@@ -3208,7 +3461,7 @@ phonebook.keys()
 Output:
 
 \begin{verbatim}
-['Silly Sam', 'Emily Everett', 'Lewis Lame', 'Peter Power']
+['Emily Everett', 'Lewis Lame', 'Silly Sam']
 \end{verbatim}
 Similarly, we can also get the list of all values:
 
@@ -3218,7 +3471,7 @@ phonebook.values()
 Output:
 
 \begin{verbatim}
-[1234567, 6784346, 1122345, 7658344]
+[6784346, 1122345, 1234567]
 \end{verbatim}
 It is important to remember that {\bf dictionaries are not ordered} in any 
 special way. While a list can be sorted, a dictionary can not. They are only 
@@ -3231,33 +3484,451 @@ len(phonebook)
 Output:
 
 \begin{verbatim}
-4
+3
 \end{verbatim}
-There are other functions you can use to work with dictionaries - too many to go 
-through right now. We'll leave the lesson at this point, and move to the long 
-expected {\tt for} loop!
+There are additional functions that one can use with dictionaries. However, 
+what we mentioned so far is enough for an introductory course and we refer 
+to the Python tutorial\footnote{http://docs.python.org/tutorial} for more 
+details.
 
 \subsection{Review questions}
 
+\begin{enumerate}
+\item What is the variable {\tt var}?
+\begin{verbatim}
+var = (1, 2, 3, 'A', 'B', 'C', "alpha", "beta", "gamma")
+\end{verbatim}
+\begin{enumerate}
+\item[A1] A list.
+\item[A2] A tuple.
+\item[A3] A dictionary.
+\item[A4] Neither of the above.
+\end{enumerate}
+\item What will the output of the following program be?
+\begin{verbatim}
+var = (1, 2, 3, 'A', 'B', 'C', "alpha", "beta", "gamma")
+print var[5]
+print var[:3]
+print var[6:8]
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+B
+(1, 2, 3)
+('alpha', 'beta', 'gamma')
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+C
+(1, 2, 3)
+('alpha', 'beta')
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+B
+(1, 2, 3)
+('C', 'alpha', 'beta', 'gamma')
+\end{verbatim}
+\item[A4]
+\begin{verbatim}
+B
+(1, 2, 3)
+('alpha', 'beta')
+\end{verbatim}
+\end{enumerate}
+\item Can new items be added to a tuple?
+\begin{enumerate}
+\item[A1] Yes but only to an empty tuple.
+\item[A2] Yes but only if all items are of the same type.
+\item[A3] No.
+\item[A4] Yes but only if not all items are of the same type.
+\end{enumerate}
+\item What is the correct way to determine the length of a tuple {\tt T}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+length(T)
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+tlength(T)
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+len(T)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+tlen(T)
+\end{verbatim}
+\end{enumerate}
+\item What is the variable {\tt var}?
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+\end{verbatim}
+\begin{enumerate}
+\item[A1] A list.
+\item[A2] A tuple.
+\item[A3] A dictionary.
+\item[A4] Neither of the above.
+\end{enumerate}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+name = names.del[1]
+print name
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+John
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+Jake
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+Josh
+\end{verbatim}
+\item[A4] Error message.
+\end{enumerate}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+names.append("Jerry")
+print names
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+['John', 'Jake', 'Josh', 'Jerry']
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+('John', 'Jake', 'Josh', 'Jerry')
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+['Jerry', 'John', 'Jake', 'Josh']
+\end{verbatim}
+\item[A4] Error message.
+\end{enumerate}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+names.pop(0)
+print names
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+['Jake', 'Josh']
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+('John', 'Jake', 'Josh')
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+John
+\end{verbatim}
+\item[A4] Error message.
+\end{enumerate}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+names.insert(1, "Jenny")
+print names
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+['Jenny', 'John', 'Jake', 'Josh']
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+['John', 'Jenny', 'Jake', 'Josh']
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+['Jenny', 'Jake', 'Josh']
+\end{verbatim}
+\item[A4] Error message.
+\end{enumerate}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+names.reverse()
+print names
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+['John', 'Josh', 'Jake']
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+['Josh', 'John', 'Jake']
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+['Josh', 'Jake', 'John']
+\end{verbatim}
+\item[A4] Error message.
+\end{enumerate}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jerry", "Jake", "Josh", "Jerry"]
+names.sort()
+print names
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+['Jake', 'Jerry', 'John', 'Josh']
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+['Jake', 'Jerry', 'Jerry', 'John', 'Josh']
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+['Josh', 'John', 'Jerry', 'Jerry', 'Jake']
+\end{verbatim}
+\item[A4] Error message.
+\end{enumerate}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jerry", "Jake", "Josh", "Jerry"]
+print names.count("Jerry")
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+1
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+2
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+(1, 4)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+(2, 5)
+\end{verbatim}
+\end{enumerate}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jerry", "Jake", "Josh", "Jerry"]
+print names.index("Jerry")
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+1
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+(1, -1)
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+(1, 4)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+(2, 5)
+\end{verbatim}
+\end{enumerate}
+\item 
+\begin{enumerate}
+\begin{verbatim}
+A = ["John", "Jerry", "Jed"]
+B = ['1', '2', '3']
+print zip(A, B)
+\end{verbatim}
+\item[A1] 
+\begin{verbatim}
+['John', 'Jerry', 'Jed', '1', '2', '3']
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+[('John', 'Jerry', 'Jed'), ('1', '2', '3')]
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+[('1', 'John'), ('2', 'Jerry'), ('3', 'Jed')]
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+[('John', '1'), ('Jerry', '2'), ('Jed', '3')]
+\end{verbatim}
+\end{enumerate}
+\item What is the correct way to define a dictionary {\tt D} containing the 
+      English words "city", "fire", "sun" and their Spanish translations "ciudad",
+      "fuego", and "sol" ?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+D = {'city': 'ciudad', 'fire': 'fuego', 'sun': 'sol'}
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+D = {'fire': 'fuego', 'sun': 'sol', 'city': 'ciudad'}
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+D = {'sun': 'sol', 'fire': 'fuego', 'city': 'ciudad'}
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+\end{enumerate}
+\item What is the correct way to add to a dictionary {\tt D} new key 
+"school" whose value is "escuela"? 
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+D.append('school': 'escuela')
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+D.append_key('school')
+D.append_value('escuela')
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+D['school'] = 'escuela'
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+D.add('school': 'escuela')
+\end{verbatim}
+\end{enumerate}
+\item A dictionary {\tt D} is defined below. What is the correct way to print the value for 
+the key "city"?
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+D.print('city')
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+print D['city']
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+print D('city')
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+print D.get_key('city')
+\end{verbatim}
+\end{enumerate}
+\item A dictionary {\tt D} is defined below. What is the correct way to ascertain whether
+or not the key "sun" is present?
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+D.contains('sun')
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+D.key('sun')
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+D.try('sun')
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+D.has_key('sun')
+\end{verbatim}
+\end{enumerate}
+\item A dictionary {\tt D} is defined below. What is the correct way to print 
+all keys?
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+print D.get_keys()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+print D.get_all()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+print get_keys(D)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+print D.keys()
+\end{verbatim}
+\end{enumerate}
+\item A dictionary {\tt D} is defined below. What is the correct way to print 
+all values?
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+print D.get_values()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+print D.get_all()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+print get_values(D)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+print D.values()
+\end{verbatim}
+\end{enumerate}
+\end{enumerate}
+
+
 \subsection{Programming exercises}
 
+Coming soon.
 
 \section{The {\tt for} Loop} \label{sec:forloop}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn to use the for loop -- the counting loop in Python.
+\item Review the {\tt range()} function and understand that it creates a Python list.
+\item Understand when the Python {\tt for} loop should be used.
+\item Learn that the {\tt for} loop can go over any list or tuple.
 \end{itemize}
-
-Before we bring up the {\tt for} loop, let us introduce the {\tt range()}
-function. This functions is used with an argument $N$ and it returns 
-a list of integer numbers $0$, $1$, $\ldots$, $N-1$. For example:
+Before we bring up the {\tt for} loop, let us revisit the {\tt range()}
+function that was first mentioned in Section \ref{sec:strings}. After 
+learning about tuples, lists and dictionaries in Section \ref{sec:lists}, the 
+reader will not be surprized when we state that this function produces 
+a Python list of integer numbers. For example:
 
 \begin{verbatim}
 range(10)
 \end{verbatim}
-Output:
+produces the following output:
 
 \begin{verbatim}
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -3272,9 +3943,15 @@ Output:
 \begin{verbatim}
 [3, 4, 5, 6, 7, 8, 9]
 \end{verbatim}
-The {\tt for} loop goes over all items of a list or tuple.
-Very often it is used with the {\tt range()} function, to go over 
-integer indices, such as in the following example:
+The {\tt for} loop in Python is a {\em counting loop} analogous to the {\tt repeat}
+loop in Karel the Robot. Thus it should be used when we know how many repetitions there 
+will be. However, in Python, the counting loop is not restricted to integer numbers 
+only. It is much more general -- {\em it goes over the items of aa arbitrary list or tuple}. 
+
+\subsection{Combined with the {\tt range()} function}
+
+When used in combination with the {\tt range()} function, it goes over integer indices. 
+Example:
 
 \begin{verbatim}
 for i in range(10):
@@ -3294,9 +3971,12 @@ Output:
 8
 9
 \end{verbatim}
-Again note indentation of the body of the loop, which has the same 
-purpose as indentation in the {\tt while} loop. Remember our tuple
-of months? We can use the {\tt for} loop to print them as well:
+As usual, note indentation of the body of the loop, which has the same 
+purpose as indentation in the {\tt while} loop. 
+
+\subsection{Combined with a general list or tuple}
+
+Remember our tuple of months? We can use the {\tt for} loop to print them as well:
 
 \begin{verbatim}
 for m in months:
@@ -3318,42 +3998,130 @@ October
 November
 December
 \end{verbatim}
-This concludes Section 13 - now you know all the loops there are!
+The {\tt for} loop works in the same way with lists -- it does not distinguish between these 
+two data types at all.
+
+\subsection{Reverting a dictionary}
+
+Remember that it is easy to extract keys and values from a dictionary using the 
+{\tt keys()} and {\tt values()} functions? In either case, the result of this operation 
+is a {\em Python list}, which in turn can be used with the {\tt for} loop. That was easy. Let us do something more interesting -- 
+perhaps convert an English-Spanish dictionary into a Spanish-English one? 
+
+\begin{verbatim}
+ES = {'city': 'ciudad', 'fire': 'fuego', 'sun': 'sol'}
+SE = {}
+for english_word in D:
+    spanish_word = D[english_word]
+    SE[spanish_word] = english_word
+    
+print "Spanish-English dictionary:"
+print SE
+\end{verbatim}
+The output of this program is:
+
+\begin{verbatim}
+Spanish-English dictionary:
+{'ciudad': 'city', 'sol': 'sun', 'fuego': 'fire'}
+\end{verbatim}
+Isn't Python beautifully simple?
 
 \subsection{Review questions}
 
+\begin{enumerate}
+\item What language element in Karel the Robot is most similar to the {\tt for} loop in Python.
+\begin{enumerate}
+\item[A1] The {\tt while} loop.
+\item[A2] The {\tt if - else} statement.
+\item[A3] The {\tt repeat} command.
+\item[A4] Recursion.
+\end{enumerate}
+\item When should the {\tt for} loop be used?
+\begin{enumerate}
+\item[A1] When we need to go through a list or tuple.
+\item[A2] When the number of repetitions is known a priori. 
+\item[A3] When the number of repetitions is not known a priori. 
+\item[A4] To replace an infinite {\tt while} loop.
+\end{enumerate}
+\item Which of the following codes will print numbers 4, 5, 6, 7, 8, 9?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+for i in range(4:9):
+    print i
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+L = range(4, 10)
+for number in L:
+    print number
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+for val in range(4:10):
+    print val
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+for i in range(4:10):
+print i
+\end{verbatim}
+\end{enumerate}
+\end{enumerate}
+
+
 \subsection{Programming exercises}
 
+Coming soon.
 
 \section{Handling Exceptions}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn to handle {\em exceptions} -- situations when the code would crash.
-\item Learn to always check the sanity of user data.
+\item Understand what exceptions are, when they can occur, and how to handle them.
+\item Learn to never underestimate the user.
+\item Understand {\tt ZeroDivisionError} and other exceptions.
+\item Learn to use the {\tt assert()} function and catch the {\tt AssertionError} exception.
 \end{itemize}
-
 Imagine that you have to write a Python function to evaluate
 $$
-f(x) = \frac{1}{9 - x^2}
+f(x) = \frac{1}{9 - x^2}.
 $$
-for any value of $x$. Of course, this is simple:
+Of course, this is simple!
 
 \begin{verbatim}
 def f(x):
     return 1. / (9 - x**2)
 \end{verbatim}
-However, when a user calls the function with $x = 3$ or $x = -3$, then
-it crashes!
+But we can almost guarantee that the first user will call the 
+function with $x = 3$ or $x = -3$. What does he see?
 
 \begin{verbatim}
 Traceback (most recent call last):
   File "<nclab>", line 1, in <module>
 ZeroDivisionError: float division by zero
 \end{verbatim}
-We need to be more careful. Here is an alternative version of the function 
-{\tt f(x)} that will not crash:
+
+
+\subsection{Never underestimate the user}
+
+We need to be very careful with users! If we are not, they always manage
+to crash our code. By always we mean {\em always}. And most often they do even
+if we are as careful as possible. Sometimes they do it for fun, to show us that we are not all that smart.
+But most of the time they do it without bad intentions -- they are just learning to use our
+program, not knowing what they are not supposed to do, stepping over boundaries that we would 
+never cross. For example, the author of the function 
+
+\begin{verbatim}
+from numpy import sqrt
+def invsqrt(x)
+    return 1./sqrt(x)
+\end{verbatim}
+would hardly call it with {\tt x = 0}, or even {\tt x = -1}. {\em The function 
+was not designed for that!} But the user did not know it.
+
+Here is an alternative version of the above function {\tt f(x)} that will not crash:
 
 \begin{verbatim}
 def f(x):
@@ -3365,14 +4133,17 @@ def f(x):
 \end{verbatim}
 However, it is useful to slow down here and look at what we have. The fact that
 the warning sentence is printed is not very useful, because it is printed as output for 
-the human user. What if there is nobody to read it? Even if division by zero 
+the human eye only. What if there is nobody to read it? Even if division by zero 
 happens, the function returns zero (a valid number) and the program continues on.
-Python (and other languages) has an elegant way to take care of exceptional situations 
-such as runtime errors!
+Not good. Fortunately,
+Python (and other languages) have an elegant way to take care of exceptional situations 
+like this. This is called {\em exceptions handling}.
 
-In the following we are going to explain the handling of {\em exceptions}. In contrast 
-to {\em predicting} what possibily could go wrong and include conditions to detect wrong 
-input, we do not check the input and let it simply happen. How does it sound? Let us 
+\subsection{{\tt ZeroDivisionError} Exception}
+
+In contrast 
+to {\em predicting} what possibily could go wrong and including conditions to detect wrong 
+input, we do not check the input and let it simply happen. Does it sound careless? Let us 
 return to the original simple form of the function {\tt f(x)}:
 
 \begin{verbatim}
@@ -3387,15 +4158,87 @@ an exceptional situation (here division by zero) is captured. For this we use th
 try:
     result = f(a)
 except ZeroDivisionError:
-    print "Division by zero detected, performing action A."
+    print "Division by zero detected, performing emergency scenario!"
 else:
-    print "Evaluation of f(a) was successful, preforming scenario B."
+    print "Evaluation of f(a) was successful, going on normally."
 \end{verbatim}
-Notice that the lines in the {\tt if} and {\tt else} branches are indented,
-The indent means that a command is still inside the {\tt if} or {\tt else}
-branch.
+Before continuing, we recommend that you type this code into the input cell,
+including the definition of the function {\tt f(x)}, and run it with values
+that crash the function {\tt f(x)} and with values that do not. If you are a newcomer to
+exceptions, this is an interesting experience. Feels a bit like letting the
+airplane crash, but save all passengers afterwards.
+ 
+\subsection{The {\tt assert()} function}
+
+The {\tt assert()} function raises an exception whenever the Boolean 
+statement used as its argument is {\tt False}. This is a powerful tool to raise our own 
+exceptions. These exceptions can be caught using the {\tt try} command 
+as all other exceptions:
+
+\begin{verbatim}
+def f(x):
+    assert(x != 3 and x != -3)
+    return 1. / (9 - x**2)
+
+try:
+    result = f(a)
+except AssertionError:
+    print "Assertion failed, performing emergency scenario!"
+else:
+    print "Assertion passed, going on normally."
+\end{verbatim}
+When called with {\tt a} equal to {\tt 1}, this code gives:
+
+\begin{verbatim}
+Assertion passed, going on normally.
+\end{verbatim}
+When called with {\tt a} equal to {\tt 3}, this is what happens:
+
+\begin{verbatim}
+Assertion failed, performing emergency scenario!
+\end{verbatim}
 
 
+\subsection{Other types of exceptions}
+
+There are many different exceptions including {\tt MemoryError} (program runs out of memory),
+{\tt NameError} (local or global name is not found), {\tt OverflowError} (result of an arithmetic 
+operation is too large to be represented), {\tt SyntaxError} (parser encounters a syntax error),
+{\tt IndentationError} (parser finds incorrect indentation), {\tt UnboundLocalError} (reference 
+is made to a local variable in a function or method, but no value has been bound to that variable),
+and others. All of them can be caught using the {\tt try} command. If you are interested in 
+learning more, visit http://docs.python.org/library/exceptions.html.
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item What do we mean by an {\em exception} in programming?
+\begin{enumerate}
+\item[A1] Sequence of commands that is executed when an {\tt if} condition is not satisfied.
+\item[A2] Exceptional situation in the code leading to a crash. 
+\item[A3] Division by zero.
+\item[A4] Sequence of commands that is executed when an {\tt if} condition is not satisfied.
+\end{enumerate}
+\item Identify valid exceptions in Python.
+\begin{enumerate}
+\item[A1] {\tt IndentationError}
+\item[A2] {\tt UnboundLocalError}
+\item[A3] {\tt TimeoutError}
+\item[A4] {\tt OverflowError}
+\end{enumerate}
+\item What does {\tt assert(x != 0)} do if {\tt x} is zero?
+\begin{enumerate}
+\item[A1] Stops the program.
+\item[A2] Raises the {\tt ZeroDivisionError} exception 
+\item[A3] Raises the {\tt AssertionError} exception.
+\item[A4] Prints a warning saying that {\tt x} is zero.
+\end{enumerate}
+\end{enumerate}
+
+
+\subsection{Programming exercises}
+
+Coming soon.
 
 \section{Python Libraries}\label{subsec:importinglib}
 
@@ -3405,7 +4248,6 @@ branch.
 \item Understand that using libraries makes solving problems much simpler.
 \item Learn basic facts about Scipy, Numpy, Pylab, Matplotlib, and Sympy.
 \end{itemize}
-
 Using libraries is an indivisible part of Python programming. We have 
 used the Numpy library to import some mathematical functions in Section 
 \ref{sec:while}. Numpy contains many algorithms, functions and methods 
@@ -3422,15 +4264,17 @@ programmers can be found at {\tt http://pypi.python. org/pypi/}.
 
 \subsection{Review questions}
 
+Coming soon.
+
 \subsection{Programming exercises}
 
+Coming soon.
 
 \section{Other recommended topics in Python} \label{sec:adv}
 
 There are many topics that we have decided to skip in the first reading 
 of the Python language. There is more to learn to almost every command,
-function aned concept described in this document. For example, it is possible
-to break out of loops using the command {\tt break}, it is possible to 
+function aned concept described in this document. For example, it is possible to 
 move to the next iteration of a loop using the command {\tt continue},
 there is a command {\tt pass} that does nothing (and still can be useful!). 
 It is possible to 

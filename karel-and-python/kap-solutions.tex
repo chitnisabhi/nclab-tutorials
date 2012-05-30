@@ -2489,12 +2489,212 @@ t
 
 Coming soon.
 
-
 \section{Tuples, Lists, and Dictionaries}
 
 \subsection{Review questions}
 
-Coming soon.
+\begin{enumerate}
+\item What is the variable {\tt var}?
+\begin{verbatim}
+var = (1, 2, 3, 'A', 'B', 'C', "alpha", "beta", "gamma")
+\end{verbatim}
+  \begin{itemize}
+    \item A2: Tuple.
+  \end{itemize}
+\item What will the output of the following program be?
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+C
+(1, 2, 3)
+('alpha', 'beta')
+\end{verbatim}
+  \end{itemize}
+\item Can new items be added to a tuple?
+  \begin{itemize}
+    \item A3: No.
+  \end{itemize}
+\item What is the correct way to determine the length of a tuple {\tt T}?
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+len(T)
+\end{verbatim}
+  \end{itemize}
+\item What is the variable {\tt var}?
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+\end{verbatim}
+  \begin{itemize}
+    \item A1: List.
+  \end{itemize}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+name = names.del[1]
+print name
+\end{verbatim}
+  \begin{itemize}
+    \item A4: Error message.
+  \end{itemize}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+names.append("Jerry")
+print names
+\end{verbatim}
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+['John', 'Jake', 'Josh', 'Jerry']
+\end{verbatim}
+  \end{itemize}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+names.pop(0)
+print names
+\end{verbatim}
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+['Jake', 'Josh']
+\end{verbatim}
+  \end{itemize}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jake", "Josh"]
+names.insert(1, "Jenny")
+print names
+\end{verbatim}
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+['John', 'Jenny', 'Jake', 'Josh']
+\end{verbatim}
+  \end{itemize}
+\item Identify the output of the following code:
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+['Josh', 'Jake', 'John']
+\end{verbatim}
+  \end{itemize}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jerry", "Jake", "Josh", "Jerry"]
+names.sort()
+print names
+\end{verbatim}
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+['Jake', 'Jerry', 'Jerry', 'John', 'Josh']
+\end{verbatim}
+  \end{itemize}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jerry", "Jake", "Josh", "Jerry"]
+print names.count("Jerry")
+\end{verbatim}
+  \begin{itemize}
+    \item A2: {\tt 2}
+  \end{itemize}
+\item Identify the output of the following code:
+\begin{verbatim}
+names = ["John", "Jerry", "Jake", "Josh", "Jerry"]
+print names.index("Jerry")
+\end{verbatim}
+  \begin{itemize}
+    \item A1: {\tt 1}
+  \end{itemize}
+\item Identify the output of the following code:
+\begin{verbatim}
+A = ["John", "Jerry", "Jed"]
+B = ['1', '2', '3']
+print zip(A, B)
+\end{verbatim}
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+[('John', '1'), ('Jerry', '2'), ('Jed', '3')]
+\end{verbatim}
+  \end{itemize}
+\item What is the correct way to define a dictionary {\tt D} containing the 
+      English words "city", "fire", "sun" and their Spanish translations "ciudad",
+      "fuego", and "sol" ?
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+D = {'city': 'ciudad', 'fire': 'fuego', 'sun': 'sol'}
+\end{verbatim}
+    \item A2:
+\begin{verbatim}
+D = {'fire': 'fuego', 'sun': 'sol', 'city': 'ciudad'}
+\end{verbatim}
+    \item A3:
+\begin{verbatim}
+D = {'sun': 'sol', 'fire': 'fuego', 'city': 'ciudad'}
+\end{verbatim}
+    \item A4:
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+  \end{itemize}
+\item What is the correct way to add to a dictionary {\tt D} new key 
+"school" whose value is "escuela"? 
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+D['school'] = 'escuela'
+\end{verbatim}
+  \end{itemize}
+\item A dictionary {\tt D} is defined below. What is the correct way to print the value for 
+the key "city"?
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+print D['city']
+\end{verbatim}
+  \end{itemize}
+\item A dictionary {\tt D} is defined below. What is the correct way to ascertain whether
+or not the key "sun" is present?
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+D.has_key('sun')
+\end{verbatim}
+  \end{itemize}
+\item A dictionary {\tt D} is defined below. What is the correct way to print 
+all keys?
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+print D.keys()
+\end{verbatim}
+  \end{itemize}
+\item A dictionary {\tt D} is defined below. What is the correct way to print 
+all values?
+\begin{verbatim}
+D = {'fire': 'fuego', 'city': 'ciudad', 'sun': 'sol'}
+\end{verbatim}
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+print D.values()
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
 
 \subsection{Programming exercises}
 
@@ -2505,7 +2705,31 @@ Coming soon.
 
 \subsection{Review questions}
 
-Coming soon.
+\begin{enumerate}
+\item What language element in Karel the Robot is most similar to the {\tt for} loop in Python.
+  \begin{itemize}
+    \item A3: The {\tt repeat} command.
+  \end{itemize}
+\item When should the {\tt for} loop be used?
+  \begin{itemize}
+    \item A1: When we need to go through a list or tuple.
+    \item A2: When the number of repetitions is known a priori. 
+  \end{itemize}
+\item Which of the following codes will print numbers 4, 5, 6, 7, 8, 9?
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+L = range(4, 10)
+for number in L:
+    print number
+\end{verbatim}
+    \item A3:
+\begin{verbatim}
+for val in range(4:10):
+    print val
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
 
 \subsection{Programming exercises}
 
@@ -2516,7 +2740,32 @@ Coming soon.
 
 \subsection{Review questions}
 
-Coming soon.
+\begin{enumerate}
+\item What do we mean by an {\em exception} in programming?
+  \begin{itemize}
+    \item A2: Exceptional situation in the code leading to an error. 
+  \end{itemize}
+\item Identify valid exceptions in Python.
+  \begin{itemize}
+    \item A1: {\tt IndentationError}
+    \item A2: {\tt UnboundLocalError}
+    \item A4: {\tt OverflowError}
+  \end{itemize}
+\item What does {\tt assert(x != 0)} do if {\tt x} is zero?
+  \begin{itemize}
+    \item A3: Raises the {\tt AssertionError} exception.
+  \end{itemize}
+\item What is the correct way to raise a {\tt ValueError} exception 
+      when {\tt x} is greater than five?
+  \begin{itemize}
+    \item A2:
+\begin{verbatim}
+if x > 5:
+    raise ValueError("x should be <= five!")
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
 
 \subsection{Programming exercises}
 

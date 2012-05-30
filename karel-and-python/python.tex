@@ -3182,7 +3182,9 @@ create a new string {\tt str2} and add into it what is needed.
 \subsection{Objectives}
 
 \begin{itemize}
-\item Learn to work with Python's fundamental data structures -- tuples, lists, and dictionaries. 
+\item Learn to store data in tuples, lists, and dictionaries.
+\item Learn basic differences between these data types, and their best use cases.
+\item Learn useful built-in functions to operate with these data structures efficiently. 
 \end{itemize}
 Tuples, lists, and dictionaries belong to the most important data structures in Python, and the 
 language offers a wide range of functionality to work with them efficiently. They become 
@@ -3499,9 +3501,9 @@ details.
 var = (1, 2, 3, 'A', 'B', 'C', "alpha", "beta", "gamma")
 \end{verbatim}
 \begin{enumerate}
-\item[A1] A list.
-\item[A2] A tuple.
-\item[A3] A dictionary.
+\item[A1] List.
+\item[A2] Tuple.
+\item[A3] Dictionary.
 \item[A4] Neither of the above.
 \end{enumerate}
 \item What will the output of the following program be?
@@ -3568,9 +3570,9 @@ tlen(T)
 names = ["John", "Jake", "Josh"]
 \end{verbatim}
 \begin{enumerate}
-\item[A1] A list.
-\item[A2] A tuple.
-\item[A3] A dictionary.
+\item[A1] List.
+\item[A2] Tuple.
+\item[A3] Dictionary.
 \item[A4] Neither of the above.
 \end{enumerate}
 \item Identify the output of the following code:
@@ -3745,13 +3747,13 @@ print names.index("Jerry")
 (2, 5)
 \end{verbatim}
 \end{enumerate}
-\item 
-\begin{enumerate}
+\item Identify the output of the following code:
 \begin{verbatim}
 A = ["John", "Jerry", "Jed"]
 B = ['1', '2', '3']
 print zip(A, B)
 \end{verbatim}
+\begin{enumerate}
 \item[A1] 
 \begin{verbatim}
 ['John', 'Jerry', 'Jed', '1', '2', '3']
@@ -3905,7 +3907,6 @@ print D.values()
 \end{enumerate}
 \end{enumerate}
 
-
 \subsection{Programming exercises}
 
 Coming soon.
@@ -4029,7 +4030,7 @@ Isn't Python beautifully simple?
 \subsection{Review questions}
 
 \begin{enumerate}
-\item What language element in Karel the Robot is most similar to the {\tt for} loop in Python.
+\item What language element in Karel the Robot is most similar to the {\tt for} loop in Python?
 \begin{enumerate}
 \item[A1] The {\tt while} loop.
 \item[A2] The {\tt if - else} statement.
@@ -4069,20 +4070,20 @@ print i
 \end{enumerate}
 \end{enumerate}
 
-
 \subsection{Programming exercises}
 
 Coming soon.
 
-\section{Handling Exceptions}
+\section{Catching and Raising Exceptions}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item Understand what exceptions are, when they can occur, and how to handle them.
+\item Understand what exceptions are, when they can occur, and how to catch them.
 \item Learn to never underestimate the user.
 \item Understand {\tt ZeroDivisionError} and other exceptions.
 \item Learn to use the {\tt assert()} function and catch the {\tt AssertionError} exception.
+\item Learn how to raise exceptions using the {\tt raise} statement.
 \end{itemize}
 Imagine that you have to write a Python function to evaluate
 $$
@@ -4103,7 +4104,6 @@ Traceback (most recent call last):
 ZeroDivisionError: float division by zero
 \end{verbatim}
 
-
 \subsection{Never underestimate the user}
 
 We need to be very careful with users! If we are not, they always manage
@@ -4115,7 +4115,7 @@ never cross. For example, the author of the function
 
 \begin{verbatim}
 from numpy import sqrt
-def invsqrt(x)
+def invsqrt(x):
     return 1./sqrt(x)
 \end{verbatim}
 would hardly call it with {\tt x = 0}, or even {\tt x = -1}. {\em The function 
@@ -4198,6 +4198,33 @@ When called with {\tt a} equal to {\tt 3}, this is what happens:
 Assertion failed, performing emergency scenario!
 \end{verbatim}
 
+\subsection{The {\tt raise} statement}
+
+Python does not have a command to stop program execution. Sometimes this is
+need though, such as when the user calls our function with incorrect data. 
+To illustrate this, let us return to the function {\tt invsqrt()} that was 
+defined above, but now we include a {\tt raise} command in it:
+ 
+\begin{verbatim}
+from numpy import sqrt
+def invsqrt(x):
+    if x <= 0:
+      raise ValueError("Please do not call the invsqrt() \
+function when x is zero or negative.")
+    return 1./sqrt(x)
+\end{verbatim}
+Now the output of {\tt invsqrt(-5)} is:
+
+\begin{verbatim}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<nclab>", line 4, in invsqrt
+ValueError: Please do not call the invsqrt() 
+function when x is zero or negative.
+\end{verbatim}
+Incorrect values of user input are the most common cause for raising 
+exceptions on our own. Any other exception type can be raised as well
+if needed.
 
 \subsection{Other types of exceptions}
 
@@ -4215,8 +4242,8 @@ learning more, visit http://docs.python.org/library/exceptions.html.
 \item What do we mean by an {\em exception} in programming?
 \begin{enumerate}
 \item[A1] Sequence of commands that is executed when an {\tt if} condition is not satisfied.
-\item[A2] Exceptional situation in the code leading to a crash. 
-\item[A3] Division by zero.
+\item[A2] Exceptional situation in the code leading to an error. 
+\item[A3] Only division by zero.
 \item[A4] Sequence of commands that is executed when an {\tt if} condition is not satisfied.
 \end{enumerate}
 \item Identify valid exceptions in Python.
@@ -4233,6 +4260,30 @@ learning more, visit http://docs.python.org/library/exceptions.html.
 \item[A3] Raises the {\tt AssertionError} exception.
 \item[A4] Prints a warning saying that {\tt x} is zero.
 \end{enumerate}
+\item What is the correct way to raise a {\tt ValueError} exception 
+      when {\tt x} is greater than five?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+if x > 5:
+    ValueError("x should be <= five!")
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+if x > 5:
+    raise ValueError("x should be <= five!")
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+if x > 5:
+    exception ValueError("x should be <= five!")
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+if x > 5:
+    raise_exception ValueError("x should be <= five!")
+\end{verbatim}
+\end{enumerate}
 \end{enumerate}
 
 
@@ -4240,27 +4291,19 @@ learning more, visit http://docs.python.org/library/exceptions.html.
 
 Coming soon.
 
-\section{Python Libraries}\label{subsec:importinglib}
+\section{Object-Oriented Programming}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item Understand that using libraries makes solving problems much simpler.
-\item Learn basic facts about Scipy, Numpy, Pylab, Matplotlib, and Sympy.
+\item Understand the philosophy and benefits of object-oriented (OO) programming.
+\item Learn basic concepts -- classes and methods.
+\item Learn about base objects and inheritance.
+\item Understand how OO programming in Python relates to OO programming in other languages.
 \end{itemize}
-Using libraries is an indivisible part of Python programming. We have 
-used the Numpy library to import some mathematical functions in Section 
-\ref{sec:while}. Numpy contains many algorithms, functions and methods 
-related mainly to numerical computations. To learn more about Numpy,
-visit its home page {\tt http://numpy.scipy.org/}. Scipy is a more 
-general library for scientific computing with Python {\tt http://www.scipy.org}.
-The Pylab library can be used for numerical computations and plotting,
-for more details visit {\tt http://www.scipy.org/PyLab}. An excellent 
-library for symbolic mathematics, covering high-school algebra, calculus,
-matrix algebra and differential equations, is Sympy ({\tt http://www.sympy.org}).
-Documentation on the Python Standard Library can be found at 
-{\tt http://docs.python.org/library/}. A long list of packages for Python 
-programmers can be found at {\tt http://pypi.python. org/pypi/}.
+
+\noindent
+Coming soon.
 
 \subsection{Review questions}
 
@@ -4270,18 +4313,65 @@ Coming soon.
 
 Coming soon.
 
+
+\section{Python Libraries}\label{subsec:importinglib}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item Understand that using libraries enhances your problem solving skills.
+\item Learn basic facts about Scipy, Numpy, Pylab, Matplotlib, and Sympy.
+\item Learn where you can obtain more information about these libraries.
+\item Learn that Internet is the best resource for Python programmers.
+\end{itemize}
+Using libraries is an indivisible part of Python programming. As opposed to 
+commercial products, Python libraries are for free. We have used some of them
+already, such as Pylab and Matplotlib in Section \ref{sec:calc} and Numpy 
+in Section \ref{sec:while}. 
+
+\subsection{Python Standard Library}
+
+The Python Standard Library has vast functionality related to 
+built-in functions, built-in types, built-in constants, built-in
+exceptions, string services, numerics and mathematics modules, files,
+data compression, cryptographic services, and many others. Just introducing 
+a table of contents would take several pages. To learn more,
+to visit {\tt http://docs.python.org/library/}. Also, a long list of packages for Python 
+programmers can be found at {\tt http://pypi.python. org/pypi/}.
+
+\subsection{Pylab and Matplotlib}
+
+The Pylab library can be used for numerical computation but as there are other 
+and stronger tools, we recommend to use it mainly for plotting, along with the 
+Matplotlib library. For more details on Pylab visit {\tt http://www.scipy.org/PyLab}.
+This page is not dedicated to plotting though, more on concrete plotting functionality 
+can be found on the home page of Matplotlib, {\tt http://matplotlib.sourceforge.net}.
+This page contains an exhaustive overview of plotting-related functionality, many
+examples, gallery, and documentation.
+
+\subsection{Scipy and Numpy}
+
+Scipy is a general library for scientific computing with 
+Python. Numpy can be viewed as its "heart" containing numerical 
+algorithms and methods. These methods comprise interpolation, 
+integration, optimization, Fourier transforms, signal processing, 
+linear algebra, eigenvalue problems, graph theory routines,
+statistics, ordinary and partial differential equations,
+image processing, etc. To learn more, visit 
+{\tt http://www.scipy.org} and {\tt http://numpy.scipy.org/}. 
+
+\subsection{Sympy}
+
+Sympy is an excellent library for symbolic mathematics covering high-school 
+algebra, calculus, matrix algebra and differential equations. To learn more
+about Sympy, visit its home page ({\tt http://www.sympy.org}).
+
 \section{Other recommended topics in Python} \label{sec:adv}
 
 There are many topics that we have decided to skip in the first reading 
 of the Python language. There is more to learn to almost every command,
-function aned concept described in this document. For example, it is possible to 
-move to the next iteration of a loop using the command {\tt continue},
-there is a command {\tt pass} that does nothing (and still can be useful!). 
-It is possible to 
-raise user-defined exceptions using the command {\tt raise} and there
-is a whole large chapter on handling exceptions. And we have not 
-mentioned classes, methods and object-oriented programming. For these
-topics and more, we refer to the original Python tutorial at 
+function aned concept described in this document. If you like Python,
+your nexr resource should be the original Python tutorial at 
 {\tt http://docs.python.org}. 
 
 

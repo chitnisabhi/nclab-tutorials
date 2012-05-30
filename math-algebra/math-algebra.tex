@@ -229,20 +229,14 @@ Result:
 
 Partial fractions decomposition is done via the {\tt apart} command:
 \begin{verbatim}
-A = apart((1 + x) / (1 - x + x**2), x)
+A = apart((1 + x) / (x**2 - 6*x + 5), x)
 pprint(A)
 \end{verbatim}
 Result:
 \begin{verbatim}
-              ___                 ___  
-          I*\/ 3              I*\/ 3   
-    1/2 + -------       1/2 - -------  
-             2                   2     
-- ----------------- - -----------------
-                ___                 ___
-            I*\/ 3              I*\/ 3 
-  1/2 - x - -------   1/2 - x + -------
-               2                   2   
+      1           3    
+- --------- + ---------
+  2*(x - 1)   2*(x - 5)
 \end{verbatim}
 
 \section{Calculating roots of polynomials}

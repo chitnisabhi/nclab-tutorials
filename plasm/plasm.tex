@@ -38,32 +38,40 @@
 %\hspace{-4mm}
 %\hspace{-20mm}
 \includegraphics[width=10cm]{img/plasm-frontpage.png}
-\vspace{21mm}
+\vspace{16mm}
 \end{center}
 \end{figure}
 
-\centerline{\Huge \bf Solid Modeling with PLaSM}
+\begin{center}
+{\Huge \bf Solid Modeling with PLaSM}
 
+\vbox{}
+\vspace{1cm}
 \vfill
-
-\centerline{\Large www.nclab.com}
-
+{\large
+{\bf Pavel Solin}, University of Nevada, Reno, USA\\
+{\bf Alberto Paoluzzi}, University of Rome, Italy
+}
+\end{center}
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\vbox{}
+\vfill
+\begin{center}
+{\large
+This textbook is part of the online course 
+{\em Intro to CAD} 
+({\tt http://introtocad.net}) and its use is allowed with current subscription only.
+Distribution or sharing is not allowed. \\
+}
+\vfill
 
-\section*{}
-\small
-\input ../common/aboutnclab.tex
+Copyright 2012 FEMhub Inc. All rights reserved.
+\end{center}
 
-%\subsection*{Acknowledgement}
-%This publication was created with the help of numerous freely 
-%available web resources and tutorials related to Python, Scipy,
-%Numpy, Pylab, Matplotlib, Sympy and other projects.
-
-\normalsize
 
 \newpage
 %{\ }
@@ -81,17 +89,32 @@
 \newpage
 
 \pagestyle{plain}
+\setcounter{page}{1}
 
-\section{What is PLaSM?}
+\section{Getting Started}
 
-PLaSM ({\em Programming Language for Solid Modeling}) is a powerful design language
-that enables geometrical modeling of 3D objects via simple commands.
+\subsection{Objectives}
+\begin{itemize}
+\item Learn basic facts about Solid Modeling and PLaSM.
+\item Understand how NCLab works and how to clone Displayed Projects.
+\item As a "Hello, World!" example, create a unit cube.
+\item Learn to rotate, move and zoom objects displayed via WebGL.
+\end{itemize}
+
+\subsection{Solid Modeling and PLaSM}
+
+Solid modeling (SM) is a consistent set of principles for mathematical and computer 
+modeling of three-dimensional solids. Solid modeling is distinguished from related 
+areas such as geometric modeling or computer graphics by its emphasis on {\em physical fidelity}.
+SM is the basis of computer-aided design (CAD), engineering simulations, and other fields.
+
+PLaSM ({\em Programming Language for Solid Modeling}) is an elegant design 
+language backed up with powerful computational geometry algorithms. It 
+enables geometrical modeling of 3D objects via simple commands.
 The language was developed by the CAD Group at the Universities of Roma 
 "La Sapienza" and "Roma Tre" in Italy. It is based on FL, an advanced 
-language for functional programming developed by the Functional 
-Programming Group at the IBM Research Center.\\
+language for functional programming developed at the IBM Research Center.
 
-\noindent
 PLaSM makes it possible to define a wide range of simple 3D objects, transform 
 them, create intersections and unions via simple logical operations, and much 
 more. This tutorial will guide you in small steps and using many examples
@@ -100,38 +123,25 @@ through PLaSM's usage. Soon, you will be able to create advanced
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{img/temple0.png}
+\includegraphics[width=0.7\textwidth]{img/temple0.png}
 \end{center}
 \vspace{-2mm}
 \caption{Sample PLaSM model (available as Displayed Project "Temple").}
+\vspace{-1cm}
 \label{fig:pisa}
 \end{figure}
+\newpage
+\subsection{How does NCLab work}
 
-\section{Getting Started}
-
-In order to make the most of this tutorial, we invite the 
-reader to create an account in NCLab and log in. More instructions 
-on how to do this are given at the beginning of the introductory 
-tutorial "Meet Your New Graphing Calculator" that is available in 
-PDF via a link on NCLab home page {\tt http://nclab.com}. \\
-
-\noindent
-{\bf NOTE}: Your web browser needs to support WebGL, otherwise you will not be able to 
-work with PLaSM properly. For this reason, a WebGL test button is provided 
-on NCLab's front page.\\
-
-\noindent
-After logging in, you will see a desktop with several icons on it,
-as shown in Fig. \ref{fig:desktop}. 
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=\textwidth]{img/desktop.png}
-\end{center}
-%\vspace{-2mm}
-\caption{NCLab desktop after login.}
-\label{fig:desktop}
-\end{figure}
+NCLab is the underlying cloud computing platform for this course. Operation with the 
+PLaSM library is done through a simple scripting language -- this means that 
+objects are created, transformed, and manipulated via {\em simple commands} rather 
+than by clicking into menus of some graphical application. The scripts are 
+sent to a remote cloud server, evaluated there, and the results are sent back
+to your web browser. Some tasks such as Boolean operations with 3D objects 
+required heavy computing, which however is not done on your device. Your device
+uses its graphical card for real-time rendering of the 3D objects. For this, 
+your device and browser have to support WebGL.
 
 \subsection{Cloning Displayed Projects}
 
@@ -147,28 +157,25 @@ by clicking on it in the File Manager. You can change the project in any way
 you like, the changes will not affect the original Displayed Project. 
 
 
-\subsection{Launching a new Python project}
+\subsection{Launching a new PLaSM project}
 
 Alternatively, you can type the examples by yourself, which is the 
 recommended way. Our introductory examples have no more than 
-a couple of lines anyway. So, in the File Manager's {\em Project} menu 
-choose {\em New} $\rightarrow$ {\em Python}. This will launch an 
-empty Python project, as shown in Fig. \ref{fig:python}.
-
+a couple of lines anyway. New PLaSM project can be launched via the CAD
+icon on Desktop, as shown in Fig. \ref{fig:python}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/python.png}
 \end{center}
 %\vspace{-2mm}
-\caption{Launching a new Python project.}
+\caption{Launching a new PLaSM project.}
 \label{fig:python}
 \end{figure}
 \noindent
 
-
-
-\subsection{Creating a unit cube}
+\subsection{Hello, World!}
 
 In the input cell, enter the code:
 
@@ -177,51 +184,162 @@ from pyplasm import *
 cube = CUBE(1)
 lab.view(cube, [0.4, 0.9, 0.6])
 \end{verbatim}
-Then click on the link "run" under the input cell. This will send a request 
-to the cloud. The answer should come back instantly, and a new WebGL widget 
-with a unit cube in it should appear, as shown in Fig. \ref{fig:cube}. 
-Congratulations, you just created your first PLaSM model!
+Here {\tt cube} is the name of the object for further use -- the name can
+be arbitrary as long as it does not match any PLaSM command. To minimize
+chances of conflict, all PLaSM commands are CAPITALIZED.
+The three numbers enclosed in brackets define a color in the 
+OpenGL format. The numbers stand for red (R), green (G) and blue (B) 
+components of the resulting color, and each value is between 0 (darkest) and 
+1 (lightest). For example, [0, 0, 0] means black, [1, 1, 1] means white. 
+More about colors will be said in Subsection \ref{subsec:colors}.
+
+After you are done typing the script, click on the blue arrow button in the menu 
+or on the link "run" under the input cell. The former option will run all cells 
+in the project, the latter only the one selected cell. This will send the script to the cloud. 
+The answer should come back instantly, and a new WebGL widget with a unit cube 
+in it should appear, as shown in Fig. \ref{fig:cube}. 
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/cube.png}
 \end{center}
 %\vspace{-2mm}
-\caption{WebGL widget containing a unit cube.}
+\caption{WebGL widget showing the unit cube that we created.}
 \label{fig:cube}
 \end{figure}
+\noindent
+Congratulations, you just 
+created your first Solid Model!\\
 
-\subsection{Mouse controls}
-
-Now click into the window and move the mouse while holding the left
-button pressed. The cube should freely rotate in 3D. Holding the middle
-button (or the mouse wheel) pressed and moving the mouse will move the 
-object to any direction. Zooming can be done with the mouse wheel or
-with the right-hand mouse button.
-
-\section{Creating Simple Objects}
-
+\noindent
 Before we move on, let us briefly explain the above code.
 The first line, 
 
 \begin{verbatim}
 from pyplasm import *
 \end{verbatim}
-imports the PLaSM library into NCLab. This is similar to how we imported
-the Sympy, Numpy and Scipy libraries in the introductory course "Meet Your 
-New Graphing Calculator". The second line,
+imports the PLaSM library. The second line,
 
 \begin{verbatim}
 cube = CUBE(1)
 \end{verbatim}
-defines a 3D unit cube. The last line,
+defines a unit cube. Cube of a general edge length $e$ would be 
+created by replacing the number 1 with $e$. The last line,
 
 \begin{verbatim}
 lab.view(cube, [0.4, 0.9, 0.6])
 \end{verbatim}
-tells NCLab to display the cube in a WebGL widget. 
+displays the cube in a WebGL widget, using a greenish color. 
 
-\subsection{Using colors}
+\subsection{Mouse controls}
+
+Now click into the window and move the mouse while holding the left
+button pressed. The cube will rotate freely. Holding the middle
+button (or the mouse wheel) pressed and moving the mouse will move the 
+object in any direction. Zooming in and out is done via the mouse wheel 
+or by holding the right-hand mouse button down and moving the mouse.
+The latter option allows for finer zooming.
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item How does Solid Modeling differ from Computer Graphics?
+\begin{itemize}
+\item[A1] There is no difference, they are the same thing. 
+\item[A2] Computer graphics represents 3D onjects more precisely.
+\item[A3] Solid Modeling represents 3D objects more precisely.
+\item[A4] Solid Modeling is used primarily for 3D animations.
+\end{itemize}
+\item What does the abbreviation CAD stand for?
+\begin{itemize}
+\item[A1] Computer-assisted drawing.
+\item[A2] Computer-allowed discrepancy.
+\item[A3] Computer-aided design.
+\item[A4] Computer-amplified drumming.
+\end{itemize}
+\item What is PLaSM?
+\begin{itemize}
+\item[A1] Make of plasma 3D TVs.
+\item[A2] Computer graphics library.
+\item[A3] Design language backed up with powerful computational geometry algorithms.
+\item[A4] Browser plugin for rendering 3D objects.
+\end{itemize}
+\item In NCLab, scripts are evaluated:
+\begin{itemize}
+\item[A1] On the user's computer.
+\item[A2] In the user's web browser.
+\item[A3] On a remote server.
+\item[A4] Using the user's graphic card.
+\end{itemize}
+\item What can you do with a Displayed Project that you clone?
+\begin{itemize}
+\item[A1] View but not run or edit or save.
+\item[A2] View and run but not edit or save.
+\item[A3] View, edit and run but not save.
+\item[A4] View, edit, run, save. 
+\end{itemize}
+\item How can a PLaSM script be evaluated?
+\begin{itemize}
+\item[A1] By hitting ENTER.
+\item[A2] By clicking on "run" under the input cell.
+\item[A3] By clicking on the blue arrow button.
+\item[A4] By clicking on Run in the File menu.
+\end{itemize}
+\item How is PLaSM imported into the project?
+\begin{itemize}
+\item[A1] {\tt from plasm import *}
+\item[A2] {\tt from pyplasm import *}
+\item[A3] {\tt from plasm import pyplasm}
+\item[A4] {\tt from pyplasm import plasm}
+\end{itemize}
+\item What of the following is the correct way to create a cube of edge length $e$?
+\begin{itemize}
+\item[A1] {\tt c = C(e)}
+\item[A2] {\tt c = CB(e)}
+\item[A3] {\tt c = CUBE(e)}
+\item[A4] {\tt c = HEXAHEDRON(e)}
+\end{itemize}
+\item What color is represented by the triplet [1, 1, 1]?
+\begin{itemize}
+\item[A1] Black
+\item[A2] White
+\item[A3] Green
+\item[A4] Magenta.
+\end{itemize}
+\item How can we visualize an object {\tt c} using the color [0.9, 0.9, 0.9]?
+\begin{itemize}
+\item[A1] {\tt lab.visualize(c, [0.9, 0.9, 0.9])}
+\item[A2] {\tt lab.show(c, [0.9, 0.9, 0.9])}
+\item[A3] {\tt lab.view(c, [0.9, 0.9, 0.9])}
+\item[A4] {\tt lab.display(c, [0.9, 0.9, 0.9])}
+\end{itemize}
+\end{enumerate}
+
+\subsection{Exercises}
+
+\begin{enumerate}
+\item Write a PLaSM script to render a unit cube in pure red color.
+\item Write a PLaSM script to render a cube of edge length 2 in pure green color.
+\item Write a PLaSM script to render a cube of edge length 3 in pure blue color.
+\end{enumerate}
+
+\newpage
+\section{Creating Simple Objects}
+
+\subsection{Objectives}
+\begin{itemize}
+\item Understand RGB colors.
+\item Create squares, rectangles, cubes and bricks.
+\item Create triangles, tetrahedra and prisms.
+\item Create convex hulls and get a primer on scripting.
+\item Create a cone via convex hull.
+\item Create cylinders and tubes.
+\item Create spheres and toruses.
+\item 
+\end{itemize}
+
+
+\subsection{Using RGB colors} \label{subsec:colors}
 
 The triplet {\tt [0.4, 0.9, 0.6]} in the {\tt lab.view()} command
 represents the RGB components defining a color. The numbers need to be between 
@@ -299,8 +417,6 @@ lab.view(tet, [0.4, 0.9, 0.6])
 \end{verbatim}
 The output of the above code is shown in Fig. \ref{fig:simplex-1}.
 
-\newpage
-
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.82\textwidth]{img/simplex-1.png}
@@ -328,7 +444,7 @@ The output of the above code is shown in Fig. \ref{fig:simplex-2}.
 \vspace{-2mm}
 \caption{SIMPLEX(2) generates a unit 2D simplex (triangle).}
 \label{fig:simplex-2}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
 
 \subsection{General tetrahedron and triangle}
@@ -576,17 +692,23 @@ is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 %\vspace{-1cm}
 \end{figure}
 
+\subsection{Review questions}
+
+\begin{enumerate}
+\item Coming soon.
+\begin{itemize}
+\item[A1]
+\item[A2]
+\item[A3]
+\item[A4]
+\end{itemize}
+\end{enumerate}
 
 
 \subsection{Exercises}
 
-Solutions to all exercises from this section are available in the Solution Manual, and 
-they can be also cloned in NCLab through Project $\rightarrow$ Clone in the 
-File Manager's menu.\\
-
-\noindent
-\underline{\em Exercise A1: Blue brick}
-
+\begin{enumerate}
+\item
 Create a $3 \times 4 \times 5$ brick in a light
 blue color, as shown in Fig. \ref{fig:a1}.
 
@@ -597,16 +719,12 @@ blue color, as shown in Fig. \ref{fig:a1}.
 \includegraphics[width=0.5\textwidth]{img/a1-blue-brick.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise A1.}
+\caption{Illustration for Exercise 1.}
 \label{fig:a1}
 %\vspace{-1cm}
 \end{figure}
 
-
-\noindent
-\underline{\em Exercise A2: Red rectangle}
-
-Create a $3 \times 1$ rectangle in a light
+\item Create a $3 \times 1$ rectangle in a light
 red color, as shown in Fig. \ref{fig:a2}.
 
 \begin{figure}[!ht]
@@ -614,15 +732,12 @@ red color, as shown in Fig. \ref{fig:a2}.
 \includegraphics[width=0.5\textwidth]{img/a2-red-rectangle.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise A2.}
+\caption{Illustration for Exercise 2.}
 \label{fig:a2}
-\vspace{-1cm}
+\vspace{-0cm}
 \end{figure}
-\newpage
-\noindent
-\underline{\em Exercise A3: Orange Octahedron}
 
-Create an orange octahedron with vertices 
+\item Create an orange octahedron with vertices 
 $[0, -1, 1]$, $[0, 1, 1]$, $[0, -1, -1]$, $[0, 1, -1]$, $[2, 0, 0]$, and $[-2, 0, 0]$, 
 as shown in Fig. \ref{fig:a3}.
 
@@ -631,33 +746,26 @@ as shown in Fig. \ref{fig:a3}.
 \includegraphics[width=0.5\textwidth]{img/a3-orange-octahedron.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise A3.}
+\caption{Illustration for Exercise 3.}
 \label{fig:a3}
 %\vspace{-1cm}
 \end{figure}
 
-\noindent
-\underline{\em Exercise A4: Pink Pentagon}
-
-Create a pink pentagon with equally-long edges that is inscribed 
+\item Create a pink pentagon with equally-long edges that is inscribed 
 in a circle with diameter $R$, as shown in Fig. \ref{fig:a4}.
-
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/a4-pink-pentagon.png}
 \end{center}
 \vspace{-4mm}
-\caption{Illustration for Exercise A4.}
+\caption{Illustration for Exercise 4.}
 \label{fig:a4}
-\vspace{-4mm}
+%\vspace{-4mm}
 \end{figure}
+\newpage
 
-\noindent
-\underline{\em Exercise A5: Cyan Cone}
-
-Create a cyan cone of radius $R$ and height $H$ that stands on its tip
+\item Create a cyan cone of radius $R$ and height $H$ that stands on its tip
 (the tip is at $[0, 0, 0]$ and the axis of the cone coincides with the 
 $z$-axis), as shown in Fig. \ref{fig:a5}.
 
@@ -666,16 +774,12 @@ $z$-axis), as shown in Fig. \ref{fig:a5}.
 \includegraphics[width=0.5\textwidth]{img/a5-cyan-cone.png}
 \end{center}
 \vspace{-4mm}
-\caption{Illustration for Exercise A5.}
+\caption{Illustration for Exercise 5.}
 \label{fig:a5}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
 
-\newpage
-\noindent
-\underline{\em Exercise A6: Carmine Cylinder}
-
-Create a carmine cylinder of radius $R$ and height $H$, 
+\item  Create a carmine cylinder of radius $R$ and height $H$, 
 as shown in Fig. \ref{fig:a6}.
 
 \begin{figure}[!ht]
@@ -683,70 +787,67 @@ as shown in Fig. \ref{fig:a6}.
 \includegraphics[width=0.5\textwidth]{img/a6-carmine-cylinder.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise A6.}
+\caption{Illustration for Exercise 6.}
 \label{fig:a6}
 %\vspace{-1cm}
 \end{figure}
+\newpage
 
-\noindent
-\underline{\em Exercise A7: Topaz Tube}
-
-Create a topaz tube of inner radius $R_{in}$, outer radius $R_{out}$
+\item Create a topaz tube of inner radius $R_{in}$, outer radius $R_{out}$
 and height $H$, as shown in Fig. \ref{fig:a7}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/a7-topaz-tube.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise A7.}
+\caption{Illustration for Exercise 7.}
 \label{fig:a7}
 %\vspace{-1cm}
 \end{figure}
 
-
-\noindent
-\underline{\em Exercise A8: Sand Sphere}
-
-Create a sand sphere of radius $R$ and center at the origin $[0, 0, 0]$. 
+\item Create a sand sphere of radius $R$ and center at the origin $[0, 0, 0]$. 
 Use $[64, 64]$ for the piecewise-linear approximation of the curved surface, 
 as shown in Fig. \ref{fig:a8}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/a8-sand-sphere.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise A8.}
+\caption{Illustration for Exercise 8.}
 \label{fig:a8}
 %\vspace{-1cm}
 \end{figure}
+\newpage
 
-\noindent
-\underline{\em Exercise A9: Turquoise Torus}
-
-Create a turquoise torus of inner radius $R_{in}$ and outer radius $R_{out}$, whose center 
+\item Create a turquoise torus of inner radius $R_{in}$ and outer radius $R_{out}$, whose center 
 is at the origin $[0, 0, 0]$. Use $[64, 64]$ for the piecewise-linear approximation 
 of the curved surface, as shown in Fig. \ref{fig:a9}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/a9-turquoise-torus.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise A9.}
+\caption{Illustration for Exercise 9.}
 \label{fig:a9}
 \vspace{-1cm}
 \end{figure}
 
-\section{Transformations}
+\end{enumerate}
 
+\section{Basic Transformations}
+
+\subsection{Objectives}
+\begin{itemize}
+\item Learn to scale, translate, and rotate objects.
+\item Learn to create compound objects.
+\item Learn to put objects on top of each other.
+\end{itemize}
 So far we have learned how to create a variety of simple 2D and 3D objects. 
 The next step is to learn how to scale, rotate, and translate them. PLaSM
 provides simple commands for that. Let us begin with scaling.
@@ -764,8 +865,6 @@ cyl = CYLINDER([1.0, 0.3])(128)
 \end{verbatim}
 We know from before that the axis of this cylinder coincides with the $z$-axis 
 and that the center of its bottom face is at $[0, 0, 0]$. The output is shown in Fig. \ref{fig:scale-0}.
-
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -793,8 +892,6 @@ coincide with the $z$-axis, and the center of its bottom face will
 still be at the origin $[0, 0, 0]$. Only its limits in the $x$-direction will change 
 from $[-1.0, 1.0]$ to $[-2.0, 2.0]$.
 The output is shown in Fig. \ref{fig:scale-1}.
-
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1115,15 +1212,22 @@ The output is shown in Fig. \ref{fig:rot-2}.
 %\vspace{-1cm}
 \end{figure}
 
+\subsection{Review questions}
+
+\begin{enumerate}
+\item Coming soon.
+\begin{itemize}
+\item[A1]
+\item[A2]
+\item[A3]
+\item[A4]
+\end{itemize}
+\end{enumerate}
+
 \subsection{Exercises}
 
-Solutions to all exercises from this section are available in the Solution Manual, and 
-they can be also cloned in NCLab through Project $\rightarrow$ Clone in the 
-File Manager's menu.\\
-
-\noindent
-\underline{\em Exercise B1: Kitchen table}
-
+\begin{enumerate}
+\item 
 Create a kitchen table shown in Fig. \ref{fig:b1}. All of its measures should be variable.
 
 \newpage
@@ -1133,14 +1237,12 @@ Create a kitchen table shown in Fig. \ref{fig:b1}. All of its measures should be
 \includegraphics[width=0.5\textwidth]{img/kitchentable.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise B1.}
+\caption{Illustration for Exercise 1.}
 \label{fig:b1}
 %\vspace{-1cm}
 \end{figure}
-\noindent
-\underline{\em Exercise B2: Tea table}
 
-Create a round tea table with round legs as
+\item Create a round tea table with round legs as
 shown in Fig. \ref{fig:b2}. All of its measures should be variable.
 
 \begin{figure}[!ht]
@@ -1148,14 +1250,12 @@ shown in Fig. \ref{fig:b2}. All of its measures should be variable.
 \includegraphics[width=0.5\textwidth]{img/teatable.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise B2.}
+\caption{Illustration for Exercise 2.}
 \label{fig:b2}
 %\vspace{-1cm}
 \end{figure}
-\noindent
-\underline{\em Exercise B3: Padlock}
 
-Use a scaled cylinder and a torus to create a padlock that is shown in Fig. \ref{fig:b3}. 
+\item Use a scaled cylinder and a torus to create a padlock that is shown in Fig. \ref{fig:b3}. 
 All of its measures should be variable.
 
 \newpage
@@ -1165,14 +1265,12 @@ All of its measures should be variable.
 \includegraphics[width=0.4\textwidth]{img/padlock.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise B3.}
+\caption{Illustration for Exercise 3.}
 \label{fig:b3}
 %\vspace{-1cm}
 \end{figure}
-\noindent
-\underline{\em Exercise B4: Bottle}
 
-Use two cylinders and a sphere to create a bottle shown in Fig. \ref{fig:b4}. 
+\item Use two cylinders and a sphere to create a bottle shown in Fig. \ref{fig:b4}. 
 All of its measures should be variable.
 
 \begin{figure}[!ht]
@@ -1180,18 +1278,25 @@ All of its measures should be variable.
 \includegraphics[width=0.8\textwidth]{img/bottle.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise B4.}
+\caption{Illustration for Exercise 4.}
 \label{fig:b4}
 %\vspace{-1cm}
 \end{figure}
 
+\end{enumerate}
 
+\section{Boolean Operations}
 
-
-
-
-\section{Boolean Operations with Objects}
-
+\subsection{Objectives}
+\begin{itemize}
+\item Understand why we do Boolean operations in Solid Modeling.
+\item Learn how to subtract objects.
+\item Learn to convert surfaces into solids.
+\item Create union and intersection of objects.
+\item Create exclusive or (xor) of objects.
+\item Understand that Boolean operation should be done between as simple
+      objects as possible. 
+\end{itemize}
 Boolean operations with objects are where things start to be real 
 fun. Let us begin with the 
 command DIFF that makes it possible to drill holes, cut and slice objects, 
@@ -1549,71 +1654,79 @@ The output is shown in Fig.\ref{fig:vault2}.
 \end{figure}
 \noindent
 
+\subsection{Review questions}
+
+\begin{enumerate}
+\item Coming soon.
+\begin{itemize}
+\item[A1]
+\item[A2]
+\item[A3]
+\item[A4]
+\end{itemize}
+\end{enumerate}
+
 \subsection{Exercises}
 
-Solutions to all exercises from this section are available in the Solution Manual, and 
-they can be also cloned in NCLab through Project $\rightarrow$ Clone in the 
-File Manager's menu.\\
+\begin{enumerate}
 
-\noindent
-\underline{\em Exercise C1: NCLab icon}
-
-Use a $4 \times 4 \times 4$ brick to create the object shown in 
+\item Use a $4 \times 4 \times 4$ brick to create the object shown in 
 Fig. \ref{fig:nclabicon}.
 
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/nclabicon.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for exercise C1.}
+\caption{Illustration for Exercise 1.}
 \label{fig:nclabicon}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 
-\noindent
-\underline{\em Exercise C2: Drilled Cube}
-
-Create a cube and drill three holes into it from the three axial 
+\item Create a cube and drill three holes into it from the three axial 
 directions, as illustrated in Fig. \ref{fig:drilledcube}.
 The size of the cube as well as the diameter of the holes should 
 be variable. 
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.4\textwidth]{img/drilledcube.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for exercise C2.}
+\caption{Illustration for Exercise 2.}
 \label{fig:drilledcube}
 %\vspace{-1cm}
 \end{figure}
-\noindent
-\noindent
-\underline{\em Exercise C3: Ashtray}
 
-Build a simple model of an ashtray using cylindrical shapes, 
+\item Build a simple model of an ashtray using cylindrical shapes, 
 as illustrated in Fig. \ref{fig:ashtray}.
 All measures should be variable.
-
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/ashtray.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for Exercise C3.}
+\caption{Illustration for Exercise 3.}
 \label{fig:ashtray}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 
+\end{enumerate}
 
 \section{Creating Simple Objects (Continued)} \label{sec:cso2}
+
+\subsection{Objectives}
+\begin{itemize}
+\item Create objects that are based on maps: circles, cones, truncated cones.
+\item Create a dodecahedron and icosahedron.
+\item Learn to extrude 2D objects to 3D.
+\end{itemize}
 
 \subsection{Circle the correct way -- command CIRCLE}
 
@@ -1671,7 +1784,6 @@ In order to convert it to a volumetric object, we use the command
 {\tt JOIN} that was already introduced in Paragraph \ref{par:join}.
 A screenshot of the result is shown in Fig. \ref{fig:tcone}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1783,10 +1895,36 @@ H = 1.0
 lab.view(EXTRUDE(N, s, H), color)
 \end{verbatim}
 
+\subsection{Review questions}
 
+\begin{enumerate}
+\item Coming soon.
+\begin{itemize}
+\item[A1]
+\item[A2]
+\item[A3]
+\item[A4]
+\end{itemize}
+\end{enumerate}
+
+\subsection{Exercises}
+
+Coming soon.
 
 \section{Curves and Curved Surfaces}\label{sec:curves}
 
+\subsection{Objectives}
+\begin{itemize}
+\item Understand the concept of a reference geometry and reference map.
+\item Learn to map curves and surfaces.
+\item Understand Bezier curves.
+\item Create coons patches and rotational surfaces.
+\item Learn how to solidify a surface.
+\item Create rules surfaces such as spirals, curved cylinders.
+\item Learn to span 3D curves.
+\item Create cylindrical and conical surfaces.
+\item Learn to use profile product surfaces and cubic Hermite surfaces.
+\end{itemize}
 PLaSM provides extensive support for curved surfaces -- they can be defined
 using Bezier curves, coons patches, ruled surfaces, rotational surfaces, 
 cylindrical and conical surfaces, Hermite surfaces, 
@@ -1916,7 +2054,6 @@ lab.view(out, color)
 \end{verbatim}
 The output is displayed in Fig. \ref{fig:curves-1}.
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1948,8 +2085,6 @@ out = MAP(BEZIER(S2)([c1, c2]))(ref_square)
 lab.view(out, color)
 \end{verbatim}
 The output is displayed in Fig. \ref{fig:curves-2}.
-
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2437,8 +2572,6 @@ lab.view(out, color)
 \end{verbatim}
 The output is displayed in Fig. \ref{fig:curves-14}.
 
-\newpage
-
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/curves-14.png}
@@ -2449,10 +2582,29 @@ The output is displayed in Fig. \ref{fig:curves-14}.
 %\vspace{-1cm}
 \end{figure}
 
+\subsection{Review questions}
 
+\begin{enumerate}
+\item Coming soon.
+\begin{itemize}
+\item[A1]
+\item[A2]
+\item[A3]
+\item[A4]
+\end{itemize}
+\end{enumerate}
+
+\subsection{Exercises}
+
+Coming soon.
 
 \section{The Power of Scripting}
 
+\subsection{Objectives}
+\begin{itemize}
+\item Create advanced geometries whose definition involves variable parameters.
+\item Improve your scripting skills.
+\end{itemize}
 The fact that PLaSM functions are accessible from withing the Python 
 interpreter gives us significant additional power to automate things 
 -- we can create objects that would be too complicated to create manually. 
@@ -2507,34 +2659,25 @@ The corresponding output is shown in Fig. \ref{fig:random_cubes}.
 
 \subsection{Exercises}
 
-Solutions to all exercises from this section are available in the Solution Manual, and 
-they can also be cloned in NCLab through Project $\rightarrow$ Clone in the 
-File Manager's menu.\\
+\begin{enumerate}
 
-\noindent
-\underline{\em Exercise D1: Aztec Pyramid}
-
-Build an Aztec Pyramid as illustrated in Fig. \ref{fig:aztec}. The length 
+\item Build an Aztec Pyramid as illustrated in Fig. \ref{fig:aztec}. The length 
 on the base edge, length of the top edge, height, and the number of layers
 should be user-defined parameters. 
 
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{img/aztec.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for exercise D1.}
+\caption{Illustration for Exercise 1.}
 \label{fig:aztec}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 
-\noindent
-\underline{\em Exercise D2: Tower of Hanoi}
-
-Build a model of the Tower of Hanoi game as illustrated in Fig. \ref{fig:hanoi}. 
+\item Build a model of the Tower of Hanoi game as illustrated in Fig. \ref{fig:hanoi}. 
 The radius of the largest and smallest disc, and the height of the tower 
 should be user-defined parameters. 
 
@@ -2545,18 +2688,13 @@ should be user-defined parameters.
 \includegraphics[width=0.7\textwidth]{img/hanoi.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for exercise D2.}
+\caption{Illustration for Exercise 2.}
 \label{fig:hanoi}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 
-
-
-\noindent
-\underline{\em Exercise D3: Horse Corral}
-
-Build a corral for horses with variable radius $r$ and variable number 
+\item Build a corral for horses with variable radius $r$ and variable number 
 of equally-long sides $N$. Also the vertical poles should have general user-defined 
 dimensions $W \times W \times H$. Illustrative images of how the corral should look like 
 are shown in Fig. \ref{fig:corral2}.
@@ -2566,16 +2704,13 @@ are shown in Fig. \ref{fig:corral2}.
 \includegraphics[width=0.7\textwidth]{img/tam-3.png}
 \end{center}
 \vspace{-2mm}
-\caption{Illustration for exercise D3.}
+\caption{Illustration for Exercise 3.}
 \label{fig:corral2}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 
-\noindent
-\underline{\em Exercise D4: Wagon Wheel}
-
-Build a spoked wagon wheel similar to the one in Fig. \ref{fig:wheel-1}. All radiuses 
+\item Build a spoked wagon wheel similar to the one in Fig. \ref{fig:wheel-1}. All radiuses 
 and thicknesses should be user-defined, as well as the number of spokes.
 
 \newpage
@@ -2585,16 +2720,33 @@ and thicknesses should be user-defined, as well as the number of spokes.
 \includegraphics[width=0.5\textwidth]{img/wagonwheel-1.png}
 \end{center}
 \vspace{-8mm}
-\caption{Illustration for exercise D4.}
+\caption{Illustration for Exercise 4.}
 \label{fig:wheel-1}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 
+\end{enumerate}
 
+\subsection{Review questions}
 
-\section{Advanced Examples}
+\begin{enumerate}
+\item Coming soon.
+\begin{itemize}
+\item[A1]
+\item[A2]
+\item[A3]
+\item[A4]
+\end{itemize}
+\end{enumerate}
 
+\section{Advanced Techniques}
+
+\subsection{Objectives}
+\begin{itemize}
+\item Use complex designs to learn advanced scripting concepts.
+\item Learn to decompose complicated designs into smaller steps.
+\end{itemize}
 All examples in this section can be cloned in NCLab through 
 Project $\rightarrow$ Clone in the File Manager's menu.
 
@@ -2606,10 +2758,10 @@ of a globe by translating anf rotating several thin toruses.
 \newpage
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/globe-code.png}
+\includegraphics[width=0.8\textwidth]{img/globe-code.png}
 \end{center}
 \vspace{-2mm}
-\caption{The code as seen in NCLab.}
+\caption{Code snapshot.}
 \label{fig:globe-code}
 %\vspace{-1cm}
 \end{figure}
@@ -2675,6 +2827,9 @@ pts = pts_base + pts_mid + pts_top
 t = CONVEXHULL(pts)
 \end{verbatim}
 }
+\noindent
+The result is displayed in Fig. \ref{fig:gear-1}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2704,6 +2859,9 @@ for i in range(N):
     gear.append(R([1, 2])(i * angle)(t))
 \end{verbatim}
 }
+\noindent
+The result is displayed in Fig. \ref{fig:gear-2}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2714,8 +2872,6 @@ for i in range(N):
 \label{fig:gear-2}
 %\vspace{-1cm}
 \end{figure}
-\newpage
-
 \noindent
 In the next step we create the base of the gear:
 
@@ -2728,7 +2884,10 @@ dz = (base_h - y0)/2.
 base = T([3])([-dz])(base)
 \end{verbatim}
 }
+\noindent
+The result is displayed in Fig. \ref{fig:gear-3}.
 \newpage
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/gear-3.png}
@@ -2756,6 +2915,8 @@ cone = T([3])([40])(cone)
 tc = DIFF([tc1, cone])
 \end{verbatim}
 }
+\noindent
+The result is displayed in Figs. \ref{fig:gear-4} and \ref{fig:gear-5}.
 
 \newpage
 
@@ -2769,7 +2930,8 @@ tc = DIFF([tc1, cone])
 %\vspace{-1cm}
 \end{figure}
 \noindent
-This is the result:
+\noindent
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/gear-5.png}
@@ -2780,8 +2942,6 @@ This is the result:
 \vspace{-1cm}
 \end{figure}
 \newpage
-
-
 
 \noindent
 Then we attach the trimming and the teeth to the base:
@@ -2795,6 +2955,8 @@ base = TOP([base, tc])
 gear.append(base) 
 \end{verbatim}
 }
+\noindent
+The result is displayed in Fig. \ref{fig:gear-7}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2825,6 +2987,8 @@ b2 = R([1, 2])(PI/3)(b1)
 b3 = R([1, 2])(PI/3)(b2)
 \end{verbatim}
 }
+\noindent
+The result is displayed in Fig. \ref{fig:gear-8}.
 
 \newpage
 \begin{figure}[!ht]
@@ -2837,7 +3001,7 @@ b3 = R([1, 2])(PI/3)(b2)
 %\vspace{-1cm}
 \end{figure}
 \noindent
-Next we subtract the three bricks from the tube.
+Next we subtract the three bricks from the tube. 
 
 {\small
 \begin{verbatim}
@@ -2847,6 +3011,8 @@ inner = DIFF([inner, b2])
 inner = DIFF([inner, b3])
 \end{verbatim}
 }
+\noindent
+The result is displayed in Fig. \ref{fig:gear-9}.
 \newpage
 \begin{figure}[!ht]
 \begin{center}
@@ -2859,7 +3025,7 @@ inner = DIFF([inner, b3])
 \end{figure}
 
 \noindent
-Then we subtract the original cone from the inner part.
+Then we subtract the original cone from the inner part. 
 {\small
 \begin{verbatim}
 # Subtract cone from inner part:
@@ -2869,7 +3035,8 @@ inner = DIFF([inner, cone])
 inner = T([3])([-dz])(inner)
 \end{verbatim}
 }
-
+\noindent
+The result is displayed in Figs. \ref{fig:gear-10} and \ref{fig:gear-12}.
 \newpage
 
 \begin{figure}[!ht]
@@ -2882,7 +3049,7 @@ inner = T([3])([-dz])(inner)
 %\vspace{-1cm}
 \end{figure}
 \noindent
-The result is displayed below:
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/gear-12.png}
@@ -2894,7 +3061,7 @@ The result is displayed below:
 \end{figure}
 
 \noindent
-Finally we attach the inner part to the gear, and we display it:
+Finally we attach the inner part to the gear:
 
 {\small
 \begin{verbatim}
@@ -2906,7 +3073,7 @@ lab.view(STRUCT(gear), color)
 \end{verbatim}
 }
 \noindent
-The corresponding output is shown in Fig. \ref{fig:gear-last}.
+The final geometry is shown in Fig. \ref{fig:gear-last}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2991,5 +3158,21 @@ The output is shown in Fig. \ref{fig:pisa-0}.
 \label{fig:pisa-0}
 %\vspace{-1cm}
 \end{figure}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item Coming soon.
+\begin{itemize}
+\item[A1]
+\item[A2]
+\item[A3]
+\item[A4]
+\end{itemize}
+\end{enumerate}
+
+\subsection{Exercises}
+
+Coming soon.
 
 \end{document}

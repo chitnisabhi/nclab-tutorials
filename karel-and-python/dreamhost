@@ -1,3 +1,4 @@
+cp kap.pdf karel-preview.pdf
 scp karel-preview.pdf femhub@femhub.com:~/femhub.com/public/docs/
 scp kap*.pdf femhub@femhub.com:~/femhub.com/public/docs/
 

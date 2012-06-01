@@ -1,3 +1,2 @@
-cp doc.pdf 2ndorderlinear.pdf
 scp 2ndorderlinear.pdf femhub@femhub.com:~/femhub.com/public/docs/
 

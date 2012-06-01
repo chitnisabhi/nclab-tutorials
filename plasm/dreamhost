@@ -1,11 +1,5 @@
-cp plasm.pdf plasm_en.pdf
-cp plasm.pdf plasm_de.pdf
-cp plasm.pdf plasm_cz.pdf
-cp plasm.pdf plasm_pl.pdf
-cp plasm.pdf plasm_sp.pdf
+cp plasm.pdf plasm-preview.pdf
 
 scp plasm*.pdf femhub@femhub.com:~/femhub.com/public/docs/
-
-rm plasm_*.pdf
 
 

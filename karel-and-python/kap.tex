@@ -1,7 +1,15 @@
 \documentclass[article,A4,12pt]{llncs}
+
+% Conditional compilation.
+% NOTE: If you set fullversionfalse, just compile ONCE so that TOC stays unchanged.
+\newif\iffullversion
+\fullversiontrue
+%\fullversionfalse
+
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{color}
 \usepackage{amsfonts}
 \usepackage{mathrsfs, bm}
 
@@ -116,6 +124,10 @@
 \vbox{}
 \vspace{1cm}
 \begin{center}
+\iffullversion
+\else
+\centerline{\huge \color{red}{PREVIEW}}
+\fi
 \vfill
 {\large
 {\bf Pavel Solin}, University of Nevada, Reno\\

@@ -2962,7 +2962,8 @@ Output:
 \begin{verbatim}
 cycle
 \end{verbatim}
-
+This is enough for now but hold on -- many wonderful operations one 
+can do with text strings will be shown in Subsection \ref{subsec:textstrclass}
 
 \subsection{Review questions}
 
@@ -4296,14 +4297,292 @@ Coming soon.
 \subsection{Objectives}
 
 \begin{itemize}
-\item Understand the philosophy and benefits of object-oriented (OO) programming.
-\item Learn basic concepts -- classes and methods.
+\item Understand the philosophy of object-oriented (OO) programming.
+\item Understand the difference between OO programming and procedural programming.
+\item Learn basic concepts -- classes, objects, and methods.
 \item Learn about base objects and inheritance.
 \item Understand how OO programming in Python relates to OO programming in other languages.
 \end{itemize}
+Since the very beginning of this course, 
+we have put emphasis on designing simple algorithms
+and writing clean, transparent code. This included:
+\begin{itemize}
+\item Creating custom functions for functionality that can be reused.
+\item Keeping all variables as local as possible
+\end{itemize}
+Object-oriented programming brings these good programming practices to
+perfection -- it will help us to write crystal clear, elegant, and very safe code.
+
+\subsection{From procedural to object-oriented programming}
+
+The programming style we have been using so far is called {\em procedural programming}.
+The name, of course, comes from using {\em procedures} to solve various tasks that 
+lead to the solution of the problem at hand. Procedure is an activity, a sequence of operations 
+done with data that is supplied to it. {\em Procedures do not own the data they 
+operate with.} 
+
+This, however, means that the data must be stored somewhere else. In other
+words, the range of validity of the data extends beyong the borders of the 
+function where it is processed. 
+Can you see an analogy to using local and global variables? It is great
+to keep variables local, and in the same way it would be great to make
+data local to procedures that operate with them. But wait, this is called {\em 
+object-oriented programming!}
+
+\subsection{Example: Moving to a different city}
+
+Here is a real-life example demonstrating the difference between 
+procedural and object-oriented programming. Imagine that you are moving 
+and all your things need to be packed, boxed, loaded on a truck, hauled 
+a 1000 miles, unloaded, and brought into your new home. 
+
+{\em Procedural approach:} You (the procedure) 
+go rent a truck -- this is the data that the procedure does not own. Then
+you pack everything, load it on the truck, drive to the other city, 
+unload your things, and carry them into your new home. Then you go 
+return the truck (that's the return statement at the end of the procedure).
+
+{\em Object-oriented approach:} You call a moving company "C". This means 
+that you just created an object C. Note that the 
+object C owns the truck. They will come to your home and use methods 
+C.pack(), C.box(), C.load(), C.haul(), C.unload(), C.carry() and perhaps 
+even C.unpack() to solve your problem. Notice the following benefits of the object-oriented approach: 
+\begin{itemize}
+\item You as a NASA scientist (for example) do not need to be able to drive 
+      a truck (keeping functionality separate). 
+\item You do not need to know how exactly the company does the moving
+      (information is more local).
+\item While the company is moving your things, you can concentrate on solving problems 
+      in your area of expertise (greater efficiency).
+\item You do not risk crashing the truck (safer programming).
+\end{itemize}
+This is a funny example but actually it works quite well!
+
+\subsection{Classes, objects, and methods}
+
+Let us stay with the moving example for a little while longer. The moving 
+company that you heard of, or that you saw in an advertisement, 
+is a {\em class} or in other words a {\em concept}. But a concept 
+will not get your things moved. For that you need a concrete team of 
+movers. This is called an {\em object} or an {\em instance of the class}. 
+When the movers appear at your doorstep, that's when an instance 
+of the class is created. When they pack, box, and load your things, the object is using 
+its {\em methods}. Notice that the methods of an object can operate 
+on data that does not belong to the object (your things) as well as on date 
+that belong to the object (that would be the truck). 
+
+\subsection{An example from geometry}
+
+Let's see how all this is implemented in Python. We will say goodbye to the movers
+and play with some simple geometrical concepts instead. Let us create a class
+{\tt circle}. The data owned by this class will be:
+
+\begin{itemize}
+\item Radius {\tt R}, 
+\item center with coordinates {\tt Cx, Cy}, 
+\item two arrays {\tt ptsx}, {\tt ptsy} to plot the circle. 
+\end{itemize}
+The methods of this class will include 
+\begin{itemize}
+\item {\tt \_\_init\_\_(self, r, cx, cy)} ... constructor,
+\item {\tt area(self)} ... calculate and return its area,
+\item {\tt perimeter(self)} ... calculate and return its perimeter,
+\item {\tt draw(self)} ... draw itself.
+\end{itemize}
+Do not be disturbed by the funny way the constructor {\tt \_\_init\_\_} 
+is defined in Python, or by the argument {\tt self} that is present 
+in all methods. Constructors are 
+used in all object-oriented languages to pass external parameters 
+(such as the radius and the center point in this case) into newly 
+created instances. In other words, each instance of the class {\tt circle} 
+can have a different radius and a different center.
+
+The keyword {\tt self} must be included in each method of the class 
+and this is a reference to the concrete instance through which all
+data and methods of the instance are accessed. Such a reference is present 
+in other object-oriented languages as well - including C++ where the programmer
+does not have to mention it explicitly like in Python. It is added there by 
+the compiler.
+
+\subsection{Defining and using class {\tt circle}}
+
+This is how the class {\tt circle} is defined in Python:
+
+\begin{verbatim}
+from numpy import pi, cos, sin
+from pylab import clf, plot, legend, axis
+
+class circle:
+    # Constructor:
+    def __init__(self, r, cx, cy, n = 100):
+        self.R = r
+        self.Cx = cx
+        self.Cy = cy
+        self.n = n
+        # And now the points for plotting:
+        self.ptsx = []
+        self.ptsy = []
+        da = 2*pi/self.n
+        for i in range(n):
+            self.ptsx.append(self.Cx + self.R * cos(i * da))
+            self.ptsy.append(self.Cy + self.R * sin(i * da))
+        self.ptsx.append(self.Cx + self.R)
+        self.ptsy.append(self.Cy + 0)
+            
+    # Method to return circle area:
+    def area(self):
+        return pi * self.R**2
+      
+    # Method to return perimeter:
+    def perimeter(self):
+        return 2 * pi * self.R
+      
+    # Method to plot the circle:
+    def draw(self, label):
+        axis('equal')
+        plot(self.ptsx, self.ptsy, label = label)
+        legend()
+\end{verbatim}
+Notice how the variables owned by the class are always used with the 
+prefix {\tt self}.
+
+With such a nice class in hand, it is easy to draw various circles,
+and calculate their areas and perimeters:
+\begin{verbatim}        
+# Create an instance:
+C1 = circle(1, 0, 0)
+print "Are and perimeter of circle 1:", \
+C1.area(), C1.perimeter()
+C2 = circle(0.5, 1, 0)
+print "Are and perimeter of circle 2:", \
+C2.area(), C2.perimeter()
+C3 = circle(0.25, 1.5, 0)
+print "Are and perimeter of circle 3:", \
+C3.area(), C3.perimeter()
+clf()
+C1.draw("First circle")
+C2.draw("Second circle")
+C3.draw("Third circle")
+lab.show()
+\end{verbatim}
+The output (text and Fig. \ref{fig:3circ}) is shown below.
+
+\begin{verbatim}
+Area and perimeter of circle 1: 3.14159265359 6.28318530718
+Area and perimeter of circle 2: 0.785398163397 3.14159265359
+Area and perimeter of circle 3: 0.196349540849 1.57079632679
+\end{verbatim}
+
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{imgp/3circ.png}
+\end{center}
+\vspace{-2mm}
+\caption{Three instances of the class {\tt circle}.}
+\label{fig:3circ}
+\end{figure}
+
+\subsection{Text string as a class} \label{subsec:textstrclass}
+
+We first met text strings in Section \ref{sec:strings}. Now that 
+we know how classes are defined and used, we can reveal that 
+text string is a class! In fact it has many great methods that 
+really make working with texts easy and fun. Let us show some 
+of them. Below, arguments enclosed in brackets are optional,
+and if they are used, then without the brackets:\\
 
 \noindent
-Coming soon.
+{\tt capitalize()}\\
+Return a copy of the string with only its first character capitalized.\\
+
+\noindent
+{\tt count(sub[, start[, end]])}\\
+Return the number of occurrences of substring sub in string S[start:end]. 
+Optional arguments start and end are interpreted as in slice notation.\\
+
+\noindent
+{\tt expandtabs([tabsize])}\\
+Return a copy of the string where all tab characters are expanded using spaces. 
+If tabsize is not given, a tab size of 8 characters is assumed.\\
+
+\noindent
+{\tt find(sub[, start[, end]])}\\
+Return the lowest index in the string where substring sub is found, such that 
+sub is contained in the range [start, end]. Optional arguments start and end 
+are interpreted as in slice notation. Return -1 if sub is not found.\\
+
+\noindent
+{\tt index(sub[, start[, end]])}\\
+Like find(), but raise ValueError when the substring is not found.\\
+
+\noindent
+{\tt isalnum()}\\
+Return true if all characters in the string are alphanumeric and 
+there is at least one character, false otherwise.\\
+
+\noindent
+{\tt isalpha()}\\
+Return true if all characters in the string are alphabetic and 
+there is at least one character, false otherwise.\\
+
+\noindent
+{\tt isdigit()}\\
+Return true if all characters in the string are digits and there is at least one character, false otherwise.\\
+
+\noindent
+{\tt islower()}\\
+Return true if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.\\
+
+\noindent
+{\tt isspace()}\\
+Return true if there are only whitespace characters in the string and there is at least one character, false otherwise.\\
+
+\noindent
+{\tt istitle()}\\
+Return true if the string is a titlecased string and there is at least one character, for example uppercase characters may only follow uncased characters and lowercase characters only cased ones. Return false otherwise.\\
+
+\noindent
+{\tt isupper()}\\
+Return true if all cased characters in the string are uppercase and there is at least one cased character, false otherwise.\\
+
+\noindent
+{\tt join(seq)}\\
+Return a string which is the concatenation of the strings in the sequence seq. The separator between elements is the string providing this method.\\
+
+\noindent
+{\tt lower()}\\
+Return a copy of the string converted to lowercase.\\
+
+\noindent
+{\tt replace(old, new[, count])}\\
+Return a copy of the string with all occurrences of substring old replaced by new. 
+If the optional argument count is given, only the first count occurrences are replaced.\\
+
+\noindent
+{\tt swapcase()}\\
+Return a copy of the string with uppercase characters converted to lowercase and vice versa.\\
+
+\noindent
+{\tt title()}\\
+Return a titlecased version of the string: words start with uppercase characters, 
+all remaining cased characters are lowercase.\\
+
+
+\noindent
+{\tt upper()}\\
+Return a copy of the string converted to uppercase.\\
+
+\noindent
+For additional useful text string methods see the Python documentation at \\
+{\tt http://docs.python.org/release/2.5.2/lib/string-methods.html.}
+
+\subsection{Class inheritance}
+
+
+\subsection{Building a hierarchy of geometrical objects}
+
+
 
 \subsection{Review questions}
 

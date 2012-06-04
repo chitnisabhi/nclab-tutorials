@@ -2775,7 +2775,85 @@ Coming soon.
 
 \subsection{Review questions}
 
+\begin{enumerate}
+\item The philosophy of object-oriented programming is:
+  \begin{itemize}
+    \item A3: Use entities that combine functionality and data.
+  \end{itemize}
+\item What is the relation between {\em class} and {\em object} in object-oriented programming?
+  \begin{itemize}
+    \item A4: Object is an instance (concrete realization) of a class.
+  \end{itemize}
+\item What are {\em methods} of a class?
+  \begin{itemize}
+    \item A4: Functions that are part of the class definition.
+  \end{itemize}
+\item Where are methods defined and where are they used?
+  \begin{itemize}
+    \item A3: They are defined in a class and used by instances of the class.
+  \end{itemize}
+\item Can methods of a class operate with data not owned by the class and when?
+  \begin{itemize}
+    \item A1: Yes, always.
+  \end{itemize}
+\item What is a {\em constructor}?
+  \begin{itemize}
+    \item A1: Method of a class that is used to initialize newly created instances.
+  \end{itemize}
+\item What is the correct way to define a constructor that initializes a variable
+      {\tt A} in a class with a value {\tt a}?
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+    def __init__(self, a):
+        self.A = a
+\end{verbatim}
+  \end{itemize}
+\item A class contains a variable {\tt A}. What is the correct way to define 
+      a method {\tt printdata} of this class that prints the value of the variable?
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+    def printdata(self):
+        print "A =", self.A
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
+
+\subsection{Programming exercises}
+
 Coming soon.
+
+\section{Class Inheritance}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item When should inheritance be used in object-oriented programming?
+  \begin{itemize}
+    \item A2: When some functionality is common to multiple classes.
+  \end{itemize}
+\item What is the correct way to define a new class {\tt B} which is a descendant of 
+      class {\tt A}?
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+class B(A):
+\end{verbatim}
+  \end{itemize}
+\item What is the correct way to call from a descendant class {\tt B} the constructor of its parent class 
+      {\tt A}?
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+def __init__(self):
+    A.__init__(self)
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
+
 
 \subsection{Programming exercises}
 

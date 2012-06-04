@@ -4404,7 +4404,7 @@ in other object-oriented languages as well - including C++ where the programmer
 does not have to mention it explicitly like in Python. It is added there by 
 the compiler.
 
-\subsection{Defining and using class {\tt circle}}
+\subsection{Defining and using class {\tt circle}} \label{subsec:circle}
 
 This is how the class {\tt circle} is defined in Python:
 
@@ -4574,21 +4574,308 @@ all remaining cased characters are lowercase.\\
 Return a copy of the string converted to uppercase.\\
 
 \noindent
-For additional useful text string methods see the Python documentation at \\
-{\tt http://docs.python.org/release/2.5.2/lib/string-methods.html.}
+For additional useful text string methods see the Python documentation at 
+{\tt http://docs. python.org/release/2.5.2/lib/string-methods.html.} \\
 
-\subsection{Class inheritance}
-
-
-\subsection{Building a hierarchy of geometrical objects}
-
-
+\noindent
+Before we
+leave this section, notice that lists, tuples, dictionaries and many other 
+data structures in Python are classes as well.
 
 \subsection{Review questions}
 
 Coming soon.
 
 \subsection{Programming exercises}
+
+Coming soon.
+
+
+\section{Class Inheritance}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item Understand the benefits of inheritance in object-oriented programming.
+\item Learn the syntax of creating descendant classes in Python.
+\item Learn how methods of parent class are called from the descendant. 
+\end{itemize}
+To illustrate the inheritance process in object-oriented programming, we will
+build a small library of geometrical objects that contains 
+triangles, quadrilaterals, rectangles, squares, and circles! We want all 
+these classes to have the same functionality as the class {\tt circle} from 
+Subsection \ref{subsec:circle}. This means, they should be able to:
+\begin{itemize}
+\item Calculate their area,
+\item calculate their perimeter,
+\item draw their geometry.
+\end{itemize}
+Notice one interesting thing: The drawing functionality will be 
+the same for all these classes. Specifically, all of them will have the coordinate 
+arrays {\tt ptsx}, {\tt ptsy} and the plotting method {\tt draw()}. Other than 
+that their functionality will differ. This is where {\em class inheritance} comes
+handy.
+
+\subsection{Creating base class {\tt geometry}}
+
+Instead of repeating the same drawing functionality in all classes, we create 
+a base class {\tt geometry} as follows:
+
+\begin{verbatim}
+from pylab import clf, plot, legend, axis
+
+# Base class:
+class geometry:
+    # Constructor:
+    def __init__(self):
+        self.ptsx = []
+        self.ptsy = []
+      
+    # Plotting method:
+    def draw(self, label):
+        axis('equal')
+        plot(self.ptsx, self.ptsy, label = label)
+        legend()
+\end{verbatim}
+This base class really cannot do much, but this is fine. We will use it to 
+derive several new (descendant) classes. The benefit of inheritance is that if 
+we decide in the future to change the plotting mechanism, we will just have to change it at 
+one place -- in the base class {\tt geometry} -- and the change will propagate automatically 
+into all its descendants. Remember that humans are extremely prone to mistakes. Having the 
+same code at several different places in the program is about the worst thing a programmer 
+can ever do. 
+
+\subsection{Deriving {\tt polygon} from {\tt geometry}}
+
+There is more to the story. Triangles, quadrilaterals, rectangles and squares are all 
+{\em polygons}. Hence let us create the class {\tt polygon} to be a descendant 
+of the base class {\tt geometry}. This class will represent general non-convex
+counter-clockwise (CCW) oriented polygons. Notice the syntax of the inheritance -- 
+one types {\tt class polygon(geometry):} instead of just {\tt class polygon}:
+
+\begin{verbatim}
+# Class polygon derived from class geometry, 
+# represents general, possibly non-convex 
+# polygon. Boundary needs to be CCW oriented.
+class polygon(geometry):
+    # Constructor (here L is list of vertices):
+    def __init__(self, L):
+        self.ptsx = []
+        self.ptsy = []
+        # Convert L into plotting arrays:
+        for pt in L:
+            self.ptsx.append(pt[0])
+            self.ptsy.append(pt[1])
+        # To close the loop in plotting:
+        self.ptsx.append(L[0][0])
+        self.ptsy.append(L[0][1])
+         
+    # Method to calculate area of a general 
+    # oriented polygon:
+    def area(self):
+        # Calculate minimum y-coordinate:
+        ymin = min(self.ptsy)
+        # The area of an oriented polygon is the sum of 
+        # areas of oriented trapezoids under its edges:
+        m = len(self.ptsx) - 1   # Number of trapezoids.
+        s = 0
+        for i in range(m):
+            s += (self.ptsx[i+1] - self.ptsx[i]) \
+                 * (self.ptsy[i+1] + self.ptsy[i] \
+                 - 2*ymin) / 2.
+        return -s
+
+    # Method to calculate perimeter of a general
+    # oriented polygon:
+    def perimeter(self):
+        l = 0
+        m = len(self.ptsx) - 1
+        for i in range(m):
+            l += sqrt((self.ptsx[i+1] - self.ptsx[i])**2 
+                 + (self.ptsy[i+1] - self.ptsy[i])**2)
+        return l
+\end{verbatim}
+Notice that we did not have to define the method {\tt draw()} here. 
+
+\subsection{Deriving {\tt circle} from {\tt geometry}}
+
+Next let us derive the class {\tt circle} from the class {\tt geometry}. Obviously it cannot be derived
+from {\tt polygon} because circles are not polygonal geometries:
+
+\begin{verbatim}
+# Class circle derived from class geometry:
+class circle(geometry):
+    # Constructor (here r is radius, (cx, cy) the center point,
+    # and n plotting subdivision):
+    def __init__(self, r, cx, cy, n = 100):
+        self.R = r
+        self.Cx = cx
+        self.Cy = cy
+        self.n = n
+        # Create array of points for plotting:
+        self.ptsx = []
+        self.ptsy = []
+        da = 2*pi/self.n
+        for i in range(n):
+            self.ptsx.append(self.Cx + self.R * cos(i * da))
+            self.ptsy.append(self.Cy + self.R * sin(i * da))
+        self.ptsx.append(self.Cx + self.R)
+        self.ptsy.append(self.Cy + 0)
+            
+    # Method to calculate circle area:
+    def area(self):
+        return pi * self.R**2
+      
+    # Method to calculate perimeter:
+    def perimeter(self):
+        return 2 * pi * self.R
+\end{verbatim}
+Again, notice that we did not have to define the method {\tt draw()}.
+
+\subsection{Deriving {\tt triangle} and {\tt quad} from {\tt polygon}}
+
+The {\tt polygon} class defined above is very general. Of course we could use 
+it directly to render triangles, quads, rectangles, and squares. But these 
+geometries are simpler and thus we also want their instantiation to be simpler.  
+Let us begin with the class {\tt triangle}. 
+
+This class is very simple -- it takes three points as parameters, forms 
+a list containing these three points, and then the list is passed into the 
+constructor of the parent class {\tt polygon}. Notice the way the constructor of
+the {\tt polygon} class is called from its descendant {\tt triangle} via 
+{\tt polygon.\_\_init\_\_(self, L)}:
+
+\begin{verbatim}
+# Class triangle derived from class polygon:
+class triangle(polygon):
+    # Constructor (here a, b, c are the vertices):
+    def __init__(self, a, b, c):
+        L = [a, b, c]
+        polygon.__init__(self, L)
+\end{verbatim}
+Class {\tt quad} is created analogously:
+
+\begin{verbatim}
+# Class quad derived from class polygon:
+class quad(polygon):
+    # Constructor (here a, b, c, d are the vertices
+    # in CCW orientation):
+    def __init__(self, a, b, c, d):
+        L = [a, b, c, d]
+        polygon.__init__(self, L)
+\end{verbatim}
+
+\subsection{Deriving {\tt rectangle} from {\tt quad}}
+
+Next, rectangle is a special case of quad, so let us derive the 
+{\tt rectangle} class from the {\tt quad} class:
+
+\begin{verbatim}
+# Class rectangle derived from class quad.
+# Represents rectangle (0, a) x (0, b):
+class rectangle(quad):
+    # Constructor:
+    def __init__(self, a, b):
+        quad.__init__(self, [0, 0], [a, 0], [a, b], [0, b])
+\end{verbatim}
+
+\subsection{Deriving {\tt square} from {\tt rectangle}}
+
+Taking this one step further, square is a special case of rectangle. Therefore 
+we can derive the {\tt square} class from the {\tt rectangle} class:
+
+\begin{verbatim}
+# Class square derived from class rectangle.
+# Represents square (0, a) x (0, a):
+class square(rectangle):
+    # Constructor. Here a is the edge length:
+    def __init__(self, a):
+        rectangle.__init__(self, a, a)
+\end{verbatim}
+
+\subsection{Graphical representation}
+
+The inheritance structure of our classes is depicted in Fig. \ref{fig:classes}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{imgp/classes.png}
+\end{center}
+\vspace{-2mm}
+\caption{Graphical representation of inheritance in our geometry classes.}
+\label{fig:classes}
+\end{figure}
+
+\subsection{Creating sample instances}
+
+Finally let us create sample instances of the classes defined above, inquire
+about their areas and perimeters, and let them plot themselves:
+
+\begin{verbatim}
+# Create a triangle:
+T = triangle([-2, -0.5], [0, -0.5], [-1, 2])
+print "Area and perimeter of the triangle:", \
+T.area(), T.perimeter()
+
+# Create a quad:
+Q = quad([-3, -1], [0, -1], [-1, 1], [-2, 1])
+print "Area and perimeter of the quad:", \
+Q.area(), Q.perimeter()
+ 
+# Create a rectangle:
+R = rectangle(3, 1)
+print "Area and perimeter of the rectangle:", \
+R.area(), R.perimeter()
+
+# Create a square:
+S = square(1.5)
+print "Area and perimeter of the square:", \
+S.area(), S.perimeter()
+ 
+# Create a circle:
+C = circle(2.5, 0, 0.5)
+print "Area and perimeter of the circle:", \
+C.area(), C.perimeter()
+
+# Plot the geometries:
+clf()
+T.draw("Triangle")
+Q.draw("Quad")
+R.draw("Rectangle")
+S.draw("Square")
+C.draw("Circle")
+ylim(-3, 4)
+legend()
+lab.show()
+\end{verbatim}
+First, here is the textual output:
+
+\begin{verbatim}
+Area and perimeter of the triangle: 2.5 7.38516480713
+Area and perimeter of the quad: 4.0 8.472135955
+Area and perimeter of the rectangle: 3.0 8.0
+Area and perimeter of the square: 2.25 6.0
+Area and perimeter of the circle: 19.6349540849 15.7079632679
+\end{verbatim}
+And the graphical output is shown in Fig. \ref{fig:classes2}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.82\textwidth]{imgp/classes2.png}
+\end{center}
+\vspace{-2mm}
+\caption{Visualization of the instances created above.}
+\label{fig:classes2}
+\end{figure}
+
+
+
+
+\subsection{\ \ Review questions}
+
+Coming soon.
+
+\subsection{\ \ Programming exercises}
 
 Coming soon.
 

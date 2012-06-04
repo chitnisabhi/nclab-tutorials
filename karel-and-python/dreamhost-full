@@ -1,0 +1,3 @@
+scp kap.pdf femhub@femhub.com:~/femhub.com/public/docs/ && scp karel-solutions.pdf femhub@femhub.com:~/femhub.com/public/docs/
+
+

@@ -1,0 +1,21 @@
+cp kap.pdf karel_en.pdf
+cp kap.pdf karel_cz.pdf
+cp kap.pdf karel_de.pdf
+cp kap.pdf karel_sp.pdf
+cp kap.pdf karel_pl.pdf
+
+scp karel_??.pdf femhub@femhub.com:~/femhub.com/public/docs/
+
+rm karel_??.pdf
+
+cp kap.pdf python_en.pdf
+cp kap.pdf python_cz.pdf
+cp kap.pdf python_de.pdf
+cp kap.pdf python_sp.pdf
+cp kap.pdf python_pl.pdf
+
+scp python_??.pdf femhub@femhub.com:~/femhub.com/public/docs/
+
+rm python_??.pdf
+
+

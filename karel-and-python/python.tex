@@ -4300,8 +4300,7 @@ Coming soon.
 \item Understand the philosophy of object-oriented (OO) programming.
 \item Understand the difference between OO programming and procedural programming.
 \item Learn basic concepts -- classes, objects, and methods.
-\item Learn about base objects and inheritance.
-\item Understand how OO programming in Python relates to OO programming in other languages.
+\item Learn the syntax of defining and instantiating classes in Python.
 \end{itemize}
 Since the very beginning of this course, 
 we have put emphasis on designing simple algorithms
@@ -4348,28 +4347,37 @@ object C owns the truck. They will come to your home and use methods
 C.pack(), C.box(), C.load(), C.haul(), C.unload(), C.carry() and perhaps 
 even C.unpack() to solve your problem. Notice the following benefits of the object-oriented approach: 
 \begin{itemize}
-\item You as a NASA scientist (for example) do not need to be able to drive 
-      a truck (keeping functionality separate). 
-\item You do not need to know how exactly the company does the moving
-      (information is more local).
-\item While the company is moving your things, you can concentrate on solving problems 
+\item The work is being done by the company, 
+      you do not have to worry (delegation of work).
+\item You do not have to be able to drive a truck (better code structure). 
+\item You do not need to know how the company does the moving (reduced flow of data).
+\item You can concentrate on solving problems 
       in your area of expertise (greater efficiency).
 \item You do not risk crashing the truck (safer programming).
 \end{itemize}
-This is a funny example but actually it works quite well!
 
 \subsection{Classes, objects, and methods}
 
 Let us stay with the moving example for a little while longer. The moving 
 company that you heard of, or that you saw in an advertisement, 
-is a {\em class} or in other words a {\em concept}. But a concept 
-will not get your things moved. For that you need a concrete team of 
+is a {\em class} or in other words a {\em concept}. Formally, we say that 
+{\em class} is an entity comprising data and functionality that uses the data.
+But a concept will not get your things moved. For that you need a concrete team of 
 movers. This is called an {\em object} or an {\em instance of the class}. 
+
 When the movers appear at your doorstep, that's when an instance 
 of the class is created. When they pack, box, and load your things, the object is using 
-its {\em methods}. Notice that the methods of an object can operate 
-on data that does not belong to the object (your things) as well as on date 
-that belong to the object (that would be the truck). 
+{\em methods} of the class. Technically, methods belong to the class because that's
+where they are defined, but often we say that ``an objects uses its methods to ...". 
+Once again, methods are {\em defined in a class} but {\em used 
+by instances of the class}. 
+Methods of a class can operate on data owned by the class (the truck) as well as 
+on data that does not belong to the class (your things that are being moved.
+
+Similarly with variables -- variables are defined in a class, but they do not 
+have concrete values there. In the class definition, they are part of a concept. 
+Only after an instance of the class is created, the variables are filled with 
+concrete values. 
 
 \subsection{An example from geometry}
 
@@ -4493,85 +4501,263 @@ of them. Below, arguments enclosed in brackets are optional,
 and if they are used, then without the brackets:\\
 
 \noindent
-{\tt capitalize()}\\
+{\bf Method} {\tt capitalize()}\\
+
+\noindent
 Return a copy of the string with only its first character capitalized.\\
 
 \noindent
-{\tt count(sub[, start[, end]])}\\
+\underline{Example}:
+\begin{verbatim}
+str = "sentences should start with a capital letter."
+print str.capitalize()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+Sentences should start with a capital letter.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt count(sub[, start[, end]])}\\
+
+\noindent
 Return the number of occurrences of substring sub in string S[start:end]. 
 Optional arguments start and end are interpreted as in slice notation.\\
 
 \noindent
-{\tt expandtabs([tabsize])}\\
-Return a copy of the string where all tab characters are expanded using spaces. 
-If tabsize is not given, a tab size of 8 characters is assumed.\\
+\underline{Example}:
+\begin{verbatim}
+str = "John Stevenson, John Lennon, and John Wayne."
+print str.count("John")
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+3
+\end{verbatim}
+\vspace{4mm}
 
 \noindent
-{\tt find(sub[, start[, end]])}\\
-Return the lowest index in the string where substring sub is found, such that 
-sub is contained in the range [start, end]. Optional arguments start and end 
-are interpreted as in slice notation. Return -1 if sub is not found.\\
+{\bf Method} {\tt find(sub[, start[, end]])}\\
 
 \noindent
-{\tt index(sub[, start[, end]])}\\
+Return the lowest index in the string where substring {\tt sub} is found, such that 
+sub is contained in the range {\tt [start, end]}. Optional arguments {\tt start} and {\tt end} 
+are interpreted as in slice notation. Return {\tt -1} if {\tt sub} is not found.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "This happened during the summer."
+print str.find("sum")
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+25
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt index(sub[, start[, end]])}\\
+
+\noindent
 Like find(), but raise ValueError when the substring is not found.\\
 
 \noindent
-{\tt isalnum()}\\
+{\bf Method} {\tt isalnum()}\\
+
+\noindent
 Return true if all characters in the string are alphanumeric and 
 there is at least one character, false otherwise.\\
 
 \noindent
-{\tt isalpha()}\\
+\underline{Example}:
+\begin{verbatim}
+str1 = "mypassword123"
+if str1.isalnum():
+    print str1, "is alphanumeric."
+else: 
+    print str1, "is not alphanumeric."
+str2 = "mypassword123+"
+if str2.isalnum():
+    print str2, "is alphanumeric."
+else: 
+    print str2, "is not alphanumeric."
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+mypassword123 is alphanumeric.
+mypassword123+ is not alphanumeric.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt isalpha()}\\
+
+\noindent
 Return true if all characters in the string are alphabetic and 
 there is at least one character, false otherwise.\\
 
 \noindent
-{\tt isdigit()}\\
+\underline{Example}:
+\begin{verbatim}
+str1 = "John"
+if str1.isalpha():
+    print str1, "is alphabetic."
+else: 
+    print str1, "is not alphabetic."
+str2 = "My name is John"
+if str2.isalpha():
+    print str2, "is alphabetic."
+else: 
+    print str2, "is not alphabetic."
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+John is alphabetic.
+My name is John is not alphabetic.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt isdigit()}\\
+
+\noindent
 Return true if all characters in the string are digits and there is at least one character, false otherwise.\\
 
 \noindent
-{\tt islower()}\\
-Return true if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.\\
+\underline{Example}:
+\begin{verbatim}
+str1 = "2012"
+if str1.isdigit():
+    print str1, "is a number."
+else: 
+    print str1, "is not a number."
+str2 = "Year 2012"
+if str2.isdigit():
+    print str2, "is a number."
+else: 
+    print str2, "is not a number."
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+2012 is a number.
+Year 2012 is a number.
+\end{verbatim}
+\vspace{4mm}
 
 \noindent
-{\tt isspace()}\\
-Return true if there are only whitespace characters in the string and there is at least one character, false otherwise.\\
+{\bf Method} {\tt join(seq)}\\
 
 \noindent
-{\tt istitle()}\\
-Return true if the string is a titlecased string and there is at least one character, for example uppercase characters may only follow uncased characters and lowercase characters only cased ones. Return false otherwise.\\
+Return a string which is the concatenation of the strings in the sequence seq. The 
+base string (onject whose method is used as separator).\\
 
 \noindent
-{\tt isupper()}\\
-Return true if all cased characters in the string are uppercase and there is at least one cased character, false otherwise.\\
+\underline{Example}:
+\begin{verbatim}
+str = "..."
+str1 = "This"
+str2 = "is"
+str3 = "the"
+str4 = "movie."
+print str.join([str1, str2, str3, str4])
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+This...is...the...movie.
+\end{verbatim}
+\vspace{4mm}
 
 \noindent
-{\tt join(seq)}\\
-Return a string which is the concatenation of the strings in the sequence seq. The separator between elements is the string providing this method.\\
+{\bf Method} {\tt lower()}\\
 
 \noindent
-{\tt lower()}\\
 Return a copy of the string converted to lowercase.\\
 
 \noindent
-{\tt replace(old, new[, count])}\\
+\underline{Example}:
+\begin{verbatim}
+str = "She lives in New Orleans."
+print str.lower()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+she lives in new orleans.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt replace(old, new[, count])}\\
+
+\noindent
 Return a copy of the string with all occurrences of substring old replaced by new. 
 If the optional argument count is given, only the first count occurrences are replaced.\\
 
 \noindent
-{\tt swapcase()}\\
+\underline{Example}:
+\begin{verbatim}
+str = "First word, second word, and third word."
+print str.replace("word", "thing")
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+First thing, second thing, and third thing.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt swapcase()}\\
+
+\noindent
 Return a copy of the string with uppercase characters converted to lowercase and vice versa.\\
 
 \noindent
-{\tt title()}\\
-Return a titlecased version of the string: words start with uppercase characters, 
-all remaining cased characters are lowercase.\\
-
+\underline{Example}:
+\begin{verbatim}
+str = "The abbreviation is MENSA"
+print str.swapcase()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+tHE ABBREVIATION IS mensa
+\end{verbatim}
+\vspace{4mm}
 
 \noindent
-{\tt upper()}\\
+{\bf Method} {\tt title()}\\
+
+\noindent
+Return a titlecased version of the string: Words start with uppercase characters, 
+all remaining cased characters are lowercase.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "this is the title of my new book"
+print str.title()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+This Is The Title Of My New Book
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt upper()}\\
 Return a copy of the string converted to uppercase.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "this is the title of my new book"
+print str.upper()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+'THIS IS THE TITLE OF MY NEW BOOK'
+\end{verbatim}
+\vspace{4mm}
 
 \noindent
 For additional useful text string methods see the Python documentation at 
@@ -4584,7 +4770,98 @@ data structures in Python are classes as well.
 
 \subsection{Review questions}
 
-Coming soon.
+\begin{enumerate}
+\item The philosophy of object-oriented programming is:
+\begin{enumerate}
+\item[A1] Operate with geometrical objects.
+\item[A2] Use local variables in functions.
+\item[A3] Use entities that combine functionality and data.
+\item[A4] Use functions that are local in other functions.
+\end{enumerate}
+\item What is the relation between {\em class} and {\em object} in object-oriented programming?
+\begin{enumerate}
+\item[A1] By an object we mean all the data defined in a class.
+\item[A2] By an object we mean all the functions defined in a class.
+\item[A3] Class is an instance (concrete realization) of an object.
+\item[A4] Object is an instance (concrete realization) of a class.
+\end{enumerate}
+\item What are methods of a class?
+\begin{enumerate}
+\item[A1] Specific ways the class is defined.
+\item[A2] Special functions defined in the class that operate with data not owned by the class.
+\item[A3] Specific way variables are arranged in a class.
+\item[A4] Functions that are part of the class definition.
+\end{enumerate}
+\item Where are methods defined and where are they used?
+\begin{enumerate}
+\item[A1] They are defined in an object and used by a class.
+\item[A2] They are defined outside of a class and used inside of the class.
+\item[A3] They are defined in a class and used by instances of the class.
+\item[A4] They are defined in instances of a class.
+\end{enumerate}
+\item Can methods of a class operate with data not owned by the class and when?
+\begin{enumerate}
+\item[A1] Yes, always.
+\item[A2] Yes, but only if they also operate with data owned by the class.
+\item[A3] Yes, but only if they do not operate with data owned by the class.
+\item[A4] No.
+\end{enumerate}
+\item What is a constructor?
+\begin{enumerate}
+\item[A1] Method of a class that is used to fill data into newly created instances.
+\item[A2] Special function that is defined in the object, not in the class.
+\item[A3] Function that turns a class into an object.
+\item[A4] Function that converts an object into a class.
+\end{enumerate}
+\item What is the correct way to define a constructor that fills a variable
+      {\tt A} in a class with a value {\tt a}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+    def __init__(a):
+        A = a
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+    def __init__(self, a):
+        A = a
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+    def __init__(self, a):
+        self.A = a
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+    def __init__(self, self.a):
+        self.A = self.a
+\end{verbatim}
+\end{enumerate}
+\item A class contains a variable {\tt A}. What is the correct way to define 
+      a method {\tt printdata} of this class that prints the value of the variable?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+    def printdata():
+        print "A =", A
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+    def printdata():
+        print "A =", self.A
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+    def printdata(self):
+        print "A =", A
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+    def printdata(self):
+        print "A =", self.A
+\end{verbatim}
+\end{enumerate}
+\end{enumerate}
 
 \subsection{Programming exercises}
 
@@ -4602,7 +4879,8 @@ Coming soon.
 \end{itemize}
 To illustrate the inheritance process in object-oriented programming, we will
 build a small library of geometrical objects that contains 
-triangles, quadrilaterals, rectangles, squares, and circles! We want all 
+triangles, quadrilaterals, rectangles, squares, and circles. 
+We want all 
 these classes to have the same functionality as the class {\tt circle} from 
 Subsection \ref{subsec:circle}. This means, they should be able to:
 \begin{itemize}
@@ -4873,7 +5151,60 @@ And the graphical output is shown in Fig. \ref{fig:classes2}.
 
 \subsection{\ \ Review questions}
 
-Coming soon.
+\begin{enumerate}
+\item When should we use inheritance in object-oriented programming?
+\begin{enumerate}
+\item[A1] Always because it makes definitions of descendant classes shorter.
+\item[A2] When some functionality is common to multiple classes.
+\item[A3] When we work with geometrical objects. 
+\item[A4] We should avoid it as it makes code more complicated.
+\end{enumerate}
+\item What is the correct way to define a new class {\tt B} which is a descendant of 
+      class {\tt A}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+class B(A):
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+class A(B):
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+class B: public A:
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+class B = descendant(A)
+\end{verbatim}
+\end{enumerate}
+\item What is the correct way to call from a descendant class {\tt B} the constructor of its parent class 
+      {\tt A}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+def __init__(self):
+    A.__init__(self)
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+def __init__(self):
+    __init__(A)
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+def __init__(self):
+    __init__(self, A)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+def __init__(A):
+    self.__init__(A)
+\end{verbatim}
+\end{enumerate}
+\end{enumerate}
+
 
 \subsection{\ \ Programming exercises}
 

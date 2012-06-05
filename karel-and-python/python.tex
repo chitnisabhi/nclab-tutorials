@@ -4346,7 +4346,23 @@ if x > 5:
 
 \subsection{Programming exercises}
 
-Coming soon.
+\begin{enumerate}
+\item Implement a custom plotting function {\tt sureplot(f, a, b, label, n = 100)} where {\tt f(x)} is 
+      a user-supplied real function, {\tt (a, b)} is an interval, {\tt label} 
+      is a text string label for the plot, and {\tt n} is the plotting subdivision of the interval {\tt (a, b)}.
+      Implement exception handling in such a way that if the user's function is not defined for some {\tt x}, 
+      a warning is printed and the corresponding point is not added to the plot. But the rest of the graph
+      will be plotted normally. For example, if the use wants to plot the function 
+\begin{verbatim}
+def f(x):
+    return log(x)
+\end{verbatim}
+in the interval {\tt (-1, 1)} then the left half of the graph will be missing but the rest 
+will be displayed correctly.
+\item Implement a Boolean function {\tt dryrun(f)} which will run any user-supplied function {\tt f()}.
+      If the function {\tt f()} contains a syntax error, print a warning and return {\tt False}. If the 
+      call to the user's function was successful, return {\tt True}.
+\end{enumerate}
 
 \section{Object-Oriented Programming}
 
@@ -4995,10 +5011,56 @@ S.capitalize()
 \end{enumerate}
 \end{enumerate}
 
-\subsection{Programming exercises}
+\subsection{Programming exercises}\label{subsec:obj}
 
-Coming soon.
-
+\begin{enumerate}
+\item Implement a Python-dictionary-based smart translator class {\tt translator} that 
+      will have the following methods:
+\begin{itemize}
+\item Constructor with no parameters.
+\item {\tt add(expr1, expr2)}: Boolean method that adds a pair of text strings into 
+      the dictionary. The former is the key, the latter the corresponding value. 
+      If {\tt expr1} or {\tt expr2} are already present in the dictionary,
+      let the user know, do not add them, and return {\tt False}. Otherwise return {\tt True}.
+\item {\tt translate(expr)}: Boolean method that searches all keys as well as all values,
+      and translates the expression {\tt expr} automatically either way. If the expression 
+      was found, return {\tt True}, otherwise let the user know and return {\tt False}.
+\item {\tt flush()}: Method that prints all pairs contained in the dictionary (first key, then value).
+\item {\tt flush\_reverse()}: Method that prints all pairs contained in the dictionary, in
+      reverse order (first value, then key).
+\end{itemize}
+\item Implement a Python class {\tt numbermagic} whose data is just one integer number, and 
+      whose methods are as follows:
+\begin{itemize}
+\item Constructor that takes one integer number as a parameter and stores it in the object. 
+      If the user supplies a non-integer number, print a warning and round it to an integer. 
+\item {\tt insert(new\_num)}: Method that replaces the number stored in the object with {\tt new\_num}.
+\item {\tt ispositive()}: Boolean method that returns {\tt True} if the number stored in the object is 
+      greater than zero, {\tt False} otherwise.
+\item {iseven()}: Boolean method that returns {\tt True} if the number stored in the object is even,
+      {\tt False} otherwise.
+\item {isprime()}: Boolean method that returns {\tt True} if the number stored in the object is a prime,
+      {\tt False} otherwise.
+\item {\tt factorize()}: Method that returns a Python list containing primes {\tt p1, p2, ..., pn}
+      that form the prime number factorization of the number stored in the object.
+\end{itemize}
+\item Implement a Python class {\tt vectormagic} whose data are two three-dimensional vectors.
+      All vectors are represented by lists of length three. The class has the following methods:
+\begin{itemize}
+\item Constructor that takes two vectors as parameters and stores them in the object. 
+      If the length of any of the two lists is different from three, let the user know and 
+      complete it with zeros, or truncate it to length three. 
+\item {\tt areparallel()}: Boolean method that returns {\tt True} if the vectors are parallel,
+      {\tt False} otherwise. Note: If you are going to compare a real number against zero,
+      use a small tolerance, such as {\tt 1e-8}.
+\item {\tt arenormal()}: Boolean method that returns {\tt True} if the vectors are perpendicular,
+      {\tt False} otherwise. Again: If you are going to compare a real number against zero,
+      use a small tolerance, such as {\tt 1e-8}.
+\item {\tt innerproduct()}: Returns one real number which is the inner product of the two vectors.
+\item {\tt vectorproduct()}: Returns a vector (list of length three) which is the vector product 
+      of the two vectors.
+\end{itemize}
+\end{enumerate}
 
 \section{Class Inheritance}
 
@@ -5209,10 +5271,10 @@ The inheritance structure of our classes is depicted in Fig. \ref{fig:classes}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{imgp/classes.png}
+\includegraphics[width=0.6\textwidth]{imgp/classes.png}
 \end{center}
 \vspace{-2mm}
-\caption{Graphical representation of inheritance in our geometry classes.}
+\caption{Graphical representation of the structure of our classes.}
 \label{fig:classes}
 \end{figure}
 
@@ -5279,8 +5341,6 @@ The graphical output is shown in Fig. \ref{fig:classes2}.
 \end{figure}
 
 
-
-
 \subsection{\ \ Review questions}
 
 \begin{enumerate}
@@ -5340,7 +5400,16 @@ def __init__(A):
 
 \subsection{\ \ Programming exercises}
 
-Coming soon.
+\begin{enumerate}
+\item Create a descendant {\tt projector} of the class {\tt vectormagic} from Subsection \ref{subsec:obj}
+      that in addition to the functionality contained in the class {\tt vectormagic} has one new
+      method:
+\begin{itemize}
+\item {\tt project(V)}: If the two vectors contained in the object form a plane, the 
+      method calculates and returns the projection of the vector {\tt V} into this plane. 
+      Otherwise the method prints a warning and returns a zero vector. 
+\end{itemize}
+\end{enumerate}
 
 
 \section{Python Libraries}\label{subsec:importinglib}

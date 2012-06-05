@@ -1,21 +1,25 @@
-cp kap.pdf karel_en.pdf
-cp kap.pdf karel_cz.pdf
-cp kap.pdf karel_de.pdf
-cp kap.pdf karel_sp.pdf
-cp kap.pdf karel_pl.pdf
+cp karel.pdf karel_en.pdf
+cp karel.pdf karel_cz.pdf
+cp karel.pdf karel_de.pdf
+cp karel.pdf karel_sp.pdf
+cp karel.pdf karel_pl.pdf
 
-scp karel_??.pdf femhub@femhub.com:~/femhub.com/public/docs/
+scp karel*.pdf femhub@femhub.com:~/femhub.com/public/docs/
 
-rm karel_??.pdf
+rm karel*.pdf
 
-cp kap.pdf python_en.pdf
-cp kap.pdf python_cz.pdf
-cp kap.pdf python_de.pdf
-cp kap.pdf python_sp.pdf
-cp kap.pdf python_pl.pdf
+cp karel.pdf python.pdf
+cp python.pdf python_en.pdf
+cp python.pdf python_cz.pdf
+cp python.pdf python_de.pdf
+cp python.pdf python_sp.pdf
+cp python.pdf python_pl.pdf
 
-scp python_??.pdf femhub@femhub.com:~/femhub.com/public/docs/
+scp python*.pdf femhub@femhub.com:~/femhub.com/public/docs/
 
 rm python_??.pdf
+
+scp karel-solutions.pdf femhub@femhub.com:~/femhub.com/public/docs/
+
 
 

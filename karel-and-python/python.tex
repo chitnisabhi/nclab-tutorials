@@ -3220,7 +3220,6 @@ start from zero:
 print "First month:", months[0]
 print "Second month:", months[1]
 print "Third month:", months[2]
-print "Last month:", months[-1]
 \end{verbatim}
 Output:
 
@@ -3228,9 +3227,22 @@ Output:
 First month: January
 Second month: February
 Third month: March
+\end{verbatim}
+Index {\tt -1} refers to the last item, {\tt -2} to the one before last, etc.:
+
+\begin{verbatim}
+print "One before last month:", months[-2]
+print "Last month:", months[-1]
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+One before last month: November
 Last month: December
 \end{verbatim}
-We can also {\em slice} tuples similarly to how we sliced strings:
+
+\noindent
+We can {\em slice} tuples similarly to how we sliced strings:
 
 \begin{verbatim}
 months[2:5]
@@ -3505,7 +3517,7 @@ var = (1, 2, 3, 'A', 'B', 'C', "alpha", "beta", "gamma")
 \item[A1] List.
 \item[A2] Tuple.
 \item[A3] Dictionary.
-\item[A4] Neither of the above.
+\item[A4] None of the above.
 \end{enumerate}
 \item What will the output of the following program be?
 \begin{verbatim}
@@ -3574,7 +3586,7 @@ names = ["John", "Jake", "Josh"]
 \item[A1] List.
 \item[A2] Tuple.
 \item[A3] Dictionary.
-\item[A4] Neither of the above.
+\item[A4] None of the above.
 \end{enumerate}
 \item Identify the output of the following code:
 \begin{verbatim}
@@ -3910,7 +3922,18 @@ print D.values()
 
 \subsection{Programming exercises}
 
-Coming soon.
+\begin{enumerate}
+\item Write a Python function {\tt select(T, n)} that for any tuple {\tt T}
+      returns its item with index {\tt n}. Indices start from zero as usual.
+      If index is out of range, print "Index out of range, returning zero." and 
+      return zero.
+\item Write a Python function {\tt supersort(LL)} that takes a list of lists {\tt LL}, 
+      rearranges the order of lists in {\tt LL} according to their length increasingly,
+      and returns the sorted list of lists. 
+\item Write a Python function {\tt sortdict(D, n)} where {\tt D} is a dictionary whose values 
+      are lists. For an index {\tt n}, your function should return the list of keys sorted 
+      according to the values with index {\tt n}, in increasing order. 
+\end{enumerate}
 
 \section{The {\tt for} Loop} \label{sec:forloop}
 
@@ -4073,7 +4096,40 @@ print i
 
 \subsection{Programming exercises}
 
-Coming soon.
+\begin{enumerate}
+\item Write a Python function {\tt primes(n)} that for a positive number {\tt n} returns the list 
+      of all prime numbers that are less than or equal to {\tt n}. The list 
+      should be sorted increasingly. Remember that the smallest prime number is 2.
+\item Write a Python function {\tt charstats(L)} that takes a list of 
+      text strings {\tt L}, and creates a statistics of characters present in {\tt L}. 
+      The text strings in {\tt L} can contain alphabetic, numeric, and special characters. 
+      Your function should return a dictionary whose keys are the different characters. 
+      For each character in the dictionary, the value is the number of its appearances 
+      in {\tt L}.
+\item The Rubik's cube shown in Fig. \ref{fig:rubik} is a famous brain teaser. Initially,
+      each face has nine fields of the same color, and there are six different colors on the 
+      cube (one per each face).
+      The cube has three layers in each axial direction that can rotate about the axis.
+      Your task is to implement a Python function {\tt rubik()} that calculates the total 
+      number of all possible states of the cube
+      accounting for different rotations (in other words, rotating the entire 
+      cube by 90 degrees in any of the three axial directions yields a different state).
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{imgp/rubix_cube.jpg}
+\end{center}
+\vspace{-2mm}
+\caption{Rubik's cube.}
+\label{fig:rubik}
+\end{figure}
+\noindent
+
+\item Write a Python function {\tt maximize(L1, L2)} that takes two lists of real numbers and 
+finds a number {\tt n1} in {\tt L1} and a number {\tt n2} in {\tt L2} such that the product 
+{\tt n1 * n2} is maximal. Return the numbers {\tt n1} and {\tt n2}.
+
+\end{enumerate}
 
 \section{Catching and Raising Exceptions}
 
@@ -4481,7 +4537,6 @@ Area and perimeter of circle 2: 0.785398163397 3.14159265359
 Area and perimeter of circle 3: 0.196349540849 1.57079632679
 \end{verbatim}
 
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{imgp/3circ.png}
@@ -4785,7 +4840,7 @@ data structures in Python are classes as well.
 \item[A3] Class is an instance (concrete realization) of an object.
 \item[A4] Object is an instance (concrete realization) of a class.
 \end{enumerate}
-\item What are methods of a class?
+\item What are {\em methods} of a class?
 \begin{enumerate}
 \item[A1] Specific ways the class is defined.
 \item[A2] Special functions defined in the class that operate with data not owned by the class.
@@ -4806,14 +4861,14 @@ data structures in Python are classes as well.
 \item[A3] Yes, but only if they do not operate with data owned by the class.
 \item[A4] No.
 \end{enumerate}
-\item What is a constructor?
+\item What is a {\em constructor}?
 \begin{enumerate}
-\item[A1] Method of a class that is used to fill data into newly created instances.
+\item[A1] Method of a class that is used to initialize newly created instances.
 \item[A2] Special function that is defined in the object, not in the class.
 \item[A3] Function that turns a class into an object.
 \item[A4] Function that converts an object into a class.
 \end{enumerate}
-\item What is the correct way to define a constructor that fills a variable
+\item What is the correct way to define a constructor that initializes a variable
       {\tt A} in a class with a value {\tt a}?
 \begin{enumerate}
 \item[A1] 
@@ -4859,6 +4914,83 @@ data structures in Python are classes as well.
 \begin{verbatim}
     def printdata(self):
         print "A =", self.A
+\end{verbatim}
+\end{enumerate}
+\item Given a text string {\tt S}, what is the correct way to count and print the number 
+      of appearances of another string {\tt word} in {\tt S}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+print S.count("word")
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+print S.find("word")
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+print S.count(word)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+print S.parse_string("word")
+\end{verbatim}
+\end{enumerate}
+\item What is the way to check whether a string {\tt S} is a number?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+S.isdigit()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+S.isnumber()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+isdigit(S)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+isnumber(S)
+\end{verbatim}
+\end{enumerate}
+\item What is the way to replace in a text string {\tt S} a string {\tt s1} with another string {\tt s2}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+find_and_replace(S, s1, s2)
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+S.find_and_replace(s1, s2)
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+S.replace("s1", "s2")
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+S.replace(s1, s2)
+\end{verbatim}
+\end{enumerate}
+\item How can be in Python a string {\tt S} converted to uppercase?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+S.uppercase()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+S.raise()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+S.upper()
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+S.capitalize()
 \end{verbatim}
 \end{enumerate}
 \end{enumerate}
@@ -5135,7 +5267,7 @@ Area and perimeter of the rectangle: 3.0 8.0
 Area and perimeter of the square: 2.25 6.0
 Area and perimeter of the circle: 19.6349540849 15.7079632679
 \end{verbatim}
-And the graphical output is shown in Fig. \ref{fig:classes2}.
+The graphical output is shown in Fig. \ref{fig:classes2}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -5152,7 +5284,7 @@ And the graphical output is shown in Fig. \ref{fig:classes2}.
 \subsection{\ \ Review questions}
 
 \begin{enumerate}
-\item When should we use inheritance in object-oriented programming?
+\item When should inheritance be used in object-oriented programming?
 \begin{enumerate}
 \item[A1] Always because it makes definitions of descendant classes shorter.
 \item[A2] When some functionality is common to multiple classes.

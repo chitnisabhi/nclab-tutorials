@@ -2962,7 +2962,8 @@ Output:
 \begin{verbatim}
 cycle
 \end{verbatim}
-
+This is enough for now but hold on -- many wonderful operations one 
+can do with text strings will be shown in Subsection \ref{subsec:textstrclass}
 
 \subsection{Review questions}
 
@@ -3219,7 +3220,6 @@ start from zero:
 print "First month:", months[0]
 print "Second month:", months[1]
 print "Third month:", months[2]
-print "Last month:", months[-1]
 \end{verbatim}
 Output:
 
@@ -3227,9 +3227,22 @@ Output:
 First month: January
 Second month: February
 Third month: March
+\end{verbatim}
+Index {\tt -1} refers to the last item, {\tt -2} to the one before last, etc.:
+
+\begin{verbatim}
+print "One before last month:", months[-2]
+print "Last month:", months[-1]
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+One before last month: November
 Last month: December
 \end{verbatim}
-We can also {\em slice} tuples similarly to how we sliced strings:
+
+\noindent
+We can {\em slice} tuples similarly to how we sliced strings:
 
 \begin{verbatim}
 months[2:5]
@@ -3504,7 +3517,7 @@ var = (1, 2, 3, 'A', 'B', 'C', "alpha", "beta", "gamma")
 \item[A1] List.
 \item[A2] Tuple.
 \item[A3] Dictionary.
-\item[A4] Neither of the above.
+\item[A4] None of the above.
 \end{enumerate}
 \item What will the output of the following program be?
 \begin{verbatim}
@@ -3573,7 +3586,7 @@ names = ["John", "Jake", "Josh"]
 \item[A1] List.
 \item[A2] Tuple.
 \item[A3] Dictionary.
-\item[A4] Neither of the above.
+\item[A4] None of the above.
 \end{enumerate}
 \item Identify the output of the following code:
 \begin{verbatim}
@@ -3909,7 +3922,18 @@ print D.values()
 
 \subsection{Programming exercises}
 
-Coming soon.
+\begin{enumerate}
+\item Write a Python function {\tt select(T, n)} that for any tuple {\tt T}
+      returns its item with index {\tt n}. Indices start from zero as usual.
+      If index is out of range, print "Index out of range, returning zero." and 
+      return zero.
+\item Write a Python function {\tt supersort(LL)} that takes a list of lists {\tt LL}, 
+      rearranges the order of lists in {\tt LL} according to their length increasingly,
+      and returns the sorted list of lists. 
+\item Write a Python function {\tt sortdict(D, n)} where {\tt D} is a dictionary whose values 
+      are lists. For an index {\tt n}, your function should return the list of keys sorted 
+      according to the values with index {\tt n}, in increasing order. 
+\end{enumerate}
 
 \section{The {\tt for} Loop} \label{sec:forloop}
 
@@ -4072,7 +4096,40 @@ print i
 
 \subsection{Programming exercises}
 
-Coming soon.
+\begin{enumerate}
+\item Write a Python function {\tt primes(n)} that for a positive number {\tt n} returns the list 
+      of all prime numbers that are less than or equal to {\tt n}. The list 
+      should be sorted increasingly. Remember that the smallest prime number is 2.
+\item Write a Python function {\tt charstats(L)} that takes a list of 
+      text strings {\tt L}, and creates a statistics of characters present in {\tt L}. 
+      The text strings in {\tt L} can contain alphabetic, numeric, and special characters. 
+      Your function should return a dictionary whose keys are the different characters. 
+      For each character in the dictionary, the value is the number of its appearances 
+      in {\tt L}.
+\item The Rubik's cube shown in Fig. \ref{fig:rubik} is a famous brain teaser. Initially,
+      each face has nine fields of the same color, and there are six different colors on the 
+      cube (one per each face).
+      The cube has three layers in each axial direction that can rotate about the axis.
+      Your task is to implement a Python function {\tt rubik()} that calculates the total 
+      number of all possible states of the cube
+      accounting for different rotations (in other words, rotating the entire 
+      cube by 90 degrees in any of the three axial directions yields a different state).
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{imgp/rubix_cube.jpg}
+\end{center}
+\vspace{-2mm}
+\caption{Rubik's cube.}
+\label{fig:rubik}
+\end{figure}
+\noindent
+
+\item Write a Python function {\tt maximize(L1, L2)} that takes two lists of real numbers and 
+finds a number {\tt n1} in {\tt L1} and a number {\tt n2} in {\tt L2} such that the product 
+{\tt n1 * n2} is maximal. Return the numbers {\tt n1} and {\tt n2}.
+
+\end{enumerate}
 
 \section{Catching and Raising Exceptions}
 
@@ -4289,30 +4346,1135 @@ if x > 5:
 
 \subsection{Programming exercises}
 
-Coming soon.
+\begin{enumerate}
+\item Implement a custom plotting function {\tt sureplot(f, a, b, label, n = 100)} where {\tt f(x)} is 
+      a user-supplied real function, {\tt (a, b)} is an interval, {\tt label} 
+      is a text string label for the plot, and {\tt n} is the plotting subdivision of the interval {\tt (a, b)}.
+      Implement exception handling in such a way that if the user's function is not defined for some {\tt x}, 
+      a warning is printed and the corresponding point is not added to the plot. But the rest of the graph
+      will be plotted normally. For example, if the use wants to plot the function 
+\begin{verbatim}
+def f(x):
+    return log(x)
+\end{verbatim}
+in the interval {\tt (-1, 1)} then the left half of the graph will be missing but the rest 
+will be displayed correctly.
+\item Implement a Boolean function {\tt dryrun(f)} which will run any user-supplied function {\tt f()}.
+      If the function {\tt f()} contains a syntax error, print a warning and return {\tt False}. If the 
+      call to the user's function was successful, return {\tt True}.
+\end{enumerate}
 
 \section{Object-Oriented Programming}
 
 \subsection{Objectives}
 
 \begin{itemize}
-\item Understand the philosophy and benefits of object-oriented (OO) programming.
-\item Learn basic concepts -- classes and methods.
-\item Learn about base objects and inheritance.
-\item Understand how OO programming in Python relates to OO programming in other languages.
+\item Understand the philosophy of object-oriented (OO) programming.
+\item Understand the difference between OO programming and procedural programming.
+\item Learn basic concepts -- classes, objects, and methods.
+\item Learn the syntax of defining and instantiating classes in Python.
+\end{itemize}
+Since the very beginning of this course, 
+we have put emphasis on designing simple algorithms
+and writing clean, transparent code. This included:
+\begin{itemize}
+\item Creating custom functions for functionality that can be reused.
+\item Keeping all variables as local as possible
+\end{itemize}
+Object-oriented programming brings these good programming practices to
+perfection -- it will help us to write crystal clear, elegant, and very safe code.
+
+\subsection{From procedural to object-oriented programming}
+
+The programming style we have been using so far is called {\em procedural programming}.
+The name, of course, comes from using {\em procedures} to solve various tasks that 
+lead to the solution of the problem at hand. Procedure is an activity, a sequence of operations 
+done with data that is supplied to it. {\em Procedures do not own the data they 
+operate with.} 
+
+This, however, means that the data must be stored somewhere else. In other
+words, the range of validity of the data extends beyong the borders of the 
+function where it is processed. 
+Can you see an analogy to using local and global variables? It is great
+to keep variables local, and in the same way it would be great to make
+data local to procedures that operate with them. But wait, this is called {\em 
+object-oriented programming!}
+
+\subsection{Example: Moving to a different city}
+
+Here is a real-life example demonstrating the difference between 
+procedural and object-oriented programming. Imagine that you are moving 
+and all your things need to be packed, boxed, loaded on a truck, hauled 
+a 1000 miles, unloaded, and brought into your new home. 
+
+{\em Procedural approach:} You (the procedure) 
+go rent a truck -- this is the data that the procedure does not own. Then
+you pack everything, load it on the truck, drive to the other city, 
+unload your things, and carry them into your new home. Then you go 
+return the truck (that's the return statement at the end of the procedure).
+
+{\em Object-oriented approach:} You call a moving company "C". This means 
+that you just created an object C. Note that the 
+object C owns the truck. They will come to your home and use methods 
+C.pack(), C.box(), C.load(), C.haul(), C.unload(), C.carry() and perhaps 
+even C.unpack() to solve your problem. Notice the following benefits of the object-oriented approach: 
+\begin{itemize}
+\item The work is being done by the company, 
+      you do not have to worry (delegation of work).
+\item You do not have to be able to drive a truck (better code structure). 
+\item You do not need to know how the company does the moving (reduced flow of data).
+\item You can concentrate on solving problems 
+      in your area of expertise (greater efficiency).
+\item You do not risk crashing the truck (safer programming).
 \end{itemize}
 
+\subsection{Classes, objects, and methods}
+
+Let us stay with the moving example for a little while longer. The moving 
+company that you heard of, or that you saw in an advertisement, 
+is a {\em class} or in other words a {\em concept}. Formally, we say that 
+{\em class} is an entity comprising data and functionality that uses the data.
+But a concept will not get your things moved. For that you need a concrete team of 
+movers. This is called an {\em object} or an {\em instance of the class}. 
+
+When the movers appear at your doorstep, that's when an instance 
+of the class is created. When they pack, box, and load your things, the object is using 
+{\em methods} of the class. Technically, methods belong to the class because that's
+where they are defined, but often we say that ``an objects uses its methods to ...". 
+Once again, methods are {\em defined in a class} but {\em used 
+by instances of the class}. 
+Methods of a class can operate on data owned by the class (the truck) as well as 
+on data that does not belong to the class (your things that are being moved.
+
+Similarly with variables -- variables are defined in a class, but they do not 
+have concrete values there. In the class definition, they are part of a concept. 
+Only after an instance of the class is created, the variables are filled with 
+concrete values. 
+
+\subsection{An example from geometry}
+
+Let's see how all this is implemented in Python. We will say goodbye to the movers
+and play with some simple geometrical concepts instead. Let us create a class
+{\tt circle}. The data owned by this class will be:
+
+\begin{itemize}
+\item Radius {\tt R}, 
+\item center with coordinates {\tt Cx, Cy}, 
+\item two arrays {\tt ptsx}, {\tt ptsy} to plot the circle. 
+\end{itemize}
+The methods of this class will include 
+\begin{itemize}
+\item {\tt \_\_init\_\_(self, r, cx, cy)} ... constructor,
+\item {\tt area(self)} ... calculate and return its area,
+\item {\tt perimeter(self)} ... calculate and return its perimeter,
+\item {\tt draw(self)} ... draw itself.
+\end{itemize}
+Do not be disturbed by the funny way the constructor {\tt \_\_init\_\_} 
+is defined in Python, or by the argument {\tt self} that is present 
+in all methods. Constructors are 
+used in all object-oriented languages to pass external parameters 
+(such as the radius and the center point in this case) into newly 
+created instances. In other words, each instance of the class {\tt circle} 
+can have a different radius and a different center.
+
+The keyword {\tt self} must be included in each method of the class 
+and this is a reference to the concrete instance through which all
+data and methods of the instance are accessed. Such a reference is present 
+in other object-oriented languages as well - including C++ where the programmer
+does not have to mention it explicitly like in Python. It is added there by 
+the compiler.
+
+\subsection{Defining and using class {\tt circle}} \label{subsec:circle}
+
+This is how the class {\tt circle} is defined in Python:
+
+\begin{verbatim}
+from numpy import pi, cos, sin
+from pylab import clf, plot, legend, axis
+
+class circle:
+    # Constructor:
+    def __init__(self, r, cx, cy, n = 100):
+        self.R = r
+        self.Cx = cx
+        self.Cy = cy
+        self.n = n
+        # And now the points for plotting:
+        self.ptsx = []
+        self.ptsy = []
+        da = 2*pi/self.n
+        for i in range(n):
+            self.ptsx.append(self.Cx + self.R * cos(i * da))
+            self.ptsy.append(self.Cy + self.R * sin(i * da))
+        self.ptsx.append(self.Cx + self.R)
+        self.ptsy.append(self.Cy + 0)
+            
+    # Method to return circle area:
+    def area(self):
+        return pi * self.R**2
+      
+    # Method to return perimeter:
+    def perimeter(self):
+        return 2 * pi * self.R
+      
+    # Method to plot the circle:
+    def draw(self, label):
+        axis('equal')
+        plot(self.ptsx, self.ptsy, label = label)
+        legend()
+\end{verbatim}
+Notice how the variables owned by the class are always used with the 
+prefix {\tt self}.
+
+With such a nice class in hand, it is easy to draw various circles,
+and calculate their areas and perimeters:
+\begin{verbatim}        
+# Create an instance:
+C1 = circle(1, 0, 0)
+print "Are and perimeter of circle 1:", \
+C1.area(), C1.perimeter()
+C2 = circle(0.5, 1, 0)
+print "Are and perimeter of circle 2:", \
+C2.area(), C2.perimeter()
+C3 = circle(0.25, 1.5, 0)
+print "Are and perimeter of circle 3:", \
+C3.area(), C3.perimeter()
+clf()
+C1.draw("First circle")
+C2.draw("Second circle")
+C3.draw("Third circle")
+lab.show()
+\end{verbatim}
+The output (text and Fig. \ref{fig:3circ}) is shown below.
+
+\begin{verbatim}
+Area and perimeter of circle 1: 3.14159265359 6.28318530718
+Area and perimeter of circle 2: 0.785398163397 3.14159265359
+Area and perimeter of circle 3: 0.196349540849 1.57079632679
+\end{verbatim}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{imgp/3circ.png}
+\end{center}
+\vspace{-2mm}
+\caption{Three instances of the class {\tt circle}.}
+\label{fig:3circ}
+\end{figure}
+
+\subsection{Text string as a class} \label{subsec:textstrclass}
+
+We first met text strings in Section \ref{sec:strings}. Now that 
+we know how classes are defined and used, we can reveal that 
+text string is a class! In fact it has many great methods that 
+really make working with texts easy and fun. Let us show some 
+of them. Below, arguments enclosed in brackets are optional,
+and if they are used, then without the brackets:\\
+
 \noindent
-Coming soon.
+{\bf Method} {\tt capitalize()}\\
+
+\noindent
+Return a copy of the string with only its first character capitalized.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "sentences should start with a capital letter."
+print str.capitalize()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+Sentences should start with a capital letter.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt count(sub[, start[, end]])}\\
+
+\noindent
+Return the number of occurrences of substring sub in string S[start:end]. 
+Optional arguments start and end are interpreted as in slice notation.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "John Stevenson, John Lennon, and John Wayne."
+print str.count("John")
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+3
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt find(sub[, start[, end]])}\\
+
+\noindent
+Return the lowest index in the string where substring {\tt sub} is found, such that 
+sub is contained in the range {\tt [start, end]}. Optional arguments {\tt start} and {\tt end} 
+are interpreted as in slice notation. Return {\tt -1} if {\tt sub} is not found.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "This happened during the summer."
+print str.find("sum")
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+25
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt index(sub[, start[, end]])}\\
+
+\noindent
+Like find(), but raise ValueError when the substring is not found.\\
+
+\noindent
+{\bf Method} {\tt isalnum()}\\
+
+\noindent
+Return true if all characters in the string are alphanumeric and 
+there is at least one character, false otherwise.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str1 = "mypassword123"
+if str1.isalnum():
+    print str1, "is alphanumeric."
+else: 
+    print str1, "is not alphanumeric."
+str2 = "mypassword123+"
+if str2.isalnum():
+    print str2, "is alphanumeric."
+else: 
+    print str2, "is not alphanumeric."
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+mypassword123 is alphanumeric.
+mypassword123+ is not alphanumeric.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt isalpha()}\\
+
+\noindent
+Return true if all characters in the string are alphabetic and 
+there is at least one character, false otherwise.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str1 = "John"
+if str1.isalpha():
+    print str1, "is alphabetic."
+else: 
+    print str1, "is not alphabetic."
+str2 = "My name is John"
+if str2.isalpha():
+    print str2, "is alphabetic."
+else: 
+    print str2, "is not alphabetic."
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+John is alphabetic.
+My name is John is not alphabetic.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt isdigit()}\\
+
+\noindent
+Return true if all characters in the string are digits and there is at least one character, false otherwise.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str1 = "2012"
+if str1.isdigit():
+    print str1, "is a number."
+else: 
+    print str1, "is not a number."
+str2 = "Year 2012"
+if str2.isdigit():
+    print str2, "is a number."
+else: 
+    print str2, "is not a number."
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+2012 is a number.
+Year 2012 is a number.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt join(seq)}\\
+
+\noindent
+Return a string which is the concatenation of the strings in the sequence seq. The 
+base string (onject whose method is used as separator).\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "..."
+str1 = "This"
+str2 = "is"
+str3 = "the"
+str4 = "movie."
+print str.join([str1, str2, str3, str4])
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+This...is...the...movie.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt lower()}\\
+
+\noindent
+Return a copy of the string converted to lowercase.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "She lives in New Orleans."
+print str.lower()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+she lives in new orleans.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt replace(old, new[, count])}\\
+
+\noindent
+Return a copy of the string with all occurrences of substring old replaced by new. 
+If the optional argument count is given, only the first count occurrences are replaced.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "First word, second word, and third word."
+print str.replace("word", "thing")
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+First thing, second thing, and third thing.
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt swapcase()}\\
+
+\noindent
+Return a copy of the string with uppercase characters converted to lowercase and vice versa.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "The abbreviation is MENSA"
+print str.swapcase()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+tHE ABBREVIATION IS mensa
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt title()}\\
+
+\noindent
+Return a titlecased version of the string: Words start with uppercase characters, 
+all remaining cased characters are lowercase.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "this is the title of my new book"
+print str.title()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+This Is The Title Of My New Book
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+{\bf Method} {\tt upper()}\\
+Return a copy of the string converted to uppercase.\\
+
+\noindent
+\underline{Example}:
+\begin{verbatim}
+str = "this is the title of my new book"
+print str.upper()
+\end{verbatim}
+\underline{Output}:
+\begin{verbatim}
+'THIS IS THE TITLE OF MY NEW BOOK'
+\end{verbatim}
+\vspace{4mm}
+
+\noindent
+For additional useful text string methods see the Python documentation at 
+{\tt http://docs. python.org/release/2.5.2/lib/string-methods.html.} \\
+
+\noindent
+Before we
+leave this section, notice that lists, tuples, dictionaries and many other 
+data structures in Python are classes as well.
 
 \subsection{Review questions}
 
-Coming soon.
+\begin{enumerate}
+\item The philosophy of object-oriented programming is:
+\begin{enumerate}
+\item[A1] Operate with geometrical objects.
+\item[A2] Use local variables in functions.
+\item[A3] Use entities that combine functionality and data.
+\item[A4] Use functions that are local in other functions.
+\end{enumerate}
+\item What is the relation between {\em class} and {\em object} in object-oriented programming?
+\begin{enumerate}
+\item[A1] By an object we mean all the data defined in a class.
+\item[A2] By an object we mean all the functions defined in a class.
+\item[A3] Class is an instance (concrete realization) of an object.
+\item[A4] Object is an instance (concrete realization) of a class.
+\end{enumerate}
+\item What are {\em methods} of a class?
+\begin{enumerate}
+\item[A1] Specific ways the class is defined.
+\item[A2] Special functions defined in the class that operate with data not owned by the class.
+\item[A3] Specific way variables are arranged in a class.
+\item[A4] Functions that are part of the class definition.
+\end{enumerate}
+\item Where are methods defined and where are they used?
+\begin{enumerate}
+\item[A1] They are defined in an object and used by a class.
+\item[A2] They are defined outside of a class and used inside of the class.
+\item[A3] They are defined in a class and used by instances of the class.
+\item[A4] They are defined in instances of a class.
+\end{enumerate}
+\item Can methods of a class operate with data not owned by the class and when?
+\begin{enumerate}
+\item[A1] Yes, always.
+\item[A2] Yes, but only if they also operate with data owned by the class.
+\item[A3] Yes, but only if they do not operate with data owned by the class.
+\item[A4] No.
+\end{enumerate}
+\item What is a {\em constructor}?
+\begin{enumerate}
+\item[A1] Method of a class that is used to initialize newly created instances.
+\item[A2] Special function that is defined in the object, not in the class.
+\item[A3] Function that turns a class into an object.
+\item[A4] Function that converts an object into a class.
+\end{enumerate}
+\item What is the correct way to define a constructor that initializes a variable
+      {\tt A} in a class with a value {\tt a}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+    def __init__(a):
+        A = a
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+    def __init__(self, a):
+        A = a
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+    def __init__(self, a):
+        self.A = a
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+    def __init__(self, self.a):
+        self.A = self.a
+\end{verbatim}
+\end{enumerate}
+\item A class contains a variable {\tt A}. What is the correct way to define 
+      a method {\tt printdata} of this class that prints the value of the variable?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+    def printdata():
+        print "A =", A
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+    def printdata():
+        print "A =", self.A
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+    def printdata(self):
+        print "A =", A
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+    def printdata(self):
+        print "A =", self.A
+\end{verbatim}
+\end{enumerate}
+\item Given a text string {\tt S}, what is the correct way to count and print the number 
+      of appearances of another string {\tt word} in {\tt S}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+print S.count("word")
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+print S.find("word")
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+print S.count(word)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+print S.parse_string("word")
+\end{verbatim}
+\end{enumerate}
+\item What is the way to check whether a string {\tt S} is a number?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+S.isdigit()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+S.isnumber()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+isdigit(S)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+isnumber(S)
+\end{verbatim}
+\end{enumerate}
+\item What is the way to replace in a text string {\tt S} a string {\tt s1} with another string {\tt s2}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+find_and_replace(S, s1, s2)
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+S.find_and_replace(s1, s2)
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+S.replace("s1", "s2")
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+S.replace(s1, s2)
+\end{verbatim}
+\end{enumerate}
+\item How can be in Python a string {\tt S} converted to uppercase?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+S.uppercase()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+S.raise()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+S.upper()
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+S.capitalize()
+\end{verbatim}
+\end{enumerate}
+\end{enumerate}
 
-\subsection{Programming exercises}
+\subsection{Programming exercises}\label{subsec:obj}
 
-Coming soon.
+\begin{enumerate}
+\item Implement a Python-dictionary-based smart translator class {\tt wordmagic} that 
+      will have the following methods:
+\begin{itemize}
+\item Constructor with no parameters.
+\item {\tt add(expr1, expr2)}: Boolean method that adds a pair of text strings into 
+      the dictionary. The former is the key, the latter the corresponding value. 
+      If {\tt expr1} or {\tt expr2} are already present in the dictionary,
+      let the user know, do not add them, and return {\tt False}. Otherwise return {\tt True}.
+\item {\tt translate(expr)}: Boolean method that searches all keys as well as all values,
+      and translates the expression {\tt expr} automatically either way. If the expression 
+      was found, return {\tt True}, otherwise let the user know and return {\tt False}.
+\item {\tt flush()}: Method that prints all pairs contained in the dictionary (first key, then value).
+      Keys need to be sorted alphabetically.
+\item {\tt flush\_reverse()}: Method that prints all pairs contained in the dictionary, in
+      reverse order (first value, then key). Values need to be sorted alphabetically.
+\end{itemize}
+\item Implement a Python class {\tt numbermagic} whose data is just one integer number, and 
+      whose methods are as follows:
+\begin{itemize}
+\item Constructor that takes one integer number as a parameter and stores it in the object. 
+      If the user supplies a non-integer number, print a warning and round it to an integer. 
+\item {\tt insert(new\_num)}: Method that replaces the number stored in the object with {\tt new\_num}.
+\item {\tt ispositive()}: Boolean method that returns {\tt True} if the number stored in the object is 
+      greater than zero, {\tt False} otherwise.
+\item {\tt iseven()}: Boolean method that returns {\tt True} if the number stored in the object is even,
+      {\tt False} otherwise.
+\item {\tt isprime()}: Boolean method that returns {\tt True} if the number stored in the object is a prime,
+      {\tt False} otherwise.
+\end{itemize}
+\item Implement a Python class {\tt vectormagic} whose data are two three-dimensional vectors.
+      All vectors are represented by lists of length three. The class has the following methods:
+\begin{itemize}
+\item Constructor that takes two vectors as parameters and stores them in the object. 
+      If the length of any of the two lists is different from three, let the user know and 
+      complete it with zeros, or truncate it to length three. 
+\item {\tt areparallel()}: Boolean method that returns {\tt True} if the vectors are parallel,
+      {\tt False} otherwise. Note: If you are going to compare a real number against zero,
+      use a small tolerance, such as {\tt 1e-8}.
+\item {\tt arenormal()}: Boolean method that returns {\tt True} if the vectors are perpendicular,
+      {\tt False} otherwise. Again: If you are going to compare a real number against zero,
+      use a small tolerance, such as {\tt 1e-8}.
+\item {\tt innerproduct()}: Returns one real number which is the inner product of the two vectors.
+\item {\tt vectorproduct()}: Returns a vector (list of length three) which is the vector product 
+      of the two vectors.
+\end{itemize}
+\item Implement a Python class {\tt plottingmagic} whose data is a Python list or dictionary -- your choice. 
+      This list or dictionary will serve as a simple database of two-dimensional geometrical objects that 
+      the user adds to the plot. All objects will have names (text string identifiers) but also numerical 
+      indices reflecting the order in which they were added. The user will be able to display just one 
+      selected object, or multiple objects simultaneously, referencing them either by their names or by 
+      their indices. Let's make this description more accurate. The class has the following methods:
+\begin{itemize}
+\item Constructor with no parameters.
+\item {\tt addline(a, b, name)}: Method that adds a straight line connecting points {\tt a}
+      and {\tt b}. 
+\item {\tt addpolyline(pts\_list, name)}: Method that adds a piecewise-straight polyline 
+      formed by points in the {\tt pts\_list}. 
+\item {\tt addcircle(r, c, name)}: Method that adds circle of radius {\tt r} and center point {\tt c}.
+\item {\tt getindex(name)}: Method that returns the index of the object whose text string identifier is {\tt name}.
+\item {\tt getname(i)}: Method that returns the name of the object whose index identifier is {\tt i}.
+\item {\tt delete(name)}: Method that deletes object referenced by its name. All indices need to be 
+      recalculated to start with zero and form a continuous sequence of integers. 
+\item {\tt delete(i)}: Method that deletes object referenced by its index {\tt i}. Again, all indices need to be 
+      recalculated.
+\item {\tt plot\_by\_name(L)}: Method that plots all objects whose names are in the list {\tt L}. Display names in the plot.
+\item {\tt plot\_by\_index(L)}: Method that plots all objects whose indices are in the list {\tt L}. Display names in the plot.
+\end{itemize}
+\end{enumerate}
 
+\section{Class Inheritance}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item Understand the benefits of inheritance in object-oriented programming.
+\item Learn the syntax of creating descendant classes in Python.
+\item Learn how methods of parent class are called from the descendant. 
+\end{itemize}
+To illustrate the inheritance process in object-oriented programming, we will
+build a small library of geometrical objects that contains 
+triangles, quadrilaterals, rectangles, squares, and circles. 
+We want all 
+these classes to have the same functionality as the class {\tt circle} from 
+Subsection \ref{subsec:circle}. This means, they should be able to:
+\begin{itemize}
+\item Calculate their area,
+\item calculate their perimeter,
+\item draw their geometry.
+\end{itemize}
+Notice one interesting thing: The drawing functionality will be 
+the same for all these classes. Specifically, all of them will have the coordinate 
+arrays {\tt ptsx}, {\tt ptsy} and the plotting method {\tt draw()}. Other than 
+that their functionality will differ. This is where {\em class inheritance} comes
+handy.
+
+\subsection{Creating base class {\tt geometry}}
+
+Instead of repeating the same drawing functionality in all classes, we create 
+a base class {\tt geometry} as follows:
+
+\begin{verbatim}
+from pylab import clf, plot, legend, axis
+
+# Base class:
+class geometry:
+    # Constructor:
+    def __init__(self):
+        self.ptsx = []
+        self.ptsy = []
+      
+    # Plotting method:
+    def draw(self, label):
+        axis('equal')
+        plot(self.ptsx, self.ptsy, label = label)
+        legend()
+\end{verbatim}
+This base class really cannot do much, but this is fine. We will use it to 
+derive several new (descendant) classes. The benefit of inheritance is that if 
+we decide in the future to change the plotting mechanism, we will just have to change it at 
+one place -- in the base class {\tt geometry} -- and the change will propagate automatically 
+into all its descendants. Remember that humans are extremely prone to mistakes. Having the 
+same code at several different places in the program is about the worst thing a programmer 
+can ever do. 
+
+\subsection{Deriving {\tt polygon} from {\tt geometry}}
+
+There is more to the story. Triangles, quadrilaterals, rectangles and squares are all 
+{\em polygons}. Hence let us create the class {\tt polygon} to be a descendant 
+of the base class {\tt geometry}. This class will represent general non-convex
+counter-clockwise (CCW) oriented polygons. Notice the syntax of the inheritance -- 
+one types {\tt class polygon(geometry):} instead of just {\tt class polygon}:
+
+\begin{verbatim}
+# Class polygon derived from class geometry, 
+# represents general, possibly non-convex 
+# polygon. Boundary needs to be CCW oriented.
+class polygon(geometry):
+    # Constructor (here L is list of vertices):
+    def __init__(self, L):
+        self.ptsx = []
+        self.ptsy = []
+        # Convert L into plotting arrays:
+        for pt in L:
+            self.ptsx.append(pt[0])
+            self.ptsy.append(pt[1])
+        # To close the loop in plotting:
+        self.ptsx.append(L[0][0])
+        self.ptsy.append(L[0][1])
+         
+    # Method to calculate area of a general 
+    # oriented polygon:
+    def area(self):
+        # Calculate minimum y-coordinate:
+        ymin = min(self.ptsy)
+        # The area of an oriented polygon is the sum of 
+        # areas of oriented trapezoids under its edges:
+        m = len(self.ptsx) - 1   # Number of trapezoids.
+        s = 0
+        for i in range(m):
+            s += (self.ptsx[i+1] - self.ptsx[i]) \
+                 * (self.ptsy[i+1] + self.ptsy[i] \
+                 - 2*ymin) / 2.
+        return -s
+
+    # Method to calculate perimeter of a general
+    # oriented polygon:
+    def perimeter(self):
+        l = 0
+        m = len(self.ptsx) - 1
+        for i in range(m):
+            l += sqrt((self.ptsx[i+1] - self.ptsx[i])**2 
+                 + (self.ptsy[i+1] - self.ptsy[i])**2)
+        return l
+\end{verbatim}
+Notice that we did not have to define the method {\tt draw()} here. 
+
+\subsection{Deriving {\tt circle} from {\tt geometry}}
+
+Next let us derive the class {\tt circle} from the class {\tt geometry}. Obviously it cannot be derived
+from {\tt polygon} because circles are not polygonal geometries:
+
+\begin{verbatim}
+# Class circle derived from class geometry:
+class circle(geometry):
+    # Constructor (here r is radius, (cx, cy) the center point,
+    # and n plotting subdivision):
+    def __init__(self, r, cx, cy, n = 100):
+        self.R = r
+        self.Cx = cx
+        self.Cy = cy
+        self.n = n
+        # Create array of points for plotting:
+        self.ptsx = []
+        self.ptsy = []
+        da = 2*pi/self.n
+        for i in range(n):
+            self.ptsx.append(self.Cx + self.R * cos(i * da))
+            self.ptsy.append(self.Cy + self.R * sin(i * da))
+        self.ptsx.append(self.Cx + self.R)
+        self.ptsy.append(self.Cy + 0)
+            
+    # Method to calculate circle area:
+    def area(self):
+        return pi * self.R**2
+      
+    # Method to calculate perimeter:
+    def perimeter(self):
+        return 2 * pi * self.R
+\end{verbatim}
+Again, notice that we did not have to define the method {\tt draw()}.
+
+\subsection{Deriving {\tt triangle} and {\tt quad} from {\tt polygon}}
+
+The {\tt polygon} class defined above is very general. Of course we could use 
+it directly to render triangles, quads, rectangles, and squares. But these 
+geometries are simpler and thus we also want their instantiation to be simpler.  
+Let us begin with the class {\tt triangle}. 
+
+This class is very simple -- it takes three points as parameters, forms 
+a list containing these three points, and then the list is passed into the 
+constructor of the parent class {\tt polygon}. Notice the way the constructor of
+the {\tt polygon} class is called from its descendant {\tt triangle} via 
+{\tt polygon.\_\_init\_\_(self, L)}:
+
+\begin{verbatim}
+# Class triangle derived from class polygon:
+class triangle(polygon):
+    # Constructor (here a, b, c are the vertices):
+    def __init__(self, a, b, c):
+        L = [a, b, c]
+        polygon.__init__(self, L)
+\end{verbatim}
+Class {\tt quad} is created analogously:
+
+\begin{verbatim}
+# Class quad derived from class polygon:
+class quad(polygon):
+    # Constructor (here a, b, c, d are the vertices
+    # in CCW orientation):
+    def __init__(self, a, b, c, d):
+        L = [a, b, c, d]
+        polygon.__init__(self, L)
+\end{verbatim}
+
+\subsection{Deriving {\tt rectangle} from {\tt quad}}
+
+Next, rectangle is a special case of quad, so let us derive the 
+{\tt rectangle} class from the {\tt quad} class:
+
+\begin{verbatim}
+# Class rectangle derived from class quad.
+# Represents rectangle (0, a) x (0, b):
+class rectangle(quad):
+    # Constructor:
+    def __init__(self, a, b):
+        quad.__init__(self, [0, 0], [a, 0], [a, b], [0, b])
+\end{verbatim}
+
+\subsection{Deriving {\tt square} from {\tt rectangle}}
+
+Taking this one step further, square is a special case of rectangle. Therefore 
+we can derive the {\tt square} class from the {\tt rectangle} class:
+
+\begin{verbatim}
+# Class square derived from class rectangle.
+# Represents square (0, a) x (0, a):
+class square(rectangle):
+    # Constructor. Here a is the edge length:
+    def __init__(self, a):
+        rectangle.__init__(self, a, a)
+\end{verbatim}
+
+\subsection{Diagram of class structure}
+
+The inheritance structure of our classes is depicted in Fig. \ref{fig:classes}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imgp/classes.png}
+\end{center}
+\vspace{-2mm}
+\caption{Graphical representation of the structure of our classes.}
+\label{fig:classes}
+\end{figure}
+
+\subsection{Creating sample instances}
+
+Finally let us create sample instances of the classes defined above, inquire
+about their areas and perimeters, and let them plot themselves:
+
+\begin{verbatim}
+# Create a triangle:
+T = triangle([-2, -0.5], [0, -0.5], [-1, 2])
+print "Area and perimeter of the triangle:", \
+T.area(), T.perimeter()
+
+# Create a quad:
+Q = quad([-3, -1], [0, -1], [-1, 1], [-2, 1])
+print "Area and perimeter of the quad:", \
+Q.area(), Q.perimeter()
+ 
+# Create a rectangle:
+R = rectangle(3, 1)
+print "Area and perimeter of the rectangle:", \
+R.area(), R.perimeter()
+
+# Create a square:
+S = square(1.5)
+print "Area and perimeter of the square:", \
+S.area(), S.perimeter()
+ 
+# Create a circle:
+C = circle(2.5, 0, 0.5)
+print "Area and perimeter of the circle:", \
+C.area(), C.perimeter()
+
+# Plot the geometries:
+clf()
+T.draw("Triangle")
+Q.draw("Quad")
+R.draw("Rectangle")
+S.draw("Square")
+C.draw("Circle")
+ylim(-3, 4)
+legend()
+lab.show()
+\end{verbatim}
+First, here is the textual output:
+
+\begin{verbatim}
+Area and perimeter of the triangle: 2.5 7.38516480713
+Area and perimeter of the quad: 4.0 8.472135955
+Area and perimeter of the rectangle: 3.0 8.0
+Area and perimeter of the square: 2.25 6.0
+Area and perimeter of the circle: 19.6349540849 15.7079632679
+\end{verbatim}
+The graphical output is shown in Fig. \ref{fig:classes2}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.82\textwidth]{imgp/classes2.png}
+\end{center}
+\vspace{-2mm}
+\caption{Visualization of the instances created above.}
+\label{fig:classes2}
+\end{figure}
+
+
+\subsection{\ \ Review questions}
+
+\begin{enumerate}
+\item When should inheritance be used in object-oriented programming?
+\begin{enumerate}
+\item[A1] Always because it makes definitions of descendant classes shorter.
+\item[A2] When some functionality is common to multiple classes.
+\item[A3] When we work with geometrical objects. 
+\item[A4] We should avoid it as it makes code more complicated.
+\end{enumerate}
+\item What is the correct way to define a new class {\tt B} which is a descendant of 
+      class {\tt A}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+class B(A):
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+class A(B):
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+class B: public A:
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+class B = descendant(A)
+\end{verbatim}
+\end{enumerate}
+\item What is the correct way to call from a descendant class {\tt B} the constructor of its parent class 
+      {\tt A}?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+def __init__(self):
+    A.__init__(self)
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+def __init__(self):
+    __init__(A)
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+def __init__(self):
+    __init__(self, A)
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+def __init__(A):
+    self.__init__(A)
+\end{verbatim}
+\end{enumerate}
+\end{enumerate}
+
+
+\subsection{\ \ Programming exercises}
+
+\begin{enumerate}
+\item Create a descendant {\tt numberhero} of the class {\tt numbermagic} from Subsection \ref{subsec:obj}
+      that in addition to the functionality contained in the class {\tt numbermagic} has one new
+      method:
+\begin{itemize}
+\item {\tt factorize()}: Method that returns a Python list containing primes {\tt p1, p2, ..., pn}
+      that form the prime number factorization of the number stored in the object. We recommend 
+      that you write a recursive algorithm for the prime number factorization. This is a very 
+      nice exercise for recursion.
+\end{itemize}
+\item Create a descendant {\tt vectorhero} of the class {\tt vectormagic} from Subsection \ref{subsec:obj}
+      that in addition to the functionality contained in the class {\tt vectormagic} has one new
+      method:
+\begin{itemize}
+\item {\tt project(V)}: If the two vectors contained in the object form a plane, the 
+      method calculates and returns the projection of the vector {\tt V} into this plane. 
+      Otherwise the method prints a warning and returns a zero vector. 
+\end{itemize}
+\item Create a descendant {\tt plottinghero} of the class {\tt plottingmagic} from Subsection \ref{subsec:obj}
+      that in addition to the functionality contained in the class {\tt plottingmagic} has two new
+      method:
+\begin{itemize}
+\item {\tt addbezier2(P1, P2, P3, num)}: Method that adds to the database a quadratic B\'ezier curve based 
+      on the three control points {\tt P1, P2, P3}. The parameter {\tt num} is a plotting subdivision. 
+      See the note below on how B\'ezier curves are defined.
+\item {\tt addbezier3(P1, P2, P3, P4, num)}: Method that adds to the database a cubic B\'ezier curve based 
+      on the four control points {\tt P1, P2, P3, P4}. 
+\end{itemize}
+\end{enumerate}
+\noindent
+{\bf B\'ezier curves}: 
+
+B\'ezier curves are the most widely used approach to define curves in engineering design. 
+Let us begin with the linear case. Linear B\'ezier curve is a straight line that
+connects two control points $P_1$ and $P_2$. All B\'ezier curves are parameterized
+from the interval $[0, 1]$, so in the linear case the exact mathematical definition is
+$$
+  B(t) = P_1 + t(P_2 - P_1)
+$$ 
+You can easily check that the curve starts at $P_1$ (substitute $t = 0$ to the above formula),
+and that it ends at $P_2$ (substitute there $t = 1$).
+
+Quadratic B\'ezier curves are defined using three control points $P_1, P_2$ and $P_3$. Again they are
+parameterized from $[0, 1]$, and their definition is
+
+$$
+  B(t) = (1 - t)^2 P_1 + 2(1 - t)t P_2 + t^2 P_3.
+$$ 
+Cubic B\'ezier curves are defined using four control points $P_1, P_2, P_3$ and $P_4$. They are
+parameterized from $[0, 1]$ as usual, and their definition is
+
+$$
+  B(t) = (1 - t)^3 P_1 + 3(1 - t)^2t P_2 + 3(1-t)t^2 P_3 + t^3 P_4.
+$$ 
 
 \section{Python Libraries}\label{subsec:importinglib}
 

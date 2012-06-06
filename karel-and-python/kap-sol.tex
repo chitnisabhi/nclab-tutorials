@@ -1,4 +1,11 @@
 \documentclass[article,A4,12pt]{llncs}
+
+% Conditional compilation.
+% NOTE: If you set fullversionfalse, just compile ONCE so that TOC stays unchanged.
+\newif\iffullversion
+\fullversiontrue
+%\fullversionfalse
+
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -97,6 +104,11 @@
 \end{center}
 \vbox{}
 \begin{center}
+\iffullversion
+\else
+\vspace{2mm}
+\centerline{\huge \color{red}{PREVIEW}}
+\fi
 \vfill
 {\large
 {\bf Pavel Solin}, University of Nevada, Reno\\
@@ -1611,6 +1623,32 @@ right
 rangle
 \end{verbatim}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\iffullversion
+\else
+\vbox{}
+\vfill
+\pagestyle{empty}
+    \begin{center}
+    {\huge \color{red}END OF PREVIEW}\\[2cm]
+    {\Large Subscribe to NCLab's Course {\em Intro to Programming}\\ at {\tt http://introtoprogramming.net} to:\\[1.5cm]
+\begin{itemize}
+\item Access full version of the textbook and solution manual.
+\item Download interactive review question worksheets.
+\item Download interactive programming exercises.
+\item Access answers and solution programs.
+\end{itemize}
+}
+    \end{center}
+\vfill
+    \end{document}
+\fi
+
+
+
+
 \section{Section H - Variables}
 
 \subsection{Review questions}
@@ -2775,7 +2813,115 @@ Coming soon.
 
 \subsection{Review questions}
 
+\begin{enumerate}
+\item The philosophy of object-oriented programming is:
+  \begin{itemize}
+    \item A3: Use entities that combine functionality and data.
+  \end{itemize}
+\item What is the relation between {\em class} and {\em object} in object-oriented programming?
+  \begin{itemize}
+    \item A4: Object is an instance (concrete realization) of a class.
+  \end{itemize}
+\item What are {\em methods} of a class?
+  \begin{itemize}
+    \item A4: Functions that are part of the class definition.
+  \end{itemize}
+\item Where are methods defined and where are they used?
+  \begin{itemize}
+    \item A3: They are defined in a class and used by instances of the class.
+  \end{itemize}
+\item Can methods of a class operate with data not owned by the class and when?
+  \begin{itemize}
+    \item A1: Yes, always.
+  \end{itemize}
+\item What is a {\em constructor}?
+  \begin{itemize}
+    \item A1: Method of a class that is used to initialize newly created instances.
+  \end{itemize}
+\item What is the correct way to define a constructor that initializes a variable
+      {\tt A} in a class with a value {\tt a}?
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+    def __init__(self, a):
+        self.A = a
+\end{verbatim}
+  \end{itemize}
+\item A class contains a variable {\tt A}. What is the correct way to define 
+      a method {\tt printdata} of this class that prints the value of the variable?
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+    def printdata(self):
+        print "A =", self.A
+\end{verbatim}
+  \end{itemize}
+\item Given a text string {\tt S}, what is the correct way to count and print the number 
+      of appearances of another string {\tt word} in {\tt S}?
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+    print S.count(word)
+\end{verbatim}
+    \end{itemize}
+\item What is the way to check whether a string {\tt S} is a number?
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+    S.isdigit()
+\end{verbatim}
+    \end{itemize}
+\item What is the way to replace in a text string {\tt S} a string {\tt s1} with another string {\tt s2}?
+  \begin{itemize}
+    \item A4:
+\begin{verbatim}
+    S.replace(s1, s2)
+\end{verbatim}
+    \end{itemize}
+\item How can be in Python a string {\tt S} converted to uppercase?
+  \begin{itemize}
+    \item A3:
+\begin{verbatim}
+    S.upper()
+\end{verbatim}
+  \end{itemize}
+
+\end{enumerate}
+
+
+\subsection{Programming exercises}
+
 Coming soon.
+
+\section{Class Inheritance}
+
+\subsection{Review questions}
+
+\begin{enumerate}
+\item When should inheritance be used in object-oriented programming?
+  \begin{itemize}
+    \item A2: When some functionality is common to multiple classes.
+  \end{itemize}
+\item What is the correct way to define a new class {\tt B} which is a descendant of 
+      class {\tt A}?
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+class B(A):
+\end{verbatim}
+  \end{itemize}
+\item What is the correct way to call from a descendant class {\tt B} the constructor of its parent class 
+      {\tt A}?
+  \begin{itemize}
+    \item A1:
+\begin{verbatim}
+def __init__(self):
+    A.__init__(self)
+\end{verbatim}
+  \end{itemize}
+\end{enumerate}
+
+
 
 \subsection{Programming exercises}
 

@@ -5014,7 +5014,7 @@ S.capitalize()
 \subsection{Programming exercises}\label{subsec:obj}
 
 \begin{enumerate}
-\item Implement a Python-dictionary-based smart translator class {\tt translator} that 
+\item Implement a Python-dictionary-based smart translator class {\tt wordmagic} that 
       will have the following methods:
 \begin{itemize}
 \item Constructor with no parameters.
@@ -5026,8 +5026,9 @@ S.capitalize()
       and translates the expression {\tt expr} automatically either way. If the expression 
       was found, return {\tt True}, otherwise let the user know and return {\tt False}.
 \item {\tt flush()}: Method that prints all pairs contained in the dictionary (first key, then value).
+      Keys need to be sorted alphabetically.
 \item {\tt flush\_reverse()}: Method that prints all pairs contained in the dictionary, in
-      reverse order (first value, then key).
+      reverse order (first value, then key). Values need to be sorted alphabetically.
 \end{itemize}
 \item Implement a Python class {\tt numbermagic} whose data is just one integer number, and 
       whose methods are as follows:
@@ -5037,12 +5038,10 @@ S.capitalize()
 \item {\tt insert(new\_num)}: Method that replaces the number stored in the object with {\tt new\_num}.
 \item {\tt ispositive()}: Boolean method that returns {\tt True} if the number stored in the object is 
       greater than zero, {\tt False} otherwise.
-\item {iseven()}: Boolean method that returns {\tt True} if the number stored in the object is even,
+\item {\tt iseven()}: Boolean method that returns {\tt True} if the number stored in the object is even,
       {\tt False} otherwise.
-\item {isprime()}: Boolean method that returns {\tt True} if the number stored in the object is a prime,
+\item {\tt isprime()}: Boolean method that returns {\tt True} if the number stored in the object is a prime,
       {\tt False} otherwise.
-\item {\tt factorize()}: Method that returns a Python list containing primes {\tt p1, p2, ..., pn}
-      that form the prime number factorization of the number stored in the object.
 \end{itemize}
 \item Implement a Python class {\tt vectormagic} whose data are two three-dimensional vectors.
       All vectors are represented by lists of length three. The class has the following methods:
@@ -5059,6 +5058,28 @@ S.capitalize()
 \item {\tt innerproduct()}: Returns one real number which is the inner product of the two vectors.
 \item {\tt vectorproduct()}: Returns a vector (list of length three) which is the vector product 
       of the two vectors.
+\end{itemize}
+\item Implement a Python class {\tt plottingmagic} whose data is a Python list or dictionary -- your choice. 
+      This list or dictionary will serve as a simple database of two-dimensional geometrical objects that 
+      the user adds to the plot. All objects will have names (text string identifiers) but also numerical 
+      indices reflecting the order in which they were added. The user will be able to display just one 
+      selected object, or multiple objects simultaneously, referencing them either by their names or by 
+      their indices. Let's make this description more accurate. The class has the following methods:
+\begin{itemize}
+\item Constructor with no parameters.
+\item {\tt addline(a, b, name)}: Method that adds a straight line connecting points {\tt a}
+      and {\tt b}. 
+\item {\tt addpolyline(pts\_list, name)}: Method that adds a piecewise-straight polyline 
+      formed by points in the {\tt pts\_list}. 
+\item {\tt addcircle(r, c, name)}: Method that adds circle of radius {\tt r} and center point {\tt c}.
+\item {\tt getindex(name)}: Method that returns the index of the object whose text string identifier is {\tt name}.
+\item {\tt getname(i)}: Method that returns the name of the object whose index identifier is {\tt i}.
+\item {\tt delete(name)}: Method that deletes object referenced by its name. All indices need to be 
+      recalculated to start with zero and form a continuous sequence of integers. 
+\item {\tt delete(i)}: Method that deletes object referenced by its index {\tt i}. Again, all indices need to be 
+      recalculated.
+\item {\tt plot\_by\_name(L)}: Method that plots all objects whose names are in the list {\tt L}. Display names in the plot.
+\item {\tt plot\_by\_index(L)}: Method that plots all objects whose indices are in the list {\tt L}. Display names in the plot.
 \end{itemize}
 \end{enumerate}
 
@@ -5401,7 +5422,16 @@ def __init__(A):
 \subsection{\ \ Programming exercises}
 
 \begin{enumerate}
-\item Create a descendant {\tt projector} of the class {\tt vectormagic} from Subsection \ref{subsec:obj}
+\item Create a descendant {\tt numberhero} of the class {\tt numbermagic} from Subsection \ref{subsec:obj}
+      that in addition to the functionality contained in the class {\tt numbermagic} has one new
+      method:
+\begin{itemize}
+\item {\tt factorize()}: Method that returns a Python list containing primes {\tt p1, p2, ..., pn}
+      that form the prime number factorization of the number stored in the object. We recommend 
+      that you write a recursive algorithm for the prime number factorization. This is a very 
+      nice exercise for recursion.
+\end{itemize}
+\item Create a descendant {\tt vectorhero} of the class {\tt vectormagic} from Subsection \ref{subsec:obj}
       that in addition to the functionality contained in the class {\tt vectormagic} has one new
       method:
 \begin{itemize}
@@ -5409,8 +5439,42 @@ def __init__(A):
       method calculates and returns the projection of the vector {\tt V} into this plane. 
       Otherwise the method prints a warning and returns a zero vector. 
 \end{itemize}
+\item Create a descendant {\tt plottinghero} of the class {\tt plottingmagic} from Subsection \ref{subsec:obj}
+      that in addition to the functionality contained in the class {\tt plottingmagic} has two new
+      method:
+\begin{itemize}
+\item {\tt addbezier2(P1, P2, P3, num)}: Method that adds to the database a quadratic B\'ezier curve based 
+      on the three control points {\tt P1, P2, P3}. The parameter {\tt num} is a plotting subdivision. 
+      See the note below on how B\'ezier curves are defined.
+\item {\tt addbezier3(P1, P2, P3, P4, num)}: Method that adds to the database a cubic B\'ezier curve based 
+      on the four control points {\tt P1, P2, P3, P4}. 
+\end{itemize}
 \end{enumerate}
+\noindent
+{\bf B\'ezier curves}: 
 
+B\'ezier curves are the most widely used approach to define curves in engineering design. 
+Let us begin with the linear case. Linear B\'ezier curve is a straight line that
+connects two control points $P_1$ and $P_2$. All B\'ezier curves are parameterized
+from the interval $[0, 1]$, so in the linear case the exact mathematical definition is
+$$
+  B(t) = P_1 + t(P_2 - P_1)
+$$ 
+You can easily check that the curve starts at $P_1$ (substitute $t = 0$ to the above formula),
+and that it ends at $P_2$ (substitute there $t = 1$).
+
+Quadratic B\'ezier curves are defined using three control points $P_1, P_2$ and $P_3$. Again they are
+parameterized from $[0, 1]$, and their definition is
+
+$$
+  B(t) = (1 - t)^2 P_1 + 2(1 - t)t P_2 + t^2 P_3.
+$$ 
+Cubic B\'ezier curves are defined using four control points $P_1, P_2, P_3$ and $P_4$. They are
+parameterized from $[0, 1]$ as usual, and their definition is
+
+$$
+  B(t) = (1 - t)^3 P_1 + 3(1 - t)^2t P_2 + 3(1-t)t^2 P_3 + t^3 P_4.
+$$ 
 
 \section{Python Libraries}\label{subsec:importinglib}
 

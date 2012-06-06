@@ -19,18 +19,21 @@ science fiction play R.U.R. (Rossum's Universal Robots).
 
 \subsection{Who is Karel?}
 
+Karel is a little robot that lives in a maze (Fig. \ref{fig:init45}), 
+and there are gems in the maze that he loves to collect!
+Sometimes multiple gems lie on each other, and in that case there is a number that shows their amount.
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=25mm]{imgk/Karel logo.JPG}
+\includegraphics[width=40mm]{imgk/karel_logo.jpg}
 \end{center}
 \vspace{-2mm}
 \caption{Karel}
-\label{fig:init}
+\label{fig:init45}
 %\vspace{-4mm}
 \end{figure}
-Karel is a little robot that lives in a maze, and there are gems in the maze that he loves to collect!
-Sometimes multiple gems lie on each other, and in that case there is a number that shows their amount.
-He was manufactured with only five simple commands in his memory:
+
+\noindent
+The robot was manufactured with only five simple commands in his memory:
 \begin{itemize}
 \item {\color{green} \tt go} ... make one step forward.
 \item {\color{green} \tt get} ... pick up a gem from the ground. 
@@ -207,8 +210,6 @@ answers may be correct.
 Karel can be launched in several different ways. The simplest one is to click on the icon 
 {\em Programming} and select {\em Karel} in the menu. This will launch the application 
 with a randomly generated maze, as shown in Fig. \ref{fig:init}.
-\newpage
-
 
 \begin{figure}[!ht]
 \begin{center}
@@ -363,21 +364,22 @@ Before we begin, let us review the four directions on the compass:\\[-7mm]
 \end{center}
 \vspace{-1cm}
 \end{figure}
-\newpage
+
 \noindent
 When launching Karel through the Programming icon, switch to Manual mode using the corresponding 
 menu button. Then, five buttons Left, Right, Go, Get and Put will appear in the panel on the left,
 as shown in Fig. \ref{fig:buttons}.
-
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=6.2cm]{imgk/buttons-all.png}
 \vspace{-0mm}
 \caption{Karel's buttons in manual mode (robot facing East).}
+\vspace{-1cm}
 \label{fig:buttons}
 \end{center}
 \end{figure}
+\newpage
 \noindent
 The function of the buttons is self-explanatory -- pressing Left will turn the robot 90 degrees to the left,
 pressing Right will turn him 90 degrees to the right, and pressing Go will move him one step forward 
@@ -414,7 +416,8 @@ all set.
 \item[A3] By pressing the Manual mode button.
 \item[A4] Through the File menu.
 \end{enumerate}
-\item Look at  the arrows and decide which direction the robot is facing!
+\item Look at the arrows and decide which direction the robot is facing!
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=6.2cm]{imgk/buttons-all-3.png}
@@ -426,7 +429,6 @@ all set.
 \item[A3] East
 \item[A4] West
 \end{enumerate}
-\newpage
 \item Look at the button and decide where the robot is facing ?
 \begin{figure}[!ht]
 \begin{center}
@@ -452,6 +454,7 @@ all set.
 \item[A4] West
 \end{enumerate}
 \item What is the function of the following button?
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=3cm]{imgk/button-left-1.png}
@@ -463,36 +466,31 @@ all set.
 \item[A3] Step aside towards East and then make one step forward.
 \item[A4] Turn left.
 \end{enumerate}
-\newpage
-\item The robot is facing the north. Which button will make him face the east ?
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=3cm]{imgk/button-put-1.png}\ \ \
-\includegraphics[width=3cm]{imgk/button-go-1.png}\ \ \
-\includegraphics[width=3cm]{imgk/button-go-2.png}\ \ \
-\includegraphics[width=3cm]{imgk/button-right-2.png}\ \ \
-\includegraphics[width=3cm]{imgk/button-left-2.png}
-\end{center}
-\end{figure}
+
+\item The robot is facing North. Which button will make him face East ?
 \begin{enumerate}
 \item[A1] \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=3cm]{imgk/button-put-1.png}
+\vspace{-10mm}
 \end{center}
 \end{figure}
 \item[A2] \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=3cm]{imgk/button-go-1.png}
+\vspace{-10mm}
 \end{center}
 \end{figure}
 \item[A3] \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=3cm]{imgk/button-go-2.png}
+\vspace{-10mm}
 \end{center}
 \end{figure}
 \item[A4] \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=3cm]{imgk/button-right-2.png}
+\vspace{-10mm}
 \end{center}
 \end{figure}
 \item[A5] \begin{figure}[!ht]
@@ -501,7 +499,8 @@ all set.
 \end{center}
 \end{figure}
 \end{enumerate}
-\item The robot is facing the south. Which two buttons out of these will you need make the robot move 1 step ahead and turn east ?
+\item The robot is facing South. Which two buttons out of these will you need to press 
+to make the robot move one step ahead and turn East ?
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=3cm]{imgk/button-go-4.png}\ \ \
@@ -567,7 +566,8 @@ all set.
 \item[A3] Turn right and face East
 \item[A4] Turn right and face South.
 \end{enumerate}
-\item The robot is facing the south.Which two buttons whill make him rotate 180 degrees ?
+\item The robot is facing South. Which two buttons will make him rotate 180 degrees ?
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=3cm]{imgk/button-left-4.png}\ \ \
@@ -609,11 +609,11 @@ Each exercise can be cloned via the File Manager's
 {\em Project} menu as described in Paragraph \ref{cloning}. 
 Do not skip levels since they are very simple and each one has something new! 
 
+\newpage
 \subsection{Exercise A01 - Go Button}
 
 {\em Karel is returning from a long walk and his batteries are running out. 
 Use the buttons on the left to get him home quickly! }
-\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[height=0.4\textwidth]{imgk/a01.png}

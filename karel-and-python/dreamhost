@@ -12,10 +12,10 @@ cp python.pdf python_sp.pdf
 cp python.pdf python_pl.pdf
 
 
-scp kap*.pdf femhub@femhub.com:~/femhub.com/public/docs/ 
-scp karel*.pdf femhub@femhub.com:~/femhub.com/public/docs/
-scp python*.pdf femhub@femhub.com:~/femhub.com/public/docs/
-scp karel-solutions.pdf femhub@femhub.com:~/femhub.com/public/docs/
+scp kap*.pdf femhub@208.113.201.85:~/femhub.com/public/docs/ 
+scp karel*.pdf femhub@208.113.201.85:~/femhub.com/public/docs/
+scp python*.pdf femhub@208.113.201.85:~/femhub.com/public/docs/
+scp karel-solutions.pdf femhub@208.113.201.85:~/femhub.com/public/docs/
 
 
 rm karel*.pdf

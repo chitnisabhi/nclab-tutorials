@@ -907,7 +907,7 @@ tube = TUBE([r, R, H])(128)
 lab.view(tube, [0.4, 0.9, 0.6])
 \end{verbatim}
 The tube's axis is in the $z$-direction, and the midpoint of
-its base circle is the origin $[0, 0, 0]$. Again, the parameter
+its base circle is the origin (0, 0, 0). Again, the parameter
 128 is the number of linear faces that approximate the 
 curved surfaces. The output of the above code is shown in Fig. \ref{fig:tube-1}.
 
@@ -934,7 +934,7 @@ R = 1.0
 s = SPHERE(3.0)([64, 64])
 lab.view(s, [0.4, 0.9, 0.6])
 \end{verbatim}
-will render a unit sphere whose origin is at $[0, 0, 0]$. 
+will render a unit sphere whose origin is at (0, 0, 0). 
 The parameter {\tt [64, 64]} stands for 
 subdivision in both tangential directions. We need to be a bit 
 careful with increasing this number, since doubling it to 
@@ -949,7 +949,7 @@ The output of the above code is shown in Fig. \ref{fig:sphere-1}.
 \includegraphics[width=0.5\textwidth]{img/sphere-1.png}
 \end{center}
 \vspace{-2mm}
-\caption{Sphere of radius $R$ and origin $[0, 0, 0]$.}
+\caption{Sphere of radius $R$ and origin (0, 0, 0).}
 \label{fig:sphere-1}
 %\vspace{-1cm}
 \end{figure}
@@ -966,7 +966,7 @@ R = 5.0
 tor = TORUS([r, R])([64, 64])
 lab.view(tor, [0.4, 0.9, 0.6])
 \end{verbatim}
-The center of the torus is at the origin $[0, 0, 0]$ and its axis
+The center of the torus is at the origin (0, 0, 0) and its axis
 is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 
 \newpage
@@ -976,7 +976,7 @@ is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 \includegraphics[width=0.82\textwidth]{img/torus-1.png}
 \end{center}
 \vspace{-2mm}
-\caption{Torus of inner radius $r$, outer radius $R$ and center at the origin $[0, 0, 0]$.}
+\caption{Torus of inner radius $r$, outer radius $R$ and center at the origin (0, 0, 0).}
 \label{fig:torus-1}
 %\vspace{-1cm}
 \end{figure}
@@ -1027,7 +1027,7 @@ red color, as shown in Fig. \ref{fig:a2}.
 \end{figure}
 
 \item Create an orange octahedron with vertices 
-$[0, -1, 1]$, $[0, 1, 1]$, $[0, -1, -1]$, $[0, 1, -1]$, $[2, 0, 0]$, and $[-2, 0, 0]$, 
+(0, -1, 1), (0, 1, 1), (0, -1, -1), (0, 1, -1), (2, 0, 0), and (-2, 0, 0), 
 as shown in Fig. \ref{fig:a3}.
 
 \begin{figure}[!ht]
@@ -1055,7 +1055,7 @@ in a circle with diameter $R$, as shown in Fig. \ref{fig:a4}.
 \newpage
 
 \item Create a cyan cone of radius $R$ and height $H$ that stands on its tip
-(the tip is at $[0, 0, 0]$ and the axis of the cone coincides with the 
+(the tip is at (0, 0, 0) and the axis of the cone coincides with the 
 $z$-axis), as shown in Fig. \ref{fig:a5}.
 
 \begin{figure}[!ht]
@@ -1096,7 +1096,7 @@ and height $H$, as shown in Fig. \ref{fig:a7}.
 %\vspace{-1cm}
 \end{figure}
 
-\item Create a sand sphere of radius $R$ and center at the origin $[0, 0, 0]$. 
+\item Create a sand sphere of radius $R$ and center at the origin (0, 0, 0). 
 Use $[64, 64]$ for the piecewise-linear approximation of the curved surface, 
 as shown in Fig. \ref{fig:a8}.
 
@@ -1113,7 +1113,7 @@ as shown in Fig. \ref{fig:a8}.
 \newpage
 
 \item Create a turquoise torus of inner radius $R_{in}$ and outer radius $R_{out}$, whose center 
-is at the origin $[0, 0, 0]$. Use $[64, 64]$ for the piecewise-linear approximation 
+is at the origin (0, 0, 0). Use $[64, 64]$ for the piecewise-linear approximation 
 of the curved surface, as shown in Fig. \ref{fig:a9}.
 
 
@@ -1198,7 +1198,7 @@ from pyplasm import *
 cyl = CYLINDER([1.0, 0.3])(128)
 \end{verbatim}
 We know from before that the axis of this cylinder coincides with the $z$-axis 
-and that the center of its bottom face is at $[0, 0, 0]$. The output is shown in Fig. \ref{fig:scale-0}.
+and that the center of its bottom face is at (0, 0, 0). The output is shown in Fig. \ref{fig:scale-0}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1223,8 +1223,8 @@ lab.view(cyl1, [0.4, 0.9, 0.6])
 In fact, the $x$-coordinate of all points forming 
 the object will be multiplied by 2.0. So, the axis of the resulting object will still
 coincide with the $z$-axis, and the center of its bottom face will
-still be at the origin $[0, 0, 0]$. Only its limits in the $x$-direction will change 
-from $[-1.0, 1.0]$ to $[-2.0, 2.0]$.
+still be at the origin (0, 0, 0). Only its limits in the $x$-direction will change 
+from (-1.0, 1.0) to (-2.0, 2.0).
 The output is shown in Fig. \ref{fig:scale-1}.
 
 \begin{figure}[!ht]
@@ -1249,8 +1249,8 @@ lab.view(cyl2, [0.4, 0.9, 0.6])
 \end{verbatim}
 The axis of the resulting object will still
 coincide with the $z$-axis, and the center of its bottom face will
-still be at the origin $[0, 0, 0]$. Only its limits in the $y$-direction will change 
-from $[-1.0, 1.0]$ to $[-2.0, 2.0]$.
+still be at the origin (0, 0, 0). Only its limits in the $y$-direction will change 
+from (-1.0, 1.0) to (-2.0, 2.0).
 The output is shown in Fig. \ref{fig:scale-2}.
 
 \newpage
@@ -1277,8 +1277,8 @@ lab.view(cyl3, [0.4, 0.9, 0.6])
 \end{verbatim}
 The axis of the resulting object will still
 coincide with the $z$-axis, and the center of its bottom face will
-still be at the origin $[0, 0, 0]$. Only its limits in the $z$-direction will change 
-from $[0.0, 0.3]$ to $[0.0, 0.6]$. The output is shown in Fig. \ref{fig:scale-3}.
+still be at the origin (0, 0, 0). Only its limits in the $z$-direction will change 
+from (0.0, 0.3) to (0.0, 0.6). The output is shown in Fig. \ref{fig:scale-3}.
 
 \newpage
 
@@ -1305,10 +1305,10 @@ lab.view(cyl4, [0.4, 0.9, 0.6])
 \end{verbatim}
 The axis of the resulting object will still
 coincide with the $z$-axis, and the center of its bottom face will
-still be at the origin $[0, 0, 0]$. Only its limits in the $x$-direction 
-will change from $[-1.0, 1.0]$ to $[-2.0, 2.0]$, and the limits in the 
+still be at the origin (0, 0, 0). Only its limits in the $x$-direction 
+will change from (-1.0, 1.0) to (-2.0, 2.0), and the limits in the 
 $z$-direction will change 
-from $[0.0, 0.3]$ to $[0.0, 1.2]$. The output is shown in Fig. \ref{fig:scale-4}.
+from (0.0, 0.3) to (0.0, 1.2). The output is shown in Fig. \ref{fig:scale-4}.
 
 \newpage
 
@@ -1481,7 +1481,7 @@ Objects can be rotated using the command ROTATE (that
 can be abbreviated as R). It has three parameters:
 A pair of axes defining the plane of rotation (as integers),
 an angle, and the object to be rotated. The axis of rotation 
-always passes through the origin $[0, 0, 0]$, so it is important 
+always passes through the origin (0, 0, 0), so it is important 
 to know exactly where your object is located. 
 
 For example, when creating 
@@ -1518,7 +1518,7 @@ If we wanted to
 rotate the cube "in place", so that its center would not be moved,
 we would have to first translate the cube in such a way that its center
 lies at the origin. Let's do this. After moving the cube so that 
-its center is at $[0, 0, 0]$, we will rotate it in two different directions,
+its center is at (0, 0, 0), we will rotate it in two different directions,
 then move it by 2.0 in the $x$-direction and display along with 
 the original cube for comparison:
 
@@ -1642,7 +1642,7 @@ The command DIFF makes it possible to subtract one object from another.
 For illustration, we will create a $2 \times 2 \times 2$ cube and subtract 
 a cylinder of radius 1.5 from it. It is important to remember where in the 
 coordinate system the objects are created -- the cube lies in the 
-first quadrant, with three of its edges meeting at the origin $[0, 0, 0]$.
+first quadrant, with three of its edges meeting at the origin (0, 0, 0).
 The cylinder's axis coincides with the $z$-axis and the center of its base
 circle is the origin. 
 
@@ -2067,10 +2067,10 @@ All measures should be variable.
 We already constructed a circle in Paragraph \ref{par:cico} via the convex 
 hull of points lying on the circle. However, that circle will always be 
 a polygon. A more accurate way of defining a circle is through the 
-CIRCLE command. This command uses the map $[r \cos(\alpha), r \sin(\alpha)]$
+CIRCLE command. This command uses the map $(r \cos(\alpha), r \sin(\alpha))$
 where $r \in (0, R)$ and $\alpha \in (0, 2\pi)$. To ease computing, the 
 intervals $(0, 2\pi)$ and $(0, R)$ are split into $M$ and $N$ equally-long 
-pieces, respectively. A circle of radius $R$ with center at the origin $[0, 0]$
+pieces, respectively. A circle of radius $R$ with center at the origin (0, 0)
 is then created via 
 
 \begin{verbatim}
@@ -2180,7 +2180,7 @@ The output is shown in Fig. \ref{fig:icosa}.
 
 For a 2D object that lies in the $xy$-plane, we can just 
 use the {\tt PRISM} command that we know from before. As example, let us 
-extrude a 2D star with $N$ vertices. The center of the star is at $[0, 0]$, 
+extrude a 2D star with $N$ vertices. The center of the star is at (0, 0), 
 it is inscribed into the unit circle, and it lies in the $xy$-plane. 
 The extrusion is done as follows:
 
@@ -2300,7 +2300,7 @@ def map(x):
     return [1 + x, 1 + x, 1 + x]
 \end{verbatim}
 will transform the unit interval $(0, 1)$ into an interval with the end points 
-$[1, 1, 1]$ and $[2, 2, 2]$. The function 
+(1, 1, 1) and (2, 2, 2). The function 
 
 \begin{verbatim}
 def map(x):
@@ -2335,8 +2335,8 @@ def map(x, y):
     return [x, y, 2.5]
 \end{verbatim}
 will just lift a reference rectangle $(0, a)\times(0, b)$ by $2.5$ in the $z$-direction,
-yielding a rectangle with the vertices $[0, 0, 2.5]$, $[a, 0, 2.5]$,
-$[a, b, 2.5]$ and $[0, b, 2.5]$. 
+yielding a rectangle with the vertices (0, 0, 2.5), (a, 0, 2.5),
+($a$, $b$, 2.5) and (0, $b$, 2.5). 
 The function 
 
 \begin{verbatim}
@@ -2344,8 +2344,8 @@ def map(x, y):
     return [0, x, y]
 \end{verbatim}
 will transform a reference rectangle $(0, a)\times(0, b)$ (that lies in the $xy$-plane)
-into a rectangle in the $yz$-plane that is given by the points $[0, 0, 0]$, $[0, a, 0]$,
-$[0, a, b]$ and $[0, 0, b]$. 
+into a rectangle in the $yz$-plane that is given by the points (0, 0, 0), (0, $a$, 0),
+(0, $a$, $b$) and (0, 0, $b$). 
 
 In the reference rectangle, the first direction may
 stand for radius and the second for angle. Then the function 
@@ -2538,9 +2538,9 @@ and the points $(x, y)$ are taken from a reference domain - often a unit square 
 
 In the first example, the reference domain is the unit square 
 $(0, 1)\times (1, 0)$. Thus both $x$ and $y$ vary between $0$ and $1$. 
-The point $p(x)$ goes from $[0, 0, 0]$ to $[1, 0, 0]$, and at 
-the same time the vector $q(x)$ changes from $[0, 1, 0]$
-to $[0, 1, 1]$. Thus we generate a surface that corresponds
+The point $p(x)$ goes from (0, 0, 0) to (1, 0, 0), and at 
+the same time the vector $q(x)$ changes from (0, 1, 0)
+to (0, 1, 1). Thus we generate a surface that corresponds
 to the graph of the bilinear function $xy$.
 
 \begin{verbatim}

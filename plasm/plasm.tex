@@ -1,5 +1,11 @@
 \documentclass{article}
 
+% Conditional compilation.
+% NOTE: If you set fullversionfalse, just compile ONCE so that TOC stays unchanged.
+\newif\iffullversion
+\fullversiontrue
+%\fullversionfalse
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagestyle{plain}                                                      %%
@@ -19,6 +25,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{graphicx}
+\usepackage{color}
 
 \pagestyle{empty}
 
@@ -37,14 +44,20 @@
 \begin{center}
 %\hspace{-4mm}
 %\hspace{-20mm}
-\includegraphics[width=10cm]{img/plasm-frontpage.png}
+\includegraphics[width=8cm]{img/plasm-frontpage.png}
 \vspace{16mm}
 \end{center}
 \end{figure}
 
 \begin{center}
-{\Huge \bf Solid Modeling with PLaSM}
-
+{\Huge \bf Solid Modeling with PLaSM}\\
+\vbox{}
+\vspace{1.4cm}
+\iffullversion
+\else
+\centerline{\huge \color{red}{PREVIEW}}
+\fi
+\vfill
 \vbox{}
 \vspace{1cm}
 \vfill
@@ -61,11 +74,12 @@
 \vbox{}
 \vfill
 \begin{center}
-{\large
-This textbook is part of the online course 
-{\em Intro to CAD} 
-({\tt http://introtocad.net}) and its use is allowed with current subscription only.
-Distribution or sharing is not allowed. \\
+{
+The textbook {\em Solid Modeling with PLaSM} 
+can be ordered at {\tt http://introtocad.net}. The textbook 
+is also available as part of the NCLab course {\em Intro to CAD} 
+that can be purchased at {\tt http://introtocad.net}.
+Unauthorized copying and sharing is prohibited.
 }
 \vfill
 
@@ -96,8 +110,8 @@ Copyright 2012 FEMhub Inc. All rights reserved.
 \subsection{Objectives}
 \begin{itemize}
 \item Learn basic facts about Solid Modeling and PLaSM.
-\item Understand how NCLab works and how to clone Displayed Projects.
-\item As a "Hello, World!" example, create a unit cube.
+\item Understand how to clone and display projects.
+\item As a "Hello, World!" example, wreate a unit cube.
 \item Learn to rotate, move and zoom objects displayed via WebGL.
 \end{itemize}
 
@@ -365,7 +379,7 @@ represents the RGB components defining a color. The numbers need to be between
 \end{itemize}
 
  
-\subsection{Brick, cube, rectangle, and square -- command CUBOID}
+\subsection{Brick, cube, rectangle, and square -- commands CUBE, CUBOID}
 
 With three parameters {\tt [a, b, c]} the {\tt CUBOID} command will render 
 a 3D brick with edge lengths {\tt a}, {\tt b} and {\tt c}. Let us change the 
@@ -838,6 +852,46 @@ of the curved surface, as shown in Fig. \ref{fig:a9}.
 \end{figure}
 
 \end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\iffullversion
+\else
+\vbox{}
+\vfill
+\pagestyle{empty}
+    \begin{center}
+    {\huge \color{red}END OF PREVIEW}\\[2cm]
+
+\centerline{\Large Please consider:}
+\vspace{1cm}
+
+{\Large \bf Purchasing Online Course with Curriculum}
+\vspace{1cm}
+
+    {\Large or,}\\[1cm]
+
+{\Large \bf Ordering Textbook and Solution Manual}
+\vspace{1cm}
+
+    {\Large For either, visit {\tt http://introtocad.net}. \\[2cm]
+}
+\end{center}
+{\bf The course includes}:
+\begin{itemize}
+\item Access to full version of textbook and solution manual.
+\item One-click download of interactive review question worksheets.
+\item One-click download of interactive programming exercises (in preparation).
+\item One-click distribution to students in your class.
+\item One-click collection, automated grading, and progress monitoring (in preparation).
+\item Access to all answers and solution designs.
+\end{itemize}
+
+\vfill
+    \end{document}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Basic Transformations}
 

@@ -158,7 +158,7 @@ This, however, is not done on your computer or laptop. Your device only uses
 its graphics card for real-time rendering of 3D objects. For this reason, {\bf your 
 web browser has to support WebGL}.
 
-\subsection{Displayed Projects}
+\subsection{Displayed projects}
 
 All examples that we are going to work with in the following are also available 
 as Displayed Projects. This means that you can clone them by launching the File
@@ -349,8 +349,9 @@ The latter option allows for finer zooming.
 \item Understand RGB colors.
 \item Create squares, rectangles, cubes and bricks.
 \item Learn to always remember where objects are positioned in the coordinate system.
+\item Create convex hulls.
+\item Understand the benefits of scripting.
 \item Create triangles, tetrahedra and prisms.
-\item Create convex hulls and get a primer on scripting.
 \item Create a cone via convex hull.
 \item Create cylinders and tubes.
 \item Create spheres and toruses.
@@ -442,13 +443,16 @@ origin (0, 0).
 
 \subsection{Unit tetrahedron and triangle -- command SIMPLEX}
 
-A unit tetrahedron (unit 3D simplex) can be created using the code
+Unit tetrahedron (unit 3D simplex) can be created using the 
+{\tt SIMPLEX(3)} command:
 \begin{verbatim}
 from pyplasm import *
 tet = SIMPLEX(3)
 lab.view(tet, [0.4, 0.9, 0.6])
 \end{verbatim}
-The output of the above code is shown in Fig. \ref{fig:simplex-1}.
+The simplex spans the points (0, 0, 0), (1, 0, 0), (0, 1, 0) and (0, 0, 1),
+as depicted in Fig. \ref{fig:simplex-1}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -459,15 +463,14 @@ The output of the above code is shown in Fig. \ref{fig:simplex-1}.
 \label{fig:simplex-1}
 \end{figure}
 \noindent
-Note -- in the next paragraph we will show how to create a general 
-tetrahedron using the 
-A unit triangle (unit 2D simplex) can be created using the code
+Unit triangle (unit 2D simplex) can be created using the code
 \begin{verbatim}
 from pyplasm import *
 tria = SIMPLEX(2)
 lab.view(tria, [0.4, 0.9, 0.6])
 \end{verbatim}
-The output of the above code is shown in Fig. \ref{fig:simplex-2}.
+The simplex spans the points (0, 0), (1, 0) and (0, 1), as shown in 
+Fig. \ref{fig:simplex-2}.
 \newpage
 
 \begin{figure}[!ht]
@@ -475,25 +478,53 @@ The output of the above code is shown in Fig. \ref{fig:simplex-2}.
 \includegraphics[width=0.82\textwidth]{img/simplex-2.png}
 \end{center}
 \vspace{-2mm}
-\caption{SIMPLEX(2) generates a unit 2D simplex (triangle).}
+\caption{SIMPLEX(2) generates a unit 2D simplex (unit triangle).}
 \label{fig:simplex-2}
 %\vspace{-1cm}
 \end{figure}
+\noindent
 
-\subsection{General tetrahedron and triangle}
+\subsection{Command CONVEXHULL}\label{par:chull}
 
-The command CONVEXHULL is a powerful tool to define convex 3D and 2D objects using 
-their corner points. In particular it can be used to create general tetrahedra and 
-triangles. The command takes a list of points as an argument. For example, the code
+The command CONVEXHULL is a powerful tool to define convex 2D and 3D objects
+that span a given list of 2D and 3D points, respectively. The command takes 
+a single parameter which is a list of points. For example, the code
 
 \begin{verbatim}
 from pyplasm import *
-points = [[-1, 0, 0], [1, 0, 0], [0, 4, 1], [0, 1, 5]]
-tetra = CONVEXHULL(points)
-lab.view(tetra, [0.4, 0.9, 0.6])
+points = [[-1, 0], [1, 0], [0.5, 1], [-0.5, 1]]
+t = CONVEXHULL(points)
+lab.view(t, [0.4, 0.9, 0.6])
 \end{verbatim}
-creates a tetrahedron with vertices $[-1, 0, 0]$, $[1, 0, 0]$, $[0, 4, 1]$ and $[0, 1, 5]$.
-The command CONVEXHULL creates a convex hull of any set of points. The code
+will render a 2D trapezoid spanning the points (-1, 0), (1, 0), (0.5, 1) and 
+(-0.5, 1). The code
+
+\begin{verbatim}
+from pyplasm import *
+points = [[-1, -1, 0], [1, -1, 0], [1, 1, 0], [-1, 1, 0], [0, 0, 1]]
+p = CONVEXHULL(points)
+lab.view(p, [0.4, 0.9, 0.6])
+\end{verbatim}
+creates a 3D pyramid with base square (-1, 1)$\times$(-1, 1) and height 1,
+as shown in Fig. \ref{fig:pyra}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/pyra.png}
+\end{center}
+\vspace{-2mm}
+\caption{3D pyramid constructed as a convex hull.}
+\label{fig:pyra}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+
+\subsection{General tetrahedron and triangle via convex hull}
+
+The command CONVEXHULL can be used to create general triangles and 
+tetrahedra. For example, the code
 
 \begin{verbatim}
 from pyplasm import *
@@ -501,33 +532,225 @@ points = [[1, 1], [4, 2], [2, 4]]
 tria = CONVEXHULL(points)
 lab.view(tria, [0.4, 0.9, 0.6])
 \end{verbatim}
-generates a triangle with the vertices $[1, 1]$, $[4, 2]$ and $[2, 4]$. In this way 
-the reader can define any convex polytop in 3D or polygon in 2D -- just using more 
-points!
-
-\subsection{Command PRISM}
-
-Given any 2D polygon {\tt B} and a positive number {\tt H}, the command {\tt PRISM(H)(B)} 
-creates a prism with basis {\tt B} and height {\tt H}. For example, the 
-following code creates a prism of height $2.0$ whose basis is a triangle 
-with vertices $[-1, 0], [1, 0], [0, 2]$:
+generates a triangle with vertices (1, 1), (4, 2) and (2, 4). The code
 
 \begin{verbatim}
 from pyplasm import *
-B = CONVEXHULL([[-1, 0], [1, 0], [0, -2]])
-H = 2.0
-p = PRISM(H)(B)
-lab.view(p, [0.4, 0.9, 0.6])
+points = [[-2, 0, 0], [1, 0, 0], [0, 4, 1], [0, 1, 2]]
+tet = CONVEXHULL(points)
+lab.view(tet, [0.4, 0.9, 0.6])
 \end{verbatim}
+creates a tetrahedron with vertices (-2, 0, 0), (1, 0, 0), (0, 4, 1) and (0, 1, 2),
+as shown in Fig. \ref{fig:chull}.
+\newpage
 
-\subsection{Command CONVEXHULL}\label{par:chull}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/chull.png}
+\end{center}
+\vspace{-2mm}
+\caption{General tetrahedron obtained via convex hull.}
+\label{fig:chull}
+%\vspace{-1cm}
+\end{figure}
+\noindent
 
-Let us demonstrate the true power of PLaSM by writing a simple program that generates 
-a polygon with $N$ equally-long edges that is inscribed into a circle of radius $R$.
-For this example, you need to know elementary commands of the Python programming 
-language. If you have never programmed in Python, do not worry and skip to the next 
-example. Eventually, read the tutorial on Python Programming that is also provided
-in NCLab.
+\subsection{The power of scripting unleashed}
+
+By {\em scripting} we mean designing solid objects via 
+short programs. The main benefit of scripting is that we can 
+create {\em parameter-dependent geometries}. This is 
+very useful in practice since in most cases some parameters of 
+the design at hand need tuning. Such as, for example, the 
+number of teeth on a gear, thickness of a wall, size of an
+opening, distance between two objects, etc.
+
+PLaSM is very strong in scripting. Let us learn a bit 
+more about Python so that we are able to take maximum advantage 
+of what PLaSM can offer. We already know a few Python commands, 
+for example:
+
+\begin{verbatim}
+from pyplasm import *
+\end{verbatim} 
+which imports all functionality from the PLaSM library.\\
+
+\noindent
+\underline{Defining variables}\\
+
+\noindent
+Whenever we need to tune a parameter in our design, we can create 
+a variable for it. Imagine that we have to create a brick whose base
+is (0, 3)$\times$(0, 2) but whose exact height will be determined 
+later. Hence  we create a new variable {\tt h} for the height and initialize 
+it with some reasonable value, such as for example with {\tt 1.0}:
+
+\begin{verbatim}
+h = 1.0
+\end{verbatim} 
+The rest we already know:
+
+\begin{verbatim}
+from pyplasm import *
+b = CUBOID([3, 2, h])
+lab.view(a, [0.4, 0.9, 0.6])
+\end{verbatim} 
+This will render a brick of dimensions 3$\times$2$\times$1. Now it is easy to 
+change the height of the brick without changing the script that defines it --
+the script will remain the same, only the value of the variable {\tt h} needs
+to be changed:
+
+\begin{verbatim}
+a = 5.0
+\end{verbatim} 
+After the script is run again, we have a new brick of dimensions 3$\times$2$\times$5.\\
+
+\noindent
+\underline{Numpy library}\\
+
+\noindent
+We are free to use Python libraries for our designs, remarkably Numpy. 
+Numpy contains vast functionality related to 
+mathematical functions and numerical computations. Whenever we want 
+to use some constant such as $\pi$ or $e$, or when we want to use some 
+mathematical function such as log$(x)$, sin$(x)$ or $\sqrt{x}$, we
+import it from Numpy:
+
+\begin{verbatim}
+from numpy import log, sin, sqrt
+\end{verbatim} 
+We can also simply import everything:
+
+\begin{verbatim}
+from numpy import *
+\end{verbatim} 
+\vspace{4mm}
+\underline{Python lists}\\
+
+\noindent
+Whenever we need to create a set of objects, such as a set of points, we can use 
+a Python list for that. Empty Python list is created using square brackets that 
+contain nothing in them:
+
+\begin{verbatim}
+L = []
+\end{verbatim} 
+Here, {\tt L} is the name of the list, and any other name would be fine as well, 
+as long as it does not clash with some Python or PLaSM command. We can also create 
+a nonempty list. Say that we need a list that contains the points (0, 0), (1, 0),
+(1, 0). This is done via:
+
+\begin{verbatim}
+L = [[0, 0], [1, 0], [0, 1]]
+\end{verbatim} 
+Yes you are right, each point is a list in fact! Sometimes we need to fill 
+a list using some procedure because not all its items are known at the
+beginning. For this, we can use the command {\tt append()}. For example,
+one more point (2, 4) is added to the existing list {\tt L} via
+
+\begin{verbatim}
+L.append([2, 4])
+\end{verbatim} 
+\vspace{4mm}
+\underline{Printing}\\
+
+\noindent
+Control prints are a practical way to check that all numbers are as they should be.
+Printing is done via the {\tt print} command. For example, the script
+
+\begin{verbatim}
+L = [[0, 0], [1, 0], [0, 1]]
+print L
+\end{verbatim} 
+has the following output:
+
+\begin{verbatim}
+[[0, 0], [1, 0], [0, 1]]
+\end{verbatim} 
+Printing the value of a single variable is done in the same way, and we can 
+make the output more informative by actually describing what is printed.
+The script
+
+\begin{verbatim}
+h = 5.0
+print "h =", h
+\end{verbatim} 
+yields the following output:
+
+\begin{verbatim}
+h = 5.0
+\end{verbatim} 
+\vspace{4mm}
+\underline{Repeating}\\
+
+\noindent
+Let us mention one last scripting technique for now, which is to repeat 
+some command or sequence of commands several times. To repeat something 
+{\tt N} times, we use the following construct: 
+
+\begin{verbatim}
+for i in range(0, N):
+    do_something
+\end{verbatim}
+For example, the following script will print a sequence of integers between 
+0 and 5 (not including 5):
+
+\begin{verbatim}
+for i in range(0, 5):
+    print i
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+0
+1
+2
+3
+4
+\end{verbatim}
+Once more -- notice that the printed sequence ends with {\tt 4}, not with {\tt 5}.
+This is a common source of beginner's mistakes.
+Also notice that the command(s) to be repeated need to be indented. The indent is mandatory and 
+its size can be either two or four empty characters -- four is recommended for better
+code readability.
+
+Let us show one more example of how repetition can be used: We will create a list of 
+points (0, 0), (1, 0), (2, 0), ..., (N, 0) where {\tt N} is some positive integer. Let us
+write the script initially for {\tt N = 5}, and at the end we will print it:
+
+\begin{verbatim}
+N = 5
+L = []
+for i in range(0, N+1):
+    L.append([i, 0])
+print "L =", L
+\end{verbatim}
+Output:
+\begin{verbatim}
+L = [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]]
+\end{verbatim}
+If we needed to create another list for {\tt N = 100}, the script would remain the same,
+just the line where {\tt N} is defined would be changed to 
+
+\begin{verbatim}
+N = 100
+\end{verbatim}
+We can see clearly that scripting can save us lots of work.
+
+\subsection{Polygon via convex hull}\label{subsec:polygon}
+
+Next we will write a simple script that generates 
+a polygon with $N$ equally-long edges that is inscribed in 
+a circle of radius $R$. With the knowledge of Python 
+gained in the previous paragraph, you should understand 
+the following script easily. The only new thing worth 
+mentioning is that points 
+
+\begin{verbatim}
+[R * cos(angle), R * sin(angle)]
+\end{verbatim}
+where {\tt angle} is an angle between $0$ and $2\pi$, lies
+on the circle with center (0, 0) and radius $R$:
 
 \begin{verbatim}
 from pyplasm import *
@@ -557,22 +780,20 @@ The output of the above code is shown in Fig. \ref{fig:convexhull-1}.
 
 \subsection{Circle via convex hull}\label{par:cico}
 
-When the parameter $N$ is increased to 128 or 256 in the last program, 
-one obtains a {\bf circle}. This is not the most accurate way circles 
-can be handled, but it is the simplest one to understand. A~better way to 
-define a circle will be introduced in Section \ref{sec:cso2}. 
- 
+When the parameter $N$ is increased to 128 or 256 in the program from 
+Subsection \ref{subsec:polygon}, one obtains a {\bf circle}. This 
+circle is enough for now. Later, in Section \ref{sec:cso2}, we will 
+introduce a more rigorous definition of a circle based on {\em reference 
+maps}. 
 
 \subsection{Cone via convex hull}\label{par:coco}
 
-The CONVEXHULL command has amazing power. Let us tweak the code
-from Paragraph \ref{par:chull} a bit to construct a cone of radius
+The CONVEXHULL command has amazing power. Let us tweak the script
+from Subsection \ref{subsec:polygon} to construct a cone of radius
 $R$ and height $H$. All we need to do is to add a zero third coordinate 
-to the points generated in the previous program, and add one more 
-point -- the tip of the cone. The CONVEXHULL command will take care 
-of the rest:
+to the points generated in that script, and add one more point -- the 
+tip of the cone. The CONVEXHULL command will take care of the rest:
 
-{\small
 \begin{verbatim}
 from pyplasm import *
 from numpy import sin, cos, pi
@@ -587,9 +808,8 @@ points.append([0, 0, H])
 cone = CONVEXHULL(points)
 lab.view(cone, [0.4, 0.9, 0.6])
 \end{verbatim}
-}
 \noindent
-The output of the above code is shown in Fig. \ref{fig:convexhull-2}.
+The output is shown in Fig. \ref{fig:convexhull-2}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -600,33 +820,69 @@ The output of the above code is shown in Fig. \ref{fig:convexhull-2}.
 \label{fig:convexhull-2}
 %\vspace{-1cm}
 \end{figure}
+\noindent
+\underline{How fine subdivision?}\\
 
+\noindent
 The subdivision {\tt subdiv = 128} is how many
 faces are used to approximate the round surface. You may use less, 
 for example 64 or even 32, which will make the rendering faster, but
-the surface will be less smooth. On the other hand, with more than 
+the surface will be less smooth. With more than 
 128 subdivisions the surface will be even more smooth-looking, but 
-the rendering will take longer. Again this is not the most accurate 
-way to handle a cone, we will improve it in Section \ref{sec:cso2}.
+the rendering will take longer. We do not recommend going over 128 
+subdivisions as it is not necessary.
+
+\subsection{Command PRISM}
+
+Given any 2D polygon {\tt B} and a positive number {\tt H}, the command {\tt PRISM(H)(B)} 
+creates a prism with basis {\tt B} and height {\tt H}. For example, the 
+following code creates a prism of height $2.0$ whose basis is a triangle 
+with vertices (-1, 0), (1, 0), (0, 2):
+
+\begin{verbatim}
+from pyplasm import *
+B = CONVEXHULL([[-1, 0], [1, 0], [0, -2]])
+H = 2.0
+p = PRISM(H)(B)
+lab.view(p, [0.4, 0.9, 0.6])
+\end{verbatim}
+The output is shown in Fig. \ref{fig:prism}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/prism-0.png}
+\end{center}
+\vspace{-2mm}
+\caption{Triangular prism of height $H$.}
+\label{fig:prism}
+%\vspace{-1cm}
+\end{figure}
 
 \subsection{Command CYLINDER}
 
-We have no doubt that the reader would be able to construct 
-a cylinder of radius $R$ and height $H$ via convex hull. 
-In fact, you may try it as a simple exercise, starting from 
-the program for the cone. But, PLaSM has a specific command
-CYLINDER for that:
+A cylinder of radius $R$ and height $H$ is a convex object 
+and thus it would be easy to construct it via convex hull. 
+But, PLaSM has a specific command CYLINDER for that:
 
 \begin{verbatim}
 from pyplasm import *
 R = 0.25
 H = 1.0
-cyl = CYLINDER ([R, H])(128)
+subdiv = 128
+cyl = CYLINDER ([R, H])(subdiv)
 lab.view(cyl, [0.4, 0.9, 0.6])
 \end{verbatim}
-The cylinder's axis is in the $z$-direction, and the midpoint of
-its base circle is the origin $[0, 0, 0]$. 
-The output of the above code is shown in Fig. \ref{fig:cyl-1}.
+Notice that the radius {\tt R} and height {\tt H} are entered  
+as a single Python list {\tt [R, H]}, and that a subdivision parameter 
+{\tt subdiv} is present. We already know its meaning -- this is the 
+number of linear segments to approximate the curved vertical part
+of the cylinder's surface. 
+
+The positioning of the object in the global 
+coordinate system is important -- the cylinder's axis is in 
+the $z$-direction, and the midpoint of its base circle is the 
+origin (0, 0, 0). The output is shown in Fig. \ref{fig:cyl-1}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -852,7 +1108,7 @@ as shown in Fig. \ref{fig:a8}.
 \vspace{-2mm}
 \caption{Illustration for Exercise 8.}
 \label{fig:a8}
-%\vspace{-1cm}
+\vspace{-1cm}
 \end{figure}
 \newpage
 
@@ -868,13 +1124,18 @@ of the curved surface, as shown in Fig. \ref{fig:a9}.
 \vspace{-2mm}
 \caption{Illustration for Exercise 9.}
 \label{fig:a9}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
 
+\item Write a script to render a cylinder of radius {\tt R} and height {\tt H}
+      via the CONVEXHULL command. The cylinder's axis should coincide with the 
+      $z$-axis, the center of its base circle should be (0, 0, 0), and the 
+      curved surface should be subdivided into {\tt subdiv} linear segments.
+
 \end{enumerate}
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
 \iffullversion
 \else
 \vbox{}

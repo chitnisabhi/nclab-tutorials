@@ -379,7 +379,7 @@ choices may be correct.
   \end{itemize}
 \end{enumerate}
 
-\section{Clicking}
+\section{Clicking Mode}
 
 \begin{enumerate}
 \item How can Karel be switched to Clicking?
@@ -597,7 +597,7 @@ to make him move one step ahead and turn East?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Programming}
+\section{Programming Mode}
 
 \begin{enumerate}
 \item Where do we enter programs for Karel?
@@ -1583,7 +1583,7 @@ proc count_steps
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Using Python as Graphing Calculator}
+\section{Using Python as a Calculator}
 
 \begin{enumerate}
 \item What is the result of $11 / 4$ in Python?
@@ -1643,95 +1643,6 @@ sin(pi/4)
 \item[A2] {\tt 2 + 3J}
 \item[A3] {\tt 2 + 3*j}
 \item[A4] {\tt 2 + 3*J}
-\end{enumerate}
-\item Which of the following codes will draw a square with vertices [0, 0], [1, 0], [1, 1], [0, 1]?
-\begin{enumerate}
-\item[A1] 
-\begin{verbatim}
-from pylab import *
-x = [0.0, 1.0, 1.0, 0.0]
-y = [0.0, 0.0, 1.0, 1.0]
-clf()
-plot(x, y)
-lab.show()
-\end{verbatim}
-\item[A2] 
-\begin{verbatim}
-from pylab import *
-x = [0.0, 0.0, 1.0, 1.0]
-y = [0.0, 1.0, 1.0, 0.0]
-clf()
-plot(x, y)
-lab.show()
-\end{verbatim}
-\item[A3] 
-\begin{verbatim}
-from pylab import *
-x = [0.0, 1.0, 1.0, 0.0, 0.0]
-y = [0.0, 0.0, 1.0, 1.0, 0.0]
-clf()
-plot(x, y)
-lab.show()
-\end{verbatim}
-\item[A4] 
-\begin{verbatim}
-from pylab import *
-x = [0.0, 0.0, 1.0, 1.0, 0.0]
-y = [0.0, 1.0, 1.0, 0.0, 1.0]
-clf()
-plot(x, y)
-lab.show()
-\end{verbatim}
-\end{enumerate}
-\item Which of the following codes will plot a cosine function in the interval $(0, \pi)$ using dashed green line with
-the step 0.01?
-\begin{enumerate}
-\item[A1] 
-\begin{verbatim}
-from numpy import cos, pi
-from pylab import *
-x = arange(0, pi, 0.01)
-y = cos(x)
-axis=("equal")
-clf()
-plot(x, y, 'g-', label="cos(x)")
-legend()
-lab.show()
-\end{verbatim}
-\item[A2] 
-\begin{verbatim}
-from numpy import cos, pi
-from pylab import *
-x = arange(0, pi, 0.01)
-y = cos(x)
-clf()
-plot(x, y, 'g--')
-lab.show()
-\end{verbatim}
-\item[A3] 
-\begin{verbatim}
-from numpy import cos, pi
-from pylab import *
-x = arange(0, pi, 0.05)
-y = cos(x)
-axis=("equal")
-clf()
-plot(x, y, 'g--', label="cos(x)")
-legend()
-lab.show()
-\end{verbatim}
-\item[A4] 
-\begin{verbatim}
-from numpy import cos, pi
-from pylab import *
-x = arange(0, pi, 0.01)
-y = cos(x)
-axis=("equal")
-clf()
-plot(x, y, 'g..', label="cos(x)")
-legend()
-lab.show()
-\end{verbatim}
 \end{enumerate}
 \end{enumerate}
 
@@ -1844,6 +1755,102 @@ def hypotenuse(a = 5, b = 5):
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Plotting}
+
+\begin{enumerate}
+\item Which of the following codes will draw a square with vertices [0, 0], [1, 0], [1, 1], [0, 1]?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+from pylab import *
+x = [0.0, 1.0, 1.0, 0.0]
+y = [0.0, 0.0, 1.0, 1.0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+from pylab import *
+x = [0.0, 0.0, 1.0, 1.0]
+y = [0.0, 1.0, 1.0, 0.0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+from pylab import *
+x = [0.0, 1.0, 1.0, 0.0, 0.0]
+y = [0.0, 0.0, 1.0, 1.0, 0.0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+from pylab import *
+x = [0.0, 0.0, 1.0, 1.0, 0.0]
+y = [0.0, 1.0, 1.0, 0.0, 1.0]
+clf()
+plot(x, y)
+lab.show()
+\end{verbatim}
+\end{enumerate}
+\item Which of the following codes will plot a cosine function in the interval $(0, \pi)$ using dashed green line with
+the step 0.01?
+\begin{enumerate}
+\item[A1] 
+\begin{verbatim}
+from numpy import cos, pi
+from pylab import *
+x = arange(0, pi, 0.01)
+y = cos(x)
+axis=("equal")
+clf()
+plot(x, y, 'g-', label="cos(x)")
+legend()
+lab.show()
+\end{verbatim}
+\item[A2] 
+\begin{verbatim}
+from numpy import cos, pi
+from pylab import *
+x = arange(0, pi, 0.01)
+y = cos(x)
+clf()
+plot(x, y, 'g--')
+lab.show()
+\end{verbatim}
+\item[A3] 
+\begin{verbatim}
+from numpy import cos, pi
+from pylab import *
+x = arange(0, pi, 0.05)
+y = cos(x)
+axis=("equal")
+clf()
+plot(x, y, 'g--', label="cos(x)")
+legend()
+lab.show()
+\end{verbatim}
+\item[A4] 
+\begin{verbatim}
+from numpy import cos, pi
+from pylab import *
+x = arange(0, pi, 0.01)
+y = cos(x)
+axis=("equal")
+clf()
+plot(x, y, 'g..', label="cos(x)")
+legend()
+lab.show()
+\end{verbatim}
+\end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{More on Variables}
 

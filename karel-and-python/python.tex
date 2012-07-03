@@ -120,14 +120,14 @@ All output cells can be removed at once via {\em Remove all output} in the {\em 
 \subsection{Various ways to run programs}
 
 Pressing the green arrow button will run all code cells in the project. Clicking 
-on {\tt run} under an code cell will run only the contents of that code cell. 
+on the green arrow under an code cell will run only the contents of that code cell. 
 Same effect can be achieved by holding CTRL and pressing ENTER. Holding SHIFT
 and pressing ENTER will evaluate the current code cell and create an additional one
 under it.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Using Python as a Graphing Calculator} \label{sec:calc}
+\section{Using Python as a Calculator} \label{sec:calc}
 
 \subsection{Objectives}
 
@@ -410,6 +410,285 @@ Output:
 5
 \end{verbatim}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{More on Functions}
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item Review and refine your knowledge of functions.
+\item Learn to use default arguments and return multiple values.
+\end{itemize}
+Custom {\em functions} in Python are the same thing as in Karel, 
+but in Python they can moreover {\em accept arguments}. Recall that 
+functions in Karel were defined to make some functionality easily 
+reusable -- in Python they are defined for the same reason.
+
+\subsection{Defining new functions}
+
+Definition of a new function begins with the keyword {\tt def} as in Karel. In Python,
+we moreover use round brackets for arguments and a colon at the end of the line. 
+For example, the following function adds two numbers
+and returns the result:
+
+\begin{verbatim}
+def add(a, b):
+    return a + b
+\end{verbatim}
+The round brackets in the function definition are mandatory even if no arguments are passed,
+and the {\tt return} statement can be omitted if not needed.
+The two lines of code above 
+are a {\em function declaration} -- they do not produce any output.
+In order to call the function, we need to write one additional line, such as:
+
+\begin{verbatim}
+print "5 + 3 is", add(5, 3)
+\end{verbatim}
+This will produce the following output:
+
+\begin{verbatim}
+5 + 3 is 8
+\end{verbatim}
+To show another example, the following function does not take any arguments 
+and it does not return any results:
+
+\begin{verbatim}
+def hello():
+    print "Hello!"
+\end{verbatim}
+
+\subsection{Passing arbitrary arguments}
+
+Python does not require that we specify the type of function arguments. 
+What does it mean? The above function {\tt add(a, b)} works for real
+numbers, complex numbers, vectors, strings, and any other 
+objects where the operation '+' is defined. Let's try this:
+
+\begin{verbatim}
+def add(a, b):
+    return a + b
+
+word1 = "Good "
+word2 = "Evening!"
+print add(word1, word2)
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+Good Evening!
+\end{verbatim}
+Things like this make Python very intuitive and easy to use. In conventional languages such as C or C++, 
+we would have to define different functions: {\tt add\_real\_numbers(a, b)} for real numbers,
+{\tt add\_complex\_numbers(a, b)} for complex numbers numbers, {\tt add\_strings(a, b)} for strings, etc. 
+In C, they would be as follows:
+
+\begin{verbatim}
+double add_real_numbers(double a, double b)
+{
+  return a + b;
+}
+\end{verbatim}
+and
+
+\begin{verbatim}
+# include <complex.h>
+complex add_complex_numbers(complex a, complex b)
+{
+  return a + b;
+}
+\end{verbatim}
+and 
+
+\begin{verbatim}
+void add_strings(const char* a_in, const char* b_in, char* c_out)
+{
+  strcpy(c_out, a_in);
+  strcat(c_out, b_in);
+  return;
+}
+\end{verbatim}
+
+\subsection{Returning multiple values}
+
+Python functions can return multiple values which often comes handy.
+For example, the following function returns the 
+second, third, and fourth powers of a number:
+
+\begin{verbatim}
+def powers(a):
+    return a**2, a**3, a**4
+\end{verbatim}
+This is how the function is used:
+
+\begin{verbatim}
+var1 = 2
+print "Powers are", powers(var1)
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+Powers are (4, 8, 16)
+\end{verbatim}
+We can also store the returned values in three separate variables:
+
+\begin{verbatim}
+var1 = 3
+p2, p3, p4 = powers(var1)
+print "Powers are", p2, p3, p4
+\end{verbatim}
+Output:
+
+\begin{verbatim}
+Powers are 9 27 81
+\end{verbatim}
+Look how complicated the same program would be in C/C++:
+
+\begin{verbatim}
+void powers(double a, double* p2, double* p2, double* p3)
+{
+  *p2 = pow(a, 2);
+  *p3 = pow(a, 3);
+  *p4 = pow(a, 4);
+  return;
+}
+
+int main()
+{
+  double p1, p2, p3;
+  double a = 2;
+  powers(a, &p2, &p2, &p3);
+  printf("Powers are %g, %g, %g.\n", p2, p3, p4);
+}
+\end{verbatim}
+
+\subsection{Using default arguments}
+
+Holland is the most bicycle friendly country in the world. Imagine that you 
+work for the Holland Census Bureau. Your task is to ask 10000 
+people how they go to work, and enter their answers into a database. 
+The program for entering data into the database was written by one of 
+your colleagues, and it can be used as follows:
+
+\begin{verbatim}
+add_database_entry("John", "Smith", "walks")
+\end{verbatim}
+or 
+\begin{verbatim}
+add_database_entry("Louis", "Armstrong", "bicycle")
+\end{verbatim}
+or
+\begin{verbatim}
+add_database_entry("Jim", "Bridger", "horse")
+\end{verbatim}
+etc. Since you are in Holland, it can be expected that $99 \%$ of people 
+are using the bicycle. In principle you could call the function {\tt add\_database\_entry()} 
+to enter each answer, but with 9900 bicyclists out of 10000 respondents you would have to 
+type {\tt "bicycle"} MANY times. 
+
+Fortunately, Python offers a smarter way to do this. We can define a new function 
+
+\begin{verbatim}
+def enter(first, last, transport = "bicycle"):
+    enter_into_database(first, last, transport)
+\end{verbatim}
+This is a simple ({\em "thin"}) {\em wrapper} to the function {\tt add\_database\_entry()} 
+that allows us to omit the third argument in the function call and autocomplete 
+it with a {\em default argument} {\tt "bicycle"}. In other words, now we do not have to 
+type {\tt "bicycle"} for Louis Armstrong or any other bicyclist:
+
+\begin{verbatim}
+enter("Louis", "Armstrong")
+\end{verbatim}
+Only if we meet a rare someone who uses a car, we type 
+
+\begin{verbatim}
+enter("Niki", "Lauda", "car")
+\end{verbatim}
+Another example: Let us return to the function {\tt add()}, and let us 
+imagine that very often (but not always) the second number that we
+are adding is 10. Then it makes sense to write the function {\tt add()}
+as follows:
+
+\begin{verbatim}
+def add(a, b = 10):
+    return a + b
+\end{verbatim}
+The function will work as before when called with two arguments: 
+
+\begin{verbatim}
+A = 5
+B = 1
+add(A, B)
+\end{verbatim}
+Output:
+\begin{verbatim}
+6
+\end{verbatim}
+But it can be also called with the second argument omitted:
+\begin{verbatim}
+A = 5
+add(A)
+\end{verbatim}
+Output:
+\begin{verbatim}
+15
+\end{verbatim}
+\underline{Some rules to remember}:
+\begin{itemize}
+\item Default arguments need to be introduced {\bf after} standard (non-default) arguments. In other words, the 
+      following code will result into an error:
+\begin{verbatim}
+def add(a = 5, b):
+    return a + b
+\end{verbatim}
+This is the error message:
+\begin{verbatim}
+  File "<nclab>", line 1
+SyntaxError: non-default argument follows default argument
+
+\end{verbatim}
+\item If multiple default arguments are present, they have to follow the non-default ones.
+      If the number of arguments in the function call is less than the total number of default and non-default
+      arguments, then first all non-default arguments are assigned, and then the default ones from 
+      left to right. To illustrate this, assume the function:
+\begin{verbatim}
+def add(x, a = 2, b = 3):
+    return x + a + b
+\end{verbatim}
+This function can be called as follows:
+\begin{verbatim}
+print add(1)
+\end{verbatim}
+In this case, the value {\tt 1} is assigned to {\tt x} and {\tt a} and {\tt b} take the default values.
+The output will be 
+\begin{verbatim}
+6
+\end{verbatim}
+When the function is called with just two values,
+\begin{verbatim}
+print add(5, 6)
+\end{verbatim}
+then the value {\tt 5} is assigned to {\tt x}, {\tt 6} to {\tt a}, and {\tt b} takes the default value {\tt 3}.
+The output is
+\begin{verbatim}
+14
+\end{verbatim}
+However, it is always a good idea to be as transparent as possible. Therefore a better code is 
+\begin{verbatim}
+print add(1, a = 6)
+\end{verbatim}
+Then the result is the same, {\tt 14}, but it is clear even to non-experts what is going on. Moreover,
+in this way we can also define the value of {\tt b} without having to define the value of {\tt a}:
+\begin{verbatim}
+print add(1, b = 6)
+\end{verbatim}
+Now {\tt x} is {\tt 1}, {\tt a} has the default value {\tt 2} and the result is {\tt 9}.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Plotting} \label{sec:plotting}
 
 \subsection{\ \ Plotting functions of one variable}\label{plotting}
 
@@ -916,283 +1195,7 @@ The output is shown in Fig. \ref{fig:webgl}.
 %\vspace{-1cm}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{More on Functions}
-
-\subsection{Objectives}
-
-\begin{itemize}
-\item Review and refine your knowledge of functions.
-\item Learn to use default arguments and return multiple values.
-\end{itemize}
-Custom {\em functions} in Python are the same thing as in Karel, 
-but in Python they can moreover {\em accept arguments}. Recall that 
-functions in Karel were defined to make some functionality easily 
-reusable -- in Python they are defined for the same reason.
-
-\subsection{Defining new functions}
-
-Definition of a new function begins with the keyword {\tt def} as in Karel. In Python,
-we moreover use round brackets for arguments and a colon at the end of the line. 
-For example, the following function adds two numbers
-and returns the result:
-
-\begin{verbatim}
-def add(a, b):
-    return a + b
-\end{verbatim}
-The round brackets in the function definition are mandatory even if no arguments are passed,
-and the {\tt return} statement can be omitted if not needed.
-The two lines of code above 
-are a {\em function declaration} -- they do not produce any output.
-In order to call the function, we need to write one additional line, such as:
-
-\begin{verbatim}
-print "5 + 3 is", add(5, 3)
-\end{verbatim}
-This will produce the following output:
-
-\begin{verbatim}
-5 + 3 is 8
-\end{verbatim}
-To show another example, the following function does not take any arguments 
-and it does not return any results:
-
-\begin{verbatim}
-def hello():
-    print "Hello!"
-\end{verbatim}
-
-\subsection{Passing arbitrary arguments}
-
-Python does not require that we specify the type of function arguments. 
-What does it mean? The above function {\tt add(a, b)} works for real
-numbers, complex numbers, vectors, strings, and any other 
-objects where the operation '+' is defined. Let's try this:
-
-\begin{verbatim}
-def add(a, b):
-    return a + b
-
-word1 = "Good "
-word2 = "Evening!"
-print add(word1, word2)
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-Good Evening!
-\end{verbatim}
-Things like this make Python very intuitive and easy to use. In conventional languages such as C or C++, 
-we would have to define different functions: {\tt add\_real\_numbers(a, b)} for real numbers,
-{\tt add\_complex\_numbers(a, b)} for complex numbers numbers, {\tt add\_strings(a, b)} for strings, etc. 
-In C, they would be as follows:
-
-\begin{verbatim}
-double add_real_numbers(double a, double b)
-{
-  return a + b;
-}
-\end{verbatim}
-and
-
-\begin{verbatim}
-# include <complex.h>
-complex add_complex_numbers(complex a, complex b)
-{
-  return a + b;
-}
-\end{verbatim}
-and 
-
-\begin{verbatim}
-void add_strings(const char* a_in, const char* b_in, char* c_out)
-{
-  strcpy(c_out, a_in);
-  strcat(c_out, b_in);
-  return;
-}
-\end{verbatim}
-
-\subsection{Returning multiple values}
-
-Python functions can return multiple values which often comes handy.
-For example, the following function returns the 
-second, third, and fourth powers of a number:
-
-\begin{verbatim}
-def powers(a):
-    return a**2, a**3, a**4
-\end{verbatim}
-This is how the function is used:
-
-\begin{verbatim}
-var1 = 2
-print "Powers are", powers(var1)
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-Powers are (4, 8, 16)
-\end{verbatim}
-We can also store the returned values in three separate variables:
-
-\begin{verbatim}
-var1 = 3
-p2, p3, p4 = powers(var1)
-print "Powers are", p2, p3, p4
-\end{verbatim}
-Output:
-
-\begin{verbatim}
-Powers are 9 27 81
-\end{verbatim}
-Look how complicated the same program would be in C/C++:
-
-\begin{verbatim}
-void powers(double a, double* p2, double* p2, double* p3)
-{
-  *p2 = pow(a, 2);
-  *p3 = pow(a, 3);
-  *p4 = pow(a, 4);
-  return;
-}
-
-int main()
-{
-  double p1, p2, p3;
-  double a = 2;
-  powers(a, &p2, &p2, &p3);
-  printf("Powers are %g, %g, %g.\n", p2, p3, p4);
-}
-\end{verbatim}
-
-\subsection{Using default arguments}
-
-Holland is the most bicycle friendly country in the world. Imagine that you 
-work for the Holland Census Bureau. Your task is to ask 10000 
-people how they go to work, and enter their answers into a database. 
-The program for entering data into the database was written by one of 
-your colleagues, and it can be used as follows:
-
-\begin{verbatim}
-add_database_entry("John", "Smith", "walks")
-\end{verbatim}
-or 
-\begin{verbatim}
-add_database_entry("Louis", "Armstrong", "bicycle")
-\end{verbatim}
-or
-\begin{verbatim}
-add_database_entry("Jim", "Bridger", "horse")
-\end{verbatim}
-etc. Since you are in Holland, it can be expected that $99 \%$ of people 
-are using the bicycle. In principle you could call the function {\tt add\_database\_entry()} 
-to enter each answer, but with 9900 bicyclists out of 10000 respondents you would have to 
-type {\tt "bicycle"} MANY times. 
-
-Fortunately, Python offers a smarter way to do this. We can define a new function 
-
-\begin{verbatim}
-def enter(first, last, transport = "bicycle"):
-    enter_into_database(first, last, transport)
-\end{verbatim}
-This is a simple ({\em "thin"}) {\em wrapper} to the function {\tt add\_database\_entry()} 
-that allows us to omit the third argument in the function call and autocomplete 
-it with a {\em default argument} {\tt "bicycle"}. In other words, now we do not have to 
-type {\tt "bicycle"} for Louis Armstrong or any other bicyclist:
-
-\begin{verbatim}
-enter("Louis", "Armstrong")
-\end{verbatim}
-Only if we meet a rare someone who uses a car, we type 
-
-\begin{verbatim}
-enter("Niki", "Lauda", "car")
-\end{verbatim}
-Another example: Let us return to the function {\tt add()}, and let us 
-imagine that very often (but not always) the second number that we
-are adding is 10. Then it makes sense to write the function {\tt add()}
-as follows:
-
-\begin{verbatim}
-def add(a, b = 10):
-    return a + b
-\end{verbatim}
-The function will work as before when called with two arguments: 
-
-\begin{verbatim}
-A = 5
-B = 1
-add(A, B)
-\end{verbatim}
-Output:
-\begin{verbatim}
-6
-\end{verbatim}
-But it can be also called with the second argument omitted:
-\begin{verbatim}
-A = 5
-add(A)
-\end{verbatim}
-Output:
-\begin{verbatim}
-15
-\end{verbatim}
-\underline{Some rules to remember}:
-\begin{itemize}
-\item Default arguments need to be introduced {\bf after} standard (non-default) arguments. In other words, the 
-      following code will result into an error:
-\begin{verbatim}
-def add(a = 5, b):
-    return a + b
-\end{verbatim}
-This is the error message:
-\begin{verbatim}
-  File "<nclab>", line 1
-SyntaxError: non-default argument follows default argument
-
-\end{verbatim}
-\item If multiple default arguments are present, they have to follow the non-default ones.
-      If the number of arguments in the function call is less than the total number of default and non-default
-      arguments, then first all non-default arguments are assigned, and then the default ones from 
-      left to right. To illustrate this, assume the function:
-\begin{verbatim}
-def add(x, a = 2, b = 3):
-    return x + a + b
-\end{verbatim}
-This function can be called as follows:
-\begin{verbatim}
-print add(1)
-\end{verbatim}
-In this case, the value {\tt 1} is assigned to {\tt x} and {\tt a} and {\tt b} take the default values.
-The output will be 
-\begin{verbatim}
-6
-\end{verbatim}
-When the function is called with just two values,
-\begin{verbatim}
-print add(5, 6)
-\end{verbatim}
-then the value {\tt 5} is assigned to {\tt x}, {\tt 6} to {\tt a}, and {\tt b} takes the default value {\tt 3}.
-The output is
-\begin{verbatim}
-14
-\end{verbatim}
-However, it is always a good idea to be as transparent as possible. Therefore a better code is 
-\begin{verbatim}
-print add(1, a = 6)
-\end{verbatim}
-Then the result is the same, {\tt 14}, but it is clear even to non-experts what is going on. Moreover,
-in this way we can also define the value of {\tt b} without having to define the value of {\tt a}:
-\begin{verbatim}
-print add(1, b = 6)
-\end{verbatim}
-Now {\tt x} is {\tt 1}, {\tt a} has the default value {\tt 2} and the result is {\tt 9}.
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{More on Variables}
 
@@ -3575,8 +3578,8 @@ $$
 \item Learn that Internet is the best resource for Python programmers.
 \end{itemize}
 Using libraries is an indivisible part of Python programming. As opposed to 
-commercial products, Python libraries are for free. We have used some of them
-already, such as Pylab and Matplotlib in Section \ref{sec:calc} and Numpy 
+commercial products, Python libraries are free. We have used some of them
+already, such as Pylab and Matplotlib in Section \ref{sec:plotting} and Numpy 
 in Section \ref{sec:while}. 
 
 \subsection{Python Standard Library}

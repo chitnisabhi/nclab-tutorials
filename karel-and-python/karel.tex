@@ -106,8 +106,8 @@ with a randomly generated maze, as shown in Fig. \ref{fig:init}.
 \end{figure}
 \noindent
 Karel will be launched in {\em Programming mode} which is the most-frequently 
-used one. You can easily switch to the {\em Manual mode}, {\em Build mode},
-and {\em Game mode} in the menu. These modes will be discussed in Paragraph 
+used one. You can easily switch to the {\em Clicking mode}, {\em Designer},
+and {\em Games} in the menu. These modes will be discussed in Paragraph 
 \ref{levels}.
 
 \subsection{Karel's window} \label{menu}
@@ -165,21 +165,21 @@ you made to the project.
 
 Karel operates in four modes:
 \begin{itemize}
-\item {\em Manual mode:} The robot is controlled using the mouse and five buttons Go, Get, Left, Right, and Put. 
+\item {\em Clicking mode:} The robot is controlled using the mouse and five buttons Go, Get, Left, Right, and Put. 
       Watch out and do not crash!
-\item {\em Program mode:} The robot is controlled using written programs (computer code). The Program mode is 
+\item {\em Programming mode:} The robot is controlled using written programs (computer code). The Programming mode is 
       split into several Levels:
 \begin{itemize}
-\item Level 1 is a transition layer between the Manual and Programming modes. Programs are written using only 
+\item Level 1 is a transition layer between the Clicking and Programming modes. Programs are written using only 
       five commands {\tt go}, {\tt get}, {\tt left}, {\tt right}, and {\tt put} that exactly correspond to 
-      the buttons Go, Get, Left, Right, and Put in Manual mode.
+      the buttons Go, Get, Left, Right, and Put in Clicking mode.
 \item Level 2 is where the actual programming begins. On top of the commands from Level 1, programs can contain 
       conditions, loops, and custom commands.
 \item In Level 3 Karel furthermore receives a GPS device. The user will learn to work with logical 
       and numerical variables. 
 \end{itemize}
-\item {\em Build mode:} This mode allows the user to create custom mazes.
-\item {\em Game mode:} Makes it possible to create and play games. 
+\item {\em Designer:} This mode allows the user to create custom mazes.
+\item {\em Games:} Makes it possible to create and play games. 
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -188,7 +188,7 @@ Karel operates in four modes:
 
 \subsection{Objectives} 
 \begin{itemize}
-\item Learn to operate the robot in Manual mode.
+\item Learn to operate the robot in Clicking mode.
 \end{itemize}
 \noindent
 Before we begin, let us review the four directions on the compass:\\[-7mm]
@@ -204,7 +204,7 @@ Before we begin, let us review the four directions on the compass:\\[-7mm]
 \end{figure}
 
 \noindent
-When launching Karel through the Programming icon, switch to Manual mode using the corresponding 
+When launching Karel through the Programming icon, switch to Clicking mode using the corresponding 
 menu button. Then, five buttons Left, Right, Go, Get and Put will appear in the panel on the left,
 as shown in Fig. \ref{fig:buttons}.
 
@@ -212,7 +212,7 @@ as shown in Fig. \ref{fig:buttons}.
 \begin{center}
 \includegraphics[width=6.2cm]{imgk/buttons-all.png}
 \vspace{-0mm}
-\caption{Karel's buttons in manual mode (robot facing East).}
+\caption{Karel's buttons in Clicking mode (robot facing East).}
 \vspace{-1cm}
 \label{fig:buttons}
 \end{center}
@@ -233,7 +233,7 @@ orientation. This is illustrated in Fig. \ref{fig:buttons2}.
 \begin{center}
 \includegraphics[width=6.2cm]{imgk/buttons-all-2.png}
 \vspace{-0mm}
-\caption{Karel's buttons in manual mode (robot facing West).}
+\caption{Karel's buttons in Clicking mode (robot facing West).}
 \label{fig:buttons2}
 \end{center}
 \end{figure}
@@ -250,7 +250,7 @@ orientation. This is illustrated in Fig. \ref{fig:buttons2}.
 \end{itemize}
 In Programming mode, commands for the robot are entered into an code cell located in the left panel.
 These commands are {\tt left}, {\tt right}, {\tt go}, {\tt get}, and {\tt put}.
-Their function is the same as the function of the corresponding buttons in Manual mode.
+Their function is the same as the function of the corresponding buttons in Clicking mode.
 One or more commands form a {\em computer program (computer code)}. Often 
 we just say {\em program} or {\em code}.
 
@@ -390,7 +390,7 @@ repeat 10
         left
 \end{verbatim}
 After you figure it out, launch Karel via the {\em Programming} menu, enter this code into
-the code cell, and run it! But before you do, remember to switch to {\em Build mode} and make 
+the code cell, and run it! But before you do, remember to switch to {\em Designer} and make 
 some free space in front of the robot 
 so that he does not crash into a wall.
 
@@ -698,7 +698,6 @@ Solve the small tasks first, and you'll see that the big ones get much simpler. 
 importance of what we just said cannot be stressed more. Please read these three 
 lines once more.}
 
-\newpage
 \noindent
 The fact that you are reading this line of text proves that you are not 
 a perfect programmer yet. Otherwise you would be stuck forever in the 
@@ -1175,7 +1174,7 @@ is 12 tiles. Therefore, while Karel stands in the north-east corner, the output 
 Horizontal position: 14
 Vertical position: 11
 \end{verbatim}
-Try it! Also move Karel to other parts of the maze in Build mode and run the program again
+Try it! Also move Karel to other parts of the maze in Designer and run the program again
 to make yourself familiar with how the GPS device works.
 
 \subsection{Custom Functions}

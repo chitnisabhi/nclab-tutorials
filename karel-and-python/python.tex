@@ -725,14 +725,15 @@ The output is shown in Fig. \ref{fig:plot}.
 In the following we will discuss more options and show some useful techniques.
 Let's say, for example, that we want to plot the function $f(x) = \sin(x)$
 in the interval $(0, 2\pi)$. The array of $x$-coordinates of equidistant points 
-between 0 and $\pi$ with step 0.05 can be created easily using the command {\tt arange}:
+between 0 and $\pi$ can be created easily using the command {\tt linspace}:
 
 \begin{verbatim}
 from numpy import *
-x = arange(0, 2*pi, 0.05)
+x = linspace(0, 2*pi, 100)
 \end{verbatim}
-Changing the step size will change the resolution - with a smaller step the resolution will 
-be finer and vice-versa. Next, the array of $y$-coordinates of the points is obtained via
+Here 100 means the number of points in the division (including endpoints).
+Increasing this number will improve the resolution and vice versa. 
+Next, the array of $y$-coordinates of the points is obtained via
 
 \begin{verbatim}
 y = sin(x)
@@ -859,7 +860,7 @@ grid can be displayed by using the {\tt grid()} command:
 \begin{verbatim}
 from numpy import *
 from pylab import *
-x = arange(0, 2*pi, 0.05)
+x = linspace(0, 2*pi, 100)
 y = sin(x)
 clf()
 plot(x, y, label="sin(x)")
@@ -895,7 +896,7 @@ canvas as follows:
 \begin{verbatim}
 from numpy import *
 from pylab import *
-x = arange(0, 2*pi, 0.05)
+x = linspace(0, 2*pi, 100)
 y = sin(x)
 clf()
 plot(x, y, label="sin(x)")
@@ -930,7 +931,7 @@ in one figure as needed. Let us do three:
 \begin{verbatim}
 from numpy import *
 from pylab import *
-x = arange(0.5, 5, 0.05)
+x = linspace(0.5, 5, 100)
 y1 = 1./x
 y2 = 1. / (1 + x**2)
 y3 = exp(-x)
@@ -976,7 +977,7 @@ in the interval $(0, 10)$ for $t$. The complete code is
 \begin{verbatim}
 from pylab import *
 from numpy import *
-t = arange(0, 10, 0.05)
+t = linspace(0, 10, 100)
 x = t*cos(t)
 y = t*sin(t)
 clf()
@@ -1025,7 +1026,7 @@ fig = plt.figure()
 ax = fig.gca(projection='3d')
 
 # Define interval for parameter 't' and its
-# division (arange can be used as well):
+# division:
 t = linspace(-2, 2, 100)
 
 # Define the curve:
@@ -1075,7 +1076,7 @@ fig = plt.figure()
 ax = fig.gca(projection='3d')
 
 # Define intervals on the 'x' and 'y' axes and 
-# their divisions (arange can be used as well):
+# their divisions:
 x = linspace(-pi, pi, 30)
 y = linspace(-pi, pi, 30)
 
@@ -1813,13 +1814,14 @@ Actually, our programming skills are already good enough to tackle an entry-leve
 scientific computing problem, so let's give it a try! 
 
 We are interested in finding an angle $x$ that is equal
-to its own cosine. Let's our Python plotting skills shine and write a code to plot the graphs of
+to its own cosine. Let's our Python plotting skills shine 
+and write a code to plot the graphs of
 the functions $\cos(x)$ and $x$:
 
 \begin{verbatim}
 from numpy import pi, cos
 from pylab import *
-x = arange(0, pi/2, 0.01)
+x = linspace(0, pi/2, 100)
 y = cos(x)
 z = x
 clf()

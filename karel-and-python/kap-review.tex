@@ -1889,14 +1889,14 @@ lab.show()
   \begin{itemize}
     \item A3
   \end{itemize}
-\item Which of the following codes will plot a cosine function in the interval $(0, \pi)$ using dashed green line with
-the step 0.01?
+\item Which of the following codes will plot a cosine function 
+in the interval $(0, \pi)$ using dashed green line?
 \begin{enumerate}
 \item[A1] 
 \begin{verbatim}
-from numpy import cos, pi
+from numpy import *
 from pylab import *
-x = arange(0, pi, 0.01)
+x = linspace(0, pi, 100)
 y = cos(x)
 axis=("equal")
 clf()
@@ -1906,9 +1906,9 @@ lab.show()
 \end{verbatim}
 \item[A2] 
 \begin{verbatim}
-from numpy import cos, pi
+from numpy import *
 from pylab import *
-x = arange(0, pi, 0.01)
+x = linspace(0, pi, 100)
 y = cos(x)
 clf()
 plot(x, y, 'g--')
@@ -1916,9 +1916,9 @@ lab.show()
 \end{verbatim}
 \item[A3] 
 \begin{verbatim}
-from numpy import cos, pi
+from numpy import *
 from pylab import *
-x = arange(0, pi, 0.05)
+x = linspace(0, pi/2, 100)
 y = cos(x)
 axis=("equal")
 clf()
@@ -1928,9 +1928,9 @@ lab.show()
 \end{verbatim}
 \item[A4] 
 \begin{verbatim}
-from numpy import cos, pi
+from numpy import *
 from pylab import *
-x = arange(0, pi, 0.01)
+x = linspace(0, pi, 100)
 y = cos(x)
 axis=("equal")
 clf()

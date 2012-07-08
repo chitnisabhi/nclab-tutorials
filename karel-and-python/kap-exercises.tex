@@ -2606,33 +2606,57 @@ Type {\tt (1 + 2j) * (3 - 1j)}. Result: {\tt (5 + 5j)}.
 
 \subsection{}
 
-Write a Python function {\tt circle} that accept an arbitrary positive radius $R > 0$
-as argument, and returns the area and the perimeter of a circle with radius $R$.
+Write a Python function {\tt circle(R)} that accept an arbitrary radius {\tt R}
+as argument, and returns the area and the perimeter of a circle with radius {\tt R}.
 
 \subsubsection*{Solution}
 
-Coming soon.
+\begin{verbatim}
+from numpy import pi
+
+def circle(R):
+    area = pi * R**2
+    perimeter = 2 * pi * R
+    return area, perimeter
+
+# To test it:
+print circle(1)
+\end{verbatim}
+Correct output: (3.141592653589793, 6.283185307179586)
 
 \subsection{}
 
-Write a Python function {\tt squarearea} that returns the area of a square whose 
-edge is $a$ cm long. You know that most of the time the edge length wil be 1 cm,
+Write a Python function {\tt squarearea(a)} that returns the area of a square whose 
+edge is {\tt a} cm long. You know that most of the time the edge length wil be 1 cm,
 so make this function callable without any arguments.
 
 \subsubsection*{Solution}
 
-Coming soon.
+\begin{verbatim}
+def squarearea(a = 1):
+     return a**2
+
+# To test it:
+print squarearea()
+\end{verbatim}
+Correct output:1
 
 \subsection{}
 
-Write a Python function {\tt rectanglearea} that returns the area of a rectangle 
+Write a Python function {\tt rectanglearea(a, b)} that returns the area of a rectangle 
 whose edges are $a$ and $b$ cm long. You know that most of the time one of the edges 
 will measure 3 cm, so make the function callable with only one argument.
 
 \subsubsection*{Solution}
 
-Coming soon.
-
+\begin{verbatim}
+def rectanglearea(a, b = 3):
+    return a * b
+  
+# To test it:
+print rectanglearea(5)
+\end{verbatim}
+Correct output:15
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2640,30 +2664,131 @@ Coming soon.
 
 \subsection{}
 
-Write a Python program to plot a polygon with $N$ equally-long edges that is inscribed into a circle of 
-center $[x_0, y_0]$ and radius $R > 0$. Here $N \ge 3$ is an integer number and $x_0, y_0, R$ are real numbers. The user should be able to change all of them. Axes should be scaled equally.
+Write a Python function {\tt polygon(R, n)} that returns two arrays {\tt x} and {\tt y}.
+These arrays will contain the $x$ and $y$ coordinates of the vertices of a polygon 
+with $n$ equally-long edges, that is inscribed into a circle of 
+center $[0, 0]$ and radius $R > 0$. Here {\tt n > 2} is an integer number 
+and {\tt R > 0} is a real number. The polygon should be oriented counter clock-wise
+and the first vertex should be $[R, 0]$.
+Use this function to plot a sample
+polygon with parameters {\tt R = 2}, {\tt n = 6}. Make sure that axes are scaled equally.
 
 \subsubsection*{Solution}
 
-Coming soon.
+\begin{verbatim}
+from numpy import pi, linspace, sin, cos
+from pylab import plot, clf, axis
+
+def polygon(R, n):
+    angles = linspace(0, 2*pi, n+1)
+    x = R * cos(angles)
+    y = R * sin(angles)
+    return x, y
+  
+# To test it:
+R = 2.0
+n = 6
+clf()
+axis('equal')
+x, y = polygon(R, n)
+plot(x, y)
+lab.show()
+\end{verbatim}
 
 \subsection{}
 
-Write a Python program to plot a circle of center $[x_0, y_0]$ and radius $R > 0$, where 
-$x_0, y_0$ and $R$ are variables that the user can change. Axes should be scaled equally.
+Consider an arbitrary Python function {\tt f(x)} that for a real number 
+{\tt x} returns a real value. For example, such a function could be 
+$f(x) = e^{-x}$:
+
+\begin{verbatim}
+def f(x):
+    return exp(-x)
+\end{verbatim}
+Write a Python function {\tt plotfun(a, b, f, n)} that will return two
+arrays {\tt xpts} and {\tt ypts}. The former will contain x-coordinates of 
+{\tt n}-point linear subdivision of the interval {\tt [a, b]}, the latter will
+contain the corresponding function values. Use the function {\tt plotfun} to
+plot the graph of the function {\tt f(x)} defined above, in the interval $[-1, 1]$.
+Axes should be scaled equally.
 
 \subsubsection*{Solution}
 
-Coming soon.
+\begin{verbatim}
+from numpy import *
+
+def plotfun(a, b, f, n):
+    xpts = linspace(a, b, n)
+    ypts = f(xpts)
+    return xpts, ypts
+  
+# To test it:
+def f(x):
+    return exp(-x)
+  
+a = -1
+b = 1
+n = 100
+  
+from pylab import clf, plot, axis
+
+clf()
+axis('equal')
+x, y = plotfun(a, b, f, n)
+plot(x, y)
+lab.show()
+\end{verbatim}
 
 \subsection{}
 
-Write a Python program to plot an ellipse with focal points $[x_0, 0]$ and $[-x_0, 0]$ where 
-$x_0 > 0$ is a variable that the user can change. Axes should be scaled equally.
+Consider two arbitrary Python functions {\tt f(t)} and {\tt g(t)} that 
+for a real number {\tt t} in the interval $[0, 1]$ return a real value. 
+For example, such functions could be $f(t) = \cos(2 \pi t)$ and 
+$g(t) = \sin(2 \pi t)$:
+
+\begin{verbatim}
+def f(t):
+    return cos(2*pi*t)
+
+def g(t):
+    return sin(2*pi*t)
+\end{verbatim}
+Write a Python function {\tt planarcurve(f, g, n)} that returns two
+arrays {\tt xpts} and {\tt ypts}. These arrays will contain 'x' and 'y' coordinates of 
+{\tt n} points lying on the planar curve $[f(t), g(t)]$. These points 
+correspond to a linear subdivision of the parameterization interval 
+$[0, 1]$ with {\tt n} points. Use the function {\tt planarcurve} to
+plot the curve corresponding to the functions {\tt f(t)} and {\tt g(t)} 
+defined above. Axes should be scaled equally.
 
 \subsubsection*{Solution}
 
-Coming soon.
+\begin{verbatim}
+from numpy import *
+
+def planarcurve(f, g, n):
+    tpts = linspace(0, 1, n)
+    xpts = f(tpts)
+    ypts = g(tpts)
+    return xpts, ypts
+  
+# To test it:
+def f(t):
+    return cos(2*pi*t)
+               
+def g(t):
+    return sin(2*pi*t)               
+
+n = 100
+  
+from pylab import clf, plot, axis
+
+clf()
+axis('equal')
+x, y = planarcurve(f, g, n)
+plot(x, y)
+lab.show()
+\end{verbatim}
 
 \subsection{}
 

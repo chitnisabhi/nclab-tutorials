@@ -1,0 +1,140 @@
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{graphicx}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\large
+
+\vbox{}
+\begin{figure}[!ht]
+%\hspace{-4mm}
+\includegraphics[width=8cm]{logo.png}
+\vspace{4mm}
+\end{figure}
+
+\centerline{\huge \bf Using Hermes in NCLab}
+\vspace{6mm}
+\noindent
+Hermes is a C++ library for rapid development of adaptive $hp$-FEM / $hp$-DG solvers.
+In NCLab it is used via its Python wrappers. The wrappers follow the original C++ 
+functionality very closely, so after understanding basic naming conventions, it
+is easy to write Python examples by looking at the original C++ tutorial examples.
+
+\section*{Naming conventions for Python wrappers}
+
+The following basic rules apply:
+
+\begin{itemize}
+\item C++ class {\tt X} is wrapped as {\tt PyX}. 
+\item C++ template {\tt T<real>} is wrapped as {\tt PyTReal}.  
+\item C++ template {\tt T<complex>} is wrapped as {\tt PyTComplex}.  
+\item Names of methods are identical. 
+\item Arguments of methods are identical. 
+\end{itemize}
+
+\section*{Displayed tutorial examples in NCLab}
+
+Several examples from the original Hermes tutorial are
+available as displayed projects. To clone them, launch
+File Manager, and click on Project $\rightarrow$ Clone.
+In the table that appears, look for projects whose names 
+start with "Hermes - Tutorial - Example ..."
+
+\section*{Hermes - Tutorial - Example A03}
+
+For illustration, let us describe in more detail the Python version 
+of the Hermes tutorial example A-linear/03-poisson. 
+
+\subsection*{Weak forms}
+
+We begin with defining weak forms. The C++ version reads:
+
+{\small
+\begin{verbatim}
+CustomWeakFormPoisson::CustomWeakFormPoisson(std::string mat_al, Hermes1DFunction<double>* lambda_al,
+                                             std::string mat_cu, Hermes1DFunction<double>* lambda_cu,
+                                             Hermes2DFunction<double>* src_term) : WeakForm<double>(1)
+{
+  // Jacobian forms.
+  add_matrix_form(new DefaultJacobianDiffusion<double>(0, 0, mat_al, lambda_al));
+  add_matrix_form(new DefaultJacobianDiffusion<double>(0, 0, mat_cu, lambda_cu));
+
+  // Residual forms.
+  add_vector_form(new DefaultResidualDiffusion<double>(0, mat_al, lambda_al));
+  add_vector_form(new DefaultResidualDiffusion<double>(0, mat_cu, lambda_cu));
+  add_vector_form(new DefaultVectorFormVol<double>(0, HERMES_ANY, src_term));
+};
+
+\end{verbatim}
+}
+The Python version is:
+{\small
+\begin{verbatim}
+# Define weak forms:
+class PyCustomWeakFormPoisson(hermes2d.PyCustomWeakFormReal):
+    def __init__(self, mat_al, lambda_al, mat_cu, lambda_cu, vol_src_term):
+        # Define number of equations.
+        self.super(1)
+
+        # Jacobian forms.
+        self.add_matrix_form(hermes2d.PyDefaultJacobianDiffusion(0, 0, lambda_al, mat_al))
+        self.add_matrix_form(hermes2d.PyDefaultJacobianDiffusion(0, 0, lambda_cu, mat_cu))
+        self.add_vector_form(hermes2d.PyDefaultResidualDiffusion(0, lambda_al, mat_al))
+
+        # Residual forms.
+        self.add_vector_form(hermes2d.PyDefaultResidualDiffusion(0, lambda_cu, mat_cu))
+        self.add_vector_form(hermes2d.PyDefaultVectorFormVol(0, -vol_src_term))
+\end{verbatim}
+}
+
+
+\begin{verbatim}
+
+
+\end{verbatim}
+
+\begin{verbatim}
+
+
+\end{verbatim}
+
+\begin{verbatim}
+
+
+\end{verbatim}
+
+\begin{verbatim}
+
+
+\end{verbatim}
+
+\begin{verbatim}
+
+
+\end{verbatim}
+
+
+
+\end{document}
+

@@ -1,0 +1,7 @@
+cp ge.pdf ge_en.pdf
+cp ge.pdf ge_cz.pdf
+cp ge.pdf ge_de.pdf
+cp ge.pdf ge_sp.pdf
+cp ge.pdf ge_pl.pdf
+
+scp ge*.pdf femhub@femhub.com:~/femhub.com/public/docs/

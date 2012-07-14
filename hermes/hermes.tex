@@ -36,10 +36,11 @@
 \centerline{\huge \bf Using Hermes in NCLab}
 \vspace{6mm}
 \noindent
-Hermes is a C++ library for rapid development of adaptive $hp$-FEM / $hp$-DG solvers.
-In NCLab it is used via its Python wrappers. The wrappers follow the original C++ 
-functionality very closely, so after understanding basic naming conventions, it
-is easy to write Python examples by looking at the original C++ tutorial examples.
+Hermes is a widely used open-source C++ library for rapid development of adaptive $hp$-FEM and $hp$-DG solvers.
+In NCLab it is available via its Python wrappers. The wrappers follow the original C++ 
+functionality very closely, so after understanding basic naming conventions, you should
+be able to create your own examples by looking at the original C++ tutorial examples
+which are available at {\tt http://hpfem.org/hermes/}.
 
 \section*{Naming conventions for Python wrappers}
 
@@ -47,7 +48,7 @@ The following basic rules apply:
 
 \begin{itemize}
 \item C++ class {\tt X} is wrapped as {\tt PyX}. 
-\item C++ template {\tt T<real>} is wrapped as {\tt PyTReal}.  
+\item C++ template {\tt T<double>} is wrapped as {\tt PyTReal}.  
 \item C++ template {\tt T<complex>} is wrapped as {\tt PyTComplex}.  
 \item Names of methods are identical. 
 \item Arguments of methods are identical. 
@@ -61,14 +62,22 @@ File Manager, and click on Project $\rightarrow$ Clone.
 In the table that appears, look for projects whose names 
 start with "Hermes - Tutorial - Example ..."
 
+\section*{Using GE and ME with Hermes}
+
+The original tutorial examples come with their own predefined meshes. 
+However, it is easy to create custom 2D domains and meshes using the Geometry Editor (GE)
+and Mesh Editor (ME) and pass them to Hermes -- or to your finite element 
+program for that matter. To see how this is done, 
+clone the displayed projects whose names start with "GE and ME". 
+
 \section*{Hermes - Tutorial - Example A03}
 
-For illustration, let us describe in more detail the Python version 
+Let us describe in more detail the Python version 
 of the Hermes tutorial example A-linear/03-poisson. 
 
 \subsection*{Weak forms}
 
-We begin with defining weak forms. The C++ version reads:
+We begin with defining weak forms. C++ version:
 
 {\small
 \begin{verbatim}
@@ -83,12 +92,13 @@ CustomWeakFormPoisson::CustomWeakFormPoisson(std::string mat_al, Hermes1DFunctio
   // Residual forms.
   add_vector_form(new DefaultResidualDiffusion<double>(0, mat_al, lambda_al));
   add_vector_form(new DefaultResidualDiffusion<double>(0, mat_cu, lambda_cu));
-  add_vector_form(new DefaultVectorFormVol<double>(0, HERMES_ANY, src_term));
+  add_vector_form(new DefaultVectorFormVol<double>(0, HERMES_ANY, -src_term));
 };
 
 \end{verbatim}
 }
-The Python version is:
+\noindent
+Python version:
 {\small
 \begin{verbatim}
 # Define weak forms:
@@ -100,39 +110,431 @@ class PyCustomWeakFormPoisson(hermes2d.PyCustomWeakFormReal):
         # Jacobian forms.
         self.add_matrix_form(hermes2d.PyDefaultJacobianDiffusion(0, 0, lambda_al, mat_al))
         self.add_matrix_form(hermes2d.PyDefaultJacobianDiffusion(0, 0, lambda_cu, mat_cu))
-        self.add_vector_form(hermes2d.PyDefaultResidualDiffusion(0, lambda_al, mat_al))
 
         # Residual forms.
+        self.add_vector_form(hermes2d.PyDefaultResidualDiffusion(0, lambda_al, mat_al))
         self.add_vector_form(hermes2d.PyDefaultResidualDiffusion(0, lambda_cu, mat_cu))
-        self.add_vector_form(hermes2d.PyDefaultVectorFormVol(0, -vol_src_term))
+        self.add_vector_form(hermes2d.PyDefaultVectorFormVol(0, -src_term))
+\end{verbatim}
+}
+\noindent
+The line {\tt self.super(1)} calls the constructor of the superclass with parameter 
+{\tt 1} which is the number of equations. Notice that {\tt HERMES\_ANY} is present 
+in the C++ version but it is omitted in the wrapper. 
+
+\subsection*{Loading mesh from string in XML format}
+
+This is the default way in tutorial examples. First we initialize 
+an instance of the Mesh class. C++ version:
+
+{\small
+\begin{verbatim}
+Mesh mesh;
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+mesh = hermes2d.PyMesh()
+\end{verbatim}
+}
+\noindent
+Then we initialize an instance of the XML mesh reader. C++ version:
+
+{\small
+\begin{verbatim}
+MeshReaderH2DXML mloader;
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+reader = hermes2d.PyMeshReaderH2DXML()
+\end{verbatim}
+}
+\noindent
+For the time being, mesh strings are stored directly in the 
+worksheets, later we will move them to separate files as 
+in the C++ version. The XML format is described in detail
+in the C++ tutorial:
+
+{\small
+\begin{verbatim}
+mesh_stream = '<?xml version="1.0" encoding="utf-8"?>\
+<mesh:mesh xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\
+ xmlns:mesh="XMLMesh"\
+ xmlns:element="XMLMesh"\
+ xsi:schemaLocation="XMLMesh /usr/include/hermes2d/xml_schemas/mesh_h2d_xml.xsd">\
+ <variables>\
+   <variable name="a" value="1.0" />\
+   <variable name="m_a" value="-1.0" />\
+   <variable name="b" value="0.70710678118654757" />	\
+ </variables>\
+\
+ <vertices>\
+   <vertex x="0.0" y="m_a" i="0"/>\
+   <vertex x="a" y="m_a" i="1"/>\
+   <vertex x="m_a" y="0.0" i="2"/>\
+   <vertex x="." y="0.0" i="3"/>\
+   <vertex x="a" y="0.0" i="4"/>\
+   <vertex x="m_a" y="a" i="5"/>\
+   <vertex x="0.0" y="a" i="6"/>\
+   <vertex x="b" y="b" i="7"/>\
+ </vertices>\
+\
+ <elements>\
+   <element:quad v1="0" v2="1" v3="4" v4="3" marker="Copper" />\
+   <element:triangle v1="3" v2="4" v3="7" marker="Copper" />\
+   <element:triangle v1="3" v2="7" v3="6" marker="Aluminum" />\
+   <element:quad v1="2" v2="3" v3="6" v4="5" marker="Aluminum" />\
+ </elements>\
+\
+ <edges>\
+   <edge v1="0" v2="1" marker="Bottom" />\
+   <edge v1="1" v2="4" marker="Outer" />\
+   <edge v1="3" v2="0" marker="Inner" />\
+   <edge v1="4" v2="7" marker="Outer" />\
+   <edge v1="7" v2="6" marker="Outer" />\
+   <edge v1="2" v2="3" marker="Inner" />\
+   <edge v1="6" v2="5" marker="Outer" />\
+   <edge v1="5" v2="2" marker="Left" />\
+ </edges>\
+\
+ <curves>\
+   <arc v1="4" v2="7" angle="45" />\
+   <arc v1="7" v2="6" angle="45" />\
+ </curves>\
+</mesh:mesh>'
+\end{verbatim}
+}
+\noindent
+This string is read by the XML mesh reader and passed into 
+the instance of the Mesh class. C++ version (reading from 
+file {\tt domain.xml}):
+
+{\small
+\begin{verbatim}
+MeshReaderH2DXML mloader;  
+mloader.load("domain.xml", &mesh);
+\end{verbatim}
+}
+\noindent
+Python version (reading from string):
+{\small
+\begin{verbatim}
+reader.load_stream(mesh_stream, mesh)
+\end{verbatim}
+}
+
+\subsection*{Using NCLab's GE and ME with your own FEM code}
+
+NCLab's Mesh Editor has XML output, so one way to connect your 
+own FEM code to ME is to implement a method that reads 
+meshes in this format. ME also provides mesh output in raw format
+consisting of arrays of vertices, elements with material markers, 
+boundary edges with boundary markers, and curves. See displayed 
+projects whose names start with "GE and ME". 
+
+
+\subsection*{Mesh refinement operations}
+
+All manual mesh refinement operations available in Hermes (see the C++ tutorial)
+can be also used in Python. For example, the following will perform a uniform 
+mesh refinement. C++ version:
+
+{\small
+\begin{verbatim}
+mesh.refine_all_elements();
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+mesh.refine_all_elements()
+\end{verbatim}
+}
+
+\subsection*{Creating constant Dirichlet condition on certain boundary markers}
+
+C++ version:
+{\small
+\begin{verbatim}
+DefaultEssentialBCConst<double> bc_essential(
+    Hermes::vector<std::string>("Bottom", "Inner", "Outer", "Left"), FIXED_BDY_TEMP);
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+bc = hermes2d.PyDefaultEssentialBCConstReal(["Bottom", "Inner", "Left", "Outer"], FIXED_BDY_TEMP)
+\end{verbatim}
+}
+
+\subsection*{Adding all BCs into a container to be passed into Space}
+
+Since there can be many different boundary conditions, all BCs are 
+first put into a container which is then passed into Space. C++ version:
+{\small
+\begin{verbatim}
+EssentialBCs<double> bcs(&bc_essential);
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+bcs = hermes2d.PyEssentialBCsReal(bc)
+\end{verbatim}
+}
+
+\subsection*{Creating finite element space}
+
+This model problem is a linear second-order equation whose solution 
+is continuous, and therefore we use the $H^1$ space. All other spaces
+available in C++ Hermes -- $H$(curl), $H$(div) and $L^2$ -- are available  
+in Python as well. C++ version:
+
+{\small
+\begin{verbatim}
+H1Space<double> space(&mesh, &bcs, P_INIT);
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+space = hermes2d.PyH1SpaceReal(mesh, bcs, P_INIT)
+\end{verbatim}
+}
+
+\subsection*{Initializing weak formulation}
+
+C++ version:
+
+{\small
+\begin{verbatim}
+CustomWeakFormPoisson wf("Aluminum", new Hermes1DFunction<double>(LAMBDA_AL), 
+                         "Copper", new Hermes1DFunction<double>(LAMBDA_CU), 
+                         new Hermes2DFunction<double>(VOLUME_HEAT_SRC));
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+wf = PyCustomWeakFormPoisson("Aluminum", LAMBDA_AL, \
+         "Copper", LAMBDA_CU, VOLUME_HEAT_SRC)
+\end{verbatim}
+}
+
+\subsection*{Initializing discrete problem}
+
+C++ version:
+
+{\small
+\begin{verbatim}
+DiscreteProblem<double> dp(&wf, &space);
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+dp = hermes2d.PyDiscreteProblemReal(wf, space)
+\end{verbatim}
+}
+
+\subsection*{Initializing a Solution}
+
+C++ version:
+
+{\small
+\begin{verbatim}
+Solution<double> sln;
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+solution = hermes2d.PySolutionReal()
+\end{verbatim}
+}
+
+\subsection*{Initializing Newton solver}
+
+C++ version:
+
+{\small
+\begin{verbatim}
+NewtonSolver<double> newton(&dp, matrix_solver);
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+newton = hermes2d.PyNewtonSolverReal(dp)
+\end{verbatim}
+}
+
+\subsection*{Solving via the Newton's method}
+
+C++ version:
+
+{\small
+\begin{verbatim}
+newton.solve();
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+newton.solve(coef)
+\end{verbatim}
+}
+\noindent
+The fact that the initial coefficient vector {\tt} is omitted on the 
+C++ level means that it is a zero vector by default. 
+
+\subsection*{Translating resulting coefficient vector into a Solution}
+
+C++ version:
+
+{\small
+\begin{verbatim}
+Solution<double>::vector_to_solution(newton.get_sln_vector(), &space, &sln);
+\end{verbatim}
+}
+\noindent
+Python version:
+
+{\small
+\begin{verbatim}
+hermes2d.PySolutionReal().vector_to_solution(newton.get_sln_vector(), space, solution)
 \end{verbatim}
 }
 
 
+
+
+
+
+
+
+
+
+
+
+{\small
 \begin{verbatim}
 
 
 \end{verbatim}
+}
 
+
+
+
+{\small
 \begin{verbatim}
 
 
 \end{verbatim}
+}
 
+
+
+
+{\small
 \begin{verbatim}
 
 
 \end{verbatim}
+}
 
+
+
+
+{\small
 \begin{verbatim}
 
 
 \end{verbatim}
+}
 
+
+
+
+{\small
 \begin{verbatim}
 
 
 \end{verbatim}
+}
+
+
+
+
+{\small
+\begin{verbatim}
+
+
+\end{verbatim}
+}
+
+
+
+
+{\small
+\begin{verbatim}
+
+
+\end{verbatim}
+}
+
+
+
+
+{\small
+\begin{verbatim}
+
+
+\end{verbatim}
+}
+
+
+
+
+{\small
+\begin{verbatim}
+
+
+\end{verbatim}
+}
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,2 @@
+cp cloud.pdf cloud_en.pdf
+scp cloud_en.pdf femhub@208.113.201.85:~/femhub.com/public/docs/

@@ -1,26 +1,2 @@
-cp nclab-intro.pdf intro.pdf 
-cp intro.pdf intro_en.pdf 
-cp intro.pdf intro_de.pdf 
-cp intro.pdf intro_cz.pdf 
-cp intro.pdf intro_sp.pdf 
-cp intro.pdf intro_pl.pdf 
-cp nclab-intro.pdf nclab-intro_en.pdf 
-cp nclab-intro.pdf nclab-intro_de.pdf 
-cp nclab-intro.pdf nclab-intro_cz.pdf 
-cp nclab-intro.pdf nclab-intro_sp.pdf 
-cp nclab-intro.pdf nclab-intro_pl.pdf 
-
-scp *intro*.pdf femhub@femhub.com:~/femhub.com/public/docs/
-
-rm intro_en.pdf
-rm intro_cz.pdf
-rm intro_de.pdf
-rm intro_sp.pdf
-rm intro_pl.pdf
-rm intro.pdf
-rm nclab-intro_en.pdf
-rm nclab-intro_de.pdf
-rm nclab-intro_cz.pdf
-rm nclab-intro_sp.pdf
-rm nclab-intro_pl.pdf
-
+cp nclab-intro.pdf nclab-intro_en.pdf
+scp nclab-intro_en.pdf femhub@208.113.201.85:~/femhub.com/public/docs/

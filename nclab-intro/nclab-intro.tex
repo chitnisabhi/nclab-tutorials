@@ -48,21 +48,10 @@
 \centerline{\Large www.nclab.com}
 
 \newpage
+\hbox{}
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\section*{}
-\small
-\input ../common/aboutnclab.tex
-
-%\subsection*{Acknowledgement}
-%This publication was created with the help of numerous freely 
-%available web resources and tutorials related to Python, Scipy,
-%Numpy, Pylab, Matplotlib, Sympy and other projects.
-
-\normalsize
 
 \newpage
 %{\ }
@@ -83,14 +72,20 @@
 
 \section{Welcome!}
 
-NCLab is a popular Online STEM Laboratory that serves thousands of students, instructors and 
-researchers all over the world. It helps its users complete projects in many STEM fields ranging from
-symbolical and numerical mathematics, computer simulations in physics and chemistry, 3D computer 
-aided design (CAD), computer programming, and web design to engineering-level computer simulations 
-in various areas including solid mechanics, fluid dynamics, electromagnetics, neutronics and others. 
-NCLab can be used {\bf free of charge for personal non-commercial purposes} such as private 
-hobby or self-education, as well as for individual non-funded academic research. Institutions 
-need to {\bf purchase a license} for a symbolical fee. 
+NCLab is an online laboratory for Science, Technology, Engineering and Mathematics (STEM) that 
+grants its users an unmatched freedom to experiment and to learn. Everyone can use NCLab free 
+of charge as long as all his/her projects are public. Upgrade to private projects as well as 
+performance upgrades can be purchased for symbolic fees.\\
+
+
+
+
+\noindent
+NCLab serves thousands of students, instructors and researchers all over the world to work on
+projects ranging from symbolical and numerical mathematics, computer simulations in physics and 
+chemistry, 3D computer aided design (CAD), computer programming, and web design to engineering-level 
+computer simulations in various areas including solid mechanics, fluid dynamics, electromagnetics, 
+neutronics and others. 
 
 \begin{figure}[!ht]
 \begin{center}
@@ -107,69 +102,6 @@ Please visit NCLab's home page {\tt http://nclab.com}. The page features a slide
 illustrating various activities offered by NCLab, and it provides links to related resources such 
 as NCLab Blog, Tutorials, Displayed Projects, and others. Sign up for NCLab Newsletter 
 in order to receive information about new functionality, webinars, and related topics! 
-
-\subsection{WebGL}
-
-WebGL is one of the most amazing features of NCLab, and at the same time one of the most 
-problematic ones, 
-so let us provide a short explanation of what goes on. {\bf You do not need to worry about WebGL 
-unless you work with 3D geometries, CAD models, or need to plot graphs of functions of two 
-variables.} 
-
-For those who do -- WebGL is a web browser analogy of OpenGL 
-(hardware-accelerated 3D graphics) that provides amazing 3D graphics. The technology is 
-still experimental and it is turned off in some web browsers by default. Often an upgrade of 
-graphics drivers combined with adjusting your browser's settings are needed to make it work. 
-WebGL should work in modern web browsers with the exception of Internet Explorer 
-where it is not supported.
-
-Because of WebGL problems, we provide a "Test WebGL" button on NCLab's home page. Click on it.
-If you see a window similar to the one in Fig. \ref{fig:webgl2} then you are fine. \\
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/webgl2.png}
-\end{center}
-%\vspace{-2mm}
-\caption{WebGL Tester.}
-\label{fig:webgl2}
-\end{figure}
-\noindent
-Now you can click into the WebGL tester window and move 
-your mouse while keeping the left button pressed to see WebGL in action.
-However, you might well see an error message similar to the one shown in Fig. \ref{fig:nowebgl}.\\
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/nowebgl.png}
-\end{center}
-%\vspace{-2mm}
-\caption{Message saying that WebGL is not enabled.}
-\label{fig:nowebgl}
-\end{figure}
-
-\noindent
-Below are some of the most usual reasons why WebGL is not working:
-\begin{enumerate}
-\item {\em You are using Internet Explorer (IE)}. IE does not have WebGL support. If you are using this web browser, please install another 
-one such as Chrome, Firefox, Safari etc. This takes only minutes (at most) and it is highly rewarding in terms 
-of improved Internet experience. In fact, poor performance of IE was causing such problems to NCLab users that 
-we eventually decided to banish IE. 
-\item {\em Your browser is outdated.} We recommend that you upgrade your web browser to the newest version, this 
-can never hurt. 
-\item {\em Your browser has WebGL disabled.} Try the following:
-\begin{enumerate}
-\item Firefox: Type {\tt about:config} in the address bar and hit enter. Ignore a message about harming your 
-      warranty. In the search bar type {\tt webgl} and double-click on {\tt webgl.force-enable} and 
-      {\tt webgl.prefer-native-gl} to set them to {\tt true}. Restart your browser (reloading page is not enough).
-\item Chrome: Type {\tt about:flags} in the address bar and hit enter. Ignore a message saying that these 
-      experiments may bite. Use CTRL + F to search for WebGL and enable it. Restart your browser. 
-\end{enumerate}
-\item {\em Everything fails.} In this case, try to upgrade your graphics drivers. This should help. If you still have 
-problems, go to the page {\tt www.webgl.org} and try to find help there. You can also google for "graphic cards that 
-support webgl" which will give you and idea whether your graphic card s supported or not. 
-\item As a general observation, WebGL works almost always in Safari on more recent Mac systems  
-\end{enumerate}
 
 \subsection{Creating an Account}
 
@@ -734,6 +666,7 @@ the instructor about the completion with one mouse click. Most importantly,
 however, NCLab invites K-12 teachers and students to discover new exciting 
 areas that were out of their reach before.
 
+\end{document}
 
 \section{Review Questions}
 

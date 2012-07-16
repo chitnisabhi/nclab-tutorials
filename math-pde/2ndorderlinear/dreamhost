@@ -1,2 +1,2 @@
-scp 2ndorderlinear.pdf femhub@femhub.com:~/femhub.com/public/docs/
-
+cp 2ndorderlinear.pdf 2ndorderlinear_en.pdf
+scp 2ndorderlinear_en.pdf femhub@208.113.201.85:~/femhub.com/public/docs/

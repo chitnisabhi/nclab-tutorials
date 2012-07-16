@@ -1,1 +1,2 @@
-scp cuda.pdf femhub@femhub.com:~/femhub.com/public/docs/
+cp cuda.pdf cuda_en.pdf
+scp cuda_en.pdf femhub@208.113.201.85:~/femhub.com/public/docs/

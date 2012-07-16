@@ -1,2 +1,2 @@
-scp math-matrix-algebra.pdf femhub@femhub.com:~/femhub.com/public/docs/
-
+cp math-matrix-algebra.pdf math-matrix-algebra_en.pdf
+scp math-matrix-algebra_en.pdf femhub@208.113.201.85:~/femhub.com/public/docs/

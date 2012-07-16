@@ -1,7 +1,2 @@
 cp math-diffeq.pdf math-diffeq_en.pdf
-cp math-diffeq.pdf math-diffeq_de.pdf
-cp math-diffeq.pdf math-diffeq_sp.pdf
-cp math-diffeq.pdf math-diffeq_cz.pdf
-cp math-diffeq.pdf math-diffeq_pl.pdf
-scp math-diffeq_??.pdf femhub@femhub.com:~/femhub.com/public/docs/
-
+scp math-diffeq_en.pdf femhub@208.113.201.85:~/femhub.com/public/docs/

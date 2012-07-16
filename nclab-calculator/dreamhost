@@ -1,1 +1,2 @@
-scp nclab-calculator.pdf femhub@femhub.com:~/femhub.com/public/docs/
+cp nclab-calculator.pdf nclab-calculator_en.pdf
+scp nclab-calculator_en.pdf femhub@208.113.201.85:~/femhub.com/public/docs/

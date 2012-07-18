@@ -30,6 +30,11 @@
 \pagestyle{empty}
 
 
+\usepackage{fancyvrb}
+
+\newenvironment{bluecode}{\VerbatimEnvironment \color{blue} \begin{Verbatim}}
+{\end{Verbatim}}
+
 
 \begin{document}
 
@@ -144,30 +149,24 @@ Solid Modeling in NCLab is based on PLaSM (Programming Language
 of Solid Modeling) which is a simple scripting language. For 
 illustration,
 
-{\color{blue}
-\begin{verbatim}
+\begin{bluecode}
 c = CUBE(1)
 lab.view(c)
-\end{verbatim}
-}
+\end{bluecode}
 \noindent
 renders a unit cube, 
 
-{\color{blue}
-\begin{verbatim}
+\begin{bluecode}
 d = CUBE(2)
 lab.view(d)
-\end{verbatim}
-}
+\end{bluecode}
 \noindent
 renders a cube of size 2, and 
 
-{\color{blue}
-\begin{verbatim}
+\begin{bluecode}
 e = DIFF([d, c])
 lab.view(e)
-\end{verbatim}
-}
+\end{bluecode}
 \noindent
 renders their Boolean difference shown in Fig. \ref{fig:diffcube}.
 
@@ -250,12 +249,10 @@ right out of the box. For this reason we provide a document called
 \subsection{Hello, World!}
 
 In the input cell, enter the code:
-{\color{blue}
-\begin{verbatim}
+\begin{bluecode}
 cube = CUBE(1)
 lab.view(cube)
-\end{verbatim}
-}
+\end{bluecode}
 \noindent
 Here, {\tt CUBE} is a command that creates a cube of a given size and {\tt c} is the 
 name of the newly created object. The name can be arbitrary as long as it does not conflict with 
@@ -291,12 +288,10 @@ The latter option allows for finer zooming.
 \subsection{RGB colors}
 
 Before we move on to other 3D objects, adjust the code in the input cell to 
-{\color{blue}
-\begin{verbatim}
+\begin{bluecode}
 c = CUBE(1)
 lab.view(c, [102, 230, 153])
-\end{verbatim}
-}
+\end{bluecode}
 \noindent
 Run the script again.
 This will render the cube {\tt c} in a greenish color, as shown in 

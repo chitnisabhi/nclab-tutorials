@@ -1,5 +1,4 @@
-cp plasm.pdf plasm-preview.pdf
-
-scp plasm*.pdf femhub@208.113.201.85:~/femhub.com/public/docs/
+cp plasm.pdf plasm_en.pdf
+scp plasm_en.pdf femhub@208.113.201.85:~/femhub.com/public/docs/
 
 

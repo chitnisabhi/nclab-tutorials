@@ -29,6 +29,8 @@
 
 \pagestyle{empty}
 
+
+
 \begin{document}
 
 \large
@@ -78,13 +80,9 @@ Copyright 2012 FEMhub Inc. All rights reserved.
 \noindent
 {\bf About this Textbook}\\[4mm]
 This free textbook is provided as a courtesy to NCLab users. 
-It will help you develop your geometrical skills and master
-Solid Modeling which forms the basis 
-of modern CAD systems. Solid Modeling in NCLab is based on PLaSM
-(Programming Language of Solid Modeling). PLaSM is an elegant scripting 
-language that makes it possible to create objects via simple commands, 
-transform them in many ways, perform Boolean operations, and work with 
-curves and curved surfaces. \\[12mm]
+It will help you learn Solid Modeling (3D CAD design) by walking you  
+through properties and transformations of 3D objects, Boolean operations, and working 
+with curves and curved surfaces. \\[12mm]
 
 \noindent
 {\bf About the Authors}\\[4mm]
@@ -92,21 +90,24 @@ Pavel Solin is Professor of Computational Science at the University of Nevada, R
 Computational geometry is part of his profession and a deep personal passion. 
 Alberto Paoluzzi is Professor of Computational Geometry and CAD at the University 
 of Rome in Italy and leader of the CAD group. He has been supervising the development of the PLaSM 
-project for over 15 years, and teaching Solid Modeling and CAD to college-level 
-students. \\[12mm]
+project for over 15 years, and teaching Solid Modeling and CAD all the time. \\[12mm]
 
 \noindent
 {\bf For Instructors}\\[4mm]
 Review Book and Exercise Book containing many review questions with answers 
 and solid modeling projects with solutions, respectively, are part of the 
-NCLab-powered course {\em Intro to CAD} that is available at \\
+NCLab-powered course {\em Intro to CAD}. The course takes place entirely in
+the web browser and it is available at \\
 
+{\color{blue}
 \centerline{\tt http://introtocad.net}
+}
 \vspace{5mm}
 
 \noindent
-for a small subscription fee. The course takes place entirely in the web
-browser and students can work in their accounts from school or home at any time.
+for a small subscription fee. The course has everything -- you do not need to 
+purchase license to SolidWorks, AutoCAD or any other CAD software. Students 
+can work on their projects from school or home at any time.
 The instructor can check the students' projects via his web browser easily.
 The course is scheduled to open in August 2012.
 }
@@ -127,107 +128,142 @@ The course is scheduled to open in August 2012.
 \subsection{Objectives}
 \begin{itemize}
 \item Learn basic facts about Solid Modeling and PLaSM.
-\item Understand how to clone and display projects.
-\item As a "Hello, World!" example, wreate a unit cube.
+\item As a "Hello, World!" example, create a unit cube.
 \item Learn to rotate, move and zoom objects displayed via WebGL.
+\item Understand RGB colors.
 \end{itemize}
 
 \subsection{Solid Modeling and PLaSM}
 
-Solid Modeling (SM) is a consistent set of principles for mathematical and computer 
+Solid Modeling is a consistent set of principles for mathematical and computer 
 modeling of three-dimensional solids. Solid Modeling is distinguished from related 
 areas such as geometric modeling or computer graphics by its emphasis on {\em physical fidelity}.
-SM is the basis of computer-aided design (CAD), engineering simulations, and other disciplines.
+Solid Modeling is the basis of computer-aided design (CAD), engineering simulations, and other disciplines.
 
-PLaSM ({\em Programming Language for Solid Modeling}) is a simple and elegant design 
-language backed up with powerful computational geometry algorithms. It 
-enables geometrical modeling of 3D objects via simple commands.
-The language was developed by the CAD Group at the Universities of Roma 
-"La Sapienza" and "Roma Tre" in Italy. It is based on FL, an advanced 
-language for functional programming developed at the IBM Research Center.
+Solid Modeling in NCLab is based on PLaSM (Programming Language 
+of Solid Modeling) which is a simple scripting language. For 
+illustration,
 
-PLaSM makes it possible to define a wide range of simple 3D objects, transform 
-them, create intersections and unions via simple logical operations, and much 
-more. This textbook will guide you in small steps and using many examples
-through Solid Modeling with the help of PLaSM. Soon, you will be able to create 
-advanced 3D geometries such as the one shown in Fig. \ref{fig:pisa}.
+{\color{blue}
+\begin{verbatim}
+c = CUBE(1)
+lab.view(c)
+\end{verbatim}
+}
+\noindent
+renders a unit cube, 
+
+{\color{blue}
+\begin{verbatim}
+d = CUBE(2)
+lab.view(d)
+\end{verbatim}
+}
+\noindent
+renders a cube of size 2, and 
+
+{\color{blue}
+\begin{verbatim}
+e = DIFF([d, c])
+lab.view(e)
+\end{verbatim}
+}
+\noindent
+renders their Boolean difference shown in Fig. \ref{fig:diffcube}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{img/temple0.png}
+\includegraphics[width=6cm]{img/diffcube.png}
+\end{center}
+\vspace{-6mm}
+\caption{Boolean difference of two cubes.}
+\vspace{-1cm}
+\label{fig:diffcube}
+\end{figure}
+
+\newpage
+\noindent
+PLaSM has significant advantages for students over 
+working with standard commercial programs such as (for example) 
+SolidWorks and AutoCAD:
+
+\begin{itemize}
+\item SolidWorks and AutoCAD are great tools to maximize the productivity 
+      of a professional user. However, this is not what a student needs. 
+      Rather than use black box methods aimed at automating the design process, 
+      the student needs to be exposed to and get familiar with all elementary 
+      techniques of Solid Modeling. This is precisely what PLaSM is great for.
+\item Do not get the previous statement wrong -- PLaSM is equally powerful as SolidWorks and AutoCAD. Any geometry 
+      created in these programs can be created in PLaSM as well. PLaSM's 
+      scripting approach to Solid Modeling is analogous to how one uses \LaTeX, 
+      the most popular engineering and scientific typesetting system. 
+\item Students are trained in geometrical principles of Solid Modeling rather 
+      than in using a particular commercial software. With what they learn 
+      using PLaSM, they can learn SolidWorks, AutoCAD, or any other major
+      CAD software very easily.
+\item PLaSM is free and students can keep their NCLab accounts for unlimited time.
+\end{itemize}
+PLaSM makes it possible to define a wide range of simple 3D objects, transform 
+them, create intersections and unions via standard Boolean operations, and much 
+more. This textbook will guide you in small steps 
+through Solid Modeling with the help of PLaSM. Soon, you will be able to create 
+advanced 3D geometries such as the one shown in Fig. \ref{fig:vault0}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/vault.png}
 \end{center}
 \vspace{-4mm}
-\caption{Sample PLaSM model (available as Displayed Project "Temple").}
+\caption{Vault model created in PLaSM.}
 \vspace{-1cm}
-\label{fig:pisa}
+\label{fig:vault0}
 \end{figure}
 \newpage
-\subsection{How does NCLab work}
-
-NCLab is the underlying cloud computing platform for this course. Operation with the 
-PLaSM library is done through a simple {\em scripting language}, meaning that  
-objects are created, transformed, and manipulated via {\em simple commands} rather 
-than by clicking into menus of some graphical application. The scripts are 
-sent to a remote cloud server, evaluated there, and the results are sent back
-to your web browser. Some tasks such as Boolean operations with 3D objects 
-(their intersections, unions etc.) may require heavy computing and take some time.
-This, however, is not done on your computer or laptop. Your device only uses 
-its graphics card for real-time rendering of 3D objects. For this reason, {\bf your 
-web browser has to support WebGL}.
-
-\subsection{Displayed projects}
-
-All examples that we are going to work with in the following are also available 
-as Displayed Projects. This means that you can clone them by launching the File
-Manager, going to the {\em Project} menu, and clicking on {\em Clone}. This will 
-launch a window with many displayed projects. Look for projects whose names start 
-with "PLaSM - Tutorial". After you locate a project that you would like to clone, 
-click on it, and then click on the button {\em Clone} at the bottom of the window. 
-This will create an exact copy of that project in your account. You can open it,
-edit, run, save, and do whatever you like with it. Your changes will not affect 
-the original Displayed Project. Vice versa, you are welcome to display your own 
-projects if you think that other users might find them interesting!
 
 
 \subsection{Launching a new PLaSM project}
 
-Alternatively to cloning examples into your account, you can type them. This is 
-recommended since you become more fluent in using the scripting language. 
-Most of the introductory examples are very short anyway. New PLaSM projects 
-can be launched via the CAD icon on Desktop, as shown in Fig. \ref{fig:python}.
-\newpage
+The underlying cloud computing platform for this course is NCLab 
+(http://nclab.com).
+PLaSM scripts are sent to a remote server, evaluated there, 
+and the results are sent back to your web browser. Your device uses
+its graphics card for real-time rendering of 3D objects. For this 
+reason, {\bf your web browser has to support WebGL}. 
+
+New PLaSM project can be launched via the CAD icon on Desktop, as shown 
+in Fig. \ref{fig:python}.
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{img/python.png}
 \end{center}
-%\vspace{-2mm}
+\vspace{-2mm}
 \caption{Launching a new PLaSM project.}
 \label{fig:python}
 \end{figure}
 \noindent
+The WebGL technology is still experimental, so it may be disabled 
+in your web browser by default. Even after you enable it, it may not work 
+right out of the box. For this reason we provide a document called 
+"WebGL and Its Problems" in the Help section.
 
 \subsection{Hello, World!}
 
 In the input cell, enter the code:
-
+{\color{blue}
 \begin{verbatim}
 cube = CUBE(1)
-lab.view(cube, [0.4, 0.9, 0.6])
+lab.view(cube)
 \end{verbatim}
-Here, {\tt CUBE} is a command that creates a cube, its parameter is the edge length,
-and {\tt cube} is the name of the object.
-The name can be arbitrary as long as it does not conflict with any PLaSM command. 
-To minimize name clashes, all PLaSM commands are CAPITALIZED.
-The three numbers enclosed in square brackets define a color in the 
-OpenGL format. The numbers stand for red (R), green (G) and blue (B) 
-components of the resulting color, and each value is between 0 (darkest) and 
-1 (lightest). For example, [0, 0, 0] means black, [1, 1, 1] means white. 
-More about colors will be said in Subsection \ref{subsec:colors}.
+}
+\noindent
+Here, {\tt CUBE} is a command that creates a cube of a given size and {\tt c} is the 
+name of the newly created object. The name can be arbitrary as long as it does not conflict with 
+any PLaSM command. To minimize name clashes, all PLaSM commands are CAPITALIZED.
 
-After you are done typing the script, click on the 'run' button in the menu 
+After you are done typing the script, click on the green arrow button in the menu
 or under the input cell. The former option will run all cells 
-in the project, the latter only the one selected cell. This will send the script to a remote
+in the project, the latter only the one selected cell. This will send the script to the
 server. The answer should come back instantly, and a new WebGL widget displaying a unit cube 
 will appear, as shown in Fig. \ref{fig:cube}. 
 
@@ -241,29 +277,7 @@ will appear, as shown in Fig. \ref{fig:cube}.
 \label{fig:cube}
 \end{figure}
 \noindent
-Congratulations, you just 
-created your first Solid Model!\\
-
-\noindent
-Before we move on, let us briefly explain the above code.
-The first line, 
-
-\begin{verbatim}
-from pyplasm import *
-\end{verbatim}
-imports the PLaSM library. The prefix "py" stands for Python (NCLab uses
-Python to call PLaSM). The second line,
-
-\begin{verbatim}
-cube = CUBE(1)
-\end{verbatim}
-defines a unit cube. Cube of a general edge length {\tt e} would be 
-created by replacing the number {\tt 1} with {\tt e}. The last line,
-
-\begin{verbatim}
-lab.view(cube, [0.4, 0.9, 0.6])
-\end{verbatim}
-displays the cube in a WebGL widget, using a greenish color. 
+Congratulations, you just created your first Solid Model!
 
 \subsection{Mouse controls}
 
@@ -273,6 +287,55 @@ button (or the mouse wheel) pressed and moving the mouse will move the
 object in any direction. Zooming in and out is done via the mouse wheel 
 or by holding the right-hand mouse button down and moving the mouse.
 The latter option allows for finer zooming.
+
+\subsection{RGB colors}
+
+Before we move on to other 3D objects, adjust the code in the input cell to 
+{\color{blue}
+\begin{verbatim}
+c = CUBE(1)
+lab.view(c, [102, 230, 153])
+\end{verbatim}
+}
+\noindent
+Run the script again.
+This will render the cube {\tt c} in a greenish color, as shown in 
+Fig. \ref{fig:cube2}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/cube2.png}
+\end{center}
+\vspace{-2mm}
+\caption{Changing the cube's color.}
+\vspace{2mm}
+\label{fig:cube2}
+\end{figure}
+\noindent
+The color can be changed by redefining these three values. The values can be arbitrary 
+integers between 0 and 255. Experiment for a while with various colors, keeping a few 
+simple rules in mind:
+
+\begin{itemize}
+\item With just the first value being non-zero, such as in {\tt [150, 0, 0]},
+      you get {\bf pure red}. The closer the value to 255, the lighter the color.
+      This holds for all three components.
+\item With just the second value being non-zero, such as in {\tt [0, 55, 0]},
+      you obtain {\bf pure green}.
+\item With just the third value being non-zero, such as in {\tt [0, 0, 222]},
+      you will have {\bf pure blue}. 
+\item Using three identical values will result into some shade of grey. For 
+      example, {\tt [0, 0, 0]}
+      means black and {\tt [255, 255, 255]} means white.
+\item Varying all three numbers, you can get any color that you want. It is not 
+      easy to translate a color, such as "purple", "cyan" or "orange" into the RGB
+      values. But there are many web pages that will do it for you, such as for
+      example http://kb.iu.edu/data/aetf.html. 
+\item If the triplet is omitted, the object is rendered using white color (which appears as light 
+      grey because of shading). 
+\end{itemize}
+
+
 
 \subsection{Review questions}
 
@@ -305,26 +368,12 @@ The latter option allows for finer zooming.
 \item[A3] On a remote server.
 \item[A4] Using the user's graphic card.
 \end{itemize}
-\item What can you do with a Displayed Project that you clone?
-\begin{itemize}
-\item[A1] View but not run or edit or save.
-\item[A2] View and run but not edit or save.
-\item[A3] View, edit and run but not save.
-\item[A4] View, edit, run, save. 
-\end{itemize}
 \item How can a PLaSM script be evaluated?
 \begin{itemize}
 \item[A1] By hitting ENTER.
-\item[A2] By clicking on "run" under the input cell.
-\item[A3] By clicking on the blue arrow button.
+\item[A2] By clicking on the green arrow under the input cell.
+\item[A3] By clicking on the green arrow in the upper menu.
 \item[A4] By clicking on Run in the File menu.
-\end{itemize}
-\item How is PLaSM imported into the project?
-\begin{itemize}
-\item[A1] {\tt from plasm import *}
-\item[A2] {\tt from pyplasm import *}
-\item[A3] {\tt from plasm import pyplasm}
-\item[A4] {\tt from pyplasm import plasm}
 \end{itemize}
 \item What of the following is the correct way to create a cube of edge length $e$?
 \begin{itemize}
@@ -333,36 +382,30 @@ The latter option allows for finer zooming.
 \item[A3] {\tt c = CUBE(e)}
 \item[A4] {\tt c = HEXAHEDRON(e)}
 \end{itemize}
-\item What color is represented by the triplet [1, 1, 1]?
+\item What color is represented by the triplet [0, 0, 0]?
 \begin{itemize}
 \item[A1] Black
 \item[A2] White
 \item[A3] Green
 \item[A4] Magenta.
 \end{itemize}
-\item How can we visualize an object {\tt c} using the color [0.9, 0.9, 0.9]?
-\begin{itemize}
-\item[A1] {\tt lab.visualize(c, [0.9, 0.9, 0.9])}
-\item[A2] {\tt lab.show(c, [0.9, 0.9, 0.9])}
-\item[A3] {\tt lab.view(c, [0.9, 0.9, 0.9])}
-\item[A4] {\tt lab.display(c, [0.9, 0.9, 0.9])}
-\end{itemize}
 \end{enumerate}
 
 \subsection{Exercises}
 
 \begin{enumerate}
-\item Write a PLaSM script to render a unit cube in pure red color.
-\item Write a PLaSM script to render a cube of edge length 2 in pure green color.
-\item Write a PLaSM script to render a cube of edge length 3 in pure blue color.
+\item Write a script to render a unit cube in darkest pure red color.
+\item Write a script to render a unit cube in lightest pure red color.
+\item Write a script to render a cube of edge length 2 in darkest pure green color.
+\item Write a script to render a cube of edge length 2 in lightest pure green color.
+\item Write a script to render a cube of edge length 3 in darkest pure blue color.
+\item Write a script to render a cube of edge length 3 in lightest pure blue color.
 \end{enumerate}
 
-\newpage
 \section{Creating Simple Objects}
 
 \subsection{Objectives}
 \begin{itemize}
-\item Understand RGB colors.
 \item Create squares, rectangles, cubes and bricks.
 \item Learn to always remember where objects are positioned in the coordinate system.
 \item Create convex hulls.
@@ -375,34 +418,6 @@ The latter option allows for finer zooming.
 
 
 \subsection{Using RGB colors} \label{subsec:colors}
-
-The triplet {\tt [0.4, 0.9, 0.6]} that was used in the {\tt lab.view()} command
-above represented the RGB components of a greenish color. The color can be changed 
-by redefining these three numbers. The numbers can be arbitrary as long as they stay 
-between 0.0 and 1.0. You can experiment with various colors, keeping a few 
-simple rules in mind:
-
-\begin{itemize}
-\item With just the first value being non-zero, such as in {\tt [0.5, 0, 0]},
-      you get {\bf red} color. The closer the value is to 1.0, the lighter the color
-      will be.
-\item With just the second value being non-zero, such as in {\tt [0, 0.5, 0]},
-      you obtain {\bf green} color. The closer the  value is to 1.0, the lighter the color
-      will be.
-\item With just the third value being non-zero, such as in {\tt [0, 0, 0.5]},
-      you will have {\bf blue} color. The closer the  value is to 1.0, the lighter the color
-      will be.
-\item Using three identical values will result into some shade of grey. For 
-      example, {\tt [0.0, 0.0, 0.0]}
-      means black and {\tt [1.0, 1.0, 1.0]} means white.
-\item Varying all three numbers, you can get any color that you want. It is not 
-      easy to translate a color, such as "purple", "cyan" or "orange" into the RGB
-      values. But there are many web pages that will do it for you, such as for
-      example http://kb.iu.edu/data/aetf.html. {\bf Note}: Usually,
-      the RGB values on these web pages are given as integers between 0 and 255. To use them in NCLab,
-      just divide all three of them by 255.
-\end{itemize}
-
  
 \subsection{Brick, cube, rectangle, and square -- commands CUBE, CUBOID}
 

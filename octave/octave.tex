@@ -1,0 +1,68 @@
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+\bibliographystyle{plain}                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{graphicx}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\large
+
+\vbox{}
+\begin{figure}[!ht]
+%\hspace{-4mm}
+\includegraphics[width=8cm]{logo.png}
+\vspace{4mm}
+\end{figure}
+
+\centerline{\huge \bf Using GNU Octave in NCLab}
+\vspace{6mm}
+\noindent
+GNU Octave is a high-level interpreted language, primarily intended for numerical computations. The Octave language is quite similar to Matlab so that most programs are easily portable. It provides capabilities for the numerical solution of linear and nonlinear problems, and for performing other numerical experiments. It also provides extensive graphics capabilities for data visualization and manipulation. Octave is normally used through its interactive command line interface, but it can also be used to write non-interactive programs. 
+
+\section*{Displayed Projects}
+
+Many displayed Octave projects are available in NCLab through File Manager's Project $\rightarrow$ Clone 
+menu. Look for projects whose name starts with "Octave - Tutorial", these are the best learning 
+resources.
+
+\section*{Known Issues}
+
+Octave was added to NCLab recently, and thus some limitations still apply. Our goal is to make 
+it very easy for Matlab users to migrate their complete projects to NCLab where they can 
+compute for free. The following limitations still apply (unless they were already fixed):
+
+\begin{itemize}
+\item Every project must be contained in a single file. Handling multiple files, as well as
+      data files, is in progress. 
+\item Interactive commands such as {\tt pause} or {\tt input} do not work. More precisely,
+      they work as expected - stopping the script on the server and waiting for the user's
+      input. As a result, your Octave engine freezes. We are working to fix this. 
+\item After any plot command, that performs plotting on the server, one needs to include 
+      one additional line {\tt lab\_show()} that fetches the image or graph from the server. 
+      This will not be needed in the future.  
+\end{itemize}
+There are no known problems with graphics - if you encounter one, or anything else that annoys
+you, please let us know.
+
+
+\end{document}
+

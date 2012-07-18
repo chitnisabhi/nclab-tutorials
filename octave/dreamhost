@@ -1,0 +1,2 @@
+cp octave.pdf octave_en.pdf
+scp octave_en.pdf femhub@208.113.201.85:~/femhub.com/public/docs/

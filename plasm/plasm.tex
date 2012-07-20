@@ -344,70 +344,6 @@ simple rules in mind:
 
 
 
-\subsection{Review questions}
-
-\begin{enumerate}
-\item How does Solid Modeling differ from Computer Graphics?
-\begin{itemize}
-\item[A1] There is no difference, they are the same thing. 
-\item[A2] Computer graphics represents 3D onjects more precisely.
-\item[A3] Solid Modeling represents 3D objects more precisely.
-\item[A4] Solid Modeling is used primarily for 3D animations.
-\end{itemize}
-\item What does the abbreviation CAD stand for?
-\begin{itemize}
-\item[A1] Computer-assisted drawing.
-\item[A2] Computer-allowed discrepancy.
-\item[A3] Computer-aided design.
-\item[A4] Computer-amplified drumming.
-\end{itemize}
-\item What is PLaSM?
-\begin{itemize}
-\item[A1] Make of plasma 3D TVs.
-\item[A2] Computer graphics library.
-\item[A3] Design language backed up with powerful computational geometry algorithms.
-\item[A4] Browser plugin for rendering 3D objects.
-\end{itemize}
-\item In NCLab, scripts are evaluated:
-\begin{itemize}
-\item[A1] On the user's computer.
-\item[A2] In the user's web browser.
-\item[A3] On a remote server.
-\item[A4] Using the user's graphic card.
-\end{itemize}
-\item How can a PLaSM script be evaluated?
-\begin{itemize}
-\item[A1] By hitting ENTER.
-\item[A2] By clicking on the green arrow under the input cell.
-\item[A3] By clicking on the green arrow in the upper menu.
-\item[A4] By clicking on Run in the File menu.
-\end{itemize}
-\item What of the following is the correct way to create a cube of edge length $e$?
-\begin{itemize}
-\item[A1] {\tt c = C(e)}
-\item[A2] {\tt c = CB(e)}
-\item[A3] {\tt c = CUBE(e)}
-\item[A4] {\tt c = HEXAHEDRON(e)}
-\end{itemize}
-\item What color is represented by the triplet [0, 0, 0]?
-\begin{itemize}
-\item[A1] Black
-\item[A2] White
-\item[A3] Green
-\item[A4] Magenta.
-\end{itemize}
-\end{enumerate}
-
-\subsection{Exercises}
-
-\begin{enumerate}
-\item Write a script to render a unit cube in darkest pure red color.
-\item Write a script to render a unit cube in lightest pure red color.
-\item Write a script to render a cube of edge length 2 in darkest pure green color.
-\item Write a script to render a cube of edge length 2 in lightest pure green color.
-\item Write a script to render a cube of edge length 3 in darkest pure blue color.
-\item Write a script to render a cube of edge length 3 in lightest pure blue color.
-\end{enumerate}
 
 \section{Creating Simple Objects}
 
@@ -424,8 +360,6 @@ simple rules in mind:
 \end{itemize}
 
 
-\subsection{Using RGB colors} \label{subsec:colors}
- 
 \subsection{Brick, cube, rectangle, and square -- commands CUBE, CUBOID}
 
 We already know the command {\tt CUBE} that takes one positive real
@@ -1019,196 +953,7 @@ is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 %\vspace{-1cm}
 \end{figure}
 
-\subsection{Review questions}
 
-\begin{enumerate}
-\item Coming soon.
-\begin{itemize}
-\item[A1]
-\item[A2]
-\item[A3]
-\item[A4]
-\end{itemize}
-\end{enumerate}
-
-
-\subsection{Exercises}
-
-\begin{enumerate}
-\item
-Create a $3 \times 4 \times 5$ brick in a light
-blue color, as shown in Fig. \ref{fig:a1}.
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/a1-blue-brick.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 1.}
-\label{fig:a1}
-%\vspace{-1cm}
-\end{figure}
-
-\item Create a $3 \times 1$ rectangle in a light
-red color, as shown in Fig. \ref{fig:a2}.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/a2-red-rectangle.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 2.}
-\label{fig:a2}
-\vspace{-0cm}
-\end{figure}
-
-\item Create an orange octahedron with vertices 
-(0, -1, 1), (0, 1, 1), (0, -1, -1), (0, 1, -1), (2, 0, 0), and (-2, 0, 0), 
-as shown in Fig. \ref{fig:a3}.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/a3-orange-octahedron.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 3.}
-\label{fig:a3}
-%\vspace{-1cm}
-\end{figure}
-
-\item Create a pink pentagon with equally-long edges that is inscribed 
-in a circle with diameter $R$, as shown in Fig. \ref{fig:a4}.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/a4-pink-pentagon.png}
-\end{center}
-\vspace{-4mm}
-\caption{Illustration for Exercise 4.}
-\label{fig:a4}
-%\vspace{-4mm}
-\end{figure}
-\newpage
-
-\item Create a cyan cone of radius $R$ and height $H$ that stands on its tip
-(the tip is at (0, 0, 0) and the axis of the cone coincides with the 
-$z$-axis), as shown in Fig. \ref{fig:a5}.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/a5-cyan-cone.png}
-\end{center}
-\vspace{-4mm}
-\caption{Illustration for Exercise 5.}
-\label{fig:a5}
-%\vspace{-1cm}
-\end{figure}
-
-\item  Create a carmine cylinder of radius $R$ and height $H$, 
-as shown in Fig. \ref{fig:a6}.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/a6-carmine-cylinder.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 6.}
-\label{fig:a6}
-%\vspace{-1cm}
-\end{figure}
-\newpage
-
-\item Create a topaz tube of inner radius $R_{in}$, outer radius $R_{out}$
-and height $H$, as shown in Fig. \ref{fig:a7}.
-
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/a7-topaz-tube.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 7.}
-\label{fig:a7}
-%\vspace{-1cm}
-\end{figure}
-
-\item Create a sand sphere of radius $R$ and center at the origin (0, 0, 0). 
-Use $[64, 64]$ for the piecewise-linear approximation of the curved surface, 
-as shown in Fig. \ref{fig:a8}.
-
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/a8-sand-sphere.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 8.}
-\label{fig:a8}
-\vspace{-1cm}
-\end{figure}
-\newpage
-
-\item Create a turquoise torus of inner radius $R_{in}$ and outer radius $R_{out}$, whose center 
-is at the origin (0, 0, 0). Use $[64, 64]$ for the piecewise-linear approximation 
-of the curved surface, as shown in Fig. \ref{fig:a9}.
-
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/a9-turquoise-torus.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 9.}
-\label{fig:a9}
-%\vspace{-1cm}
-\end{figure}
-
-\item Write a script to render a cylinder of radius {\tt R} and height {\tt H}
-      via the CONVEXHULL command. The cylinder's axis should coincide with the 
-      $z$-axis, the center of its base circle should be (0, 0, 0), and the 
-      curved surface should be subdivided into {\tt subdiv} linear segments.
-
-\end{enumerate}
-\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iffullversion
-\else
-\vbox{}
-\vfill
-\pagestyle{empty}
-    \begin{center}
-    {\huge \color{red}END OF PREVIEW}\\[2cm]
-
-\centerline{\Large Please consider:}
-\vspace{1cm}
-
-{\Large \bf Purchasing Online Course with Curriculum}
-\vspace{1cm}
-
-    {\Large or,}\\[1cm]
-
-{\Large \bf Ordering Textbook and Solution Manual}
-\vspace{1cm}
-
-    {\Large For either, visit {\tt http://introtocad.net}. \\[2cm]
-}
-\end{center}
-{\bf The course includes}:
-\begin{itemize}
-\item Access to full version of textbook and solution manual.
-\item One-click download of interactive review question worksheets.
-\item One-click download of interactive programming exercises (in preparation).
-\item One-click distribution to students in your class.
-\item One-click collection, automated grading, and progress monitoring (in preparation).
-\item Access to all answers and solution designs.
-\end{itemize}
-
-\vfill
-    \end{document}
-\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1584,78 +1329,6 @@ The output is shown in Fig. \ref{fig:rot-2}.
 %\vspace{-1cm}
 \end{figure}
 
-\subsection{Review questions}
-
-\begin{enumerate}
-\item Coming soon.
-\begin{itemize}
-\item[A1]
-\item[A2]
-\item[A3]
-\item[A4]
-\end{itemize}
-\end{enumerate}
-
-\subsection{Exercises}
-
-\begin{enumerate}
-\item 
-Create a kitchen table shown in Fig. \ref{fig:b1}. All of its measures should be variable.
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/kitchentable.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 1.}
-\label{fig:b1}
-%\vspace{-1cm}
-\end{figure}
-
-\item Create a round tea table with round legs as
-shown in Fig. \ref{fig:b2}. All of its measures should be variable.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/teatable.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 2.}
-\label{fig:b2}
-%\vspace{-1cm}
-\end{figure}
-
-\item Use a scaled cylinder and a torus to create a padlock that is shown in Fig. \ref{fig:b3}. 
-All of its measures should be variable.
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.4\textwidth]{img/padlock.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 3.}
-\label{fig:b3}
-%\vspace{-1cm}
-\end{figure}
-
-\item Use two cylinders and a sphere to create a bottle shown in Fig. \ref{fig:b4}. 
-All of its measures should be variable.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{img/bottle.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 4.}
-\label{fig:b4}
-%\vspace{-1cm}
-\end{figure}
-
-\end{enumerate}
 
 \section{Boolean Operations}
 
@@ -2026,70 +1699,7 @@ The output is shown in Fig.\ref{fig:vault2}.
 \end{figure}
 \noindent
 
-\subsection{Review questions}
 
-\begin{enumerate}
-\item Coming soon.
-\begin{itemize}
-\item[A1]
-\item[A2]
-\item[A3]
-\item[A4]
-\end{itemize}
-\end{enumerate}
-
-\subsection{Exercises}
-
-\begin{enumerate}
-
-\item Use a $4 \times 4 \times 4$ brick to create the object shown in 
-Fig. \ref{fig:nclabicon}.
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/nclabicon.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 1.}
-\label{fig:nclabicon}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-
-\item Create a cube and drill three holes into it from the three axial 
-directions, as illustrated in Fig. \ref{fig:drilledcube}.
-The size of the cube as well as the diameter of the holes should 
-be variable. 
-
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.4\textwidth]{img/drilledcube.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 2.}
-\label{fig:drilledcube}
-%\vspace{-1cm}
-\end{figure}
-
-\item Build a simple model of an ashtray using cylindrical shapes, 
-as illustrated in Fig. \ref{fig:ashtray}.
-All measures should be variable.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/ashtray.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 3.}
-\label{fig:ashtray}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-
-\end{enumerate}
 
 \section{Creating Simple Objects (Continued)} \label{sec:cso2}
 
@@ -2267,21 +1877,8 @@ H = 1.0
 lab.view(EXTRUDE(N, s, H), color)
 \end{verbatim}
 
-\subsection{Review questions}
 
-\begin{enumerate}
-\item Coming soon.
-\begin{itemize}
-\item[A1]
-\item[A2]
-\item[A3]
-\item[A4]
-\end{itemize}
-\end{enumerate}
 
-\subsection{Exercises}
-
-Coming soon.
 
 \section{Curves and Curved Surfaces}\label{sec:curves}
 
@@ -2954,21 +2551,7 @@ The output is displayed in Fig. \ref{fig:curves-14}.
 %\vspace{-1cm}
 \end{figure}
 
-\subsection{Review questions}
 
-\begin{enumerate}
-\item Coming soon.
-\begin{itemize}
-\item[A1]
-\item[A2]
-\item[A3]
-\item[A4]
-\end{itemize}
-\end{enumerate}
-
-\subsection{Exercises}
-
-Coming soon.
 
 \section{The Power of Scripting}
 
@@ -3029,88 +2612,8 @@ The corresponding output is shown in Fig. \ref{fig:random_cubes}.
 \end{figure}
 \noindent
 
-\subsection{Exercises}
-
-\begin{enumerate}
-
-\item Build an Aztec Pyramid as illustrated in Fig. \ref{fig:aztec}. The length 
-on the base edge, length of the top edge, height, and the number of layers
-should be user-defined parameters. 
 
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/aztec.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 1.}
-\label{fig:aztec}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-
-\item Build a model of the Tower of Hanoi game as illustrated in Fig. \ref{fig:hanoi}. 
-The radius of the largest and smallest disc, and the height of the tower 
-should be user-defined parameters. 
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/hanoi.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 2.}
-\label{fig:hanoi}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-
-\item Build a corral for horses with variable radius $r$ and variable number 
-of equally-long sides $N$. Also the vertical poles should have general user-defined 
-dimensions $W \times W \times H$. Illustrative images of how the corral should look like 
-are shown in Fig. \ref{fig:corral2}.
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{img/tam-3.png}
-\end{center}
-\vspace{-2mm}
-\caption{Illustration for Exercise 3.}
-\label{fig:corral2}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-
-\item Build a spoked wagon wheel similar to the one in Fig. \ref{fig:wheel-1}. All radiuses 
-and thicknesses should be user-defined, as well as the number of spokes.
-
-\newpage
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{img/wagonwheel-1.png}
-\end{center}
-\vspace{-8mm}
-\caption{Illustration for Exercise 4.}
-\label{fig:wheel-1}
-%\vspace{-1cm}
-\end{figure}
-\noindent
-
-\end{enumerate}
-
-\subsection{Review questions}
-
-\begin{enumerate}
-\item Coming soon.
-\begin{itemize}
-\item[A1]
-\item[A2]
-\item[A3]
-\item[A4]
-\end{itemize}
-\end{enumerate}
 
 \section{Advanced Techniques}
 
@@ -3531,20 +3034,7 @@ The output is shown in Fig. \ref{fig:pisa-0}.
 %\vspace{-1cm}
 \end{figure}
 
-\subsection{Review questions}
 
-\begin{enumerate}
-\item Coming soon.
-\begin{itemize}
-\item[A1]
-\item[A2]
-\item[A3]
-\item[A4]
-\end{itemize}
-\end{enumerate}
 
-\subsection{Exercises}
-
-Coming soon.
 
 \end{document}

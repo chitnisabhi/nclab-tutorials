@@ -279,6 +279,16 @@ happens when our {\em algorithm} is wrong. By an {\em algorithm} we mean a seque
 logical steps that the robot needs to follow in order to fulfill his task. Algorithms 
 are presented using normal human language, not in terms of the robot's commands. 
 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.6\textwidth]{imgk/algo.png}
+\end{center}
+\vspace{-4mm}
+\caption{How an  {\em Algorithm} works.}
+\label{fig:algo}
+\vspace{-4mm}
+\end{figure}
+
 {\em Program} or {\em computer code} is created when the algorithm is expressed
 in terms of the robot's language. When our algorithm is good, then 
 the program is easy to write.
@@ -329,6 +339,12 @@ and once you understand its beauty, you will never want to leave.
 
 The {\em counting loop}, represented by the {\tt repeat} command, can save 
 us lots of writing when something is repeated a given number of times. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=9cm]{imgk/a16.jpg}
+\end{center}
+\end{figure}
 For example, for Karel to make 15 steps forward we could type:
 
 \begin{verbatim}
@@ -545,11 +561,23 @@ to how we indent the body of the {\tt repeat} command.\\
 
 \noindent
 \underline{{\tt gem} sensor}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=2.5cm]{imgk/a29.png}
+\end{center}
+\end{figure}
+
 
 This sensor returns true if the robot stands on a gem, false otherwise. \\
 
 \noindent
 \underline{{\tt empty} sensor}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=2.5cm]{imgk/a30.png}
+\end{center}
+\end{figure}
+
 
 This sensor returns true if the robot's bag with gems is empty, false otherwise. \\
 
@@ -560,8 +588,23 @@ This sensor returns true if the robot is facing North, false otherwise.\\
 
 \noindent
 \underline{{\tt home} sensor}
+\noindent
+\underline{{\tt north} sensor}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=2.5cm]{imgk/a32.png}
+\end{center}
+\end{figure}
+
 
 This sensor returns true if the robot is at home, false otherwise.\\
+\noindent
+\underline{{\tt home} sensor}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=2.55cm]{imgk/a31.png}
+\end{center}
+\end{figure}
 
 \noindent
 \underline{Testing opposites}

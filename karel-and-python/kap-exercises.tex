@@ -395,6 +395,32 @@ go
 \end{verbatim}
 
 \newpage
+
+\subsection
+{\em Write a program that gets Karel home! Remember: Always write one command per line.}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a17.png}
+\end{center}
+\vspace{-4mm}
+\caption{Moving Karel forward via the {\tt go} command.}
+\label{fig:b02}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsubsection{Solution}
+\begin{verbatim}
+go
+go
+go
+go
+go
+go
+go
+go
+\end{verbatim}
 \subsection{}
 
 {\em Write a program for Karel to collect all gems and get home! 
@@ -451,6 +477,93 @@ go
 \end{verbatim}
 
 \newpage
+
+\subsubsection{Solution}
+\begin{verbatim}
+go
+get
+left
+left
+go
+go
+put
+left
+left
+go
+left 
+go
+\end{verbatim}
+
+\subsection{Exercise B05 - Go, Get, Left, Right Command}
+
+{\em Write a program for Karel to collect all gems and get home!}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a18.png}
+\end{center}
+\vspace{-4mm}
+\caption{Collecting gems using {\tt get} command and moving karel using {\tt go, left and right} command.}
+\label{fig:b05}
+\vspace{-4mm}
+\end{figure}
+\noindent
+\subsubsection{solution}
+\begin{verbatim}
+right
+go
+get
+go
+get
+go
+get
+left
+go
+get
+go
+get
+go
+\end{verbatim}
+
+\subsection
+{\em Write a program for karel to collect all the gems and return home!}
+
+\vspace{-5mm}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a19.png}
+\end{center}
+\vspace{-4mm}
+\caption{Collecting gems using {\tt get} command and moving karel using {\tt go, left and right} command.}
+\label{fig:b06}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsubsection{solution}
+
+\begin{verbatim}
+left
+left
+go
+get
+go
+get
+go
+get
+left
+go
+get
+go
+get
+left
+go 
+get
+go
+get
+go
+go
+\end{verbatim}
+
 \subsection{}
 
 {\em Write a program for Karel to relocate the gem to the opposite 
@@ -469,23 +582,136 @@ end of the cross and return home!}
 \end{figure}
 \noindent
 
+
+\subsection{Exercise B08 - Find the gems and take them home}
+
+{\em Write a program for Karel to pick up the gems located in the corner of the room and relocate them to his home!}
+\vspace{-5mm}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a24.png}
+\end{center}
+\vspace{-4mm}
+\caption{Relocating the gems requires both {\tt get} and {\tt put}and move Karel via the {\tt go} and {\tt left} and {\tt } command.}
+\label{fig:b08}
+\vspace{-4mm}
+\end{figure}
+
 \subsubsection{Solution}
 \begin{verbatim}
 go
+go
+go
+go
+go
+get
+right
+go
+right
+go
+go
+go
+go
+go
+left
+go
+go
+go
+go
+go
+go
+go
 get
 left
+go
+go
+go
+go
+go
+\end{verbatim}
+\subsection{Exercise B09 - Pick and Place task}
+
+{\em Write a program for Karel to pick up and relocate the gems to his home by using 'left', 'right', 'go', 'get' and 'put' commands!}
+
+\vspace{-2mm}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a25.png}
+\end{center}
+\vspace{-4mm}
+\caption{Move Karel by using {\tt go}, {\tt left}, {\tt right} command and use {\tt get} and {\tt put} to pick and place the gems.}
+\label{fig:b09}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsubsection{Solution}
+\begin{verbatim}
+go
+go
+get
+go
+go
+go
+get
+right
+right
+go
+go
+go
+go
+go
 left
 go
 go
-put
-left
-left
 go
-left 
+go
+go
+go
+go
+get
+go
 go
 \end{verbatim}
 
+\subsection{Exercise B010 - Find the gems hidden in the corner of the room}
 
+{\em Write a program for Karel to relocate the gems by moving Left and Right 
+to return home}
+
+\vspace{-3mm}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a26.png}
+\end{center}
+\vspace{-4mm}
+\caption{Move Karel by using {\tt go}, {\tt left}, {\tt right} command and use {\tt get} and {\tt put} to pick and place the gems.}
+\label{fig:b10}
+\vspace{-4mm}
+\end{figure}
+\noindent
+\subsubsection{Solution}
+
+\begin{verbatim}
+right
+go
+go
+left
+go
+go
+get
+go
+get
+go
+get
+right
+go
+go
+go
+left
+go
+go
+\end{verbatim}
 
 \newpage
 \setcounter{section}{5}
@@ -627,6 +853,41 @@ repeat 10
   go
   get
 \end{verbatim}
+
+\subsection{Exercise C06 - Complete one Lap}
+
+{\em Write a program for Karel to complete one Lap of the circuit and while doing so pick up the tresures on the way and get home! 
+Writing one command per line!}
+
+\vspace{-5mm}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a28.png}
+\end{center}
+\vspace{-4mm}
+\caption{Nine gems are between Karel and his home.}
+\label{fig:a28}
+%\vspace{-10mm}
+\end{figure}
+\noindent
+
+\subsubsection{solution}
+\begin{verbatim}
+left
+repeat 5
+ go
+get
+left
+repeat 6
+ go
+left
+repeat 5
+ go
+get
+repeat 6
+go
+\end{verbatim}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -770,6 +1031,41 @@ repeat 11
   left
 \end{verbatim}
 
+\subsection{Exercise D04 - Hide and Seek}
+
+{\em Karel's Friends(gems) are hiding somewhere in the builiding and Karel has to find them.
+Write a program for Karel to inspect all shelves and make him find his friends and then return home.}
+
+\vspace{-5mm}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a33.png}
+\end{center}
+\vspace{-4mm}
+\caption{Filling empty shelves with gems.}
+\label{fig:a33}
+\vspace{-4mm}
+\end{figure}
+\noindent
+
+\subsubsection{Solution}
+
+\begin{verbatim}
+repeat 5
+  repeat 7
+    go
+  if not gem
+  right
+  go
+  right
+  repeat 7
+    go
+  left 
+  go 
+  left
+\end{verbatim}
+
+
 \newpage
 \section{Conditional Loop}
 
@@ -869,6 +1165,80 @@ while not home
     # not the end yet
     right
 \end{verbatim}
+
+\subsection{Exercise E04 - Karel facing obstacles}
+
+{\em Karel has to go home but he has to follow a twisted path to reach home as there are a lot of obstacles on the way. Write a program for the robot to get there!}
+\vspace{-5mm}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a34.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel only knows that his home is on the other side of the wall.}
+\label{fig:a34}
+%\vspace{-10mm}
+\end{figure}
+\noindent
+
+\subsubsection{solution}
+\begin{verbatim}
+if not wall
+  go
+else
+  right
+  go
+  go
+  right
+if not wall
+  go
+else
+  left
+  go 
+  go
+  left
+if not wall 
+  go
+else
+  right
+  go
+  go
+  right
+if not wall
+  go
+else
+  left
+  go 
+  go
+  left
+if not wall 
+  go
+else
+  right
+  go
+  right
+while not home
+  go
+\end{verbatim}
+
+
+\subsection{Exercise E05 - Karel as the Detective}
+
+{\em Karel is a Detective and he has to find all the stolen gems. The theives have hidden them somwhere in the room. Write a program for Karel to find all the gems} 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=0.4\textwidth]{imgk/a35.png}
+\end{center}
+\vspace{-4mm}
+\caption{Karel only knows that his home is on the other side of the wall.}
+\label{fig:a35}
+%\vspace{-10mm}
+\end{figure}
+\noindent
+\newpage
+\section{Custom Commands}
+
 
 \newpage
 \section{Custom Commands}
